@@ -1,0 +1,55 @@
+---
+
+- name: CONFIG FW POLICY PACKAGES AND FOLDERS
+  hosts: FortiManager
+  connection: local
+  gather_facts: False
+
+  tasks:
+  - name: ADD PACKAGE WITH TARGETS
+    fmgr_fwpol_package:
+      host: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      mode: "add"
+      adom: "ansible"
+      name: "ansibleTestPackage1"
+      type: "pkg"
+      inspection_mode: "flow"
+      ngfw_mode: "profile-based"
+      scope_members: "seattle-fgt02, seattle-fgt03"
+
+  - name: ADD FOLDER
+    fmgr_fwpol_package:
+      host: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      mode: "add"
+      adom: "ansible"
+      name: "ansibleTestFolder1"
+      type: "folder"
+
+  - name: ADD PACKAGE INTO PARENT FOLDER
+    fmgr_fwpol_package:
+      host: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      mode: "set"
+      adom: "ansible"
+      name: "ansibleTestPackage2"
+      type: "pkg"
+      parent_folder: "ansibleTestFolder1"
+
+  - name: ADD FOLDER INTO PARENT FOLDER
+    fmgr_fwpol_package:
+      host: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      mode: "set"
+      adom: "ansible"
+      name: "ansibleTestFolder2"
+      type: "folder"
+      parent_folder: "ansibleTestFolder1"
+
+
+

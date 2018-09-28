@@ -1,0 +1,38 @@
+---
+
+- name: CONFIG CUSTOM SERVICES
+  hosts: FortiManager
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+  - name: DELETE A CUSTOM SERVICE CATEGORY
+    fmgr_fwobj_service:
+      host: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      adom: "ansible"
+      object_type: "category"
+      category: "ansibleCategory5"
+      mode: "delete"
+
+  - name: DELETE A CUSTOM SERVICE CATEGORY 2
+    fmgr_fwobj_service:
+      host: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      adom: "ansible"
+      object_type: "category"
+      category: "ansibleCategory2"
+      mode: "delete"
+
+  - name: DELETE A CUSTOM SERVICE CATEGORY 3
+    fmgr_fwobj_service:
+      host: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      adom: "ansible"
+      object_type: "category"
+      category: "ansibleCategory"
+      mode: "delete"

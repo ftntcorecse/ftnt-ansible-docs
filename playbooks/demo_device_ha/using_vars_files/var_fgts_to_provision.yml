@@ -1,0 +1,27 @@
+var_fgts_to_provision:
+  # FORTIGATE ONE
+  - device_unique_name: "ansible-fgt01"
+    device_hostname: "ansible-fgt01"
+    device_username: "admin"
+    device_password: "fortinet"
+    device_ip: "10.7.220.151"
+    adom: "ansible"
+    script_name: "fgt_ha_group10"
+
+  # FORTIGATE TWO
+  - device_unique_name: "ansible-fgt02"
+    device_hostname: "ansible-fgt02"
+    device_username: "admin"
+    device_password: "fortinet"
+    device_ip: "10.7.220.152"
+    adom: "ansible"
+    script_name: "fgt_ha_group10"
+
+  # FORTIGATE THREE
+  - device_unique_name: "ansible-fgt03"
+    device_hostname: "ansible-fgt03"
+    device_username: "admin"
+    device_password: "fortinet"
+    device_ip: "10.7.220.153"
+    adom: "ansible"
+    script_name: "fgt_ha_group10"

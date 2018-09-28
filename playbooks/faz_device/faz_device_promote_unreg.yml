@@ -1,0 +1,33 @@
+---
+- name: "ADD FAZ DEVICE"
+  connection: local
+  gather_facts: false
+  hosts: FortiAnalyzer
+
+  tasks:
+#    - name: PROMOTE CLUSTER 1 IN FAZ
+#      faz_device:
+#        host: "{{inventory_hostname}}"
+#        username: "{{ username }}"
+#        password: "{{ password }}"
+#        adom: "root"
+#        device_password: "fortinet"
+#        device_unique_name: "seattle-fgt-cluster"
+#        device_username: "ansible"
+#        mgmt_mode: "faz"
+#        state: "present"
+#        device_action: "promote_unreg"
+
+
+    - name: PROMOTE CLUSTER 2 IN FAZ
+      faz_device:
+        host: "{{inventory_hostname}}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        adom: "root"
+        device_password: "fortinet"
+        device_unique_name: "nyc-fgt-cluster"
+        device_username: "ansible"
+        mgmt_mode: "faz"
+        state: "present"
+        device_action: "promote_unreg"
