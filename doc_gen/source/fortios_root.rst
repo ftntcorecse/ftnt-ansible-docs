@@ -2,7 +2,7 @@ FortiGate (FortiOS)
 ====================================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 1
 
    fortios_modules.rst
    fortios_playbooks.rst

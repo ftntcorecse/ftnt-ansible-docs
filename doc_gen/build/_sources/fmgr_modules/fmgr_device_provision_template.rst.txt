@@ -368,12 +368,6 @@ Module Metadata / Parameters
 
 
 
-RAW HTML JSON Guide
--------------------
-
-%%RAW_HTML_JSON_TOKEN%%
-
-
 Module Source Code
 ------------------
 
