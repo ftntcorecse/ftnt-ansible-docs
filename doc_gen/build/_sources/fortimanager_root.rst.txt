@@ -1,0 +1,9 @@
+FortiManager
+====================================================
+
+.. toctree::
+   :maxdepth: 2
+
+   fortimanager_modules.rst
+   fortimanager_playbooks.rst
+   fortimanager_roles.rst
