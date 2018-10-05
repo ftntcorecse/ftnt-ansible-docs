@@ -15,6 +15,6 @@
       adom: "ansible"
       name: "ansibleTestPackage1"
       type: "install"
-      scope_members: "seattle-fgt03, seattle-fgt02"
+      scope_members: "FGT2, FGT3"
 
 

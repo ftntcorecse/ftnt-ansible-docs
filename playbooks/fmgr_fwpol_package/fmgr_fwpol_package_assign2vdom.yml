@@ -17,7 +17,7 @@
       type: "pkg"
       inspection_mode: "flow"
       ngfw_mode: "profile-based"
-      scope_members: "FGT6"
+      scope_members: "FGT1"
       scope_members_vdom: "ansible1"
 
 
