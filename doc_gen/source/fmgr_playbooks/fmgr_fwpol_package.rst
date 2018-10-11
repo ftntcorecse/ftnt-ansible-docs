@@ -148,7 +148,7 @@ fmgr_fwpol_package_add.yml
           type: "pkg"
           inspection_mode: "flow"
           ngfw_mode: "profile-based"
-          scope_members: "seattle-fgt02, seattle-fgt03"
+          scope_members: "FGT2, FGT3"
     
       - name: ADD FOLDER
         fmgr_fwpol_package:
@@ -210,7 +210,7 @@ fmgr_fwpol_package_add_with_rules_install.yml
           type: "pkg"
           inspection_mode: "flow"
           ngfw_mode: "profile-based"
-          scope_members: "seattle-fgt02, seattle-fgt03"
+          scope_members: "FGT2, FGT3"
     
       - name: ADD VERY BASIC IPV4 POLICY WITH NO NAT (WIDE OPEN)
         fmgr_fwpol_ipv4:
@@ -239,7 +239,7 @@ fmgr_fwpol_package_add_with_rules_install.yml
           adom: "ansible"
           name: "ansibleTestPackage1"
           type: "install"
-          scope_members: "seattle-fgt03, seattle-fgt02"
+          scope_members: "FGT2, FGT3"
 
 fmgr_fwpol_package_assign2vdom.yml
 ++++++++++++++++++++++++++++++++++
@@ -265,7 +265,7 @@ fmgr_fwpol_package_assign2vdom.yml
           type: "pkg"
           inspection_mode: "flow"
           ngfw_mode: "profile-based"
-          scope_members: "FGT6"
+          scope_members: "FGT1"
           scope_members_vdom: "ansible1"
     
     
@@ -353,7 +353,7 @@ fmgr_fwpol_package_install.yml
           adom: "ansible"
           name: "ansibleTestPackage1"
           type: "install"
-          scope_members: "seattle-fgt03, seattle-fgt02"
+          scope_members: "FGT2, FGT3"
     
     
 

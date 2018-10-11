@@ -90,7 +90,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_fwpol_package</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#module-metadata-parameters">Module Metadata / Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
 </ul>
 </li>
@@ -179,666 +181,999 @@
             
   <div class="section" id="fmgr-fwpol-package">
 <h1>fmgr_fwpol_package<a class="headerlink" href="#fmgr-fwpol-package" title="Permalink to this headline">¶</a></h1>
-<p>Not Parsed</p>
-<div class="section" id="module-metadata-parameters">
-<h2>Module Metadata / Parameters<a class="headerlink" href="#module-metadata-parameters" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">module</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fmgr_fwpol_package</span>
-<span class="l l-Scalar l-Scalar-Plain">version_added</span><span class="p p-Indicator">:</span> <span class="s">&quot;2.8&quot;</span>
-<span class="l l-Scalar l-Scalar-Plain">author</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Luke Weighall (@lweighall)</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Andrew Welsh (@Ghilli3)</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Jim Huber (@p4r4n0y1ng)</span>
-<span class="l l-Scalar l-Scalar-Plain">short_description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Manages FortiManager Firewall Policies Packages</span>
-<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-  <span class="p p-Indicator">-</span>  <span class="l l-Scalar l-Scalar-Plain">Manages FortiManager Firewall Policies Packages</span>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> fmgr_fwpol_package</p>
+<p><strong>Description:</strong> [‘Manages FortiManager Firewall Policies Packages’]</p>
+<p><strong>Author(s):</strong></p>
+<ul class="simple">
+<li>Luke Weighall (github: &#64;lweighall)</li>
+<li>Andrew Welsh (github: &#64;Ghilli3)</li>
+<li>Jim Huber (github: &#64;p4r4n0y1ng)</li>
+</ul>
+<p><strong>Ansible Version Added:</strong> 2.8</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adom">
+<h3>adom<a class="headerlink" href="#adom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The ADOM the configuration should belong to.</li>
+<li>Required: True</li>
+<li>default: root</li>
+</ul>
+</div>
+<div class="section" id="central-nat">
+<h3>central_nat<a class="headerlink" href="#central-nat" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Central NAT setting</li>
+<li>Required: False</li>
+<li>default: disable</li>
+<li>choices: [‘enable’, ‘disable’]</li>
+</ul>
+</div>
+<div class="section" id="fwpolicy6-implicit-log">
+<h3>fwpolicy6_implicit_log<a class="headerlink" href="#fwpolicy6-implicit-log" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Implicit Log setting for all IPv6 policies in package</li>
+<li>Required: False</li>
+<li>default: disable</li>
+<li>choices: [‘enable’, ‘disable’]</li>
+</ul>
+</div>
+<div class="section" id="fwpolicy-implicit-log">
+<h3>fwpolicy_implicit_log<a class="headerlink" href="#fwpolicy-implicit-log" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Implicit Log setting for all IPv4 policies in package</li>
+<li>Required: False</li>
+<li>default: disable</li>
+<li>choices: [‘enable’, ‘disable’]</li>
+</ul>
+</div>
+<div class="section" id="host">
+<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The FortiManager’s Address.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="inspection-mode">
+<h3>inspection_mode<a class="headerlink" href="#inspection-mode" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Inspection mode setting for the policies flow or proxy</li>
+<li>Required: False</li>
+<li>default: flow</li>
+<li>choices: [‘flow’, ‘proxy’]</li>
+</ul>
+</div>
+<div class="section" id="mode">
+<h3>mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Sets one of three modes for managing the object</li>
+<li>default: add</li>
+<li>choices: [‘add’, ‘set’, ‘delete’]</li>
+</ul>
+</div>
+<div class="section" id="name">
+<h3>name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Name of the FortiManager package or folder</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="ngfw-mode">
+<h3>ngfw_mode<a class="headerlink" href="#ngfw-mode" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: NGFW mode setting for the policies flow or proxy</li>
+<li>Required: False</li>
+<li>default: profile-based</li>
+<li>choices: [‘profile-based’, ‘policy-based’]</li>
+</ul>
+</div>
+<div class="section" id="package-folder">
+<h3>package_folder<a class="headerlink" href="#package-folder" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Name of the folder you want to put the package into</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="parent-folder">
+<h3>parent_folder<a class="headerlink" href="#parent-folder" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The parent folder name you want to add this object under</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="password">
+<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The password associated with the username account.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="scope-members">
+<h3>scope_members<a class="headerlink" href="#scope-members" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The devices or scope that you want to assign this policy package to.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="scope-members-vdom">
+<h3>scope_members_vdom<a class="headerlink" href="#scope-members-vdom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The members VDOM you want to assign the package to</li>
+<li>Required: False</li>
+<li>default: root</li>
+</ul>
+</div>
+<div class="section" id="ssl-ssh-profile">
+<h3>ssl_ssh_profile<a class="headerlink" href="#ssl-ssh-profile" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: if policy-based ngfw-mode, refer to firewall ssl-ssh-profile</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="type">
+<h3>type<a class="headerlink" href="#type" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Are we managing packages or folders, or installing packages?</li>
+<li>Required: True</li>
+<li>choices: [‘pkg’, ‘folder’, ‘install’]</li>
+</ul>
+</div>
+<div class="section" id="username">
+<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The username to log into the FortiManager</li>
+<li>Required: True</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>fmgr_fwpol_package</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_fwpol_package</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function will create FMGR Firewall Policy Packages, or delete them. It is also capable of assigning packages.</span>
+<span class="sd">    This function DOES NOT install the package. See the function fmgr_fwpol_package_install()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">]:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+        <span class="n">members_list</span> <span class="o">=</span> <span class="p">[]</span>
 
-<span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The ADOM the configuration should belong to.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+        <span class="c1"># CHECK FOR SCOPE MEMBERS AND CREATE THAT DICT</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;scope_members&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">members</span> <span class="o">=</span> <span class="n">parse_csv_str_to_list</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;scope_members&quot;</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="n">members</span><span class="p">:</span>
+                <span class="n">scope_dict</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">member</span><span class="p">,</span>
+                    <span class="s2">&quot;vdom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;scope_members_vdom&quot;</span><span class="p">],</span>
+                <span class="p">}</span>
+                <span class="n">members_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scope_dict</span><span class="p">)</span>
 
-  <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The FortiManager&#39;s Address.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+        <span class="c1"># IF PARENT FOLDER IS NOT DEFINED</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;scope member&quot;</span><span class="p">:</span> <span class="n">members_list</span><span class="p">,</span>
+                <span class="s2">&quot;package settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;central-nat&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;central-nat&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;fwpolicy-implicit-log&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fwpolicy-implicit-log&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;fwpolicy6-implicit-log&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fwpolicy6-implicit-log&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;inspection-mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;inspection-mode&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;ngfw-mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ngfw-mode&quot;</span><span class="p">],</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
 
-  <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The username to log into the FortiManager</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ngfw-mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;policy-based&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ssl-ssh-profile&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;package settings&quot;</span><span class="p">][</span><span class="s2">&quot;ssl-ssh-profile&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ssl-ssh-profile&quot;</span><span class="p">]</span>
 
-  <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The password associated with the username account.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+        <span class="c1"># IF PARENT FOLDER IS DEFINED</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;folder&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;subobj&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;scope member&quot;</span><span class="p">:</span> <span class="n">members_list</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;pkg&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;package settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;central-nat&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;central-nat&quot;</span><span class="p">],</span>
+                        <span class="s2">&quot;fwpolicy-implicit-log&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fwpolicy-implicit-log&quot;</span><span class="p">],</span>
+                        <span class="s2">&quot;fwpolicy6-implicit-log&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fwpolicy6-implicit-log&quot;</span><span class="p">],</span>
+                        <span class="s2">&quot;inspection-mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;inspection-mode&quot;</span><span class="p">],</span>
+                        <span class="s2">&quot;ngfw-mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ngfw-mode&quot;</span><span class="p">],</span>
+                    <span class="p">}</span>
+                <span class="p">}]</span>
+            <span class="p">}</span>
 
-  <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Sets one of three modes for managing the object</span>
-    <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;add&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;set&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;delete&#39;</span><span class="p p-Indicator">]</span>
-    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">add</span>
+    <span class="c1"># NORMAL DELETE NO PARENT</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1"># SET DELETE URL</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
 
-  <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Name of the FortiManager package or folder</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="c1"># DELETE WITH PARENT</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1"># SET DELETE URL</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{parent_folder}/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                                  <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                                                                  <span class="n">parent_folder</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">])</span>
 
-  <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Are we managing packages or folders, or installing packages?</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;pkg&#39;</span><span class="p p-Indicator">,</span><span class="s">&#39;folder&#39;</span><span class="p p-Indicator">,</span><span class="s">&#39;install&#39;</span><span class="p p-Indicator">]</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">package_folder</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Name of the folder you want to put the package into</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">central_nat</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Central NAT setting</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;enable&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;disable&#39;</span><span class="p p-Indicator">]</span>
-    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">disable</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">fwpolicy_implicit_log</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Implicit Log setting for all IPv4 policies in package</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;enable&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;disable&#39;</span><span class="p p-Indicator">]</span>
-    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">disable</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">fwpolicy6_implicit_log</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Implicit Log setting for all IPv6 policies in package</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;enable&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;disable&#39;</span><span class="p p-Indicator">]</span>
-    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">disable</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">inspection_mode</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Inspection mode setting for the policies flow or proxy</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;flow&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;proxy&#39;</span><span class="p p-Indicator">]</span>
-    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">flow</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">ngfw_mode</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">NGFW mode setting for the policies flow or proxy</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&#39;profile-based&#39;</span><span class="p p-Indicator">,</span> <span class="s">&#39;policy-based&#39;</span><span class="p p-Indicator">]</span>
-    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">profile-based</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">ssl_ssh_profile</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">if policy-based ngfw-mode, refer to firewall ssl-ssh-profile</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">scope_members</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The devices or scope that you want to assign this policy package to.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">scope_members_vdom</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The members VDOM you want to assign the package to</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">parent_folder</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The parent folder name you want to add this object under</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;set&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># return response</span>
+        <span class="c1"># IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># return response</span>
+        <span class="c1"># IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_fwpol_package_folder</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_fwpol_package_folder</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function will create folders for firewall packages. It can create down to two levels deep.</span>
+<span class="sd">    We haven&#39;t yet tested for any more layers below two levels.</span>
+<span class="sd">    parent_folders for multiple levels may need to defined as &quot;level1/level2/level3&quot; for the URL parameters and such.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">]:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+        <span class="c1"># IF PARENT FOLDER IS NOT DEFINED</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+            <span class="p">}</span>
+
+        <span class="c1"># IF PARENT FOLDER IS DEFINED</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;subobj&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span>
+
+                <span class="p">}]</span>
+            <span class="p">}</span>
+    <span class="c1"># NORMAL DELETE NO PARENT</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1"># SET DELETE URL</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+    <span class="c1"># DELETE WITH PARENT</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1"># SET DELETE URL</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{parent_folder}/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                                  <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                                                                  <span class="n">parent_folder</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">])</span>
+    <span class="c1"># IF MODE = SET  -- USE THE &#39;SET&#39; API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;set&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="c1"># IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="c1"># IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_fwpol_package_install</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_fwpol_package_install</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method/function installs FMGR FW Policy Packages to the scope members defined in the playbook.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># INIT BLANK MEMBERS LIST</span>
+    <span class="n">members_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># USE THE PARSE CSV FUNCTION TO GET A LIST FORMAT OF THE MEMBERS</span>
+    <span class="n">members</span> <span class="o">=</span> <span class="n">parse_csv_str_to_list</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;scope_members&quot;</span><span class="p">])</span>
+    <span class="c1"># USE THAT LIST TO BUILD THE DICTIONARIES NEEDED, AND ADD TO THE BLANK MEMBERS LIST</span>
+    <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="n">members</span><span class="p">:</span>
+        <span class="n">scope_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">member</span><span class="p">,</span>
+            <span class="s2">&quot;vdom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;scope_members_vdom&quot;</span><span class="p">],</span>
+        <span class="p">}</span>
+        <span class="n">members_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scope_dict</span><span class="p">)</span>
+    <span class="c1"># THEN FOR THE DATAGRAM, USING THE MEMBERS LIST CREATED ABOVE</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;pkg&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="n">members_list</span>
+    <span class="p">}</span>
+    <span class="c1"># EXECUTE THE INSTALL REQUEST</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/securityconsole/install/package&#39;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">])),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
+
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pkg&#39;</span><span class="p">,</span> <span class="s1">&#39;folder&#39;</span><span class="p">,</span> <span class="s1">&#39;install&#39;</span><span class="p">]),</span>
+        <span class="n">package_folder</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">central_nat</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">,</span> <span class="s1">&#39;disable&#39;</span><span class="p">]),</span>
+        <span class="n">fwpolicy_implicit_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">,</span> <span class="s1">&#39;disable&#39;</span><span class="p">]),</span>
+        <span class="n">fwpolicy6_implicit_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">,</span> <span class="s1">&#39;disable&#39;</span><span class="p">]),</span>
+        <span class="n">inspection_mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;flow&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">,</span> <span class="s1">&#39;proxy&#39;</span><span class="p">]),</span>
+        <span class="n">ngfw_mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;profile-based&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;profile-based&#39;</span><span class="p">,</span> <span class="s1">&#39;policy-based&#39;</span><span class="p">]),</span>
+        <span class="n">ssl_ssh_profile</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">scope_members</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">scope_members_vdom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">parent_folder</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="c1"># MODULE DATAGRAM</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;package-folder&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;package_folder&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;central-nat&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;central_nat&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;fwpolicy-implicit-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fwpolicy_implicit_log&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;fwpolicy6-implicit-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fwpolicy6_implicit_log&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;inspection-mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;inspection_mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;ngfw-mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;ngfw_mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;ssl-ssh-profile&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;ssl_ssh_profile&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;scope_members&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;scope_members&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;scope_members_vdom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;scope_members_vdom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;parent_folder&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+    <span class="c1"># VALIDATE REQUIRED ARGUMENTS ARE PASSED; NOT USED IN ARGUMENT_SPEC TO ALLOW PARAMS TO BE CALLED FROM PROVIDER</span>
+    <span class="c1"># CHECK IF PARAMS ARE SET</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CHECK IF LOGIN FAILED</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># START SESSION LOGIC</span>
+        <span class="c1"># IF THE TYPE IS PACKAGE LETS RUN THAT METHOD</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;pkg&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwpol_package</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Package successfully created/deleted&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to create/delete custom package&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1"># IF THE TYPE IS FOLDER LETS RUN THAT METHOD</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;folder&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwpol_package_folder</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Folder successfully created/deleted&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to add/remove custom package&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1"># IF THE TYPE IS INSTALL AND NEEDED PARAMETERS ARE DEFINED INSTALL THE PACKAGE</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;scope_members&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;install&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwpol_package_install</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Install Task Successfully Created&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to create install task!&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>parse_csv_str_to_list</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">parse_csv_str_to_list</span><span class="p">(</span><span class="n">input_string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function will take a comma seperated string and turn it into a list, removing any spaces next the commas</span>
+<span class="sd">    that it finds. This is useful for using csv input from ansible parameters and transforming to API requirements.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">input_string</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c1"># CREATE VARIABLE AND REMOVE SPACES AROUND COMMAS</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">input_string</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; ,&quot;</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="c1"># INIT THE BASE LIST</span>
+        <span class="nb">input</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># FOR EACH ITEM WE CAN SPLIT VIA COMMA ADD IT TO THE LIST</span>
+        <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">inputs</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+            <span class="nb">input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+        <span class="c1"># RETURN THE LIST</span>
+        <span class="k">return</span> <span class="nb">input</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># IF THE INPUT STRING WAS EMPTY RETURN NONE/NULL</span>
+        <span class="k">return</span> <span class="bp">None</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="module-source-code">
 <h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/python
-#
-# This file is part of Ansible
-#
-# Ansible is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# Ansible is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
-#
-
-from __future__ import absolute_import, division, print_function
-__metaclass__ = type
-
-ANSIBLE_METADATA = {
-    &quot;metadata_version&quot;: &quot;1.1&quot;,
-    &quot;status&quot;: [&quot;preview&quot;],
-    &quot;supported_by&quot;: &quot;community&quot;
-}
-
-DOCUMENTATION = &#39;&#39;&#39;
----
-module: fmgr_fwpol_package
-version_added: &quot;2.8&quot;
-author:
-    - Luke Weighall (@lweighall)
-    - Andrew Welsh (@Ghilli3)
-    - Jim Huber (@p4r4n0y1ng)
-short_description: Manages FortiManager Firewall Policies Packages
-description:
-  -  Manages FortiManager Firewall Policies Packages
-
-options:
-  adom:
-    description:
-      - The ADOM the configuration should belong to.
-    required: true
-    default: root
-
-  host:
-    description:
-      - The FortiManager&#39;s Address.
-    required: true
-
-  username:
-    description:
-      - The username to log into the FortiManager
-    required: true
-
-  password:
-    description:
-      - The password associated with the username account.
-    required: false
-
-  mode:
-    description:
-      - Sets one of three modes for managing the object
-    choices: [&#39;add&#39;, &#39;set&#39;, &#39;delete&#39;]
-    default: add
-
-  name:
-    description:
-      - Name of the FortiManager package or folder
-    required: True
-
-  type:
-    description:
-      - Are we managing packages or folders, or installing packages?
-    required: True
-    choices: [&#39;pkg&#39;,&#39;folder&#39;,&#39;install&#39;]
-
-  package_folder:
-    description:
-      - Name of the folder you want to put the package into
-    required: false
-
-  central_nat:
-    description:
-      - Central NAT setting
-    required: false
-    choices: [&#39;enable&#39;, &#39;disable&#39;]
-    default: disable
-
-  fwpolicy_implicit_log:
-    description:
-      - Implicit Log setting for all IPv4 policies in package
-    required: false
-    choices: [&#39;enable&#39;, &#39;disable&#39;]
-    default: disable
-
-  fwpolicy6_implicit_log:
-    description:
-      - Implicit Log setting for all IPv6 policies in package
-    required: false
-    choices: [&#39;enable&#39;, &#39;disable&#39;]
-    default: disable
-
-  inspection_mode:
-    description:
-      - Inspection mode setting for the policies flow or proxy
-    required: false
-    choices: [&#39;flow&#39;, &#39;proxy&#39;]
-    default: flow
-
-  ngfw_mode:
-    description:
-      - NGFW mode setting for the policies flow or proxy
-    required: false
-    choices: [&#39;profile-based&#39;, &#39;policy-based&#39;]
-    default: profile-based
-
-  ssl_ssh_profile:
-    description:
-      - if policy-based ngfw-mode, refer to firewall ssl-ssh-profile
-    required: false
-
-  scope_members:
-    description:
-      - The devices or scope that you want to assign this policy package to.
-    required: false
-
-  scope_members_vdom:
-    description:
-      - The members VDOM you want to assign the package to
-    required: false
-    default: root
-
-  parent_folder:
-    description:
-      - The parent folder name you want to add this object under
-    required: false
-
-&#39;&#39;&#39;
-
-
-EXAMPLES = &#39;&#39;&#39;
-- name: CREATE BASIC POLICY PACKAGE
-  fmgr_fwpol_package:
-    host: &quot;{{inventory_hostname}}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    adom: &quot;ansible&quot;
-    mode: &quot;add&quot;
-    name: &quot;testPackage&quot;
-    type: &quot;pkg&quot;
-
-- name: ADD PACKAGE WITH TARGETS
-  fmgr_fwpol_package:
-    host: &quot;{{ inventory_hostname }}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    mode: &quot;add&quot;
-    adom: &quot;ansible&quot;
-    name: &quot;ansibleTestPackage1&quot;
-    type: &quot;pkg&quot;
-    inspection_mode: &quot;flow&quot;
-    ngfw_mode: &quot;profile-based&quot;
-    scope_members: &quot;seattle-fgt02, seattle-fgt03&quot;
-
-- name: ADD FOLDER
-  fmgr_fwpol_package:
-    host: &quot;{{ inventory_hostname }}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    mode: &quot;add&quot;
-    adom: &quot;ansible&quot;
-    name: &quot;ansibleTestFolder1&quot;
-    type: &quot;folder&quot;
-
-- name: ADD PACKAGE INTO PARENT FOLDER
-  fmgr_fwpol_package:
-    host: &quot;{{ inventory_hostname }}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    mode: &quot;set&quot;
-    adom: &quot;ansible&quot;
-    name: &quot;ansibleTestPackage2&quot;
-    type: &quot;pkg&quot;
-    parent_folder: &quot;ansibleTestFolder1&quot;
-
-- name: ADD FOLDER INTO PARENT FOLDER
-  fmgr_fwpol_package:
-    host: &quot;{{ inventory_hostname }}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    mode: &quot;set&quot;
-    adom: &quot;ansible&quot;
-    name: &quot;ansibleTestFolder2&quot;
-    type: &quot;folder&quot;
-    parent_folder: &quot;ansibleTestFolder1&quot;
-
-- name: INSTALL PACKAGE
-  fmgr_fwpol_package:
-    host: &quot;{{ inventory_hostname }}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    mode: &quot;set&quot;
-    adom: &quot;ansible&quot;
-    name: &quot;ansibleTestPackage1&quot;
-    type: &quot;install&quot;
-    scope_members: &quot;seattle-fgt03, seattle-fgt02&quot;
-
-- name: REMOVE PACKAGE
-  fmgr_fwpol_package:
-    host: &quot;{{ inventory_hostname }}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    mode: &quot;delete&quot;
-    adom: &quot;ansible&quot;
-    name: &quot;ansibleTestPackage1&quot;
-    type: &quot;pkg&quot;
-
-- name: REMOVE NESTED PACKAGE
-  fmgr_fwpol_package:
-    host: &quot;{{ inventory_hostname }}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    mode: &quot;delete&quot;
-    adom: &quot;ansible&quot;
-    name: &quot;ansibleTestPackage2&quot;
-    type: &quot;pkg&quot;
-    parent_folder: &quot;ansibleTestFolder1&quot;
-
-- name: REMOVE NESTED FOLDER
-  fmgr_fwpol_package:
-    host: &quot;{{ inventory_hostname }}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    mode: &quot;delete&quot;
-    adom: &quot;ansible&quot;
-    name: &quot;ansibleTestFolder2&quot;
-    type: &quot;folder&quot;
-    parent_folder: &quot;ansibleTestFolder1&quot;
-
-- name: REMOVE FOLDER
-  fmgr_fwpol_package:
-    host: &quot;{{ inventory_hostname }}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    mode: &quot;delete&quot;
-    adom: &quot;ansible&quot;
-    name: &quot;ansibleTestFolder1&quot;
-    type: &quot;folder&quot;
-&#39;&#39;&#39;
-RETURN = &quot;&quot;&quot;
-api_result:
-  description: full API response, includes status code and message
-  returned: always
-  type: string
-&quot;&quot;&quot;
-
-from ansible.module_utils.basic import AnsibleModule, env_fallback
-from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-
-# check for pyFMG lib
-try:
-    from pyFMG.fortimgr import FortiManager
-    HAS_PYFMGR = True
-except ImportError:
-    HAS_PYFMGR = False
-
-
-def parse_csv_str_to_list(input_string):
-    &quot;&quot;&quot;
-    This function will take a comma seperated string and turn it into a list, removing any spaces next the commas
-    that it finds. This is useful for using csv input from ansible parameters and transforming to API requirements.
-    &quot;&quot;&quot;
-
-    if input_string is not None:
-        # CREATE VARIABLE AND REMOVE SPACES AROUND COMMAS
-        inputs = input_string
-        inputs = inputs.replace(&quot;, &quot;, &quot;,&quot;)
-        inputs = inputs.replace(&quot; ,&quot;, &quot;,&quot;)
-        # INIT THE BASE LIST
-        input = []
-        # FOR EACH ITEM WE CAN SPLIT VIA COMMA ADD IT TO THE LIST
-        for obj in inputs.split(&quot;,&quot;):
-            input.append(obj)
-        # RETURN THE LIST
-        return input
-    else:
-        # IF THE INPUT STRING WAS EMPTY RETURN NONE/NULL
-        return None
-
-
-def fmgr_fwpol_package(fmg, paramgram):
-    &quot;&quot;&quot;
-    This function will create FMGR Firewall Policy Packages, or delete them. It is also capable of assigning packages.
-    This function DOES NOT install the package. See the function fmgr_fwpol_package_install()
-    &quot;&quot;&quot;
-    if paramgram[&quot;mode&quot;] in [&#39;set&#39;, &#39;add&#39;]:
-        url = &#39;/pm/pkg/adom/{adom}&#39;.format(adom=paramgram[&quot;adom&quot;])
-        members_list = []
-
-        # CHECK FOR SCOPE MEMBERS AND CREATE THAT DICT
-        if paramgram[&quot;scope_members&quot;] is not None:
-            members = parse_csv_str_to_list(paramgram[&quot;scope_members&quot;])
-            for member in members:
-                scope_dict = {
-                    &quot;name&quot;: member,
-                    &quot;vdom&quot;: paramgram[&quot;scope_members_vdom&quot;],
-                }
-                members_list.append(scope_dict)
-
-        # IF PARENT FOLDER IS NOT DEFINED
-        if paramgram[&quot;parent_folder&quot;] is None:
-            datagram = {
-                &quot;type&quot;: paramgram[&quot;type&quot;],
-                &quot;name&quot;: paramgram[&quot;name&quot;],
-                &quot;scope member&quot;: members_list,
-                &quot;package settings&quot;: {
-                    &quot;central-nat&quot;: paramgram[&quot;central-nat&quot;],
-                    &quot;fwpolicy-implicit-log&quot;: paramgram[&quot;fwpolicy-implicit-log&quot;],
-                    &quot;fwpolicy6-implicit-log&quot;: paramgram[&quot;fwpolicy6-implicit-log&quot;],
-                    &quot;inspection-mode&quot;: paramgram[&quot;inspection-mode&quot;],
-                    &quot;ngfw-mode&quot;: paramgram[&quot;ngfw-mode&quot;],
-                }
-            }
-
-            if paramgram[&quot;ngfw-mode&quot;] == &quot;policy-based&quot; and paramgram[&quot;ssl-ssh-profile&quot;] is not None:
-                datagram[&quot;package settings&quot;][&quot;ssl-ssh-profile&quot;] = paramgram[&quot;ssl-ssh-profile&quot;]
-
-        # IF PARENT FOLDER IS DEFINED
-        if paramgram[&quot;parent_folder&quot;] is not None:
-            datagram = {
-                &quot;type&quot;: &quot;folder&quot;,
-                &quot;name&quot;: paramgram[&quot;parent_folder&quot;],
-                &quot;subobj&quot;: [{
-                    &quot;name&quot;: paramgram[&quot;name&quot;],
-                    &quot;scope member&quot;: members_list,
-                    &quot;type&quot;: &quot;pkg&quot;,
-                    &quot;package settings&quot;: {
-                        &quot;central-nat&quot;: paramgram[&quot;central-nat&quot;],
-                        &quot;fwpolicy-implicit-log&quot;: paramgram[&quot;fwpolicy-implicit-log&quot;],
-                        &quot;fwpolicy6-implicit-log&quot;: paramgram[&quot;fwpolicy6-implicit-log&quot;],
-                        &quot;inspection-mode&quot;: paramgram[&quot;inspection-mode&quot;],
-                        &quot;ngfw-mode&quot;: paramgram[&quot;ngfw-mode&quot;],
-                    }
-                }]
-            }
-
-    # NORMAL DELETE NO PARENT
-    if paramgram[&quot;mode&quot;] == &quot;delete&quot; and paramgram[&quot;parent_folder&quot;] is None:
-        datagram = {
-            &quot;name&quot;: paramgram[&quot;name&quot;]
-        }
-        # SET DELETE URL
-        url = &#39;/pm/pkg/adom/{adom}/{name}&#39;.format(adom=paramgram[&quot;adom&quot;], name=paramgram[&quot;name&quot;])
-
-    # DELETE WITH PARENT
-    if paramgram[&quot;mode&quot;] == &quot;delete&quot; and paramgram[&quot;parent_folder&quot;] is not None:
-        datagram = {
-            &quot;name&quot;: paramgram[&quot;name&quot;]
-        }
-        # SET DELETE URL
-        url = &#39;/pm/pkg/adom/{adom}/{parent_folder}/{name}&#39;.format(adom=paramgram[&quot;adom&quot;],
-                                                                  name=paramgram[&quot;name&quot;],
-                                                                  parent_folder=paramgram[&quot;parent_folder&quot;])
-
-    if paramgram[&quot;mode&quot;] == &quot;set&quot;:
-        response = fmg.set(url, datagram)
-        # return response
-        # IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE
-    if paramgram[&quot;mode&quot;] == &quot;add&quot;:
-        response = fmg.add(url, datagram)
-        # return response
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-    if paramgram[&quot;mode&quot;] == &quot;delete&quot;:
-        response = fmg.delete(url, datagram)
-    return response
-
-
-def fmgr_fwpol_package_folder(fmg, paramgram):
-    &quot;&quot;&quot;
-    This function will create folders for firewall packages. It can create down to two levels deep.
-    We haven&#39;t yet tested for any more layers below two levels.
-    parent_folders for multiple levels may need to defined as &quot;level1/level2/level3&quot; for the URL parameters and such.
-    &quot;&quot;&quot;
-    if paramgram[&quot;mode&quot;] in [&#39;set&#39;, &#39;add&#39;]:
-        url = &#39;/pm/pkg/adom/{adom}&#39;.format(adom=paramgram[&quot;adom&quot;])
-        # IF PARENT FOLDER IS NOT DEFINED
-        if paramgram[&quot;parent_folder&quot;] is None:
-            datagram = {
-                &quot;type&quot;: paramgram[&quot;type&quot;],
-                &quot;name&quot;: paramgram[&quot;name&quot;],
-            }
-
-        # IF PARENT FOLDER IS DEFINED
-        if paramgram[&quot;parent_folder&quot;] is not None:
-            datagram = {
-                &quot;type&quot;: paramgram[&quot;type&quot;],
-                &quot;name&quot;: paramgram[&quot;parent_folder&quot;],
-                &quot;subobj&quot;: [{
-                    &quot;name&quot;: paramgram[&quot;name&quot;],
-                    &quot;type&quot;: paramgram[&quot;type&quot;],
-
-                }]
-            }
-    # NORMAL DELETE NO PARENT
-    if paramgram[&quot;mode&quot;] == &quot;delete&quot; and paramgram[&quot;parent_folder&quot;] is None:
-        datagram = {
-            &quot;name&quot;: paramgram[&quot;name&quot;]
-        }
-        # SET DELETE URL
-        url = &#39;/pm/pkg/adom/{adom}/{name}&#39;.format(adom=paramgram[&quot;adom&quot;], name=paramgram[&quot;name&quot;])
-
-    # DELETE WITH PARENT
-    if paramgram[&quot;mode&quot;] == &quot;delete&quot; and paramgram[&quot;parent_folder&quot;] is not None:
-        datagram = {
-            &quot;name&quot;: paramgram[&quot;name&quot;]
-        }
-        # SET DELETE URL
-        url = &#39;/pm/pkg/adom/{adom}/{parent_folder}/{name}&#39;.format(adom=paramgram[&quot;adom&quot;],
-                                                                  name=paramgram[&quot;name&quot;],
-                                                                  parent_folder=paramgram[&quot;parent_folder&quot;])
-    # IF MODE = SET  -- USE THE &#39;SET&#39; API CALL MODE
-    if paramgram[&quot;mode&quot;] == &quot;set&quot;:
-        response = fmg.set(url, datagram)
-    # IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE
-    if paramgram[&quot;mode&quot;] == &quot;add&quot;:
-        response = fmg.add(url, datagram)
-    # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-    if paramgram[&quot;mode&quot;] == &quot;delete&quot;:
-        response = fmg.delete(url, datagram)
-    return response
-
-
-def fmgr_fwpol_package_install(fmg, paramgram):
-    &quot;&quot;&quot;
-    This method/function installs FMGR FW Policy Packages to the scope members defined in the playbook.
-    &quot;&quot;&quot;
-    # INIT BLANK MEMBERS LIST
-    members_list = []
-    # USE THE PARSE CSV FUNCTION TO GET A LIST FORMAT OF THE MEMBERS
-    members = parse_csv_str_to_list(paramgram[&quot;scope_members&quot;])
-    # USE THAT LIST TO BUILD THE DICTIONARIES NEEDED, AND ADD TO THE BLANK MEMBERS LIST
-    for member in members:
-        scope_dict = {
-            &quot;name&quot;: member,
-            &quot;vdom&quot;: paramgram[&quot;scope_members_vdom&quot;],
-        }
-        members_list.append(scope_dict)
-    # THEN FOR THE DATAGRAM, USING THE MEMBERS LIST CREATED ABOVE
-    datagram = {
-        &quot;adom&quot;: paramgram[&quot;adom&quot;],
-        &quot;pkg&quot;: paramgram[&quot;name&quot;],
-        &quot;scope&quot;: members_list
-    }
-    # EXECUTE THE INSTALL REQUEST
-    url = &#39;/securityconsole/install/package&#39;
-    response = fmg.execute(url, datagram)
-    return response
-
-
-def main():
-    argument_spec = dict(
-        adom=dict(required=False, type=&quot;str&quot;, default=&quot;root&quot;),
-        host=dict(required=True, type=&quot;str&quot;),
-        username=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_USERNAME&quot;])),
-        password=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_PASSWORD&quot;]), no_log=True),
-        mode=dict(choices=[&quot;add&quot;, &quot;set&quot;, &quot;delete&quot;], type=&quot;str&quot;, default=&quot;add&quot;),
-
-        name=dict(required=False, type=&quot;str&quot;),
-        type=dict(required=False, type=&quot;str&quot;, choices=[&#39;pkg&#39;, &#39;folder&#39;, &#39;install&#39;]),
-        package_folder=dict(required=False, type=&quot;str&quot;),
-        central_nat=dict(required=False, type=&quot;str&quot;, default=&quot;disable&quot;, choices=[&#39;enable&#39;, &#39;disable&#39;]),
-        fwpolicy_implicit_log=dict(required=False, type=&quot;str&quot;, default=&quot;disable&quot;, choices=[&#39;enable&#39;, &#39;disable&#39;]),
-        fwpolicy6_implicit_log=dict(required=False, type=&quot;str&quot;, default=&quot;disable&quot;, choices=[&#39;enable&#39;, &#39;disable&#39;]),
-        inspection_mode=dict(required=False, type=&quot;str&quot;, default=&quot;flow&quot;, choices=[&#39;flow&#39;, &#39;proxy&#39;]),
-        ngfw_mode=dict(required=False, type=&quot;str&quot;, default=&quot;profile-based&quot;, choices=[&#39;profile-based&#39;, &#39;policy-based&#39;]),
-        ssl_ssh_profile=dict(required=False, type=&quot;str&quot;),
-        scope_members=dict(required=False, type=&quot;str&quot;),
-        scope_members_vdom=dict(required=False, type=&quot;str&quot;, default=&quot;root&quot;),
-        parent_folder=dict(required=False, type=&quot;str&quot;),
-
-    )
-
-    module = AnsibleModule(argument_spec, supports_check_mode=True, )
-
-    # MODULE DATAGRAM
-    paramgram = {
-        &quot;adom&quot;: module.params[&quot;adom&quot;],
-        &quot;name&quot;: module.params[&quot;name&quot;],
-        &quot;mode&quot;: module.params[&quot;mode&quot;],
-        &quot;type&quot;: module.params[&quot;type&quot;],
-        &quot;package-folder&quot;: module.params[&quot;package_folder&quot;],
-        &quot;central-nat&quot;: module.params[&quot;central_nat&quot;],
-        &quot;fwpolicy-implicit-log&quot;: module.params[&quot;fwpolicy_implicit_log&quot;],
-        &quot;fwpolicy6-implicit-log&quot;: module.params[&quot;fwpolicy6_implicit_log&quot;],
-        &quot;inspection-mode&quot;: module.params[&quot;inspection_mode&quot;],
-        &quot;ngfw-mode&quot;: module.params[&quot;ngfw_mode&quot;],
-        &quot;ssl-ssh-profile&quot;: module.params[&quot;ssl_ssh_profile&quot;],
-        &quot;scope_members&quot;: module.params[&quot;scope_members&quot;],
-        &quot;scope_members_vdom&quot;: module.params[&quot;scope_members_vdom&quot;],
-        &quot;parent_folder&quot;: module.params[&quot;parent_folder&quot;],
-    }
-
-    # VALIDATE REQUIRED ARGUMENTS ARE PASSED; NOT USED IN ARGUMENT_SPEC TO ALLOW PARAMS TO BE CALLED FROM PROVIDER
-    # CHECK IF PARAMS ARE SET
-    if module.params[&quot;host&quot;] is None or module.params[&quot;username&quot;] is None:
-        module.fail_json(msg=&quot;Host and username are required for connection&quot;)
-
-    # CHECK IF LOGIN FAILED
-    fmg = AnsibleFortiManager(module, module.params[&quot;host&quot;], module.params[&quot;username&quot;], module.params[&quot;password&quot;])
-    response = fmg.login()
-    if response[1][&#39;status&#39;][&#39;code&#39;] != 0:
-        module.fail_json(msg=&quot;Connection to FortiManager Failed&quot;)
-    else:
-        # START SESSION LOGIC
-        # IF THE TYPE IS PACKAGE LETS RUN THAT METHOD
-        if paramgram[&quot;type&quot;] == &quot;pkg&quot;:
-            results = fmgr_fwpol_package(fmg, paramgram)
-            if results[0] in [0, -2]:
-                module.exit_json(msg=&quot;Package successfully created/deleted&quot;, **results[1])
-            else:
-                module.fail_json(msg=&quot;Failed to create/delete custom package&quot;, **results[1])
-
-        # IF THE TYPE IS FOLDER LETS RUN THAT METHOD
-        if paramgram[&quot;type&quot;] == &quot;folder&quot;:
-            results = fmgr_fwpol_package_folder(fmg, paramgram)
-            if results[0] in [0, -2]:
-                module.exit_json(msg=&quot;Folder successfully created/deleted&quot;, **results[1])
-            else:
-                module.fail_json(msg=&quot;Failed to add/remove custom package&quot;, **results[1])
-
-        # IF THE TYPE IS INSTALL AND NEEDED PARAMETERS ARE DEFINED INSTALL THE PACKAGE
-        if paramgram[&quot;scope_members&quot;] is not None and paramgram[&quot;name&quot;] is not None and paramgram[&quot;type&quot;] == &quot;install&quot;:
-            results = fmgr_fwpol_package_install(fmg, paramgram)
-            if results[0] == 0:
-                module.exit_json(msg=&quot;Install Task Successfully Created&quot;, **results[1])
-            else:
-                module.fail_json(msg=&quot;Failed to create install task!&quot;, **results[1])
-
-
-if __name__ == &quot;__main__&quot;:
-    main()
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Ansible</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
+
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;metadata_version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;preview&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;supported_by&quot;</span><span class="p">:</span> <span class="s2">&quot;community&quot;</span>
+<span class="p">}</span>
+
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">module: fmgr_fwpol_package</span>
+<span class="s1">version_added: &quot;2.8&quot;</span>
+<span class="s1">author:</span>
+<span class="s1">    - Luke Weighall (@lweighall)</span>
+<span class="s1">    - Andrew Welsh (@Ghilli3)</span>
+<span class="s1">    - Jim Huber (@p4r4n0y1ng)</span>
+<span class="s1">short_description: Manages FortiManager Firewall Policies Packages</span>
+<span class="s1">description:</span>
+<span class="s1">  -  Manages FortiManager Firewall Policies Packages</span>
+
+<span class="s1">options:</span>
+<span class="s1">  adom:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The ADOM the configuration should belong to.</span>
+<span class="s1">    required: true</span>
+<span class="s1">    default: root</span>
+
+<span class="s1">  host:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The FortiManager&#39;s Address.</span>
+<span class="s1">    required: true</span>
+
+<span class="s1">  username:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The username to log into the FortiManager</span>
+<span class="s1">    required: true</span>
+
+<span class="s1">  password:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The password associated with the username account.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  mode:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Sets one of three modes for managing the object</span>
+<span class="s1">    choices: [&#39;add&#39;, &#39;set&#39;, &#39;delete&#39;]</span>
+<span class="s1">    default: add</span>
+
+<span class="s1">  name:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Name of the FortiManager package or folder</span>
+<span class="s1">    required: True</span>
+
+<span class="s1">  type:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Are we managing packages or folders, or installing packages?</span>
+<span class="s1">    required: True</span>
+<span class="s1">    choices: [&#39;pkg&#39;,&#39;folder&#39;,&#39;install&#39;]</span>
+
+<span class="s1">  package_folder:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Name of the folder you want to put the package into</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  central_nat:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Central NAT setting</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&#39;enable&#39;, &#39;disable&#39;]</span>
+<span class="s1">    default: disable</span>
+
+<span class="s1">  fwpolicy_implicit_log:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Implicit Log setting for all IPv4 policies in package</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&#39;enable&#39;, &#39;disable&#39;]</span>
+<span class="s1">    default: disable</span>
+
+<span class="s1">  fwpolicy6_implicit_log:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Implicit Log setting for all IPv6 policies in package</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&#39;enable&#39;, &#39;disable&#39;]</span>
+<span class="s1">    default: disable</span>
+
+<span class="s1">  inspection_mode:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Inspection mode setting for the policies flow or proxy</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&#39;flow&#39;, &#39;proxy&#39;]</span>
+<span class="s1">    default: flow</span>
+
+<span class="s1">  ngfw_mode:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - NGFW mode setting for the policies flow or proxy</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&#39;profile-based&#39;, &#39;policy-based&#39;]</span>
+<span class="s1">    default: profile-based</span>
+
+<span class="s1">  ssl_ssh_profile:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - if policy-based ngfw-mode, refer to firewall ssl-ssh-profile</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  scope_members:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The devices or scope that you want to assign this policy package to.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  scope_members_vdom:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The members VDOM you want to assign the package to</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: root</span>
+
+<span class="s1">  parent_folder:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The parent folder name you want to add this object under</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">&#39;&#39;&#39;</span>
+
+
+<span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: CREATE BASIC POLICY PACKAGE</span>
+<span class="s1">  fmgr_fwpol_package:</span>
+<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    mode: &quot;add&quot;</span>
+<span class="s1">    name: &quot;testPackage&quot;</span>
+<span class="s1">    type: &quot;pkg&quot;</span>
+
+<span class="s1">- name: ADD PACKAGE WITH TARGETS</span>
+<span class="s1">  fmgr_fwpol_package:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    mode: &quot;add&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansibleTestPackage1&quot;</span>
+<span class="s1">    type: &quot;pkg&quot;</span>
+<span class="s1">    inspection_mode: &quot;flow&quot;</span>
+<span class="s1">    ngfw_mode: &quot;profile-based&quot;</span>
+<span class="s1">    scope_members: &quot;seattle-fgt02, seattle-fgt03&quot;</span>
+
+<span class="s1">- name: ADD FOLDER</span>
+<span class="s1">  fmgr_fwpol_package:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    mode: &quot;add&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansibleTestFolder1&quot;</span>
+<span class="s1">    type: &quot;folder&quot;</span>
+
+<span class="s1">- name: ADD PACKAGE INTO PARENT FOLDER</span>
+<span class="s1">  fmgr_fwpol_package:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    mode: &quot;set&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansibleTestPackage2&quot;</span>
+<span class="s1">    type: &quot;pkg&quot;</span>
+<span class="s1">    parent_folder: &quot;ansibleTestFolder1&quot;</span>
+
+<span class="s1">- name: ADD FOLDER INTO PARENT FOLDER</span>
+<span class="s1">  fmgr_fwpol_package:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    mode: &quot;set&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansibleTestFolder2&quot;</span>
+<span class="s1">    type: &quot;folder&quot;</span>
+<span class="s1">    parent_folder: &quot;ansibleTestFolder1&quot;</span>
+
+<span class="s1">- name: INSTALL PACKAGE</span>
+<span class="s1">  fmgr_fwpol_package:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    mode: &quot;set&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansibleTestPackage1&quot;</span>
+<span class="s1">    type: &quot;install&quot;</span>
+<span class="s1">    scope_members: &quot;seattle-fgt03, seattle-fgt02&quot;</span>
+
+<span class="s1">- name: REMOVE PACKAGE</span>
+<span class="s1">  fmgr_fwpol_package:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    mode: &quot;delete&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansibleTestPackage1&quot;</span>
+<span class="s1">    type: &quot;pkg&quot;</span>
+
+<span class="s1">- name: REMOVE NESTED PACKAGE</span>
+<span class="s1">  fmgr_fwpol_package:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    mode: &quot;delete&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansibleTestPackage2&quot;</span>
+<span class="s1">    type: &quot;pkg&quot;</span>
+<span class="s1">    parent_folder: &quot;ansibleTestFolder1&quot;</span>
+
+<span class="s1">- name: REMOVE NESTED FOLDER</span>
+<span class="s1">  fmgr_fwpol_package:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    mode: &quot;delete&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansibleTestFolder2&quot;</span>
+<span class="s1">    type: &quot;folder&quot;</span>
+<span class="s1">    parent_folder: &quot;ansibleTestFolder1&quot;</span>
+
+<span class="s1">- name: REMOVE FOLDER</span>
+<span class="s1">  fmgr_fwpol_package:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    mode: &quot;delete&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansibleTestFolder1&quot;</span>
+<span class="s1">    type: &quot;folder&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">api_result:</span>
+<span class="s2">  description: full API response, includes status code and message</span>
+<span class="s2">  returned: always</span>
+<span class="s2">  type: string</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">AnsibleFortiManager</span>
+
+<span class="c1"># check for pyFMG lib</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pyFMG.fortimgr</span> <span class="kn">import</span> <span class="n">FortiManager</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">False</span>
+
+
+<span class="k">def</span> <span class="nf">parse_csv_str_to_list</span><span class="p">(</span><span class="n">input_string</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function will take a comma seperated string and turn it into a list, removing any spaces next the commas</span>
+<span class="sd">    that it finds. This is useful for using csv input from ansible parameters and transforming to API requirements.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">if</span> <span class="n">input_string</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="c1"># CREATE VARIABLE AND REMOVE SPACES AROUND COMMAS</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">input_string</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="n">inputs</span> <span class="o">=</span> <span class="n">inputs</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot; ,&quot;</span><span class="p">,</span> <span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="c1"># INIT THE BASE LIST</span>
+        <span class="nb">input</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="c1"># FOR EACH ITEM WE CAN SPLIT VIA COMMA ADD IT TO THE LIST</span>
+        <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">inputs</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+            <span class="nb">input</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span>
+        <span class="c1"># RETURN THE LIST</span>
+        <span class="k">return</span> <span class="nb">input</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># IF THE INPUT STRING WAS EMPTY RETURN NONE/NULL</span>
+        <span class="k">return</span> <span class="bp">None</span>
+
+
+<span class="k">def</span> <span class="nf">fmgr_fwpol_package</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function will create FMGR Firewall Policy Packages, or delete them. It is also capable of assigning packages.</span>
+<span class="sd">    This function DOES NOT install the package. See the function fmgr_fwpol_package_install()</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">]:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+        <span class="n">members_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+        <span class="c1"># CHECK FOR SCOPE MEMBERS AND CREATE THAT DICT</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;scope_members&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">members</span> <span class="o">=</span> <span class="n">parse_csv_str_to_list</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;scope_members&quot;</span><span class="p">])</span>
+            <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="n">members</span><span class="p">:</span>
+                <span class="n">scope_dict</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">member</span><span class="p">,</span>
+                    <span class="s2">&quot;vdom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;scope_members_vdom&quot;</span><span class="p">],</span>
+                <span class="p">}</span>
+                <span class="n">members_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scope_dict</span><span class="p">)</span>
+
+        <span class="c1"># IF PARENT FOLDER IS NOT DEFINED</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;scope member&quot;</span><span class="p">:</span> <span class="n">members_list</span><span class="p">,</span>
+                <span class="s2">&quot;package settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+                    <span class="s2">&quot;central-nat&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;central-nat&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;fwpolicy-implicit-log&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fwpolicy-implicit-log&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;fwpolicy6-implicit-log&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fwpolicy6-implicit-log&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;inspection-mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;inspection-mode&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;ngfw-mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ngfw-mode&quot;</span><span class="p">],</span>
+                <span class="p">}</span>
+            <span class="p">}</span>
+
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ngfw-mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;policy-based&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ssl-ssh-profile&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;package settings&quot;</span><span class="p">][</span><span class="s2">&quot;ssl-ssh-profile&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ssl-ssh-profile&quot;</span><span class="p">]</span>
+
+        <span class="c1"># IF PARENT FOLDER IS DEFINED</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;folder&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;subobj&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;scope member&quot;</span><span class="p">:</span> <span class="n">members_list</span><span class="p">,</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;pkg&quot;</span><span class="p">,</span>
+                    <span class="s2">&quot;package settings&quot;</span><span class="p">:</span> <span class="p">{</span>
+                        <span class="s2">&quot;central-nat&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;central-nat&quot;</span><span class="p">],</span>
+                        <span class="s2">&quot;fwpolicy-implicit-log&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fwpolicy-implicit-log&quot;</span><span class="p">],</span>
+                        <span class="s2">&quot;fwpolicy6-implicit-log&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fwpolicy6-implicit-log&quot;</span><span class="p">],</span>
+                        <span class="s2">&quot;inspection-mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;inspection-mode&quot;</span><span class="p">],</span>
+                        <span class="s2">&quot;ngfw-mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ngfw-mode&quot;</span><span class="p">],</span>
+                    <span class="p">}</span>
+                <span class="p">}]</span>
+            <span class="p">}</span>
+
+    <span class="c1"># NORMAL DELETE NO PARENT</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1"># SET DELETE URL</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+    <span class="c1"># DELETE WITH PARENT</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1"># SET DELETE URL</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{parent_folder}/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                                  <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                                                                  <span class="n">parent_folder</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">])</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;set&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># return response</span>
+        <span class="c1"># IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># return response</span>
+        <span class="c1"># IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">fmgr_fwpol_package_folder</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This function will create folders for firewall packages. It can create down to two levels deep.</span>
+<span class="sd">    We haven&#39;t yet tested for any more layers below two levels.</span>
+<span class="sd">    parent_folders for multiple levels may need to defined as &quot;level1/level2/level3&quot; for the URL parameters and such.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">]:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+        <span class="c1"># IF PARENT FOLDER IS NOT DEFINED</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+            <span class="p">}</span>
+
+        <span class="c1"># IF PARENT FOLDER IS DEFINED</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">],</span>
+                <span class="s2">&quot;subobj&quot;</span><span class="p">:</span> <span class="p">[{</span>
+                    <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                    <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span>
+
+                <span class="p">}]</span>
+            <span class="p">}</span>
+    <span class="c1"># NORMAL DELETE NO PARENT</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1"># SET DELETE URL</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+    <span class="c1"># DELETE WITH PARENT</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1"># SET DELETE URL</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{parent_folder}/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                                  <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                                                                  <span class="n">parent_folder</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">])</span>
+    <span class="c1"># IF MODE = SET  -- USE THE &#39;SET&#39; API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;set&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="c1"># IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="c1"># IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">fmgr_fwpol_package_install</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method/function installs FMGR FW Policy Packages to the scope members defined in the playbook.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># INIT BLANK MEMBERS LIST</span>
+    <span class="n">members_list</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="c1"># USE THE PARSE CSV FUNCTION TO GET A LIST FORMAT OF THE MEMBERS</span>
+    <span class="n">members</span> <span class="o">=</span> <span class="n">parse_csv_str_to_list</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;scope_members&quot;</span><span class="p">])</span>
+    <span class="c1"># USE THAT LIST TO BUILD THE DICTIONARIES NEEDED, AND ADD TO THE BLANK MEMBERS LIST</span>
+    <span class="k">for</span> <span class="n">member</span> <span class="ow">in</span> <span class="n">members</span><span class="p">:</span>
+        <span class="n">scope_dict</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">member</span><span class="p">,</span>
+            <span class="s2">&quot;vdom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;scope_members_vdom&quot;</span><span class="p">],</span>
+        <span class="p">}</span>
+        <span class="n">members_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">scope_dict</span><span class="p">)</span>
+    <span class="c1"># THEN FOR THE DATAGRAM, USING THE MEMBERS LIST CREATED ABOVE</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;pkg&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="n">members_list</span>
+    <span class="p">}</span>
+    <span class="c1"># EXECUTE THE INSTALL REQUEST</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/securityconsole/install/package&#39;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">])),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
+
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pkg&#39;</span><span class="p">,</span> <span class="s1">&#39;folder&#39;</span><span class="p">,</span> <span class="s1">&#39;install&#39;</span><span class="p">]),</span>
+        <span class="n">package_folder</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">central_nat</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">,</span> <span class="s1">&#39;disable&#39;</span><span class="p">]),</span>
+        <span class="n">fwpolicy_implicit_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">,</span> <span class="s1">&#39;disable&#39;</span><span class="p">]),</span>
+        <span class="n">fwpolicy6_implicit_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">,</span> <span class="s1">&#39;disable&#39;</span><span class="p">]),</span>
+        <span class="n">inspection_mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;flow&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;flow&#39;</span><span class="p">,</span> <span class="s1">&#39;proxy&#39;</span><span class="p">]),</span>
+        <span class="n">ngfw_mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;profile-based&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;profile-based&#39;</span><span class="p">,</span> <span class="s1">&#39;policy-based&#39;</span><span class="p">]),</span>
+        <span class="n">ssl_ssh_profile</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">scope_members</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">scope_members_vdom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">parent_folder</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="c1"># MODULE DATAGRAM</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;package-folder&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;package_folder&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;central-nat&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;central_nat&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;fwpolicy-implicit-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fwpolicy_implicit_log&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;fwpolicy6-implicit-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fwpolicy6_implicit_log&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;inspection-mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;inspection_mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;ngfw-mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;ngfw_mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;ssl-ssh-profile&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;ssl_ssh_profile&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;scope_members&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;scope_members&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;scope_members_vdom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;scope_members_vdom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;parent_folder&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+    <span class="c1"># VALIDATE REQUIRED ARGUMENTS ARE PASSED; NOT USED IN ARGUMENT_SPEC TO ALLOW PARAMS TO BE CALLED FROM PROVIDER</span>
+    <span class="c1"># CHECK IF PARAMS ARE SET</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CHECK IF LOGIN FAILED</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># START SESSION LOGIC</span>
+        <span class="c1"># IF THE TYPE IS PACKAGE LETS RUN THAT METHOD</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;pkg&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwpol_package</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Package successfully created/deleted&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to create/delete custom package&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1"># IF THE TYPE IS FOLDER LETS RUN THAT METHOD</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;folder&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwpol_package_folder</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">]:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Folder successfully created/deleted&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to add/remove custom package&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+        <span class="c1"># IF THE TYPE IS INSTALL AND NEEDED PARAMETERS ARE DEFINED INSTALL THE PACKAGE</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;scope_members&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;install&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwpol_package_install</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Install Task Successfully Created&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to create install task!&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -864,7 +1199,7 @@ if __name__ == &quot;__main__&quot;:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps.
+        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps
 
     </p>
   </div>
@@ -883,21 +1218,14 @@ if __name__ == &quot;__main__&quot;:
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 

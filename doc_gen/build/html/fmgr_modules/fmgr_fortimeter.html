@@ -86,7 +86,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_fortimeter</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#module-metadata-parameters">Module Metadata / Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
 </ul>
 </li>
@@ -179,262 +181,386 @@
             
   <div class="section" id="fmgr-fortimeter">
 <h1>fmgr_fortimeter<a class="headerlink" href="#fmgr-fortimeter" title="Permalink to this headline">¶</a></h1>
-<p>Not Parsed</p>
-<div class="section" id="module-metadata-parameters">
-<h2>Module Metadata / Parameters<a class="headerlink" href="#module-metadata-parameters" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">module</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fmgr_fortimeter</span>
-<span class="l l-Scalar l-Scalar-Plain">version_added</span><span class="p p-Indicator">:</span> <span class="s">&quot;2.6&quot;</span>
-<span class="l l-Scalar l-Scalar-Plain">author</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Luke Weighall (@lweighall)</span>
-<span class="l l-Scalar l-Scalar-Plain">short_description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Sets FortiMeter licensing level</span>
-<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Provides MSPs the ability to programatically change FortiMeter license levels on devices.</span>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> fmgr_fortimeter</p>
+<p><strong>Description:</strong> [‘Provides MSPs the ability to programatically change FortiMeter license levels on devices.’]</p>
+<p><strong>Author(s):</strong> Luke Weighall (&#64;lweighall)</p>
+<p><strong>Ansible Version Added:</strong> 2.6</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adom">
+<h3>adom<a class="headerlink" href="#adom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The ADOM the configuration should belong to.</li>
+<li>Required: True</li>
+<li>default: root</li>
+</ul>
+</div>
+<div class="section" id="device-unique-name">
+<h3>device_unique_name<a class="headerlink" href="#device-unique-name" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The desired “friendly” name of the device you want to query.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="fortimeter-utm-level">
+<h3>fortimeter_utm_level<a class="headerlink" href="#fortimeter-utm-level" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Determines which UTM profiles should be allowed for Fortimeter. Multiple comma seperated selections allowed.</li>
+<li>Required: True</li>
+<li>default: all</li>
+<li>choices: [‘fw’, ‘ips’, ‘av’, ‘ac’, ‘wf’, ‘all’]</li>
+</ul>
+</div>
+<div class="section" id="foslic-type">
+<h3>foslic_type<a class="headerlink" href="#foslic-type" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Sets the FortiMeterOS license Type (0 is temporary, 2 is regular, 1 is trial, 3 is expired)</li>
+<li>Required: False</li>
+<li>default: 2</li>
+</ul>
+</div>
+<div class="section" id="host">
+<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The FortiManager’s Address.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="password">
+<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The password associated with the username account.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="username">
+<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The username used to authenticate with the FortiManager.</li>
+<li>Required: False</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>fmgr_set_fortimeter_lic</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_set_fortimeter_lic</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
 
-<span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The ADOM the configuration should belong to.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-  <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The FortiManager&#39;s Address.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The username used to authenticate with the FortiManager.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The password associated with the username account.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="l l-Scalar l-Scalar-Plain">device_unique_name</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The desired &quot;friendly&quot; name of the device you want to query.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="l l-Scalar l-Scalar-Plain">fortimeter_utm_level</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Determines which UTM profiles should be allowed for Fortimeter. Multiple comma seperated selections allowed.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="s">&quot;all&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;fw&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;ips&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;av&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;ac&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;wf&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;all&quot;</span><span class="p p-Indicator">]</span>
-  <span class="l l-Scalar l-Scalar-Plain">foslic_type</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Sets the FortiMeterOS license Type (0 is temporary, 2 is regular, 1 is trial, 3 is expired)</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+    <span class="c1"># FIRST WE NEED TO PARSE THE DESIRED FOSLIC LEVEL ON THESE RULES</span>
+    <span class="c1"># FW = 1</span>
+    <span class="c1"># AV = 2</span>
+    <span class="c1"># IPS = 4</span>
+    <span class="c1"># AC = 8</span>
+    <span class="c1"># WF = 16</span>
+    <span class="c1"># PARSE THE DESIRED OPTIONS, AND THEN ADD THEM UP</span>
+    <span class="n">fos_levels</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;fw&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;av&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;ips&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;ac&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="s2">&quot;wf&quot;</span><span class="p">:</span> <span class="mi">16</span>
+    <span class="p">}</span>
+
+    <span class="n">foslic</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">fos_items</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fortimeter_utm_level&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="s2">&quot;all&quot;</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fortimeter_utm_level&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="n">foslic</span> <span class="o">=</span> <span class="mi">63</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">fos_items</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;fw&quot;</span><span class="p">:</span>
+                <span class="n">foslic</span> <span class="o">+=</span> <span class="n">fos_levels</span><span class="p">[</span><span class="s2">&quot;fw&quot;</span><span class="p">]</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;av&quot;</span><span class="p">:</span>
+                <span class="n">foslic</span> <span class="o">+=</span> <span class="n">fos_levels</span><span class="p">[</span><span class="s2">&quot;av&quot;</span><span class="p">]</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;ips&quot;</span><span class="p">:</span>
+                <span class="n">foslic</span> <span class="o">+=</span> <span class="n">fos_levels</span><span class="p">[</span><span class="s2">&quot;ips&quot;</span><span class="p">]</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;ac&quot;</span><span class="p">:</span>
+                <span class="n">foslic</span> <span class="o">+=</span> <span class="n">fos_levels</span><span class="p">[</span><span class="s2">&quot;ac&quot;</span><span class="p">]</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;wf&quot;</span><span class="p">:</span>
+                <span class="n">foslic</span> <span class="o">+=</span> <span class="n">fos_levels</span><span class="p">[</span><span class="s2">&quot;wf&quot;</span><span class="p">]</span>
+                <span class="k">continue</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;foslic_utm&quot;</span><span class="p">:</span> <span class="n">foslic</span><span class="p">,</span>
+        <span class="s2">&quot;foslic_type&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;foslic_type&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/dvmdb/adom/{adom}/device/{device}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
+</div></blockquote>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">])),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+
+        <span class="n">device_unique_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">fortimeter_utm_level</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">foslic_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="c1"># CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">username</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CHECK IF LOGIN FAILED</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;device_unique_name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;fortimeter_utm_level&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fortimeter_utm_level&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;foslic_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;foslic_type&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_set_fortimeter_lic</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Setting FortiMeter Failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># logout</span>
+    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="module-source-code">
 <h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/python
-#
-# This file is part of Ansible
-#
-# Ansible is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# Ansible is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
-#
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Ansible</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
 
-from __future__ import absolute_import, division, print_function
-__metaclass__ = type
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
 
-ANSIBLE_METADATA = {
-    &quot;metadata_version&quot;: &quot;1.1&quot;,
-    &quot;status&quot;: [&quot;preview&quot;],
-    &quot;supported_by&quot;: &quot;community&quot;
-}
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;metadata_version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;preview&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;supported_by&quot;</span><span class="p">:</span> <span class="s2">&quot;community&quot;</span>
+<span class="p">}</span>
 
-DOCUMENTATION = &#39;&#39;&#39;
----
-module: fmgr_fortimeter
-version_added: &quot;2.6&quot;
-author: Luke Weighall (@lweighall)
-short_description: Sets FortiMeter licensing level
-description:
-  - Provides MSPs the ability to programatically change FortiMeter license levels on devices.
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">module: fmgr_fortimeter</span>
+<span class="s1">version_added: &quot;2.6&quot;</span>
+<span class="s1">author: Luke Weighall (@lweighall)</span>
+<span class="s1">short_description: Sets FortiMeter licensing level</span>
+<span class="s1">description:</span>
+<span class="s1">  - Provides MSPs the ability to programatically change FortiMeter license levels on devices.</span>
 
-options:
-  adom:
-    description:
-      - The ADOM the configuration should belong to.
-    required: true
-    default: root
-  host:
-    description:
-      - The FortiManager&#39;s Address.
-    required: true
-  username:
-    description:
-      - The username used to authenticate with the FortiManager.
-    required: false
-  password:
-    description:
-      - The password associated with the username account.
-    required: false
-  device_unique_name:
-    description:
-      - The desired &quot;friendly&quot; name of the device you want to query.
-    required: true
-  fortimeter_utm_level:
-    description:
-      - Determines which UTM profiles should be allowed for Fortimeter. Multiple comma seperated selections allowed.
-    required: true
-    default: &quot;all&quot;
-    choices: [&quot;fw&quot;, &quot;ips&quot;, &quot;av&quot;, &quot;ac&quot;, &quot;wf&quot;, &quot;all&quot;]
-  foslic_type:
-    description:
-      - Sets the FortiMeterOS license Type (0 is temporary, 2 is regular, 1 is trial, 3 is expired)
-    required: false
-    default: 2
-&#39;&#39;&#39;
-
-
-EXAMPLES = &#39;&#39;&#39;
-- name: SET LICENSING MODE ON FORTIMETER DEVICE to ALL
-  fmgr_fortimeter:
-    host: &quot;{{inventory_hostname}}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    object: &quot;device&quot;
-    adom: &quot;ansible&quot;
-    device_unique_name: &quot;FOSVM1FGPRJ411DD&quot;
-    fortimeter_utm_level: &quot;all&quot;
-
-- name: SET LICENSING MODE ON FORTIMETER DEVICE to a COMBO
-  fmgr_fortimeter:
-    host: &quot;{{inventory_hostname}}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    object: &quot;device&quot;
-    adom: &quot;ansible&quot;
-    device_unique_name: &quot;FOSVM1FGPRJ411DD&quot;
-    fortimeter_utm_level: &quot;fw, ips, av&quot;
-&#39;&#39;&#39;
-
-RETURN = &quot;&quot;&quot;
-api_result:
-  description: full API response, includes status code and message
-  returned: always
-  type: string
-&quot;&quot;&quot;
-
-from ansible.module_utils.basic import AnsibleModule, env_fallback
-from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-
-# check for pyFMG lib
-try:
-    from pyFMG.fortimgr import FortiManager
-    HAS_PYFMGR = True
-except ImportError:
-    HAS_PYFMGR = False
+<span class="s1">options:</span>
+<span class="s1">  adom:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The ADOM the configuration should belong to.</span>
+<span class="s1">    required: true</span>
+<span class="s1">    default: root</span>
+<span class="s1">  host:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The FortiManager&#39;s Address.</span>
+<span class="s1">    required: true</span>
+<span class="s1">  username:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The username used to authenticate with the FortiManager.</span>
+<span class="s1">    required: false</span>
+<span class="s1">  password:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The password associated with the username account.</span>
+<span class="s1">    required: false</span>
+<span class="s1">  device_unique_name:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The desired &quot;friendly&quot; name of the device you want to query.</span>
+<span class="s1">    required: true</span>
+<span class="s1">  fortimeter_utm_level:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Determines which UTM profiles should be allowed for Fortimeter. Multiple comma seperated selections allowed.</span>
+<span class="s1">    required: true</span>
+<span class="s1">    default: &quot;all&quot;</span>
+<span class="s1">    choices: [&quot;fw&quot;, &quot;ips&quot;, &quot;av&quot;, &quot;ac&quot;, &quot;wf&quot;, &quot;all&quot;]</span>
+<span class="s1">  foslic_type:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Sets the FortiMeterOS license Type (0 is temporary, 2 is regular, 1 is trial, 3 is expired)</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: 2</span>
+<span class="s1">&#39;&#39;&#39;</span>
 
 
-def fmgr_set_fortimeter_lic(fmg, paramgram):
+<span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: SET LICENSING MODE ON FORTIMETER DEVICE to ALL</span>
+<span class="s1">  fmgr_fortimeter:</span>
+<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    object: &quot;device&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    device_unique_name: &quot;FOSVM1FGPRJ411DD&quot;</span>
+<span class="s1">    fortimeter_utm_level: &quot;all&quot;</span>
 
-    # FIRST WE NEED TO PARSE THE DESIRED FOSLIC LEVEL ON THESE RULES
-    # FW = 1
-    # AV = 2
-    # IPS = 4
-    # AC = 8
-    # WF = 16
-    # PARSE THE DESIRED OPTIONS, AND THEN ADD THEM UP
-    fos_levels = {
-        &quot;fw&quot;: 1,
-        &quot;av&quot;: 2,
-        &quot;ips&quot;: 4,
-        &quot;ac&quot;: 8,
-        &quot;wf&quot;: 16
-    }
+<span class="s1">- name: SET LICENSING MODE ON FORTIMETER DEVICE to a COMBO</span>
+<span class="s1">  fmgr_fortimeter:</span>
+<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    object: &quot;device&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    device_unique_name: &quot;FOSVM1FGPRJ411DD&quot;</span>
+<span class="s1">    fortimeter_utm_level: &quot;fw, ips, av&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
 
-    foslic = 0
-    fos_items = paramgram[&quot;fortimeter_utm_level&quot;].strip().split(&quot;,&quot;)
+<span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">api_result:</span>
+<span class="s2">  description: full API response, includes status code and message</span>
+<span class="s2">  returned: always</span>
+<span class="s2">  type: string</span>
+<span class="s2">&quot;&quot;&quot;</span>
 
-    if &quot;all&quot; in paramgram[&quot;fortimeter_utm_level&quot;].lower():
-        foslic = 63
-    else:
-        for item in fos_items:
-            if item.strip().lower() == &quot;fw&quot;:
-                foslic += fos_levels[&quot;fw&quot;]
-                continue
-            if item.strip().lower() == &quot;av&quot;:
-                foslic += fos_levels[&quot;av&quot;]
-                continue
-            if item.strip().lower() == &quot;ips&quot;:
-                foslic += fos_levels[&quot;ips&quot;]
-                continue
-            if item.strip().lower() == &quot;ac&quot;:
-                foslic += fos_levels[&quot;ac&quot;]
-                continue
-            if item.strip().lower() == &quot;wf&quot;:
-                foslic += fos_levels[&quot;wf&quot;]
-                continue
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">AnsibleFortiManager</span>
 
-    datagram = {
-        &quot;foslic_utm&quot;: foslic,
-        &quot;foslic_type&quot;: paramgram[&quot;foslic_type&quot;]
-    }
-
-    url = &quot;/dvmdb/adom/{adom}/device/{device}&quot;.format(adom=paramgram[&quot;adom&quot;], device=paramgram[&quot;device_unique_name&quot;])
-    response = fmg.set(url, datagram)
-
-    return response
+<span class="c1"># check for pyFMG lib</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pyFMG.fortimgr</span> <span class="kn">import</span> <span class="n">FortiManager</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">False</span>
 
 
-def main():
-    argument_spec = dict(
-        adom=dict(required=False, type=&quot;str&quot;, default=&quot;root&quot;),
-        host=dict(required=True, type=&quot;str&quot;),
-        username=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_USERNAME&quot;])),
-        password=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_PASSWORD&quot;]), no_log=True),
+<span class="k">def</span> <span class="nf">fmgr_set_fortimeter_lic</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
 
-        device_unique_name=dict(required=True, type=&quot;str&quot;),
-        fortimeter_utm_level=dict(required=True, type=&quot;str&quot;),
-        foslic_type=dict(required=False, type=&quot;int&quot;, default=2)
-    )
+    <span class="c1"># FIRST WE NEED TO PARSE THE DESIRED FOSLIC LEVEL ON THESE RULES</span>
+    <span class="c1"># FW = 1</span>
+    <span class="c1"># AV = 2</span>
+    <span class="c1"># IPS = 4</span>
+    <span class="c1"># AC = 8</span>
+    <span class="c1"># WF = 16</span>
+    <span class="c1"># PARSE THE DESIRED OPTIONS, AND THEN ADD THEM UP</span>
+    <span class="n">fos_levels</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;fw&quot;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span>
+        <span class="s2">&quot;av&quot;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span>
+        <span class="s2">&quot;ips&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;ac&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+        <span class="s2">&quot;wf&quot;</span><span class="p">:</span> <span class="mi">16</span>
+    <span class="p">}</span>
 
-    module = AnsibleModule(argument_spec, supports_check_mode=True, )
+    <span class="n">foslic</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">fos_items</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fortimeter_utm_level&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
 
-    # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-    host = module.params[&quot;host&quot;]
-    username = module.params[&quot;username&quot;]
-    if host is None or username is None:
-        module.fail_json(msg=&quot;Host and username are required&quot;)
+    <span class="k">if</span> <span class="s2">&quot;all&quot;</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fortimeter_utm_level&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">():</span>
+        <span class="n">foslic</span> <span class="o">=</span> <span class="mi">63</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">fos_items</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;fw&quot;</span><span class="p">:</span>
+                <span class="n">foslic</span> <span class="o">+=</span> <span class="n">fos_levels</span><span class="p">[</span><span class="s2">&quot;fw&quot;</span><span class="p">]</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;av&quot;</span><span class="p">:</span>
+                <span class="n">foslic</span> <span class="o">+=</span> <span class="n">fos_levels</span><span class="p">[</span><span class="s2">&quot;av&quot;</span><span class="p">]</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;ips&quot;</span><span class="p">:</span>
+                <span class="n">foslic</span> <span class="o">+=</span> <span class="n">fos_levels</span><span class="p">[</span><span class="s2">&quot;ips&quot;</span><span class="p">]</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;ac&quot;</span><span class="p">:</span>
+                <span class="n">foslic</span> <span class="o">+=</span> <span class="n">fos_levels</span><span class="p">[</span><span class="s2">&quot;ac&quot;</span><span class="p">]</span>
+                <span class="k">continue</span>
+            <span class="k">if</span> <span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="o">==</span> <span class="s2">&quot;wf&quot;</span><span class="p">:</span>
+                <span class="n">foslic</span> <span class="o">+=</span> <span class="n">fos_levels</span><span class="p">[</span><span class="s2">&quot;wf&quot;</span><span class="p">]</span>
+                <span class="k">continue</span>
 
-    # CHECK IF LOGIN FAILED
-    fmg = AnsibleFortiManager(module, module.params[&quot;host&quot;], module.params[&quot;username&quot;], module.params[&quot;password&quot;])
-    response = fmg.login()
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;foslic_utm&quot;</span><span class="p">:</span> <span class="n">foslic</span><span class="p">,</span>
+        <span class="s2">&quot;foslic_type&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;foslic_type&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
 
-    if response[1][&#39;status&#39;][&#39;code&#39;] != 0:
-        module.fail_json(msg=&quot;Connection to FortiManager Failed&quot;)
-    else:
-        paramgram = {
-            &quot;adom&quot;: module.params[&quot;adom&quot;],
-            &quot;device_unique_name&quot;: module.params[&quot;device_unique_name&quot;],
-            &quot;fortimeter_utm_level&quot;: module.params[&quot;fortimeter_utm_level&quot;],
-            &quot;foslic_type&quot;: module.params[&quot;foslic_type&quot;]
-        }
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/dvmdb/adom/{adom}/device/{device}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">device</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
 
-        results = fmgr_set_fortimeter_lic(fmg, paramgram)
-        if results[0] != 0:
-            return module.fail_json(msg=&quot;Setting FortiMeter Failed&quot;, **results[1])
-
-    # logout
-    fmg.logout()
-    return module.exit_json(**results[1])
+    <span class="k">return</span> <span class="n">response</span>
 
 
-if __name__ == &quot;__main__&quot;:
-    main()
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">])),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+
+        <span class="n">device_unique_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">fortimeter_utm_level</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">foslic_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="c1"># CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">username</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CHECK IF LOGIN FAILED</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;device_unique_name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;fortimeter_utm_level&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fortimeter_utm_level&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;foslic_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;foslic_type&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_set_fortimeter_lic</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Setting FortiMeter Failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+    <span class="c1"># logout</span>
+    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -460,7 +586,7 @@ if __name__ == &quot;__main__&quot;:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps.
+        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps
 
     </p>
   </div>
@@ -479,21 +605,14 @@ if __name__ == &quot;__main__&quot;:
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 

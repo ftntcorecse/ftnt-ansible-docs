@@ -95,7 +95,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_provisioning.html">fmgr_provisioning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_query.html">fmgr_query</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_script</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#module-metadata-parameters">Module Metadata / Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
 </ul>
 </li>
@@ -179,350 +181,540 @@
             
   <div class="section" id="fmgr-script">
 <h1>fmgr_script<a class="headerlink" href="#fmgr-script" title="Permalink to this headline">¶</a></h1>
-<p>Not Parsed</p>
-<div class="section" id="module-metadata-parameters">
-<h2>Module Metadata / Parameters<a class="headerlink" href="#module-metadata-parameters" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">module</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fmgr_script</span>
-<span class="l l-Scalar l-Scalar-Plain">version_added</span><span class="p p-Indicator">:</span> <span class="s">&quot;2.5&quot;</span>
-<span class="l l-Scalar l-Scalar-Plain">author</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Andrew Welsh</span>
-<span class="l l-Scalar l-Scalar-Plain">short_description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Add/Edit/Delete and execute scripts</span>
-<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Create/edit/delete scripts and execute the scripts on the FortiManager using jsonrpc API</span>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> fmgr_script</p>
+<p><strong>Description:</strong> Create/edit/delete scripts and execute the scripts on the FortiManager using jsonrpc API</p>
+<p><strong>Author(s):</strong> Andrew Welsh</p>
+<p><strong>Ansible Version Added:</strong> 2.5</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adom">
+<h3>adom<a class="headerlink" href="#adom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The administrative domain (admon) the configuration belongs to</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="host">
+<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The FortiManager’s Address.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="password">
+<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The password associated with the username account.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="script-content">
+<h3>script_content<a class="headerlink" href="#script-content" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The script content that will be executed.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="script-description">
+<h3>script_description<a class="headerlink" href="#script-description" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The description of the script.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="script-name">
+<h3>script_name<a class="headerlink" href="#script-name" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The name of the script.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="script-package">
+<h3>script_package<a class="headerlink" href="#script-package" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: (datasource) Policy package object to run the script against</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="script-scope">
+<h3>script_scope<a class="headerlink" href="#script-scope" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: (datasource) The devices that the script will run on, can have both device member and device group member.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="script-target">
+<h3>script_target<a class="headerlink" href="#script-target" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The target of the script to be run.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="script-type">
+<h3>script_type<a class="headerlink" href="#script-type" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The type of script (CLI or TCL).</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="state">
+<h3>state<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: The desired state of the specified object.</p>
+<p>present - will create a script.</p>
+<p>execute - execute the scipt.</p>
+<p>delete - delete the script.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">default: present</p>
+</li>
+<li><p class="first">choices: [‘present’, ‘execute’, ‘delete’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="username">
+<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The username to log into the FortiManager</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="vdom">
+<h3>vdom<a class="headerlink" href="#vdom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The virtual domain (vdom) the configuration belongs to</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>delete_script</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_script</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">script_name</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method deletes a script.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The administrative domain (admon) the configuration belongs to</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="l l-Scalar l-Scalar-Plain">vdom</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The virtual domain (vdom) the configuration belongs to</span>
-  <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The FortiManager&#39;s Address.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The username to log into the FortiManager</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The password associated with the username account.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The desired state of the specified object.</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">present - will create a script.</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">execute - execute the scipt.</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">delete - delete the script.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">present</span>
-    <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;present&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;execute&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;delete&quot;</span><span class="p p-Indicator">]</span>
-  <span class="l l-Scalar l-Scalar-Plain">script_name</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The name of the script.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-  <span class="l l-Scalar l-Scalar-Plain">script_type</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The type of script (CLI or TCL).</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="l l-Scalar l-Scalar-Plain">script_target</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The target of the script to be run.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="l l-Scalar l-Scalar-Plain">script_description</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The description of the script.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="l l-Scalar l-Scalar-Plain">script_content</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The script content that will be executed.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="l l-Scalar l-Scalar-Plain">script_scope</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">(datasource) The devices that the script will run on, can have both device member and device group member.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-  <span class="l l-Scalar l-Scalar-Plain">script_package</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">(datasource) Policy package object to run the script against</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">script_name</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/script/{script_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">script_name</span><span class="o">=</span><span class="n">script_name</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
+</div></blockquote>
+<ul class="simple">
+<li>execute_script</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">execute_script</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">script_name</span><span class="p">,</span> <span class="n">scope</span><span class="p">,</span> <span class="n">package</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">vdom</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method will execute a specific script.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">scope_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">scope</span> <span class="o">=</span> <span class="n">scope</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">scope</span> <span class="o">=</span> <span class="n">scope</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">dev_name</span> <span class="ow">in</span> <span class="n">scope</span><span class="p">:</span>
+        <span class="n">scope_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">dev_name</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">})</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;script&#39;</span><span class="p">:</span> <span class="n">script_name</span><span class="p">,</span>
+        <span class="s1">&#39;package&#39;</span><span class="p">:</span> <span class="n">package</span><span class="p">,</span>
+        <span class="s1">&#39;scope&#39;</span><span class="p">:</span> <span class="n">scope_list</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/script/execute&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">vdom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">])),</span>
+        <span class="n">state</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;present&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;present&quot;</span><span class="p">),</span>
+
+        <span class="n">script_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">script_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">script_target</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">script_description</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">script_content</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">script_scope</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">script_package</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,)</span>
+
+    <span class="c1"># check if params are set</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+
+    <span class="c1"># check if login failed</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">adom</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">adom</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">adom</span> <span class="o">=</span> <span class="s2">&quot;root&quot;</span>
+        <span class="n">vdom</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">vdom</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">vdom</span> <span class="o">=</span> <span class="s2">&quot;root&quot;</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">state</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="s2">&quot;present&quot;</span>
+
+        <span class="n">script_name</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;script_name&quot;</span><span class="p">]</span>
+        <span class="n">script_type</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;script_type&quot;</span><span class="p">]</span>
+        <span class="n">script_target</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;script_target&quot;</span><span class="p">]</span>
+        <span class="n">script_description</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;script_description&quot;</span><span class="p">]</span>
+        <span class="n">script_content</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;script_content&quot;</span><span class="p">]</span>
+        <span class="n">script_scope</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;script_scope&quot;</span><span class="p">]</span>
+        <span class="n">script_package</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;script_package&quot;</span><span class="p">]</span>
+
+        <span class="c1"># if state is present (default), then add the script</span>
+        <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">&quot;present&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">set_script</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">script_name</span><span class="p">,</span> <span class="n">script_type</span><span class="p">,</span> <span class="n">script_content</span><span class="p">,</span> <span class="n">script_description</span><span class="p">,</span> <span class="n">script_target</span><span class="p">,</span> <span class="n">adom</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Adding Script Failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Adding Script Failed&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">&quot;execute&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">execute_script</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">script_name</span><span class="p">,</span> <span class="n">script_scope</span><span class="p">,</span> <span class="n">script_package</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">vdom</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Script Execution Failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">delete_script</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">script_name</span><span class="p">,</span> <span class="n">adom</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Script Deletion Failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+
+        <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+
+        <span class="c1"># results is returned as a tuple</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>set_script</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_script</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">script_name</span><span class="p">,</span> <span class="n">script_type</span><span class="p">,</span> <span class="n">script_content</span><span class="p">,</span> <span class="n">script_desc</span><span class="p">,</span> <span class="n">script_target</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method sets a script.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="n">script_content</span><span class="p">,</span>
+        <span class="s1">&#39;desc&#39;</span><span class="p">:</span> <span class="n">script_desc</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">script_name</span><span class="p">,</span>
+        <span class="s1">&#39;target&#39;</span><span class="p">:</span> <span class="n">script_target</span><span class="p">,</span>
+        <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">script_type</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/script/&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="module-source-code">
 <h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/python
-#
-# This file is part of Ansible
-#
-# Ansible is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# Ansible is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
-#
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Ansible</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
 
-from __future__ import absolute_import, division, print_function
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
 
-__metaclass__ = type
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
 
-ANSIBLE_METADATA = {&#39;status&#39;: [&#39;preview&#39;],
-                    &#39;supported_by&#39;: &#39;community&#39;,
-                    &#39;metadata_version&#39;: &#39;1.1&#39;}
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;preview&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;supported_by&#39;</span><span class="p">:</span> <span class="s1">&#39;community&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;metadata_version&#39;</span><span class="p">:</span> <span class="s1">&#39;1.1&#39;</span><span class="p">}</span>
 
-DOCUMENTATION = &#39;&#39;&#39;
----
-module: fmgr_script
-version_added: &quot;2.5&quot;
-author: Andrew Welsh
-short_description: Add/Edit/Delete and execute scripts
-description: Create/edit/delete scripts and execute the scripts on the FortiManager using jsonrpc API
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">module: fmgr_script</span>
+<span class="s1">version_added: &quot;2.5&quot;</span>
+<span class="s1">author: Andrew Welsh</span>
+<span class="s1">short_description: Add/Edit/Delete and execute scripts</span>
+<span class="s1">description: Create/edit/delete scripts and execute the scripts on the FortiManager using jsonrpc API</span>
 
-options:
-  adom:
-    description:
-      - The administrative domain (admon) the configuration belongs to
-    required: true
-  vdom:
-    description:
-      - The virtual domain (vdom) the configuration belongs to
-  host:
-    description:
-      - The FortiManager&#39;s Address.
-    required: true
-  username:
-    description:
-      - The username to log into the FortiManager
-    required: true
-  password:
-    description:
-      - The password associated with the username account.
-    required: false
-  state:
-    description:
-      - The desired state of the specified object.
-      - present - will create a script.
-      - execute - execute the scipt.
-      - delete - delete the script.
-    required: false
-    default: present
-    choices: [&quot;present&quot;, &quot;execute&quot;, &quot;delete&quot;]
-  script_name:
-    description:
-      - The name of the script.
-    required: True
-  script_type:
-    description:
-      - The type of script (CLI or TCL).
-    required: false
-  script_target:
-    description:
-      - The target of the script to be run.
-    required: false
-  script_description:
-    description:
-      - The description of the script.
-    required: false
-  script_content:
-    description:
-      - The script content that will be executed.
-    required: false
-  script_scope:
-    description:
-      - (datasource) The devices that the script will run on, can have both device member and device group member.
-    required: false
-  script_package:
-    description:
-      - (datasource) Policy package object to run the script against
-    required: false
-&#39;&#39;&#39;
+<span class="s1">options:</span>
+<span class="s1">  adom:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The administrative domain (admon) the configuration belongs to</span>
+<span class="s1">    required: true</span>
+<span class="s1">  vdom:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The virtual domain (vdom) the configuration belongs to</span>
+<span class="s1">  host:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The FortiManager&#39;s Address.</span>
+<span class="s1">    required: true</span>
+<span class="s1">  username:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The username to log into the FortiManager</span>
+<span class="s1">    required: true</span>
+<span class="s1">  password:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The password associated with the username account.</span>
+<span class="s1">    required: false</span>
+<span class="s1">  state:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The desired state of the specified object.</span>
+<span class="s1">      - present - will create a script.</span>
+<span class="s1">      - execute - execute the scipt.</span>
+<span class="s1">      - delete - delete the script.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: present</span>
+<span class="s1">    choices: [&quot;present&quot;, &quot;execute&quot;, &quot;delete&quot;]</span>
+<span class="s1">  script_name:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The name of the script.</span>
+<span class="s1">    required: True</span>
+<span class="s1">  script_type:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The type of script (CLI or TCL).</span>
+<span class="s1">    required: false</span>
+<span class="s1">  script_target:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The target of the script to be run.</span>
+<span class="s1">    required: false</span>
+<span class="s1">  script_description:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The description of the script.</span>
+<span class="s1">    required: false</span>
+<span class="s1">  script_content:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The script content that will be executed.</span>
+<span class="s1">    required: false</span>
+<span class="s1">  script_scope:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - (datasource) The devices that the script will run on, can have both device member and device group member.</span>
+<span class="s1">    required: false</span>
+<span class="s1">  script_package:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - (datasource) Policy package object to run the script against</span>
+<span class="s1">    required: false</span>
+<span class="s1">&#39;&#39;&#39;</span>
 
-EXAMPLES = &#39;&#39;&#39;
-- name: CREATE SCRIPT
-  fmgr_script:
-    host: &quot;{{inventory_hostname}}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    adom: &quot;root&quot;
-    script_name: &quot;TestScript&quot;
-    script_type: &quot;cli&quot;
-    script_target: &quot;remote_device&quot;
-    script_description: &quot;Create by Ansible&quot;
-    script_content: &quot;get system status&quot;
+<span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: CREATE SCRIPT</span>
+<span class="s1">  fmgr_script:</span>
+<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    adom: &quot;root&quot;</span>
+<span class="s1">    script_name: &quot;TestScript&quot;</span>
+<span class="s1">    script_type: &quot;cli&quot;</span>
+<span class="s1">    script_target: &quot;remote_device&quot;</span>
+<span class="s1">    script_description: &quot;Create by Ansible&quot;</span>
+<span class="s1">    script_content: &quot;get system status&quot;</span>
 
-- name: EXECUTE SCRIPT
-  fmgr_script:
-    host: &quot;{{inventory_hostname}}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    adom: &quot;root&quot;
-    script_name: &quot;TestScript&quot;
-    state: &quot;execute&quot;
-    script_scope: &quot;FGT1,FGT2&quot;
+<span class="s1">- name: EXECUTE SCRIPT</span>
+<span class="s1">  fmgr_script:</span>
+<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    adom: &quot;root&quot;</span>
+<span class="s1">    script_name: &quot;TestScript&quot;</span>
+<span class="s1">    state: &quot;execute&quot;</span>
+<span class="s1">    script_scope: &quot;FGT1,FGT2&quot;</span>
 
-- name: DELETE SCRIPT
-  fmgr_script:
-    host: &quot;{{inventory_hostname}}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    adom: &quot;root&quot;
-    script_name: &quot;TestScript&quot;
-    state: &quot;delete&quot;
-&#39;&#39;&#39;
+<span class="s1">- name: DELETE SCRIPT</span>
+<span class="s1">  fmgr_script:</span>
+<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    adom: &quot;root&quot;</span>
+<span class="s1">    script_name: &quot;TestScript&quot;</span>
+<span class="s1">    state: &quot;delete&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
 
-RETURN = &quot;&quot;&quot;
-api_result:
-  description: full API response, includes status code and message
-  returned: always
-  type: string
-&quot;&quot;&quot;
+<span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">api_result:</span>
+<span class="s2">  description: full API response, includes status code and message</span>
+<span class="s2">  returned: always</span>
+<span class="s2">  type: string</span>
+<span class="s2">&quot;&quot;&quot;</span>
 
-from ansible.module_utils.basic import AnsibleModule, env_fallback
-from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">AnsibleFortiManager</span>
 
-# check for pyFMG lib
-try:
-    from pyFMG.fortimgr import FortiManager
-    HAS_PYFMGR = True
-except ImportError:
-    HAS_PYFMGR = False
-
-
-def set_script(fmg, script_name, script_type, script_content, script_desc, script_target, adom):
-    &quot;&quot;&quot;
-    This method sets a script.
-    &quot;&quot;&quot;
-
-    datagram = {
-        &#39;content&#39;: script_content,
-        &#39;desc&#39;: script_desc,
-        &#39;name&#39;: script_name,
-        &#39;target&#39;: script_target,
-        &#39;type&#39;: script_type,
-    }
-
-    url = &#39;/dvmdb/adom/{adom}/script/&#39;.format(adom=adom)
-    response = fmg.set(url, datagram)
-    return response
+<span class="c1"># check for pyFMG lib</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pyFMG.fortimgr</span> <span class="kn">import</span> <span class="n">FortiManager</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">False</span>
 
 
-def delete_script(fmg, script_name, adom):
-    &quot;&quot;&quot;
-    This method deletes a script.
-    &quot;&quot;&quot;
+<span class="k">def</span> <span class="nf">set_script</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">script_name</span><span class="p">,</span> <span class="n">script_type</span><span class="p">,</span> <span class="n">script_content</span><span class="p">,</span> <span class="n">script_desc</span><span class="p">,</span> <span class="n">script_target</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method sets a script.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    datagram = {
-        &#39;name&#39;: script_name,
-    }
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;content&#39;</span><span class="p">:</span> <span class="n">script_content</span><span class="p">,</span>
+        <span class="s1">&#39;desc&#39;</span><span class="p">:</span> <span class="n">script_desc</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">script_name</span><span class="p">,</span>
+        <span class="s1">&#39;target&#39;</span><span class="p">:</span> <span class="n">script_target</span><span class="p">,</span>
+        <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="n">script_type</span><span class="p">,</span>
+    <span class="p">}</span>
 
-    url = &#39;/dvmdb/adom/{adom}/script/{script_name}&#39;.format(adom=adom, script_name=script_name)
-    response = fmg.delete(url, datagram)
-    return response
-
-
-def execute_script(fmg, script_name, scope, package, adom, vdom):
-    &quot;&quot;&quot;
-    This method will execute a specific script.
-    &quot;&quot;&quot;
-
-    scope_list = list()
-    scope = scope.replace(&#39; &#39;, &#39;&#39;)
-    scope = scope.split(&#39;,&#39;)
-    for dev_name in scope:
-        scope_list.append({&#39;name&#39;: dev_name, &#39;vdom&#39;: vdom})
-
-    datagram = {
-        &#39;adom&#39;: adom,
-        &#39;script&#39;: script_name,
-        &#39;package&#39;: package,
-        &#39;scope&#39;: scope_list,
-    }
-
-    url = &#39;/dvmdb/adom/{adom}/script/execute&#39;.format(adom=adom)
-    response = fmg.execute(url, datagram)
-    return response
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/script/&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 
 
-def main():
-    argument_spec = dict(
-        adom=dict(required=False, type=&quot;str&quot;),
-        vdom=dict(required=False, type=&quot;str&quot;),
-        host=dict(required=True, type=&quot;str&quot;),
-        password=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_PASSWORD&quot;]), no_log=True),
-        username=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_USERNAME&quot;])),
-        state=dict(choices=[&quot;execute&quot;, &quot;delete&quot;, &quot;present&quot;], type=&quot;str&quot;, default=&quot;present&quot;),
+<span class="k">def</span> <span class="nf">delete_script</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">script_name</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method deletes a script.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-        script_name=dict(required=True, type=&quot;str&quot;),
-        script_type=dict(required=False, type=&quot;str&quot;),
-        script_target=dict(required=False, type=&quot;str&quot;),
-        script_description=dict(required=False, type=&quot;str&quot;),
-        script_content=dict(required=False, type=&quot;str&quot;),
-        script_scope=dict(required=False, type=&quot;str&quot;),
-        script_package=dict(required=False, type=&quot;str&quot;),
-    )
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">script_name</span><span class="p">,</span>
+    <span class="p">}</span>
 
-    module = AnsibleModule(argument_spec, supports_check_mode=True,)
-
-    # check if params are set
-    if module.params[&quot;host&quot;] is None or module.params[&quot;username&quot;] is None:
-        module.fail_json(msg=&quot;Host and username are required for connection&quot;)
-
-    # check if login failed
-    fmg = AnsibleFortiManager(module, module.params[&quot;host&quot;], module.params[&quot;username&quot;], module.params[&quot;password&quot;])
-    response = fmg.login()
-
-    if response[1][&#39;status&#39;][&#39;code&#39;] != 0:
-        module.fail_json(msg=&quot;Connection to FortiManager Failed&quot;)
-    else:
-        adom = module.params[&quot;adom&quot;]
-        if adom is None:
-            adom = &quot;root&quot;
-        vdom = module.params[&quot;vdom&quot;]
-        if vdom is None:
-            vdom = &quot;root&quot;
-        state = module.params[&quot;state&quot;]
-        if state is None:
-            state = &quot;present&quot;
-
-        script_name = module.params[&quot;script_name&quot;]
-        script_type = module.params[&quot;script_type&quot;]
-        script_target = module.params[&quot;script_target&quot;]
-        script_description = module.params[&quot;script_description&quot;]
-        script_content = module.params[&quot;script_content&quot;]
-        script_scope = module.params[&quot;script_scope&quot;]
-        script_package = module.params[&quot;script_package&quot;]
-
-        # if state is present (default), then add the script
-        if state == &quot;present&quot;:
-            results = set_script(fmg, script_name, script_type, script_content, script_description, script_target, adom)
-            if not results[0] == 0:
-                if isinstance(results[1], list):
-                    module.fail_json(msg=&quot;Adding Script Failed&quot;, **results)
-                else:
-                    module.fail_json(msg=&quot;Adding Script Failed&quot;)
-        elif state == &quot;execute&quot;:
-            results = execute_script(fmg, script_name, script_scope, script_package, adom, vdom)
-            if not results[0] == 0:
-                module.fail_json(msg=&quot;Script Execution Failed&quot;, **results)
-        elif state == &quot;delete&quot;:
-            results = delete_script(fmg, script_name, adom)
-            if not results[0] == 0:
-                module.fail_json(msg=&quot;Script Deletion Failed&quot;, **results)
-
-        fmg.logout()
-
-        # results is returned as a tuple
-        return module.exit_json(**results[1])
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/script/{script_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">script_name</span><span class="o">=</span><span class="n">script_name</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 
 
-if __name__ == &quot;__main__&quot;:
-    main()
+<span class="k">def</span> <span class="nf">execute_script</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">script_name</span><span class="p">,</span> <span class="n">scope</span><span class="p">,</span> <span class="n">package</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">vdom</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method will execute a specific script.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">scope_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">scope</span> <span class="o">=</span> <span class="n">scope</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">scope</span> <span class="o">=</span> <span class="n">scope</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">dev_name</span> <span class="ow">in</span> <span class="n">scope</span><span class="p">:</span>
+        <span class="n">scope_list</span><span class="o">.</span><span class="n">append</span><span class="p">({</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">dev_name</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">})</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;script&#39;</span><span class="p">:</span> <span class="n">script_name</span><span class="p">,</span>
+        <span class="s1">&#39;package&#39;</span><span class="p">:</span> <span class="n">package</span><span class="p">,</span>
+        <span class="s1">&#39;scope&#39;</span><span class="p">:</span> <span class="n">scope_list</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/script/execute&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">vdom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">])),</span>
+        <span class="n">state</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;execute&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;present&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;present&quot;</span><span class="p">),</span>
+
+        <span class="n">script_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">script_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">script_target</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">script_description</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">script_content</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">script_scope</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">script_package</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,)</span>
+
+    <span class="c1"># check if params are set</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+
+    <span class="c1"># check if login failed</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">adom</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">adom</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">adom</span> <span class="o">=</span> <span class="s2">&quot;root&quot;</span>
+        <span class="n">vdom</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">vdom</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">vdom</span> <span class="o">=</span> <span class="s2">&quot;root&quot;</span>
+        <span class="n">state</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span>
+        <span class="k">if</span> <span class="n">state</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">state</span> <span class="o">=</span> <span class="s2">&quot;present&quot;</span>
+
+        <span class="n">script_name</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;script_name&quot;</span><span class="p">]</span>
+        <span class="n">script_type</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;script_type&quot;</span><span class="p">]</span>
+        <span class="n">script_target</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;script_target&quot;</span><span class="p">]</span>
+        <span class="n">script_description</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;script_description&quot;</span><span class="p">]</span>
+        <span class="n">script_content</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;script_content&quot;</span><span class="p">]</span>
+        <span class="n">script_scope</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;script_scope&quot;</span><span class="p">]</span>
+        <span class="n">script_package</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;script_package&quot;</span><span class="p">]</span>
+
+        <span class="c1"># if state is present (default), then add the script</span>
+        <span class="k">if</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">&quot;present&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">set_script</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">script_name</span><span class="p">,</span> <span class="n">script_type</span><span class="p">,</span> <span class="n">script_content</span><span class="p">,</span> <span class="n">script_description</span><span class="p">,</span> <span class="n">script_target</span><span class="p">,</span> <span class="n">adom</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Adding Script Failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Adding Script Failed&quot;</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">&quot;execute&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">execute_script</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">script_name</span><span class="p">,</span> <span class="n">script_scope</span><span class="p">,</span> <span class="n">script_package</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">vdom</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Script Execution Failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+        <span class="k">elif</span> <span class="n">state</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">delete_script</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">script_name</span><span class="p">,</span> <span class="n">adom</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Script Deletion Failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+
+        <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+
+        <span class="c1"># results is returned as a tuple</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -548,7 +740,7 @@ if __name__ == &quot;__main__&quot;:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps.
+        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps
 
     </p>
   </div>
@@ -567,21 +759,14 @@ if __name__ == &quot;__main__&quot;:
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 

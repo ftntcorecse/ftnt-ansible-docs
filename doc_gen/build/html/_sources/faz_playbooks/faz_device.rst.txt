@@ -2,7 +2,7 @@
 faz_device
 ==========
 
-Not Parsed
+Add a device to the Device Manager database.
 
 
 Playbook Task Examples

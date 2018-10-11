@@ -84,7 +84,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device.html">fmgr_device</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_device_group</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#module-metadata-parameters">Module Metadata / Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
 </ul>
 </li>
@@ -179,427 +181,678 @@
             
   <div class="section" id="fmgr-device-group">
 <h1>fmgr_device_group<a class="headerlink" href="#fmgr-device-group" title="Permalink to this headline">¶</a></h1>
-<p>Not Parsed</p>
-<div class="section" id="module-metadata-parameters">
-<h2>Module Metadata / Parameters<a class="headerlink" href="#module-metadata-parameters" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">module</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span>
-<span class="l l-Scalar l-Scalar-Plain">version_added</span><span class="p p-Indicator">:</span> <span class="s">&quot;2.6&quot;</span>
-<span class="l l-Scalar l-Scalar-Plain">author</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Luke Weighall, Andrew Welsh</span>
-<span class="l l-Scalar l-Scalar-Plain">short_description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Alter FortiManager device groups</span>
-<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Add or edit device groups and assign devices to device groups FortiManager Device Manager using jsonrpc API</span>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> fmgr_device_group</p>
+<p><strong>Description:</strong> [‘Add or edit device groups and assign devices to device groups FortiManager Device Manager using jsonrpc API’]</p>
+<p><strong>Author(s):</strong> Luke Weighall, Andrew Welsh</p>
+<p><strong>Ansible Version Added:</strong> 2.6</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adom">
+<h3>adom<a class="headerlink" href="#adom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The ADOM the configuration should belong to.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="grp-desc">
+<h3>grp_desc<a class="headerlink" href="#grp-desc" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The description of the device group.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="grp-members">
+<h3>grp_members<a class="headerlink" href="#grp-members" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: A comma separated list of device names or device groups to be added as members to the device group.</p>
+<p>If Group Members are defined, and state=”absent”, only group members will be removed.</p>
+<p>If you want to delete a group itself, you must omit this parameter from the task in playbook</p>
+<p>Otherwise module assumes</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+</ul>
+</div>
+<div class="section" id="grp-name">
+<h3>grp_name<a class="headerlink" href="#grp-name" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The name of the device group.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="host">
+<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The FortiManager’s Address.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="password">
+<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The password associated with the username account.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="state">
+<h3>state<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: The desired state of the specified object.</p>
+<p>absent will delete the object if it exists. If grp_members is defined, only members are deleted.</p>
+<p>present will create the configuration if needed.</p>
+<p>To delete a grp_name, you must omit the grp_members field in the playbook task while setting to absent</p>
+</li>
+<li><p class="first">Required: True</p>
+</li>
+<li><p class="first">default: present</p>
+</li>
+<li><p class="first">choices: [‘absent’, ‘present’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="username">
+<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The username to log into the FortiManager</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="vdom">
+<h3>vdom<a class="headerlink" href="#vdom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The VDOM of on the Fortigate you want to add, must match the device in FMGR. Usually root.</li>
+<li>Required: True</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>add_device_group</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_device_group</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to add device groups</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-<span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The ADOM the configuration should belong to.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;desc&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_desc&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;os_type&quot;</span><span class="p">:</span> <span class="s2">&quot;fos&quot;</span>
+    <span class="p">}</span>
 
-  <span class="l l-Scalar l-Scalar-Plain">vdom</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The VDOM of on the Fortigate you want to add, must match the device in FMGR. Usually root.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The FortiManager&#39;s Address.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The username to log into the FortiManager</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The password associated with the username account.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The desired state of the specified object.</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">absent will delete the object if it exists. If grp_members is defined, only members are deleted.</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">present will create the configuration if needed.</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">To delete a grp_name, you must omit the grp_members field in the playbook task while setting to absent</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">present</span>
-
-    <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;absent&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;present&quot;</span><span class="p p-Indicator">]</span>
-  <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The name of the device group.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The description of the device group.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">grp_members</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">A comma separated list of device names or device groups to be added as members to the device group.</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">If Group Members are defined, and state=&quot;absent&quot;, only group members will be removed.</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">If you want to delete a group itself, you must omit this parameter from the task in playbook</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Otherwise module assumes</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
+</div></blockquote>
+<ul class="simple">
+<li>add_group_member</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_group_member</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to update device groups add members</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">device_member_list</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_members&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">device_member_list</span> <span class="o">=</span> <span class="n">device_member_list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">dev_name</span> <span class="ow">in</span> <span class="n">device_member_list</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">dev_name</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]}</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group/{grp_name}/object member&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                                         <span class="n">grp_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">])</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>delete_device_group</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_device_group</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to add devices to the FMGR</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group/{grp_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">grp_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>delete_group_member</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_group_member</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to update device groups add members</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">device_member_list</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_members&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">device_member_list</span> <span class="o">=</span> <span class="n">device_member_list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">dev_name</span> <span class="ow">in</span> <span class="n">device_member_list</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">dev_name</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]}</span>
+
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group/{grp_name}/object member&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                                         <span class="n">grp_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">])</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="c1"># FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_logoutfmg, module, msg=”NULL”, results=), good_codes=</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="p">(),</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">logout_on_fail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logout_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># VALIDATION ERROR (NO RESULTS, JUST AN EXIT)</span>
+    <span class="k">if</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">&quot;NULL&quot;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># SUBMISSION ERROR</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;NULL&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No status message returned from pyFMG. Possible that this was a GET with a tuple result.&quot;</span>
+
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">good_codes</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">logout_on_fail</span><span class="p">:</span>
+                    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">return_msg</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">&quot; -- LOGOUT ON FAIL IS OFF, MOVING ON&quot;</span>
+                    <span class="k">return</span> <span class="n">return_msg</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">logout_on_success</span><span class="p">:</span>
+                    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">return_msg</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">&quot; -- LOGOUT ON SUCCESS IS OFF, MOVING ON TO REST OF CODE&quot;</span>
+                    <span class="k">return</span> <span class="n">return_msg</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>get_groups</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_groups</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used GET the HA PEERS of a FortiManager Node</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;get&quot;</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">vdom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">])),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">state</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;absent&quot;</span><span class="p">,</span> <span class="s2">&quot;present&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;present&quot;</span><span class="p">),</span>
+        <span class="n">grp_desc</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">grp_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">grp_members</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="c1"># handle params passed via provider and insure they are represented as the data type expected by fortimanager</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;grp_name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;grp_desc&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;grp_desc&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;grp_members&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;grp_members&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;vdom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="c1"># validate required arguments are passed; not used in argument_spec to allow params to be called from provider</span>
+    <span class="c1"># check if params are set</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CHECK IF LOGIN FAILED</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># START SESSION LOGIC</span>
+
+        <span class="c1"># PROCESS THE GROUP ADDS FIRST</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;present&quot;</span><span class="p">:</span>
+            <span class="c1"># add device group</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">add_device_group</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2</span><span class="p">:</span>
+                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Add Device Group&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># PROCESS THE GROUP MEMBER ADDS</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_members&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;present&quot;</span><span class="p">:</span>
+            <span class="c1"># assign devices to device group</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">add_group_member</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2</span><span class="p">:</span>
+                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Add Group Member(s)&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># PROCESS THE GROUP MEMBER DELETES</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_members&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;absent&quot;</span><span class="p">:</span>
+            <span class="c1"># remove devices grom a group</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">delete_group_member</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Delete Group Member(s)&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># PROCESS THE GROUP DELETES, ONLY IF GRP_MEMBERS IS NOT NULL TOO</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;absent&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_members&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c1"># delete device group</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">delete_device_group</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Delete Device Group&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># RETURN THE RESULTS</span>
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="module-source-code">
 <h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/python
-#
-# This file is part of Ansible
-#
-# Ansible is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# Ansible is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
-#
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Ansible</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
 
-from __future__ import absolute_import, division, print_function
-__metaclass__ = type
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
 
-ANSIBLE_METADATA = {
-    &quot;metadata_version&quot;: &quot;1.1&quot;,
-    &quot;status&quot;: [&quot;preview&quot;],
-    &quot;supported_by&quot;: &quot;community&quot;
-}
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;metadata_version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;preview&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;supported_by&quot;</span><span class="p">:</span> <span class="s2">&quot;community&quot;</span>
+<span class="p">}</span>
 
-DOCUMENTATION = &#39;&#39;&#39;
----
-module: fmgr_device_group
-version_added: &quot;2.6&quot;
-author: Luke Weighall, Andrew Welsh
-short_description: Alter FortiManager device groups
-description:
-  - Add or edit device groups and assign devices to device groups FortiManager Device Manager using jsonrpc API
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">module: fmgr_device_group</span>
+<span class="s1">version_added: &quot;2.6&quot;</span>
+<span class="s1">author: Luke Weighall, Andrew Welsh</span>
+<span class="s1">short_description: Alter FortiManager device groups</span>
+<span class="s1">description:</span>
+<span class="s1">  - Add or edit device groups and assign devices to device groups FortiManager Device Manager using jsonrpc API</span>
 
-options:
-  adom:
-    description:
-      - The ADOM the configuration should belong to.
-    required: true
+<span class="s1">options:</span>
+<span class="s1">  adom:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The ADOM the configuration should belong to.</span>
+<span class="s1">    required: true</span>
 
-  vdom:
-    description:
-      - The VDOM of on the Fortigate you want to add, must match the device in FMGR. Usually root.
-    required: true
+<span class="s1">  vdom:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The VDOM of on the Fortigate you want to add, must match the device in FMGR. Usually root.</span>
+<span class="s1">    required: true</span>
 
-  host:
-    description:
-      - The FortiManager&#39;s Address.
-    required: true
+<span class="s1">  host:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The FortiManager&#39;s Address.</span>
+<span class="s1">    required: true</span>
 
-  username:
-    description:
-      - The username to log into the FortiManager
-    required: true
-  password:
-    description:
-      - The password associated with the username account.
-    required: false
+<span class="s1">  username:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The username to log into the FortiManager</span>
+<span class="s1">    required: true</span>
+<span class="s1">  password:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The password associated with the username account.</span>
+<span class="s1">    required: false</span>
 
-  state:
-    description:
-      - The desired state of the specified object.
-      - absent will delete the object if it exists. If grp_members is defined, only members are deleted.
-      - present will create the configuration if needed.
-      - To delete a grp_name, you must omit the grp_members field in the playbook task while setting to absent
-    required: true
-    default: present
+<span class="s1">  state:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The desired state of the specified object.</span>
+<span class="s1">      - absent will delete the object if it exists. If grp_members is defined, only members are deleted.</span>
+<span class="s1">      - present will create the configuration if needed.</span>
+<span class="s1">      - To delete a grp_name, you must omit the grp_members field in the playbook task while setting to absent</span>
+<span class="s1">    required: true</span>
+<span class="s1">    default: present</span>
 
-    choices: [&quot;absent&quot;, &quot;present&quot;]
-  grp_name:
-    description:
-      - The name of the device group.
-    required: false
+<span class="s1">    choices: [&quot;absent&quot;, &quot;present&quot;]</span>
+<span class="s1">  grp_name:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The name of the device group.</span>
+<span class="s1">    required: false</span>
 
-  grp_desc:
-    description:
-      - The description of the device group.
-    required: false
+<span class="s1">  grp_desc:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The description of the device group.</span>
+<span class="s1">    required: false</span>
 
-  grp_members:
-    description:
-      - A comma separated list of device names or device groups to be added as members to the device group.
-      - If Group Members are defined, and state=&quot;absent&quot;, only group members will be removed.
-      - If you want to delete a group itself, you must omit this parameter from the task in playbook
-      - Otherwise module assumes
-    required: false
+<span class="s1">  grp_members:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - A comma separated list of device names or device groups to be added as members to the device group.</span>
+<span class="s1">      - If Group Members are defined, and state=&quot;absent&quot;, only group members will be removed.</span>
+<span class="s1">      - If you want to delete a group itself, you must omit this parameter from the task in playbook</span>
+<span class="s1">      - Otherwise module assumes</span>
+<span class="s1">    required: false</span>
 
-&#39;&#39;&#39;
-
-
-EXAMPLES = &#39;&#39;&#39;
-- name: CREATE DEVICE GROUP
-  fmgr_device_group:
-    host: &quot;{{inventory_hostname}}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    grp_name: &quot;TestGroup&quot;
-    grp_desc: &quot;CreatedbyAnsible&quot;
-    adom: &quot;ansible&quot;
-    state: &quot;present&quot;
-
-- name: CREATE DEVICE GROUP 2
-  fmgr_device_group:
-    host: &quot;{{inventory_hostname}}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    grp_name: &quot;AnsibleGroup&quot;
-    grp_desc: &quot;CreatedbyAnsible&quot;
-    adom: &quot;ansible&quot;
-    state: &quot;present&quot;
-
-- name: ADD DEVICES TO DEVICE GROUP
-  fmgr_device_group:
-    host: &quot;{{inventory_hostname}}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    state: &quot;present&quot;
-    grp_name: &quot;TestGroup&quot;
-    grp_members: &quot;FGT1,FGT2&quot;
-    adom: &quot;ansible&quot;
-    vdom: &quot;root&quot;
-
-- name: REMOVE DEVICES TO DEVICE GROUP
-  fmgr_device_group:
-    host: &quot;{{inventory_hostname}}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    state: &quot;absent&quot;
-    grp_name: &quot;TestGroup&quot;
-    grp_members: &quot;FGT1,FGT2&quot;
-    adom: &quot;ansible&quot;
-
-- name: DELETE DEVICE GROUP
-  fmgr_device_group:
-    host: &quot;{{inventory_hostname}}&quot;
-    username: &quot;{{ username }}&quot;
-    password: &quot;{{ password }}&quot;
-    grp_name: &quot;AnsibleGroup&quot;
-    grp_desc: &quot;CreatedbyAnsible&quot;
-    state: &quot;absent&quot;
-    adom: &quot;ansible&quot;
-&#39;&#39;&#39;
-RETURN = &quot;&quot;&quot;
-api_result:
-  description: full API response, includes status code and message
-  returned: always
-  type: string
-&quot;&quot;&quot;
-
-from ansible.module_utils.basic import AnsibleModule, env_fallback
-from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
+<span class="s1">&#39;&#39;&#39;</span>
 
 
-# check for pyFMG lib
-try:
-    from pyFMG.fortimgr import FortiManager
-    HAS_PYFMGR = True
-except ImportError:
-    HAS_PYFMGR = False
+<span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: CREATE DEVICE GROUP</span>
+<span class="s1">  fmgr_device_group:</span>
+<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    grp_name: &quot;TestGroup&quot;</span>
+<span class="s1">    grp_desc: &quot;CreatedbyAnsible&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    state: &quot;present&quot;</span>
+
+<span class="s1">- name: CREATE DEVICE GROUP 2</span>
+<span class="s1">  fmgr_device_group:</span>
+<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    grp_name: &quot;AnsibleGroup&quot;</span>
+<span class="s1">    grp_desc: &quot;CreatedbyAnsible&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    state: &quot;present&quot;</span>
+
+<span class="s1">- name: ADD DEVICES TO DEVICE GROUP</span>
+<span class="s1">  fmgr_device_group:</span>
+<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    state: &quot;present&quot;</span>
+<span class="s1">    grp_name: &quot;TestGroup&quot;</span>
+<span class="s1">    grp_members: &quot;FGT1,FGT2&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    vdom: &quot;root&quot;</span>
+
+<span class="s1">- name: REMOVE DEVICES TO DEVICE GROUP</span>
+<span class="s1">  fmgr_device_group:</span>
+<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    state: &quot;absent&quot;</span>
+<span class="s1">    grp_name: &quot;TestGroup&quot;</span>
+<span class="s1">    grp_members: &quot;FGT1,FGT2&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+
+<span class="s1">- name: DELETE DEVICE GROUP</span>
+<span class="s1">  fmgr_device_group:</span>
+<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    grp_name: &quot;AnsibleGroup&quot;</span>
+<span class="s1">    grp_desc: &quot;CreatedbyAnsible&quot;</span>
+<span class="s1">    state: &quot;absent&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+<span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">api_result:</span>
+<span class="s2">  description: full API response, includes status code and message</span>
+<span class="s2">  returned: always</span>
+<span class="s2">  type: string</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">AnsibleFortiManager</span>
 
 
-def get_groups(fmg, paramgram):
-    &quot;&quot;&quot;
-    This method is used GET the HA PEERS of a FortiManager Node
-    &quot;&quot;&quot;
-
-    datagram = {
-        &quot;method&quot;: &quot;get&quot;
-    }
-
-    url = &#39;/dvmdb/adom/{adom}/group&#39;.format(adom=paramgram[&quot;adom&quot;])
-    response = fmg.get(url, datagram)
-    return response
+<span class="c1"># check for pyFMG lib</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pyFMG.fortimgr</span> <span class="kn">import</span> <span class="n">FortiManager</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">False</span>
 
 
-def add_device_group(fmg, paramgram):
-    &quot;&quot;&quot;
-    This method is used to add device groups
-    &quot;&quot;&quot;
+<span class="k">def</span> <span class="nf">get_groups</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used GET the HA PEERS of a FortiManager Node</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    datagram = {
-        &quot;name&quot;: paramgram[&quot;grp_name&quot;],
-        &quot;desc&quot;: paramgram[&quot;grp_desc&quot;],
-        &quot;os_type&quot;: &quot;fos&quot;
-    }
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;get&quot;</span>
+    <span class="p">}</span>
 
-    url = &#39;/dvmdb/adom/{adom}/group&#39;.format(adom=paramgram[&quot;adom&quot;])
-    response = fmg.add(url, datagram)
-    return response
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 
 
-def delete_device_group(fmg, paramgram):
-    &quot;&quot;&quot;
-    This method is used to add devices to the FMGR
-    &quot;&quot;&quot;
+<span class="k">def</span> <span class="nf">add_device_group</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to add device groups</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    datagram = {
-        &quot;adom&quot;: paramgram[&quot;adom&quot;],
-        &quot;name&quot;: paramgram[&quot;grp_name&quot;]
-    }
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;desc&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_desc&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;os_type&quot;</span><span class="p">:</span> <span class="s2">&quot;fos&quot;</span>
+    <span class="p">}</span>
 
-    url = &#39;/dvmdb/adom/{adom}/group/{grp_name}&#39;.format(adom=paramgram[&quot;adom&quot;], grp_name=paramgram[&quot;grp_name&quot;])
-    response = fmg.delete(url, datagram)
-    return response
-
-
-def add_group_member(fmg, paramgram):
-    &quot;&quot;&quot;
-    This method is used to update device groups add members
-    &quot;&quot;&quot;
-    response = None
-    device_member_list = paramgram[&quot;grp_members&quot;].replace(&#39; &#39;, &#39;&#39;)
-    device_member_list = device_member_list.split(&#39;,&#39;)
-
-    for dev_name in device_member_list:
-        datagram = {&#39;name&#39;: dev_name, &#39;vdom&#39;: paramgram[&quot;vdom&quot;]}
-
-        url = &#39;/dvmdb/adom/{adom}/group/{grp_name}/object member&#39;.format(adom=paramgram[&quot;adom&quot;],
-                                                                         grp_name=paramgram[&quot;grp_name&quot;])
-        response = fmg.add(url, datagram)
-
-    return response
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 
 
-def delete_group_member(fmg, paramgram):
-    &quot;&quot;&quot;
-    This method is used to update device groups add members
-    &quot;&quot;&quot;
-    response = None
-    device_member_list = paramgram[&quot;grp_members&quot;].replace(&#39; &#39;, &#39;&#39;)
-    device_member_list = device_member_list.split(&#39;,&#39;)
+<span class="k">def</span> <span class="nf">delete_device_group</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to add devices to the FMGR</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    for dev_name in device_member_list:
-        datagram = {&#39;name&#39;: dev_name, &#39;vdom&#39;: paramgram[&quot;vdom&quot;]}
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
 
-        url = &#39;/dvmdb/adom/{adom}/group/{grp_name}/object member&#39;.format(adom=paramgram[&quot;adom&quot;],
-                                                                         grp_name=paramgram[&quot;grp_name&quot;])
-        response = fmg.delete(url, datagram)
-
-    return response
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group/{grp_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">grp_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 
 
-# FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
-def fmgr_logout(fmg, module, msg=&quot;NULL&quot;, results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-    &quot;&quot;&quot;
-    THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-    &quot;&quot;&quot;
+<span class="k">def</span> <span class="nf">add_group_member</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to update device groups add members</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">device_member_list</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_members&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">device_member_list</span> <span class="o">=</span> <span class="n">device_member_list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
 
-    # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-    if msg != &quot;NULL&quot; and len(results) == 0:
-        try:
-            fmg.logout()
-        except:
-            pass
-        module.fail_json(msg=msg)
+    <span class="k">for</span> <span class="n">dev_name</span> <span class="ow">in</span> <span class="n">device_member_list</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">dev_name</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]}</span>
 
-    # SUBMISSION ERROR
-    if len(results) &gt; 0:
-        if msg == &quot;NULL&quot;:
-            try:
-                msg = results[1][&#39;status&#39;][&#39;message&#39;]
-            except:
-                msg = &quot;No status message returned from pyFMG. Possible that this was a GET with a tuple result.&quot;
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group/{grp_name}/object member&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                                         <span class="n">grp_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">])</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
 
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-                else:
-                    return_msg = msg + &quot; -- LOGOUT ON FAIL IS OFF, MOVING ON&quot;
-                    return return_msg
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg=msg, **results[1])
-                else:
-                    return_msg = msg + &quot; -- LOGOUT ON SUCCESS IS OFF, MOVING ON TO REST OF CODE&quot;
-                    return return_msg
+    <span class="k">return</span> <span class="n">response</span>
 
 
-def main():
-    argument_spec = dict(
-        adom=dict(required=False, type=&quot;str&quot;, default=&quot;root&quot;),
-        vdom=dict(required=False, type=&quot;str&quot;, default=&quot;root&quot;),
-        host=dict(required=True, type=&quot;str&quot;),
-        username=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_USERNAME&quot;])),
-        password=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_PASSWORD&quot;]), no_log=True),
-        state=dict(choices=[&quot;absent&quot;, &quot;present&quot;], type=&quot;str&quot;, default=&quot;present&quot;),
-        grp_desc=dict(required=False, type=&quot;str&quot;),
-        grp_name=dict(required=True, type=&quot;str&quot;),
-        grp_members=dict(required=False, type=&quot;str&quot;),
-    )
+<span class="k">def</span> <span class="nf">delete_group_member</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method is used to update device groups add members</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="n">device_member_list</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_members&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">device_member_list</span> <span class="o">=</span> <span class="n">device_member_list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
 
-    module = AnsibleModule(argument_spec, supports_check_mode=True, )
+    <span class="k">for</span> <span class="n">dev_name</span> <span class="ow">in</span> <span class="n">device_member_list</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">dev_name</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]}</span>
 
-    # handle params passed via provider and insure they are represented as the data type expected by fortimanager
-    paramgram = {
-        &quot;state&quot;: module.params[&quot;state&quot;],
-        &quot;grp_name&quot;: module.params[&quot;grp_name&quot;],
-        &quot;grp_desc&quot;: module.params[&quot;grp_desc&quot;],
-        &quot;grp_members&quot;: module.params[&quot;grp_members&quot;],
-        &quot;adom&quot;: module.params[&quot;adom&quot;],
-        &quot;vdom&quot;: module.params[&quot;vdom&quot;]
-    }
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group/{grp_name}/object member&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                                         <span class="n">grp_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">])</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
 
-    # validate required arguments are passed; not used in argument_spec to allow params to be called from provider
-    # check if params are set
-    if module.params[&quot;host&quot;] is None or module.params[&quot;username&quot;] is None or module.params[&quot;password&quot;] is None:
-        module.fail_json(msg=&quot;Host and username are required for connection&quot;)
-
-    # CHECK IF LOGIN FAILED
-    fmg = AnsibleFortiManager(module, module.params[&quot;host&quot;], module.params[&quot;username&quot;], module.params[&quot;password&quot;])
-    response = fmg.login()
-    if response[1][&#39;status&#39;][&#39;code&#39;] != 0:
-        module.fail_json(msg=&quot;Connection to FortiManager Failed&quot;)
-    else:
-        # START SESSION LOGIC
-
-        # PROCESS THE GROUP ADDS FIRST
-        if paramgram[&quot;grp_name&quot;] is not None and paramgram[&quot;state&quot;] == &quot;present&quot;:
-            # add device group
-            results = add_device_group(fmg, paramgram)
-            if not results[0] == 0 and not results[0] == -2:
-                fmgr_logout(fmg, module, msg=&quot;Failed to Add Device Group&quot;, results=results, good_codes=[0])
-
-        # PROCESS THE GROUP MEMBER ADDS
-        if paramgram[&quot;grp_members&quot;] is not None and paramgram[&quot;state&quot;] == &quot;present&quot;:
-            # assign devices to device group
-            results = add_group_member(fmg, paramgram)
-            if not results[0] == 0 and not results[0] == -2:
-                fmgr_logout(fmg, module, msg=&quot;Failed to Add Group Member(s)&quot;, results=results, good_codes=[0])
-
-        # PROCESS THE GROUP MEMBER DELETES
-        if paramgram[&quot;grp_members&quot;] is not None and paramgram[&quot;state&quot;] == &quot;absent&quot;:
-            # remove devices grom a group
-            results = delete_group_member(fmg, paramgram)
-            if not results[0] == 0:
-                fmgr_logout(fmg, module, msg=&quot;Failed to Delete Group Member(s)&quot;, results=results, good_codes=[0])
-
-        # PROCESS THE GROUP DELETES, ONLY IF GRP_MEMBERS IS NOT NULL TOO
-        if paramgram[&quot;grp_name&quot;] is not None and paramgram[&quot;state&quot;] == &quot;absent&quot; and paramgram[&quot;grp_members&quot;] is None:
-            # delete device group
-            results = delete_device_group(fmg, paramgram)
-            if not results[0] == 0:
-                fmgr_logout(fmg, module, msg=&quot;Failed to Delete Device Group&quot;, results=results, good_codes=[0])
-
-    # RETURN THE RESULTS
-    return module.exit_json(**results[1])
+    <span class="k">return</span> <span class="n">response</span>
 
 
-if __name__ == &quot;__main__&quot;:
-    main()
+<span class="c1"># FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES</span>
+<span class="k">def</span> <span class="nf">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="p">(),</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">logout_on_fail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logout_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># VALIDATION ERROR (NO RESULTS, JUST AN EXIT)</span>
+    <span class="k">if</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">&quot;NULL&quot;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># SUBMISSION ERROR</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;NULL&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No status message returned from pyFMG. Possible that this was a GET with a tuple result.&quot;</span>
+
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">good_codes</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">logout_on_fail</span><span class="p">:</span>
+                    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">return_msg</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">&quot; -- LOGOUT ON FAIL IS OFF, MOVING ON&quot;</span>
+                    <span class="k">return</span> <span class="n">return_msg</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">logout_on_success</span><span class="p">:</span>
+                    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">return_msg</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">&quot; -- LOGOUT ON SUCCESS IS OFF, MOVING ON TO REST OF CODE&quot;</span>
+                    <span class="k">return</span> <span class="n">return_msg</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">vdom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">])),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">state</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;absent&quot;</span><span class="p">,</span> <span class="s2">&quot;present&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;present&quot;</span><span class="p">),</span>
+        <span class="n">grp_desc</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">grp_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">grp_members</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="c1"># handle params passed via provider and insure they are represented as the data type expected by fortimanager</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;grp_name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;grp_desc&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;grp_desc&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;grp_members&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;grp_members&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;vdom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="c1"># validate required arguments are passed; not used in argument_spec to allow params to be called from provider</span>
+    <span class="c1"># check if params are set</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CHECK IF LOGIN FAILED</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># START SESSION LOGIC</span>
+
+        <span class="c1"># PROCESS THE GROUP ADDS FIRST</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;present&quot;</span><span class="p">:</span>
+            <span class="c1"># add device group</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">add_device_group</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2</span><span class="p">:</span>
+                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Add Device Group&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># PROCESS THE GROUP MEMBER ADDS</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_members&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;present&quot;</span><span class="p">:</span>
+            <span class="c1"># assign devices to device group</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">add_group_member</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">2</span><span class="p">:</span>
+                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Add Group Member(s)&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># PROCESS THE GROUP MEMBER DELETES</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_members&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;absent&quot;</span><span class="p">:</span>
+            <span class="c1"># remove devices grom a group</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">delete_group_member</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Delete Group Member(s)&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="c1"># PROCESS THE GROUP DELETES, ONLY IF GRP_MEMBERS IS NOT NULL TOO</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;absent&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_members&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c1"># delete device group</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">delete_device_group</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Delete Device Group&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># RETURN THE RESULTS</span>
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -625,7 +878,7 @@ if __name__ == &quot;__main__&quot;:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps.
+        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps
 
     </p>
   </div>
@@ -644,21 +897,14 @@ if __name__ == &quot;__main__&quot;:
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 

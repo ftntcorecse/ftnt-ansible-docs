@@ -97,7 +97,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_script.html">fmgr_script</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_av.html">fmgr_secprof_av</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_sys_proxy</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#module-metadata-parameters">Module Metadata / Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
 </ul>
 </li>
@@ -179,248 +181,346 @@
             
   <div class="section" id="fmgr-sys-proxy">
 <h1>fmgr_sys_proxy<a class="headerlink" href="#fmgr-sys-proxy" title="Permalink to this headline">¶</a></h1>
-<p>Not Parsed</p>
-<div class="section" id="module-metadata-parameters">
-<h2>Module Metadata / Parameters<a class="headerlink" href="#module-metadata-parameters" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">module</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fmgr_sys_proxy</span>
-<span class="l l-Scalar l-Scalar-Plain">version_added</span><span class="p p-Indicator">:</span> <span class="s">&quot;2.8&quot;</span>
-<span class="l l-Scalar l-Scalar-Plain">author</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Andrew Welsh</span>
-<span class="l l-Scalar l-Scalar-Plain">short_description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Make FortiGate API calls via the FortiMananger</span>
-<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The FMG proxies FOS API calls via the FMG.  Review FortiGate API documentation to ensure you are passing correct</span>
-    <span class="l l-Scalar l-Scalar-Plain">parameters for both the FortiManager and FortiGate</span>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> fmgr_sys_proxy</p>
+<p><strong>Description:</strong> [‘The FMG proxies FOS API calls via the FMG.  Review FortiGate API documentation to ensure you are passing correct parameters for both the FortiManager and FortiGate’]</p>
+<p><strong>Author(s):</strong> Andrew Welsh</p>
+<p><strong>Ansible Version Added:</strong> 2.8</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="action">
+<h3>action<a class="headerlink" href="#action" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Specify HTTP action for the request. Either ‘get’ or ‘post’</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="adom">
+<h3>adom<a class="headerlink" href="#adom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The administrative domain (admon) the configuration belongs to</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="host">
+<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The FortiManager’s Address.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="password">
+<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The password associated with the username account.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="payload">
+<h3>payload<a class="headerlink" href="#payload" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: JSON payload of the request. The payload will be URL-encoded and becomes the “json” field in the query string for both GET and POST request.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="resource">
+<h3>resource<a class="headerlink" href="#resource" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: URL on the remote device to be accessed, string</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="target">
+<h3>target<a class="headerlink" href="#target" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: FOS datasource, either device or group object</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="username">
+<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The username to log into the FortiManager</li>
+<li>Required: True</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>fos_request</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fos_request</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
 
-<span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The administrative domain (admon) the configuration belongs to</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The FortiManager&#39;s Address.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The username to log into the FortiManager</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The password associated with the username account.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="c1"># get or post</span>
+            <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="n">action</span><span class="p">,</span>
+            <span class="c1"># dictionary of data</span>
+            <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="n">payload</span><span class="p">,</span>
+            <span class="c1"># FOS API URL including vdom params</span>
+            <span class="s2">&quot;resource&quot;</span><span class="p">:</span> <span class="n">resource</span><span class="p">,</span>
+            <span class="c1"># FMG device to make API calls to</span>
+            <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">target</span>
+        <span class="p">},</span>
 
-  <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Specify HTTP action for the request. Either &#39;get&#39; or &#39;post&#39;</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-  <span class="l l-Scalar l-Scalar-Plain">payload</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">JSON payload of the request. The payload will be URL-encoded and becomes the &quot;json&quot; field in the query string for both GET and POST request.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-  <span class="l l-Scalar l-Scalar-Plain">resource</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">URL on the remote device to be accessed, string</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-  <span class="l l-Scalar l-Scalar-Plain">target</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">FOS datasource, either device or group object</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/sys/proxy/json&quot;</span>
+
+    <span class="n">status</span><span class="p">,</span> <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">status</span><span class="p">,</span> <span class="n">response</span>
 </pre></div>
 </div>
+</div></blockquote>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+
+        <span class="n">action</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">resource</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">target</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">payload</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="n">action</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
+    <span class="n">resource</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;resource&quot;</span><span class="p">]</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;payload&quot;</span><span class="p">]</span>
+
+    <span class="c1"># check if params are set</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+
+    <span class="c1"># check if login failed</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;root&#39;</span>
+
+        <span class="n">status</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="n">fos_request</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">status</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failure showing upgrade path&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+
+        <span class="c1"># results is returned as a tuple</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">changed</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">**</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="module-source-code">
 <h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/python
-#
-# This file is part of Ansible
-#
-# Ansible is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# Ansible is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
-#
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Ansible</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
 
-from __future__ import absolute_import, division, print_function
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
 
-__metaclass__ = type
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
 
-ANSIBLE_METADATA = {&#39;status&#39;: [&#39;preview&#39;],
-                    &#39;supported_by&#39;: &#39;community&#39;,
-                    &#39;metadata_version&#39;: &#39;1.1&#39;}
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;preview&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;supported_by&#39;</span><span class="p">:</span> <span class="s1">&#39;community&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;metadata_version&#39;</span><span class="p">:</span> <span class="s1">&#39;1.1&#39;</span><span class="p">}</span>
 
-DOCUMENTATION = &#39;&#39;&#39;
----
-module: fmgr_sys_proxy
-version_added: &quot;2.8&quot;
-author: Andrew Welsh
-short_description: Make FortiGate API calls via the FortiMananger
-description:
-  - The FMG proxies FOS API calls via the FMG.  Review FortiGate API documentation to ensure you are passing correct
-    parameters for both the FortiManager and FortiGate
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">module: fmgr_sys_proxy</span>
+<span class="s1">version_added: &quot;2.8&quot;</span>
+<span class="s1">author: Andrew Welsh</span>
+<span class="s1">short_description: Make FortiGate API calls via the FortiMananger</span>
+<span class="s1">description:</span>
+<span class="s1">  - The FMG proxies FOS API calls via the FMG.  Review FortiGate API documentation to ensure you are passing correct</span>
+<span class="s1">    parameters for both the FortiManager and FortiGate</span>
 
-options:
-  adom:
-    description:
-      - The administrative domain (admon) the configuration belongs to
-    required: true
-  host:
-    description:
-      - The FortiManager&#39;s Address.
-    required: true
-  username:
-    description:
-      - The username to log into the FortiManager
-    required: true
-  password:
-    description:
-      - The password associated with the username account.
-    required: false
+<span class="s1">options:</span>
+<span class="s1">  adom:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The administrative domain (admon) the configuration belongs to</span>
+<span class="s1">    required: true</span>
+<span class="s1">  host:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The FortiManager&#39;s Address.</span>
+<span class="s1">    required: true</span>
+<span class="s1">  username:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The username to log into the FortiManager</span>
+<span class="s1">    required: true</span>
+<span class="s1">  password:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The password associated with the username account.</span>
+<span class="s1">    required: false</span>
 
-  action:
-    description:
-      - Specify HTTP action for the request. Either &#39;get&#39; or &#39;post&#39;
-    required: True
-  payload:
-    description:
-      - JSON payload of the request. The payload will be URL-encoded and becomes the &quot;json&quot; field in the query string for both GET and POST request.
-    required: False
-  resource:
-    description:
-      - URL on the remote device to be accessed, string
-    required: True
-  target:
-    description:
-      - FOS datasource, either device or group object
-    required: True
+<span class="s1">  action:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Specify HTTP action for the request. Either &#39;get&#39; or &#39;post&#39;</span>
+<span class="s1">    required: True</span>
+<span class="s1">  payload:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - JSON payload of the request. The payload will be URL-encoded and becomes the &quot;json&quot; field in the query string for both GET and POST request.</span>
+<span class="s1">    required: False</span>
+<span class="s1">  resource:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - URL on the remote device to be accessed, string</span>
+<span class="s1">    required: True</span>
+<span class="s1">  target:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - FOS datasource, either device or group object</span>
+<span class="s1">    required: True</span>
 
-&#39;&#39;&#39;
+<span class="s1">&#39;&#39;&#39;</span>
 
-EXAMPLES = &#39;&#39;&#39;
-- name: Proxy FOS requests via FMG
-  hosts: FortiManager
-  connection: local
-  gather_facts: False
+<span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Proxy FOS requests via FMG</span>
+<span class="s1">  hosts: FortiManager</span>
+<span class="s1">  connection: local</span>
+<span class="s1">  gather_facts: False</span>
 
-  tasks:
+<span class="s1">  tasks:</span>
 
-    - name: Get upgrade path for FGT1
-      fmgr_provision:
-        host: &quot;{{ inventory_hostname }}&quot;
-        username: &quot;{{ username }}&quot;
-        password: &quot;{{ password }}&quot;
-        adom: &quot;root&quot;
-        action: &quot;get&quot;
-        resource: &quot;/api/v2/monitor/system/firmware/upgrade-paths?vdom=root&quot;
-        target: [&quot;/adom/root/device/FGT1&quot;]
-    - name: Upgrade firmware of FGT1
-      fmgr_provision:
-        host: &quot;{{ inventory_hostname }}&quot;
-        username: &quot;{{ username }}&quot;
-        password: &quot;{{ password }}&quot;
-        adom: &quot;root&quot;
-        action: &quot;post&quot;
-        payload: {source: upload, file_content: b64_encoded_string, file_name: file_name}
-        resource: &quot;/api/v2/monitor/system/firmware/upgrade?vdom=vdom&quot;
-        target: [&quot;/adom/root/device/FGT1&quot;]
+<span class="s1">    - name: Get upgrade path for FGT1</span>
+<span class="s1">      fmgr_provision:</span>
+<span class="s1">        host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">        username: &quot;{{ username }}&quot;</span>
+<span class="s1">        password: &quot;{{ password }}&quot;</span>
+<span class="s1">        adom: &quot;root&quot;</span>
+<span class="s1">        action: &quot;get&quot;</span>
+<span class="s1">        resource: &quot;/api/v2/monitor/system/firmware/upgrade-paths?vdom=root&quot;</span>
+<span class="s1">        target: [&quot;/adom/root/device/FGT1&quot;]</span>
+<span class="s1">    - name: Upgrade firmware of FGT1</span>
+<span class="s1">      fmgr_provision:</span>
+<span class="s1">        host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">        username: &quot;{{ username }}&quot;</span>
+<span class="s1">        password: &quot;{{ password }}&quot;</span>
+<span class="s1">        adom: &quot;root&quot;</span>
+<span class="s1">        action: &quot;post&quot;</span>
+<span class="s1">        payload: {source: upload, file_content: b64_encoded_string, file_name: file_name}</span>
+<span class="s1">        resource: &quot;/api/v2/monitor/system/firmware/upgrade?vdom=vdom&quot;</span>
+<span class="s1">        target: [&quot;/adom/root/device/FGT1&quot;]</span>
 
-&#39;&#39;&#39;
+<span class="s1">&#39;&#39;&#39;</span>
 
-RETURN = &quot;&quot;&quot;
-api_result:
-  description: full API response, includes status code and message
-  returned: always
-  type: string
-&quot;&quot;&quot;
-
-
-from ansible.module_utils.basic import AnsibleModule, env_fallback
-from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
+<span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">api_result:</span>
+<span class="s2">  description: full API response, includes status code and message</span>
+<span class="s2">  returned: always</span>
+<span class="s2">  type: string</span>
+<span class="s2">&quot;&quot;&quot;</span>
 
 
-# check for pyFMG lib
-try:
-    from pyFMG.fortimgr import FortiManager
-    HAS_PYFMGR = True
-except ImportError:
-    HAS_PYFMGR = False
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">AnsibleFortiManager</span>
 
 
-def fos_request(fmg, action, resource, target, payload, adom=&#39;root&#39;):
-
-    datagram = {
-        &quot;data&quot;: {
-            # get or post
-            &quot;action&quot;: action,
-            # dictionary of data
-            &quot;payload&quot;: payload,
-            # FOS API URL including vdom params
-            &quot;resource&quot;: resource,
-            # FMG device to make API calls to
-            &quot;target&quot;: target
-        },
-
-    }
-    url = &quot;/sys/proxy/json&quot;
-
-    status, response = fmg.execute(url, datagram)
-    return status, response
+<span class="c1"># check for pyFMG lib</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pyFMG.fortimgr</span> <span class="kn">import</span> <span class="n">FortiManager</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">False</span>
 
 
-def main():
+<span class="k">def</span> <span class="nf">fos_request</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
 
-    argument_spec = dict(
-        adom=dict(required=False, type=&quot;str&quot;),
-        host=dict(required=True, type=&quot;str&quot;),
-        password=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_PASSWORD&quot;]), no_log=True),
-        username=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_USERNAME&quot;]), no_log=True),
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="c1"># get or post</span>
+            <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="n">action</span><span class="p">,</span>
+            <span class="c1"># dictionary of data</span>
+            <span class="s2">&quot;payload&quot;</span><span class="p">:</span> <span class="n">payload</span><span class="p">,</span>
+            <span class="c1"># FOS API URL including vdom params</span>
+            <span class="s2">&quot;resource&quot;</span><span class="p">:</span> <span class="n">resource</span><span class="p">,</span>
+            <span class="c1"># FMG device to make API calls to</span>
+            <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">target</span>
+        <span class="p">},</span>
 
-        action=dict(required=False, type=&quot;str&quot;),
-        resource=dict(required=False, type=&quot;str&quot;),
-        target=dict(required=False, type=&quot;str&quot;),
-        payload=dict(required=False, type=&quot;str&quot;),
-    )
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/sys/proxy/json&quot;</span>
 
-    module = AnsibleModule(argument_spec, supports_check_mode=True, )
-
-    action = module.params[&quot;action&quot;]
-    resource = module.params[&quot;resource&quot;]
-    target = module.params[&quot;target&quot;]
-    payload = module.params[&quot;payload&quot;]
-
-    # check if params are set
-    if module.params[&quot;host&quot;] is None or module.params[&quot;username&quot;] is None:
-        module.fail_json(msg=&quot;Host and username are required for connection&quot;)
-
-    # check if login failed
-    fmg = AnsibleFortiManager(module, module.params[&quot;host&quot;], module.params[&quot;username&quot;], module.params[&quot;password&quot;])
-    response = fmg.login()
-
-    if response[1][&#39;status&#39;][&#39;code&#39;] != 0:
-        module.fail_json(msg=&quot;Connection to FortiManager Failed&quot;)
-    else:
-        if module.params[&quot;adom&quot;] is None:
-            module.params[&quot;adom&quot;] = &#39;root&#39;
-
-        status, result = fos_request(fmg, action, resource, target, payload, module.params[&quot;adom&quot;])
-
-        if not status == 0:
-            module.fail_json(msg=&quot;Failure showing upgrade path&quot;, **result)
-
-        fmg.logout()
-
-        # results is returned as a tuple
-        return module.exit_json(changed=True, **result)
+    <span class="n">status</span><span class="p">,</span> <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">status</span><span class="p">,</span> <span class="n">response</span>
 
 
-if __name__ == &quot;__main__&quot;:
-    main()
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+
+        <span class="n">action</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">resource</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">target</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">payload</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="n">action</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;action&quot;</span><span class="p">]</span>
+    <span class="n">resource</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;resource&quot;</span><span class="p">]</span>
+    <span class="n">target</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span>
+    <span class="n">payload</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;payload&quot;</span><span class="p">]</span>
+
+    <span class="c1"># check if params are set</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+
+    <span class="c1"># check if login failed</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;root&#39;</span>
+
+        <span class="n">status</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="n">fos_request</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">action</span><span class="p">,</span> <span class="n">resource</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">payload</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">status</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failure showing upgrade path&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">result</span><span class="p">)</span>
+
+        <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+
+        <span class="c1"># results is returned as a tuple</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">changed</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="o">**</span><span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -446,7 +546,7 @@ if __name__ == &quot;__main__&quot;:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps.
+        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps
 
     </p>
   </div>
@@ -465,21 +565,14 @@ if __name__ == &quot;__main__&quot;:
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 

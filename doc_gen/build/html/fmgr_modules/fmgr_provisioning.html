@@ -93,7 +93,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_ha.html">fmgr_ha</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_ips_sensor.html">fmgr_ips_sensor</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_provisioning</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#module-metadata-parameters">Module Metadata / Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
 </ul>
 </li>
@@ -179,456 +181,752 @@
             
   <div class="section" id="fmgr-provisioning">
 <h1>fmgr_provisioning<a class="headerlink" href="#fmgr-provisioning" title="Permalink to this headline">¶</a></h1>
-<p>Not Parsed</p>
-<div class="section" id="module-metadata-parameters">
-<h2>Module Metadata / Parameters<a class="headerlink" href="#module-metadata-parameters" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">module</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fmgr_provisioning</span>
-<span class="l l-Scalar l-Scalar-Plain">version_added</span><span class="p p-Indicator">:</span> <span class="s">&quot;2.5&quot;</span>
-<span class="l l-Scalar l-Scalar-Plain">author</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Andrew Welsh</span>
-<span class="l l-Scalar l-Scalar-Plain">short_description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Provision devices via FortiMananger</span>
-<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Add model devices on the FortiManager using jsonrpc API and have them pre-configured,</span>
-    <span class="l l-Scalar l-Scalar-Plain">so when central management is configured, the configuration is pushed down to the</span>
-    <span class="l l-Scalar l-Scalar-Plain">registering devices</span>
-
-<span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The administrative domain (admon) the configuration belongs to</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="l l-Scalar l-Scalar-Plain">vdom</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The virtual domain (vdom) the configuration belongs to</span>
-  <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The FortiManager&#39;s Address.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The username to log into the FortiManager</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
-  <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The password associated with the username account.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">policy_package</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The name of the policy package to be assigned to the device.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-  <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The name of the device to be provisioned.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-  <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The name of the device group the provisioned device can belong to.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-  <span class="l l-Scalar l-Scalar-Plain">serial</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The serial number of the device that will be provisioned.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-  <span class="l l-Scalar l-Scalar-Plain">platform</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The platform of the device, such as model number or VM.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-  <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Description of the device to be provisioned.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-  <span class="l l-Scalar l-Scalar-Plain">os_version</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The Fortinet OS version to be used for the device, such as 5.0 or 6.0.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-  <span class="l l-Scalar l-Scalar-Plain">minor_release</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The minor release number such as 6.X.1, as X being the minor release.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-  <span class="l l-Scalar l-Scalar-Plain">patch_release</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The patch release number such as 6.0.X, as X being the patch release.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-  <span class="l l-Scalar l-Scalar-Plain">os_type</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The Fortinet OS type to be pushed to the device, such as &#39;FOS&#39; for FortiOS.</span>
-    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> fmgr_provisioning</p>
+<p><strong>Description:</strong> [‘Add model devices on the FortiManager using jsonrpc API and have them pre-configured, so when central management is configured, the configuration is pushed down to the registering devices’]</p>
+<p><strong>Author(s):</strong> Andrew Welsh</p>
+<p><strong>Ansible Version Added:</strong> 2.5</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adom">
+<h3>adom<a class="headerlink" href="#adom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The administrative domain (admon) the configuration belongs to</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="description">
+<h3>description<a class="headerlink" href="#description" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Description of the device to be provisioned.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="group">
+<h3>group<a class="headerlink" href="#group" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The name of the device group the provisioned device can belong to.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="host">
+<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The FortiManager’s Address.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="minor-release">
+<h3>minor_release<a class="headerlink" href="#minor-release" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The minor release number such as 6.X.1, as X being the minor release.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="name">
+<h3>name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The name of the device to be provisioned.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="os-type">
+<h3>os_type<a class="headerlink" href="#os-type" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The Fortinet OS type to be pushed to the device, such as ‘FOS’ for FortiOS.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="os-version">
+<h3>os_version<a class="headerlink" href="#os-version" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The Fortinet OS version to be used for the device, such as 5.0 or 6.0.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="password">
+<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The password associated with the username account.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="patch-release">
+<h3>patch_release<a class="headerlink" href="#patch-release" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The patch release number such as 6.0.X, as X being the patch release.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="platform">
+<h3>platform<a class="headerlink" href="#platform" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The platform of the device, such as model number or VM.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="policy-package">
+<h3>policy_package<a class="headerlink" href="#policy-package" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The name of the policy package to be assigned to the device.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="serial">
+<h3>serial<a class="headerlink" href="#serial" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The serial number of the device that will be provisioned.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="username">
+<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The username to log into the FortiManager</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="vdom">
+<h3>vdom<a class="headerlink" href="#vdom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The virtual domain (vdom) the configuration belongs to</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>assign_dev_grp</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">assign_dev_grp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">grp_name</span><span class="p">,</span> <span class="n">device_name</span><span class="p">,</span> <span class="n">vdom</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device_name</span><span class="p">,</span>
+        <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/dvmdb/adom/{adom}/group/{grp_name}/object member&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">grp_name</span><span class="o">=</span><span class="n">grp_name</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
+</div></blockquote>
+<ul class="simple">
+<li>assign_provision_template</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">assign_provision_template</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">template</span><span class="p">,</span>
+        <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;devprof&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Provisioned by Ansible&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">target</span><span class="p">}]</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>create_model_device</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_model_device</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">serial</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">platform</span><span class="p">,</span> <span class="n">os_version</span><span class="p">,</span>
+                        <span class="n">os_type</span><span class="p">,</span> <span class="n">minor_release</span><span class="p">,</span> <span class="n">patch_release</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;create_task&#39;</span><span class="p">,</span> <span class="s1">&#39;nonblocking&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">group</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">}],</span>
+        <span class="s1">&#39;device&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;mr&#39;</span><span class="p">:</span> <span class="n">minor_release</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;sn&#39;</span><span class="p">:</span> <span class="n">serial</span><span class="p">,</span>
+            <span class="s1">&#39;mgmt_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;fmg&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;device action&#39;</span><span class="p">:</span> <span class="s1">&#39;add_model&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;platform_str&#39;</span><span class="p">:</span> <span class="n">platform</span><span class="p">,</span>
+            <span class="s1">&#39;os_ver&#39;</span><span class="p">:</span> <span class="n">os_version</span><span class="p">,</span>
+            <span class="s1">&#39;os_type&#39;</span><span class="p">:</span> <span class="n">os_type</span><span class="p">,</span>
+            <span class="s1">&#39;patch&#39;</span><span class="p">:</span> <span class="n">patch_release</span><span class="p">,</span>
+            <span class="s1">&#39;desc&#39;</span><span class="p">:</span> <span class="s1">&#39;Provisioned by Ansible&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvm/cmd/add/device&#39;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>dev_group_exists</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dev_group_exists</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">dev_grp_name</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">dev_grp_name</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group/{dev_grp_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">dev_grp_name</span><span class="o">=</span><span class="n">dev_grp_name</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>install_pp</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">install_pp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">pp</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="n">vdom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="s1">&#39;nonblocking&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;pkg&#39;</span><span class="p">:</span> <span class="n">pp</span><span class="p">,</span>
+        <span class="s1">&#39;scope&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">}],</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;securityconsole/install/package&#39;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">vdom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+
+        <span class="n">policy_package</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">group</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">serial</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">platform</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">description</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">os_version</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">minor_release</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">patch_release</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">os_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="c1"># check if params are set</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+
+    <span class="c1"># check if login failed</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;root&#39;</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;root&#39;</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;FortiGate-VM64&#39;</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;fos&#39;</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="n">create_model_device</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;serial&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_ver&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;minor_release&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;patch_release&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Create model failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="n">update_flags</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Update device flags failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+
+        <span class="c1"># results = assign_dev_grp(fmg, &#39;Ansible&#39;, &#39;FGVM000000117992&#39;, &#39;root&#39;, &#39;root&#39;)</span>
+        <span class="c1"># if not results[0] == 0:</span>
+        <span class="c1">#     module.fail_json(msg=&quot;Setting device group failed&quot;, **results)</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="n">update_install_target</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Adding device target to package failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="n">install_pp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Installing policy package failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+
+        <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+
+        <span class="c1"># results is returned as a tuple</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>prov_template_exists</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prov_template_exists</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">prov_template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">vdom</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">prov_template</span><span class="p">,</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/devprof/adom/{adom}/devprof/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">prov_template</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>set_devprof_scope</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_scope</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provisioning_template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">provision_targets</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    GET the DevProf (check to see if exists)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">provisioning_template</span>
+    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;devprof&quot;</span>
+    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;CreatedByAnsible&quot;</span>
+
+    <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">provision_targets</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+        <span class="c1"># split the host on the space to get the mask out</span>
+        <span class="n">new_target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">}</span>
+        <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_target</span><span class="p">)</span>
+
+    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">targets</span>
+
+    <span class="n">body</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">),</span>
+                                         <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">fields</span><span class="p">,</span> <span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">}]}</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_request</span><span class="p">(</span><span class="n">body</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>update_flags</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_flags</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;is_model&#39;</span><span class="p">,</span> <span class="s1">&#39;linked_to_model&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;dvmdb/device/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>update_install_target</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_install_target</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">pp</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="n">vdom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">}],</span>
+        <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;pkg&#39;</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{pkg_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">pkg_name</span><span class="o">=</span><span class="n">pp</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
 </div>
 <div class="section" id="module-source-code">
 <h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/python
-#
-# This file is part of Ansible
-#
-# Ansible is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# Ansible is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
-#
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Ansible</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
 
-from __future__ import absolute_import, division, print_function
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
 
-__metaclass__ = type
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
 
-ANSIBLE_METADATA = {&#39;status&#39;: [&#39;preview&#39;],
-                    &#39;supported_by&#39;: &#39;community&#39;,
-                    &#39;metadata_version&#39;: &#39;1.1&#39;}
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;preview&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;supported_by&#39;</span><span class="p">:</span> <span class="s1">&#39;community&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;metadata_version&#39;</span><span class="p">:</span> <span class="s1">&#39;1.1&#39;</span><span class="p">}</span>
 
-DOCUMENTATION = &#39;&#39;&#39;
----
-module: fmgr_provisioning
-version_added: &quot;2.5&quot;
-author: Andrew Welsh
-short_description: Provision devices via FortiMananger
-description:
-  - Add model devices on the FortiManager using jsonrpc API and have them pre-configured,
-    so when central management is configured, the configuration is pushed down to the
-    registering devices
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">module: fmgr_provisioning</span>
+<span class="s1">version_added: &quot;2.5&quot;</span>
+<span class="s1">author: Andrew Welsh</span>
+<span class="s1">short_description: Provision devices via FortiMananger</span>
+<span class="s1">description:</span>
+<span class="s1">  - Add model devices on the FortiManager using jsonrpc API and have them pre-configured,</span>
+<span class="s1">    so when central management is configured, the configuration is pushed down to the</span>
+<span class="s1">    registering devices</span>
 
-options:
-  adom:
-    description:
-      - The administrative domain (admon) the configuration belongs to
-    required: true
-  vdom:
-    description:
-      - The virtual domain (vdom) the configuration belongs to
-  host:
-    description:
-      - The FortiManager&#39;s Address.
-    required: true
-  username:
-    description:
-      - The username to log into the FortiManager
-    required: true
-  password:
-    description:
-      - The password associated with the username account.
-    required: false
+<span class="s1">options:</span>
+<span class="s1">  adom:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The administrative domain (admon) the configuration belongs to</span>
+<span class="s1">    required: true</span>
+<span class="s1">  vdom:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The virtual domain (vdom) the configuration belongs to</span>
+<span class="s1">  host:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The FortiManager&#39;s Address.</span>
+<span class="s1">    required: true</span>
+<span class="s1">  username:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The username to log into the FortiManager</span>
+<span class="s1">    required: true</span>
+<span class="s1">  password:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The password associated with the username account.</span>
+<span class="s1">    required: false</span>
 
-  policy_package:
-    description:
-      - The name of the policy package to be assigned to the device.
-    required: True
-  name:
-    description:
-      - The name of the device to be provisioned.
-    required: True
-  group:
-    description:
-      - The name of the device group the provisioned device can belong to.
-    required: False
-  serial:
-    description:
-      - The serial number of the device that will be provisioned.
-    required: True
-  platform:
-    description:
-      - The platform of the device, such as model number or VM.
-    required: True
-  description:
-    description:
-      - Description of the device to be provisioned.
-    required: False
-  os_version:
-    description:
-      - The Fortinet OS version to be used for the device, such as 5.0 or 6.0.
-    required: True
-  minor_release:
-    description:
-      - The minor release number such as 6.X.1, as X being the minor release.
-    required: False
-  patch_release:
-    description:
-      - The patch release number such as 6.0.X, as X being the patch release.
-    required: False
-  os_type:
-    description:
-      - The Fortinet OS type to be pushed to the device, such as &#39;FOS&#39; for FortiOS.
-    required: True
-&#39;&#39;&#39;
+<span class="s1">  policy_package:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The name of the policy package to be assigned to the device.</span>
+<span class="s1">    required: True</span>
+<span class="s1">  name:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The name of the device to be provisioned.</span>
+<span class="s1">    required: True</span>
+<span class="s1">  group:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The name of the device group the provisioned device can belong to.</span>
+<span class="s1">    required: False</span>
+<span class="s1">  serial:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The serial number of the device that will be provisioned.</span>
+<span class="s1">    required: True</span>
+<span class="s1">  platform:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The platform of the device, such as model number or VM.</span>
+<span class="s1">    required: True</span>
+<span class="s1">  description:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Description of the device to be provisioned.</span>
+<span class="s1">    required: False</span>
+<span class="s1">  os_version:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The Fortinet OS version to be used for the device, such as 5.0 or 6.0.</span>
+<span class="s1">    required: True</span>
+<span class="s1">  minor_release:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The minor release number such as 6.X.1, as X being the minor release.</span>
+<span class="s1">    required: False</span>
+<span class="s1">  patch_release:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The patch release number such as 6.0.X, as X being the patch release.</span>
+<span class="s1">    required: False</span>
+<span class="s1">  os_type:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The Fortinet OS type to be pushed to the device, such as &#39;FOS&#39; for FortiOS.</span>
+<span class="s1">    required: True</span>
+<span class="s1">&#39;&#39;&#39;</span>
 
-EXAMPLES = &#39;&#39;&#39;
-- name: Create Model Device
-  hosts: FortiManager
-  connection: local
-  gather_facts: False
+<span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: Create Model Device</span>
+<span class="s1">  hosts: FortiManager</span>
+<span class="s1">  connection: local</span>
+<span class="s1">  gather_facts: False</span>
 
-  tasks:
+<span class="s1">  tasks:</span>
 
-    - name: Create FGT1 Model Device
-      fmgr_provision:
-        host: &quot;{{ inventory_hostname }}&quot;
-        username: &quot;{{ username }}&quot;
-        password: &quot;{{ password }}&quot;
-        adom: &quot;root&quot;
-        vdom: &quot;root&quot;
-        policy_package: &quot;default&quot;
-        name: &quot;FGT1&quot;
-        group: &quot;Ansible&quot;
-        serial: &quot;FGVM000000117994&quot;
-        platform: &quot;FortiGate-VM64&quot;
-        description: &quot;Provisioned by Ansible&quot;
-        os_version: &#39;6.0&#39;
-        minor_release: 0
-        patch_release: 0
-        os_type: &#39;fos&#39;
-
-
-    - name: Create FGT2 Model Device
-      fmgr_provision:
-        host: &quot;{{ inventory_hostname }}&quot;
-        username: &quot;{{ username }}&quot;
-        password: &quot;{{ password }}&quot;
-        adom: &quot;root&quot;
-        vdom: &quot;root&quot;
-        policy_package: &quot;test_pp&quot;
-        name: &quot;FGT2&quot;
-        group: &quot;Ansible&quot;
-        serial: &quot;FGVM000000117992&quot;
-        platform: &quot;FortiGate-VM64&quot;
-        description: &quot;Provisioned by Ansible&quot;
-        os_version: &#39;5.0&#39;
-        minor_release: 6
-        patch_release: 0
-        os_type: &#39;fos&#39;
-
-&#39;&#39;&#39;
-
-RETURN = &quot;&quot;&quot;
-api_result:
-  description: full API response, includes status code and message
-  returned: always
-  type: string
-&quot;&quot;&quot;
-
-from ansible.module_utils.basic import AnsibleModule, env_fallback
-from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-
-# check for pyFMG lib
-try:
-    from pyFMG.fortimgr import FortiManager
-    HAS_PYFMGR = True
-except ImportError:
-    HAS_PYFMGR = False
+<span class="s1">    - name: Create FGT1 Model Device</span>
+<span class="s1">      fmgr_provision:</span>
+<span class="s1">        host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">        username: &quot;{{ username }}&quot;</span>
+<span class="s1">        password: &quot;{{ password }}&quot;</span>
+<span class="s1">        adom: &quot;root&quot;</span>
+<span class="s1">        vdom: &quot;root&quot;</span>
+<span class="s1">        policy_package: &quot;default&quot;</span>
+<span class="s1">        name: &quot;FGT1&quot;</span>
+<span class="s1">        group: &quot;Ansible&quot;</span>
+<span class="s1">        serial: &quot;FGVM000000117994&quot;</span>
+<span class="s1">        platform: &quot;FortiGate-VM64&quot;</span>
+<span class="s1">        description: &quot;Provisioned by Ansible&quot;</span>
+<span class="s1">        os_version: &#39;6.0&#39;</span>
+<span class="s1">        minor_release: 0</span>
+<span class="s1">        patch_release: 0</span>
+<span class="s1">        os_type: &#39;fos&#39;</span>
 
 
-def dev_group_exists(fmg, dev_grp_name, adom):
-    datagram = {
-        &#39;adom&#39;: adom,
-        &#39;name&#39;: dev_grp_name,
-    }
+<span class="s1">    - name: Create FGT2 Model Device</span>
+<span class="s1">      fmgr_provision:</span>
+<span class="s1">        host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">        username: &quot;{{ username }}&quot;</span>
+<span class="s1">        password: &quot;{{ password }}&quot;</span>
+<span class="s1">        adom: &quot;root&quot;</span>
+<span class="s1">        vdom: &quot;root&quot;</span>
+<span class="s1">        policy_package: &quot;test_pp&quot;</span>
+<span class="s1">        name: &quot;FGT2&quot;</span>
+<span class="s1">        group: &quot;Ansible&quot;</span>
+<span class="s1">        serial: &quot;FGVM000000117992&quot;</span>
+<span class="s1">        platform: &quot;FortiGate-VM64&quot;</span>
+<span class="s1">        description: &quot;Provisioned by Ansible&quot;</span>
+<span class="s1">        os_version: &#39;5.0&#39;</span>
+<span class="s1">        minor_release: 6</span>
+<span class="s1">        patch_release: 0</span>
+<span class="s1">        os_type: &#39;fos&#39;</span>
 
-    url = &#39;/dvmdb/adom/{adom}/group/{dev_grp_name}&#39;.format(adom=adom, dev_grp_name=dev_grp_name)
-    response = fmg.get(url, datagram)
-    return response
+<span class="s1">&#39;&#39;&#39;</span>
 
+<span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">api_result:</span>
+<span class="s2">  description: full API response, includes status code and message</span>
+<span class="s2">  returned: always</span>
+<span class="s2">  type: string</span>
+<span class="s2">&quot;&quot;&quot;</span>
 
-def prov_template_exists(fmg, prov_template, adom, vdom):
-    datagram = {
-        &#39;name&#39;: prov_template,
-        &#39;adom&#39;: adom,
-    }
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">AnsibleFortiManager</span>
 
-    url = &#39;/pm/devprof/adom/{adom}/devprof/{name}&#39;.format(adom=adom, name=prov_template)
-    response = fmg.get(url, datagram)
-    return response
-
-
-def create_model_device(fmg, name, serial, group, platform, os_version,
-                        os_type, minor_release, patch_release=0, adom=&#39;root&#39;):
-    datagram = {
-        &#39;adom&#39;: adom,
-        &#39;flags&#39;: [&#39;create_task&#39;, &#39;nonblocking&#39;],
-        &#39;groups&#39;: [{&#39;name&#39;: group, &#39;vdom&#39;: &#39;root&#39;}],
-        &#39;device&#39;: {
-            &#39;mr&#39;: minor_release,
-            &#39;name&#39;: name,
-            &#39;sn&#39;: serial,
-            &#39;mgmt_mode&#39;: &#39;fmg&#39;,
-            &#39;device action&#39;: &#39;add_model&#39;,
-            &#39;platform_str&#39;: platform,
-            &#39;os_ver&#39;: os_version,
-            &#39;os_type&#39;: os_type,
-            &#39;patch&#39;: patch_release,
-            &#39;desc&#39;: &#39;Provisioned by Ansible&#39;,
-        }
-    }
-
-    url = &#39;/dvm/cmd/add/device&#39;
-    response = fmg.execute(url, datagram)
-    return response
+<span class="c1"># check for pyFMG lib</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pyFMG.fortimgr</span> <span class="kn">import</span> <span class="n">FortiManager</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">False</span>
 
 
-def update_flags(fmg, name):
-    datagram = {
-        &#39;flags&#39;: [&#39;is_model&#39;, &#39;linked_to_model&#39;]
-    }
-    url = &#39;dvmdb/device/{name}&#39;.format(name=name)
-    response = fmg.update(url, datagram)
-    return response
+<span class="k">def</span> <span class="nf">dev_group_exists</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">dev_grp_name</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">dev_grp_name</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group/{dev_grp_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">dev_grp_name</span><span class="o">=</span><span class="n">dev_grp_name</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 
 
-def assign_provision_template(fmg, template, adom, target):
-    datagram = {
-        &#39;name&#39;: template,
-        &#39;type&#39;: &#39;devprof&#39;,
-        &#39;description&#39;: &#39;Provisioned by Ansible&#39;,
-        &#39;scope member&#39;: [{&#39;name&#39;: target}]
-    }
-    url = &quot;/pm/devprof/adom/{adom}&quot;.format(adom=adom)
-    response = fmg.update(url, datagram)
-    return response
+<span class="k">def</span> <span class="nf">prov_template_exists</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">prov_template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">vdom</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">prov_template</span><span class="p">,</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/devprof/adom/{adom}/devprof/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">prov_template</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 
 
-def set_devprof_scope(self, provisioning_template, adom, provision_targets):
-    &quot;&quot;&quot;
-    GET the DevProf (check to see if exists)
-    &quot;&quot;&quot;
-    fields = dict()
-    targets = []
-    fields[&quot;name&quot;] = provisioning_template
-    fields[&quot;type&quot;] = &quot;devprof&quot;
-    fields[&quot;description&quot;] = &quot;CreatedByAnsible&quot;
+<span class="k">def</span> <span class="nf">create_model_device</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">serial</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">platform</span><span class="p">,</span> <span class="n">os_version</span><span class="p">,</span>
+                        <span class="n">os_type</span><span class="p">,</span> <span class="n">minor_release</span><span class="p">,</span> <span class="n">patch_release</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;create_task&#39;</span><span class="p">,</span> <span class="s1">&#39;nonblocking&#39;</span><span class="p">],</span>
+        <span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">group</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">}],</span>
+        <span class="s1">&#39;device&#39;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s1">&#39;mr&#39;</span><span class="p">:</span> <span class="n">minor_release</span><span class="p">,</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+            <span class="s1">&#39;sn&#39;</span><span class="p">:</span> <span class="n">serial</span><span class="p">,</span>
+            <span class="s1">&#39;mgmt_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;fmg&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;device action&#39;</span><span class="p">:</span> <span class="s1">&#39;add_model&#39;</span><span class="p">,</span>
+            <span class="s1">&#39;platform_str&#39;</span><span class="p">:</span> <span class="n">platform</span><span class="p">,</span>
+            <span class="s1">&#39;os_ver&#39;</span><span class="p">:</span> <span class="n">os_version</span><span class="p">,</span>
+            <span class="s1">&#39;os_type&#39;</span><span class="p">:</span> <span class="n">os_type</span><span class="p">,</span>
+            <span class="s1">&#39;patch&#39;</span><span class="p">:</span> <span class="n">patch_release</span><span class="p">,</span>
+            <span class="s1">&#39;desc&#39;</span><span class="p">:</span> <span class="s1">&#39;Provisioned by Ansible&#39;</span><span class="p">,</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
 
-    for target in provision_targets.strip().split(&quot;,&quot;):
-        # split the host on the space to get the mask out
-        new_target = {&quot;name&quot;: target}
-        targets.append(new_target)
-
-    fields[&quot;scope member&quot;] = targets
-
-    body = {&quot;method&quot;: &quot;set&quot;, &quot;params&quot;: [{&quot;url&quot;: &quot;/pm/devprof/adom/{adom}&quot;.format(adom=adom),
-                                         &quot;data&quot;: fields, &quot;session&quot;: self.session}]}
-    response = self.make_request(body).json()
-    return response
-
-
-def assign_dev_grp(fmg, grp_name, device_name, vdom, adom):
-    datagram = {
-        &#39;name&#39;: device_name,
-        &#39;vdom&#39;: vdom,
-    }
-    url = &quot;/dvmdb/adom/{adom}/group/{grp_name}/object member&quot;.format(adom=adom, grp_name=grp_name)
-    response = fmg.set(url, datagram)
-    return response
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvm/cmd/add/device&#39;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 
 
-def update_install_target(fmg, device, pp=&#39;default&#39;, vdom=&#39;root&#39;, adom=&#39;root&#39;):
-    datagram = {
-        &#39;scope member&#39;: [{&#39;name&#39;: device, &#39;vdom&#39;: vdom}],
-        &#39;type&#39;: &#39;pkg&#39;
-    }
-    url = &#39;/pm/pkg/adom/{adom}/{pkg_name}&#39;.format(adom=adom, pkg_name=pp)
-    response = fmg.update(url, datagram)
-    return response
+<span class="k">def</span> <span class="nf">update_flags</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;is_model&#39;</span><span class="p">,</span> <span class="s1">&#39;linked_to_model&#39;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;dvmdb/device/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 
 
-def install_pp(fmg, device, pp=&#39;default&#39;, vdom=&#39;root&#39;, adom=&#39;root&#39;):
-    datagram = {
-        &#39;adom&#39;: adom,
-        &#39;flags&#39;: &#39;nonblocking&#39;,
-        &#39;pkg&#39;: pp,
-        &#39;scope&#39;: [{&#39;name&#39;: device, &#39;vdom&#39;: vdom}],
-    }
-    url = &#39;securityconsole/install/package&#39;
-    response = fmg.execute(url, datagram)
-    return response
+<span class="k">def</span> <span class="nf">assign_provision_template</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">template</span><span class="p">,</span>
+        <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;devprof&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Provisioned by Ansible&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">target</span><span class="p">}]</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
 
 
-def main():
+<span class="k">def</span> <span class="nf">set_devprof_scope</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provisioning_template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">provision_targets</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    GET the DevProf (check to see if exists)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">provisioning_template</span>
+    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;devprof&quot;</span>
+    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;CreatedByAnsible&quot;</span>
 
-    argument_spec = dict(
-        adom=dict(required=False, type=&quot;str&quot;),
-        vdom=dict(required=False, type=&quot;str&quot;),
-        host=dict(required=True, type=&quot;str&quot;),
-        password=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_PASSWORD&quot;]), no_log=True),
-        username=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_USERNAME&quot;]), no_log=True),
+    <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">provision_targets</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+        <span class="c1"># split the host on the space to get the mask out</span>
+        <span class="n">new_target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">}</span>
+        <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_target</span><span class="p">)</span>
 
-        policy_package=dict(required=False, type=&quot;str&quot;),
-        name=dict(required=False, type=&quot;str&quot;),
-        group=dict(required=False, type=&quot;str&quot;),
-        serial=dict(required=True, type=&quot;str&quot;),
-        platform=dict(required=True, type=&quot;str&quot;),
-        description=dict(required=False, type=&quot;str&quot;),
-        os_version=dict(required=True, type=&quot;str&quot;),
-        minor_release=dict(required=False, type=&quot;str&quot;),
-        patch_release=dict(required=False, type=&quot;str&quot;),
-        os_type=dict(required=False, type=&quot;str&quot;),
+    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">targets</span>
 
-    )
-
-    module = AnsibleModule(argument_spec, supports_check_mode=True, )
-
-    # check if params are set
-    if module.params[&quot;host&quot;] is None or module.params[&quot;username&quot;] is None:
-        module.fail_json(msg=&quot;Host and username are required for connection&quot;)
-
-    # check if login failed
-    fmg = AnsibleFortiManager(module, module.params[&quot;host&quot;], module.params[&quot;username&quot;], module.params[&quot;password&quot;])
-    response = fmg.login()
-
-    if response[1][&#39;status&#39;][&#39;code&#39;] != 0:
-        module.fail_json(msg=&quot;Connection to FortiManager Failed&quot;)
-    else:
-
-        if module.params[&quot;policy_package&quot;] is None:
-            module.params[&quot;policy_package&quot;] = &#39;default&#39;
-        if module.params[&quot;adom&quot;] is None:
-            module.params[&quot;adom&quot;] = &#39;root&#39;
-        if module.params[&quot;vdom&quot;] is None:
-            module.params[&quot;vdom&quot;] = &#39;root&#39;
-        if module.params[&quot;platform&quot;] is None:
-            module.params[&quot;platform&quot;] = &#39;FortiGate-VM64&#39;
-        if module.params[&quot;os_type&quot;] is None:
-            module.params[&quot;os_type&quot;] = &#39;fos&#39;
-
-        results = create_model_device(fmg,
-                                      module.params[&quot;name&quot;],
-                                      module.params[&quot;serial&quot;],
-                                      module.params[&quot;group&quot;],
-                                      module.params[&quot;platform&quot;],
-                                      module.params[&quot;os_ver&quot;],
-                                      module.params[&quot;os_type&quot;],
-                                      module.params[&quot;minor_release&quot;],
-                                      module.params[&quot;patch_release&quot;],
-                                      module.params[&quot;adom&quot;])
-        if not results[0] == 0:
-            module.fail_json(msg=&quot;Create model failed&quot;, **results)
-
-        results = update_flags(fmg, module.params[&quot;name&quot;])
-        if not results[0] == 0:
-            module.fail_json(msg=&quot;Update device flags failed&quot;, **results)
-
-        # results = assign_dev_grp(fmg, &#39;Ansible&#39;, &#39;FGVM000000117992&#39;, &#39;root&#39;, &#39;root&#39;)
-        # if not results[0] == 0:
-        #     module.fail_json(msg=&quot;Setting device group failed&quot;, **results)
-
-        results = update_install_target(fmg, module.params[&quot;name&quot;], module.params[&quot;policy_package&quot;])
-        if not results[0] == 0:
-            module.fail_json(msg=&quot;Adding device target to package failed&quot;, **results)
-
-        results = install_pp(fmg, module.params[&quot;name&quot;], module.params[&quot;policy_package&quot;])
-        if not results[0] == 0:
-            module.fail_json(msg=&quot;Installing policy package failed&quot;, **results)
-
-        fmg.logout()
-
-        # results is returned as a tuple
-        return module.exit_json(**results[1])
+    <span class="n">body</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">),</span>
+                                         <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">fields</span><span class="p">,</span> <span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">}]}</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_request</span><span class="p">(</span><span class="n">body</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">response</span>
 
 
-if __name__ == &quot;__main__&quot;:
-    main()
+<span class="k">def</span> <span class="nf">assign_dev_grp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">grp_name</span><span class="p">,</span> <span class="n">device_name</span><span class="p">,</span> <span class="n">vdom</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device_name</span><span class="p">,</span>
+        <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/dvmdb/adom/{adom}/group/{grp_name}/object member&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">grp_name</span><span class="o">=</span><span class="n">grp_name</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">update_install_target</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">pp</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="n">vdom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">}],</span>
+        <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;pkg&#39;</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{pkg_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">pkg_name</span><span class="o">=</span><span class="n">pp</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">install_pp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">pp</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="n">vdom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="s1">&#39;nonblocking&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;pkg&#39;</span><span class="p">:</span> <span class="n">pp</span><span class="p">,</span>
+        <span class="s1">&#39;scope&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">}],</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;securityconsole/install/package&#39;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">vdom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+
+        <span class="n">policy_package</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">group</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">serial</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">platform</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">description</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">os_version</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">minor_release</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">patch_release</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">os_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="c1"># check if params are set</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+
+    <span class="c1"># check if login failed</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;root&#39;</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;root&#39;</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;FortiGate-VM64&#39;</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;fos&#39;</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="n">create_model_device</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;serial&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_ver&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;minor_release&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;patch_release&quot;</span><span class="p">],</span>
+                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Create model failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="n">update_flags</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Update device flags failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+
+        <span class="c1"># results = assign_dev_grp(fmg, &#39;Ansible&#39;, &#39;FGVM000000117992&#39;, &#39;root&#39;, &#39;root&#39;)</span>
+        <span class="c1"># if not results[0] == 0:</span>
+        <span class="c1">#     module.fail_json(msg=&quot;Setting device group failed&quot;, **results)</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="n">update_install_target</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Adding device target to package failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+
+        <span class="n">results</span> <span class="o">=</span> <span class="n">install_pp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Installing policy package failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+
+        <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+
+        <span class="c1"># results is returned as a tuple</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -654,7 +952,7 @@ if __name__ == &quot;__main__&quot;:
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps.
+        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps
 
     </p>
   </div>
@@ -673,21 +971,14 @@ if __name__ == &quot;__main__&quot;:
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
 
   
 

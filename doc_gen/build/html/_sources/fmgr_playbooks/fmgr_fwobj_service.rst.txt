@@ -152,7 +152,7 @@ fmgr_fwobj_service_add_custom.yml
           name: "ansible_custom_serviceWithSource"
           object_type: "custom"
           custom_type: "tcp_udp_sctp"
-          tcp_portrange: "443:2000-1000,80-82:10000-20000"
+          tcp_portrange: "443:1000-2000,80-82:10000-20000"
           udp_portrange: "51:100-200,162:200-400"
           sctp_portrange: "100:2000-2500"
     
@@ -201,7 +201,7 @@ fmgr_fwobj_service_add_custom.yml
           object_type: "custom"
           custom_type: "all"
           explicit_proxy: "enable"
-          tcp_portrange: "443:2000-1000,80-82:10000-20000"
+          tcp_portrange: "443:1000-2000,80-82:10000-20000"
           iprange: "www.ansible.com"
 
 fmgr_fwobj_service_add_group.yml

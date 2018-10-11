@@ -2,123 +2,517 @@
 fmgr_fwpol_package
 ==================
 
-Not Parsed
+
+Metadata
+--------
 
 
-Module Metadata / Parameters
-----------------------------
 
-.. code-block:: yaml
 
-    module: fmgr_fwpol_package
-    version_added: "2.8"
-    author:
-        - Luke Weighall (@lweighall)
-        - Andrew Welsh (@Ghilli3)
-        - Jim Huber (@p4r4n0y1ng)
-    short_description: Manages FortiManager Firewall Policies Packages
-    description:
-      -  Manages FortiManager Firewall Policies Packages
+**Name:** fmgr_fwpol_package
+
+**Description:** ['Manages FortiManager Firewall Policies Packages']
+
+**Author(s):** 
+
+- Luke Weighall (github: @lweighall)
+
+- Andrew Welsh (github: @Ghilli3)
+
+- Jim Huber (github: @p4r4n0y1ng)
+
+
+
+**Ansible Version Added:** 2.8
+
+Parameters
+----------
+
+adom
+++++
+
+- Description: The ADOM the configuration should belong to.
+
+  
+
+- Required: True
+
+- default: root
+
+central_nat
++++++++++++
+
+- Description: Central NAT setting
+
+  
+
+- Required: False
+
+- default: disable
+
+- choices: ['enable', 'disable']
+
+fwpolicy6_implicit_log
+++++++++++++++++++++++
+
+- Description: Implicit Log setting for all IPv6 policies in package
+
+  
+
+- Required: False
+
+- default: disable
+
+- choices: ['enable', 'disable']
+
+fwpolicy_implicit_log
++++++++++++++++++++++
+
+- Description: Implicit Log setting for all IPv4 policies in package
+
+  
+
+- Required: False
+
+- default: disable
+
+- choices: ['enable', 'disable']
+
+host
+++++
+
+- Description: The FortiManager's Address.
+
+  
+
+- Required: True
+
+inspection_mode
++++++++++++++++
+
+- Description: Inspection mode setting for the policies flow or proxy
+
+  
+
+- Required: False
+
+- default: flow
+
+- choices: ['flow', 'proxy']
+
+mode
+++++
+
+- Description: Sets one of three modes for managing the object
+
+  
+
+- default: add
+
+- choices: ['add', 'set', 'delete']
+
+name
+++++
+
+- Description: Name of the FortiManager package or folder
+
+  
+
+- Required: True
+
+ngfw_mode
++++++++++
+
+- Description: NGFW mode setting for the policies flow or proxy
+
+  
+
+- Required: False
+
+- default: profile-based
+
+- choices: ['profile-based', 'policy-based']
+
+package_folder
+++++++++++++++
+
+- Description: Name of the folder you want to put the package into
+
+  
+
+- Required: False
+
+parent_folder
++++++++++++++
+
+- Description: The parent folder name you want to add this object under
+
+  
+
+- Required: False
+
+password
+++++++++
+
+- Description: The password associated with the username account.
+
+  
+
+- Required: False
+
+scope_members
++++++++++++++
+
+- Description: The devices or scope that you want to assign this policy package to.
+
+  
+
+- Required: False
+
+scope_members_vdom
+++++++++++++++++++
+
+- Description: The members VDOM you want to assign the package to
+
+  
+
+- Required: False
+
+- default: root
+
+ssl_ssh_profile
++++++++++++++++
+
+- Description: if policy-based ngfw-mode, refer to firewall ssl-ssh-profile
+
+  
+
+- Required: False
+
+type
+++++
+
+- Description: Are we managing packages or folders, or installing packages?
+
+  
+
+- Required: True
+
+- choices: ['pkg', 'folder', 'install']
+
+username
+++++++++
+
+- Description: The username to log into the FortiManager
+
+  
+
+- Required: True
+
+
+
+
+Functions
+---------
+
+
+
+
+- fmgr_fwpol_package
+
+ .. code-block:: python
+
+    def fmgr_fwpol_package(fmg, paramgram):
+        """
+        This function will create FMGR Firewall Policy Packages, or delete them. It is also capable of assigning packages.
+        This function DOES NOT install the package. See the function fmgr_fwpol_package_install()
+        """
+        if paramgram["mode"] in ['set', 'add']:
+            url = '/pm/pkg/adom/{adom}'.format(adom=paramgram["adom"])
+            members_list = []
     
-    options:
-      adom:
-        description:
-          - The ADOM the configuration should belong to.
-        required: true
-        default: root
+            # CHECK FOR SCOPE MEMBERS AND CREATE THAT DICT
+            if paramgram["scope_members"] is not None:
+                members = parse_csv_str_to_list(paramgram["scope_members"])
+                for member in members:
+                    scope_dict = {
+                        "name": member,
+                        "vdom": paramgram["scope_members_vdom"],
+                    }
+                    members_list.append(scope_dict)
     
-      host:
-        description:
-          - The FortiManager's Address.
-        required: true
+            # IF PARENT FOLDER IS NOT DEFINED
+            if paramgram["parent_folder"] is None:
+                datagram = {
+                    "type": paramgram["type"],
+                    "name": paramgram["name"],
+                    "scope member": members_list,
+                    "package settings": {
+                        "central-nat": paramgram["central-nat"],
+                        "fwpolicy-implicit-log": paramgram["fwpolicy-implicit-log"],
+                        "fwpolicy6-implicit-log": paramgram["fwpolicy6-implicit-log"],
+                        "inspection-mode": paramgram["inspection-mode"],
+                        "ngfw-mode": paramgram["ngfw-mode"],
+                    }
+                }
     
-      username:
-        description:
-          - The username to log into the FortiManager
-        required: true
+                if paramgram["ngfw-mode"] == "policy-based" and paramgram["ssl-ssh-profile"] is not None:
+                    datagram["package settings"]["ssl-ssh-profile"] = paramgram["ssl-ssh-profile"]
     
-      password:
-        description:
-          - The password associated with the username account.
-        required: false
+            # IF PARENT FOLDER IS DEFINED
+            if paramgram["parent_folder"] is not None:
+                datagram = {
+                    "type": "folder",
+                    "name": paramgram["parent_folder"],
+                    "subobj": [{
+                        "name": paramgram["name"],
+                        "scope member": members_list,
+                        "type": "pkg",
+                        "package settings": {
+                            "central-nat": paramgram["central-nat"],
+                            "fwpolicy-implicit-log": paramgram["fwpolicy-implicit-log"],
+                            "fwpolicy6-implicit-log": paramgram["fwpolicy6-implicit-log"],
+                            "inspection-mode": paramgram["inspection-mode"],
+                            "ngfw-mode": paramgram["ngfw-mode"],
+                        }
+                    }]
+                }
     
-      mode:
-        description:
-          - Sets one of three modes for managing the object
-        choices: ['add', 'set', 'delete']
-        default: add
+        # NORMAL DELETE NO PARENT
+        if paramgram["mode"] == "delete" and paramgram["parent_folder"] is None:
+            datagram = {
+                "name": paramgram["name"]
+            }
+            # SET DELETE URL
+            url = '/pm/pkg/adom/{adom}/{name}'.format(adom=paramgram["adom"], name=paramgram["name"])
     
-      name:
-        description:
-          - Name of the FortiManager package or folder
-        required: True
+        # DELETE WITH PARENT
+        if paramgram["mode"] == "delete" and paramgram["parent_folder"] is not None:
+            datagram = {
+                "name": paramgram["name"]
+            }
+            # SET DELETE URL
+            url = '/pm/pkg/adom/{adom}/{parent_folder}/{name}'.format(adom=paramgram["adom"],
+                                                                      name=paramgram["name"],
+                                                                      parent_folder=paramgram["parent_folder"])
     
-      type:
-        description:
-          - Are we managing packages or folders, or installing packages?
-        required: True
-        choices: ['pkg','folder','install']
+        if paramgram["mode"] == "set":
+            response = fmg.set(url, datagram)
+            # return response
+            # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
+        if paramgram["mode"] == "add":
+            response = fmg.add(url, datagram)
+            # return response
+            # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
+        if paramgram["mode"] == "delete":
+            response = fmg.delete(url, datagram)
+        return response
     
-      package_folder:
-        description:
-          - Name of the folder you want to put the package into
-        required: false
     
-      central_nat:
-        description:
-          - Central NAT setting
-        required: false
-        choices: ['enable', 'disable']
-        default: disable
+
+- fmgr_fwpol_package_folder
+
+ .. code-block:: python
+
+    def fmgr_fwpol_package_folder(fmg, paramgram):
+        """
+        This function will create folders for firewall packages. It can create down to two levels deep.
+        We haven't yet tested for any more layers below two levels.
+        parent_folders for multiple levels may need to defined as "level1/level2/level3" for the URL parameters and such.
+        """
+        if paramgram["mode"] in ['set', 'add']:
+            url = '/pm/pkg/adom/{adom}'.format(adom=paramgram["adom"])
+            # IF PARENT FOLDER IS NOT DEFINED
+            if paramgram["parent_folder"] is None:
+                datagram = {
+                    "type": paramgram["type"],
+                    "name": paramgram["name"],
+                }
     
-      fwpolicy_implicit_log:
-        description:
-          - Implicit Log setting for all IPv4 policies in package
-        required: false
-        choices: ['enable', 'disable']
-        default: disable
+            # IF PARENT FOLDER IS DEFINED
+            if paramgram["parent_folder"] is not None:
+                datagram = {
+                    "type": paramgram["type"],
+                    "name": paramgram["parent_folder"],
+                    "subobj": [{
+                        "name": paramgram["name"],
+                        "type": paramgram["type"],
     
-      fwpolicy6_implicit_log:
-        description:
-          - Implicit Log setting for all IPv6 policies in package
-        required: false
-        choices: ['enable', 'disable']
-        default: disable
+                    }]
+                }
+        # NORMAL DELETE NO PARENT
+        if paramgram["mode"] == "delete" and paramgram["parent_folder"] is None:
+            datagram = {
+                "name": paramgram["name"]
+            }
+            # SET DELETE URL
+            url = '/pm/pkg/adom/{adom}/{name}'.format(adom=paramgram["adom"], name=paramgram["name"])
     
-      inspection_mode:
-        description:
-          - Inspection mode setting for the policies flow or proxy
-        required: false
-        choices: ['flow', 'proxy']
-        default: flow
+        # DELETE WITH PARENT
+        if paramgram["mode"] == "delete" and paramgram["parent_folder"] is not None:
+            datagram = {
+                "name": paramgram["name"]
+            }
+            # SET DELETE URL
+            url = '/pm/pkg/adom/{adom}/{parent_folder}/{name}'.format(adom=paramgram["adom"],
+                                                                      name=paramgram["name"],
+                                                                      parent_folder=paramgram["parent_folder"])
+        # IF MODE = SET  -- USE THE 'SET' API CALL MODE
+        if paramgram["mode"] == "set":
+            response = fmg.set(url, datagram)
+        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
+        if paramgram["mode"] == "add":
+            response = fmg.add(url, datagram)
+        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
+        if paramgram["mode"] == "delete":
+            response = fmg.delete(url, datagram)
+        return response
     
-      ngfw_mode:
-        description:
-          - NGFW mode setting for the policies flow or proxy
-        required: false
-        choices: ['profile-based', 'policy-based']
-        default: profile-based
     
-      ssl_ssh_profile:
-        description:
-          - if policy-based ngfw-mode, refer to firewall ssl-ssh-profile
-        required: false
+
+- fmgr_fwpol_package_install
+
+ .. code-block:: python
+
+    def fmgr_fwpol_package_install(fmg, paramgram):
+        """
+        This method/function installs FMGR FW Policy Packages to the scope members defined in the playbook.
+        """
+        # INIT BLANK MEMBERS LIST
+        members_list = []
+        # USE THE PARSE CSV FUNCTION TO GET A LIST FORMAT OF THE MEMBERS
+        members = parse_csv_str_to_list(paramgram["scope_members"])
+        # USE THAT LIST TO BUILD THE DICTIONARIES NEEDED, AND ADD TO THE BLANK MEMBERS LIST
+        for member in members:
+            scope_dict = {
+                "name": member,
+                "vdom": paramgram["scope_members_vdom"],
+            }
+            members_list.append(scope_dict)
+        # THEN FOR THE DATAGRAM, USING THE MEMBERS LIST CREATED ABOVE
+        datagram = {
+            "adom": paramgram["adom"],
+            "pkg": paramgram["name"],
+            "scope": members_list
+        }
+        # EXECUTE THE INSTALL REQUEST
+        url = '/securityconsole/install/package'
+        response = fmg.execute(url, datagram)
+        return response
     
-      scope_members:
-        description:
-          - The devices or scope that you want to assign this policy package to.
-        required: false
     
-      scope_members_vdom:
-        description:
-          - The members VDOM you want to assign the package to
-        required: false
-        default: root
+
+- main
+
+ .. code-block:: python
+
+    def main():
+        argument_spec = dict(
+            adom=dict(required=False, type="str", default="root"),
+            host=dict(required=True, type="str"),
+            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"])),
+            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
+            mode=dict(choices=["add", "set", "delete"], type="str", default="add"),
     
-      parent_folder:
-        description:
-          - The parent folder name you want to add this object under
-        required: false
+            name=dict(required=False, type="str"),
+            type=dict(required=False, type="str", choices=['pkg', 'folder', 'install']),
+            package_folder=dict(required=False, type="str"),
+            central_nat=dict(required=False, type="str", default="disable", choices=['enable', 'disable']),
+            fwpolicy_implicit_log=dict(required=False, type="str", default="disable", choices=['enable', 'disable']),
+            fwpolicy6_implicit_log=dict(required=False, type="str", default="disable", choices=['enable', 'disable']),
+            inspection_mode=dict(required=False, type="str", default="flow", choices=['flow', 'proxy']),
+            ngfw_mode=dict(required=False, type="str", default="profile-based", choices=['profile-based', 'policy-based']),
+            ssl_ssh_profile=dict(required=False, type="str"),
+            scope_members=dict(required=False, type="str"),
+            scope_members_vdom=dict(required=False, type="str", default="root"),
+            parent_folder=dict(required=False, type="str"),
+    
+        )
+    
+        module = AnsibleModule(argument_spec, supports_check_mode=True, )
+    
+        # MODULE DATAGRAM
+        paramgram = {
+            "adom": module.params["adom"],
+            "name": module.params["name"],
+            "mode": module.params["mode"],
+            "type": module.params["type"],
+            "package-folder": module.params["package_folder"],
+            "central-nat": module.params["central_nat"],
+            "fwpolicy-implicit-log": module.params["fwpolicy_implicit_log"],
+            "fwpolicy6-implicit-log": module.params["fwpolicy6_implicit_log"],
+            "inspection-mode": module.params["inspection_mode"],
+            "ngfw-mode": module.params["ngfw_mode"],
+            "ssl-ssh-profile": module.params["ssl_ssh_profile"],
+            "scope_members": module.params["scope_members"],
+            "scope_members_vdom": module.params["scope_members_vdom"],
+            "parent_folder": module.params["parent_folder"],
+        }
+    
+        # VALIDATE REQUIRED ARGUMENTS ARE PASSED; NOT USED IN ARGUMENT_SPEC TO ALLOW PARAMS TO BE CALLED FROM PROVIDER
+        # CHECK IF PARAMS ARE SET
+        if module.params["host"] is None or module.params["username"] is None:
+            module.fail_json(msg="Host and username are required for connection")
+    
+        # CHECK IF LOGIN FAILED
+        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
+        response = fmg.login()
+        if response[1]['status']['code'] != 0:
+            module.fail_json(msg="Connection to FortiManager Failed")
+        else:
+            # START SESSION LOGIC
+            # IF THE TYPE IS PACKAGE LETS RUN THAT METHOD
+            if paramgram["type"] == "pkg":
+                results = fmgr_fwpol_package(fmg, paramgram)
+                if results[0] in [0, -2]:
+                    module.exit_json(msg="Package successfully created/deleted", **results[1])
+                else:
+                    module.fail_json(msg="Failed to create/delete custom package", **results[1])
+    
+            # IF THE TYPE IS FOLDER LETS RUN THAT METHOD
+            if paramgram["type"] == "folder":
+                results = fmgr_fwpol_package_folder(fmg, paramgram)
+                if results[0] in [0, -2]:
+                    module.exit_json(msg="Folder successfully created/deleted", **results[1])
+                else:
+                    module.fail_json(msg="Failed to add/remove custom package", **results[1])
+    
+            # IF THE TYPE IS INSTALL AND NEEDED PARAMETERS ARE DEFINED INSTALL THE PACKAGE
+            if paramgram["scope_members"] is not None and paramgram["name"] is not None and paramgram["type"] == "install":
+                results = fmgr_fwpol_package_install(fmg, paramgram)
+                if results[0] == 0:
+                    module.exit_json(msg="Install Task Successfully Created", **results[1])
+                else:
+                    module.fail_json(msg="Failed to create install task!", **results[1])
+    
+    
+
+- parse_csv_str_to_list
+
+ .. code-block:: python
+
+    def parse_csv_str_to_list(input_string):
+        """
+        This function will take a comma seperated string and turn it into a list, removing any spaces next the commas
+        that it finds. This is useful for using csv input from ansible parameters and transforming to API requirements.
+        """
+    
+        if input_string is not None:
+            # CREATE VARIABLE AND REMOVE SPACES AROUND COMMAS
+            inputs = input_string
+            inputs = inputs.replace(", ", ",")
+            inputs = inputs.replace(" ,", ",")
+            # INIT THE BASE LIST
+            input = []
+            # FOR EACH ITEM WE CAN SPLIT VIA COMMA ADD IT TO THE LIST
+            for obj in inputs.split(","):
+                input.append(obj)
+            # RETURN THE LIST
+            return input
+        else:
+            # IF THE INPUT STRING WAS EMPTY RETURN NONE/NULL
+            return None
+    
     
 
 
@@ -126,7 +520,7 @@ Module Metadata / Parameters
 Module Source Code
 ------------------
 
-.. code-block:: yaml
+.. code-block:: python
 
     #!/usr/bin/python
     #

@@ -85,6 +85,52 @@ fmgr_query_test.yml
       gather_facts: False
     
       tasks:
+      - name: QUERY FORTIGATE DEVICE BY IP
+        fmgr_query:
+          host: "{{inventory_hostname}}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          object: "device"
+          adom: "ansible"
+          device_ip: "10.7.220.151"
+    
+      - name: QUERY FORTIGATE DEVICE BY SERIAL
+        fmgr_query:
+          host: "{{inventory_hostname}}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          adom: "ansible"
+          object: "device"
+          device_serial: "FGVM010000122995"
+    
+      - name: QUERY FORTIGATE DEVICE BY FRIENDLY NAME
+        fmgr_query:
+          host: "{{inventory_hostname}}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          adom: "ansible"
+          object: "device"
+          device_unique_name: "FGT3"
+    
+      - name: VERIFY CLUSTER MEMBERS AND STATUS
+        fmgr_query:
+          host: "{{inventory_hostname}}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          adom: "ansible"
+          object: "cluster_nodes"
+          device_unique_name: "nyc-fgt-cluster"
+          nodes: ["nyc-fgt01", "nyc-fgt02", "nyc-fgt03"]
+    
+      - name: GET STATUS OF TASK ID
+        fmgr_query:
+          host: "{{inventory_hostname}}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          adom: "ansible"
+          object: "task"
+          task_id: "3"
+    
       - name: USE CUSTOM TYPE TO QUERY AVAILABLE SCRIPTS
         fmgr_query:
           host: "{{inventory_hostname}}"
@@ -92,7 +138,8 @@ fmgr_query_test.yml
           password: "{{ password }}"
           adom: "ansible"
           object: "custom"
-          custom_endpoint: "/pm/pkg/adom/ansible"
+          custom_endpoint: "/dvmdb/adom/ansible/script"
+          custom_dict: { "type": "cli" }
     
     
 
