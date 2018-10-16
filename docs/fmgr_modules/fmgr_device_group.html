@@ -1,0 +1,674 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fmgr_device_group &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fmgr_device_provision_template" href="fmgr_device_provision_template.html" />
+    <link rel="prev" title="fmgr_device_config" href="fmgr_device_config.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../fmgr_root.html">FortiManager</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../fmgr_modules.html">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device.html">fmgr_device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_device_group</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-metadata-parameters">Module Metadata / Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_package.html">fmgr_fwpol_package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_ha.html">fmgr_ha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_ips_sensor.html">fmgr_ips_sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_provisioning.html">fmgr_provisioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_query.html">fmgr_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_script.html">fmgr_script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_av.html">fmgr_secprof_av</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fmgr_root.html">FortiManager</a> &raquo;</li>
+        
+          <li><a href="../fmgr_modules.html">Modules</a> &raquo;</li>
+        
+      <li>fmgr_device_group</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fmgr_modules/fmgr_device_group.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fmgr-device-group">
+<h1>fmgr_device_group<a class="headerlink" href="#fmgr-device-group" title="Permalink to this headline">¶</a></h1>
+<p>Not Parsed</p>
+<div class="section" id="module-metadata-parameters">
+<h2>Module Metadata / Parameters<a class="headerlink" href="#module-metadata-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">module</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span>
+<span class="l l-Scalar l-Scalar-Plain">version_added</span><span class="p p-Indicator">:</span> <span class="s">&quot;2.6&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">author</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Luke Weighall, Andrew Welsh</span>
+<span class="l l-Scalar l-Scalar-Plain">short_description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Alter FortiManager device groups</span>
+<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Add or edit device groups and assign devices to device groups FortiManager Device Manager using jsonrpc API</span>
+
+<span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The ADOM the configuration should belong to.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">vdom</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The VDOM of on the Fortigate you want to add, must match the device in FMGR. Usually root.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The FortiManager&#39;s Address.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The username to log into the FortiManager</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The password associated with the username account.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The desired state of the specified object.</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">absent will delete the object if it exists. If grp_members is defined, only members are deleted.</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">present will create the configuration if needed.</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">To delete a grp_name, you must omit the grp_members field in the playbook task while setting to absent</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">present</span>
+
+    <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;absent&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;present&quot;</span><span class="p p-Indicator">]</span>
+  <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The name of the device group.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The description of the device group.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">grp_members</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">A comma separated list of device names or device groups to be added as members to the device group.</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">If Group Members are defined, and state=&quot;absent&quot;, only group members will be removed.</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">If you want to delete a group itself, you must omit this parameter from the task in playbook</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Otherwise module assumes</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-source-code">
+<h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/python
+#
+# This file is part of Ansible
+#
+# Ansible is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Ansible is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+#
+
+from __future__ import absolute_import, division, print_function
+__metaclass__ = type
+
+ANSIBLE_METADATA = {
+    &quot;metadata_version&quot;: &quot;1.1&quot;,
+    &quot;status&quot;: [&quot;preview&quot;],
+    &quot;supported_by&quot;: &quot;community&quot;
+}
+
+DOCUMENTATION = &#39;&#39;&#39;
+---
+module: fmgr_device_group
+version_added: &quot;2.6&quot;
+author: Luke Weighall, Andrew Welsh
+short_description: Alter FortiManager device groups
+description:
+  - Add or edit device groups and assign devices to device groups FortiManager Device Manager using jsonrpc API
+
+options:
+  adom:
+    description:
+      - The ADOM the configuration should belong to.
+    required: true
+
+  vdom:
+    description:
+      - The VDOM of on the Fortigate you want to add, must match the device in FMGR. Usually root.
+    required: true
+
+  host:
+    description:
+      - The FortiManager&#39;s Address.
+    required: true
+
+  username:
+    description:
+      - The username to log into the FortiManager
+    required: true
+  password:
+    description:
+      - The password associated with the username account.
+    required: false
+
+  state:
+    description:
+      - The desired state of the specified object.
+      - absent will delete the object if it exists. If grp_members is defined, only members are deleted.
+      - present will create the configuration if needed.
+      - To delete a grp_name, you must omit the grp_members field in the playbook task while setting to absent
+    required: true
+    default: present
+
+    choices: [&quot;absent&quot;, &quot;present&quot;]
+  grp_name:
+    description:
+      - The name of the device group.
+    required: false
+
+  grp_desc:
+    description:
+      - The description of the device group.
+    required: false
+
+  grp_members:
+    description:
+      - A comma separated list of device names or device groups to be added as members to the device group.
+      - If Group Members are defined, and state=&quot;absent&quot;, only group members will be removed.
+      - If you want to delete a group itself, you must omit this parameter from the task in playbook
+      - Otherwise module assumes
+    required: false
+
+&#39;&#39;&#39;
+
+
+EXAMPLES = &#39;&#39;&#39;
+- name: CREATE DEVICE GROUP
+  fmgr_device_group:
+    host: &quot;{{inventory_hostname}}&quot;
+    username: &quot;{{ username }}&quot;
+    password: &quot;{{ password }}&quot;
+    grp_name: &quot;TestGroup&quot;
+    grp_desc: &quot;CreatedbyAnsible&quot;
+    adom: &quot;ansible&quot;
+    state: &quot;present&quot;
+
+- name: CREATE DEVICE GROUP 2
+  fmgr_device_group:
+    host: &quot;{{inventory_hostname}}&quot;
+    username: &quot;{{ username }}&quot;
+    password: &quot;{{ password }}&quot;
+    grp_name: &quot;AnsibleGroup&quot;
+    grp_desc: &quot;CreatedbyAnsible&quot;
+    adom: &quot;ansible&quot;
+    state: &quot;present&quot;
+
+- name: ADD DEVICES TO DEVICE GROUP
+  fmgr_device_group:
+    host: &quot;{{inventory_hostname}}&quot;
+    username: &quot;{{ username }}&quot;
+    password: &quot;{{ password }}&quot;
+    state: &quot;present&quot;
+    grp_name: &quot;TestGroup&quot;
+    grp_members: &quot;FGT1,FGT2&quot;
+    adom: &quot;ansible&quot;
+    vdom: &quot;root&quot;
+
+- name: REMOVE DEVICES TO DEVICE GROUP
+  fmgr_device_group:
+    host: &quot;{{inventory_hostname}}&quot;
+    username: &quot;{{ username }}&quot;
+    password: &quot;{{ password }}&quot;
+    state: &quot;absent&quot;
+    grp_name: &quot;TestGroup&quot;
+    grp_members: &quot;FGT1,FGT2&quot;
+    adom: &quot;ansible&quot;
+
+- name: DELETE DEVICE GROUP
+  fmgr_device_group:
+    host: &quot;{{inventory_hostname}}&quot;
+    username: &quot;{{ username }}&quot;
+    password: &quot;{{ password }}&quot;
+    grp_name: &quot;AnsibleGroup&quot;
+    grp_desc: &quot;CreatedbyAnsible&quot;
+    state: &quot;absent&quot;
+    adom: &quot;ansible&quot;
+&#39;&#39;&#39;
+RETURN = &quot;&quot;&quot;
+api_result:
+  description: full API response, includes status code and message
+  returned: always
+  type: string
+&quot;&quot;&quot;
+
+from ansible.module_utils.basic import AnsibleModule, env_fallback
+from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
+
+
+# check for pyFMG lib
+try:
+    from pyFMG.fortimgr import FortiManager
+    HAS_PYFMGR = True
+except ImportError:
+    HAS_PYFMGR = False
+
+
+def get_groups(fmg, paramgram):
+    &quot;&quot;&quot;
+    This method is used GET the HA PEERS of a FortiManager Node
+    &quot;&quot;&quot;
+
+    datagram = {
+        &quot;method&quot;: &quot;get&quot;
+    }
+
+    url = &#39;/dvmdb/adom/{adom}/group&#39;.format(adom=paramgram[&quot;adom&quot;])
+    response = fmg.get(url, datagram)
+    return response
+
+
+def add_device_group(fmg, paramgram):
+    &quot;&quot;&quot;
+    This method is used to add device groups
+    &quot;&quot;&quot;
+
+    datagram = {
+        &quot;name&quot;: paramgram[&quot;grp_name&quot;],
+        &quot;desc&quot;: paramgram[&quot;grp_desc&quot;],
+        &quot;os_type&quot;: &quot;fos&quot;
+    }
+
+    url = &#39;/dvmdb/adom/{adom}/group&#39;.format(adom=paramgram[&quot;adom&quot;])
+    response = fmg.add(url, datagram)
+    return response
+
+
+def delete_device_group(fmg, paramgram):
+    &quot;&quot;&quot;
+    This method is used to add devices to the FMGR
+    &quot;&quot;&quot;
+
+    datagram = {
+        &quot;adom&quot;: paramgram[&quot;adom&quot;],
+        &quot;name&quot;: paramgram[&quot;grp_name&quot;]
+    }
+
+    url = &#39;/dvmdb/adom/{adom}/group/{grp_name}&#39;.format(adom=paramgram[&quot;adom&quot;], grp_name=paramgram[&quot;grp_name&quot;])
+    response = fmg.delete(url, datagram)
+    return response
+
+
+def add_group_member(fmg, paramgram):
+    &quot;&quot;&quot;
+    This method is used to update device groups add members
+    &quot;&quot;&quot;
+    response = None
+    device_member_list = paramgram[&quot;grp_members&quot;].replace(&#39; &#39;, &#39;&#39;)
+    device_member_list = device_member_list.split(&#39;,&#39;)
+
+    for dev_name in device_member_list:
+        datagram = {&#39;name&#39;: dev_name, &#39;vdom&#39;: paramgram[&quot;vdom&quot;]}
+
+        url = &#39;/dvmdb/adom/{adom}/group/{grp_name}/object member&#39;.format(adom=paramgram[&quot;adom&quot;],
+                                                                         grp_name=paramgram[&quot;grp_name&quot;])
+        response = fmg.add(url, datagram)
+
+    return response
+
+
+def delete_group_member(fmg, paramgram):
+    &quot;&quot;&quot;
+    This method is used to update device groups add members
+    &quot;&quot;&quot;
+    response = None
+    device_member_list = paramgram[&quot;grp_members&quot;].replace(&#39; &#39;, &#39;&#39;)
+    device_member_list = device_member_list.split(&#39;,&#39;)
+
+    for dev_name in device_member_list:
+        datagram = {&#39;name&#39;: dev_name, &#39;vdom&#39;: paramgram[&quot;vdom&quot;]}
+
+        url = &#39;/dvmdb/adom/{adom}/group/{grp_name}/object member&#39;.format(adom=paramgram[&quot;adom&quot;],
+                                                                         grp_name=paramgram[&quot;grp_name&quot;])
+        response = fmg.delete(url, datagram)
+
+    return response
+
+
+# FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
+def fmgr_logout(fmg, module, msg=&quot;NULL&quot;, results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
+    &quot;&quot;&quot;
+    THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
+    &quot;&quot;&quot;
+
+    # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
+    if msg != &quot;NULL&quot; and len(results) == 0:
+        try:
+            fmg.logout()
+        except:
+            pass
+        module.fail_json(msg=msg)
+
+    # SUBMISSION ERROR
+    if len(results) &gt; 0:
+        if msg == &quot;NULL&quot;:
+            try:
+                msg = results[1][&#39;status&#39;][&#39;message&#39;]
+            except:
+                msg = &quot;No status message returned from pyFMG. Possible that this was a GET with a tuple result.&quot;
+
+            if results[0] not in good_codes:
+                if logout_on_fail:
+                    fmg.logout()
+                    module.fail_json(msg=msg, **results[1])
+                else:
+                    return_msg = msg + &quot; -- LOGOUT ON FAIL IS OFF, MOVING ON&quot;
+                    return return_msg
+            else:
+                if logout_on_success:
+                    fmg.logout()
+                    module.exit_json(msg=msg, **results[1])
+                else:
+                    return_msg = msg + &quot; -- LOGOUT ON SUCCESS IS OFF, MOVING ON TO REST OF CODE&quot;
+                    return return_msg
+
+
+def main():
+    argument_spec = dict(
+        adom=dict(required=False, type=&quot;str&quot;, default=&quot;root&quot;),
+        vdom=dict(required=False, type=&quot;str&quot;, default=&quot;root&quot;),
+        host=dict(required=True, type=&quot;str&quot;),
+        username=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_USERNAME&quot;])),
+        password=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_PASSWORD&quot;]), no_log=True),
+        state=dict(choices=[&quot;absent&quot;, &quot;present&quot;], type=&quot;str&quot;, default=&quot;present&quot;),
+        grp_desc=dict(required=False, type=&quot;str&quot;),
+        grp_name=dict(required=True, type=&quot;str&quot;),
+        grp_members=dict(required=False, type=&quot;str&quot;),
+    )
+
+    module = AnsibleModule(argument_spec, supports_check_mode=True, )
+
+    # handle params passed via provider and insure they are represented as the data type expected by fortimanager
+    paramgram = {
+        &quot;state&quot;: module.params[&quot;state&quot;],
+        &quot;grp_name&quot;: module.params[&quot;grp_name&quot;],
+        &quot;grp_desc&quot;: module.params[&quot;grp_desc&quot;],
+        &quot;grp_members&quot;: module.params[&quot;grp_members&quot;],
+        &quot;adom&quot;: module.params[&quot;adom&quot;],
+        &quot;vdom&quot;: module.params[&quot;vdom&quot;]
+    }
+
+    # validate required arguments are passed; not used in argument_spec to allow params to be called from provider
+    # check if params are set
+    if module.params[&quot;host&quot;] is None or module.params[&quot;username&quot;] is None or module.params[&quot;password&quot;] is None:
+        module.fail_json(msg=&quot;Host and username are required for connection&quot;)
+
+    # CHECK IF LOGIN FAILED
+    fmg = AnsibleFortiManager(module, module.params[&quot;host&quot;], module.params[&quot;username&quot;], module.params[&quot;password&quot;])
+    response = fmg.login()
+    if response[1][&#39;status&#39;][&#39;code&#39;] != 0:
+        module.fail_json(msg=&quot;Connection to FortiManager Failed&quot;)
+    else:
+        # START SESSION LOGIC
+
+        # PROCESS THE GROUP ADDS FIRST
+        if paramgram[&quot;grp_name&quot;] is not None and paramgram[&quot;state&quot;] == &quot;present&quot;:
+            # add device group
+            results = add_device_group(fmg, paramgram)
+            if not results[0] == 0 and not results[0] == -2:
+                fmgr_logout(fmg, module, msg=&quot;Failed to Add Device Group&quot;, results=results, good_codes=[0])
+
+        # PROCESS THE GROUP MEMBER ADDS
+        if paramgram[&quot;grp_members&quot;] is not None and paramgram[&quot;state&quot;] == &quot;present&quot;:
+            # assign devices to device group
+            results = add_group_member(fmg, paramgram)
+            if not results[0] == 0 and not results[0] == -2:
+                fmgr_logout(fmg, module, msg=&quot;Failed to Add Group Member(s)&quot;, results=results, good_codes=[0])
+
+        # PROCESS THE GROUP MEMBER DELETES
+        if paramgram[&quot;grp_members&quot;] is not None and paramgram[&quot;state&quot;] == &quot;absent&quot;:
+            # remove devices grom a group
+            results = delete_group_member(fmg, paramgram)
+            if not results[0] == 0:
+                fmgr_logout(fmg, module, msg=&quot;Failed to Delete Group Member(s)&quot;, results=results, good_codes=[0])
+
+        # PROCESS THE GROUP DELETES, ONLY IF GRP_MEMBERS IS NOT NULL TOO
+        if paramgram[&quot;grp_name&quot;] is not None and paramgram[&quot;state&quot;] == &quot;absent&quot; and paramgram[&quot;grp_members&quot;] is None:
+            # delete device group
+            results = delete_device_group(fmg, paramgram)
+            if not results[0] == 0:
+                fmgr_logout(fmg, module, msg=&quot;Failed to Delete Device Group&quot;, results=results, good_codes=[0])
+
+    # RETURN THE RESULTS
+    return module.exit_json(**results[1])
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fmgr_device_provision_template.html" class="btn btn-neutral float-right" title="fmgr_device_provision_template" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fmgr_device_config.html" class="btn btn-neutral" title="fmgr_device_config" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

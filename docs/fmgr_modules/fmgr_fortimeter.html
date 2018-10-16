@@ -1,0 +1,509 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fmgr_fortimeter &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fmgr_fwobj_address" href="fmgr_fwobj_address.html" />
+    <link rel="prev" title="fmgr_device_provision_template" href="fmgr_device_provision_template.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../fmgr_root.html">FortiManager</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../fmgr_modules.html">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device.html">fmgr_device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_fortimeter</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-metadata-parameters">Module Metadata / Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_package.html">fmgr_fwpol_package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_ha.html">fmgr_ha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_ips_sensor.html">fmgr_ips_sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_provisioning.html">fmgr_provisioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_query.html">fmgr_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_script.html">fmgr_script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_av.html">fmgr_secprof_av</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fmgr_root.html">FortiManager</a> &raquo;</li>
+        
+          <li><a href="../fmgr_modules.html">Modules</a> &raquo;</li>
+        
+      <li>fmgr_fortimeter</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fmgr_modules/fmgr_fortimeter.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fmgr-fortimeter">
+<h1>fmgr_fortimeter<a class="headerlink" href="#fmgr-fortimeter" title="Permalink to this headline">¶</a></h1>
+<p>Not Parsed</p>
+<div class="section" id="module-metadata-parameters">
+<h2>Module Metadata / Parameters<a class="headerlink" href="#module-metadata-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">module</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fmgr_fortimeter</span>
+<span class="l l-Scalar l-Scalar-Plain">version_added</span><span class="p p-Indicator">:</span> <span class="s">&quot;2.6&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">author</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Luke Weighall (@lweighall)</span>
+<span class="l l-Scalar l-Scalar-Plain">short_description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Sets FortiMeter licensing level</span>
+<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Provides MSPs the ability to programatically change FortiMeter license levels on devices.</span>
+
+<span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The ADOM the configuration should belong to.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+  <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The FortiManager&#39;s Address.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The username used to authenticate with the FortiManager.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The password associated with the username account.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="l l-Scalar l-Scalar-Plain">device_unique_name</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The desired &quot;friendly&quot; name of the device you want to query.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">fortimeter_utm_level</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Determines which UTM profiles should be allowed for Fortimeter. Multiple comma seperated selections allowed.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="s">&quot;all&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;fw&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;ips&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;av&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;ac&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;wf&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;all&quot;</span><span class="p p-Indicator">]</span>
+  <span class="l l-Scalar l-Scalar-Plain">foslic_type</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Sets the FortiMeterOS license Type (0 is temporary, 2 is regular, 1 is trial, 3 is expired)</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">2</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-source-code">
+<h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/python
+#
+# This file is part of Ansible
+#
+# Ansible is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Ansible is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+#
+
+from __future__ import absolute_import, division, print_function
+__metaclass__ = type
+
+ANSIBLE_METADATA = {
+    &quot;metadata_version&quot;: &quot;1.1&quot;,
+    &quot;status&quot;: [&quot;preview&quot;],
+    &quot;supported_by&quot;: &quot;community&quot;
+}
+
+DOCUMENTATION = &#39;&#39;&#39;
+---
+module: fmgr_fortimeter
+version_added: &quot;2.6&quot;
+author: Luke Weighall (@lweighall)
+short_description: Sets FortiMeter licensing level
+description:
+  - Provides MSPs the ability to programatically change FortiMeter license levels on devices.
+
+options:
+  adom:
+    description:
+      - The ADOM the configuration should belong to.
+    required: true
+    default: root
+  host:
+    description:
+      - The FortiManager&#39;s Address.
+    required: true
+  username:
+    description:
+      - The username used to authenticate with the FortiManager.
+    required: false
+  password:
+    description:
+      - The password associated with the username account.
+    required: false
+  device_unique_name:
+    description:
+      - The desired &quot;friendly&quot; name of the device you want to query.
+    required: true
+  fortimeter_utm_level:
+    description:
+      - Determines which UTM profiles should be allowed for Fortimeter. Multiple comma seperated selections allowed.
+    required: true
+    default: &quot;all&quot;
+    choices: [&quot;fw&quot;, &quot;ips&quot;, &quot;av&quot;, &quot;ac&quot;, &quot;wf&quot;, &quot;all&quot;]
+  foslic_type:
+    description:
+      - Sets the FortiMeterOS license Type (0 is temporary, 2 is regular, 1 is trial, 3 is expired)
+    required: false
+    default: 2
+&#39;&#39;&#39;
+
+
+EXAMPLES = &#39;&#39;&#39;
+- name: SET LICENSING MODE ON FORTIMETER DEVICE to ALL
+  fmgr_fortimeter:
+    host: &quot;{{inventory_hostname}}&quot;
+    username: &quot;{{ username }}&quot;
+    password: &quot;{{ password }}&quot;
+    object: &quot;device&quot;
+    adom: &quot;ansible&quot;
+    device_unique_name: &quot;FOSVM1FGPRJ411DD&quot;
+    fortimeter_utm_level: &quot;all&quot;
+
+- name: SET LICENSING MODE ON FORTIMETER DEVICE to a COMBO
+  fmgr_fortimeter:
+    host: &quot;{{inventory_hostname}}&quot;
+    username: &quot;{{ username }}&quot;
+    password: &quot;{{ password }}&quot;
+    object: &quot;device&quot;
+    adom: &quot;ansible&quot;
+    device_unique_name: &quot;FOSVM1FGPRJ411DD&quot;
+    fortimeter_utm_level: &quot;fw, ips, av&quot;
+&#39;&#39;&#39;
+
+RETURN = &quot;&quot;&quot;
+api_result:
+  description: full API response, includes status code and message
+  returned: always
+  type: string
+&quot;&quot;&quot;
+
+from ansible.module_utils.basic import AnsibleModule, env_fallback
+from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
+
+# check for pyFMG lib
+try:
+    from pyFMG.fortimgr import FortiManager
+    HAS_PYFMGR = True
+except ImportError:
+    HAS_PYFMGR = False
+
+
+def fmgr_set_fortimeter_lic(fmg, paramgram):
+
+    # FIRST WE NEED TO PARSE THE DESIRED FOSLIC LEVEL ON THESE RULES
+    # FW = 1
+    # AV = 2
+    # IPS = 4
+    # AC = 8
+    # WF = 16
+    # PARSE THE DESIRED OPTIONS, AND THEN ADD THEM UP
+    fos_levels = {
+        &quot;fw&quot;: 1,
+        &quot;av&quot;: 2,
+        &quot;ips&quot;: 4,
+        &quot;ac&quot;: 8,
+        &quot;wf&quot;: 16
+    }
+
+    foslic = 0
+    fos_items = paramgram[&quot;fortimeter_utm_level&quot;].strip().split(&quot;,&quot;)
+
+    if &quot;all&quot; in paramgram[&quot;fortimeter_utm_level&quot;].lower():
+        foslic = 63
+    else:
+        for item in fos_items:
+            if item.strip().lower() == &quot;fw&quot;:
+                foslic += fos_levels[&quot;fw&quot;]
+                continue
+            if item.strip().lower() == &quot;av&quot;:
+                foslic += fos_levels[&quot;av&quot;]
+                continue
+            if item.strip().lower() == &quot;ips&quot;:
+                foslic += fos_levels[&quot;ips&quot;]
+                continue
+            if item.strip().lower() == &quot;ac&quot;:
+                foslic += fos_levels[&quot;ac&quot;]
+                continue
+            if item.strip().lower() == &quot;wf&quot;:
+                foslic += fos_levels[&quot;wf&quot;]
+                continue
+
+    datagram = {
+        &quot;foslic_utm&quot;: foslic,
+        &quot;foslic_type&quot;: paramgram[&quot;foslic_type&quot;]
+    }
+
+    url = &quot;/dvmdb/adom/{adom}/device/{device}&quot;.format(adom=paramgram[&quot;adom&quot;], device=paramgram[&quot;device_unique_name&quot;])
+    response = fmg.set(url, datagram)
+
+    return response
+
+
+def main():
+    argument_spec = dict(
+        adom=dict(required=False, type=&quot;str&quot;, default=&quot;root&quot;),
+        host=dict(required=True, type=&quot;str&quot;),
+        username=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_USERNAME&quot;])),
+        password=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_PASSWORD&quot;]), no_log=True),
+
+        device_unique_name=dict(required=True, type=&quot;str&quot;),
+        fortimeter_utm_level=dict(required=True, type=&quot;str&quot;),
+        foslic_type=dict(required=False, type=&quot;int&quot;, default=2)
+    )
+
+    module = AnsibleModule(argument_spec, supports_check_mode=True, )
+
+    # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
+    host = module.params[&quot;host&quot;]
+    username = module.params[&quot;username&quot;]
+    if host is None or username is None:
+        module.fail_json(msg=&quot;Host and username are required&quot;)
+
+    # CHECK IF LOGIN FAILED
+    fmg = AnsibleFortiManager(module, module.params[&quot;host&quot;], module.params[&quot;username&quot;], module.params[&quot;password&quot;])
+    response = fmg.login()
+
+    if response[1][&#39;status&#39;][&#39;code&#39;] != 0:
+        module.fail_json(msg=&quot;Connection to FortiManager Failed&quot;)
+    else:
+        paramgram = {
+            &quot;adom&quot;: module.params[&quot;adom&quot;],
+            &quot;device_unique_name&quot;: module.params[&quot;device_unique_name&quot;],
+            &quot;fortimeter_utm_level&quot;: module.params[&quot;fortimeter_utm_level&quot;],
+            &quot;foslic_type&quot;: module.params[&quot;foslic_type&quot;]
+        }
+
+        results = fmgr_set_fortimeter_lic(fmg, paramgram)
+        if results[0] != 0:
+            return module.fail_json(msg=&quot;Setting FortiMeter Failed&quot;, **results[1])
+
+    # logout
+    fmg.logout()
+    return module.exit_json(**results[1])
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fmgr_fwobj_address.html" class="btn btn-neutral float-right" title="fmgr_fwobj_address" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fmgr_device_provision_template.html" class="btn btn-neutral" title="fmgr_device_provision_template" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

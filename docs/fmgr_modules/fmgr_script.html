@@ -1,0 +1,597 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fmgr_script &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fmgr_secprof_av" href="fmgr_secprof_av.html" />
+    <link rel="prev" title="fmgr_query" href="fmgr_query.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../fmgr_root.html">FortiManager</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../fmgr_modules.html">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device.html">fmgr_device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_package.html">fmgr_fwpol_package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_ha.html">fmgr_ha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_ips_sensor.html">fmgr_ips_sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_provisioning.html">fmgr_provisioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_query.html">fmgr_query</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_script</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-metadata-parameters">Module Metadata / Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_av.html">fmgr_secprof_av</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fmgr_root.html">FortiManager</a> &raquo;</li>
+        
+          <li><a href="../fmgr_modules.html">Modules</a> &raquo;</li>
+        
+      <li>fmgr_script</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fmgr_modules/fmgr_script.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fmgr-script">
+<h1>fmgr_script<a class="headerlink" href="#fmgr-script" title="Permalink to this headline">¶</a></h1>
+<p>Not Parsed</p>
+<div class="section" id="module-metadata-parameters">
+<h2>Module Metadata / Parameters<a class="headerlink" href="#module-metadata-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">module</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fmgr_script</span>
+<span class="l l-Scalar l-Scalar-Plain">version_added</span><span class="p p-Indicator">:</span> <span class="s">&quot;2.5&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">author</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Andrew Welsh</span>
+<span class="l l-Scalar l-Scalar-Plain">short_description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Add/Edit/Delete and execute scripts</span>
+<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Create/edit/delete scripts and execute the scripts on the FortiManager using jsonrpc API</span>
+
+<span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The administrative domain (admon) the configuration belongs to</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">vdom</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The virtual domain (vdom) the configuration belongs to</span>
+  <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The FortiManager&#39;s Address.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The username to log into the FortiManager</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The password associated with the username account.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The desired state of the specified object.</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">present - will create a script.</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">execute - execute the scipt.</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">delete - delete the script.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+    <span class="l l-Scalar l-Scalar-Plain">default</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">present</span>
+    <span class="l l-Scalar l-Scalar-Plain">choices</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;present&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;execute&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;delete&quot;</span><span class="p p-Indicator">]</span>
+  <span class="l l-Scalar l-Scalar-Plain">script_name</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The name of the script.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+  <span class="l l-Scalar l-Scalar-Plain">script_type</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The type of script (CLI or TCL).</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="l l-Scalar l-Scalar-Plain">script_target</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The target of the script to be run.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="l l-Scalar l-Scalar-Plain">script_description</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The description of the script.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="l l-Scalar l-Scalar-Plain">script_content</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The script content that will be executed.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="l l-Scalar l-Scalar-Plain">script_scope</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">(datasource) The devices that the script will run on, can have both device member and device group member.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+  <span class="l l-Scalar l-Scalar-Plain">script_package</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">(datasource) Policy package object to run the script against</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-source-code">
+<h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/python
+#
+# This file is part of Ansible
+#
+# Ansible is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Ansible is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+#
+
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
+ANSIBLE_METADATA = {&#39;status&#39;: [&#39;preview&#39;],
+                    &#39;supported_by&#39;: &#39;community&#39;,
+                    &#39;metadata_version&#39;: &#39;1.1&#39;}
+
+DOCUMENTATION = &#39;&#39;&#39;
+---
+module: fmgr_script
+version_added: &quot;2.5&quot;
+author: Andrew Welsh
+short_description: Add/Edit/Delete and execute scripts
+description: Create/edit/delete scripts and execute the scripts on the FortiManager using jsonrpc API
+
+options:
+  adom:
+    description:
+      - The administrative domain (admon) the configuration belongs to
+    required: true
+  vdom:
+    description:
+      - The virtual domain (vdom) the configuration belongs to
+  host:
+    description:
+      - The FortiManager&#39;s Address.
+    required: true
+  username:
+    description:
+      - The username to log into the FortiManager
+    required: true
+  password:
+    description:
+      - The password associated with the username account.
+    required: false
+  state:
+    description:
+      - The desired state of the specified object.
+      - present - will create a script.
+      - execute - execute the scipt.
+      - delete - delete the script.
+    required: false
+    default: present
+    choices: [&quot;present&quot;, &quot;execute&quot;, &quot;delete&quot;]
+  script_name:
+    description:
+      - The name of the script.
+    required: True
+  script_type:
+    description:
+      - The type of script (CLI or TCL).
+    required: false
+  script_target:
+    description:
+      - The target of the script to be run.
+    required: false
+  script_description:
+    description:
+      - The description of the script.
+    required: false
+  script_content:
+    description:
+      - The script content that will be executed.
+    required: false
+  script_scope:
+    description:
+      - (datasource) The devices that the script will run on, can have both device member and device group member.
+    required: false
+  script_package:
+    description:
+      - (datasource) Policy package object to run the script against
+    required: false
+&#39;&#39;&#39;
+
+EXAMPLES = &#39;&#39;&#39;
+- name: CREATE SCRIPT
+  fmgr_script:
+    host: &quot;{{inventory_hostname}}&quot;
+    username: &quot;{{ username }}&quot;
+    password: &quot;{{ password }}&quot;
+    adom: &quot;root&quot;
+    script_name: &quot;TestScript&quot;
+    script_type: &quot;cli&quot;
+    script_target: &quot;remote_device&quot;
+    script_description: &quot;Create by Ansible&quot;
+    script_content: &quot;get system status&quot;
+
+- name: EXECUTE SCRIPT
+  fmgr_script:
+    host: &quot;{{inventory_hostname}}&quot;
+    username: &quot;{{ username }}&quot;
+    password: &quot;{{ password }}&quot;
+    adom: &quot;root&quot;
+    script_name: &quot;TestScript&quot;
+    state: &quot;execute&quot;
+    script_scope: &quot;FGT1,FGT2&quot;
+
+- name: DELETE SCRIPT
+  fmgr_script:
+    host: &quot;{{inventory_hostname}}&quot;
+    username: &quot;{{ username }}&quot;
+    password: &quot;{{ password }}&quot;
+    adom: &quot;root&quot;
+    script_name: &quot;TestScript&quot;
+    state: &quot;delete&quot;
+&#39;&#39;&#39;
+
+RETURN = &quot;&quot;&quot;
+api_result:
+  description: full API response, includes status code and message
+  returned: always
+  type: string
+&quot;&quot;&quot;
+
+from ansible.module_utils.basic import AnsibleModule, env_fallback
+from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
+
+# check for pyFMG lib
+try:
+    from pyFMG.fortimgr import FortiManager
+    HAS_PYFMGR = True
+except ImportError:
+    HAS_PYFMGR = False
+
+
+def set_script(fmg, script_name, script_type, script_content, script_desc, script_target, adom):
+    &quot;&quot;&quot;
+    This method sets a script.
+    &quot;&quot;&quot;
+
+    datagram = {
+        &#39;content&#39;: script_content,
+        &#39;desc&#39;: script_desc,
+        &#39;name&#39;: script_name,
+        &#39;target&#39;: script_target,
+        &#39;type&#39;: script_type,
+    }
+
+    url = &#39;/dvmdb/adom/{adom}/script/&#39;.format(adom=adom)
+    response = fmg.set(url, datagram)
+    return response
+
+
+def delete_script(fmg, script_name, adom):
+    &quot;&quot;&quot;
+    This method deletes a script.
+    &quot;&quot;&quot;
+
+    datagram = {
+        &#39;name&#39;: script_name,
+    }
+
+    url = &#39;/dvmdb/adom/{adom}/script/{script_name}&#39;.format(adom=adom, script_name=script_name)
+    response = fmg.delete(url, datagram)
+    return response
+
+
+def execute_script(fmg, script_name, scope, package, adom, vdom):
+    &quot;&quot;&quot;
+    This method will execute a specific script.
+    &quot;&quot;&quot;
+
+    scope_list = list()
+    scope = scope.replace(&#39; &#39;, &#39;&#39;)
+    scope = scope.split(&#39;,&#39;)
+    for dev_name in scope:
+        scope_list.append({&#39;name&#39;: dev_name, &#39;vdom&#39;: vdom})
+
+    datagram = {
+        &#39;adom&#39;: adom,
+        &#39;script&#39;: script_name,
+        &#39;package&#39;: package,
+        &#39;scope&#39;: scope_list,
+    }
+
+    url = &#39;/dvmdb/adom/{adom}/script/execute&#39;.format(adom=adom)
+    response = fmg.execute(url, datagram)
+    return response
+
+
+def main():
+    argument_spec = dict(
+        adom=dict(required=False, type=&quot;str&quot;),
+        vdom=dict(required=False, type=&quot;str&quot;),
+        host=dict(required=True, type=&quot;str&quot;),
+        password=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_PASSWORD&quot;]), no_log=True),
+        username=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_USERNAME&quot;])),
+        state=dict(choices=[&quot;execute&quot;, &quot;delete&quot;, &quot;present&quot;], type=&quot;str&quot;, default=&quot;present&quot;),
+
+        script_name=dict(required=True, type=&quot;str&quot;),
+        script_type=dict(required=False, type=&quot;str&quot;),
+        script_target=dict(required=False, type=&quot;str&quot;),
+        script_description=dict(required=False, type=&quot;str&quot;),
+        script_content=dict(required=False, type=&quot;str&quot;),
+        script_scope=dict(required=False, type=&quot;str&quot;),
+        script_package=dict(required=False, type=&quot;str&quot;),
+    )
+
+    module = AnsibleModule(argument_spec, supports_check_mode=True,)
+
+    # check if params are set
+    if module.params[&quot;host&quot;] is None or module.params[&quot;username&quot;] is None:
+        module.fail_json(msg=&quot;Host and username are required for connection&quot;)
+
+    # check if login failed
+    fmg = AnsibleFortiManager(module, module.params[&quot;host&quot;], module.params[&quot;username&quot;], module.params[&quot;password&quot;])
+    response = fmg.login()
+
+    if response[1][&#39;status&#39;][&#39;code&#39;] != 0:
+        module.fail_json(msg=&quot;Connection to FortiManager Failed&quot;)
+    else:
+        adom = module.params[&quot;adom&quot;]
+        if adom is None:
+            adom = &quot;root&quot;
+        vdom = module.params[&quot;vdom&quot;]
+        if vdom is None:
+            vdom = &quot;root&quot;
+        state = module.params[&quot;state&quot;]
+        if state is None:
+            state = &quot;present&quot;
+
+        script_name = module.params[&quot;script_name&quot;]
+        script_type = module.params[&quot;script_type&quot;]
+        script_target = module.params[&quot;script_target&quot;]
+        script_description = module.params[&quot;script_description&quot;]
+        script_content = module.params[&quot;script_content&quot;]
+        script_scope = module.params[&quot;script_scope&quot;]
+        script_package = module.params[&quot;script_package&quot;]
+
+        # if state is present (default), then add the script
+        if state == &quot;present&quot;:
+            results = set_script(fmg, script_name, script_type, script_content, script_description, script_target, adom)
+            if not results[0] == 0:
+                if isinstance(results[1], list):
+                    module.fail_json(msg=&quot;Adding Script Failed&quot;, **results)
+                else:
+                    module.fail_json(msg=&quot;Adding Script Failed&quot;)
+        elif state == &quot;execute&quot;:
+            results = execute_script(fmg, script_name, script_scope, script_package, adom, vdom)
+            if not results[0] == 0:
+                module.fail_json(msg=&quot;Script Execution Failed&quot;, **results)
+        elif state == &quot;delete&quot;:
+            results = delete_script(fmg, script_name, adom)
+            if not results[0] == 0:
+                module.fail_json(msg=&quot;Script Deletion Failed&quot;, **results)
+
+        fmg.logout()
+
+        # results is returned as a tuple
+        return module.exit_json(**results[1])
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fmgr_secprof_av.html" class="btn btn-neutral float-right" title="fmgr_secprof_av" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fmgr_query.html" class="btn btn-neutral" title="fmgr_query" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

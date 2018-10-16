@@ -1,0 +1,495 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fmgr_sys_proxy &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Playbook Examples" href="../fmgr_playbooks.html" />
+    <link rel="prev" title="fmgr_secprof_av" href="fmgr_secprof_av.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../fmgr_root.html">FortiManager</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../fmgr_modules.html">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device.html">fmgr_device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_package.html">fmgr_fwpol_package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_ha.html">fmgr_ha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_ips_sensor.html">fmgr_ips_sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_provisioning.html">fmgr_provisioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_query.html">fmgr_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_script.html">fmgr_script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_av.html">fmgr_secprof_av</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_sys_proxy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#module-metadata-parameters">Module Metadata / Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fmgr_root.html">FortiManager</a> &raquo;</li>
+        
+          <li><a href="../fmgr_modules.html">Modules</a> &raquo;</li>
+        
+      <li>fmgr_sys_proxy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fmgr_modules/fmgr_sys_proxy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fmgr-sys-proxy">
+<h1>fmgr_sys_proxy<a class="headerlink" href="#fmgr-sys-proxy" title="Permalink to this headline">¶</a></h1>
+<p>Not Parsed</p>
+<div class="section" id="module-metadata-parameters">
+<h2>Module Metadata / Parameters<a class="headerlink" href="#module-metadata-parameters" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">module</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fmgr_sys_proxy</span>
+<span class="l l-Scalar l-Scalar-Plain">version_added</span><span class="p p-Indicator">:</span> <span class="s">&quot;2.8&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">author</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Andrew Welsh</span>
+<span class="l l-Scalar l-Scalar-Plain">short_description</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Make FortiGate API calls via the FortiMananger</span>
+<span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The FMG proxies FOS API calls via the FMG.  Review FortiGate API documentation to ensure you are passing correct</span>
+    <span class="l l-Scalar l-Scalar-Plain">parameters for both the FortiManager and FortiGate</span>
+
+<span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The administrative domain (admon) the configuration belongs to</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The FortiManager&#39;s Address.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The username to log into the FortiManager</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">true</span>
+  <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">The password associated with the username account.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">false</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">Specify HTTP action for the request. Either &#39;get&#39; or &#39;post&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+  <span class="l l-Scalar l-Scalar-Plain">payload</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">JSON payload of the request. The payload will be URL-encoded and becomes the &quot;json&quot; field in the query string for both GET and POST request.</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+  <span class="l l-Scalar l-Scalar-Plain">resource</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">URL on the remote device to be accessed, string</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+  <span class="l l-Scalar l-Scalar-Plain">target</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">description</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">FOS datasource, either device or group object</span>
+    <span class="l l-Scalar l-Scalar-Plain">required</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="module-source-code">
+<h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span>#!/usr/bin/python
+#
+# This file is part of Ansible
+#
+# Ansible is free software: you can redistribute it and/or modify
+# it under the terms of the GNU General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# Ansible is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+# GNU General Public License for more details.
+#
+# You should have received a copy of the GNU General Public License
+# along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+#
+
+from __future__ import absolute_import, division, print_function
+
+__metaclass__ = type
+
+ANSIBLE_METADATA = {&#39;status&#39;: [&#39;preview&#39;],
+                    &#39;supported_by&#39;: &#39;community&#39;,
+                    &#39;metadata_version&#39;: &#39;1.1&#39;}
+
+DOCUMENTATION = &#39;&#39;&#39;
+---
+module: fmgr_sys_proxy
+version_added: &quot;2.8&quot;
+author: Andrew Welsh
+short_description: Make FortiGate API calls via the FortiMananger
+description:
+  - The FMG proxies FOS API calls via the FMG.  Review FortiGate API documentation to ensure you are passing correct
+    parameters for both the FortiManager and FortiGate
+
+options:
+  adom:
+    description:
+      - The administrative domain (admon) the configuration belongs to
+    required: true
+  host:
+    description:
+      - The FortiManager&#39;s Address.
+    required: true
+  username:
+    description:
+      - The username to log into the FortiManager
+    required: true
+  password:
+    description:
+      - The password associated with the username account.
+    required: false
+
+  action:
+    description:
+      - Specify HTTP action for the request. Either &#39;get&#39; or &#39;post&#39;
+    required: True
+  payload:
+    description:
+      - JSON payload of the request. The payload will be URL-encoded and becomes the &quot;json&quot; field in the query string for both GET and POST request.
+    required: False
+  resource:
+    description:
+      - URL on the remote device to be accessed, string
+    required: True
+  target:
+    description:
+      - FOS datasource, either device or group object
+    required: True
+
+&#39;&#39;&#39;
+
+EXAMPLES = &#39;&#39;&#39;
+- name: Proxy FOS requests via FMG
+  hosts: FortiManager
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+    - name: Get upgrade path for FGT1
+      fmgr_provision:
+        host: &quot;{{ inventory_hostname }}&quot;
+        username: &quot;{{ username }}&quot;
+        password: &quot;{{ password }}&quot;
+        adom: &quot;root&quot;
+        action: &quot;get&quot;
+        resource: &quot;/api/v2/monitor/system/firmware/upgrade-paths?vdom=root&quot;
+        target: [&quot;/adom/root/device/FGT1&quot;]
+    - name: Upgrade firmware of FGT1
+      fmgr_provision:
+        host: &quot;{{ inventory_hostname }}&quot;
+        username: &quot;{{ username }}&quot;
+        password: &quot;{{ password }}&quot;
+        adom: &quot;root&quot;
+        action: &quot;post&quot;
+        payload: {source: upload, file_content: b64_encoded_string, file_name: file_name}
+        resource: &quot;/api/v2/monitor/system/firmware/upgrade?vdom=vdom&quot;
+        target: [&quot;/adom/root/device/FGT1&quot;]
+
+&#39;&#39;&#39;
+
+RETURN = &quot;&quot;&quot;
+api_result:
+  description: full API response, includes status code and message
+  returned: always
+  type: string
+&quot;&quot;&quot;
+
+
+from ansible.module_utils.basic import AnsibleModule, env_fallback
+from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
+
+
+# check for pyFMG lib
+try:
+    from pyFMG.fortimgr import FortiManager
+    HAS_PYFMGR = True
+except ImportError:
+    HAS_PYFMGR = False
+
+
+def fos_request(fmg, action, resource, target, payload, adom=&#39;root&#39;):
+
+    datagram = {
+        &quot;data&quot;: {
+            # get or post
+            &quot;action&quot;: action,
+            # dictionary of data
+            &quot;payload&quot;: payload,
+            # FOS API URL including vdom params
+            &quot;resource&quot;: resource,
+            # FMG device to make API calls to
+            &quot;target&quot;: target
+        },
+
+    }
+    url = &quot;/sys/proxy/json&quot;
+
+    status, response = fmg.execute(url, datagram)
+    return status, response
+
+
+def main():
+
+    argument_spec = dict(
+        adom=dict(required=False, type=&quot;str&quot;),
+        host=dict(required=True, type=&quot;str&quot;),
+        password=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_PASSWORD&quot;]), no_log=True),
+        username=dict(fallback=(env_fallback, [&quot;ANSIBLE_NET_USERNAME&quot;]), no_log=True),
+
+        action=dict(required=False, type=&quot;str&quot;),
+        resource=dict(required=False, type=&quot;str&quot;),
+        target=dict(required=False, type=&quot;str&quot;),
+        payload=dict(required=False, type=&quot;str&quot;),
+    )
+
+    module = AnsibleModule(argument_spec, supports_check_mode=True, )
+
+    action = module.params[&quot;action&quot;]
+    resource = module.params[&quot;resource&quot;]
+    target = module.params[&quot;target&quot;]
+    payload = module.params[&quot;payload&quot;]
+
+    # check if params are set
+    if module.params[&quot;host&quot;] is None or module.params[&quot;username&quot;] is None:
+        module.fail_json(msg=&quot;Host and username are required for connection&quot;)
+
+    # check if login failed
+    fmg = AnsibleFortiManager(module, module.params[&quot;host&quot;], module.params[&quot;username&quot;], module.params[&quot;password&quot;])
+    response = fmg.login()
+
+    if response[1][&#39;status&#39;][&#39;code&#39;] != 0:
+        module.fail_json(msg=&quot;Connection to FortiManager Failed&quot;)
+    else:
+        if module.params[&quot;adom&quot;] is None:
+            module.params[&quot;adom&quot;] = &#39;root&#39;
+
+        status, result = fos_request(fmg, action, resource, target, payload, module.params[&quot;adom&quot;])
+
+        if not status == 0:
+            module.fail_json(msg=&quot;Failure showing upgrade path&quot;, **result)
+
+        fmg.logout()
+
+        # results is returned as a tuple
+        return module.exit_json(changed=True, **result)
+
+
+if __name__ == &quot;__main__&quot;:
+    main()
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../fmgr_playbooks.html" class="btn btn-neutral float-right" title="Playbook Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fmgr_secprof_av.html" class="btn btn-neutral" title="fmgr_secprof_av" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
