@@ -178,6 +178,39 @@ Functions
 
 
 
+- fmgr_set_ha_mode
+
+ .. code-block:: python
+
+    def fmgr_set_ha_mode(fmg, paramgram):
+        """
+        This method is used set the HA mode of a FortiManager Node
+        """
+    
+        if paramgram["fmgr_ha_cluster_pw"] is not None and str.lower(paramgram["fmgr_ha_mode"]) != "standalone":
+            datagram = {
+                "mode": paramgram["fmgr_ha_mode"],
+                "file-quota": paramgram["fmgr_ha_file_quota"],
+                "hb-interval": paramgram["fmgr_ha_hb_interval"],
+                "hb-lost-threshold": paramgram["fmgr_ha_hb_threshold"],
+                "password": paramgram["fmgr_ha_cluster_pw"],
+                "clusterid": paramgram["fmgr_ha_cluster_id"]
+            }
+        elif str.lower(paramgram["fmgr_ha_mode"]) == "standalone":
+            datagram = {
+                "mode": paramgram["fmgr_ha_mode"],
+                "file-quota": paramgram["fmgr_ha_file_quota"],
+                "hb-interval": paramgram["fmgr_ha_hb_interval"],
+                "hb-lost-threshold": paramgram["fmgr_ha_hb_threshold"],
+                "clusterid": paramgram["fmgr_ha_cluster_id"]
+            }
+    
+        url = '/cli/global/system/ha'
+        response = fmg.set(url, datagram)
+        return response
+    
+    
+
 - fmgr_get_ha_peer_list
 
  .. code-block:: python
@@ -197,7 +230,32 @@ Functions
     
     
 
-- fmgr_logoutfmg, module, msg="NULL", results=), good_codes=
+- fmgr_set_ha_peer
+
+ .. code-block:: python
+
+    def fmgr_set_ha_peer(fmg, paramgram):
+        """
+        This method is used GET the HA PEERS of a FortiManager Node
+        """
+    
+        datagram = {
+            "ip": paramgram["fmgr_ha_peer_ipv4"],
+            "ip6": paramgram["fmgr_ha_peer_ipv6"],
+            "serial-number": paramgram["fmgr_ha_peer_sn"],
+            "status": paramgram["fmgr_ha_peer_status"],
+            "id": paramgram["peer_id"]
+        }
+    
+        url = '/cli/global/system/ha/peer/'
+        response = fmg.set(url, datagram)
+        return response
+    
+    
+    # ADDITIONAL COMMON FUNCTIONS
+    # FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
+
+- fmgr_logout
 
  .. code-block:: python
 
@@ -236,64 +294,6 @@ Functions
                         return
     
     
-
-- fmgr_set_ha_mode
-
- .. code-block:: python
-
-    def fmgr_set_ha_mode(fmg, paramgram):
-        """
-        This method is used set the HA mode of a FortiManager Node
-        """
-    
-        if paramgram["fmgr_ha_cluster_pw"] is not None and str.lower(paramgram["fmgr_ha_mode"]) != "standalone":
-            datagram = {
-                "mode": paramgram["fmgr_ha_mode"],
-                "file-quota": paramgram["fmgr_ha_file_quota"],
-                "hb-interval": paramgram["fmgr_ha_hb_interval"],
-                "hb-lost-threshold": paramgram["fmgr_ha_hb_threshold"],
-                "password": paramgram["fmgr_ha_cluster_pw"],
-                "clusterid": paramgram["fmgr_ha_cluster_id"]
-            }
-        elif str.lower(paramgram["fmgr_ha_mode"]) == "standalone":
-            datagram = {
-                "mode": paramgram["fmgr_ha_mode"],
-                "file-quota": paramgram["fmgr_ha_file_quota"],
-                "hb-interval": paramgram["fmgr_ha_hb_interval"],
-                "hb-lost-threshold": paramgram["fmgr_ha_hb_threshold"],
-                "clusterid": paramgram["fmgr_ha_cluster_id"]
-            }
-    
-        url = '/cli/global/system/ha'
-        response = fmg.set(url, datagram)
-        return response
-    
-    
-
-- fmgr_set_ha_peer
-
- .. code-block:: python
-
-    def fmgr_set_ha_peer(fmg, paramgram):
-        """
-        This method is used GET the HA PEERS of a FortiManager Node
-        """
-    
-        datagram = {
-            "ip": paramgram["fmgr_ha_peer_ipv4"],
-            "ip6": paramgram["fmgr_ha_peer_ipv6"],
-            "serial-number": paramgram["fmgr_ha_peer_sn"],
-            "status": paramgram["fmgr_ha_peer_status"],
-            "id": paramgram["peer_id"]
-        }
-    
-        url = '/cli/global/system/ha/peer/'
-        response = fmg.set(url, datagram)
-        return response
-    
-    
-    # ADDITIONAL COMMON FUNCTIONS
-    # FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
 
 - main
 

@@ -154,6 +154,29 @@ Functions
 
 
 
+- set_script
+
+ .. code-block:: python
+
+    def set_script(fmg, script_name, script_type, script_content, script_desc, script_target, adom):
+        """
+        This method sets a script.
+        """
+    
+        datagram = {
+            'content': script_content,
+            'desc': script_desc,
+            'name': script_name,
+            'target': script_target,
+            'type': script_type,
+        }
+    
+        url = '/dvmdb/adom/{adom}/script/'.format(adom=adom)
+        response = fmg.set(url, datagram)
+        return response
+    
+    
+
 - delete_script
 
  .. code-block:: python
@@ -275,29 +298,6 @@ Functions
     
             # results is returned as a tuple
             return module.exit_json(**results[1])
-    
-    
-
-- set_script
-
- .. code-block:: python
-
-    def set_script(fmg, script_name, script_type, script_content, script_desc, script_target, adom):
-        """
-        This method sets a script.
-        """
-    
-        datagram = {
-            'content': script_content,
-            'desc': script_desc,
-            'name': script_name,
-            'target': script_target,
-            'type': script_type,
-        }
-    
-        url = '/dvmdb/adom/{adom}/script/'.format(adom=adom)
-        response = fmg.set(url, datagram)
-        return response
     
     
 

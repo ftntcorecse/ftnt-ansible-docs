@@ -129,6 +129,28 @@ Functions
 
 
 
+- discover_device
+
+ .. code-block:: python
+
+    def discover_device(fmg, paramgram):
+        """
+        This method is used to discover devices before adding them to FMGR
+        """
+    
+        datagram = {
+            "odd_request_form": "True",
+            "device": {"adm_usr": paramgram["device_username"],
+                       "adm_pass": paramgram["device_password"],
+                       "ip": paramgram["device_ip"]}
+        }
+    
+        url = '/dvm/cmd/discover/device/'
+        response = fmg.execute(url, datagram)
+        return response
+    
+    
+
 - add_device
 
  .. code-block:: python
@@ -175,29 +197,7 @@ Functions
     
     # FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
 
-- discover_device
-
- .. code-block:: python
-
-    def discover_device(fmg, paramgram):
-        """
-        This method is used to discover devices before adding them to FMGR
-        """
-    
-        datagram = {
-            "odd_request_form": "True",
-            "device": {"adm_usr": paramgram["device_username"],
-                       "adm_pass": paramgram["device_password"],
-                       "ip": paramgram["device_ip"]}
-        }
-    
-        url = '/dvm/cmd/discover/device/'
-        response = fmg.execute(url, datagram)
-        return response
-    
-    
-
-- fmgr_logoutfmg, module, msg="NULL", results=), good_codes=
+- fmgr_logout
 
  .. code-block:: python
 

@@ -261,17 +261,25 @@ Functions
 
 
 
-- fmgr_cidr_to_netmask
+- fmgr_fwobj_tags
 
  .. code-block:: python
 
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return(str((0xff000000 & mask) >> 24) + '.' +
-               str((0x00ff0000 & mask) >> 16) + '.' +
-               str((0x0000ff00 & mask) >> 8) + '.' +
-               str((0x000000ff & mask)))
+    def fmgr_fwobj_tags(fmg, adom, tag):
+        """
+        This method sets tag objects so they can be used below
+        """
+        # GET RID OF ANY WHITESPACE
+        tag = tag.strip()
+    
+        datagram = {
+            "name": tag
+        }
+    
+        url = '/pm/config/adom/{adom}/obj/system/object-tag'.format(adom=adom)
+        response = fmg.set(url, datagram)
+    
+        return response
     
     
 
@@ -634,29 +642,7 @@ Functions
     # ADDITIONAL COMMON FUNCTIONS
     # FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
 
-- fmgr_fwobj_tags
-
- .. code-block:: python
-
-    def fmgr_fwobj_tags(fmg, adom, tag):
-        """
-        This method sets tag objects so they can be used below
-        """
-        # GET RID OF ANY WHITESPACE
-        tag = tag.strip()
-    
-        datagram = {
-            "name": tag
-        }
-    
-        url = '/pm/config/adom/{adom}/obj/system/object-tag'.format(adom=adom)
-        response = fmg.set(url, datagram)
-    
-        return response
-    
-    
-
-- fmgr_logoutfmg, module, msg="NULL", results=), good_codes=
+- fmgr_logout
 
  .. code-block:: python
 
@@ -699,6 +685,20 @@ Functions
     
     # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
     # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
+
+- fmgr_cidr_to_netmask
+
+ .. code-block:: python
+
+    def fmgr_cidr_to_netmask(cidr):
+        cidr = int(cidr)
+        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
+        return(str((0xff000000 & mask) >> 24) + '.' +
+               str((0x00ff0000 & mask) >> 16) + '.' +
+               str((0x0000ff00 & mask) >> 8) + '.' +
+               str((0x000000ff & mask)))
+    
+    
 
 - main
 

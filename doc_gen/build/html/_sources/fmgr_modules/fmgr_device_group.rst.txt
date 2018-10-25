@@ -126,6 +126,25 @@ Functions
 
 
 
+- get_groups
+
+ .. code-block:: python
+
+    def get_groups(fmg, paramgram):
+        """
+        This method is used GET the HA PEERS of a FortiManager Node
+        """
+    
+        datagram = {
+            "method": "get"
+        }
+    
+        url = '/dvmdb/adom/{adom}/group'.format(adom=paramgram["adom"])
+        response = fmg.get(url, datagram)
+        return response
+    
+    
+
 - add_device_group
 
  .. code-block:: python
@@ -143,6 +162,26 @@ Functions
     
         url = '/dvmdb/adom/{adom}/group'.format(adom=paramgram["adom"])
         response = fmg.add(url, datagram)
+        return response
+    
+    
+
+- delete_device_group
+
+ .. code-block:: python
+
+    def delete_device_group(fmg, paramgram):
+        """
+        This method is used to add devices to the FMGR
+        """
+    
+        datagram = {
+            "adom": paramgram["adom"],
+            "name": paramgram["grp_name"]
+        }
+    
+        url = '/dvmdb/adom/{adom}/group/{grp_name}'.format(adom=paramgram["adom"], grp_name=paramgram["grp_name"])
+        response = fmg.delete(url, datagram)
         return response
     
     
@@ -166,26 +205,6 @@ Functions
                                                                              grp_name=paramgram["grp_name"])
             response = fmg.add(url, datagram)
     
-        return response
-    
-    
-
-- delete_device_group
-
- .. code-block:: python
-
-    def delete_device_group(fmg, paramgram):
-        """
-        This method is used to add devices to the FMGR
-        """
-    
-        datagram = {
-            "adom": paramgram["adom"],
-            "name": paramgram["grp_name"]
-        }
-    
-        url = '/dvmdb/adom/{adom}/group/{grp_name}'.format(adom=paramgram["adom"], grp_name=paramgram["grp_name"])
-        response = fmg.delete(url, datagram)
         return response
     
     
@@ -214,7 +233,7 @@ Functions
     
     # FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
 
-- fmgr_logoutfmg, module, msg="NULL", results=), good_codes=
+- fmgr_logout
 
  .. code-block:: python
 
@@ -253,25 +272,6 @@ Functions
                     else:
                         return_msg = msg + " -- LOGOUT ON SUCCESS IS OFF, MOVING ON TO REST OF CODE"
                         return return_msg
-    
-    
-
-- get_groups
-
- .. code-block:: python
-
-    def get_groups(fmg, paramgram):
-        """
-        This method is used GET the HA PEERS of a FortiManager Node
-        """
-    
-        datagram = {
-            "method": "get"
-        }
-    
-        url = '/dvmdb/adom/{adom}/group'.format(adom=paramgram["adom"])
-        response = fmg.get(url, datagram)
-        return response
     
     
 

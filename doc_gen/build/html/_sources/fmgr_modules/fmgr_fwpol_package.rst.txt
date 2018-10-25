@@ -218,6 +218,34 @@ Functions
 
 
 
+- parse_csv_str_to_list
+
+ .. code-block:: python
+
+    def parse_csv_str_to_list(input_string):
+        """
+        This function will take a comma seperated string and turn it into a list, removing any spaces next the commas
+        that it finds. This is useful for using csv input from ansible parameters and transforming to API requirements.
+        """
+    
+        if input_string is not None:
+            # CREATE VARIABLE AND REMOVE SPACES AROUND COMMAS
+            inputs = input_string
+            inputs = inputs.replace(", ", ",")
+            inputs = inputs.replace(" ,", ",")
+            # INIT THE BASE LIST
+            input = []
+            # FOR EACH ITEM WE CAN SPLIT VIA COMMA ADD IT TO THE LIST
+            for obj in inputs.split(","):
+                input.append(obj)
+            # RETURN THE LIST
+            return input
+        else:
+            # IF THE INPUT STRING WAS EMPTY RETURN NONE/NULL
+            return None
+    
+    
+
 - fmgr_fwpol_package
 
  .. code-block:: python
@@ -484,34 +512,6 @@ Functions
                     module.exit_json(msg="Install Task Successfully Created", **results[1])
                 else:
                     module.fail_json(msg="Failed to create install task!", **results[1])
-    
-    
-
-- parse_csv_str_to_list
-
- .. code-block:: python
-
-    def parse_csv_str_to_list(input_string):
-        """
-        This function will take a comma seperated string and turn it into a list, removing any spaces next the commas
-        that it finds. This is useful for using csv input from ansible parameters and transforming to API requirements.
-        """
-    
-        if input_string is not None:
-            # CREATE VARIABLE AND REMOVE SPACES AROUND COMMAS
-            inputs = input_string
-            inputs = inputs.replace(", ", ",")
-            inputs = inputs.replace(" ,", ",")
-            # INIT THE BASE LIST
-            input = []
-            # FOR EACH ITEM WE CAN SPLIT VIA COMMA ADD IT TO THE LIST
-            for obj in inputs.split(","):
-                input.append(obj)
-            # RETURN THE LIST
-            return input
-        else:
-            # IF THE INPUT STRING WAS EMPTY RETURN NONE/NULL
-            return None
     
     
 

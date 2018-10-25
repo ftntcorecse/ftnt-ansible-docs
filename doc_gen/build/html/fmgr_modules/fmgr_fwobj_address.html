@@ -94,6 +94,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_package.html">fmgr_fwpol_package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_ha.html">fmgr_ha</a></li>
@@ -101,7 +102,18 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_provisioning.html">fmgr_provisioning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_query.html">fmgr_query</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_script.html">fmgr_script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_appctrl.html">fmgr_secprof_appctrl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_av.html">fmgr_secprof_av</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_dns.html">fmgr_secprof_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ips.html">fmgr_secprof_ips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_profile_group.html">fmgr_secprof_profile_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_proxy.html">fmgr_secprof_proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_spam.html">fmgr_secprof_spam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ssl_ssh.html">fmgr_secprof_ssl_ssh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_voip.html">fmgr_secprof_voip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
@@ -384,16 +396,24 @@
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>fmgr_cidr_to_netmask</li>
+<li>fmgr_fwobj_tags</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_cidr_to_netmask</span><span class="p">(</span><span class="n">cidr</span><span class="p">):</span>
-    <span class="n">cidr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cidr</span><span class="p">)</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0xffffffff</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">)</span>
-    <span class="k">return</span><span class="p">(</span><span class="nb">str</span><span class="p">((</span><span class="mh">0xff000000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
-           <span class="nb">str</span><span class="p">((</span><span class="mh">0x00ff0000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
-           <span class="nb">str</span><span class="p">((</span><span class="mh">0x0000ff00</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
-           <span class="nb">str</span><span class="p">((</span><span class="mh">0x000000ff</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)))</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_fwobj_tags</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method sets tag objects so they can be used below</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># GET RID OF ANY WHITESPACE</span>
+    <span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">tag</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/system/object-tag&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -759,29 +779,7 @@
 </div>
 </div></blockquote>
 <ul class="simple">
-<li>fmgr_fwobj_tags</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_fwobj_tags</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">tag</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This method sets tag objects so they can be used below</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># GET RID OF ANY WHITESPACE</span>
-    <span class="n">tag</span> <span class="o">=</span> <span class="n">tag</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
-
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">tag</span>
-    <span class="p">}</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/system/object-tag&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>fmgr_logoutfmg, module, msg=”NULL”, results=), good_codes=</li>
+<li>fmgr_logout</li>
 </ul>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="p">(),</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">logout_on_fail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logout_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
@@ -823,6 +821,20 @@
 
 <span class="c1"># FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK</span>
 <span class="c1"># DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_cidr_to_netmask</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_cidr_to_netmask</span><span class="p">(</span><span class="n">cidr</span><span class="p">):</span>
+    <span class="n">cidr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cidr</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0xffffffff</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">)</span>
+    <span class="k">return</span><span class="p">(</span><span class="nb">str</span><span class="p">((</span><span class="mh">0xff000000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+           <span class="nb">str</span><span class="p">((</span><span class="mh">0x00ff0000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+           <span class="nb">str</span><span class="p">((</span><span class="mh">0x0000ff00</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+           <span class="nb">str</span><span class="p">((</span><span class="mh">0x000000ff</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -1879,7 +1891,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps
+        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps.
 
     </p>
   </div>
@@ -1898,14 +1910,21 @@
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

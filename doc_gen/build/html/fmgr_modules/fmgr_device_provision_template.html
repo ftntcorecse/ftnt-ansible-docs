@@ -94,6 +94,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_package.html">fmgr_fwpol_package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_ha.html">fmgr_ha</a></li>
@@ -101,7 +102,18 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_provisioning.html">fmgr_provisioning</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_query.html">fmgr_query</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_script.html">fmgr_script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_appctrl.html">fmgr_secprof_appctrl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_av.html">fmgr_secprof_av</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_dns.html">fmgr_secprof_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ips.html">fmgr_secprof_ips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_profile_group.html">fmgr_secprof_profile_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_proxy.html">fmgr_secprof_proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_spam.html">fmgr_secprof_spam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ssl_ssh.html">fmgr_secprof_ssl_ssh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_voip.html">fmgr_secprof_voip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
@@ -754,20 +766,19 @@
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>add_devprof</li>
+<li>get_devprof</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_devprof</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_devprof</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    GET the DevProf (check to see if exists)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;devprof&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;CreatedByAnsible&quot;</span><span class="p">,</span>
+        <span class="c1"># &quot;name&quot;: paramgram[&quot;provisioning_template&quot;]</span>
     <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}/{name}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
@@ -795,27 +806,133 @@
 </div>
 </div></blockquote>
 <ul class="simple">
-<li>delete_devprof_admin</li>
+<li>add_devprof</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_admin</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">add_devprof</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        CHANGE ADMIN SETTINGS</span>
+<span class="sd">    GET the DevProf (check to see if exists)</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;admin-https-redirect&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_https_redirect&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;admin-port&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_http_port&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;admin-sport&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_https_port&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;admintimeout&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_timeout&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;language&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_language&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;gui-theme&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_gui_theme&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;switch-controller&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_switch_controller&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;devprof&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;CreatedByAnsible&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>get_devprof_scope</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_devprof_scope</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    GETS a device provisioning template and its scope</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;devprof&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;CreatedByAnsible&quot;</span><span class="p">,</span>
     <span class="p">}</span>
 
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
-          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
-          <span class="s2">&quot;/system/global&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                  <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>set_devprof_scope</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_scope</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    SETS a device provisioning template and its scope</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;devprof&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;CreatedByAnsible&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provision_targets&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+        <span class="c1"># split the host on the space to get the mask out</span>
+        <span class="n">new_target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">}</span>
+        <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_target</span><span class="p">)</span>
+
+    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">targets</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>delete_devprof_scope</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_scope</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    DELETES the Current Scope for ProvTemplate</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;devprof&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;CreatedByAnsible&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;scope member&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;targets_to_add&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>set_devprof_snmp</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_snmp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ENABLE SNMP ON DevProf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_status&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/devprof/&quot;</span> \
+          <span class="s2">&quot;{provisioning_template}/system/snmp/sysinfo&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                               <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>delete_devprof_snmp</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_snmp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    DISABLE SNMP on Provision Template</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_status&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/devprof/&quot;</span> \
+          <span class="s2">&quot;{provisioning_template}/system/snmp/sysinfo&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                               <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
 
     <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
 
@@ -824,75 +941,359 @@
 </div>
 </div></blockquote>
 <ul class="simple">
-<li>delete_devprof_dns</li>
+<li>set_devprof_snmp_v2c</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_dns</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_snmp_v2c</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DISABLE DNS SETTINGS</span>
+<span class="sd">    ENABLE SNMP ON DevProf</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;domain&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_suffix&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_primary_ipv4&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;secondary&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_secondary_ipv4&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;query-v2c-port&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_query_port&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;trap-v2c-rport&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_trap_port&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_status&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;trap-v2c-status&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_trap_status&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;query-v2c-status&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_query_status&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_id&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;meta fields&quot;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(),</span>
+        <span class="s2">&quot;hosts&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
+        <span class="s2">&quot;events&quot;</span><span class="p">:</span> <span class="mi">411578417151</span><span class="p">,</span>
+        <span class="s2">&quot;query-v1-status&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;query-v1-port&quot;</span><span class="p">:</span> <span class="mi">161</span><span class="p">,</span>
+        <span class="s2">&quot;trap-v1-status&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
+        <span class="s2">&quot;trap-v1-lport&quot;</span><span class="p">:</span> <span class="mi">162</span><span class="p">,</span>
+        <span class="s2">&quot;trap-v1-rport&quot;</span><span class="p">:</span> <span class="mi">162</span><span class="p">,</span>
+        <span class="s2">&quot;trap-v2c-lport&quot;</span><span class="p">:</span> <span class="mi">162</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="c1"># BUILD THE HOST STRINGS</span>
+    <span class="n">id_counter</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_trap_hosts_ipv4&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_query_hosts_ipv4&quot;</span><span class="p">]:</span>
+        <span class="n">hosts</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_query_hosts_ipv4&quot;</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">ipv4_host</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_query_hosts_ipv4&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+                <span class="c1"># split the host on the space to get the mask out</span>
+                <span class="n">new_ipv4_host</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ha-direct&quot;</span><span class="p">:</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span>
+                                 <span class="s2">&quot;host-type&quot;</span><span class="p">:</span> <span class="s2">&quot;query&quot;</span><span class="p">,</span>
+                                 <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">id_counter</span><span class="p">,</span>
+                                 <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="n">ipv4_host</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span>
+                                 <span class="s2">&quot;meta fields&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                                 <span class="s2">&quot;source-ip&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">}</span>
+                <span class="n">hosts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_ipv4_host</span><span class="p">)</span>
+                <span class="n">id_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_trap_hosts_ipv4&quot;</span><span class="p">]:</span>
+            <span class="k">for</span> <span class="n">ipv4_host</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_trap_hosts_ipv4&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+                <span class="c1"># split the host on the space to get the mask out</span>
+                <span class="n">new_ipv4_host</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ha-direct&quot;</span><span class="p">:</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span>
+                                 <span class="s2">&quot;host-type&quot;</span><span class="p">:</span> <span class="s2">&quot;trap&quot;</span><span class="p">,</span>
+                                 <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">id_counter</span><span class="p">,</span>
+                                 <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="n">ipv4_host</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span>
+                                 <span class="s2">&quot;meta fields&quot;</span><span class="p">:</span> <span class="p">{},</span>
+                                 <span class="s2">&quot;source-ip&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_trap_src_ipv4&quot;</span><span class="p">]}</span>
+                <span class="n">hosts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_ipv4_host</span><span class="p">)</span>
+                <span class="n">id_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;hosts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hosts</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/devprof/&quot;</span> \
+          <span class="s2">&quot;{provisioning_template}/system/snmp/community&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                                 <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span>
+                                                                     <span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>delete_devprof_snmp_v2c</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_snmp_v2c</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    DISABLE SNMP on Provision Template</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;confirm&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/&quot;</span> \
+          <span class="s2">&quot;devprof/{provisioning_template}/&quot;</span> \
+          <span class="s2">&quot;system/snmp/community/{snmp_v2c_id}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                       <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">],</span>
+                                                       <span class="n">snmp_v2c_id</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_id&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>set_devprof_snmp_v3</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_snmp_v3</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    ENABLE SNMP ON DevProf</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="c1"># transform options</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_trap_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;trap-status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_trap_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;disable&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;trap-status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_queries&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;queries&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_queries&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;disable&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;queries&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;disable&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_auth_proto&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;md5&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;auth-proto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_auth_proto&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;sha&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;auth-proto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_priv_proto&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;aes&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;auth-proto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_priv_proto&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;des&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;priv-proto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_priv_proto&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;aes256&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;priv-proto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_priv_proto&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;aes256cisco&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;priv-proto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_security_level&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;no-auth-no-priv&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;security-level&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_security_level&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;auth-no-priv&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;security-level&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_security_level&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;auth-priv&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;security-level&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+
+    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;auth-pwd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_auth_pwd&quot;</span><span class="p">]</span>
+    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;priv-pwd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_priv_pwd&quot;</span><span class="p">]</span>
+    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;trap-rport&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_trap_rport&quot;</span><span class="p">]</span>
+    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;query-port&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_query_port&quot;</span><span class="p">]</span>
+    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_name&quot;</span><span class="p">]</span>
+    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;notify-hosts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_notify_hosts&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;events&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1647387997183</span>
+    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;trap-lport&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">162</span>
+
+    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;source-ip&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_source_ip&quot;</span><span class="p">]</span>
+    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;ha-direct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/&quot;</span> \
+          <span class="s2">&quot;devprof/{provisioning_template}/&quot;</span> \
+          <span class="s2">&quot;system/snmp/user&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                    <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>delete_devprof_snmp_v3</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_snmp_v3</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    DISABLE SNMP on Provision Template</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;confirm&quot;</span><span class="p">:</span> <span class="mi">1</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/devprof/&quot;</span> \
+          <span class="s2">&quot;{provisioning_template}/system/snmp&quot;</span> \
+          <span class="s2">&quot;/user/{snmpv3_name}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                       <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">],</span>
+                                       <span class="n">snmpv3_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_name&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>set_devprof_syslog</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_syslog</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the SYSLOG SETTINGS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_status&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_port&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;server&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_server&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;facility&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_facility&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_enc_algorithm&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;high&quot;</span><span class="p">,</span> <span class="s2">&quot;low&quot;</span><span class="p">,</span> <span class="s2">&quot;high-medium&quot;</span><span class="p">]</span> \
+            <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_certificate&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;certificate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;certificate&quot;</span><span class="p">]</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;enc-algorithm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_enc_algorithm&quot;</span><span class="p">]</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/&quot;</span> \
+          <span class="s2">&quot;devprof/{provisioning_template}/&quot;</span> \
+          <span class="s2">&quot;log/syslogd/setting&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                       <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>delete_devprof_syslog</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_syslog</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    DISABLE SYSLOG SETTINGS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_status&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_port&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;server&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_server&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;facility&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_facility&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/&quot;</span> \
+          <span class="s2">&quot;devprof/{provisioning_template}/&quot;</span> \
+          <span class="s2">&quot;log/syslogd/setting&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                       <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>set_devprof_syslog_filter</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_syslog_filter</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the SYSLOG SETTINGS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;severity&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_filter&quot;</span><span class="p">]</span>
     <span class="p">}</span>
 
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
           <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
-          <span class="s2">&quot;/system/dns&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+          <span class="s2">&quot;/log/syslogd/filter&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                       <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>delete_devprof_syslog_filter</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_syslog_filter</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    DISABLE SYSLOG SETTINGS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;severity&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_filter&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
+          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
+          <span class="s2">&quot;/log/syslogd/filter&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                       <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>set_devprof_ntp</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_ntp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Set the NTP SETTINGS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Illegal or malformed paramgram discovered. System Exception&quot;</span><span class="p">})</span>
+    <span class="c1"># IF SET TO FORTIGUARD, BUILD A STRING SPECIFIC TO THAT</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;fortiguard&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;ntpsync&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;disable&quot;</span><span class="p">:</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;ntpsync&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_sync_interval&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;syncinterval&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;syncinterval&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_sync_interval&quot;</span><span class="p">]</span>
+
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="c1"># IF THE NTP TYPE IS CUSTOM BUILD THE SERVER LIST</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;custom&quot;</span><span class="p">:</span>
+        <span class="n">id_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">key_counter</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="n">ntpservers</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;ntpsync&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;disable&quot;</span><span class="p">:</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;ntpsync&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;syncinterval&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_sync_interval&quot;</span><span class="p">]</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;syncinterval&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+
+        <span class="k">for</span> <span class="n">server</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_server&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+            <span class="n">id_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">server_fields</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+            <span class="n">key_counter</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_auth&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
+                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;authentication&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_auth_pwd&quot;</span><span class="p">]</span>
+                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;key-id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">key_counter</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;authentication&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;key-id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">key_counter</span>
+
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_v3&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
+                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;ntp_v3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;ntp_v3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+            <span class="c1"># split the host on the space to get the mask out</span>
+            <span class="n">new_ntp_server</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;authentication&quot;</span><span class="p">:</span> <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;authentication&quot;</span><span class="p">],</span>
+                              <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">id_counter</span><span class="p">,</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span>
+                              <span class="s2">&quot;key-id&quot;</span><span class="p">:</span> <span class="n">id_counter</span><span class="p">,</span> <span class="s2">&quot;ntpv3&quot;</span><span class="p">:</span> <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;ntp_v3&quot;</span><span class="p">],</span>
+                              <span class="s2">&quot;server&quot;</span><span class="p">:</span> <span class="n">server</span><span class="p">}</span>
+            <span class="n">ntpservers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_ntp_server</span><span class="p">)</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;ntpserver&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ntpservers</span>
+
+    <span class="c1"># SET THE BODY FOR THE FORTIGUARD REQUEST</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
+          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
+          <span class="s2">&quot;/system/ntp&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
                                <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>delete_devprof_faz</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_faz</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DISABLE FAZ SETTINGS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;target-ip&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_fortianalyzer_target&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-        <span class="s2">&quot;hastarget&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
-    <span class="p">}</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
-          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
-          <span class="s2">&quot;/device/profile/fortianalyzer&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                                 <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>delete_devprof_fg</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_fg</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DISABLE FG SETTINGS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_enable_fortiguard&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;target-ip&quot;</span><span class="p">:</span> <span class="bp">None</span>
-    <span class="p">}</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
-          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
-          <span class="s2">&quot;/device/profile/fortiguard&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                              <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -974,21 +1375,100 @@
 </div>
 </div></blockquote>
 <ul class="simple">
-<li>delete_devprof_scope</li>
+<li>set_devprof_admin</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_scope</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_admin</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    DELETES the Current Scope for ProvTemplate</span>
+<span class="sd">        DISABLE NTP SETTINGS</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;devprof&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;CreatedByAnsible&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;scope member&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;targets_to_add&quot;</span><span class="p">]</span>
+        <span class="s2">&quot;admin-https-redirect&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_https_redirect&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;admin-port&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_http_port&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;admin-sport&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_https_port&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;admintimeout&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_timeout&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;language&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_language&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;gui-theme&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_gui_theme&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;switch-controller&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_switch_controller&quot;</span><span class="p">],</span>
     <span class="p">}</span>
 
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
+          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
+          <span class="s2">&quot;/system/global&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                  <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>delete_devprof_admin</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_admin</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        CHANGE ADMIN SETTINGS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;admin-https-redirect&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_https_redirect&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;admin-port&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_http_port&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;admin-sport&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_https_port&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;admintimeout&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_timeout&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;language&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_language&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;gui-theme&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_gui_theme&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;switch-controller&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_switch_controller&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
+          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
+          <span class="s2">&quot;/system/global&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                  <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>set_devprof_smtp</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_smtp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       ENABLE SMTP SETTINGS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_port&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;reply-to&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_replyto&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;server&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_server&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;source-ip&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_source_ipv4&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_username&quot;</span><span class="p">]:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;authenticate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_username&quot;</span><span class="p">]</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_password&quot;</span><span class="p">]</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_conn_sec&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;security&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_conn_sec&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;starttls&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;security&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_conn_sec&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;smtps&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;security&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_validate_cert&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;validate-server&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;validate-server&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
+          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
+          <span class="s2">&quot;/system/email-server&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                        <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+
     <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">response</span>
@@ -1039,117 +1519,48 @@
 </div>
 </div></blockquote>
 <ul class="simple">
-<li>delete_devprof_snmp</li>
+<li>set_devprof_dns</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_snmp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_dns</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    DISABLE SNMP on Provision Template</span>
+<span class="sd">       ENABLE DNS SETTINGS</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_status&quot;</span><span class="p">]</span>
+        <span class="s2">&quot;domain&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_suffix&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_primary_ipv4&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;secondary&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_secondary_ipv4&quot;</span><span class="p">],</span>
     <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
+          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
+          <span class="s2">&quot;/system/dns&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                               <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
 
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/devprof/&quot;</span> \
-          <span class="s2">&quot;{provisioning_template}/system/snmp/sysinfo&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                                               <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
 </div></blockquote>
 <ul class="simple">
-<li>delete_devprof_snmp_v2c</li>
+<li>delete_devprof_dns</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_snmp_v2c</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_dns</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    DISABLE SNMP on Provision Template</span>
+<span class="sd">        DISABLE DNS SETTINGS</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;confirm&quot;</span><span class="p">:</span> <span class="mi">1</span>
-    <span class="p">}</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/&quot;</span> \
-          <span class="s2">&quot;devprof/{provisioning_template}/&quot;</span> \
-          <span class="s2">&quot;system/snmp/community/{snmp_v2c_id}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                                       <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">],</span>
-                                                       <span class="n">snmp_v2c_id</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_id&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>delete_devprof_snmp_v3</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_snmp_v3</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    DISABLE SNMP on Provision Template</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;confirm&quot;</span><span class="p">:</span> <span class="mi">1</span>
-    <span class="p">}</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/devprof/&quot;</span> \
-          <span class="s2">&quot;{provisioning_template}/system/snmp&quot;</span> \
-          <span class="s2">&quot;/user/{snmpv3_name}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                       <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">],</span>
-                                       <span class="n">snmpv3_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_name&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>delete_devprof_syslog</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_syslog</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    DISABLE SYSLOG SETTINGS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_status&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_port&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;server&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_server&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_mode&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;facility&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_facility&quot;</span><span class="p">]</span>
-    <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/&quot;</span> \
-          <span class="s2">&quot;devprof/{provisioning_template}/&quot;</span> \
-          <span class="s2">&quot;log/syslogd/setting&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                       <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>delete_devprof_syslog_filter</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_syslog_filter</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    DISABLE SYSLOG SETTINGS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;severity&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_filter&quot;</span><span class="p">]</span>
+        <span class="s2">&quot;domain&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_suffix&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_primary_ipv4&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;secondary&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_secondary_ipv4&quot;</span><span class="p">],</span>
     <span class="p">}</span>
 
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
           <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
-          <span class="s2">&quot;/log/syslogd/filter&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                       <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+          <span class="s2">&quot;/system/dns&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                               <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+
     <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">response</span>
@@ -1157,7 +1568,134 @@
 </div>
 </div></blockquote>
 <ul class="simple">
-<li>fmgr_logoutfmg, module, msg=”NULL”, results=), good_codes=</li>
+<li>set_devprof_toggle_fg</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_toggle_fg</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       TOGGLE FG SETTINGS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># pydevd.settrace(&#39;10.0.0.122&#39;, port=54654, stdoutToServer=True, stderrToServer=True)</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_enable_fortiguard&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;direct&quot;</span><span class="p">,</span> <span class="s2">&quot;this-fmg&quot;</span><span class="p">]:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;include-default-servers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;enable&quot;</span>
+    <span class="k">elif</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_enable_fortiguard&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;include-default-servers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;disable&quot;</span>
+
+    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;server-list&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
+          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
+          <span class="s2">&quot;/system/central-management&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                              <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>set_devprof_fg</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_fg</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       ENABLE FG SETTINGS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># pydevd.settrace(&#39;10.0.0.122&#39;, port=54654, stdoutToServer=True, stderrToServer=True)</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_enable_fortiguard&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;target-ip&quot;</span><span class="p">:</span> <span class="bp">None</span>
+    <span class="p">}</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_fortiguard_target&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;direct&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;target-ip&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_fortiguard_target&quot;</span><span class="p">]</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
+          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
+          <span class="s2">&quot;/device/profile/fortiguard&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                              <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>delete_devprof_fg</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_fg</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DISABLE FG SETTINGS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_enable_fortiguard&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;target-ip&quot;</span><span class="p">:</span> <span class="bp">None</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
+          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
+          <span class="s2">&quot;/device/profile/fortiguard&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                              <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>set_devprof_faz</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_faz</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">       ENABLE FAZ SETTINGS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;target-ip&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_fortianalyzer_target&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
+          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
+          <span class="s2">&quot;/device/profile/fortianalyzer&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                 <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>delete_devprof_faz</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">delete_devprof_faz</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        DISABLE FAZ SETTINGS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;target-ip&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_fortianalyzer_target&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;hastarget&quot;</span><span class="p">:</span> <span class="s2">&quot;true&quot;</span><span class="p">,</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
+          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
+          <span class="s2">&quot;/device/profile/fortianalyzer&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                 <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_logout</li>
 </ul>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="p">(),</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">logout_on_fail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logout_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
@@ -1190,46 +1728,6 @@
                 <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;API Called worked, but logout handler has been asked to logout on success&quot;</span><span class="p">,</span>
                                  <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">msg</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>get_devprof</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_devprof</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    GET the DevProf (check to see if exists)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="c1"># &quot;name&quot;: paramgram[&quot;provisioning_template&quot;]</span>
-    <span class="p">}</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}/{name}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>get_devprof_scope</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_devprof_scope</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    GETS a device provisioning template and its scope</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;devprof&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;CreatedByAnsible&quot;</span><span class="p">,</span>
-    <span class="p">}</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -1612,492 +2110,6 @@
 
     <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
     <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>set_devprof_admin</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_admin</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">        DISABLE NTP SETTINGS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;admin-https-redirect&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_https_redirect&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;admin-port&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_http_port&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;admin-sport&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_https_port&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;admintimeout&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_timeout&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;language&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_language&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;gui-theme&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_gui_theme&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;switch-controller&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_switch_controller&quot;</span><span class="p">],</span>
-    <span class="p">}</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
-          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
-          <span class="s2">&quot;/system/global&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                  <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>set_devprof_dns</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_dns</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">       ENABLE DNS SETTINGS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;domain&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_suffix&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;primary&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_primary_ipv4&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;secondary&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_secondary_ipv4&quot;</span><span class="p">],</span>
-    <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
-          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
-          <span class="s2">&quot;/system/dns&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                               <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>set_devprof_faz</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_faz</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">       ENABLE FAZ SETTINGS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;target-ip&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_fortianalyzer_target&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
-    <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
-          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
-          <span class="s2">&quot;/device/profile/fortianalyzer&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                                 <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>set_devprof_fg</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_fg</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">       ENABLE FG SETTINGS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># pydevd.settrace(&#39;10.0.0.122&#39;, port=54654, stdoutToServer=True, stderrToServer=True)</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_enable_fortiguard&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;target-ip&quot;</span><span class="p">:</span> <span class="bp">None</span>
-    <span class="p">}</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_fortiguard_target&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;direct&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;target-ip&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_fortiguard_target&quot;</span><span class="p">]</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
-          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
-          <span class="s2">&quot;/device/profile/fortiguard&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                              <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>set_devprof_ntp</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_ntp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Set the NTP SETTINGS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Illegal or malformed paramgram discovered. System Exception&quot;</span><span class="p">})</span>
-    <span class="c1"># IF SET TO FORTIGUARD, BUILD A STRING SPECIFIC TO THAT</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;fortiguard&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
-            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;ntpsync&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;disable&quot;</span><span class="p">:</span>
-            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;ntpsync&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_sync_interval&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;syncinterval&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;syncinterval&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_sync_interval&quot;</span><span class="p">]</span>
-
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="c1"># IF THE NTP TYPE IS CUSTOM BUILD THE SERVER LIST</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;custom&quot;</span><span class="p">:</span>
-        <span class="n">id_counter</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">key_counter</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="n">ntpservers</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="n">datagram</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
-            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;ntpsync&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;disable&quot;</span><span class="p">:</span>
-            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;ntpsync&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;syncinterval&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_sync_interval&quot;</span><span class="p">]</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;syncinterval&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-
-        <span class="k">for</span> <span class="n">server</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_server&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
-            <span class="n">id_counter</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="n">server_fields</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-
-            <span class="n">key_counter</span> <span class="o">+=</span> <span class="mi">1</span>
-            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_auth&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
-                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;authentication&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_auth_pwd&quot;</span><span class="p">]</span>
-                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;key-id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">key_counter</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;authentication&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
-                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;key-id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">key_counter</span>
-
-            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ntp_v3&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
-                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;ntp_v3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;ntp_v3&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-
-            <span class="c1"># split the host on the space to get the mask out</span>
-            <span class="n">new_ntp_server</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;authentication&quot;</span><span class="p">:</span> <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;authentication&quot;</span><span class="p">],</span>
-                              <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">id_counter</span><span class="p">,</span> <span class="s2">&quot;key&quot;</span><span class="p">:</span> <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;key&quot;</span><span class="p">],</span>
-                              <span class="s2">&quot;key-id&quot;</span><span class="p">:</span> <span class="n">id_counter</span><span class="p">,</span> <span class="s2">&quot;ntpv3&quot;</span><span class="p">:</span> <span class="n">server_fields</span><span class="p">[</span><span class="s2">&quot;ntp_v3&quot;</span><span class="p">],</span>
-                              <span class="s2">&quot;server&quot;</span><span class="p">:</span> <span class="n">server</span><span class="p">}</span>
-            <span class="n">ntpservers</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_ntp_server</span><span class="p">)</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;ntpserver&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ntpservers</span>
-
-    <span class="c1"># SET THE BODY FOR THE FORTIGUARD REQUEST</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
-          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
-          <span class="s2">&quot;/system/ntp&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                               <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>set_devprof_scope</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_scope</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    SETS a device provisioning template and its scope</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;devprof&quot;</span><span class="p">,</span>
-        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="s2">&quot;CreatedByAnsible&quot;</span><span class="p">,</span>
-    <span class="p">}</span>
-
-    <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provision_targets&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
-        <span class="c1"># split the host on the space to get the mask out</span>
-        <span class="n">new_target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">}</span>
-        <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_target</span><span class="p">)</span>
-
-    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">targets</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>set_devprof_smtp</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_smtp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">       ENABLE SMTP SETTINGS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_port&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;reply-to&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_replyto&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;server&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_server&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;source-ip&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_source_ipv4&quot;</span><span class="p">]</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_username&quot;</span><span class="p">]:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;authenticate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_username&quot;</span><span class="p">]</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_password&quot;</span><span class="p">]</span>
-
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_conn_sec&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;security&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_conn_sec&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;starttls&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;security&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_conn_sec&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;smtps&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;security&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_validate_cert&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;validate-server&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;validate-server&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
-          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
-          <span class="s2">&quot;/system/email-server&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                        <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>set_devprof_snmp</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_snmp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    ENABLE SNMP ON DevProf</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_status&quot;</span><span class="p">]</span>
-    <span class="p">}</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/devprof/&quot;</span> \
-          <span class="s2">&quot;{provisioning_template}/system/snmp/sysinfo&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                                               <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>set_devprof_snmp_v2c</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_snmp_v2c</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    ENABLE SNMP ON DevProf</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;query-v2c-port&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_query_port&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;trap-v2c-rport&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_trap_port&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_status&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;trap-v2c-status&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_trap_status&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;query-v2c-status&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_query_status&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_name&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_id&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;meta fields&quot;</span><span class="p">:</span> <span class="nb">dict</span><span class="p">(),</span>
-        <span class="s2">&quot;hosts&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
-        <span class="s2">&quot;events&quot;</span><span class="p">:</span> <span class="mi">411578417151</span><span class="p">,</span>
-        <span class="s2">&quot;query-v1-status&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;query-v1-port&quot;</span><span class="p">:</span> <span class="mi">161</span><span class="p">,</span>
-        <span class="s2">&quot;trap-v1-status&quot;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span>
-        <span class="s2">&quot;trap-v1-lport&quot;</span><span class="p">:</span> <span class="mi">162</span><span class="p">,</span>
-        <span class="s2">&quot;trap-v1-rport&quot;</span><span class="p">:</span> <span class="mi">162</span><span class="p">,</span>
-        <span class="s2">&quot;trap-v2c-lport&quot;</span><span class="p">:</span> <span class="mi">162</span><span class="p">,</span>
-    <span class="p">}</span>
-
-    <span class="c1"># BUILD THE HOST STRINGS</span>
-    <span class="n">id_counter</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_trap_hosts_ipv4&quot;</span><span class="p">]</span> <span class="ow">or</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_query_hosts_ipv4&quot;</span><span class="p">]:</span>
-        <span class="n">hosts</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_query_hosts_ipv4&quot;</span><span class="p">]:</span>
-            <span class="k">for</span> <span class="n">ipv4_host</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_query_hosts_ipv4&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
-                <span class="c1"># split the host on the space to get the mask out</span>
-                <span class="n">new_ipv4_host</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ha-direct&quot;</span><span class="p">:</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span>
-                                 <span class="s2">&quot;host-type&quot;</span><span class="p">:</span> <span class="s2">&quot;query&quot;</span><span class="p">,</span>
-                                 <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">id_counter</span><span class="p">,</span>
-                                 <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="n">ipv4_host</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span>
-                                 <span class="s2">&quot;meta fields&quot;</span><span class="p">:</span> <span class="p">{},</span>
-                                 <span class="s2">&quot;source-ip&quot;</span><span class="p">:</span> <span class="s2">&quot;0.0.0.0&quot;</span><span class="p">}</span>
-                <span class="n">hosts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_ipv4_host</span><span class="p">)</span>
-                <span class="n">id_counter</span> <span class="o">+=</span> <span class="mi">1</span>
-
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_trap_hosts_ipv4&quot;</span><span class="p">]:</span>
-            <span class="k">for</span> <span class="n">ipv4_host</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_trap_hosts_ipv4&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
-                <span class="c1"># split the host on the space to get the mask out</span>
-                <span class="n">new_ipv4_host</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;ha-direct&quot;</span><span class="p">:</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span>
-                                 <span class="s2">&quot;host-type&quot;</span><span class="p">:</span> <span class="s2">&quot;trap&quot;</span><span class="p">,</span>
-                                 <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="n">id_counter</span><span class="p">,</span>
-                                 <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="n">ipv4_host</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(),</span>
-                                 <span class="s2">&quot;meta fields&quot;</span><span class="p">:</span> <span class="p">{},</span>
-                                 <span class="s2">&quot;source-ip&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmp_v2c_trap_src_ipv4&quot;</span><span class="p">]}</span>
-                <span class="n">hosts</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_ipv4_host</span><span class="p">)</span>
-                <span class="n">id_counter</span> <span class="o">+=</span> <span class="mi">1</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;hosts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">hosts</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/devprof/&quot;</span> \
-          <span class="s2">&quot;{provisioning_template}/system/snmp/community&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                                                 <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span>
-                                                                     <span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>set_devprof_snmp_v3</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_snmp_v3</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    ENABLE SNMP ON DevProf</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-    <span class="c1"># transform options</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_trap_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;trap-status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_trap_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;disable&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;trap-status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_queries&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;queries&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_queries&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;disable&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;queries&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;disable&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_auth_proto&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;md5&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;auth-proto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_auth_proto&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;sha&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;auth-proto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_priv_proto&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;aes&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;auth-proto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_priv_proto&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;des&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;priv-proto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_priv_proto&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;aes256&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;priv-proto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_priv_proto&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;aes256cisco&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;priv-proto&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">4</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_security_level&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;no-auth-no-priv&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;security-level&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_security_level&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;auth-no-priv&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;security-level&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_security_level&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;auth-priv&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;security-level&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
-
-    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;auth-pwd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_auth_pwd&quot;</span><span class="p">]</span>
-    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;priv-pwd&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_priv_pwd&quot;</span><span class="p">]</span>
-    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;trap-rport&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_trap_rport&quot;</span><span class="p">]</span>
-    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;query-port&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_query_port&quot;</span><span class="p">]</span>
-    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_name&quot;</span><span class="p">]</span>
-    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;notify-hosts&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_notify_hosts&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;events&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1647387997183</span>
-    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;trap-lport&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">162</span>
-
-    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;source-ip&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;snmpv3_source_ip&quot;</span><span class="p">]</span>
-    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;ha-direct&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/&quot;</span> \
-          <span class="s2">&quot;devprof/{provisioning_template}/&quot;</span> \
-          <span class="s2">&quot;system/snmp/user&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                    <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>set_devprof_syslog</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_syslog</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Set the SYSLOG SETTINGS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_status&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_port&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;server&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_server&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_mode&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;facility&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_facility&quot;</span><span class="p">]</span>
-    <span class="p">}</span>
-
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_enc_algorithm&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;high&quot;</span><span class="p">,</span> <span class="s2">&quot;low&quot;</span><span class="p">,</span> <span class="s2">&quot;high-medium&quot;</span><span class="p">]</span> \
-            <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_certificate&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;certificate&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;certificate&quot;</span><span class="p">]</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;enc-algorithm&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_enc_algorithm&quot;</span><span class="p">]</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}/&quot;</span> \
-          <span class="s2">&quot;devprof/{provisioning_template}/&quot;</span> \
-          <span class="s2">&quot;log/syslogd/setting&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                       <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>set_devprof_syslog_filter</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_syslog_filter</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    Set the SYSLOG SETTINGS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;severity&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_filter&quot;</span><span class="p">]</span>
-    <span class="p">}</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
-          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
-          <span class="s2">&quot;/log/syslogd/filter&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                       <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>set_devprof_toggle_fg</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_toggle_fg</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">       TOGGLE FG SETTINGS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="c1"># pydevd.settrace(&#39;10.0.0.122&#39;, port=54654, stdoutToServer=True, stderrToServer=True)</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_enable_fortiguard&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;direct&quot;</span><span class="p">,</span> <span class="s2">&quot;this-fmg&quot;</span><span class="p">]:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;include-default-servers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;enable&quot;</span>
-    <span class="k">elif</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_enable_fortiguard&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;none&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;include-default-servers&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;disable&quot;</span>
-
-    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;server-list&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
-          <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
-          <span class="s2">&quot;/system/central-management&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                              <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
-    <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -3903,7 +3915,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps
+        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps.
 
     </p>
   </div>
@@ -3922,14 +3934,21 @@
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

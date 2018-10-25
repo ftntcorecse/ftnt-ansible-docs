@@ -162,34 +162,34 @@ Functions
 
 
 
-- assign_dev_grp
+- dev_group_exists
 
  .. code-block:: python
 
-    def assign_dev_grp(fmg, grp_name, device_name, vdom, adom):
+    def dev_group_exists(fmg, dev_grp_name, adom):
         datagram = {
-            'name': device_name,
-            'vdom': vdom,
+            'adom': adom,
+            'name': dev_grp_name,
         }
-        url = "/dvmdb/adom/{adom}/group/{grp_name}/object member".format(adom=adom, grp_name=grp_name)
-        response = fmg.set(url, datagram)
+    
+        url = '/dvmdb/adom/{adom}/group/{dev_grp_name}'.format(adom=adom, dev_grp_name=dev_grp_name)
+        response = fmg.get(url, datagram)
         return response
     
     
 
-- assign_provision_template
+- prov_template_exists
 
  .. code-block:: python
 
-    def assign_provision_template(fmg, template, adom, target):
+    def prov_template_exists(fmg, prov_template, adom, vdom):
         datagram = {
-            'name': template,
-            'type': 'devprof',
-            'description': 'Provisioned by Ansible',
-            'scope member': [{'name': target}]
+            'name': prov_template,
+            'adom': adom,
         }
-        url = "/pm/devprof/adom/{adom}".format(adom=adom)
-        response = fmg.update(url, datagram)
+    
+        url = '/pm/devprof/adom/{adom}/devprof/{name}'.format(adom=adom, name=prov_template)
+        response = fmg.get(url, datagram)
         return response
     
     
@@ -224,18 +224,91 @@ Functions
     
     
 
-- dev_group_exists
+- update_flags
 
  .. code-block:: python
 
-    def dev_group_exists(fmg, dev_grp_name, adom):
+    def update_flags(fmg, name):
         datagram = {
-            'adom': adom,
-            'name': dev_grp_name,
+            'flags': ['is_model', 'linked_to_model']
         }
+        url = 'dvmdb/device/{name}'.format(name=name)
+        response = fmg.update(url, datagram)
+        return response
     
-        url = '/dvmdb/adom/{adom}/group/{dev_grp_name}'.format(adom=adom, dev_grp_name=dev_grp_name)
-        response = fmg.get(url, datagram)
+    
+
+- assign_provision_template
+
+ .. code-block:: python
+
+    def assign_provision_template(fmg, template, adom, target):
+        datagram = {
+            'name': template,
+            'type': 'devprof',
+            'description': 'Provisioned by Ansible',
+            'scope member': [{'name': target}]
+        }
+        url = "/pm/devprof/adom/{adom}".format(adom=adom)
+        response = fmg.update(url, datagram)
+        return response
+    
+    
+
+- set_devprof_scope
+
+ .. code-block:: python
+
+    def set_devprof_scope(self, provisioning_template, adom, provision_targets):
+        """
+        GET the DevProf (check to see if exists)
+        """
+        fields = dict()
+        targets = []
+        fields["name"] = provisioning_template
+        fields["type"] = "devprof"
+        fields["description"] = "CreatedByAnsible"
+    
+        for target in provision_targets.strip().split(","):
+            # split the host on the space to get the mask out
+            new_target = {"name": target}
+            targets.append(new_target)
+    
+        fields["scope member"] = targets
+    
+        body = {"method": "set", "params": [{"url": "/pm/devprof/adom/{adom}".format(adom=adom),
+                                             "data": fields, "session": self.session}]}
+        response = self.make_request(body).json()
+        return response
+    
+    
+
+- assign_dev_grp
+
+ .. code-block:: python
+
+    def assign_dev_grp(fmg, grp_name, device_name, vdom, adom):
+        datagram = {
+            'name': device_name,
+            'vdom': vdom,
+        }
+        url = "/dvmdb/adom/{adom}/group/{grp_name}/object member".format(adom=adom, grp_name=grp_name)
+        response = fmg.set(url, datagram)
+        return response
+    
+    
+
+- update_install_target
+
+ .. code-block:: python
+
+    def update_install_target(fmg, device, pp='default', vdom='root', adom='root'):
+        datagram = {
+            'scope member': [{'name': device, 'vdom': vdom}],
+            'type': 'pkg'
+        }
+        url = '/pm/pkg/adom/{adom}/{pkg_name}'.format(adom=adom, pkg_name=pp)
+        response = fmg.update(url, datagram)
         return response
     
     
@@ -341,79 +414,6 @@ Functions
     
             # results is returned as a tuple
             return module.exit_json(**results[1])
-    
-    
-
-- prov_template_exists
-
- .. code-block:: python
-
-    def prov_template_exists(fmg, prov_template, adom, vdom):
-        datagram = {
-            'name': prov_template,
-            'adom': adom,
-        }
-    
-        url = '/pm/devprof/adom/{adom}/devprof/{name}'.format(adom=adom, name=prov_template)
-        response = fmg.get(url, datagram)
-        return response
-    
-    
-
-- set_devprof_scope
-
- .. code-block:: python
-
-    def set_devprof_scope(self, provisioning_template, adom, provision_targets):
-        """
-        GET the DevProf (check to see if exists)
-        """
-        fields = dict()
-        targets = []
-        fields["name"] = provisioning_template
-        fields["type"] = "devprof"
-        fields["description"] = "CreatedByAnsible"
-    
-        for target in provision_targets.strip().split(","):
-            # split the host on the space to get the mask out
-            new_target = {"name": target}
-            targets.append(new_target)
-    
-        fields["scope member"] = targets
-    
-        body = {"method": "set", "params": [{"url": "/pm/devprof/adom/{adom}".format(adom=adom),
-                                             "data": fields, "session": self.session}]}
-        response = self.make_request(body).json()
-        return response
-    
-    
-
-- update_flags
-
- .. code-block:: python
-
-    def update_flags(fmg, name):
-        datagram = {
-            'flags': ['is_model', 'linked_to_model']
-        }
-        url = 'dvmdb/device/{name}'.format(name=name)
-        response = fmg.update(url, datagram)
-        return response
-    
-    
-
-- update_install_target
-
- .. code-block:: python
-
-    def update_install_target(fmg, device, pp='default', vdom='root', adom='root'):
-        datagram = {
-            'scope member': [{'name': device, 'vdom': vdom}],
-            'type': 'pkg'
-        }
-        url = '/pm/pkg/adom/{adom}/{pkg_name}'.format(adom=adom, pkg_name=pp)
-        response = fmg.update(url, datagram)
-        return response
     
     
 

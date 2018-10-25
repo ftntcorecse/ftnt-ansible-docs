@@ -88,6 +88,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_package.html">fmgr_fwpol_package</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_ha.html">fmgr_ha</a></li>
@@ -101,7 +102,18 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_query.html">fmgr_query</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_script.html">fmgr_script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_appctrl.html">fmgr_secprof_appctrl</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_av.html">fmgr_secprof_av</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_dns.html">fmgr_secprof_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ips.html">fmgr_secprof_ips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_profile_group.html">fmgr_secprof_profile_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_proxy.html">fmgr_secprof_proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_spam.html">fmgr_secprof_spam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ssl_ssh.html">fmgr_secprof_ssl_ssh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_voip.html">fmgr_secprof_voip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
@@ -298,33 +310,33 @@
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>assign_dev_grp</li>
+<li>dev_group_exists</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">assign_dev_grp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">grp_name</span><span class="p">,</span> <span class="n">device_name</span><span class="p">,</span> <span class="n">vdom</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dev_group_exists</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">dev_grp_name</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device_name</span><span class="p">,</span>
-        <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">,</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">dev_grp_name</span><span class="p">,</span>
     <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/dvmdb/adom/{adom}/group/{grp_name}/object member&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">grp_name</span><span class="o">=</span><span class="n">grp_name</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group/{dev_grp_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">dev_grp_name</span><span class="o">=</span><span class="n">dev_grp_name</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
 </div></blockquote>
 <ul class="simple">
-<li>assign_provision_template</li>
+<li>prov_template_exists</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">assign_provision_template</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prov_template_exists</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">prov_template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">vdom</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">template</span><span class="p">,</span>
-        <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;devprof&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Provisioned by Ansible&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">target</span><span class="p">}]</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">prov_template</span><span class="p">,</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
     <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/devprof/adom/{adom}/devprof/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">prov_template</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -360,17 +372,90 @@
 </div>
 </div></blockquote>
 <ul class="simple">
-<li>dev_group_exists</li>
+<li>update_flags</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dev_group_exists</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">dev_grp_name</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_flags</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">dev_grp_name</span><span class="p">,</span>
+        <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;is_model&#39;</span><span class="p">,</span> <span class="s1">&#39;linked_to_model&#39;</span><span class="p">]</span>
     <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;dvmdb/device/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>assign_provision_template</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">assign_provision_template</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">template</span><span class="p">,</span>
+        <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;devprof&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Provisioned by Ansible&#39;</span><span class="p">,</span>
+        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">target</span><span class="p">}]</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>set_devprof_scope</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_scope</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provisioning_template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">provision_targets</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    GET the DevProf (check to see if exists)</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+    <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">provisioning_template</span>
+    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;devprof&quot;</span>
+    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;CreatedByAnsible&quot;</span>
 
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group/{dev_grp_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">dev_grp_name</span><span class="o">=</span><span class="n">dev_grp_name</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">provision_targets</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+        <span class="c1"># split the host on the space to get the mask out</span>
+        <span class="n">new_target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">}</span>
+        <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_target</span><span class="p">)</span>
+
+    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">targets</span>
+
+    <span class="n">body</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">),</span>
+                                         <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">fields</span><span class="p">,</span> <span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">}]}</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_request</span><span class="p">(</span><span class="n">body</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>assign_dev_grp</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">assign_dev_grp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">grp_name</span><span class="p">,</span> <span class="n">device_name</span><span class="p">,</span> <span class="n">vdom</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device_name</span><span class="p">,</span>
+        <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">,</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/dvmdb/adom/{adom}/group/{grp_name}/object member&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">grp_name</span><span class="o">=</span><span class="n">grp_name</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>update_install_target</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_install_target</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">pp</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="n">vdom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">}],</span>
+        <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;pkg&#39;</span>
+    <span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{pkg_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">pkg_name</span><span class="o">=</span><span class="n">pp</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -476,79 +561,6 @@
 
         <span class="c1"># results is returned as a tuple</span>
         <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>prov_template_exists</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prov_template_exists</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">prov_template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">vdom</span><span class="p">):</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">prov_template</span><span class="p">,</span>
-        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
-    <span class="p">}</span>
-
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/devprof/adom/{adom}/devprof/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">prov_template</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>set_devprof_scope</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_scope</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provisioning_template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">provision_targets</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    GET the DevProf (check to see if exists)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">fields</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-    <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">provisioning_template</span>
-    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;devprof&quot;</span>
-    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;CreatedByAnsible&quot;</span>
-
-    <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">provision_targets</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
-        <span class="c1"># split the host on the space to get the mask out</span>
-        <span class="n">new_target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">}</span>
-        <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_target</span><span class="p">)</span>
-
-    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">targets</span>
-
-    <span class="n">body</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">),</span>
-                                         <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">fields</span><span class="p">,</span> <span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">}]}</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_request</span><span class="p">(</span><span class="n">body</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>update_flags</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_flags</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;is_model&#39;</span><span class="p">,</span> <span class="s1">&#39;linked_to_model&#39;</span><span class="p">]</span>
-    <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;dvmdb/device/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">response</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>update_install_target</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_install_target</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">pp</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="n">vdom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">}],</span>
-        <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;pkg&#39;</span>
-    <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{pkg_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">pkg_name</span><span class="o">=</span><span class="n">pp</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -952,7 +964,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps
+        &copy; Copyright 2018, Fortinet North American Core CSE - DevOps.
 
     </p>
   </div>
@@ -971,14 +983,21 @@
 
   
 
-    
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
   
 

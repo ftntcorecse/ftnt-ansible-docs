@@ -406,63 +406,6 @@ Functions
     
     
 
-- fmgr_del_none
-
- .. code-block:: python
-
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-    
-    
-
-- fmgr_fwobj_service_category
-
- .. code-block:: python
-
-    def fmgr_fwobj_service_category(fmg, paramgram):
-        """
-        # NOTES
-        """
-        response = (-100000, {"msg": "Nothing Happened."})
-        if paramgram["mode"] in ['set', 'add']:
-            url = '/pm/config/adom/{adom}/obj/firewall/service/category'.format(adom=paramgram["adom"])
-            # GET RID OF ANY WHITESPACE
-            category = paramgram["category"]
-            category = category.strip()
-    
-            datagram = {
-                "name": paramgram["category"],
-                "comment": "Created by Ansible"
-            }
-    
-        # IF MODE = DELETE
-        if paramgram["mode"] == "delete":
-            datagram = {
-                "name": paramgram["name"]
-            }
-            # SET DELETE URL
-            url = '/pm/config/adom/{adom}/obj/firewall/service/category' \
-                  '/{name}'.format(adom=paramgram["adom"], name=paramgram["category"])
-    
-        datagram = fmgr_del_none(datagram)
-    
-        if paramgram["mode"] == "set":
-            response = fmg.set(url, datagram)
-            # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        if paramgram["mode"] == "add":
-            response = fmg.add(url, datagram)
-            # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        if paramgram["mode"] == "delete":
-            response = fmg.delete(url, datagram)
-    
-        return response
-    
-    
-
 - fmgr_fwobj_service_custom
 
  .. code-block:: python
@@ -646,6 +589,63 @@ Functions
     
     
 
+- fmgr_fwobj_service_category
+
+ .. code-block:: python
+
+    def fmgr_fwobj_service_category(fmg, paramgram):
+        """
+        # NOTES
+        """
+        response = (-100000, {"msg": "Nothing Happened."})
+        if paramgram["mode"] in ['set', 'add']:
+            url = '/pm/config/adom/{adom}/obj/firewall/service/category'.format(adom=paramgram["adom"])
+            # GET RID OF ANY WHITESPACE
+            category = paramgram["category"]
+            category = category.strip()
+    
+            datagram = {
+                "name": paramgram["category"],
+                "comment": "Created by Ansible"
+            }
+    
+        # IF MODE = DELETE
+        if paramgram["mode"] == "delete":
+            datagram = {
+                "name": paramgram["name"]
+            }
+            # SET DELETE URL
+            url = '/pm/config/adom/{adom}/obj/firewall/service/category' \
+                  '/{name}'.format(adom=paramgram["adom"], name=paramgram["category"])
+    
+        datagram = fmgr_del_none(datagram)
+    
+        if paramgram["mode"] == "set":
+            response = fmg.set(url, datagram)
+            # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
+        if paramgram["mode"] == "add":
+            response = fmg.add(url, datagram)
+            # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
+        if paramgram["mode"] == "delete":
+            response = fmg.delete(url, datagram)
+    
+        return response
+    
+    
+
+- fmgr_del_none
+
+ .. code-block:: python
+
+    def fmgr_del_none(obj):
+        if isinstance(obj, dict):
+            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
+                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
+        else:
+            return obj
+    
+    
+
 - fmgr_is_empty_dict
 
  .. code-block:: python
@@ -677,7 +677,7 @@ Functions
     
     
 
-- fmgr_logoutfmg, module, msg="NULL", results=), good_codes=
+- fmgr_logout
 
  .. code-block:: python
 

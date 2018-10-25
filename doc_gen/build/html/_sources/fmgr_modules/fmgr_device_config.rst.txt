@@ -129,6 +129,48 @@ Functions
 
 
 
+- update_device_hostname
+
+ .. code-block:: python
+
+    def update_device_hostname(fmg, paramgram):
+        """
+        Change a device's hostname
+        """
+        datagram = {
+            "hostname": paramgram["device_hostname"]
+        }
+    
+        url = "pm/config/device/{device_name}/global/system/global".format(device_name=paramgram["device_unique_name"])
+        response = fmg.update(url, datagram)
+        return response
+    
+    
+
+- update_device_interface
+
+ .. code-block:: python
+
+    def update_device_interface(fmg, paramgram):
+        """
+        Update a device interface IP and allow access
+        """
+        access_list = list()
+        allow_access_list = paramgram["interface_allow_access"].replace(' ', '')
+        access_list = allow_access_list.split(',')
+    
+        datagram = {
+            "allowaccess": access_list,
+            "ip": paramgram["interface_ip"]
+        }
+    
+        url = "/pm/config/device/{device_name}/global/system/interface" \
+              "/{interface}".format(device_name=paramgram["device_unique_name"], interface=paramgram["interface"])
+        response = fmg.update(url, datagram)
+        return response
+    
+    
+
 - exec_config
 
  .. code-block:: python
@@ -152,7 +194,7 @@ Functions
     
     # FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
 
-- fmgr_logoutfmg, module, msg="NULL", results=), good_codes=
+- fmgr_logout
 
  .. code-block:: python
 
@@ -260,48 +302,6 @@ Functions
         # logout, build in check for future logging capabilities
         fmg.logout()
         return module.exit_json(**results[1])
-    
-    
-
-- update_device_hostname
-
- .. code-block:: python
-
-    def update_device_hostname(fmg, paramgram):
-        """
-        Change a device's hostname
-        """
-        datagram = {
-            "hostname": paramgram["device_hostname"]
-        }
-    
-        url = "pm/config/device/{device_name}/global/system/global".format(device_name=paramgram["device_unique_name"])
-        response = fmg.update(url, datagram)
-        return response
-    
-    
-
-- update_device_interface
-
- .. code-block:: python
-
-    def update_device_interface(fmg, paramgram):
-        """
-        Update a device interface IP and allow access
-        """
-        access_list = list()
-        allow_access_list = paramgram["interface_allow_access"].replace(' ', '')
-        access_list = allow_access_list.split(',')
-    
-        datagram = {
-            "allowaccess": access_list,
-            "ip": paramgram["interface_ip"]
-        }
-    
-        url = "/pm/config/device/{device_name}/global/system/interface" \
-              "/{interface}".format(device_name=paramgram["device_unique_name"], interface=paramgram["interface"])
-        response = fmg.update(url, datagram)
-        return response
     
     
 

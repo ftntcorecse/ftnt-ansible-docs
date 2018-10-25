@@ -145,6 +145,110 @@ Functions
 
 
 
+- fmgr_get_custom
+
+ .. code-block:: python
+
+    def fmgr_get_custom(fmg, paramgram):
+        """
+        This method is used to perform very custom queries ad-hoc
+        """
+        # IF THE CUSTOM DICTIONARY (OFTEN CONTAINING FILTERS) IS DEFINED CREATED THAT
+        if paramgram["custom_dict"] is not None:
+            datagram = paramgram["custom_dict"]
+        else:
+            datagram = dict()
+    
+        # SET THE CUSTOM ENDPOINT PROVIDED
+        url = paramgram["custom_endpoint"]
+        # MAKE THE CALL AND RETURN RESULTS
+        response = fmg.get(url, datagram)
+        return response
+    
+    
+
+- fmgr_get_task_status
+
+ .. code-block:: python
+
+    def fmgr_get_task_status(fmg, paramgram):
+        """
+        This method is used to get information on tasks within the FortiManager Task Manager
+        """
+        # IF THE TASK_ID IS DEFINED, THEN GET THAT SPECIFIC TASK
+        # OTHERWISE, GET ALL RECENT TASKS IN A LIST
+        if paramgram["task_id"] is not None:
+    
+            datagram = {
+                "adom": paramgram["adom"]
+            }
+            url = '/task/task/{task_id}'.format(task_id=paramgram["task_id"])
+            response = fmg.get(url, datagram)
+        else:
+            datagram = {
+                "adom": paramgram["adom"]
+            }
+            url = '/task/task'
+            response = fmg.get(url, datagram)
+        return response
+    
+    
+
+- fmgr_get_device
+
+ .. code-block:: python
+
+    def fmgr_get_device(fmg, paramgram):
+        """
+        This method is used to get information on devices. This will not work on HA_SLAVE nodes, only top level devices.
+        Such as cluster objects and standalone devices.
+        """
+        # FIRST TRY TO RUN AN UPDATE ON THE DEVICE
+        # RUN A QUICK CLUSTER REFRESH/UPDATE ATTEMPT TO ENSURE WE'RE GETTING THE LATEST INFORMOATION
+        update_url = '/dvm/cmd/update/device'
+        update_dict = {
+            "adom": paramgram['adom'],
+            "device": paramgram['device_unique_name'],
+            "flags": "create_task"
+        }
+        # DO THE UPDATE CALL
+        update_call = fmg.execute(update_url, update_dict)
+    
+        # SET THE URL
+        url = '/dvmdb/adom/{adom}/device'.format(adom=paramgram["adom"])
+        device_found = 0
+        response = []
+    
+        # TRY TO FIND IT FIRST BY SERIAL NUMBER
+        if paramgram["device_serial"] is not None:
+            datagram = {
+                "filter": ["sn", "==", paramgram["device_serial"]]
+            }
+            response = fmg.get(url, datagram)
+            if len(response[1]) >= 0:
+                device_found = 1
+    
+        # CHECK IF ANYTHING WAS RETURNED, IF NOT TRY DEVICE NAME PARAMETER
+        if device_found == 0 and paramgram["device_unique_name"] is not None:
+            datagram = {
+                "filter": ["name", "==", paramgram["device_unique_name"]]
+            }
+            response = fmg.get(url, datagram)
+            if len(response[1]) >= 0:
+                device_found = 1
+    
+        # CHECK IF ANYTHING WAS RETURNED, IF NOT TRY DEVICE IP ADDRESS
+        if device_found == 0 and paramgram["device_ip"] is not None:
+            datagram = {
+                "filter": ["ip", "==", paramgram["device_ip"]]
+            }
+            response = fmg.get(url, datagram)
+            if len(response[1]) >= 0:
+                device_found = 1
+        return response
+    
+    
+
 - fmgr_get_cluster_nodes
 
  .. code-block:: python
@@ -206,110 +310,6 @@ Functions
         else:
             nodes["cluster_status"] = "NOT-COMPLIANT"
         return nodes
-    
-    
-
-- fmgr_get_custom
-
- .. code-block:: python
-
-    def fmgr_get_custom(fmg, paramgram):
-        """
-        This method is used to perform very custom queries ad-hoc
-        """
-        # IF THE CUSTOM DICTIONARY (OFTEN CONTAINING FILTERS) IS DEFINED CREATED THAT
-        if paramgram["custom_dict"] is not None:
-            datagram = paramgram["custom_dict"]
-        else:
-            datagram = dict()
-    
-        # SET THE CUSTOM ENDPOINT PROVIDED
-        url = paramgram["custom_endpoint"]
-        # MAKE THE CALL AND RETURN RESULTS
-        response = fmg.get(url, datagram)
-        return response
-    
-    
-
-- fmgr_get_device
-
- .. code-block:: python
-
-    def fmgr_get_device(fmg, paramgram):
-        """
-        This method is used to get information on devices. This will not work on HA_SLAVE nodes, only top level devices.
-        Such as cluster objects and standalone devices.
-        """
-        # FIRST TRY TO RUN AN UPDATE ON THE DEVICE
-        # RUN A QUICK CLUSTER REFRESH/UPDATE ATTEMPT TO ENSURE WE'RE GETTING THE LATEST INFORMOATION
-        update_url = '/dvm/cmd/update/device'
-        update_dict = {
-            "adom": paramgram['adom'],
-            "device": paramgram['device_unique_name'],
-            "flags": "create_task"
-        }
-        # DO THE UPDATE CALL
-        update_call = fmg.execute(update_url, update_dict)
-    
-        # SET THE URL
-        url = '/dvmdb/adom/{adom}/device'.format(adom=paramgram["adom"])
-        device_found = 0
-        response = []
-    
-        # TRY TO FIND IT FIRST BY SERIAL NUMBER
-        if paramgram["device_serial"] is not None:
-            datagram = {
-                "filter": ["sn", "==", paramgram["device_serial"]]
-            }
-            response = fmg.get(url, datagram)
-            if len(response[1]) >= 0:
-                device_found = 1
-    
-        # CHECK IF ANYTHING WAS RETURNED, IF NOT TRY DEVICE NAME PARAMETER
-        if device_found == 0 and paramgram["device_unique_name"] is not None:
-            datagram = {
-                "filter": ["name", "==", paramgram["device_unique_name"]]
-            }
-            response = fmg.get(url, datagram)
-            if len(response[1]) >= 0:
-                device_found = 1
-    
-        # CHECK IF ANYTHING WAS RETURNED, IF NOT TRY DEVICE IP ADDRESS
-        if device_found == 0 and paramgram["device_ip"] is not None:
-            datagram = {
-                "filter": ["ip", "==", paramgram["device_ip"]]
-            }
-            response = fmg.get(url, datagram)
-            if len(response[1]) >= 0:
-                device_found = 1
-        return response
-    
-    
-
-- fmgr_get_task_status
-
- .. code-block:: python
-
-    def fmgr_get_task_status(fmg, paramgram):
-        """
-        This method is used to get information on tasks within the FortiManager Task Manager
-        """
-        # IF THE TASK_ID IS DEFINED, THEN GET THAT SPECIFIC TASK
-        # OTHERWISE, GET ALL RECENT TASKS IN A LIST
-        if paramgram["task_id"] is not None:
-    
-            datagram = {
-                "adom": paramgram["adom"]
-            }
-            url = '/task/task/{task_id}'.format(task_id=paramgram["task_id"])
-            response = fmg.get(url, datagram)
-        else:
-            datagram = {
-                "adom": paramgram["adom"]
-            }
-            url = '/task/task'
-            response = fmg.get(url, datagram)
-        return response
     
     
 
