@@ -1,0 +1,112 @@
+================
+fmgr_secprof_waf
+================
+
+Not Parsed
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+      - name: DELETE Profile
+        fmgr_secprof_waf:
+          host: "{{inventory_hostname}}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          name: "Ansible_WAF_Profile"
+          comment: "Created by Ansible Module TEST"
+          mode: "delete"
+    
+      - name: CREATE Profile
+        fmgr_secprof_waf:
+          host: "{{inventory_hostname}}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          name: "Ansible_WAF_Profile"
+          comment: "Created by Ansible Module TEST"
+          mode: "set"
+
+
+
+Playbook File Examples
+----------------------
+
+
+waf.yml
++++++++
+
+.. code-block:: yaml
+
+
+    - name: Create and Delete security profile in FMG
+      hosts: FortiManager
+      connection: local
+      gather_facts: False
+    
+      tasks:
+    
+      - name: DELETE Profile
+        fmgr_secprof_waf:
+          host: "{{inventory_hostname}}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          name: "Ansible_WAF_Profile"
+          comment: "Created by Ansible Module TEST"
+          mode: "delete"
+    
+      - name: CREATE Profile
+        fmgr_secprof_waf:
+          host: "{{inventory_hostname}}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          name: "Ansible_WAF_Profile"
+          comment: "Created by Ansible Module TEST"
+          mode: "set"
+    
+    #      method: [{ "default-allowed-methods": "post", "log": "enable", "severity": "high", "status": "enable"}]
+    #      contraint: [{ "content-length": { "action": 0, "length": 67108864, "log": 1, "severity": 3, "status": true},
+    #                    "header-length": { "action": 0, "length": 8192, "log": 1, "severity": 3, "status": true},
+    #                    "hostname": { "action": 1, "log": 0, "severity": 2, "status": true},
+    #                    "line-length": { "action": 0, "length": 1024, "log": 1, "severity": 3, "status": true},
+    #                    "malformed": { "action": 0, "log": 0, "severity": 3, "status": true},
+    #                    "max-cookie": { "action": 0, "log": 0, "max-cookie": 16, "severity": 3, "status": true},
+    #                    "max-header-line": { "action": 0, "log": 0, "max-header-line": 32, "severity": 3, "status": true},
+    #                    "max-range-segment": { "action": 0, "log": 0, "max-range-segment": 5, "severity": 3, "status": true},
+    #                    "max-url-param": { "action": 0, "log": 0, "max-url-param": 16, "severity": 3, "status": true},
+    #                    "method": { "action": 1, "log": 0, "severity": 3, "status": true},
+    #                    "param-length": { "action": 0, "length": 8192, "log": 0, "severity": 3, "status": true},
+    #                    "url-param-length": { "action": 0, "length": 8192, "log": 0, "severity": 3, "status": true},
+    #                    "version": { "action": 1, "log": 0, "severity": 4, "status": true},
+    #                  }]
+    #      signature: [{
+    #                      "credit-card-detection-threshold": 3,
+    #                      "main-class": [{ "action": "block", "id": 10000000, "log": "enable", "severity": "low", "status": "disable"},
+    #                                     { "action": "allow", "id": 20000000, "log": "disable", "severity": "medium", "status": "enable"},
+    #                                     { "action": "erase", "id": 30000000, "log": "enable", "severity": "high", "status": "enable"},
+    #                      ],
+    #                    }]
+    
+    #      extended_log: "enable"
+    #      external: "enable"
+    #      address_list_blocked_log: "enable"
+    #      address_list_severity: "high"
+    #      address_list_status: "enable"
+    #
+    #      signature_list_severtity: "high"
+    #      signature_list_status: "enable"
+    #      signature_list_blocked_log: "enable"
+    #
+    #      signature_custom_signature_action: "block"
+    #      signature_custom_signature_case_sensitivity: "enable"
+    #      signature_custom_signature_direction: "request"
+    #      signature_custom_signature_log: "enable"
+    #      signature_custom_signature_name: "custom signature"
+    #      signature_custom_signature_severity: "high"
+    #      signature_custom_signature_status: "enable"
+    #      signature_custom_signature_target: "req-body"
+
+
+
+
