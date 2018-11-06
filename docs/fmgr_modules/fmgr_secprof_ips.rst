@@ -11,7 +11,8 @@ Metadata
 
 **Name:** fmgr_secprof_ips
 
-**Description:** ['Managing IPS security profiles in FortiManager']
+**Description:** Managing IPS security profiles in FortiManager
+
 
 **Author(s):** 
 
@@ -23,7 +24,19 @@ Metadata
 
 
 
-**Ansible Version Added:** 2.8
+**Ansible Version Added/Required:** 2.8
+
+**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+
+**Owning Developer:** 
+Andrew Welsh
+
+**Pull Request Started:** 10/4/18
+
+**Days in PR:** 23
+
+**Branch Link:** https://github.com/ftntcorecse/ansible/tree/
+fmgr_secprof_ips
 
 Parameters
 ----------

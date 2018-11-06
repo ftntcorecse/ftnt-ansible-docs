@@ -11,11 +11,17 @@ Metadata
 
 **Name:** fmgr_sys_proxy
 
-**Description:** ['The FMG proxies FOS API calls via the FMG.  Review FortiGate API documentation to ensure you are passing correct parameters for both the FortiManager and FortiGate']
+**Description:** The FMG proxies FOS API calls via the FMG.  Review FortiGate API documentation to ensure you are passing correct parameters for both the FortiManager and FortiGate
+
 
 **Author(s):** Andrew Welsh
 
-**Ansible Version Added:** 2.8
+**Ansible Version Added/Required:** 2.8
+
+**Dev Status:** COMPLETED
+
+**Owning Developer:** 
+Andrew Welsh
 
 Parameters
 ----------

@@ -2,8 +2,6 @@
 fmgr_secprof_appctrl
 ====================
 
-Not Parsed
-
 
 Playbook Task Examples
 ----------------------

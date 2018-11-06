@@ -2,8 +2,6 @@
 fmgr_sys_proxy
 ==============
 
-Not Parsed
-
 
 Playbook Task Examples
 ----------------------

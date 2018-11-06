@@ -2,8 +2,6 @@
 fmgr_fortimeter
 ===============
 
-Not Parsed
-
 
 Playbook Task Examples
 ----------------------
@@ -35,62 +33,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-fmgr_fortimeter_set.yml
-+++++++++++++++++++++++
-
-.. code-block:: yaml
-
-
-    - name: "SET FORTIMETER LIC LEVEL"
-      connection: local
-      gather_facts: false
-      hosts: FortiManager
-    
-      tasks:
-    #    - name: SET LICENSING MODE ON FORTIMETER DEVICE to ALL
-    #      fmgr_fortimeter:
-    #        host: "{{inventory_hostname}}"
-    #        username: "{{ username }}"
-    #        password: "{{ password }}"
-    #        adom: "ansible"
-    #        device_unique_name: "seattle-fgt-cluster"
-    #        fortimeter_utm_level: "all"
-    
-        - name: SET LICENSING MODE ON FORTIMETER DEVICE to a COMBO
-          fmgr_fortimeter:
-            host: "{{inventory_hostname}}"
-            username: "{{ username }}"
-            password: "{{ password }}"
-            adom: "ansible"
-            device_unique_name: "nyc-fgt-cluster"
-            fortimeter_utm_level: "fw, ips, av"
-    
-
-
-fmgr_fortimeter_set2.yml
-++++++++++++++++++++++++
-
-.. code-block:: yaml
-
-
-    - name: "SET FORTIMETER LIC LEVEL"
-      connection: local
-      gather_facts: false
-      hosts: FortiProvision
-    
-      tasks:
-        - name: SET LICENSING MODE ON FORTIMETER DEVICE to a COMBO
-          fmgr_fortimeter:
-            host: "{{inventory_hostname}}"
-            username: "fortiprovision"
-            password: "fortiprovision"
-            adom: "root"
-            device_unique_name: "FOSVM1FGPRJ411DD"
-            fortimeter_utm_level: "fw, ips, av, ac, all"
-            foslic_type: 2
-    
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

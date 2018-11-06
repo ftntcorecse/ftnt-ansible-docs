@@ -23,7 +23,17 @@ Metadata
 
 
 
-**Ansible Version Added:** 2.6
+**Ansible Version Added/Required:** 2.6
+
+**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+
+**Owning Developer:** Luke Weighall
+
+**Pull Request Started:** 9/24/18
+
+**Days in PR:** 31
+
+**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_ha
 
 Parameters
 ----------

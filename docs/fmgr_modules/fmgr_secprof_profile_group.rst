@@ -11,7 +11,8 @@ Metadata
 
 **Name:** fmgr_secprof_profile_group
 
-**Description:** ['Manage security profile group which allows you to create a group of security profiles and apply that to a policy']
+**Description:** Manage security profile group which allows you to create a group of security profiles and apply that to a policy
+
 
 **Author(s):** 
 
@@ -23,7 +24,18 @@ Metadata
 
 
 
-**Ansible Version Added:** 2.8
+**Ansible Version Added/Required:** 2.8
+
+**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+
+**Owning Developer:** 
+Andrew Welsh
+
+**Pull Request Started:** 9/27/18
+
+**Days in PR:** 28
+
+**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_secprof_profile_group
 
 Parameters
 ----------

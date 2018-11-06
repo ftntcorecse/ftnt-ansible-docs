@@ -11,7 +11,8 @@ Metadata
 
 **Name:** fmgr_secprof_av
 
-**Description:** ['Manage security profile groups for FortiManager objects']
+**Description:** Manage security profile groups for FortiManager objects
+
 
 **Author(s):** 
 
@@ -23,7 +24,18 @@ Metadata
 
 
 
-**Ansible Version Added:** 2.8
+**Ansible Version Added/Required:** 2.8
+
+**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+
+**Owning Developer:** 
+Andrew Welsh
+
+**Pull Request Started:** 9/24/18
+
+**Days in PR:** 31
+
+**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_secprof_av
 
 Parameters
 ----------

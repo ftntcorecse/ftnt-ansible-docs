@@ -11,11 +11,22 @@ Metadata
 
 **Name:** fmgr_query
 
-**Description:** ['Provides information on data objects within FortiManager so that playbooks can perform conditionals.']
+**Description:** Provides information on data objects within FortiManager so that playbooks can perform conditionals.
+
 
 **Author(s):** Luke Weighall (@lweighall)
 
-**Ansible Version Added:** 2.8
+**Ansible Version Added/Required:** 2.8
+
+**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+
+**Owning Developer:** Luke Weighall
+
+**Pull Request Started:** 10/9/18
+
+**Days in PR:** 20
+
+**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_query
 
 Parameters
 ----------

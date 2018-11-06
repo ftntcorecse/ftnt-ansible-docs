@@ -11,7 +11,8 @@ Metadata
 
 **Name:** fmgr_secprof_waf
 
-**Description:** ['Manage web application firewall security profiles for FGTs via FMG']
+**Description:** Manage web application firewall security profiles for FGTs via FMG
+
 
 **Author(s):** 
 
@@ -23,7 +24,19 @@ Metadata
 
 
 
-**Ansible Version Added:** 2.8
+**Ansible Version Added/Required:** 2.8
+
+**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+
+**Owning Developer:** 
+Andrew Welsh
+
+**Pull Request Started:** 10/11/18
+
+**Days in PR:** 18
+
+**Branch Link:** https://github.com/ftntcorecse/ansible/tree/
+fmgr_secprof_waf
 
 Parameters
 ----------

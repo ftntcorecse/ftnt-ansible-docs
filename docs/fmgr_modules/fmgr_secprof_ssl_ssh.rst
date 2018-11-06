@@ -11,7 +11,8 @@ Metadata
 
 **Name:** fmgr_secprof_ssl_ssh
 
-**Description:** ['Manage SSL and SSH security profiles in FortiManager via the FMG API']
+**Description:** Manage SSL and SSH security profiles in FortiManager via the FMG API
+
 
 **Author(s):** 
 
@@ -23,7 +24,17 @@ Metadata
 
 
 
-**Ansible Version Added:** 2.8
+**Ansible Version Added/Required:** 2.8
+
+**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+
+**Owning Developer:** Andrew Welsh
+
+**Pull Request Started:** 10/16/18
+
+**Days in PR:** 15
+
+**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_secprof_ssl_ssh
 
 Parameters
 ----------

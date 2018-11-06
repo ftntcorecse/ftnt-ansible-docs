@@ -15,7 +15,12 @@ Metadata
 
 **Author(s):** Andrew Welsh
 
-**Ansible Version Added:** 2.5
+**Ansible Version Added/Required:** 2.5
+
+**Dev Status:** COMPLETED
+
+**Owning Developer:** 
+Andrew Welsh
 
 Parameters
 ----------

@@ -2,8 +2,6 @@
 faz_device
 ==========
 
-Add a device to the Device Manager database.
-
 
 Playbook Task Examples
 ----------------------

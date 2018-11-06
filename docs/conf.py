@@ -20,7 +20,7 @@
 # -- Project information -----------------------------------------------------
 
 project = u'Fortinet Ansible Modules'
-copyright = u'2018, Fortinet North American Core CSE - DevOps'
+copyright = u'2018, Fortinet, CSE - DevOps'
 author = u'Luke Weighall, Andrew Welsh, Jim Huber'
 
 # The short X.Y version

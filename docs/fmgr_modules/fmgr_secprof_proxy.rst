@@ -11,7 +11,8 @@ Metadata
 
 **Name:** fmgr_secprof_proxy
 
-**Description:** ['Manage proxy security profiles for FortiGates via FortiManager using the FMG API with playbooks']
+**Description:** Manage proxy security profiles for FortiGates via FortiManager using the FMG API with playbooks
+
 
 **Author(s):** 
 
@@ -23,7 +24,17 @@ Metadata
 
 
 
-**Ansible Version Added:** 2.8
+**Ansible Version Added/Required:** 2.8
+
+**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+
+**Owning Developer:** Andrew Welsh
+
+**Pull Request Started:** 10/19/18
+
+**Days in PR:** 12
+
+**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_secprof_proxy
 
 Parameters
 ----------

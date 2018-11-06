@@ -2,8 +2,6 @@
 fmgr_secprof_profile_group
 ==========================
 
-Not Parsed
-
 
 Playbook Task Examples
 ----------------------
@@ -33,38 +31,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-security_profile.yml
-++++++++++++++++++++
-
-.. code-block:: yaml
-
-
-    - name: Create and Delete security profile in FMG
-      hosts: FortiManager
-      connection: local
-      gather_facts: False
-    
-      tasks:
-    
-      - name: DELETE Profile
-        fmgr_secprof_profile_group:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          name: "Ansible_TEST_Profile_Group"
-          mode: "delete"
-    
-    
-      - name: CREATE Profile
-        fmgr_secprof_profile_group:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          name: "Ansible_TEST_Profile_Group"
-          mode: "set"
-          av_profile: "Ansible_AV_Profile"
-          profile_protocol_options: "default"
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

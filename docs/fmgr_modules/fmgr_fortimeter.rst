@@ -11,11 +11,14 @@ Metadata
 
 **Name:** fmgr_fortimeter
 
-**Description:** ['Provides MSPs the ability to programatically change FortiMeter license levels on devices.']
+**Description:** Provides MSPs the ability to programatically change FortiMeter license levels on devices.
+
 
 **Author(s):** Luke Weighall (@lweighall)
 
-**Ansible Version Added:** 2.6
+**Ansible Version Added/Required:** 2.6
+
+**Dev Status:** No Data Exists. Contact DevOps Team.
 
 Parameters
 ----------

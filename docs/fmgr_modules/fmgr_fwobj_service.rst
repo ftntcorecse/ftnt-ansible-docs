@@ -11,7 +11,8 @@ Metadata
 
 **Name:** fmgr_fwobj_service
 
-**Description:** ['Manages FortiManager Firewall Service Objects']
+**Description:** Manages FortiManager Firewall Service Objects
+
 
 **Author(s):** 
 
@@ -23,7 +24,17 @@ Metadata
 
 
 
-**Ansible Version Added:** 2.8
+**Ansible Version Added/Required:** 2.8
+
+**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+
+**Owning Developer:** Luke Weighall
+
+**Pull Request Started:** 10/9/18
+
+**Days in PR:** 20
+
+**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_fwobj_service
 
 Parameters
 ----------

@@ -11,7 +11,8 @@ Metadata
 
 **Name:** fmgr_fwobj_vip
 
-**Description:** ['Manages Virtual IP objects in FortiManager for IPv4']
+**Description:** Manages Virtual IP objects in FortiManager for IPv4
+
 
 **Author(s):** 
 
@@ -23,7 +24,17 @@ Metadata
 
 
 
-**Ansible Version Added:** 2.8
+**Ansible Version Added/Required:** 2.8
+
+**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+
+**Owning Developer:** Luke Weighall
+
+**Pull Request Started:** 10/26/18
+
+**Days in PR:** 7
+
+**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_fwobj_vip
 
 Parameters
 ----------

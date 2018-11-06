@@ -11,11 +11,22 @@ Metadata
 
 **Name:** fmgr_device
 
-**Description:** ['Add or remove a device or list of devices from FortiManager Device Manager using jsonrpc API']
+**Description:** Add or remove a device or list of devices from FortiManager Device Manager using jsonrpc API
+
 
 **Author(s):** Andrew Welsh, Luke Weighall
 
-**Ansible Version Added:** 2.8
+**Ansible Version Added/Required:** 2.8
+
+**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+
+**Owning Developer:** Luke Weighall
+
+**Pull Request Started:** 9/20/18
+
+**Days in PR:** 33
+
+**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_device
 
 Parameters
 ----------

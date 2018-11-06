@@ -11,11 +11,17 @@ Metadata
 
 **Name:** fmgr_provisioning
 
-**Description:** ['Add model devices on the FortiManager using jsonrpc API and have them pre-configured, so when central management is configured, the configuration is pushed down to the registering devices']
+**Description:** Add model devices on the FortiManager using jsonrpc API and have them pre-configured, so when central management is configured, the configuration is pushed down to the registering devices
+
 
 **Author(s):** Andrew Welsh
 
-**Ansible Version Added:** 2.5
+**Ansible Version Added/Required:** 2.5
+
+**Dev Status:** COMPLETED
+
+**Owning Developer:** 
+Andrew Welsh
 
 Parameters
 ----------

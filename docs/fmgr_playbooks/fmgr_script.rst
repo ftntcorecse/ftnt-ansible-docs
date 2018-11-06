@@ -2,8 +2,6 @@
 fmgr_script
 ===========
 
-Not Parsed
-
 
 Playbook Task Examples
 ----------------------
@@ -46,89 +44,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-fmgr_faz_scripts.yml
-++++++++++++++++++++
-
-.. code-block:: yaml
-
-
-    - name: CREATE AND EXECUTE SCRIPTS
-      hosts: FortiManager
-      connection: local
-      gather_facts: False
-    
-      tasks:
-        - name: CREATE SCRIPT
-          fmgr_script:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
-            adom: "ansible"
-            script_name: "faz_init"
-            script_type: "cli"
-            script_target: "remote_device"
-            script_description: "Created by Ansible"
-            script_content: "config log fortianalyzer setting \n
-                              set status enable \n
-                              set server 10.7.220.38 \n
-                              set upload-option realtime \n
-                              set reliable enable \n
-                              end \n"
-    
-        - name: EXECUTE SCRIPT
-          fmgr_script:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
-            adom: "ansible"
-            script_name: "faz_init"
-            state: "execute"
-            script_scope: "seattle-fgt-cluster, nyc-fgt-cluster"
-
-
-fmgr_scripts.yml
-++++++++++++++++
-
-.. code-block:: yaml
-
-
-    - name: CREATE AND EXECUTE SCRIPTS
-      hosts: FortiManager
-      connection: local
-      gather_facts: False
-    
-      tasks:
-        - name: CREATE SCRIPT
-          fmgr_script:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
-            adom: "ansible"
-            script_name: "TestScript"
-            script_type: "cli"
-            script_target: "FG1"
-            script_description: "Create by Ansible"
-            script_content: "get system status"
-    
-        - name: EXECUTE SCRIPT
-          fmgr_script:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
-            adom: "ansible"
-            script_name: "TestScript"
-            state: "execute"
-            script_scope: "FGT1"
-        #- name: DELETE SCRIPT
-        #  fmgr_script:
-        #    host: "{{ inventory_hostname }}"
-        #    username: "{{ username }}"
-        #    password: "{{ password }}"
-        #    adom: "ansible"
-        #    script_name: ""
-        #    state: "delete"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

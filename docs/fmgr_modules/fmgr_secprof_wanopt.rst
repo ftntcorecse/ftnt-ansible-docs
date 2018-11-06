@@ -11,7 +11,8 @@ Metadata
 
 **Name:** fmgr_secprof_wanopt
 
-**Description:** ['Manage WanOpt security profiles in FortiManager via API']
+**Description:** Manage WanOpt security profiles in FortiManager via API
+
 
 **Author(s):** 
 
@@ -23,7 +24,9 @@ Metadata
 
 
 
-**Ansible Version Added:** 2.8
+**Ansible Version Added/Required:** 2.8
+
+**Dev Status:** No Data Exists. Contact DevOps Team.
 
 Parameters
 ----------

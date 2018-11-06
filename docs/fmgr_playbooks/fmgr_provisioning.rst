@@ -2,8 +2,6 @@
 fmgr_provisioning
 =================
 
-Not Parsed
-
 
 Playbook Task Examples
 ----------------------

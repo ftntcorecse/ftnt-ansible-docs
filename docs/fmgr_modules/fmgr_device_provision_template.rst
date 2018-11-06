@@ -11,11 +11,22 @@ Metadata
 
 **Name:** fmgr_device_provision_template
 
-**Description:** ['Allows the editing and assignment of device provisioning templates in FortiManager']
+**Description:** Allows the editing and assignment of device provisioning templates in FortiManager
+
 
 **Author(s):** Luke Weighall, Andrew Welsh
 
-**Ansible Version Added:** 2.8
+**Ansible Version Added/Required:** 2.8
+
+**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+
+**Owning Developer:** Luke Weighall
+
+**Pull Request Started:** 9/28/18
+
+**Days in PR:** 27
+
+**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_device_provision_template
 
 Parameters
 ----------

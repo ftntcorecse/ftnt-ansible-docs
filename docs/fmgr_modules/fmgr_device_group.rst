@@ -11,11 +11,22 @@ Metadata
 
 **Name:** fmgr_device_group
 
-**Description:** ['Add or edit device groups and assign devices to device groups FortiManager Device Manager using jsonrpc API']
+**Description:** Add or edit device groups and assign devices to device groups FortiManager Device Manager using jsonrpc API
+
 
 **Author(s):** Luke Weighall, Andrew Welsh
 
-**Ansible Version Added:** 2.6
+**Ansible Version Added/Required:** 2.6
+
+**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+
+**Owning Developer:** Luke Weighall
+
+**Pull Request Started:** 9/24/18
+
+**Days in PR:** 31
+
+**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_device_group
 
 Parameters
 ----------

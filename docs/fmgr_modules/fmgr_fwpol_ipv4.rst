@@ -11,7 +11,8 @@ Metadata
 
 **Name:** fmgr_fwpol_ipv4
 
-**Description:** ['Allows the add/delete of Firewall Policies on Packages in FortiManager']
+**Description:** Allows the add/delete of Firewall Policies on Packages in FortiManager
+
 
 **Author(s):** 
 
@@ -23,7 +24,17 @@ Metadata
 
 
 
-**Ansible Version Added:** 2.8
+**Ansible Version Added/Required:** 2.8
+
+**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+
+**Owning Developer:** Luke Weighall
+
+**Pull Request Started:** 10/25/18
+
+**Days in PR:** 8
+
+**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_fwpol_ipv4
 
 Parameters
 ----------

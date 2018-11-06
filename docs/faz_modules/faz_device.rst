@@ -2,46 +2,31 @@
 faz_device
 ==========
 
-Add a device to the Device Manager database.
 
-
-Module Metadata
----------------
+Metadata
+--------
 
 
 
 
 **Name:** faz_device
 
-**Description:** Add or remove a device or list of devices to FortiAnalyzer Device Manager
+**Description:** ['Add or remove a device or list of devices to FortiAnalyzer Device Manager']
 
-**Author(s):** Luke Weighall (github: @lweighall)
+**Author(s):** Luke Weighall (@lweighall)
 
-**Ansible Version Added:** 2.6
+**Ansible Version Added/Required:** 2.6
+
+**Dev Status:** Not currently tracked. Likelihood is this is a private module for a one-off need that hasn't been finalized for Ansible testing yet.
 
 Parameters
--------
-
-username
-++++++++
-
-- Description: The username used to authenticate with the FortiManager.
-  
-
-- Required: False
-
-os_minor_vers
-+++++++++++++
-
-- Description: Minor OS rev of the device
-  
-
-- Required: True
+----------
 
 adom
 ++++
 
 - Description: The ADOM the configuration should belong to.
+
   
 
 - Required: True
@@ -52,6 +37,7 @@ device_action
 +++++++++++++
 
 - Description: Specify add device operations, or leave blank to add a real device from scratch
+
   
 
 - Required: False
@@ -64,96 +50,7 @@ device_ip
 +++++++++
 
 - Description: The IP of the device being added to FortiManager.
-  
 
-- Required: False
-
-host
-++++
-
-- Description: The FortiManager's Address.
-  
-
-- Required: True
-
-device_unique_name
-++++++++++++++++++
-
-- Description: The desired "friendly" name of the device being added to FortiManager.
-  
-
-- Required: False
-
-platform_str
-++++++++++++
-
-- Description: Required for determine the platform for VM platforms. ie FortiGate-VM64
-  
-
-- Required: False
-
-password
-++++++++
-
-- Description: The password associated with the username account.
-  
-
-- Required: False
-
-os_type
-+++++++
-
-- Description: The os type of the device being added (default 0).
-  
-
-- Required: True
-
-- choices: ['unknown', 'fos', 'fsw', 'foc', 'fml', 'faz', 'fwb', 'fch', 'fct', 'log', 'fmg', 'fsa', 'fdd', 'fac']
-
-device_username
-+++++++++++++++
-
-- Description: The username of the device being added to FortiManager.
-  
-
-- Required: False
-
-state
-+++++
-
-- Description: The desired state of the specified object.
-  absent will delete the object if it exists.
-  present will create the configuration if needed.
-  
-
-- Required: False
-
-- default: present
-
-- choices: ['absent', 'present']
-
-faz_quota
-+++++++++
-
-- Description: Specifies the quota for the device in FAZ
-  
-
-- Required: False
-
-mgmt_mode
-+++++++++
-
-- Description: Management Mode of the device you are adding.
-  
-
-- Required: True
-
-- choices: ['unreg', 'fmg', 'faz', 'fmgfaz']
-
-device_serial
-+++++++++++++
-
-- Description: The serial number of the device being added to FortiManager.
   
 
 - Required: False
@@ -162,25 +59,148 @@ device_password
 +++++++++++++++
 
 - Description: The password of the device being added to FortiManager.
+
   
 
 - Required: False
+
+device_serial
++++++++++++++
+
+- Description: The serial number of the device being added to FortiManager.
+
+  
+
+- Required: False
+
+device_unique_name
+++++++++++++++++++
+
+- Description: The desired "friendly" name of the device being added to FortiManager.
+
+  
+
+- Required: False
+
+device_username
++++++++++++++++
+
+- Description: The username of the device being added to FortiManager.
+
+  
+
+- Required: False
+
+faz_quota
++++++++++
+
+- Description: Specifies the quota for the device in FAZ
+
+  
+
+- Required: False
+
+host
+++++
+
+- Description: The FortiManager's Address.
+
+  
+
+- Required: True
+
+mgmt_mode
++++++++++
+
+- Description: Management Mode of the device you are adding.
+
+  
+
+- Required: True
+
+- choices: ['unreg', 'fmg', 'faz', 'fmgfaz']
+
+os_minor_vers
++++++++++++++
+
+- Description: Minor OS rev of the device
+
+  
+
+- Required: True
+
+os_type
++++++++
+
+- Description: The os type of the device being added (default 0).
+
+  
+
+- Required: True
+
+- choices: ['unknown', 'fos', 'fsw', 'foc', 'fml', 'faz', 'fwb', 'fch', 'fct', 'log', 'fmg', 'fsa', 'fdd', 'fac']
 
 os_ver
 ++++++
 
 - Description: Major OS rev of the device
+
   
 
 - Required: True
 
 - choices: ['unknown', '0.0', '1.0', '2.0', '3.0', '4.0', '5.0', '6.0']
 
+password
+++++++++
+
+- Description: The password associated with the username account.
+
+  
+
+- Required: False
+
+platform_str
+++++++++++++
+
+- Description: Required for determine the platform for VM platforms. ie FortiGate-VM64
+
+  
+
+- Required: False
+
+state
++++++
+
+- Description: The desired state of the specified object.
+
+  absent will delete the object if it exists.
+
+  present will create the configuration if needed.
+
+  
+
+- Required: False
+
+- default: present
+
+- choices: ['absent', 'present']
+
+username
+++++++++
+
+- Description: The username used to authenticate with the FortiManager.
+
+  
+
+- Required: False
+
 
 
 
 Functions
 ---------
+
 
 
 
@@ -219,6 +239,7 @@ Functions
         return response
     
     
+
 - faz_delete_device
 
  .. code-block:: python
@@ -237,6 +258,7 @@ Functions
         return response
     
     
+
 - faz_get_unknown_devices
 
  .. code-block:: python
@@ -258,6 +280,7 @@ Functions
         return response
     
     
+
 - faz_approve_unregistered_device_by_ip
 
  .. code-block:: python
@@ -299,6 +322,7 @@ Functions
         return str("Couldn't find the desired device with ip: " + str(paramgram["device_ip"]))
     
     
+
 - faz_approve_unregistered_device_by_name
 
  .. code-block:: python
@@ -340,6 +364,7 @@ Functions
         return str("Couldn't find the desired device with name: " + str(paramgram["device_unique_name"]))
     
     
+
 - main
 
  .. code-block:: python
