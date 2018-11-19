@@ -1,0 +1,15 @@
+---
+- name: SET FORTIMANAGER HA MODE TO SLAVE
+  hosts: FortiManagerSlave
+  connection: local
+  gather_facts: False
+
+  tasks:
+    - name: SET FORTIMANAGER HA NODE TO SLAVE
+      fmgr_ha:
+        host: "{{ inventory_hostname }}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        fmgr_ha_mode: "slave"
+        fmgr_ha_cluster_pw: "fortinet"
+        fmgr_ha_cluster_id: "2"

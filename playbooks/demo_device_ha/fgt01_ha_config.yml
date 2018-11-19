@@ -1,0 +1,63 @@
+---
+
+- name: CONFIG FGT HOSTNAME AND INTERFACE
+  hosts: FortiManager
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+  - name: CHANGE HOSTNAME
+    fmgr_device_config:
+      host: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      #the new hostname for the Fortigate
+      device_hostname: "ansible-fgt01"
+      #the "friendly name" of the device in FortiManager
+      device_unique_name: "FGT1"
+      #adom to put the device in
+      adom: "ansible"
+
+
+  - name: EDIT INTERFACE INFORMATION HA HEARTBEAT 1
+    fmgr_device_config:
+      host: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      adom: "ansible"
+      device_unique_name: "FGT1"
+      #interface to configure
+      interface: "port10"
+      #ip address to add to interface
+      interface_ip: "192.168.110.1/24"
+      #edit management access
+      interface_allow_access: "ping"
+
+  - name: EDIT INTERFACE INFORMATION HA HEARTBEAT 2
+    fmgr_device_config:
+      host: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      adom: "ansible"
+      device_unique_name: "FGT1"
+      #interface to configure
+      interface: "port9"
+      #ip address to add to interface
+      interface_ip: "192.168.109.1/24"
+      #edit management access
+      interface_allow_access: "ping"
+
+  - name: EDIT INTERFACE INFORMATION HA MGMT INTERFACE 5
+    fmgr_device_config:
+      host: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      adom: "ansible"
+      device_unique_name: "FGT1"
+      #interface to configure
+      interface: "port5"
+      #ip address to add to interface
+      interface_ip: "192.168.102.1/24"
+      #edit management access
+      interface_allow_access: "ping"
