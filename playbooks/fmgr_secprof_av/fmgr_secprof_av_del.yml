@@ -1,0 +1,14 @@
+---
+- name: SET FORTIMANAGER HA MODE TO SLAVE
+  hosts: FortiManagerSlave
+  connection: local
+  gather_facts: False
+
+  tasks:
+    - name: DELETE Profile
+      fmgr_secprof_av:
+        host: "{{inventory_hostname}}"
+        username: "{{ username }}"
+        password: "{{ password }}"
+        name: "Ansible_AV_Profile"
+        mode: "delete"
