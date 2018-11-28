@@ -1,0 +1,61 @@
+=================================
+fortios_system_affinity_interrupt
+=================================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure interrupt affinity.
+        fortios_system_affinity_interrupt:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          system_affinity_interrupt:
+            state: "present"
+            affinity-cpumask: "<your_own_value>"
+            id:  "4"
+            interrupt: "<your_own_value>"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/system/fortios_system_affinity_interrupt_example.yml
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure interrupt affinity.
+        fortios_system_affinity_interrupt:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          system_affinity_interrupt:
+            state: "present"
+            affinity-cpumask: "<your_own_value>"
+            id:  "4"
+            interrupt: "<your_own_value>"
+
+
+
+

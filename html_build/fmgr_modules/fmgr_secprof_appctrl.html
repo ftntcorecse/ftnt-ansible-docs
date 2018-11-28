@@ -1,0 +1,1733 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fmgr_secprof_appctrl &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fmgr_secprof_av" href="fmgr_secprof_av.html" />
+    <link rel="prev" title="fmgr_script" href="fmgr_script.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../fmgr_root.html">FortiManager</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../fmgr_modules.html">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device.html">fmgr_device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_package.html">fmgr_fwpol_package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_ha.html">fmgr_ha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_provisioning.html">fmgr_provisioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_query.html">fmgr_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_script.html">fmgr_script</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_secprof_appctrl</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_av.html">fmgr_secprof_av</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_dns.html">fmgr_secprof_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ips.html">fmgr_secprof_ips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_profile_group.html">fmgr_secprof_profile_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_proxy.html">fmgr_secprof_proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_spam.html">fmgr_secprof_spam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ssl_ssh.html">fmgr_secprof_ssl_ssh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_voip.html">fmgr_secprof_voip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fmgr_root.html">FortiManager</a> &raquo;</li>
+        
+          <li><a href="../fmgr_modules.html">Modules</a> &raquo;</li>
+        
+      <li>fmgr_secprof_appctrl</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fmgr_modules/fmgr_secprof_appctrl.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fmgr-secprof-appctrl">
+<h1>fmgr_secprof_appctrl<a class="headerlink" href="#fmgr-secprof-appctrl" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> fmgr_secprof_appctrl</p>
+<p><strong>Description:</strong> [‘Manage application control security profiles within FortiManager’]</p>
+<p><strong>Author(s):</strong></p>
+<ul class="simple">
+<li>Luke Weighall (github: &#64;lweighall)</li>
+<li>Andrew Welsh (github: &#64;Ghilli3)</li>
+<li>Jim Huber (github: &#64;p4r4n0y1ng)</li>
+</ul>
+<p><strong>Ansible Version Added/Required:</strong> 2.8</p>
+<p><strong>Dev Status:</strong> No Data Exists. Contact DevOps Team.</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adom">
+<h3>adom<a class="headerlink" href="#adom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The ADOM the configuration should belong to.</li>
+<li>Required: False</li>
+<li>default: root</li>
+</ul>
+</div>
+<div class="section" id="app-replacemsg">
+<h3>app_replacemsg<a class="headerlink" href="#app-replacemsg" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Enable/disable replacement messages for blocked applications.</p>
+<p>choice | disable | Disable replacement messages for blocked applications.</p>
+<p>choice | enable | Enable replacement messages for blocked applications.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘disable’, ‘enable’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="comment">
+<h3>comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: comments</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="deep-app-inspection">
+<h3>deep_app_inspection<a class="headerlink" href="#deep-app-inspection" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Enable/disable deep application inspection.</p>
+<p>choice | disable | Disable deep application inspection.</p>
+<p>choice | enable | Enable deep application inspection.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘disable’, ‘enable’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="entries">
+<h3>entries<a class="headerlink" href="#entries" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!</p>
+<p>List of multiple child objects to be added. Expects a list of dictionaries.</p>
+<p>Dictionaries must use FortiManager API parameters, not the ansible ones listed below.</p>
+<p>If submitted, all other prefixed sub-parameters ARE IGNORED. This object is MUTUALLY EXCLUSIVE with its options.</p>
+<p>We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.</p>
+<p>WHEN IN DOUBT, OMIT THE USE OF THIS PARAMETER</p>
+<p>AND USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+</ul>
+</div>
+<div class="section" id="entries-action">
+<h3>entries_action<a class="headerlink" href="#entries-action" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Pass or block traffic, or reset connection for traffic from this application.</p>
+<p>choice | pass | Pass or allow matching traffic.</p>
+<p>choice | block | Block or drop matching traffic.</p>
+<p>choice | reset | Reset sessions for matching traffic.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘pass’, ‘block’, ‘reset’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="entries-application">
+<h3>entries_application<a class="headerlink" href="#entries-application" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: ID of allowed applications.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="entries-behavior">
+<h3>entries_behavior<a class="headerlink" href="#entries-behavior" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Application behavior filter.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="entries-category">
+<h3>entries_category<a class="headerlink" href="#entries-category" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Category ID list.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="entries-log">
+<h3>entries_log<a class="headerlink" href="#entries-log" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Enable/disable logging for this application list.</p>
+<p>choice | disable | Disable logging.</p>
+<p>choice | enable | Enable logging.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘disable’, ‘enable’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="entries-log-packet">
+<h3>entries_log_packet<a class="headerlink" href="#entries-log-packet" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Enable/disable packet logging.</p>
+<p>choice | disable | Disable packet logging.</p>
+<p>choice | enable | Enable packet logging.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘disable’, ‘enable’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="entries-parameters-value">
+<h3>entries_parameters_value<a class="headerlink" href="#entries-parameters-value" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Parameter value.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="entries-per-ip-shaper">
+<h3>entries_per_ip_shaper<a class="headerlink" href="#entries-per-ip-shaper" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Per-IP traffic shaper.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="entries-popularity">
+<h3>entries_popularity<a class="headerlink" href="#entries-popularity" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Application popularity filter (1 - 5, from least to most popular).</p>
+<p>FLAG Based Options. Specify multiple in list form.</p>
+<p>flag | 1 | Popularity level 1.</p>
+<p>flag | 2 | Popularity level 2.</p>
+<p>flag | 3 | Popularity level 3.</p>
+<p>flag | 4 | Popularity level 4.</p>
+<p>flag | 5 | Popularity level 5.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘1’, ‘2’, ‘3’, ‘4’, ‘5’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="entries-protocols">
+<h3>entries_protocols<a class="headerlink" href="#entries-protocols" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Application protocol filter.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="entries-quarantine">
+<h3>entries_quarantine<a class="headerlink" href="#entries-quarantine" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Quarantine method.</p>
+<p>choice | none | Quarantine is disabled.</p>
+<p>choice | attacker | Block all traffic sent from attacker’s IP address.</p>
+<p>The attacker’s IP address is also added to the banned user list. The target’s address is not affected.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘none’, ‘attacker’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="entries-quarantine-expiry">
+<h3>entries_quarantine_expiry<a class="headerlink" href="#entries-quarantine-expiry" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Duration of quarantine. (Format</p>
+<p>Requires quarantine set to attacker.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+</ul>
+</div>
+<div class="section" id="entries-quarantine-log">
+<h3>entries_quarantine_log<a class="headerlink" href="#entries-quarantine-log" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Enable/disable quarantine logging.</p>
+<p>choice | disable | Disable quarantine logging.</p>
+<p>choice | enable | Enable quarantine logging.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘disable’, ‘enable’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="entries-rate-count">
+<h3>entries_rate_count<a class="headerlink" href="#entries-rate-count" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Count of the rate.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="entries-rate-duration">
+<h3>entries_rate_duration<a class="headerlink" href="#entries-rate-duration" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Duration (sec) of the rate.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="entries-rate-mode">
+<h3>entries_rate_mode<a class="headerlink" href="#entries-rate-mode" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Rate limit mode.</p>
+<p>choice | periodical | Allow configured number of packets every rate-duration.</p>
+<p>choice | continuous | Block packets once the rate is reached.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘periodical’, ‘continuous’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="entries-rate-track">
+<h3>entries_rate_track<a class="headerlink" href="#entries-rate-track" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Track the packet protocol field.</p>
+<p>choice | none |</p>
+<p>choice | src-ip | Source IP.</p>
+<p>choice | dest-ip | Destination IP.</p>
+<p>choice | dhcp-client-mac | DHCP client.</p>
+<p>choice | dns-domain | DNS domain.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘none’, ‘src-ip’, ‘dest-ip’, ‘dhcp-client-mac’, ‘dns-domain’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="entries-risk">
+<h3>entries_risk<a class="headerlink" href="#entries-risk" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Risk, or impact, of allowing traffic from this application to occur 1 - 5;</p>
+<p>(Low, Elevated, Medium, High, and Critical).</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+</ul>
+</div>
+<div class="section" id="entries-session-ttl">
+<h3>entries_session_ttl<a class="headerlink" href="#entries-session-ttl" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Session TTL (0 = default).</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="entries-shaper">
+<h3>entries_shaper<a class="headerlink" href="#entries-shaper" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Traffic shaper.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="entries-shaper-reverse">
+<h3>entries_shaper_reverse<a class="headerlink" href="#entries-shaper-reverse" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Reverse traffic shaper.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="entries-sub-category">
+<h3>entries_sub_category<a class="headerlink" href="#entries-sub-category" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Application Sub-category ID list.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="entries-technology">
+<h3>entries_technology<a class="headerlink" href="#entries-technology" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Application technology filter.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="entries-vendor">
+<h3>entries_vendor<a class="headerlink" href="#entries-vendor" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Application vendor filter.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="extended-log">
+<h3>extended_log<a class="headerlink" href="#extended-log" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Enable/disable extended logging.</p>
+<p>choice | disable | Disable setting.</p>
+<p>choice | enable | Enable setting.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘disable’, ‘enable’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="host">
+<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The FortiManager’s Address.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="mode">
+<h3>mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Sets one of three modes for managing the object.</p>
+<p>Allows use of soft-adds instead of overwriting existing values</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">default: add</p>
+</li>
+<li><p class="first">choices: [‘add’, ‘set’, ‘delete’, ‘update’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="name">
+<h3>name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: List name.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="options">
+<h3>options<a class="headerlink" href="#options" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: NO DESCRIPTION PARSED ENTER MANUALLY</p>
+<p>FLAG Based Options. Specify multiple in list form.</p>
+<p>flag | allow-dns | Allow DNS.</p>
+<p>flag | allow-icmp | Allow ICMP.</p>
+<p>flag | allow-http | Allow generic HTTP web browsing.</p>
+<p>flag | allow-ssl | Allow generic SSL communication.</p>
+<p>flag | allow-quic | Allow QUIC.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘allow-dns’, ‘allow-icmp’, ‘allow-http’, ‘allow-ssl’, ‘allow-quic’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="other-application-action">
+<h3>other_application_action<a class="headerlink" href="#other-application-action" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Action for other applications.</p>
+<p>choice | pass | Allow sessions matching an application in this application list.</p>
+<p>choice | block | Block sessions matching an application in this application list.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘pass’, ‘block’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="other-application-log">
+<h3>other_application_log<a class="headerlink" href="#other-application-log" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Enable/disable logging for other applications.</p>
+<p>choice | disable | Disable logging for other applications.</p>
+<p>choice | enable | Enable logging for other applications.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘disable’, ‘enable’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="p2p-black-list">
+<h3>p2p_black_list<a class="headerlink" href="#p2p-black-list" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: NO DESCRIPTION PARSED ENTER MANUALLY</p>
+<p>FLAG Based Options. Specify multiple in list form.</p>
+<p>flag | skype | Skype.</p>
+<p>flag | edonkey | Edonkey.</p>
+<p>flag | bittorrent | Bit torrent.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘skype’, ‘edonkey’, ‘bittorrent’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="password">
+<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The password associated with the username account.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="replacemsg-group">
+<h3>replacemsg_group<a class="headerlink" href="#replacemsg-group" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Replacement message group.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="unknown-application-action">
+<h3>unknown_application_action<a class="headerlink" href="#unknown-application-action" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Pass or block traffic from unknown applications.</p>
+<p>choice | pass | Pass or allow unknown applications.</p>
+<p>choice | block | Drop or block unknown applications.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘pass’, ‘block’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="unknown-application-log">
+<h3>unknown_application_log<a class="headerlink" href="#unknown-application-log" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Enable/disable logging for unknown applications.</p>
+<p>choice | disable | Disable logging for unknown applications.</p>
+<p>choice | enable | Enable logging for unknown applications.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">choices: [‘disable’, ‘enable’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="username">
+<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The username associated with the account.</li>
+<li>Required: True</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>fmgr_application_list_addsetdelete</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_application_list_addsetdelete</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    fmgr_application_list -- Your Description here, bruh</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mode</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span>
+    <span class="n">adom</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
+    <span class="c1"># INIT A BASIC OBJECTS</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Illegal or malformed paramgram discovered. System Exception&quot;</span><span class="p">})</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># EVAL THE MODE PARAMETER FOR SET OR ADD</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">]:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/application/list&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">fmgr_prepare_dict</span><span class="p">(</span><span class="n">paramgram</span><span class="p">))</span>
+
+    <span class="c1"># EVAL THE MODE PARAMETER FOR DELETE</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="c1"># SET THE CORRECT URL FOR DELETE</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/application/list/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># IF MODE = SET -- USE THE &#39;SET&#39; API CALL MODE</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;set&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="c1"># IF MODE = UPDATE -- USER THE &#39;UPDATE&#39; API CALL MODE</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;update&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="c1"># IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="c1"># IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="c1"># ADDITIONAL COMMON FUNCTIONS</span>
+<span class="c1"># FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_logout</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="p">(),</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">logout_on_fail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logout_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># pydevd.settrace(&#39;10.0.0.122&#39;, port=54654, stdoutToServer=True, stderrToServer=True)</span>
+    <span class="c1"># VALIDATION ERROR (NO RESULTS, JUST AN EXIT)</span>
+    <span class="k">if</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">&quot;NULL&quot;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># SUBMISSION ERROR</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;NULL&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No status message returned from pyFMG. Possible that this was a GET with a tuple result.&quot;</span>
+
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">good_codes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">logout_on_fail</span><span class="p">:</span>
+                <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">msg</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">logout_on_success</span><span class="p">:</span>
+                <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;API Called worked, but logout handler has been asked to logout on success&quot;</span><span class="p">,</span>
+                                 <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">msg</span>
+
+
+<span class="c1"># FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK</span>
+<span class="c1"># DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_cidr_to_netmask</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_cidr_to_netmask</span><span class="p">(</span><span class="n">cidr</span><span class="p">):</span>
+    <span class="n">cidr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cidr</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0xffffffff</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">str</span><span class="p">((</span><span class="mh">0xff000000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+            <span class="nb">str</span><span class="p">((</span><span class="mh">0x00ff0000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+            <span class="nb">str</span><span class="p">((</span><span class="mh">0x0000ff00</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+            <span class="nb">str</span><span class="p">((</span><span class="mh">0x000000ff</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)))</span>
+
+
+<span class="c1"># utility function: removing keys wih value of None, nothing in playbook for that key</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_del_none</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_del_none</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)((</span><span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+                         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">fmgr_is_empty_dict</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+
+<span class="c1"># utility function: remove keys that are need for the logic but the FMG API won&#39;t accept them</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_prepare_dict</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_prepare_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="n">list_of_elems</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="s2">&quot;adom&quot;</span><span class="p">,</span> <span class="s2">&quot;host&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">key</span><span class="p">,</span> <span class="n">fmgr_prepare_dict</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">list_of_elems</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">obj</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_is_empty_dict</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_is_empty_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">k1</span><span class="p">,</span> <span class="n">v1</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                            <span class="k">if</span> <span class="n">v1</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                                <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+                            <span class="k">elif</span> <span class="n">v1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                                <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
+                                <span class="k">return</span> <span class="n">return_val</span>
+                <span class="k">elif</span> <span class="n">v</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="k">elif</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
+                    <span class="k">return</span> <span class="n">return_val</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="k">return</span> <span class="n">return_val</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_split_comma_strings_into_lists</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_split_comma_strings_into_lists</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                    <span class="n">new_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="s2">&quot;,&quot;</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
+                        <span class="n">new_items</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">new_items</span><span class="p">:</span>
+                            <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+                        <span class="n">obj</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_list</span>
+
+    <span class="k">return</span> <span class="n">obj</span>
+
+
+<span class="c1">#############</span>
+<span class="c1"># END METHODS</span>
+<span class="c1">#############</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;update&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
+
+        <span class="n">unknown_application_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">unknown_application_action</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pass&quot;</span><span class="p">,</span> <span class="s2">&quot;block&quot;</span><span class="p">]),</span>
+        <span class="n">replacemsg_group</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">p2p_black_list</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;skype&quot;</span><span class="p">,</span> <span class="s2">&quot;edonkey&quot;</span><span class="p">,</span> <span class="s2">&quot;bittorrent&quot;</span><span class="p">]),</span>
+        <span class="n">other_application_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">other_application_action</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pass&quot;</span><span class="p">,</span> <span class="s2">&quot;block&quot;</span><span class="p">]),</span>
+        <span class="n">options</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                     <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;allow-dns&quot;</span><span class="p">,</span> <span class="s2">&quot;allow-icmp&quot;</span><span class="p">,</span> <span class="s2">&quot;allow-http&quot;</span><span class="p">,</span> <span class="s2">&quot;allow-ssl&quot;</span><span class="p">,</span> <span class="s2">&quot;allow-quic&quot;</span><span class="p">]),</span>
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">extended_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">deep_app_inspection</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">comment</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">app_replacemsg</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">entries</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;list&quot;</span><span class="p">),</span>
+        <span class="n">entries_action</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pass&quot;</span><span class="p">,</span> <span class="s2">&quot;block&quot;</span><span class="p">,</span> <span class="s2">&quot;reset&quot;</span><span class="p">]),</span>
+        <span class="n">entries_application</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_behavior</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_category</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">entries_log_packet</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">entries_per_ip_shaper</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_popularity</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">]),</span>
+        <span class="n">entries_protocols</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_quarantine</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;attacker&quot;</span><span class="p">]),</span>
+        <span class="n">entries_quarantine_expiry</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_quarantine_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">entries_rate_count</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">),</span>
+        <span class="n">entries_rate_duration</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">),</span>
+        <span class="n">entries_rate_mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;periodical&quot;</span><span class="p">,</span> <span class="s2">&quot;continuous&quot;</span><span class="p">]),</span>
+        <span class="n">entries_rate_track</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;src-ip&quot;</span><span class="p">,</span> <span class="s2">&quot;dest-ip&quot;</span><span class="p">,</span> <span class="s2">&quot;dhcp-client-mac&quot;</span><span class="p">,</span> <span class="s2">&quot;dns-domain&quot;</span><span class="p">]),</span>
+        <span class="n">entries_risk</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_session_ttl</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">),</span>
+        <span class="n">entries_shaper</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_shaper_reverse</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_sub_category</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_technology</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_vendor</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+
+        <span class="n">entries_parameters_value</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="c1"># MODULE PARAMGRAM</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;unknown-application-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;unknown_application_log&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;unknown-application-action&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;unknown_application_action&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;replacemsg-group&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;replacemsg_group&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;p2p-black-list&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;p2p_black_list&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;other-application-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;other_application_log&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;other-application-action&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;other_application_action&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;extended-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;extended_log&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;deep-app-inspection&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;deep_app_inspection&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;app-replacemsg&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;app_replacemsg&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;entries&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_action&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_application&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;behavior&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_behavior&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_category&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_log&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;log-packet&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_log_packet&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;per-ip-shaper&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_per_ip_shaper&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;popularity&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_popularity&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;protocols&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_protocols&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;quarantine&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_quarantine&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;quarantine-expiry&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_quarantine_expiry&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;quarantine-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_quarantine_log&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;rate-count&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_rate_count&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;rate-duration&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_rate_duration&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;rate-mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_rate_mode&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;rate-track&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_rate_track&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;risk&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_risk&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;session-ttl&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_session_ttl&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;shaper&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_shaper&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;shaper-reverse&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_shaper_reverse&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;sub-category&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_sub_category&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;technology&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_technology&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;vendor&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_vendor&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_parameters_value&quot;</span><span class="p">],</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">list_overrides</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">list_variable</span> <span class="ow">in</span> <span class="n">list_overrides</span><span class="p">:</span>
+        <span class="n">override_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">override_data</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">list_variable</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">override_data</span><span class="p">:</span>
+                <span class="k">del</span> <span class="n">paramgram</span><span class="p">[</span><span class="n">list_variable</span><span class="p">]</span>
+                <span class="n">paramgram</span><span class="p">[</span><span class="n">list_variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">override_data</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="c1"># CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">]</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">username</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">password</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username and password are required&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CHECK IF LOGIN FAILED</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_application_list_addsetdelete</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">results</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;No results were returned from the API call.&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="module-source-code">
+<h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Ansible</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
+
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;preview&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;supported_by&#39;</span><span class="p">:</span> <span class="s1">&#39;community&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;metadata_version&#39;</span><span class="p">:</span> <span class="s1">&#39;1.1&#39;</span><span class="p">}</span>
+
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">module: fmgr_secprof_appctrl</span>
+<span class="s1">version_added: &quot;2.8&quot;</span>
+<span class="s1">author:</span>
+<span class="s1">    - Luke Weighall (@lweighall)</span>
+<span class="s1">    - Andrew Welsh (@Ghilli3)</span>
+<span class="s1">    - Jim Huber (@p4r4n0y1ng)</span>
+<span class="s1">short_description: Manage application control security profiles</span>
+<span class="s1">description:</span>
+<span class="s1">  -  Manage application control security profiles within FortiManager</span>
+
+<span class="s1">options:</span>
+<span class="s1">  adom:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The ADOM the configuration should belong to.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: root</span>
+
+<span class="s1">  host:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The FortiManager&#39;s Address.</span>
+<span class="s1">    required: true</span>
+
+<span class="s1">  username:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The username associated with the account.</span>
+<span class="s1">    required: true</span>
+
+<span class="s1">  password:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The password associated with the username account.</span>
+<span class="s1">    required: true</span>
+
+<span class="s1">  mode:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Sets one of three modes for managing the object.</span>
+<span class="s1">      - Allows use of soft-adds instead of overwriting existing values</span>
+<span class="s1">    choices: [&#39;add&#39;, &#39;set&#39;, &#39;delete&#39;, &#39;update&#39;]</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: add</span>
+
+<span class="s1">  unknown_application_log:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Enable/disable logging for unknown applications.</span>
+<span class="s1">      - choice | disable | Disable logging for unknown applications.</span>
+<span class="s1">      - choice | enable | Enable logging for unknown applications.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;disable&quot;, &quot;enable&quot;]</span>
+
+<span class="s1">  unknown_application_action:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Pass or block traffic from unknown applications.</span>
+<span class="s1">      - choice | pass | Pass or allow unknown applications.</span>
+<span class="s1">      - choice | block | Drop or block unknown applications.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;pass&quot;, &quot;block&quot;]</span>
+
+<span class="s1">  replacemsg_group:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Replacement message group.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  p2p_black_list:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - NO DESCRIPTION PARSED ENTER MANUALLY</span>
+<span class="s1">      - FLAG Based Options. Specify multiple in list form.</span>
+<span class="s1">      - flag | skype | Skype.</span>
+<span class="s1">      - flag | edonkey | Edonkey.</span>
+<span class="s1">      - flag | bittorrent | Bit torrent.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;skype&quot;, &quot;edonkey&quot;, &quot;bittorrent&quot;]</span>
+
+<span class="s1">  other_application_log:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Enable/disable logging for other applications.</span>
+<span class="s1">      - choice | disable | Disable logging for other applications.</span>
+<span class="s1">      - choice | enable | Enable logging for other applications.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;disable&quot;, &quot;enable&quot;]</span>
+
+<span class="s1">  other_application_action:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Action for other applications.</span>
+<span class="s1">      - choice | pass | Allow sessions matching an application in this application list.</span>
+<span class="s1">      - choice | block | Block sessions matching an application in this application list.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;pass&quot;, &quot;block&quot;]</span>
+
+<span class="s1">  options:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - NO DESCRIPTION PARSED ENTER MANUALLY</span>
+<span class="s1">      - FLAG Based Options. Specify multiple in list form.</span>
+<span class="s1">      - flag | allow-dns | Allow DNS.</span>
+<span class="s1">      - flag | allow-icmp | Allow ICMP.</span>
+<span class="s1">      - flag | allow-http | Allow generic HTTP web browsing.</span>
+<span class="s1">      - flag | allow-ssl | Allow generic SSL communication.</span>
+<span class="s1">      - flag | allow-quic | Allow QUIC.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;allow-dns&quot;, &quot;allow-icmp&quot;, &quot;allow-http&quot;, &quot;allow-ssl&quot;, &quot;allow-quic&quot;]</span>
+
+<span class="s1">  name:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - List name.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  extended_log:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Enable/disable extended logging.</span>
+<span class="s1">      - choice | disable | Disable setting.</span>
+<span class="s1">      - choice | enable | Enable setting.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;disable&quot;, &quot;enable&quot;]</span>
+
+<span class="s1">  deep_app_inspection:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Enable/disable deep application inspection.</span>
+<span class="s1">      - choice | disable | Disable deep application inspection.</span>
+<span class="s1">      - choice | enable | Enable deep application inspection.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;disable&quot;, &quot;enable&quot;]</span>
+
+<span class="s1">  comment:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - comments</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  app_replacemsg:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Enable/disable replacement messages for blocked applications.</span>
+<span class="s1">      - choice | disable | Disable replacement messages for blocked applications.</span>
+<span class="s1">      - choice | enable | Enable replacement messages for blocked applications.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;disable&quot;, &quot;enable&quot;]</span>
+
+<span class="s1">  entries:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!</span>
+<span class="s1">      - List of multiple child objects to be added. Expects a list of dictionaries.</span>
+<span class="s1">      - Dictionaries must use FortiManager API parameters, not the ansible ones listed below.</span>
+<span class="s1">      - If submitted, all other prefixed sub-parameters ARE IGNORED. This object is MUTUALLY EXCLUSIVE with its options.</span>
+<span class="s1">      - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.</span>
+<span class="s1">      - WHEN IN DOUBT, OMIT THE USE OF THIS PARAMETER</span>
+<span class="s1">      - AND USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_action:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Pass or block traffic, or reset connection for traffic from this application.</span>
+<span class="s1">      - choice | pass | Pass or allow matching traffic.</span>
+<span class="s1">      - choice | block | Block or drop matching traffic.</span>
+<span class="s1">      - choice | reset | Reset sessions for matching traffic.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;pass&quot;, &quot;block&quot;, &quot;reset&quot;]</span>
+
+<span class="s1">  entries_application:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - ID of allowed applications.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_behavior:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Application behavior filter.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_category:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Category ID list.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_log:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Enable/disable logging for this application list.</span>
+<span class="s1">      - choice | disable | Disable logging.</span>
+<span class="s1">      - choice | enable | Enable logging.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;disable&quot;, &quot;enable&quot;]</span>
+
+<span class="s1">  entries_log_packet:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Enable/disable packet logging.</span>
+<span class="s1">      - choice | disable | Disable packet logging.</span>
+<span class="s1">      - choice | enable | Enable packet logging.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;disable&quot;, &quot;enable&quot;]</span>
+
+<span class="s1">  entries_per_ip_shaper:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Per-IP traffic shaper.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_popularity:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Application popularity filter (1 - 5, from least to most popular).</span>
+<span class="s1">      - FLAG Based Options. Specify multiple in list form.</span>
+<span class="s1">      - flag | 1 | Popularity level 1.</span>
+<span class="s1">      - flag | 2 | Popularity level 2.</span>
+<span class="s1">      - flag | 3 | Popularity level 3.</span>
+<span class="s1">      - flag | 4 | Popularity level 4.</span>
+<span class="s1">      - flag | 5 | Popularity level 5.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;1&quot;, &quot;2&quot;, &quot;3&quot;, &quot;4&quot;, &quot;5&quot;]</span>
+
+<span class="s1">  entries_protocols:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Application protocol filter.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_quarantine:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Quarantine method.</span>
+<span class="s1">      - choice | none | Quarantine is disabled.</span>
+<span class="s1">      - choice | attacker | Block all traffic sent from attacker&#39;s IP address.</span>
+<span class="s1">      - The attacker&#39;s IP address is also added to the banned user list. The target&#39;s address is not affected.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;none&quot;, &quot;attacker&quot;]</span>
+
+<span class="s1">  entries_quarantine_expiry:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Duration of quarantine. (Format ###d##h##m, minimum 1m, maximum 364d23h59m, default = 5m).</span>
+<span class="s1">      - Requires quarantine set to attacker.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_quarantine_log:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Enable/disable quarantine logging.</span>
+<span class="s1">      - choice | disable | Disable quarantine logging.</span>
+<span class="s1">      - choice | enable | Enable quarantine logging.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;disable&quot;, &quot;enable&quot;]</span>
+
+<span class="s1">  entries_rate_count:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Count of the rate.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_rate_duration:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Duration (sec) of the rate.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_rate_mode:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Rate limit mode.</span>
+<span class="s1">      - choice | periodical | Allow configured number of packets every rate-duration.</span>
+<span class="s1">      - choice | continuous | Block packets once the rate is reached.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;periodical&quot;, &quot;continuous&quot;]</span>
+
+<span class="s1">  entries_rate_track:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Track the packet protocol field.</span>
+<span class="s1">      - choice | none |</span>
+<span class="s1">      - choice | src-ip | Source IP.</span>
+<span class="s1">      - choice | dest-ip | Destination IP.</span>
+<span class="s1">      - choice | dhcp-client-mac | DHCP client.</span>
+<span class="s1">      - choice | dns-domain | DNS domain.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;none&quot;, &quot;src-ip&quot;, &quot;dest-ip&quot;, &quot;dhcp-client-mac&quot;, &quot;dns-domain&quot;]</span>
+
+<span class="s1">  entries_risk:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Risk, or impact, of allowing traffic from this application to occur 1 - 5;</span>
+<span class="s1">      - (Low, Elevated, Medium, High, and Critical).</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_session_ttl:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Session TTL (0 = default).</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_shaper:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Traffic shaper.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_shaper_reverse:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Reverse traffic shaper.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_sub_category:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Application Sub-category ID list.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_technology:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Application technology filter.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_vendor:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Application vendor filter.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  entries_parameters_value:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Parameter value.</span>
+<span class="s1">    required: false</span>
+
+
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">  - name: DELETE Profile</span>
+<span class="s1">    fmgr_secprof_appctrl:</span>
+<span class="s1">      host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">      username: &quot;{{ username }}&quot;</span>
+<span class="s1">      password: &quot;{{ password }}&quot;</span>
+<span class="s1">      name: &quot;Ansible_Application_Control_Profile&quot;</span>
+<span class="s1">      comment: &quot;Created by Ansible Module TEST&quot;</span>
+<span class="s1">      mode: &quot;delete&quot;</span>
+
+<span class="s1">  - name: CREATE Profile</span>
+<span class="s1">    fmgr_secprof_appctrl:</span>
+<span class="s1">      host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">      username: &quot;{{ username }}&quot;</span>
+<span class="s1">      password: &quot;{{ password }}&quot;</span>
+<span class="s1">      name: &quot;Ansible_Application_Control_Profile&quot;</span>
+<span class="s1">      comment: &quot;Created by Ansible Module TEST&quot;</span>
+<span class="s1">      mode: &quot;set&quot;</span>
+<span class="s1">      entries: [{</span>
+<span class="s1">                action: &quot;block&quot;,</span>
+<span class="s1">                log: &quot;enable&quot;,</span>
+<span class="s1">                log-packet: &quot;enable&quot;,</span>
+<span class="s1">                protocols: [&quot;1&quot;],</span>
+<span class="s1">                quarantine: &quot;attacker&quot;,</span>
+<span class="s1">                quarantine-log: &quot;enable&quot;,</span>
+<span class="s1">                },</span>
+<span class="s1">                {action: &quot;pass&quot;,</span>
+<span class="s1">                category: [&quot;2&quot;,&quot;3&quot;,&quot;4&quot;]},</span>
+<span class="s1">              ]</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">api_result:</span>
+<span class="s2">  description: full API response, includes status code and message</span>
+<span class="s2">  returned: always</span>
+<span class="s2">  type: string</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">AnsibleFortiManager</span>
+
+<span class="c1"># check for pyFMG lib</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pyFMG.fortimgr</span> <span class="kn">import</span> <span class="n">FortiManager</span>
+
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">False</span>
+
+
+<span class="c1">###############</span>
+<span class="c1"># START METHODS</span>
+<span class="c1">###############</span>
+
+
+<span class="k">def</span> <span class="nf">fmgr_application_list_addsetdelete</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    fmgr_application_list -- Your Description here, bruh</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mode</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span>
+    <span class="n">adom</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
+    <span class="c1"># INIT A BASIC OBJECTS</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Illegal or malformed paramgram discovered. System Exception&quot;</span><span class="p">})</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># EVAL THE MODE PARAMETER FOR SET OR ADD</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">]:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/application/list&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">fmgr_prepare_dict</span><span class="p">(</span><span class="n">paramgram</span><span class="p">))</span>
+
+    <span class="c1"># EVAL THE MODE PARAMETER FOR DELETE</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="c1"># SET THE CORRECT URL FOR DELETE</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/application/list/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># IF MODE = SET -- USE THE &#39;SET&#39; API CALL MODE</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;set&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="c1"># IF MODE = UPDATE -- USER THE &#39;UPDATE&#39; API CALL MODE</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;update&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="c1"># IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="c1"># IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="c1"># ADDITIONAL COMMON FUNCTIONS</span>
+<span class="c1"># FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES</span>
+<span class="k">def</span> <span class="nf">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="p">(),</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">logout_on_fail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logout_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># pydevd.settrace(&#39;10.0.0.122&#39;, port=54654, stdoutToServer=True, stderrToServer=True)</span>
+    <span class="c1"># VALIDATION ERROR (NO RESULTS, JUST AN EXIT)</span>
+    <span class="k">if</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">&quot;NULL&quot;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># SUBMISSION ERROR</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;NULL&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+            <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No status message returned from pyFMG. Possible that this was a GET with a tuple result.&quot;</span>
+
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">good_codes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">logout_on_fail</span><span class="p">:</span>
+                <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">msg</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">logout_on_success</span><span class="p">:</span>
+                <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;API Called worked, but logout handler has been asked to logout on success&quot;</span><span class="p">,</span>
+                                 <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">return</span> <span class="n">msg</span>
+
+
+<span class="c1"># FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK</span>
+<span class="c1"># DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM</span>
+<span class="k">def</span> <span class="nf">fmgr_cidr_to_netmask</span><span class="p">(</span><span class="n">cidr</span><span class="p">):</span>
+    <span class="n">cidr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cidr</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0xffffffff</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">str</span><span class="p">((</span><span class="mh">0xff000000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+            <span class="nb">str</span><span class="p">((</span><span class="mh">0x00ff0000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+            <span class="nb">str</span><span class="p">((</span><span class="mh">0x0000ff00</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+            <span class="nb">str</span><span class="p">((</span><span class="mh">0x000000ff</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)))</span>
+
+
+<span class="c1"># utility function: removing keys wih value of None, nothing in playbook for that key</span>
+<span class="k">def</span> <span class="nf">fmgr_del_none</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)((</span><span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+                         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">fmgr_is_empty_dict</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+
+<span class="c1"># utility function: remove keys that are need for the logic but the FMG API won&#39;t accept them</span>
+<span class="k">def</span> <span class="nf">fmgr_prepare_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="n">list_of_elems</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="s2">&quot;adom&quot;</span><span class="p">,</span> <span class="s2">&quot;host&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="n">obj</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">key</span><span class="p">,</span> <span class="n">fmgr_prepare_dict</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">list_of_elems</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">obj</span>
+
+
+<span class="k">def</span> <span class="nf">fmgr_is_empty_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">k1</span><span class="p">,</span> <span class="n">v1</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                            <span class="k">if</span> <span class="n">v1</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                                <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+                            <span class="k">elif</span> <span class="n">v1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                                <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
+                                <span class="k">return</span> <span class="n">return_val</span>
+                <span class="k">elif</span> <span class="n">v</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="k">elif</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
+                    <span class="k">return</span> <span class="n">return_val</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="k">return</span> <span class="n">return_val</span>
+
+
+<span class="k">def</span> <span class="nf">fmgr_split_comma_strings_into_lists</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+                    <span class="n">new_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="s2">&quot;,&quot;</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
+                        <span class="n">new_items</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+                        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">new_items</span><span class="p">:</span>
+                            <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+                        <span class="n">obj</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_list</span>
+
+    <span class="k">return</span> <span class="n">obj</span>
+
+
+<span class="c1">#############</span>
+<span class="c1"># END METHODS</span>
+<span class="c1">#############</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;update&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
+
+        <span class="n">unknown_application_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">unknown_application_action</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pass&quot;</span><span class="p">,</span> <span class="s2">&quot;block&quot;</span><span class="p">]),</span>
+        <span class="n">replacemsg_group</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">p2p_black_list</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;skype&quot;</span><span class="p">,</span> <span class="s2">&quot;edonkey&quot;</span><span class="p">,</span> <span class="s2">&quot;bittorrent&quot;</span><span class="p">]),</span>
+        <span class="n">other_application_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">other_application_action</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pass&quot;</span><span class="p">,</span> <span class="s2">&quot;block&quot;</span><span class="p">]),</span>
+        <span class="n">options</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                     <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;allow-dns&quot;</span><span class="p">,</span> <span class="s2">&quot;allow-icmp&quot;</span><span class="p">,</span> <span class="s2">&quot;allow-http&quot;</span><span class="p">,</span> <span class="s2">&quot;allow-ssl&quot;</span><span class="p">,</span> <span class="s2">&quot;allow-quic&quot;</span><span class="p">]),</span>
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">extended_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">deep_app_inspection</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">comment</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">app_replacemsg</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">entries</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;list&quot;</span><span class="p">),</span>
+        <span class="n">entries_action</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;pass&quot;</span><span class="p">,</span> <span class="s2">&quot;block&quot;</span><span class="p">,</span> <span class="s2">&quot;reset&quot;</span><span class="p">]),</span>
+        <span class="n">entries_application</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_behavior</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_category</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">entries_log_packet</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">entries_per_ip_shaper</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_popularity</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;1&quot;</span><span class="p">,</span> <span class="s2">&quot;2&quot;</span><span class="p">,</span> <span class="s2">&quot;3&quot;</span><span class="p">,</span> <span class="s2">&quot;4&quot;</span><span class="p">,</span> <span class="s2">&quot;5&quot;</span><span class="p">]),</span>
+        <span class="n">entries_protocols</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_quarantine</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;attacker&quot;</span><span class="p">]),</span>
+        <span class="n">entries_quarantine_expiry</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_quarantine_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]),</span>
+        <span class="n">entries_rate_count</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">),</span>
+        <span class="n">entries_rate_duration</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">),</span>
+        <span class="n">entries_rate_mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;periodical&quot;</span><span class="p">,</span> <span class="s2">&quot;continuous&quot;</span><span class="p">]),</span>
+        <span class="n">entries_rate_track</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;src-ip&quot;</span><span class="p">,</span> <span class="s2">&quot;dest-ip&quot;</span><span class="p">,</span> <span class="s2">&quot;dhcp-client-mac&quot;</span><span class="p">,</span> <span class="s2">&quot;dns-domain&quot;</span><span class="p">]),</span>
+        <span class="n">entries_risk</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_session_ttl</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">),</span>
+        <span class="n">entries_shaper</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_shaper_reverse</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_sub_category</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_technology</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">entries_vendor</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+
+        <span class="n">entries_parameters_value</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="c1"># MODULE PARAMGRAM</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;unknown-application-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;unknown_application_log&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;unknown-application-action&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;unknown_application_action&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;replacemsg-group&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;replacemsg_group&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;p2p-black-list&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;p2p_black_list&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;other-application-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;other_application_log&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;other-application-action&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;other_application_action&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;options&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;extended-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;extended_log&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;deep-app-inspection&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;deep_app_inspection&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;app-replacemsg&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;app_replacemsg&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;entries&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;action&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_action&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_application&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;behavior&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_behavior&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_category&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_log&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;log-packet&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_log_packet&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;per-ip-shaper&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_per_ip_shaper&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;popularity&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_popularity&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;protocols&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_protocols&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;quarantine&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_quarantine&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;quarantine-expiry&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_quarantine_expiry&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;quarantine-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_quarantine_log&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;rate-count&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_rate_count&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;rate-duration&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_rate_duration&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;rate-mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_rate_mode&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;rate-track&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_rate_track&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;risk&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_risk&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;session-ttl&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_session_ttl&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;shaper&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_shaper&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;shaper-reverse&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_shaper_reverse&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;sub-category&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_sub_category&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;technology&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_technology&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;vendor&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_vendor&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;parameters&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;value&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;entries_parameters_value&quot;</span><span class="p">],</span>
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">list_overrides</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;entries&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">list_variable</span> <span class="ow">in</span> <span class="n">list_overrides</span><span class="p">:</span>
+        <span class="n">override_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">override_data</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">list_variable</span><span class="p">]</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">override_data</span><span class="p">:</span>
+                <span class="k">del</span> <span class="n">paramgram</span><span class="p">[</span><span class="n">list_variable</span><span class="p">]</span>
+                <span class="n">paramgram</span><span class="p">[</span><span class="n">list_variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">override_data</span>
+        <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+            <span class="k">pass</span>
+
+    <span class="c1"># CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">]</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">username</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">password</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username and password are required&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CHECK IF LOGIN FAILED</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_application_list_addsetdelete</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">results</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;No results were returned from the API call.&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fmgr_secprof_av.html" class="btn btn-neutral float-right" title="fmgr_secprof_av" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fmgr_script.html" class="btn btn-neutral" title="fmgr_script" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

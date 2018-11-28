@@ -1,0 +1,77 @@
+==========================
+fortios_webfilter_override
+==========================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure FortiGuard Web Filter administrative overrides.
+        fortios_webfilter_override:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          webfilter_override:
+            state: "present"
+            expires: "<your_own_value>"
+            id:  "4"
+            initiator: "<your_own_value>"
+            ip: "<your_own_value>"
+            ip6: "<your_own_value>"
+            new-profile: "<your_own_value> (source webfilter.profile.name)"
+            old-profile: "<your_own_value> (source webfilter.profile.name)"
+            scope: "user"
+            status: "enable"
+            user: "<your_own_value>"
+            user-group: "<your_own_value> (source user.group.name)"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/webfilter/fortios_webfilter_override_example.yml
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure FortiGuard Web Filter administrative overrides.
+        fortios_webfilter_override:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          webfilter_override:
+            state: "present"
+            expires: "<your_own_value>"
+            id:  "4"
+            initiator: "<your_own_value>"
+            ip: "<your_own_value>"
+            ip6: "<your_own_value>"
+            new-profile: "<your_own_value> (source webfilter.profile.name)"
+            old-profile: "<your_own_value> (source webfilter.profile.name)"
+            scope: "user"
+            status: "enable"
+            user: "<your_own_value>"
+            user-group: "<your_own_value> (source user.group.name)"
+
+
+
+

@@ -1,0 +1,1769 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fmgr_fwobj_service &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fmgr_fwobj_vip" href="fmgr_fwobj_vip.html" />
+    <link rel="prev" title="fmgr_fwobj_address" href="fmgr_fwobj_address.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../fmgr_root.html">FortiManager</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../fmgr_modules.html">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device.html">fmgr_device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_fwobj_service</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_package.html">fmgr_fwpol_package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_ha.html">fmgr_ha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_provisioning.html">fmgr_provisioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_query.html">fmgr_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_script.html">fmgr_script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_appctrl.html">fmgr_secprof_appctrl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_av.html">fmgr_secprof_av</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_dns.html">fmgr_secprof_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ips.html">fmgr_secprof_ips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_profile_group.html">fmgr_secprof_profile_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_proxy.html">fmgr_secprof_proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_spam.html">fmgr_secprof_spam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ssl_ssh.html">fmgr_secprof_ssl_ssh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_voip.html">fmgr_secprof_voip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fmgr_root.html">FortiManager</a> &raquo;</li>
+        
+          <li><a href="../fmgr_modules.html">Modules</a> &raquo;</li>
+        
+      <li>fmgr_fwobj_service</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fmgr_modules/fmgr_fwobj_service.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fmgr-fwobj-service">
+<h1>fmgr_fwobj_service<a class="headerlink" href="#fmgr-fwobj-service" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> fmgr_fwobj_service</p>
+<p><strong>Description:</strong> Manages FortiManager Firewall Service Objects</p>
+<p><strong>Author(s):</strong></p>
+<ul class="simple">
+<li>Luke Weighall (github: &#64;lweighall)</li>
+<li>Andrew Welsh (github: &#64;Ghilli3)</li>
+<li>Jim Huber (github: &#64;p4r4n0y1ng)</li>
+</ul>
+<p><strong>Ansible Version Added/Required:</strong> 2.8</p>
+<p><strong>Dev Status:</strong> PR TESTS GREEN - AWAITING APPROVAL</p>
+<p><strong>Owning Developer:</strong> Luke Weighall</p>
+<p><strong>Pull Request Started:</strong> 10/9/18</p>
+<p><strong>Days in PR:</strong> 20</p>
+<p><strong>Branch Link:</strong> <a class="reference external" href="https://github.com/ftntcorecse/ansible/tree/fmgr_fwobj_service">https://github.com/ftntcorecse/ansible/tree/fmgr_fwobj_service</a></p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adom">
+<h3>adom<a class="headerlink" href="#adom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The ADOM the configuration should belong to.</li>
+<li>Required: False</li>
+<li>default: root</li>
+</ul>
+</div>
+<div class="section" id="app-category">
+<h3>app_category<a class="headerlink" href="#app-category" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Application category ID.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="app-service-type">
+<h3>app_service_type<a class="headerlink" href="#app-service-type" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Application service type.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="application">
+<h3>application<a class="headerlink" href="#application" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Application ID.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="category">
+<h3>category<a class="headerlink" href="#category" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Service category.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="check-reset-range">
+<h3>check_reset_range<a class="headerlink" href="#check-reset-range" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Enable disable RST check.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="color">
+<h3>color<a class="headerlink" href="#color" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: GUI icon color.</li>
+<li>Required: False</li>
+<li>default: 22</li>
+</ul>
+</div>
+<div class="section" id="comment">
+<h3>comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Comment.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="custom-type">
+<h3>custom_type<a class="headerlink" href="#custom-type" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Tells module what kind of custom service to be added</li>
+<li>Required: False</li>
+<li>default: all</li>
+<li>choices: [‘tcp_udp_sctp’, ‘icmp’, ‘icmp6’, ‘ip’, ‘http’, ‘ftp’, ‘connect’, ‘socks_tcp’, ‘socks_udp’, ‘all’]</li>
+</ul>
+</div>
+<div class="section" id="explicit-proxy">
+<h3>explicit_proxy<a class="headerlink" href="#explicit-proxy" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Enable/disable explicit web proxy service.</li>
+<li>Required: False</li>
+<li>default: disable</li>
+<li>choices: [‘enable’, ‘disable’]</li>
+</ul>
+</div>
+<div class="section" id="fqdn">
+<h3>fqdn<a class="headerlink" href="#fqdn" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Fully qualified domain name.</li>
+<li>Required: False</li>
+<li>default:</li>
+</ul>
+</div>
+<div class="section" id="group-member">
+<h3>group_member<a class="headerlink" href="#group-member" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Comma Seperated list of members’ names.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="group-name">
+<h3>group_name<a class="headerlink" href="#group-name" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Name of the Service Group.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="host">
+<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The FortiManager’s Address.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="icmp-code">
+<h3>icmp_code<a class="headerlink" href="#icmp-code" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: ICMP code.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="icmp-type">
+<h3>icmp_type<a class="headerlink" href="#icmp-type" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: ICMP type.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="iprange">
+<h3>iprange<a class="headerlink" href="#iprange" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Start IP-End IP.</li>
+<li>Required: False</li>
+<li>default: 0.0.0.0</li>
+</ul>
+</div>
+<div class="section" id="mode">
+<h3>mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Sets one of three modes for managing the object</li>
+<li>Required: False</li>
+<li>default: add</li>
+<li>choices: [‘add’, ‘set’, ‘delete’]</li>
+</ul>
+</div>
+<div class="section" id="name">
+<h3>name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Custom service name.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="object-type">
+<h3>object_type<a class="headerlink" href="#object-type" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Tells module if we are adding a custom service, category, or group</li>
+<li>Required: False</li>
+<li>choices: [‘custom’, ‘group’, ‘category’]</li>
+</ul>
+</div>
+<div class="section" id="password">
+<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The password associated with the username account.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="protocol">
+<h3>protocol<a class="headerlink" href="#protocol" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Protocol type.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="protocol-number">
+<h3>protocol_number<a class="headerlink" href="#protocol-number" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: IP protocol number.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="sctp-portrange">
+<h3>sctp_portrange<a class="headerlink" href="#sctp-portrange" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Multiple SCTP port ranges. Comma separated list of destination ports to add (i.e. ‘443,80’)</p>
+<p>Syntax is &lt;destPort:sourcePort&gt;</p>
+<p>If no sourcePort is defined, it assumes all of them.</p>
+<p>Ranges can be defined with a hyphen -</p>
+<p>Examples – ‘443’ (destPort 443 only)  ‘443:1000-2000’ (destPort 443 from source ports 1000-2000)</p>
+<p>String multiple together in same quotes, comma separated. (‘443:1000-2000, 80:1000-2000’)</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+</ul>
+</div>
+<div class="section" id="session-ttl">
+<h3>session_ttl<a class="headerlink" href="#session-ttl" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Session TTL (300 - 604800, 0 = default).</li>
+<li>Required: False</li>
+<li>default: 0</li>
+</ul>
+</div>
+<div class="section" id="tcp-halfclose-timer">
+<h3>tcp_halfclose_timer<a class="headerlink" href="#tcp-halfclose-timer" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: TCP half close timeout (1 - 86400 sec, 0 = default).</li>
+<li>Required: False</li>
+<li>default: 0</li>
+</ul>
+</div>
+<div class="section" id="tcp-halfopen-timer">
+<h3>tcp_halfopen_timer<a class="headerlink" href="#tcp-halfopen-timer" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: TCP half close timeout (1 - 86400 sec, 0 = default).</li>
+<li>Required: False</li>
+<li>default: 0</li>
+</ul>
+</div>
+<div class="section" id="tcp-portrange">
+<h3>tcp_portrange<a class="headerlink" href="#tcp-portrange" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Comma separated list of destination ports to add (i.e. ‘443,80’)</p>
+<p>Syntax is &lt;destPort:sourcePort&gt;</p>
+<p>If no sourcePort is defined, it assumes all of them.</p>
+<p>Ranges can be defined with a hyphen -</p>
+<p>Examples – ‘443’ (destPort 443 only)  ‘443:1000-2000’ (destPort 443 from source ports 1000-2000)</p>
+<p>String multiple together in same quotes, comma separated. (‘443:1000-2000, 80:1000-2000’)</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+</ul>
+</div>
+<div class="section" id="tcp-timewait-timer">
+<h3>tcp_timewait_timer<a class="headerlink" href="#tcp-timewait-timer" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: TCP half close timeout (1 - 300 sec, 0 = default).</li>
+<li>Required: False</li>
+<li>default: 0</li>
+</ul>
+</div>
+<div class="section" id="udp-idle-timer">
+<h3>udp_idle_timer<a class="headerlink" href="#udp-idle-timer" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: TCP half close timeout (0 - 86400 sec, 0 = default).</li>
+<li>Required: False</li>
+<li>default: 0</li>
+</ul>
+</div>
+<div class="section" id="udp-portrange">
+<h3>udp_portrange<a class="headerlink" href="#udp-portrange" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Comma separated list of destination ports to add (i.e. ‘443,80’)</p>
+<p>Syntax is &lt;destPort:sourcePort&gt;</p>
+<p>If no sourcePort is defined, it assumes all of them.</p>
+<p>Ranges can be defined with a hyphen -</p>
+<p>Examples – ‘443’ (destPort 443 only)  ‘443:1000-2000’ (destPort 443 from source ports 1000-2000)</p>
+<p>String multiple together in same quotes, comma separated. (‘443:1000-2000, 80:1000-2000’)</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+</ul>
+</div>
+<div class="section" id="username">
+<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The username used to authenticate with the FortiManager.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="visibility">
+<h3>visibility<a class="headerlink" href="#visibility" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Enable/disable service visibility.</li>
+<li>Required: False</li>
+<li>default: enable</li>
+<li>choices: [‘enable’, ‘disable’]</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>cidr_to_netmask</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">cidr_to_netmask</span><span class="p">(</span><span class="n">cidr</span><span class="p">):</span>
+    <span class="n">cidr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cidr</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0xffffffff</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">str</span><span class="p">((</span><span class="mh">0xff000000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+            <span class="nb">str</span><span class="p">((</span><span class="mh">0x00ff0000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+            <span class="nb">str</span><span class="p">((</span><span class="mh">0x0000ff00</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+            <span class="nb">str</span><span class="p">((</span><span class="mh">0x000000ff</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_fwobj_service_custom</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_fwobj_service_custom</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    # NOTES!</span>
+<span class="sd">    -- the tcp and udp-portrange parameters are in a list when there are multiple. they are not in a list when they</span>
+<span class="sd">        singular or by themselves (only 1 was listed)</span>
+<span class="sd">        -- the syntax for this is (destPort:sourcePort). Ranges are (xxxx-xxxx) i.e. 443:443, or 443:1000-2000.</span>
+<span class="sd">        -- if you leave out the second field after the colon (source port) it assumes any source port (which is usual)</span>
+<span class="sd">        -- multiples would look like [&#39;443:1000-2000&#39;,&#39;80&#39;]</span>
+<span class="sd">        -- a single would look simple like &quot;443:1000-2000&quot; without the list around it ( a string!)</span>
+
+<span class="sd">    -- the protocol parameter is the protocol NUMBER, not the string of it.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Nothing Happened.&quot;</span><span class="p">})</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">]:</span>
+        <span class="c1"># SET THE URL FOR ADD / SET</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/service/custom&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+        <span class="c1"># BUILD THE DEFAULT DATAGRAM</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="c1"># ADVANCED OPTIONS</span>
+            <span class="s2">&quot;app-category&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;app-category&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;app-service-type&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;app-service-type&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;application&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;check-reset-range&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;check-reset-range&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;session-ttl&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;session-ttl&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;tcp-halfclose-timer&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;tcp-halfclose-timer&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;tcp-halfopen-timer&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;tcp-halfopen-timer&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;tcp-timewait-timer&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;tcp-timewait-timer&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;udp-idle-timer&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;udp-idle-timer&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;visibility&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;visibility&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;proxy&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;explicit-proxy&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;proxy&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;disable&quot;</span><span class="p">:</span>
+            <span class="c1">#######################################</span>
+            <span class="c1"># object-type = &quot;TCP/UDP/SCTP&quot;</span>
+            <span class="c1">#######################################</span>
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;tcp_udp_sctp&quot;</span><span class="p">:</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;protocol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;TCP/UDP/SCTP&quot;</span>
+                <span class="c1"># PROCESS PORT RANGES TO PUT INTO THE PROPER SYNTAX</span>
+                <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;tcp-portrange&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">tcp_list</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">tcp</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;tcp-portrange&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+                        <span class="n">tcp</span> <span class="o">=</span> <span class="n">tcp</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        <span class="n">tcp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tcp</span><span class="p">)</span>
+                    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;tcp-portrange&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tcp_list</span>
+
+                <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;udp-portrange&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">udp_list</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">udp</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;udp-portrange&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+                        <span class="n">udp</span> <span class="o">=</span> <span class="n">udp</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        <span class="n">udp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">udp</span><span class="p">)</span>
+                    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;udp-portrange&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">udp_list</span>
+
+                <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;sctp-portrange&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">sctp_list</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">sctp</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;sctp-portrange&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+                        <span class="n">sctp</span> <span class="o">=</span> <span class="n">sctp</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        <span class="n">sctp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sctp</span><span class="p">)</span>
+                    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;sctp-portrange&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sctp_list</span>
+
+            <span class="c1">#######################################</span>
+            <span class="c1"># object-type = &quot;ICMP&quot;</span>
+            <span class="c1">#######################################</span>
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;icmp&quot;</span><span class="p">:</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;icmpcode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;icmp_code&quot;</span><span class="p">]</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;icmptype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;icmp_type&quot;</span><span class="p">]</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;protocol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ICMP&quot;</span>
+
+            <span class="c1">#######################################</span>
+            <span class="c1"># object-type = &quot;ICMP6&quot;</span>
+            <span class="c1">#######################################</span>
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;icmp6&quot;</span><span class="p">:</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;icmpcode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;icmp_code&quot;</span><span class="p">]</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;icmptype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;icmp_type&quot;</span><span class="p">]</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;protocol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ICMP6&quot;</span>
+
+            <span class="c1">#######################################</span>
+            <span class="c1"># object-type = &quot;IP&quot;</span>
+            <span class="c1">#######################################</span>
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;ip&quot;</span><span class="p">:</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;protocol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;IP&quot;</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;protocol-number&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;protocol-number&quot;</span><span class="p">]</span>
+
+        <span class="c1">#######################################</span>
+        <span class="c1"># object-type in any of the explicit proxy options</span>
+        <span class="c1">#######################################</span>
+        <span class="k">if</span> <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;proxy&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;protocol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;iprange&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;iprange&quot;</span><span class="p">]</span>
+
+            <span class="c1"># PROCESS PROXY TCP PORT RANGES TO PUT INTO THE PROPER SYNTAX</span>
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;tcp-portrange&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">tcp_list</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">tcp</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;tcp-portrange&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+                    <span class="n">tcp</span> <span class="o">=</span> <span class="n">tcp</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                    <span class="n">tcp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tcp</span><span class="p">)</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;tcp-portrange&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tcp_list</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1"># SET DELETE URL</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/service/custom&#39;</span> \
+              <span class="s1">&#39;/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;set&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_fwobj_service_group</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_fwobj_service_group</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    # NOTES</span>
+<span class="sd">    only advanced option is color</span>
+<span class="sd">    when explicit proxy is set no other options are presented</span>
+<span class="sd">    add members list and boom</span>
+<span class="sd">    explicit-proxy = 0 is default</span>
+<span class="sd">    meta fields = {}</span>
+<span class="sd">    color =</span>
+<span class="sd">    comment</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Nothing Happened.&quot;</span><span class="p">})</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">]:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/service/group&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;group-name&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;proxy&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;explicit-proxy&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+
+        <span class="n">members</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;group-member&quot;</span><span class="p">]</span>
+        <span class="n">member</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">members</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+            <span class="n">member</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">member</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1"># SET DELETE URL</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/service/group&#39;</span> \
+              <span class="s1">&#39;/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;group-name&quot;</span><span class="p">])</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;set&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_fwobj_service_category</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_fwobj_service_category</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    # NOTES</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Nothing Happened.&quot;</span><span class="p">})</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">]:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/service/category&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+        <span class="c1"># GET RID OF ANY WHITESPACE</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="n">category</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="s2">&quot;Created by Ansible&quot;</span>
+        <span class="p">}</span>
+
+    <span class="c1"># IF MODE = DELETE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1"># SET DELETE URL</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/service/category&#39;</span> \
+              <span class="s1">&#39;/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">])</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;set&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_del_none</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_del_none</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)((</span><span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+                         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">fmgr_is_empty_dict</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">obj</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_is_empty_dict</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_is_empty_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">k1</span><span class="p">,</span> <span class="n">v1</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                            <span class="k">if</span> <span class="n">v1</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                                <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+                            <span class="k">elif</span> <span class="n">v1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                                <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
+                                <span class="k">return</span> <span class="n">return_val</span>
+                <span class="k">elif</span> <span class="n">v</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="k">elif</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
+                    <span class="k">return</span> <span class="n">return_val</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="k">return</span> <span class="n">return_val</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_logout</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="p">(),</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">logout_on_fail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logout_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># VALIDATION ERROR (NO RESULTS, JUST AN EXIT)</span>
+    <span class="k">if</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">&quot;NULL&quot;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># SUBMISSION ERROR</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;NULL&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No status message returned from pyFMG. Possible that this was a GET with a tuple result.&quot;</span>
+
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">good_codes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">logout_on_fail</span><span class="p">:</span>
+                <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">logout_on_success</span><span class="p">:</span>
+                <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;API Called worked, but logout handler has been asked to logout on success&quot;</span><span class="p">,</span>
+                                 <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">msg</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;delete&#39;</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
+
+        <span class="n">app_category</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">app_service_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">application</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">category</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">check_reset_range</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">22</span><span class="p">),</span>
+        <span class="n">comment</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">custom_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tcp_udp_sctp&#39;</span><span class="p">,</span> <span class="s1">&#39;icmp&#39;</span><span class="p">,</span> <span class="s1">&#39;icmp6&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">,</span> <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="s1">&#39;ftp&#39;</span><span class="p">,</span>
+                                                              <span class="s1">&#39;connect&#39;</span><span class="p">,</span> <span class="s1">&#39;socks_tcp&#39;</span><span class="p">,</span> <span class="s1">&#39;socks_udp&#39;</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">],</span>
+                         <span class="n">default</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">),</span>
+        <span class="n">explicit_proxy</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">,</span> <span class="s1">&#39;disable&#39;</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">),</span>
+        <span class="n">fqdn</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+        <span class="n">group_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">group_member</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">icmp_code</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">),</span>
+        <span class="n">icmp_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">),</span>
+        <span class="n">iprange</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">protocol</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">protocol_number</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">),</span>
+        <span class="n">sctp_portrange</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">session_ttl</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">object_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;custom&#39;</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="s1">&#39;category&#39;</span><span class="p">]),</span>
+        <span class="n">tcp_halfclose_timer</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">tcp_halfopen_timer</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">tcp_portrange</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">tcp_timewait_timer</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">udp_idle_timer</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">udp_portrange</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">visibility</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="s2">&quot;disable&quot;</span><span class="p">]),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="c1"># MODULE DATAGRAM</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;app-category&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;app_category&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;app-service-type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;app_service_type&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;application&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;check-reset-range&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;check_reset_range&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;custom_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;custom_type&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;explicit-proxy&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;explicit_proxy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;fqdn&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fqdn&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;group-name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;group_name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;group-member&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;group_member&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;icmp_code&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;icmp_code&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;icmp_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;icmp_type&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;iprange&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;iprange&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;protocol&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;protocol-number&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;protocol_number&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;sctp-portrange&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;sctp_portrange&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;object_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;session-ttl&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;session_ttl&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;tcp-halfclose-timer&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;tcp_halfclose_timer&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;tcp-halfopen-timer&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;tcp_halfopen_timer&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;tcp-portrange&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;tcp_portrange&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;tcp-timewait-timer&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;tcp_timewait_timer&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;udp-idle-timer&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;udp_idle_timer&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;udp-portrange&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;udp_portrange&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;visibility&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;visibility&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+    <span class="c1"># CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">username</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CHECK IF LOGIN FAILED</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CHECK FOR CATEGORIES TO ADD</span>
+    <span class="c1"># THIS IS ONLY WHEN OBJECT_TYPE ISN&#39;T SPECIFICALLY ADDING A CATEGORY!</span>
+    <span class="c1"># WE NEED TO ADD THE CATEGORY BEFORE ADDING THE OBJECT</span>
+    <span class="c1"># IF ANY category ARE DEFINED AND MODE IS ADD OR SET LETS ADD THOSE</span>
+    <span class="c1"># THIS IS A &quot;BLIND ADD&quot; AND THE EXIT CODE FOR OBJECT ALREADY EXISTS IS TREATED AS A PASS</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Nothing Happened.&quot;</span><span class="p">})</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;set&#39;</span><span class="p">]</span> \
+            <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;category&quot;</span><span class="p">:</span>
+        <span class="n">categoryAdd</span> <span class="o">=</span> <span class="n">fmgr_fwobj_service_category</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">categoryAdd</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span>
+                    <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to add/remove service category&quot;</span><span class="p">)</span>
+
+    <span class="c1"># IF OBJECT_TYPE IS CATEGORY...</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;category&#39;</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwobj_service_category</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span>
+                    <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to add/remove service category&quot;</span><span class="p">)</span>
+
+    <span class="c1"># IF OBJECT_TYPE IS CUSTOM...</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;custom&#39;</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwobj_service_custom</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span>
+                    <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to add/remove custom service&quot;</span><span class="p">)</span>
+
+    <span class="c1"># IF OBJECT_TYPE IS GROUP...</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;group&#39;</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwobj_service_group</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span>
+                    <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to add/remove service group&quot;</span><span class="p">)</span>
+
+    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">results</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;The service_type parameter wasn&#39;t set to category, group, or custom. Exiting...&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="module-source-code">
+<h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Ansible</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
+
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;metadata_version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;preview&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;supported_by&quot;</span><span class="p">:</span> <span class="s2">&quot;community&quot;</span>
+<span class="p">}</span>
+
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">module: fmgr_fwobj_service</span>
+<span class="s1">version_added: &quot;2.8&quot;</span>
+<span class="s1">author:</span>
+<span class="s1">    - Luke Weighall (@lweighall)</span>
+<span class="s1">    - Andrew Welsh (@Ghilli3)</span>
+<span class="s1">    - Jim Huber (@p4r4n0y1ng)</span>
+<span class="s1">short_description: Manages FortiManager Firewall Service Objects</span>
+<span class="s1">description:</span>
+<span class="s1">  -  Manages FortiManager Firewall Service Objects</span>
+
+<span class="s1">options:</span>
+<span class="s1">  adom:</span>
+<span class="s1">    description:</span>
+<span class="s1">     -The ADOM the configuration should belong to.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: root</span>
+<span class="s1">  host:</span>
+<span class="s1">    description:</span>
+<span class="s1">     -The FortiManager&#39;s Address.</span>
+<span class="s1">    required: true</span>
+<span class="s1">  username:</span>
+<span class="s1">    description:</span>
+<span class="s1">     -The username used to authenticate with the FortiManager.</span>
+<span class="s1">    required: true</span>
+<span class="s1">  password:</span>
+<span class="s1">    description:</span>
+<span class="s1">     -The password associated with the username account.</span>
+<span class="s1">    required: true</span>
+
+<span class="s1">  app_category:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Application category ID.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  app_service_type:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Application service type.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  application:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Application ID.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  category:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Service category.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  check_reset_range:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Enable disable RST check.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  color:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - GUI icon color.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: 22</span>
+
+<span class="s1">  comment:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Comment.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  custom_type:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Tells module what kind of custom service to be added</span>
+<span class="s1">    choices: [&#39;tcp_udp_sctp&#39;, &#39;icmp&#39;, &#39;icmp6&#39;, &#39;ip&#39;, &#39;http&#39;, &#39;ftp&#39;, &#39;connect&#39;, &#39;socks_tcp&#39;, &#39;socks_udp&#39;, &#39;all&#39;]</span>
+<span class="s1">    default: all</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  explicit_proxy:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Enable/disable explicit web proxy service.</span>
+<span class="s1">    choices: [&#39;enable&#39;, &#39;disable&#39;]</span>
+<span class="s1">    default: &#39;disable&#39;</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  fqdn:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Fully qualified domain name.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: &quot;&quot;</span>
+
+<span class="s1">  group_name:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Name of the Service Group.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  group_member:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Comma Seperated list of members&#39; names.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  icmp_code:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - ICMP code.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  icmp_type:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - ICMP type.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  iprange:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Start IP-End IP.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: &quot;0.0.0.0&quot;</span>
+
+<span class="s1">  name:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Custom service name.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  mode:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Sets one of three modes for managing the object</span>
+<span class="s1">    choices: [&#39;add&#39;, &#39;set&#39;, &#39;delete&#39;]</span>
+<span class="s1">    default: add</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  object_type:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Tells module if we are adding a custom service, category, or group</span>
+<span class="s1">    choices: [&#39;custom&#39;, &#39;group&#39;, &#39;category&#39;]</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  protocol:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Protocol type.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  protocol_number:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - IP protocol number.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  sctp_portrange:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Multiple SCTP port ranges. Comma separated list of destination ports to add (i.e. &#39;443,80&#39;)</span>
+<span class="s1">      - Syntax is &lt;destPort:sourcePort&gt;</span>
+<span class="s1">      - If no sourcePort is defined, it assumes all of them.</span>
+<span class="s1">      - Ranges can be defined with a hyphen -</span>
+<span class="s1">      - Examples -- &#39;443&#39; (destPort 443 only)  &#39;443:1000-2000&#39; (destPort 443 from source ports 1000-2000)</span>
+<span class="s1">      - String multiple together in same quotes, comma separated. (&#39;443:1000-2000, 80:1000-2000&#39;)</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  session_ttl:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Session TTL (300 - 604800, 0 = default).</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: 0</span>
+
+<span class="s1">  tcp_halfclose_timer:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - TCP half close timeout (1 - 86400 sec, 0 = default).</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: 0</span>
+
+<span class="s1">  tcp_halfopen_timer:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - TCP half close timeout (1 - 86400 sec, 0 = default).</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: 0</span>
+
+<span class="s1">  tcp_portrange:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Comma separated list of destination ports to add (i.e. &#39;443,80&#39;)</span>
+<span class="s1">      - Syntax is &lt;destPort:sourcePort&gt;</span>
+<span class="s1">      - If no sourcePort is defined, it assumes all of them.</span>
+<span class="s1">      - Ranges can be defined with a hyphen -</span>
+<span class="s1">      - Examples -- &#39;443&#39; (destPort 443 only)  &#39;443:1000-2000&#39; (destPort 443 from source ports 1000-2000)</span>
+<span class="s1">      - String multiple together in same quotes, comma separated. (&#39;443:1000-2000, 80:1000-2000&#39;)</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  tcp_timewait_timer:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - TCP half close timeout (1 - 300 sec, 0 = default).</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: 0</span>
+
+<span class="s1">  udp_idle_timer:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - TCP half close timeout (0 - 86400 sec, 0 = default).</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: 0</span>
+
+<span class="s1">  udp_portrange:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Comma separated list of destination ports to add (i.e. &#39;443,80&#39;)</span>
+<span class="s1">      - Syntax is &lt;destPort:sourcePort&gt;</span>
+<span class="s1">      - If no sourcePort is defined, it assumes all of them.</span>
+<span class="s1">      - Ranges can be defined with a hyphen -</span>
+<span class="s1">      - Examples -- &#39;443&#39; (destPort 443 only)  &#39;443:1000-2000&#39; (destPort 443 from source ports 1000-2000)</span>
+<span class="s1">      - String multiple together in same quotes, comma separated. (&#39;443:1000-2000, 80:1000-2000&#39;)</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  visibility:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Enable/disable service visibility.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&quot;enable&quot;, &quot;disable&quot;]</span>
+<span class="s1">    default: &quot;enable&quot;</span>
+
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: ADD A CUSTOM SERVICE FOR TCP/UDP/SCP</span>
+<span class="s1">  fmgr_fwobj_service:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansible_custom_service&quot;</span>
+<span class="s1">    object_type: &quot;custom&quot;</span>
+<span class="s1">    custom_type: &quot;tcp_udp_sctp&quot;</span>
+<span class="s1">    tcp_portrange: &quot;443&quot;</span>
+<span class="s1">    udp_portrange: &quot;51&quot;</span>
+<span class="s1">    sctp_portrange: &quot;100&quot;</span>
+
+<span class="s1">- name: ADD A CUSTOM SERVICE FOR TCP/UDP/SCP WITH SOURCE RANGES AND MULTIPLES</span>
+<span class="s1">  fmgr_fwobj_service:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansible_custom_serviceWithSource&quot;</span>
+<span class="s1">    object_type: &quot;custom&quot;</span>
+<span class="s1">    custom_type: &quot;tcp_udp_sctp&quot;</span>
+<span class="s1">    tcp_portrange: &quot;443:2000-1000,80-82:10000-20000&quot;</span>
+<span class="s1">    udp_portrange: &quot;51:100-200,162:200-400&quot;</span>
+<span class="s1">    sctp_portrange: &quot;100:2000-2500&quot;</span>
+
+<span class="s1">- name: ADD A CUSTOM SERVICE FOR ICMP</span>
+<span class="s1">  fmgr_fwobj_service:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansible_custom_icmp&quot;</span>
+<span class="s1">    object_type: &quot;custom&quot;</span>
+<span class="s1">    custom_type: &quot;icmp&quot;</span>
+<span class="s1">    icmp_type: &quot;8&quot;</span>
+<span class="s1">    icmp_code: &quot;3&quot;</span>
+
+<span class="s1">- name: ADD A CUSTOM SERVICE FOR ICMP6</span>
+<span class="s1">  fmgr_fwobj_service:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansible_custom_icmp6&quot;</span>
+<span class="s1">    object_type: &quot;custom&quot;</span>
+<span class="s1">    custom_type: &quot;icmp6&quot;</span>
+<span class="s1">    icmp_type: &quot;5&quot;</span>
+<span class="s1">    icmp_code: &quot;1&quot;</span>
+
+<span class="s1">- name: ADD A CUSTOM SERVICE FOR IP - GRE</span>
+<span class="s1">  fmgr_fwobj_service:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansible_custom_icmp6&quot;</span>
+<span class="s1">    object_type: &quot;custom&quot;</span>
+<span class="s1">    custom_type: &quot;ip&quot;</span>
+<span class="s1">    protocol_number: &quot;47&quot;</span>
+
+<span class="s1">- name: ADD A CUSTOM PROXY FOR ALL WITH SOURCE RANGES AND MULTIPLES</span>
+<span class="s1">  fmgr_fwobj_service:</span>
+<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;ansible_custom_proxy_all&quot;</span>
+<span class="s1">    object_type: &quot;custom&quot;</span>
+<span class="s1">    custom_type: &quot;all&quot;</span>
+<span class="s1">    explicit_proxy: &quot;enable&quot;</span>
+<span class="s1">    tcp_portrange: &quot;443:2000-1000,80-82:10000-20000&quot;</span>
+<span class="s1">    iprange: &quot;www.ansible.com&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">api_result:</span>
+<span class="s2">  description: full API response, includes status code and message</span>
+<span class="s2">  returned: always</span>
+<span class="s2">  type: string</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">AnsibleFortiManager</span>
+
+<span class="c1"># check for pyFMG lib</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pyFMG.fortimgr</span> <span class="kn">import</span> <span class="n">FortiManager</span>
+
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">False</span>
+
+
+<span class="c1"># FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK</span>
+<span class="k">def</span> <span class="nf">cidr_to_netmask</span><span class="p">(</span><span class="n">cidr</span><span class="p">):</span>
+    <span class="n">cidr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cidr</span><span class="p">)</span>
+    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0xffffffff</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">)</span>
+    <span class="k">return</span> <span class="p">(</span><span class="nb">str</span><span class="p">((</span><span class="mh">0xff000000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+            <span class="nb">str</span><span class="p">((</span><span class="mh">0x00ff0000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+            <span class="nb">str</span><span class="p">((</span><span class="mh">0x0000ff00</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
+            <span class="nb">str</span><span class="p">((</span><span class="mh">0x000000ff</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)))</span>
+
+
+<span class="k">def</span> <span class="nf">fmgr_fwobj_service_custom</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    # NOTES!</span>
+<span class="sd">    -- the tcp and udp-portrange parameters are in a list when there are multiple. they are not in a list when they</span>
+<span class="sd">        singular or by themselves (only 1 was listed)</span>
+<span class="sd">        -- the syntax for this is (destPort:sourcePort). Ranges are (xxxx-xxxx) i.e. 443:443, or 443:1000-2000.</span>
+<span class="sd">        -- if you leave out the second field after the colon (source port) it assumes any source port (which is usual)</span>
+<span class="sd">        -- multiples would look like [&#39;443:1000-2000&#39;,&#39;80&#39;]</span>
+<span class="sd">        -- a single would look simple like &quot;443:1000-2000&quot; without the list around it ( a string!)</span>
+
+<span class="sd">    -- the protocol parameter is the protocol NUMBER, not the string of it.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Nothing Happened.&quot;</span><span class="p">})</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">]:</span>
+        <span class="c1"># SET THE URL FOR ADD / SET</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/service/custom&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+        <span class="c1"># BUILD THE DEFAULT DATAGRAM</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="c1"># ADVANCED OPTIONS</span>
+            <span class="s2">&quot;app-category&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;app-category&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;app-service-type&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;app-service-type&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;application&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;check-reset-range&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;check-reset-range&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;session-ttl&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;session-ttl&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;tcp-halfclose-timer&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;tcp-halfclose-timer&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;tcp-halfopen-timer&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;tcp-halfopen-timer&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;tcp-timewait-timer&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;tcp-timewait-timer&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;udp-idle-timer&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;udp-idle-timer&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;visibility&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;visibility&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;proxy&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;explicit-proxy&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+
+        <span class="k">if</span> <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;proxy&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;disable&quot;</span><span class="p">:</span>
+            <span class="c1">#######################################</span>
+            <span class="c1"># object-type = &quot;TCP/UDP/SCTP&quot;</span>
+            <span class="c1">#######################################</span>
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;tcp_udp_sctp&quot;</span><span class="p">:</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;protocol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;TCP/UDP/SCTP&quot;</span>
+                <span class="c1"># PROCESS PORT RANGES TO PUT INTO THE PROPER SYNTAX</span>
+                <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;tcp-portrange&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">tcp_list</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">tcp</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;tcp-portrange&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+                        <span class="n">tcp</span> <span class="o">=</span> <span class="n">tcp</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        <span class="n">tcp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tcp</span><span class="p">)</span>
+                    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;tcp-portrange&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tcp_list</span>
+
+                <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;udp-portrange&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">udp_list</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">udp</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;udp-portrange&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+                        <span class="n">udp</span> <span class="o">=</span> <span class="n">udp</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        <span class="n">udp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">udp</span><span class="p">)</span>
+                    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;udp-portrange&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">udp_list</span>
+
+                <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;sctp-portrange&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">sctp_list</span> <span class="o">=</span> <span class="p">[]</span>
+                    <span class="k">for</span> <span class="n">sctp</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;sctp-portrange&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+                        <span class="n">sctp</span> <span class="o">=</span> <span class="n">sctp</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                        <span class="n">sctp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">sctp</span><span class="p">)</span>
+                    <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;sctp-portrange&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sctp_list</span>
+
+            <span class="c1">#######################################</span>
+            <span class="c1"># object-type = &quot;ICMP&quot;</span>
+            <span class="c1">#######################################</span>
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;icmp&quot;</span><span class="p">:</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;icmpcode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;icmp_code&quot;</span><span class="p">]</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;icmptype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;icmp_type&quot;</span><span class="p">]</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;protocol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ICMP&quot;</span>
+
+            <span class="c1">#######################################</span>
+            <span class="c1"># object-type = &quot;ICMP6&quot;</span>
+            <span class="c1">#######################################</span>
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;icmp6&quot;</span><span class="p">:</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;icmpcode&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;icmp_code&quot;</span><span class="p">]</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;icmptype&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;icmp_type&quot;</span><span class="p">]</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;protocol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;ICMP6&quot;</span>
+
+            <span class="c1">#######################################</span>
+            <span class="c1"># object-type = &quot;IP&quot;</span>
+            <span class="c1">#######################################</span>
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;ip&quot;</span><span class="p">:</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;protocol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;IP&quot;</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;protocol-number&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;protocol-number&quot;</span><span class="p">]</span>
+
+        <span class="c1">#######################################</span>
+        <span class="c1"># object-type in any of the explicit proxy options</span>
+        <span class="c1">#######################################</span>
+        <span class="k">if</span> <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;proxy&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;protocol&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_type&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;iprange&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;iprange&quot;</span><span class="p">]</span>
+
+            <span class="c1"># PROCESS PROXY TCP PORT RANGES TO PUT INTO THE PROPER SYNTAX</span>
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;tcp-portrange&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">tcp_list</span> <span class="o">=</span> <span class="p">[]</span>
+                <span class="k">for</span> <span class="n">tcp</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;tcp-portrange&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+                    <span class="n">tcp</span> <span class="o">=</span> <span class="n">tcp</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+                    <span class="n">tcp_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tcp</span><span class="p">)</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;tcp-portrange&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tcp_list</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1"># SET DELETE URL</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/service/custom&#39;</span> \
+              <span class="s1">&#39;/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;set&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">fmgr_fwobj_service_group</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    # NOTES</span>
+<span class="sd">    only advanced option is color</span>
+<span class="sd">    when explicit proxy is set no other options are presented</span>
+<span class="sd">    add members list and boom</span>
+<span class="sd">    explicit-proxy = 0 is default</span>
+<span class="sd">    meta fields = {}</span>
+<span class="sd">    color =</span>
+<span class="sd">    comment</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Nothing Happened.&quot;</span><span class="p">})</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">]:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/service/group&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;group-name&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;proxy&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;explicit-proxy&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+
+        <span class="n">members</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;group-member&quot;</span><span class="p">]</span>
+        <span class="n">member</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="k">for</span> <span class="n">obj</span> <span class="ow">in</span> <span class="n">members</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+            <span class="n">member</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">obj</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">member</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1"># SET DELETE URL</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/service/group&#39;</span> \
+              <span class="s1">&#39;/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;group-name&quot;</span><span class="p">])</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;set&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">fmgr_fwobj_service_category</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    # NOTES</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Nothing Happened.&quot;</span><span class="p">})</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">]:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/service/category&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+        <span class="c1"># GET RID OF ANY WHITESPACE</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span>
+        <span class="n">category</span> <span class="o">=</span> <span class="n">category</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span>
+
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="s2">&quot;Created by Ansible&quot;</span>
+        <span class="p">}</span>
+
+    <span class="c1"># IF MODE = DELETE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="c1"># SET DELETE URL</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/service/category&#39;</span> \
+              <span class="s1">&#39;/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">])</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;set&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="c1"># IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">fmgr_del_none</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)((</span><span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
+                         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">fmgr_is_empty_dict</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">obj</span>
+
+
+<span class="k">def</span> <span class="nf">fmgr_is_empty_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
+    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
+    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
+                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+                    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                        <span class="k">for</span> <span class="n">k1</span><span class="p">,</span> <span class="n">v1</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+                            <span class="k">if</span> <span class="n">v1</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                                <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+                            <span class="k">elif</span> <span class="n">v1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                                <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
+                                <span class="k">return</span> <span class="n">return_val</span>
+                <span class="k">elif</span> <span class="n">v</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+                <span class="k">elif</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
+                    <span class="k">return</span> <span class="n">return_val</span>
+        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="k">return</span> <span class="n">return_val</span>
+
+
+<span class="k">def</span> <span class="nf">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="p">(),</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">logout_on_fail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logout_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># VALIDATION ERROR (NO RESULTS, JUST AN EXIT)</span>
+    <span class="k">if</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">&quot;NULL&quot;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># SUBMISSION ERROR</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;NULL&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No status message returned from pyFMG. Possible that this was a GET with a tuple result.&quot;</span>
+
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">good_codes</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">logout_on_fail</span><span class="p">:</span>
+                <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">logout_on_success</span><span class="p">:</span>
+                <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;API Called worked, but logout handler has been asked to logout on success&quot;</span><span class="p">,</span>
+                                 <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">msg</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;delete&#39;</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
+
+        <span class="n">app_category</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">app_service_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">application</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">category</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">check_reset_range</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">color</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">22</span><span class="p">),</span>
+        <span class="n">comment</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">custom_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;tcp_udp_sctp&#39;</span><span class="p">,</span> <span class="s1">&#39;icmp&#39;</span><span class="p">,</span> <span class="s1">&#39;icmp6&#39;</span><span class="p">,</span> <span class="s1">&#39;ip&#39;</span><span class="p">,</span> <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="s1">&#39;ftp&#39;</span><span class="p">,</span>
+                                                              <span class="s1">&#39;connect&#39;</span><span class="p">,</span> <span class="s1">&#39;socks_tcp&#39;</span><span class="p">,</span> <span class="s1">&#39;socks_udp&#39;</span><span class="p">,</span> <span class="s1">&#39;all&#39;</span><span class="p">],</span>
+                         <span class="n">default</span><span class="o">=</span><span class="s2">&quot;all&quot;</span><span class="p">),</span>
+        <span class="n">explicit_proxy</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">,</span> <span class="s1">&#39;disable&#39;</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">),</span>
+        <span class="n">fqdn</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">),</span>
+        <span class="n">group_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">group_member</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">icmp_code</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">),</span>
+        <span class="n">icmp_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">),</span>
+        <span class="n">iprange</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">protocol</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">protocol_number</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">),</span>
+        <span class="n">sctp_portrange</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">session_ttl</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">object_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;custom&#39;</span><span class="p">,</span> <span class="s1">&#39;group&#39;</span><span class="p">,</span> <span class="s1">&#39;category&#39;</span><span class="p">]),</span>
+        <span class="n">tcp_halfclose_timer</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">tcp_halfopen_timer</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">tcp_portrange</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">tcp_timewait_timer</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">udp_idle_timer</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">udp_portrange</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">visibility</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="s2">&quot;disable&quot;</span><span class="p">]),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
+
+    <span class="c1"># MODULE DATAGRAM</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;app-category&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;app_category&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;app-service-type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;app_service_type&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;application&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;application&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;category&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;check-reset-range&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;check_reset_range&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;color&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;comment&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;custom_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;custom_type&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;explicit-proxy&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;explicit_proxy&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;fqdn&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fqdn&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;group-name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;group_name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;group-member&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;group_member&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;icmp_code&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;icmp_code&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;icmp_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;icmp_type&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;iprange&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;iprange&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;protocol&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;protocol-number&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;protocol_number&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;sctp-portrange&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;sctp_portrange&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;object_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;session-ttl&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;session_ttl&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;tcp-halfclose-timer&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;tcp_halfclose_timer&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;tcp-halfopen-timer&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;tcp_halfopen_timer&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;tcp-portrange&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;tcp_portrange&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;tcp-timewait-timer&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;tcp_timewait_timer&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;udp-idle-timer&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;udp_idle_timer&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;udp-portrange&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;udp_portrange&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;visibility&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;visibility&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+    <span class="c1"># CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">username</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CHECK IF LOGIN FAILED</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CHECK FOR CATEGORIES TO ADD</span>
+    <span class="c1"># THIS IS ONLY WHEN OBJECT_TYPE ISN&#39;T SPECIFICALLY ADDING A CATEGORY!</span>
+    <span class="c1"># WE NEED TO ADD THE CATEGORY BEFORE ADDING THE OBJECT</span>
+    <span class="c1"># IF ANY category ARE DEFINED AND MODE IS ADD OR SET LETS ADD THOSE</span>
+    <span class="c1"># THIS IS A &quot;BLIND ADD&quot; AND THE EXIT CODE FOR OBJECT ALREADY EXISTS IS TREATED AS A PASS</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Nothing Happened.&quot;</span><span class="p">})</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;category&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;set&#39;</span><span class="p">]</span> \
+            <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;category&quot;</span><span class="p">:</span>
+        <span class="n">categoryAdd</span> <span class="o">=</span> <span class="n">fmgr_fwobj_service_category</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">categoryAdd</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span>
+                    <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to add/remove service category&quot;</span><span class="p">)</span>
+
+    <span class="c1"># IF OBJECT_TYPE IS CATEGORY...</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;category&#39;</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwobj_service_category</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span>
+                    <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to add/remove service category&quot;</span><span class="p">)</span>
+
+    <span class="c1"># IF OBJECT_TYPE IS CUSTOM...</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;custom&#39;</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwobj_service_custom</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span>
+                    <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to add/remove custom service&quot;</span><span class="p">)</span>
+
+    <span class="c1"># IF OBJECT_TYPE IS GROUP...</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;group&#39;</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwobj_service_group</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span>
+                    <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to add/remove service group&quot;</span><span class="p">)</span>
+
+    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+
+    <span class="k">if</span> <span class="n">results</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;The service_type parameter wasn&#39;t set to category, group, or custom. Exiting...&quot;</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fmgr_fwobj_vip.html" class="btn btn-neutral float-right" title="fmgr_fwobj_vip" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fmgr_fwobj_address.html" class="btn btn-neutral" title="fmgr_fwobj_address" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

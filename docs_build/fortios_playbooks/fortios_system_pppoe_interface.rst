@@ -1,0 +1,87 @@
+==============================
+fortios_system_pppoe_interface
+==============================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure the PPPoE interfaces.
+        fortios_system_pppoe_interface:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          system_pppoe_interface:
+            state: "present"
+            ac-name: "<your_own_value>"
+            auth-type: "auto"
+            device: "<your_own_value> (source system.interface.name)"
+            dial-on-demand: "enable"
+            disc-retry-timeout: "7"
+            idle-timeout: "8"
+            ipunnumbered: "<your_own_value>"
+            ipv6: "enable"
+            lcp-echo-interval: "11"
+            lcp-max-echo-fails: "12"
+            name: "default_name_13"
+            padt-retry-timeout: "14"
+            password: "<your_own_value>"
+            pppoe-unnumbered-negotiate: "enable"
+            service-name: "<your_own_value>"
+            username: "<your_own_value>"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/system/fortios_system_pppoe_interface_example.yml
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure the PPPoE interfaces.
+        fortios_system_pppoe_interface:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          system_pppoe_interface:
+            state: "present"
+            ac-name: "<your_own_value>"
+            auth-type: "auto"
+            device: "<your_own_value> (source system.interface.name)"
+            dial-on-demand: "enable"
+            disc-retry-timeout: "7"
+            idle-timeout: "8"
+            ipunnumbered: "<your_own_value>"
+            ipv6: "enable"
+            lcp-echo-interval: "11"
+            lcp-max-echo-fails: "12"
+            name: "default_name_13"
+            padt-retry-timeout: "14"
+            password: "<your_own_value>"
+            pppoe-unnumbered-negotiate: "enable"
+            service-name: "<your_own_value>"
+            username: "<your_own_value>"
+
+
+
+

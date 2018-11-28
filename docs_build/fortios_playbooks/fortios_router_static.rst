@@ -1,0 +1,93 @@
+=====================
+fortios_router_static
+=====================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure IPv4 static routing tables.
+        fortios_router_static:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          router_static:
+            state: "present"
+            bfd: "enable"
+            blackhole: "enable"
+            comment: "Optional comments."
+            device: "<your_own_value> (source system.interface.name)"
+            distance: "7"
+            dst: "<your_own_value>"
+            dstaddr: "<your_own_value> (source firewall.address.name firewall.addrgrp.name)"
+            dynamic-gateway: "enable"
+            gateway: "<your_own_value>"
+            internet-service: "12 (source firewall.internet-service.id)"
+            internet-service-custom: "<your_own_value> (source firewall.internet-service-custom.name)"
+            link-monitor-exempt: "enable"
+            priority: "15"
+            seq-num: "16"
+            src: "<your_own_value>"
+            status: "enable"
+            virtual-wan-link: "enable"
+            vrf: "20"
+            weight: "21"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/router/fortios_router_static_example.yml
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure IPv4 static routing tables.
+        fortios_router_static:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          router_static:
+            state: "present"
+            bfd: "enable"
+            blackhole: "enable"
+            comment: "Optional comments."
+            device: "<your_own_value> (source system.interface.name)"
+            distance: "7"
+            dst: "<your_own_value>"
+            dstaddr: "<your_own_value> (source firewall.address.name firewall.addrgrp.name)"
+            dynamic-gateway: "enable"
+            gateway: "<your_own_value>"
+            internet-service: "12 (source firewall.internet-service.id)"
+            internet-service-custom: "<your_own_value> (source firewall.internet-service-custom.name)"
+            link-monitor-exempt: "enable"
+            priority: "15"
+            seq-num: "16"
+            src: "<your_own_value>"
+            status: "enable"
+            virtual-wan-link: "enable"
+            vrf: "20"
+            weight: "21"
+
+
+
+
