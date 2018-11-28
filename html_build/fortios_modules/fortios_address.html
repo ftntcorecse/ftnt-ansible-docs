@@ -1,0 +1,758 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fortios_address &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Playbook Examples" href="../fortios_playbooks.html" />
+    <link rel="prev" title="Modules" href="../fortios_modules.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../fmgr_root.html">FortiManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../fortios_modules.html">Modules</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fortios_address</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fortios_playbooks.html">Playbook Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fortios_roles.html">Roles</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fortios_root.html">FortiGate (FortiOS)</a> &raquo;</li>
+        
+          <li><a href="../fortios_modules.html">Modules</a> &raquo;</li>
+        
+      <li>fortios_address</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fortios_modules/fortios_address.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fortios-address">
+<h1>fortios_address<a class="headerlink" href="#fortios-address" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> fortios_address</p>
+<p><strong>Description:</strong> [‘This module provide management of firewall addresses on FortiOS devices.’]</p>
+<p><strong>Author(s):</strong> Benjamin Jolivot (&#64;bjolivot)</p>
+<p><strong>Ansible Version Added/Required:</strong> 2.4</p>
+<p><strong>Dev Status:</strong> Not currently tracked. Likelihood is this is a private module for a one-off need that hasn’t been finalized for Ansible testing yet.</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="comment">
+<h3>comment<a class="headerlink" href="#comment" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: free text to describe address.</li>
+</ul>
+</div>
+<div class="section" id="country">
+<h3>country<a class="headerlink" href="#country" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: 2 letter country code (like FR).</li>
+</ul>
+</div>
+<div class="section" id="end-ip">
+<h3>end_ip<a class="headerlink" href="#end-ip" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Last ip in range (used only with type=iprange).</li>
+</ul>
+</div>
+<div class="section" id="interface">
+<h3>interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: interface name the address apply to.</li>
+<li>default: any</li>
+</ul>
+</div>
+<div class="section" id="name">
+<h3>name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Name of the address to add or delete.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="start-ip">
+<h3>start_ip<a class="headerlink" href="#start-ip" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: First ip in range (used only with type=iprange).</li>
+</ul>
+</div>
+<div class="section" id="state">
+<h3>state<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Specifies if address need to be added or deleted.</li>
+<li>Required: True</li>
+<li>choices: [‘present’, ‘absent’]</li>
+</ul>
+</div>
+<div class="section" id="type">
+<h3>type<a class="headerlink" href="#type" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Type of the address.</li>
+<li>choices: [‘iprange’, ‘fqdn’, ‘ipmask’, ‘geography’]</li>
+</ul>
+</div>
+<div class="section" id="value">
+<h3>value<a class="headerlink" href="#value" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Address value, based on type. If type=fqdn, somthing like www.google.com. If type=ipmask, you can use simple ip (192.168.0.1), ip+mask (192.168.0.1 255.255.255.0) or CIDR (192.168.0.1/32).</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>get_formated_ipaddr</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_formated_ipaddr</span><span class="p">(</span><span class="n">input_ip</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Format given ip address string to fortigate format (ip netmask)</span>
+<span class="sd">    Args:</span>
+<span class="sd">        * **ip_str** (string) : string representing ip address</span>
+<span class="sd">        accepted format:</span>
+<span class="sd">          - ip netmask  (ex: 192.168.0.10 255.255.255.0)</span>
+<span class="sd">          - ip (ex: 192.168.0.10)</span>
+<span class="sd">          - CIDR (ex: 192.168.0.10/24)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        formated ip if ip is valid (ex: &quot;192.168.0.10 255.255.255.0&quot;)</span>
+<span class="sd">        False if ip is not valid</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot; &quot;</span> <span class="ow">in</span> <span class="n">input_ip</span><span class="p">:</span>
+            <span class="c1"># ip netmask format</span>
+            <span class="n">str_ip</span><span class="p">,</span> <span class="n">str_netmask</span> <span class="o">=</span> <span class="n">input_ip</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+            <span class="n">ip</span> <span class="o">=</span> <span class="n">IPNetwork</span><span class="p">(</span><span class="n">str_ip</span><span class="p">)</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">IPNetwork</span><span class="p">(</span><span class="n">str_netmask</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">str_ip</span><span class="p">,</span> <span class="n">str_netmask</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ip</span> <span class="o">=</span> <span class="n">IPNetwork</span><span class="p">(</span><span class="n">input_ip</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ip</span><span class="o">.</span><span class="n">ip</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">ip</span><span class="o">.</span><span class="n">netmask</span><span class="p">))</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">return</span> <span class="bp">False</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">state</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="s1">&#39;absent&#39;</span><span class="p">]),</span>
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;iprange&#39;</span><span class="p">,</span> <span class="s1">&#39;fqdn&#39;</span><span class="p">,</span> <span class="s1">&#39;ipmask&#39;</span><span class="p">,</span> <span class="s1">&#39;geography&#39;</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;ipmask&#39;</span><span class="p">),</span>
+        <span class="n">value</span><span class="o">=</span><span class="nb">dict</span><span class="p">(),</span>
+        <span class="n">start_ip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(),</span>
+        <span class="n">end_ip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(),</span>
+        <span class="n">country</span><span class="o">=</span><span class="nb">dict</span><span class="p">(),</span>
+        <span class="n">interface</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">),</span>
+        <span class="n">comment</span><span class="o">=</span><span class="nb">dict</span><span class="p">(),</span>
+    <span class="p">)</span>
+
+    <span class="c1"># merge argument_spec from module_utils/fortios.py</span>
+    <span class="n">argument_spec</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">fortios_argument_spec</span><span class="p">)</span>
+
+    <span class="c1"># Load module</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span>
+        <span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span>
+        <span class="n">required_if</span><span class="o">=</span><span class="n">fortios_required_if</span><span class="p">,</span>
+        <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">changed</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">HAS_NETADDR</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Could not import the python library netaddr required by this module&#39;</span><span class="p">)</span>
+
+    <span class="c1"># check params</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;absent&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;ipmask&quot;</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid argument type=</span><span class="si">%s</span><span class="s1"> when state=absent&#39;</span> <span class="o">%</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid argument `value` when state=absent&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;start_ip&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid argument `start_ip` when state=absent&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;end_ip&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid argument `end_ip` when state=absent&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid argument `country` when state=absent&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;interface&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;any&quot;</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid argument `interface` when state=absent&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;comment&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid argument `comment` when state=absent&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># state=present</span>
+        <span class="c1"># validate IP</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;ipmask&quot;</span><span class="p">:</span>
+            <span class="n">formated_ip</span> <span class="o">=</span> <span class="n">get_formated_ipaddr</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">formated_ip</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">False</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_formated_ipaddr</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Bad ip address format&quot;</span><span class="p">)</span>
+
+        <span class="c1"># validate country</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;geography&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">FG_COUNTRY_LIST</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Invalid country argument, need to be in `diagnose firewall ipgeo country-list`&quot;</span><span class="p">)</span>
+
+        <span class="c1"># validate iprange</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;iprange&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;start_ip&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Missing argument &#39;start_ip&#39; when type is iprange&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;end_ip&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Missing argument &#39;end_ip&#39; when type is iprange&quot;</span><span class="p">)</span>
+
+    <span class="c1"># init forti object</span>
+    <span class="n">fortigate</span> <span class="o">=</span> <span class="n">AnsibleFortios</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+
+    <span class="c1"># Config path</span>
+    <span class="n">config_path</span> <span class="o">=</span> <span class="s1">&#39;firewall address&#39;</span>
+
+    <span class="c1"># load config</span>
+    <span class="n">fortigate</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">config_path</span><span class="p">)</span>
+
+    <span class="c1"># Absent State</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;absent&#39;</span><span class="p">:</span>
+        <span class="n">fortigate</span><span class="o">.</span><span class="n">candidate_config</span><span class="p">[</span><span class="n">config_path</span><span class="p">]</span><span class="o">.</span><span class="n">del_block</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Present state</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span>
+        <span class="c1"># define address params</span>
+        <span class="n">new_addr</span> <span class="o">=</span> <span class="n">fortigate</span><span class="o">.</span><span class="n">get_empty_configuration_block</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="s1">&#39;edit&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;comment&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;comment&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;comment&#39;</span><span class="p">]))</span>
+
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;iprange&#39;</span><span class="p">:</span>
+            <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;iprange&#39;</span><span class="p">)</span>
+            <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;start-ip&#39;</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;start_ip&#39;</span><span class="p">])</span>
+            <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;end-ip&#39;</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;end_ip&#39;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;geography&#39;</span><span class="p">:</span>
+            <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;geography&#39;</span><span class="p">)</span>
+            <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]))</span>
+
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;interface&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;any&#39;</span><span class="p">:</span>
+            <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;associated-interface&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;interface&#39;</span><span class="p">]))</span>
+
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;fqdn&#39;</span><span class="p">:</span>
+                <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;fqdn&#39;</span><span class="p">)</span>
+                <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;fqdn&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ipmask&#39;</span><span class="p">:</span>
+                <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;subnet&#39;</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">])</span>
+
+        <span class="c1"># add the new address object to the device</span>
+        <span class="n">fortigate</span><span class="o">.</span><span class="n">add_block</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">new_addr</span><span class="p">)</span>
+
+    <span class="c1"># Apply changes (check mode is managed directly by the fortigate object)</span>
+    <span class="n">fortigate</span><span class="o">.</span><span class="n">apply_changes</span><span class="p">()</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="module-source-code">
+<h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible module to manage IP addresses on fortios devices</span>
+<span class="c1"># (c) 2016, Benjamin Jolivot &lt;bjolivot@gmail.com&gt;</span>
+<span class="c1"># GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
+
+
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;metadata_version&#39;</span><span class="p">:</span> <span class="s1">&#39;1.1&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;preview&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;supported_by&#39;</span><span class="p">:</span> <span class="s1">&#39;community&#39;</span><span class="p">}</span>
+
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">---</span>
+<span class="s2">module: fortios_address</span>
+<span class="s2">version_added: &quot;2.4&quot;</span>
+<span class="s2">author: &quot;Benjamin Jolivot (@bjolivot)&quot;</span>
+<span class="s2">short_description: Manage fortios firewall address objects</span>
+<span class="s2">description:</span>
+<span class="s2">  - This module provide management of firewall addresses on FortiOS devices.</span>
+<span class="s2">extends_documentation_fragment: fortios</span>
+<span class="s2">options:</span>
+<span class="s2">  state:</span>
+<span class="s2">    description:</span>
+<span class="s2">      - Specifies if address need to be added or deleted.</span>
+<span class="s2">    required: true</span>
+<span class="s2">    choices: [&#39;present&#39;, &#39;absent&#39;]</span>
+<span class="s2">  name:</span>
+<span class="s2">    description:</span>
+<span class="s2">      - Name of the address to add or delete.</span>
+<span class="s2">    required: true</span>
+<span class="s2">  type:</span>
+<span class="s2">    description:</span>
+<span class="s2">      - Type of the address.</span>
+<span class="s2">    choices: [&#39;iprange&#39;, &#39;fqdn&#39;, &#39;ipmask&#39;, &#39;geography&#39;]</span>
+<span class="s2">  value:</span>
+<span class="s2">    description:</span>
+<span class="s2">      - Address value, based on type.</span>
+<span class="s2">        If type=fqdn, somthing like www.google.com.</span>
+<span class="s2">        If type=ipmask, you can use simple ip (192.168.0.1), ip+mask (192.168.0.1 255.255.255.0) or CIDR (192.168.0.1/32).</span>
+<span class="s2">  start_ip:</span>
+<span class="s2">    description:</span>
+<span class="s2">      - First ip in range (used only with type=iprange).</span>
+<span class="s2">  end_ip:</span>
+<span class="s2">    description:</span>
+<span class="s2">      - Last ip in range (used only with type=iprange).</span>
+<span class="s2">  country:</span>
+<span class="s2">    description:</span>
+<span class="s2">      - 2 letter country code (like FR).</span>
+<span class="s2">  interface:</span>
+<span class="s2">    description:</span>
+<span class="s2">      - interface name the address apply to.</span>
+<span class="s2">    default: any</span>
+<span class="s2">  comment:</span>
+<span class="s2">    description:</span>
+<span class="s2">      - free text to describe address.</span>
+<span class="s2">notes:</span>
+<span class="s2">  - This module requires netaddr python library.</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">- name: Register french addresses</span>
+<span class="s2">  fortios_address:</span>
+<span class="s2">    host: 192.168.0.254</span>
+<span class="s2">    username: admin</span>
+<span class="s2">    password: p4ssw0rd</span>
+<span class="s2">    state: present</span>
+<span class="s2">    name: &quot;fromfrance&quot;</span>
+<span class="s2">    type: geography</span>
+<span class="s2">    country: FR</span>
+<span class="s2">    comment: &quot;French geoip address&quot;</span>
+
+<span class="s2">- name: Register some fqdn</span>
+<span class="s2">  fortios_address:</span>
+<span class="s2">    host: 192.168.0.254</span>
+<span class="s2">    username: admin</span>
+<span class="s2">    password: p4ssw0rd</span>
+<span class="s2">    state: present</span>
+<span class="s2">    name: &quot;Ansible&quot;</span>
+<span class="s2">    type: fqdn</span>
+<span class="s2">    value: www.ansible.com</span>
+<span class="s2">    comment: &quot;Ansible website&quot;</span>
+
+<span class="s2">- name: Register google DNS</span>
+<span class="s2">  fortios_address:</span>
+<span class="s2">    host: 192.168.0.254</span>
+<span class="s2">    username: admin</span>
+<span class="s2">    password: p4ssw0rd</span>
+<span class="s2">    state: present</span>
+<span class="s2">    name: &quot;google_dns&quot;</span>
+<span class="s2">    type: ipmask</span>
+<span class="s2">    value: 8.8.8.8</span>
+
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">firewall_address_config:</span>
+<span class="s2">  description: full firewall adresses config string.</span>
+<span class="s2">  returned: always</span>
+<span class="s2">  type: string</span>
+<span class="s2">change_string:</span>
+<span class="s2">  description: The commands executed by the module.</span>
+<span class="s2">  returned: only if config changed</span>
+<span class="s2">  type: string</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortios.fortios</span> <span class="kn">import</span> <span class="n">fortios_argument_spec</span><span class="p">,</span> <span class="n">fortios_required_if</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortios.fortios</span> <span class="kn">import</span> <span class="n">backup</span><span class="p">,</span> <span class="n">AnsibleFortios</span>
+
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.pycompat24</span> <span class="kn">import</span> <span class="n">get_exception</span>
+
+
+<span class="c1"># check for netaddr lib</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">netaddr</span> <span class="kn">import</span> <span class="n">IPNetwork</span>
+    <span class="n">HAS_NETADDR</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">except</span><span class="p">:</span>
+    <span class="n">HAS_NETADDR</span> <span class="o">=</span> <span class="bp">False</span>
+
+
+<span class="c1"># define valid country list for GEOIP address type</span>
+<span class="n">FG_COUNTRY_LIST</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="s1">&#39;ZZ&#39;</span><span class="p">,</span> <span class="s1">&#39;A1&#39;</span><span class="p">,</span> <span class="s1">&#39;A2&#39;</span><span class="p">,</span> <span class="s1">&#39;O1&#39;</span><span class="p">,</span> <span class="s1">&#39;AD&#39;</span><span class="p">,</span> <span class="s1">&#39;AE&#39;</span><span class="p">,</span> <span class="s1">&#39;AF&#39;</span><span class="p">,</span> <span class="s1">&#39;AG&#39;</span><span class="p">,</span> <span class="s1">&#39;AI&#39;</span><span class="p">,</span> <span class="s1">&#39;AL&#39;</span><span class="p">,</span> <span class="s1">&#39;AM&#39;</span><span class="p">,</span> <span class="s1">&#39;AN&#39;</span><span class="p">,</span> <span class="s1">&#39;AO&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;AP&#39;</span><span class="p">,</span> <span class="s1">&#39;AQ&#39;</span><span class="p">,</span> <span class="s1">&#39;AR&#39;</span><span class="p">,</span> <span class="s1">&#39;AS&#39;</span><span class="p">,</span> <span class="s1">&#39;AT&#39;</span><span class="p">,</span> <span class="s1">&#39;AU&#39;</span><span class="p">,</span> <span class="s1">&#39;AW&#39;</span><span class="p">,</span> <span class="s1">&#39;AX&#39;</span><span class="p">,</span> <span class="s1">&#39;AZ&#39;</span><span class="p">,</span> <span class="s1">&#39;BA&#39;</span><span class="p">,</span> <span class="s1">&#39;BB&#39;</span><span class="p">,</span> <span class="s1">&#39;BD&#39;</span><span class="p">,</span> <span class="s1">&#39;BE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;BF&#39;</span><span class="p">,</span> <span class="s1">&#39;BG&#39;</span><span class="p">,</span> <span class="s1">&#39;BH&#39;</span><span class="p">,</span> <span class="s1">&#39;BI&#39;</span><span class="p">,</span> <span class="s1">&#39;BJ&#39;</span><span class="p">,</span> <span class="s1">&#39;BL&#39;</span><span class="p">,</span> <span class="s1">&#39;BM&#39;</span><span class="p">,</span> <span class="s1">&#39;BN&#39;</span><span class="p">,</span> <span class="s1">&#39;BO&#39;</span><span class="p">,</span> <span class="s1">&#39;BQ&#39;</span><span class="p">,</span> <span class="s1">&#39;BR&#39;</span><span class="p">,</span> <span class="s1">&#39;BS&#39;</span><span class="p">,</span> <span class="s1">&#39;BT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;BV&#39;</span><span class="p">,</span> <span class="s1">&#39;BW&#39;</span><span class="p">,</span> <span class="s1">&#39;BY&#39;</span><span class="p">,</span> <span class="s1">&#39;BZ&#39;</span><span class="p">,</span> <span class="s1">&#39;CA&#39;</span><span class="p">,</span> <span class="s1">&#39;CC&#39;</span><span class="p">,</span> <span class="s1">&#39;CD&#39;</span><span class="p">,</span> <span class="s1">&#39;CF&#39;</span><span class="p">,</span> <span class="s1">&#39;CG&#39;</span><span class="p">,</span> <span class="s1">&#39;CH&#39;</span><span class="p">,</span> <span class="s1">&#39;CI&#39;</span><span class="p">,</span> <span class="s1">&#39;CK&#39;</span><span class="p">,</span> <span class="s1">&#39;CL&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;CM&#39;</span><span class="p">,</span> <span class="s1">&#39;CN&#39;</span><span class="p">,</span> <span class="s1">&#39;CO&#39;</span><span class="p">,</span> <span class="s1">&#39;CR&#39;</span><span class="p">,</span> <span class="s1">&#39;CU&#39;</span><span class="p">,</span> <span class="s1">&#39;CV&#39;</span><span class="p">,</span> <span class="s1">&#39;CW&#39;</span><span class="p">,</span> <span class="s1">&#39;CX&#39;</span><span class="p">,</span> <span class="s1">&#39;CY&#39;</span><span class="p">,</span> <span class="s1">&#39;CZ&#39;</span><span class="p">,</span> <span class="s1">&#39;DE&#39;</span><span class="p">,</span> <span class="s1">&#39;DJ&#39;</span><span class="p">,</span> <span class="s1">&#39;DK&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;DM&#39;</span><span class="p">,</span> <span class="s1">&#39;DO&#39;</span><span class="p">,</span> <span class="s1">&#39;DZ&#39;</span><span class="p">,</span> <span class="s1">&#39;EC&#39;</span><span class="p">,</span> <span class="s1">&#39;EE&#39;</span><span class="p">,</span> <span class="s1">&#39;EG&#39;</span><span class="p">,</span> <span class="s1">&#39;EH&#39;</span><span class="p">,</span> <span class="s1">&#39;ER&#39;</span><span class="p">,</span> <span class="s1">&#39;ES&#39;</span><span class="p">,</span> <span class="s1">&#39;ET&#39;</span><span class="p">,</span> <span class="s1">&#39;EU&#39;</span><span class="p">,</span> <span class="s1">&#39;FI&#39;</span><span class="p">,</span> <span class="s1">&#39;FJ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;FK&#39;</span><span class="p">,</span> <span class="s1">&#39;FM&#39;</span><span class="p">,</span> <span class="s1">&#39;FO&#39;</span><span class="p">,</span> <span class="s1">&#39;FR&#39;</span><span class="p">,</span> <span class="s1">&#39;GA&#39;</span><span class="p">,</span> <span class="s1">&#39;GB&#39;</span><span class="p">,</span> <span class="s1">&#39;GD&#39;</span><span class="p">,</span> <span class="s1">&#39;GE&#39;</span><span class="p">,</span> <span class="s1">&#39;GF&#39;</span><span class="p">,</span> <span class="s1">&#39;GG&#39;</span><span class="p">,</span> <span class="s1">&#39;GH&#39;</span><span class="p">,</span> <span class="s1">&#39;GI&#39;</span><span class="p">,</span> <span class="s1">&#39;GL&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;GM&#39;</span><span class="p">,</span> <span class="s1">&#39;GN&#39;</span><span class="p">,</span> <span class="s1">&#39;GP&#39;</span><span class="p">,</span> <span class="s1">&#39;GQ&#39;</span><span class="p">,</span> <span class="s1">&#39;GR&#39;</span><span class="p">,</span> <span class="s1">&#39;GS&#39;</span><span class="p">,</span> <span class="s1">&#39;GT&#39;</span><span class="p">,</span> <span class="s1">&#39;GU&#39;</span><span class="p">,</span> <span class="s1">&#39;GW&#39;</span><span class="p">,</span> <span class="s1">&#39;GY&#39;</span><span class="p">,</span> <span class="s1">&#39;HK&#39;</span><span class="p">,</span> <span class="s1">&#39;HM&#39;</span><span class="p">,</span> <span class="s1">&#39;HN&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;HR&#39;</span><span class="p">,</span> <span class="s1">&#39;HT&#39;</span><span class="p">,</span> <span class="s1">&#39;HU&#39;</span><span class="p">,</span> <span class="s1">&#39;ID&#39;</span><span class="p">,</span> <span class="s1">&#39;IE&#39;</span><span class="p">,</span> <span class="s1">&#39;IL&#39;</span><span class="p">,</span> <span class="s1">&#39;IM&#39;</span><span class="p">,</span> <span class="s1">&#39;IN&#39;</span><span class="p">,</span> <span class="s1">&#39;IO&#39;</span><span class="p">,</span> <span class="s1">&#39;IQ&#39;</span><span class="p">,</span> <span class="s1">&#39;IR&#39;</span><span class="p">,</span> <span class="s1">&#39;IS&#39;</span><span class="p">,</span> <span class="s1">&#39;IT&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;JE&#39;</span><span class="p">,</span> <span class="s1">&#39;JM&#39;</span><span class="p">,</span> <span class="s1">&#39;JO&#39;</span><span class="p">,</span> <span class="s1">&#39;JP&#39;</span><span class="p">,</span> <span class="s1">&#39;KE&#39;</span><span class="p">,</span> <span class="s1">&#39;KG&#39;</span><span class="p">,</span> <span class="s1">&#39;KH&#39;</span><span class="p">,</span> <span class="s1">&#39;KI&#39;</span><span class="p">,</span> <span class="s1">&#39;KM&#39;</span><span class="p">,</span> <span class="s1">&#39;KN&#39;</span><span class="p">,</span> <span class="s1">&#39;KP&#39;</span><span class="p">,</span> <span class="s1">&#39;KR&#39;</span><span class="p">,</span> <span class="s1">&#39;KW&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;KY&#39;</span><span class="p">,</span> <span class="s1">&#39;KZ&#39;</span><span class="p">,</span> <span class="s1">&#39;LA&#39;</span><span class="p">,</span> <span class="s1">&#39;LB&#39;</span><span class="p">,</span> <span class="s1">&#39;LC&#39;</span><span class="p">,</span> <span class="s1">&#39;LI&#39;</span><span class="p">,</span> <span class="s1">&#39;LK&#39;</span><span class="p">,</span> <span class="s1">&#39;LR&#39;</span><span class="p">,</span> <span class="s1">&#39;LS&#39;</span><span class="p">,</span> <span class="s1">&#39;LT&#39;</span><span class="p">,</span> <span class="s1">&#39;LU&#39;</span><span class="p">,</span> <span class="s1">&#39;LV&#39;</span><span class="p">,</span> <span class="s1">&#39;LY&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;MA&#39;</span><span class="p">,</span> <span class="s1">&#39;MC&#39;</span><span class="p">,</span> <span class="s1">&#39;MD&#39;</span><span class="p">,</span> <span class="s1">&#39;ME&#39;</span><span class="p">,</span> <span class="s1">&#39;MF&#39;</span><span class="p">,</span> <span class="s1">&#39;MG&#39;</span><span class="p">,</span> <span class="s1">&#39;MH&#39;</span><span class="p">,</span> <span class="s1">&#39;MK&#39;</span><span class="p">,</span> <span class="s1">&#39;ML&#39;</span><span class="p">,</span> <span class="s1">&#39;MM&#39;</span><span class="p">,</span> <span class="s1">&#39;MN&#39;</span><span class="p">,</span> <span class="s1">&#39;MO&#39;</span><span class="p">,</span> <span class="s1">&#39;MP&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;MQ&#39;</span><span class="p">,</span> <span class="s1">&#39;MR&#39;</span><span class="p">,</span> <span class="s1">&#39;MS&#39;</span><span class="p">,</span> <span class="s1">&#39;MT&#39;</span><span class="p">,</span> <span class="s1">&#39;MU&#39;</span><span class="p">,</span> <span class="s1">&#39;MV&#39;</span><span class="p">,</span> <span class="s1">&#39;MW&#39;</span><span class="p">,</span> <span class="s1">&#39;MX&#39;</span><span class="p">,</span> <span class="s1">&#39;MY&#39;</span><span class="p">,</span> <span class="s1">&#39;MZ&#39;</span><span class="p">,</span> <span class="s1">&#39;NA&#39;</span><span class="p">,</span> <span class="s1">&#39;NC&#39;</span><span class="p">,</span> <span class="s1">&#39;NE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;NF&#39;</span><span class="p">,</span> <span class="s1">&#39;NG&#39;</span><span class="p">,</span> <span class="s1">&#39;NI&#39;</span><span class="p">,</span> <span class="s1">&#39;NL&#39;</span><span class="p">,</span> <span class="s1">&#39;NO&#39;</span><span class="p">,</span> <span class="s1">&#39;NP&#39;</span><span class="p">,</span> <span class="s1">&#39;NR&#39;</span><span class="p">,</span> <span class="s1">&#39;NU&#39;</span><span class="p">,</span> <span class="s1">&#39;NZ&#39;</span><span class="p">,</span> <span class="s1">&#39;OM&#39;</span><span class="p">,</span> <span class="s1">&#39;PA&#39;</span><span class="p">,</span> <span class="s1">&#39;PE&#39;</span><span class="p">,</span> <span class="s1">&#39;PF&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;PG&#39;</span><span class="p">,</span> <span class="s1">&#39;PH&#39;</span><span class="p">,</span> <span class="s1">&#39;PK&#39;</span><span class="p">,</span> <span class="s1">&#39;PL&#39;</span><span class="p">,</span> <span class="s1">&#39;PM&#39;</span><span class="p">,</span> <span class="s1">&#39;PN&#39;</span><span class="p">,</span> <span class="s1">&#39;PR&#39;</span><span class="p">,</span> <span class="s1">&#39;PS&#39;</span><span class="p">,</span> <span class="s1">&#39;PT&#39;</span><span class="p">,</span> <span class="s1">&#39;PW&#39;</span><span class="p">,</span> <span class="s1">&#39;PY&#39;</span><span class="p">,</span> <span class="s1">&#39;QA&#39;</span><span class="p">,</span> <span class="s1">&#39;RE&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;RO&#39;</span><span class="p">,</span> <span class="s1">&#39;RS&#39;</span><span class="p">,</span> <span class="s1">&#39;RU&#39;</span><span class="p">,</span> <span class="s1">&#39;RW&#39;</span><span class="p">,</span> <span class="s1">&#39;SA&#39;</span><span class="p">,</span> <span class="s1">&#39;SB&#39;</span><span class="p">,</span> <span class="s1">&#39;SC&#39;</span><span class="p">,</span> <span class="s1">&#39;SD&#39;</span><span class="p">,</span> <span class="s1">&#39;SE&#39;</span><span class="p">,</span> <span class="s1">&#39;SG&#39;</span><span class="p">,</span> <span class="s1">&#39;SH&#39;</span><span class="p">,</span> <span class="s1">&#39;SI&#39;</span><span class="p">,</span> <span class="s1">&#39;SJ&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;SK&#39;</span><span class="p">,</span> <span class="s1">&#39;SL&#39;</span><span class="p">,</span> <span class="s1">&#39;SM&#39;</span><span class="p">,</span> <span class="s1">&#39;SN&#39;</span><span class="p">,</span> <span class="s1">&#39;SO&#39;</span><span class="p">,</span> <span class="s1">&#39;SR&#39;</span><span class="p">,</span> <span class="s1">&#39;SS&#39;</span><span class="p">,</span> <span class="s1">&#39;ST&#39;</span><span class="p">,</span> <span class="s1">&#39;SV&#39;</span><span class="p">,</span> <span class="s1">&#39;SX&#39;</span><span class="p">,</span> <span class="s1">&#39;SY&#39;</span><span class="p">,</span> <span class="s1">&#39;SZ&#39;</span><span class="p">,</span> <span class="s1">&#39;TC&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;TD&#39;</span><span class="p">,</span> <span class="s1">&#39;TF&#39;</span><span class="p">,</span> <span class="s1">&#39;TG&#39;</span><span class="p">,</span> <span class="s1">&#39;TH&#39;</span><span class="p">,</span> <span class="s1">&#39;TJ&#39;</span><span class="p">,</span> <span class="s1">&#39;TK&#39;</span><span class="p">,</span> <span class="s1">&#39;TL&#39;</span><span class="p">,</span> <span class="s1">&#39;TM&#39;</span><span class="p">,</span> <span class="s1">&#39;TN&#39;</span><span class="p">,</span> <span class="s1">&#39;TO&#39;</span><span class="p">,</span> <span class="s1">&#39;TR&#39;</span><span class="p">,</span> <span class="s1">&#39;TT&#39;</span><span class="p">,</span> <span class="s1">&#39;TV&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;TW&#39;</span><span class="p">,</span> <span class="s1">&#39;TZ&#39;</span><span class="p">,</span> <span class="s1">&#39;UA&#39;</span><span class="p">,</span> <span class="s1">&#39;UG&#39;</span><span class="p">,</span> <span class="s1">&#39;UM&#39;</span><span class="p">,</span> <span class="s1">&#39;US&#39;</span><span class="p">,</span> <span class="s1">&#39;UY&#39;</span><span class="p">,</span> <span class="s1">&#39;UZ&#39;</span><span class="p">,</span> <span class="s1">&#39;VA&#39;</span><span class="p">,</span> <span class="s1">&#39;VC&#39;</span><span class="p">,</span> <span class="s1">&#39;VE&#39;</span><span class="p">,</span> <span class="s1">&#39;VG&#39;</span><span class="p">,</span> <span class="s1">&#39;VI&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;VN&#39;</span><span class="p">,</span> <span class="s1">&#39;VU&#39;</span><span class="p">,</span> <span class="s1">&#39;WF&#39;</span><span class="p">,</span> <span class="s1">&#39;WS&#39;</span><span class="p">,</span> <span class="s1">&#39;YE&#39;</span><span class="p">,</span> <span class="s1">&#39;YT&#39;</span><span class="p">,</span> <span class="s1">&#39;ZA&#39;</span><span class="p">,</span> <span class="s1">&#39;ZM&#39;</span><span class="p">,</span> <span class="s1">&#39;ZW&#39;</span>
+<span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">get_formated_ipaddr</span><span class="p">(</span><span class="n">input_ip</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Format given ip address string to fortigate format (ip netmask)</span>
+<span class="sd">    Args:</span>
+<span class="sd">        * **ip_str** (string) : string representing ip address</span>
+<span class="sd">        accepted format:</span>
+<span class="sd">          - ip netmask  (ex: 192.168.0.10 255.255.255.0)</span>
+<span class="sd">          - ip (ex: 192.168.0.10)</span>
+<span class="sd">          - CIDR (ex: 192.168.0.10/24)</span>
+
+<span class="sd">    Returns:</span>
+<span class="sd">        formated ip if ip is valid (ex: &quot;192.168.0.10 255.255.255.0&quot;)</span>
+<span class="sd">        False if ip is not valid</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot; &quot;</span> <span class="ow">in</span> <span class="n">input_ip</span><span class="p">:</span>
+            <span class="c1"># ip netmask format</span>
+            <span class="n">str_ip</span><span class="p">,</span> <span class="n">str_netmask</span> <span class="o">=</span> <span class="n">input_ip</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+            <span class="n">ip</span> <span class="o">=</span> <span class="n">IPNetwork</span><span class="p">(</span><span class="n">str_ip</span><span class="p">)</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">IPNetwork</span><span class="p">(</span><span class="n">str_netmask</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">str_ip</span><span class="p">,</span> <span class="n">str_netmask</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ip</span> <span class="o">=</span> <span class="n">IPNetwork</span><span class="p">(</span><span class="n">input_ip</span><span class="p">)</span>
+            <span class="k">return</span> <span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">ip</span><span class="o">.</span><span class="n">ip</span><span class="p">),</span> <span class="nb">str</span><span class="p">(</span><span class="n">ip</span><span class="o">.</span><span class="n">netmask</span><span class="p">))</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="k">return</span> <span class="bp">False</span>
+
+    <span class="k">return</span> <span class="bp">False</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">state</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="s1">&#39;absent&#39;</span><span class="p">]),</span>
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="nb">type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;iprange&#39;</span><span class="p">,</span> <span class="s1">&#39;fqdn&#39;</span><span class="p">,</span> <span class="s1">&#39;ipmask&#39;</span><span class="p">,</span> <span class="s1">&#39;geography&#39;</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="s1">&#39;ipmask&#39;</span><span class="p">),</span>
+        <span class="n">value</span><span class="o">=</span><span class="nb">dict</span><span class="p">(),</span>
+        <span class="n">start_ip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(),</span>
+        <span class="n">end_ip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(),</span>
+        <span class="n">country</span><span class="o">=</span><span class="nb">dict</span><span class="p">(),</span>
+        <span class="n">interface</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">default</span><span class="o">=</span><span class="s1">&#39;any&#39;</span><span class="p">),</span>
+        <span class="n">comment</span><span class="o">=</span><span class="nb">dict</span><span class="p">(),</span>
+    <span class="p">)</span>
+
+    <span class="c1"># merge argument_spec from module_utils/fortios.py</span>
+    <span class="n">argument_spec</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">fortios_argument_spec</span><span class="p">)</span>
+
+    <span class="c1"># Load module</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span>
+        <span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span>
+        <span class="n">required_if</span><span class="o">=</span><span class="n">fortios_required_if</span><span class="p">,</span>
+        <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+    <span class="p">)</span>
+    <span class="n">result</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="n">changed</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">HAS_NETADDR</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Could not import the python library netaddr required by this module&#39;</span><span class="p">)</span>
+
+    <span class="c1"># check params</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;absent&#39;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;ipmask&quot;</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid argument type=</span><span class="si">%s</span><span class="s1"> when state=absent&#39;</span> <span class="o">%</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">])</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid argument `value` when state=absent&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;start_ip&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid argument `start_ip` when state=absent&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;end_ip&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid argument `end_ip` when state=absent&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid argument `country` when state=absent&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;interface&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;any&quot;</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid argument `interface` when state=absent&#39;</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;comment&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s1">&#39;Invalid argument `comment` when state=absent&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="c1"># state=present</span>
+        <span class="c1"># validate IP</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;ipmask&quot;</span><span class="p">:</span>
+            <span class="n">formated_ip</span> <span class="o">=</span> <span class="n">get_formated_ipaddr</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">formated_ip</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">False</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">get_formated_ipaddr</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">])</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Bad ip address format&quot;</span><span class="p">)</span>
+
+        <span class="c1"># validate country</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;geography&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">FG_COUNTRY_LIST</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Invalid country argument, need to be in `diagnose firewall ipgeo country-list`&quot;</span><span class="p">)</span>
+
+        <span class="c1"># validate iprange</span>
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;iprange&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;start_ip&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Missing argument &#39;start_ip&#39; when type is iprange&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;end_ip&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Missing argument &#39;end_ip&#39; when type is iprange&quot;</span><span class="p">)</span>
+
+    <span class="c1"># init forti object</span>
+    <span class="n">fortigate</span> <span class="o">=</span> <span class="n">AnsibleFortios</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+
+    <span class="c1"># Config path</span>
+    <span class="n">config_path</span> <span class="o">=</span> <span class="s1">&#39;firewall address&#39;</span>
+
+    <span class="c1"># load config</span>
+    <span class="n">fortigate</span><span class="o">.</span><span class="n">load_config</span><span class="p">(</span><span class="n">config_path</span><span class="p">)</span>
+
+    <span class="c1"># Absent State</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;absent&#39;</span><span class="p">:</span>
+        <span class="n">fortigate</span><span class="o">.</span><span class="n">candidate_config</span><span class="p">[</span><span class="n">config_path</span><span class="p">]</span><span class="o">.</span><span class="n">del_block</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">])</span>
+
+    <span class="c1"># Present state</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;present&#39;</span><span class="p">:</span>
+        <span class="c1"># define address params</span>
+        <span class="n">new_addr</span> <span class="o">=</span> <span class="n">fortigate</span><span class="o">.</span><span class="n">get_empty_configuration_block</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="s1">&#39;edit&#39;</span><span class="p">)</span>
+
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;comment&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;comment&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;comment&#39;</span><span class="p">]))</span>
+
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;iprange&#39;</span><span class="p">:</span>
+            <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;iprange&#39;</span><span class="p">)</span>
+            <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;start-ip&#39;</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;start_ip&#39;</span><span class="p">])</span>
+            <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;end-ip&#39;</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;end_ip&#39;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;geography&#39;</span><span class="p">:</span>
+            <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;geography&#39;</span><span class="p">)</span>
+            <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;country&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;country&#39;</span><span class="p">]))</span>
+
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;interface&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;any&#39;</span><span class="p">:</span>
+            <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;associated-interface&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;interface&#39;</span><span class="p">]))</span>
+
+        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;fqdn&#39;</span><span class="p">:</span>
+                <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;fqdn&#39;</span><span class="p">)</span>
+                <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;fqdn&#39;</span><span class="p">,</span> <span class="s1">&#39;&quot;</span><span class="si">%s</span><span class="s1">&quot;&#39;</span> <span class="o">%</span> <span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">]))</span>
+            <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;type&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;ipmask&#39;</span><span class="p">:</span>
+                <span class="n">new_addr</span><span class="o">.</span><span class="n">set_param</span><span class="p">(</span><span class="s1">&#39;subnet&#39;</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;value&#39;</span><span class="p">])</span>
+
+        <span class="c1"># add the new address object to the device</span>
+        <span class="n">fortigate</span><span class="o">.</span><span class="n">add_block</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span> <span class="n">new_addr</span><span class="p">)</span>
+
+    <span class="c1"># Apply changes (check mode is managed directly by the fortigate object)</span>
+    <span class="n">fortigate</span><span class="o">.</span><span class="n">apply_changes</span><span class="p">()</span>
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../fortios_playbooks.html" class="btn btn-neutral float-right" title="Playbook Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../fortios_modules.html" class="btn btn-neutral" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

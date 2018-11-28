@@ -1,0 +1,827 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fmgr_device_config &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fmgr_device_group" href="fmgr_device_group.html" />
+    <link rel="prev" title="fmgr_device" href="fmgr_device.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../fmgr_root.html">FortiManager</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../fmgr_modules.html">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device.html">fmgr_device</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_device_config</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_package.html">fmgr_fwpol_package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_ha.html">fmgr_ha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_provisioning.html">fmgr_provisioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_query.html">fmgr_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_script.html">fmgr_script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_appctrl.html">fmgr_secprof_appctrl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_av.html">fmgr_secprof_av</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_dns.html">fmgr_secprof_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ips.html">fmgr_secprof_ips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_profile_group.html">fmgr_secprof_profile_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_proxy.html">fmgr_secprof_proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_spam.html">fmgr_secprof_spam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ssl_ssh.html">fmgr_secprof_ssl_ssh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_voip.html">fmgr_secprof_voip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fmgr_root.html">FortiManager</a> &raquo;</li>
+        
+          <li><a href="../fmgr_modules.html">Modules</a> &raquo;</li>
+        
+      <li>fmgr_device_config</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fmgr_modules/fmgr_device_config.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fmgr-device-config">
+<h1>fmgr_device_config<a class="headerlink" href="#fmgr-device-config" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> fmgr_device_config</p>
+<p><strong>Description:</strong> [‘Edit device configurations from FortiManager Device Manager using jsonrpc API.’]</p>
+<p><strong>Author(s):</strong></p>
+<ul class="simple">
+<li>Luke Weighall (github: &#64;lweighall)</li>
+<li>Andrew Welsh (github: &#64;Ghilli3)</li>
+<li>Jim Huber (github: &#64;p4r4n0y1ng)</li>
+</ul>
+<p><strong>Ansible Version Added/Required:</strong> 2.6</p>
+<p><strong>Dev Status:</strong> PR TESTS GREEN - AWAITING APPROVAL</p>
+<p><strong>Owning Developer:</strong> Luke Weighall</p>
+<p><strong>Pull Request Started:</strong> 9/24/18</p>
+<p><strong>Days in PR:</strong> 31</p>
+<p><strong>Branch Link:</strong> <a class="reference external" href="https://github.com/ftntcorecse/ansible/tree/fmgr_device_config">https://github.com/ftntcorecse/ansible/tree/fmgr_device_config</a></p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adom">
+<h3>adom<a class="headerlink" href="#adom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The ADOM the configuration should belong to.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="device-hostname">
+<h3>device_hostname<a class="headerlink" href="#device-hostname" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The device’s new hostname</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="device-unique-name">
+<h3>device_unique_name<a class="headerlink" href="#device-unique-name" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The unique device’s name that you are editing. A.K.A. Friendly name of device in FortiManager</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="host">
+<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The FortiManager’s Address.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="install-config">
+<h3>install_config<a class="headerlink" href="#install-config" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Tells FMGR to attempt to install the config after making it.</li>
+<li>Required: False</li>
+<li>default: disable</li>
+</ul>
+</div>
+<div class="section" id="interface">
+<h3>interface<a class="headerlink" href="#interface" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The interface/port number you are editing</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="interface-allow-access">
+<h3>interface_allow_access<a class="headerlink" href="#interface-allow-access" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Specify what protocols are allowed on the interface, comma-sepeareted list (see examples)</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="interface-ip">
+<h3>interface_ip<a class="headerlink" href="#interface-ip" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The IP and subnet of the interface/port you are editing</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="password">
+<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The password associated with the username account.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="username">
+<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The username used to authenticate with the FortiManager.</li>
+<li>Required: False</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>update_device_hostname</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_device_hostname</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Change a device&#39;s hostname</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;hostname&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_hostname&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;pm/config/device/{device_name}/global/system/global&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">device_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>update_device_interface</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_device_interface</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update a device interface IP and allow access</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">access_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">allow_access_list</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;interface_allow_access&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">access_list</span> <span class="o">=</span> <span class="n">allow_access_list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;allowaccess&quot;</span><span class="p">:</span> <span class="n">access_list</span><span class="p">,</span>
+        <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;interface_ip&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/device/{device_name}/global/system/interface&quot;</span> \
+          <span class="s2">&quot;/{interface}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">device_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">],</span> <span class="n">interface</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;interface&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>exec_config</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">exec_config</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update a device interface IP and allow access</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;flags&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/securityconsole/install/device&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="c1"># FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fmgr_logout</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="p">(),</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">logout_on_fail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logout_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># VALIDATION ERROR (NO RESULTS, JUST AN EXIT)</span>
+    <span class="k">if</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">&quot;NULL&quot;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># SUBMISSION ERROR</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;NULL&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No status message returned from pyFMG. Possible that this was a GET with a tuple result.&quot;</span>
+
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">good_codes</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">logout_on_fail</span><span class="p">:</span>
+                    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">return_msg</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">&quot; -- LOGOUT ON FAIL IS OFF, MOVING ON&quot;</span>
+                    <span class="k">return</span> <span class="n">return_msg</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">logout_on_success</span><span class="p">:</span>
+                    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">return_msg</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">&quot; -- LOGOUT ON SUCCESS IS OFF, MOVING ON TO REST OF CODE&quot;</span>
+                    <span class="k">return</span> <span class="n">return_msg</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">])),</span>
+
+        <span class="n">device_unique_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">device_hostname</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">interface</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">interface_ip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">interface_allow_access</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">install_config</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,)</span>
+
+    <span class="c1"># handle params passed via provider and insure they are represented as the data type expected by fortimanager</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;device_unique_name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;device_hostname&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_hostname&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;interface&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;interface&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;interface_ip&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;interface_ip&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;interface_allow_access&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;interface_allow_access&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;install_config&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;install_config&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="c1"># check if params are set</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CHECK IF LOGIN FAILED</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="c1"># START SESSION LOGIC</span>
+
+        <span class="c1"># if the device_hostname isn&#39;t null, then attempt the api call via method call, store results in variable</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_hostname&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c1"># add device</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">update_device_hostname</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to set Hostname&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;interface_ip&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;interface_allow_access&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">update_device_interface</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Update Device Interface&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;install_config&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
+            <span class="c1"># attempt to install the config</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">exec_config</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Update Device Interface&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># logout, build in check for future logging capabilities</span>
+    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="module-source-code">
+<h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Ansible</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
+
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;metadata_version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;preview&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;supported_by&quot;</span><span class="p">:</span> <span class="s2">&quot;community&quot;</span>
+<span class="p">}</span>
+
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">module: fmgr_device_config</span>
+<span class="s1">version_added: &quot;2.6&quot;</span>
+<span class="s1">author:</span>
+<span class="s1">    - Luke Weighall (@lweighall)</span>
+<span class="s1">    - Andrew Welsh (@Ghilli3)</span>
+<span class="s1">    - Jim Huber (@p4r4n0y1ng)</span>
+<span class="s1">short_description: Edit device configurations</span>
+<span class="s1">description:</span>
+<span class="s1">  - Edit device configurations from FortiManager Device Manager using jsonrpc API.</span>
+
+<span class="s1">options:</span>
+<span class="s1">  adom:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The ADOM the configuration should belong to.</span>
+<span class="s1">    required: false</span>
+<span class="s1">  host:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The FortiManager&#39;s Address.</span>
+<span class="s1">    required: true</span>
+<span class="s1">  username:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The username used to authenticate with the FortiManager.</span>
+<span class="s1">    required: false</span>
+<span class="s1">  password:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The password associated with the username account.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  device_unique_name:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The unique device&#39;s name that you are editing. A.K.A. Friendly name of device in FortiManager</span>
+<span class="s1">    required: True</span>
+<span class="s1">  device_hostname:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The device&#39;s new hostname</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  install_config:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Tells FMGR to attempt to install the config after making it.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: disable</span>
+<span class="s1">  interface:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The interface/port number you are editing</span>
+<span class="s1">    required: false</span>
+<span class="s1">  interface_ip:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The IP and subnet of the interface/port you are editing</span>
+<span class="s1">    required: false</span>
+<span class="s1">  interface_allow_access:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Specify what protocols are allowed on the interface, comma-sepeareted list (see examples)</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: CHANGE HOSTNAME</span>
+<span class="s1">  fmgr_device_config:</span>
+<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    device_hostname: &quot;ChangedbyAnsible&quot;</span>
+<span class="s1">    device_unique_name: &quot;FGT1&quot;</span>
+
+<span class="s1">- name: EDIT INTERFACE INFORMATION</span>
+<span class="s1">  fmgr_device_config:</span>
+<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    adom: &quot;root&quot;</span>
+<span class="s1">    device_unique_name: &quot;FGT2&quot;</span>
+<span class="s1">    interface: &quot;port3&quot;</span>
+<span class="s1">    interface_ip: &quot;10.1.1.1/24&quot;</span>
+<span class="s1">    interface_allow_access: &quot;ping, telnet, https&quot;</span>
+
+<span class="s1">- name: INSTALL CONFIG</span>
+<span class="s1">  fmgr_device_config:</span>
+<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
+<span class="s1">    username: &quot;{{ username }}&quot;</span>
+<span class="s1">    password: &quot;{{ password }}&quot;</span>
+<span class="s1">    adom: &quot;root&quot;</span>
+<span class="s1">    device_unique_name: &quot;FGT1&quot;</span>
+<span class="s1">    install_config: &quot;enable&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">api_result:</span>
+<span class="s2">  description: full API response, includes status code and message</span>
+<span class="s2">  returned: always</span>
+<span class="s2">  type: string</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">AnsibleFortiManager</span>
+
+<span class="c1"># check for pyFMG lib</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="kn">from</span> <span class="nn">pyFMG.fortimgr</span> <span class="kn">import</span> <span class="n">FortiManager</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">True</span>
+<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">False</span>
+
+
+<span class="k">def</span> <span class="nf">update_device_hostname</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Change a device&#39;s hostname</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;hostname&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_hostname&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;pm/config/device/{device_name}/global/system/global&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">device_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">update_device_interface</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update a device interface IP and allow access</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">access_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+    <span class="n">allow_access_list</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;interface_allow_access&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)</span>
+    <span class="n">access_list</span> <span class="o">=</span> <span class="n">allow_access_list</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s1">&#39;,&#39;</span><span class="p">)</span>
+
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;allowaccess&quot;</span><span class="p">:</span> <span class="n">access_list</span><span class="p">,</span>
+        <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;interface_ip&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/device/{device_name}/global/system/interface&quot;</span> \
+          <span class="s2">&quot;/{interface}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">device_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">],</span> <span class="n">interface</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;interface&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">exec_config</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Update a device interface IP and allow access</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;scope&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">]</span>
+        <span class="p">},</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;flags&quot;</span><span class="p">:</span> <span class="s2">&quot;none&quot;</span>
+    <span class="p">}</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/securityconsole/install/device&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="c1"># FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES</span>
+<span class="k">def</span> <span class="nf">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="p">(),</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">logout_on_fail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logout_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="c1"># VALIDATION ERROR (NO RESULTS, JUST AN EXIT)</span>
+    <span class="k">if</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">&quot;NULL&quot;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+        <span class="k">except</span><span class="p">:</span>
+            <span class="k">pass</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
+
+    <span class="c1"># SUBMISSION ERROR</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;NULL&quot;</span><span class="p">:</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
+            <span class="k">except</span><span class="p">:</span>
+                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No status message returned from pyFMG. Possible that this was a GET with a tuple result.&quot;</span>
+
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">good_codes</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">logout_on_fail</span><span class="p">:</span>
+                    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">return_msg</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">&quot; -- LOGOUT ON FAIL IS OFF, MOVING ON&quot;</span>
+                    <span class="k">return</span> <span class="n">return_msg</span>
+            <span class="k">else</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">logout_on_success</span><span class="p">:</span>
+                    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">return_msg</span> <span class="o">=</span> <span class="n">msg</span> <span class="o">+</span> <span class="s2">&quot; -- LOGOUT ON SUCCESS IS OFF, MOVING ON TO REST OF CODE&quot;</span>
+                    <span class="k">return</span> <span class="n">return_msg</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
+        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">])),</span>
+
+        <span class="n">device_unique_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">device_hostname</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">interface</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">interface_ip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">interface_allow_access</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">install_config</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">),</span>
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,)</span>
+
+    <span class="c1"># handle params passed via provider and insure they are represented as the data type expected by fortimanager</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;device_unique_name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;device_hostname&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_hostname&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;interface&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;interface&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;interface_ip&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;interface_ip&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;interface_allow_access&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;interface_allow_access&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;install_config&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;install_config&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+
+    <span class="c1"># check if params are set</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+
+    <span class="c1"># CHECK IF LOGIN FAILED</span>
+    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+
+        <span class="c1"># START SESSION LOGIC</span>
+
+        <span class="c1"># if the device_hostname isn&#39;t null, then attempt the api call via method call, store results in variable</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_hostname&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="c1"># add device</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">update_device_hostname</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to set Hostname&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;interface_ip&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;interface_allow_access&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">update_device_interface</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Update Device Interface&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;install_config&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
+            <span class="c1"># attempt to install the config</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">exec_config</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Update Device Interface&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+    <span class="c1"># logout, build in check for future logging capabilities</span>
+    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fmgr_device_group.html" class="btn btn-neutral float-right" title="fmgr_device_group" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fmgr_device.html" class="btn btn-neutral" title="fmgr_device" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'1.0',
+            LANGUAGE:'None',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true,
+            SOURCELINK_SUFFIX: '.txt'
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+==========================================
+fortios_switch_controller.qos_queue_policy
+==========================================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure FortiSwitch QoS egress queue policy.
+        fortios_switch_controller.qos_queue_policy:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          switch_controller.qos_queue_policy:
+            state: "present"
+            cos-queue:
+             -
+                description: "<your_own_value>"
+                drop-policy: "taildrop"
+                max-rate: "6"
+                min-rate: "7"
+                name: "default_name_8"
+                weight: "9"
+            name: "default_name_10"
+            schedule: "strict"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/switch_controller.qos/fortios_switch_controller.qos_queue_policy_example.yml
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure FortiSwitch QoS egress queue policy.
+        fortios_switch_controller.qos_queue_policy:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          switch_controller.qos_queue_policy:
+            state: "present"
+            cos-queue:
+             -
+                description: "<your_own_value>"
+                drop-policy: "taildrop"
+                max-rate: "6"
+                min-rate: "7"
+                name: "default_name_8"
+                weight: "9"
+            name: "default_name_10"
+            schedule: "strict"
+
+
+
+

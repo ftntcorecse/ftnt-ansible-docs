@@ -1,0 +1,65 @@
+=======================
+fortios_system_vdom_dns
+=======================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure DNS servers for a non-management VDOM.
+        fortios_system_vdom_dns:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          system_vdom_dns:
+            ip6-primary: "<your_own_value>"
+            ip6-secondary: "<your_own_value>"
+            primary: "<your_own_value>"
+            secondary: "<your_own_value>"
+            source-ip: "84.230.14.43"
+            vdom-dns: "enable"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/system/fortios_system_vdom_dns_example.yml
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure DNS servers for a non-management VDOM.
+        fortios_system_vdom_dns:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          system_vdom_dns:
+            ip6-primary: "<your_own_value>"
+            ip6-secondary: "<your_own_value>"
+            primary: "<your_own_value>"
+            secondary: "<your_own_value>"
+            source-ip: "84.230.14.43"
+            vdom-dns: "enable"
+
+
+
+
