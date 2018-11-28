@@ -1,0 +1,7 @@
+var_fgt_clusters:
+  - device_unique_name: "fgt-cluster01"
+    device_username: "admin"
+    device_password: "fortinet"
+    device_ip: "10.7.220.151"
+    adom: "ansible"
+    nodes: ["ansible-fgt01", "ansible-fgt02", "ansible-fgt03"]

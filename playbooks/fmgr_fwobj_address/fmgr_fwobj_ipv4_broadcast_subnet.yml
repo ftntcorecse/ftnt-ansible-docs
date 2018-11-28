@@ -1,0 +1,22 @@
+---
+
+- name: CONFIG IPv4 IP ADDRESS OBJECT
+  hosts: FortiManager
+  connection: local
+  gather_facts: False
+
+  tasks:
+
+  - name: ADD BROADCAST SUBNET
+    fmgr_fwobj_address:
+      host: "{{ inventory_hostname }}"
+      username: "{{ username }}"
+      password: "{{ password }}"
+      adom: "ansible"
+      mode: "add"
+      multicast: "broadcastmask"
+      ipv4addr: "10.7.220.0/24"
+      name: "ansible_broadcastSubnet"
+      comment: "Dev Example for Ansible"
+      color: "22"
+      tags: "ansible, ipv4, test123, test321"
