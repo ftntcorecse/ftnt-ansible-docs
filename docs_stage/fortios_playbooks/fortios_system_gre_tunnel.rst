@@ -1,0 +1,87 @@
+=========================
+fortios_system_gre_tunnel
+=========================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure GRE tunnel.
+        fortios_system_gre_tunnel:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          system_gre_tunnel:
+            state: "present"
+            checksum-reception: "disable"
+            checksum-transmission: "disable"
+            dscp-copying: "disable"
+            interface: "<your_own_value> (source system.interface.name)"
+            ip-version: "4"
+            keepalive-failtimes: "8"
+            keepalive-interval: "9"
+            key-inbound: "10"
+            key-outbound: "11"
+            local-gw: "<your_own_value>"
+            local-gw6: "<your_own_value>"
+            name: "default_name_14"
+            remote-gw: "<your_own_value>"
+            remote-gw6: "<your_own_value>"
+            sequence-number-reception: "disable"
+            sequence-number-transmission: "disable"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/system/fortios_system_gre_tunnel_example.yml
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure GRE tunnel.
+        fortios_system_gre_tunnel:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          system_gre_tunnel:
+            state: "present"
+            checksum-reception: "disable"
+            checksum-transmission: "disable"
+            dscp-copying: "disable"
+            interface: "<your_own_value> (source system.interface.name)"
+            ip-version: "4"
+            keepalive-failtimes: "8"
+            keepalive-interval: "9"
+            key-inbound: "10"
+            key-outbound: "11"
+            local-gw: "<your_own_value>"
+            local-gw6: "<your_own_value>"
+            name: "default_name_14"
+            remote-gw: "<your_own_value>"
+            remote-gw6: "<your_own_value>"
+            sequence-number-reception: "disable"
+            sequence-number-transmission: "disable"
+
+
+
+
