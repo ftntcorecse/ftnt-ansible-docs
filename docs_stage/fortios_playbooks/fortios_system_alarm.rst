@@ -1,0 +1,103 @@
+====================
+fortios_system_alarm
+====================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure alarm.
+        fortios_system_alarm:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          system_alarm:
+            audible: "enable"
+            groups:
+             -
+                admin-auth-failure-threshold: "5"
+                admin-auth-lockout-threshold: "6"
+                decryption-failure-threshold: "7"
+                encryption-failure-threshold: "8"
+                fw-policy-id: "9"
+                fw-policy-id-threshold: "10"
+                fw-policy-violations:
+                 -
+                    dst-ip: "<your_own_value>"
+                    dst-port: "13"
+                    id:  "14"
+                    src-ip: "<your_own_value>"
+                    src-port: "16"
+                    threshold: "17"
+                id:  "18"
+                log-full-warning-threshold: "19"
+                period: "20"
+                replay-attempt-threshold: "21"
+                self-test-failure-threshold: "22"
+                user-auth-failure-threshold: "23"
+                user-auth-lockout-threshold: "24"
+            status: "enable"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/system/fortios_system_alarm_example.yml
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure alarm.
+        fortios_system_alarm:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          system_alarm:
+            audible: "enable"
+            groups:
+             -
+                admin-auth-failure-threshold: "5"
+                admin-auth-lockout-threshold: "6"
+                decryption-failure-threshold: "7"
+                encryption-failure-threshold: "8"
+                fw-policy-id: "9"
+                fw-policy-id-threshold: "10"
+                fw-policy-violations:
+                 -
+                    dst-ip: "<your_own_value>"
+                    dst-port: "13"
+                    id:  "14"
+                    src-ip: "<your_own_value>"
+                    src-port: "16"
+                    threshold: "17"
+                id:  "18"
+                log-full-warning-threshold: "19"
+                period: "20"
+                replay-attempt-threshold: "21"
+                self-test-failure-threshold: "22"
+                user-auth-failure-threshold: "23"
+                user-auth-lockout-threshold: "24"
+            status: "enable"
+
+
+
+

@@ -1,0 +1,63 @@
+====================
+fortios_dlp_settings
+====================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Designate logical storage for DLP fingerprint database.
+        fortios_dlp_settings:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          dlp_settings:
+            cache-mem-percent: "3"
+            chunk-size: "4"
+            db-mode: "stop-adding"
+            size: "6"
+            storage-device: "<your_own_value> (source system.storage.name)"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/dlp/fortios_dlp_settings_example.yml
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Designate logical storage for DLP fingerprint database.
+        fortios_dlp_settings:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          dlp_settings:
+            cache-mem-percent: "3"
+            chunk-size: "4"
+            db-mode: "stop-adding"
+            size: "6"
+            storage-device: "<your_own_value> (source system.storage.name)"
+
+
+
+

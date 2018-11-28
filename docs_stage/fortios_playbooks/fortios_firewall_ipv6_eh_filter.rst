@@ -1,0 +1,69 @@
+===============================
+fortios_firewall_ipv6_eh_filter
+===============================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure IPv6 extension header filter.
+        fortios_firewall_ipv6_eh_filter:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          firewall_ipv6_eh_filter:
+            auth: "enable"
+            dest-opt: "enable"
+            fragment: "enable"
+            hdopt-type: "6"
+            hop-opt: "enable"
+            no-next: "enable"
+            routing: "enable"
+            routing-type: "10"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/firewall/fortios_firewall_ipv6_eh_filter_example.yml
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure IPv6 extension header filter.
+        fortios_firewall_ipv6_eh_filter:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          firewall_ipv6_eh_filter:
+            auth: "enable"
+            dest-opt: "enable"
+            fragment: "enable"
+            hdopt-type: "6"
+            hop-opt: "enable"
+            no-next: "enable"
+            routing: "enable"
+            routing-type: "10"
+
+
+
+

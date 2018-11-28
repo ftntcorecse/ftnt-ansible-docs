@@ -1,0 +1,81 @@
+=================================
+fortios_endpoint_control_settings
+=================================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure endpoint control settings.
+        fortios_endpoint_control_settings:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          endpoint_control_settings:
+            download-custom-link: "<your_own_value>"
+            download-location: "fortiguard"
+            forticlient-avdb-update-interval: "5"
+            forticlient-dereg-unsupported-client: "enable"
+            forticlient-ems-rest-api-call-timeout: "7"
+            forticlient-keepalive-interval: "8"
+            forticlient-offline-grace: "enable"
+            forticlient-offline-grace-interval: "10"
+            forticlient-reg-key: "<your_own_value>"
+            forticlient-reg-key-enforce: "enable"
+            forticlient-reg-timeout: "13"
+            forticlient-sys-update-interval: "14"
+            forticlient-user-avatar: "enable"
+            forticlient-warning-interval: "16"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/endpoint_control/fortios_endpoint_control_settings_example.yml
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure endpoint control settings.
+        fortios_endpoint_control_settings:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          endpoint_control_settings:
+            download-custom-link: "<your_own_value>"
+            download-location: "fortiguard"
+            forticlient-avdb-update-interval: "5"
+            forticlient-dereg-unsupported-client: "enable"
+            forticlient-ems-rest-api-call-timeout: "7"
+            forticlient-keepalive-interval: "8"
+            forticlient-offline-grace: "enable"
+            forticlient-offline-grace-interval: "10"
+            forticlient-reg-key: "<your_own_value>"
+            forticlient-reg-key-enforce: "enable"
+            forticlient-reg-timeout: "13"
+            forticlient-sys-update-interval: "14"
+            forticlient-user-avatar: "enable"
+            forticlient-warning-interval: "16"
+
+
+
+
