@@ -11,13 +11,14 @@ Metadata
 
 **Name:** fortios_address
 
-**Description:** ['This module provide management of firewall addresses on FortiOS devices.']
+**Description:** This module provide management of firewall addresses on FortiOS devices.
+
 
 **Author(s):** Benjamin Jolivot (@bjolivot)
 
 **Ansible Version Added/Required:** 2.4
 
-**Dev Status:** Not currently tracked. Likelihood is this is a private module for a one-off need that hasn't been finalized for Ansible testing yet.
+**Dev Status:** No Data Exists. Contact DevOps Team.
 
 Parameters
 ----------
@@ -132,7 +133,7 @@ Functions
             else:
                 ip = IPNetwork(input_ip)
                 return "%s %s" % (str(ip.ip), str(ip.netmask))
-        except:
+        except Exception:
             return False
     
         return False
@@ -254,6 +255,7 @@ Functions
         # Apply changes (check mode is managed directly by the fortigate object)
         fortigate.apply_changes()
     
+    
 
 
 
@@ -363,25 +365,24 @@ Module Source Code
     firewall_address_config:
       description: full firewall adresses config string.
       returned: always
-      type: string
+      type: str
     change_string:
       description: The commands executed by the module.
       returned: only if config changed
-      type: string
+      type: str
     """
     
     from ansible.module_utils.network.fortios.fortios import fortios_argument_spec, fortios_required_if
     from ansible.module_utils.network.fortios.fortios import backup, AnsibleFortios
     
     from ansible.module_utils.basic import AnsibleModule
-    from ansible.module_utils.pycompat24 import get_exception
     
     
     # check for netaddr lib
     try:
         from netaddr import IPNetwork
         HAS_NETADDR = True
-    except:
+    except Exception:
         HAS_NETADDR = False
     
     
@@ -434,7 +435,7 @@ Module Source Code
             else:
                 ip = IPNetwork(input_ip)
                 return "%s %s" % (str(ip.ip), str(ip.netmask))
-        except:
+        except Exception:
             return False
     
         return False
@@ -550,6 +551,7 @@ Module Source Code
     
         # Apply changes (check mode is managed directly by the fortigate object)
         fortigate.apply_changes()
+    
     
     if __name__ == '__main__':
         main()

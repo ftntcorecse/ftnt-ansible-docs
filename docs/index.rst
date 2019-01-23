@@ -7,7 +7,7 @@ Fortinet Ansible Module Documentation
 ====================================================
 
 Welcome! This documentation is where you can find information on any Fortinet Ansible module.
-
+It is maintained by the North American Core CSE DevOps group.
 
 
 .. toctree::
