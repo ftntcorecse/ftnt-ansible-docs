@@ -1,17 +1,14 @@
 ---
 - name: DISCOVER AND ADD DEVICES
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
     - name: DISCOVER AND ADD DEVICE FGT1
       fmgr_device:
         #hard coded fortimanager example host and login -- see "fmg_group_add.yml for ansible host file version"
-        host: "{{ inventory_hostname }}"
         #HARD CODED LOGIN FOR FORTIMANAGER SEE "fmg_group_add.yml" example for anisble host version
-        username: "{{ username }}"
-        password: "{{ password }}"
         #ADOM TO ADD THE DEVICE TO
         adom: "ansible"
         #DEVICE LOGIN
@@ -25,9 +22,6 @@
         state: "absent"
     - name: DISCOVER AND ADD DEVICE FGT2
       fmgr_device:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "ansible"
         device_username: "admin"
         device_password: "fortinet"
@@ -36,9 +30,6 @@
         state: "absent"
     - name: DISCOVER AND ADD DEVICE FGT3
       fmgr_device:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "ansible"
         device_username: "admin"
         device_password: "fortinet"

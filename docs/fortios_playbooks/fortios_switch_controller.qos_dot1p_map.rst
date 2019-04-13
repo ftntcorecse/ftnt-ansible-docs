@@ -39,5 +39,41 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
+<<<<<<< Updated upstream
+
+../ansible_fgt_modules/v6.0.2/switch_controller.qos/fortios_switch_controller.qos_dot1p_map_example.yml
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure FortiSwitch QoS 802.1p.
+        fortios_switch_controller.qos_dot1p_map:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          switch_controller.qos_dot1p_map:
+            state: "present"
+            description: "<your_own_value>"
+            name: "default_name_4"
+            priority-0: "queue-0"
+            priority-1: "queue-0"
+            priority-2: "queue-0"
+            priority-3: "queue-0"
+            priority-4: "queue-0"
+            priority-5: "queue-0"
+            priority-6: "queue-0"
+            priority-7: "queue-0"
+
+
+
+=======
 %%PB_FILE_EXAMPLE_TOKEN%%
+>>>>>>> Stashed changes
 

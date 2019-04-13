@@ -1,23 +1,17 @@
 ---
 - name: DISCOVER AND ADD DEVICES
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
     - name: CHANGE HOSTNAME
       fmgr_device_config:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         device_hostname: "ChangedbyAnsible"
         device_unique_name: "FGT1"
 
     - name: EDIT INTERFACE INFORMATION
       fmgr_device_config:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "root"
         device_unique_name: "FGT2"
         interface: "port3"

@@ -2,7 +2,7 @@
 
 - name: CONFIG CUSTOM SERVICES
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
@@ -10,9 +10,6 @@
   # BASIC FULL PNAT MAPPING
   - name: EDIT FMGR_FIREWALL_VIP PNAT
     fmgr_fwobj_vip:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       name: "Basic PNAT Map Port 10443"
       mode: "set"
       adom: "ansible"

@@ -1,0 +1,85 @@
+======================
+fortios_report_dataset
+======================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Report dataset configuration.
+        fortios_report_dataset:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          report_dataset:
+            state: "present"
+            field:
+             -
+                displayname: "<your_own_value>"
+                id:  "5"
+                name: "default_name_6"
+                type: "text"
+            name: "default_name_8"
+            parameters:
+             -
+                data-type: "text"
+                display-name: "<your_own_value>"
+                field: "<your_own_value>"
+                id:  "13"
+            policy: "14"
+            query: "<your_own_value>"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/report/fortios_report_dataset_example.yml
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Report dataset configuration.
+        fortios_report_dataset:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          report_dataset:
+            state: "present"
+            field:
+             -
+                displayname: "<your_own_value>"
+                id:  "5"
+                name: "default_name_6"
+                type: "text"
+            name: "default_name_8"
+            parameters:
+             -
+                data-type: "text"
+                display-name: "<your_own_value>"
+                field: "<your_own_value>"
+                id:  "13"
+            policy: "14"
+            query: "<your_own_value>"
+
+
+
+

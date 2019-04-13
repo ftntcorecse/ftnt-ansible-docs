@@ -2,16 +2,13 @@
 
 - name: CONFIG FW POLICIES
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
 
   - name: ADD VERY BASIC IPV4 POLICY WITH NO NAT (WIDE OPEN)
     fmgr_fwpol_ipv4:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       mode: "delete"
       adom: "ansible"
       package_name: "default"
@@ -20,20 +17,14 @@
 
   - name: ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES
     fmgr_fwpol_ipv4:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       mode: "delete"
       adom: "ansible"
       package_name: "default"
       name: "Basic_IPv4_Policy_2"
 
-  - name: ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES
-    fmgr_fwpol_ipv4:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
-      mode: "delete"
-      adom: "ansible"
-      package_name: "default"
-      name: "Basic_IPv4_Policy_3"
+#  - name: ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES
+#    fmgr_fwpol_ipv4:
+#      mode: "delete"
+#      adom: "ansible"
+#      package_name: "default"
+#      name: "Basic_IPv4_Policy_3"

@@ -11,7 +11,7 @@ Metadata
 
 **Name:** fmgr_fwobj_service
 
-**Description:** Manages FortiManager Firewall Service Objects
+**Description:** Manages FortiManager Firewall Service Objects.
 
 
 **Author(s):** 
@@ -26,15 +26,11 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+**Dev Status:** COMPLETED/MERGED
 
 **Owning Developer:** Luke Weighall
 
-**Pull Request Started:** 10/9/18
-
-**Days in PR:** 20
-
-**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_fwobj_service
+**Module Link:** https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_fwobj_service.py
 
 Parameters
 ----------
@@ -116,7 +112,7 @@ comment
 custom_type
 +++++++++++
 
-- Description: Tells module what kind of custom service to be added
+- Description: Tells module what kind of custom service to be added.
 
   
 
@@ -153,7 +149,7 @@ fqdn
 group_member
 ++++++++++++
 
-- Description: Comma Seperated list of members' names.
+- Description: Comma-Seperated list of members' names.
 
   
 
@@ -167,13 +163,6 @@ group_name
   
 
 - Required: False
-
-host
-++++
-
-- Description: The FortiManager's Address.
-
-- Required: True
 
 icmp_code
 +++++++++
@@ -207,7 +196,7 @@ iprange
 mode
 ++++
 
-- Description: Sets one of three modes for managing the object
+- Description: Sets one of three modes for managing the object.
 
   
 
@@ -229,20 +218,13 @@ name
 object_type
 +++++++++++
 
-- Description: Tells module if we are adding a custom service, category, or group
+- Description: Tells module if we are adding a custom service, category, or group.
 
   
 
 - Required: False
 
 - choices: ['custom', 'group', 'category']
-
-password
-++++++++
-
-- Description: The password associated with the username account.
-
-- Required: True
 
 protocol
 ++++++++
@@ -265,7 +247,7 @@ protocol_number
 sctp_portrange
 ++++++++++++++
 
-- Description: Multiple SCTP port ranges. Comma separated list of destination ports to add (i.e. '443,80')
+- Description: Multiple SCTP port ranges. Comma separated list of destination ports to add (i.e. '443,80').
 
   Syntax is <destPort:sourcePort>
 
@@ -273,9 +255,9 @@ sctp_portrange
 
   Ranges can be defined with a hyphen -
 
-  Examples -- '443' (destPort 443 only)  '443:1000-2000' (destPort 443 from source ports 1000-2000)
+  Examples -- '443' (destPort 443 only)  '443:1000-2000' (destPort 443 from source ports 1000-2000).
 
-  String multiple together in same quotes, comma separated. ('443:1000-2000, 80:1000-2000')
+  String multiple together in same quotes, comma separated. ('443:1000-2000, 80:1000-2000').
 
   
 
@@ -317,7 +299,7 @@ tcp_halfopen_timer
 tcp_portrange
 +++++++++++++
 
-- Description: Comma separated list of destination ports to add (i.e. '443,80')
+- Description: Comma separated list of destination ports to add (i.e. '443,80').
 
   Syntax is <destPort:sourcePort>
 
@@ -325,9 +307,9 @@ tcp_portrange
 
   Ranges can be defined with a hyphen -
 
-  Examples -- '443' (destPort 443 only)  '443:1000-2000' (destPort 443 from source ports 1000-2000)
+  Examples -- '443' (destPort 443 only)  '443:1000-2000' (destPort 443 from source ports 1000-2000).
 
-  String multiple together in same quotes, comma separated. ('443:1000-2000, 80:1000-2000')
+  String multiple together in same quotes, comma separated. ('443:1000-2000, 80:1000-2000').
 
   
 
@@ -358,7 +340,7 @@ udp_idle_timer
 udp_portrange
 +++++++++++++
 
-- Description: Comma separated list of destination ports to add (i.e. '443,80')
+- Description: Comma separated list of destination ports to add (i.e. '443,80').
 
   Syntax is <destPort:sourcePort>
 
@@ -366,20 +348,13 @@ udp_portrange
 
   Ranges can be defined with a hyphen -
 
-  Examples -- '443' (destPort 443 only)  '443:1000-2000' (destPort 443 from source ports 1000-2000)
+  Examples -- '443' (destPort 443 only)  '443:1000-2000' (destPort 443 from source ports 1000-2000).
 
-  String multiple together in same quotes, comma separated. ('443:1000-2000, 80:1000-2000')
+  String multiple together in same quotes, comma separated. ('443:1000-2000, 80:1000-2000').
 
   
 
 - Required: False
-
-username
-++++++++
-
-- Description: The username used to authenticate with the FortiManager.
-
-- Required: True
 
 visibility
 ++++++++++
@@ -403,37 +378,28 @@ Functions
 
 
 
-- cidr_to_netmask
-
- .. code-block:: python
-
-    def cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return (str((0xff000000 & mask) >> 24) + '.' +
-                str((0x00ff0000 & mask) >> 16) + '.' +
-                str((0x0000ff00 & mask) >> 8) + '.' +
-                str((0x000000ff & mask)))
-    
-    
-
 - fmgr_fwobj_service_custom
 
  .. code-block:: python
 
-    def fmgr_fwobj_service_custom(fmg, paramgram):
+    def fmgr_fwobj_service_custom(fmgr, paramgram):
         """
-        # NOTES!
-        -- the tcp and udp-portrange parameters are in a list when there are multiple. they are not in a list when they
-            singular or by themselves (only 1 was listed)
-            -- the syntax for this is (destPort:sourcePort). Ranges are (xxxx-xxxx) i.e. 443:443, or 443:1000-2000.
-            -- if you leave out the second field after the colon (source port) it assumes any source port (which is usual)
-            -- multiples would look like ['443:1000-2000','80']
-            -- a single would look simple like "443:1000-2000" without the list around it ( a string!)
-    
-        -- the protocol parameter is the protocol NUMBER, not the string of it.
+        description:
+            - the tcp and udp-portrange parameters are in a list when there are multiple. they are not in a list when they
+              singular or by themselves (only 1 was listed)
+            - the syntax for this is (destPort:sourcePort). Ranges are (xxxx-xxxx) i.e. 443:443, or 443:1000-2000.
+            - if you leave out the second field after the colon (source port) it assumes any source port (which is usual)
+            - multiples would look like ['443:1000-2000','80']
+            - a single would look simple like "443:1000-2000" without the list around it ( a string!)
+            - the protocol parameter is the protocol NUMBER, not the string of it.
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
-        response = (-100000, {"msg": "Nothing Happened."})
+        response = DEFAULT_RESULT_OBJ
         if paramgram["mode"] in ['set', 'add']:
             # SET THE URL FOR ADD / SET
             url = '/pm/config/adom/{adom}/obj/firewall/service/custom'.format(adom=paramgram["adom"])
@@ -531,17 +497,8 @@ Functions
             url = '/pm/config/adom/{adom}/obj/firewall/service/custom' \
                   '/{name}'.format(adom=paramgram["adom"], name=paramgram["name"])
     
-        datagram = fmgr_del_none(datagram)
-    
-        if paramgram["mode"] == "set":
-            response = fmg.set(url, datagram)
-            # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        if paramgram["mode"] == "add":
-            response = fmg.add(url, datagram)
-            # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        if paramgram["mode"] == "delete":
-            response = fmg.delete(url, datagram)
-    
+        datagram = scrub_dict(datagram)
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
     
     
@@ -550,18 +507,16 @@ Functions
 
  .. code-block:: python
 
-    def fmgr_fwobj_service_group(fmg, paramgram):
+    def fmgr_fwobj_service_group(fmgr, paramgram):
         """
-        # NOTES
-        only advanced option is color
-        when explicit proxy is set no other options are presented
-        add members list and boom
-        explicit-proxy = 0 is default
-        meta fields = {}
-        color =
-        comment
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
-        response = (-100000, {"msg": "Nothing Happened."})
+        response = DEFAULT_RESULT_OBJ
         if paramgram["mode"] in ['set', 'add']:
             url = '/pm/config/adom/{adom}/obj/firewall/service/group'.format(adom=paramgram["adom"])
             datagram = {
@@ -585,17 +540,8 @@ Functions
             url = '/pm/config/adom/{adom}/obj/firewall/service/group' \
                   '/{name}'.format(adom=paramgram["adom"], name=paramgram["group-name"])
     
-        datagram = fmgr_del_none(datagram)
-    
-        if paramgram["mode"] == "set":
-            response = fmg.set(url, datagram)
-            # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        if paramgram["mode"] == "add":
-            response = fmg.add(url, datagram)
-            # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        if paramgram["mode"] == "delete":
-            response = fmg.delete(url, datagram)
-    
+        datagram = scrub_dict(datagram)
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
     
     
@@ -604,11 +550,16 @@ Functions
 
  .. code-block:: python
 
-    def fmgr_fwobj_service_category(fmg, paramgram):
+    def fmgr_fwobj_service_category(fmgr, paramgram):
         """
-        # NOTES
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
-        response = (-100000, {"msg": "Nothing Happened."})
+        response = DEFAULT_RESULT_OBJ
         if paramgram["mode"] in ['set', 'add']:
             url = '/pm/config/adom/{adom}/obj/firewall/service/category'.format(adom=paramgram["adom"])
             # GET RID OF ANY WHITESPACE
@@ -629,99 +580,9 @@ Functions
             url = '/pm/config/adom/{adom}/obj/firewall/service/category' \
                   '/{name}'.format(adom=paramgram["adom"], name=paramgram["category"])
     
-        datagram = fmgr_del_none(datagram)
-    
-        if paramgram["mode"] == "set":
-            response = fmg.set(url, datagram)
-            # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        if paramgram["mode"] == "add":
-            response = fmg.add(url, datagram)
-            # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        if paramgram["mode"] == "delete":
-            response = fmg.delete(url, datagram)
-    
+        datagram = scrub_dict(datagram)
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
-    
-    
-
-- fmgr_del_none
-
- .. code-block:: python
-
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-    
-    
-
-- fmgr_is_empty_dict
-
- .. code-block:: python
-
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-    
-        return return_val
-    
-    
-
-- fmgr_logout
-
- .. code-block:: python
-
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except:
-                pass
-            module.fail_json(msg=msg)
-    
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
-                                     **results[1])
-        return msg
     
     
 
@@ -732,11 +593,7 @@ Functions
     def main():
         argument_spec = dict(
             adom=dict(required=False, type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True),
             mode=dict(required=False, type="str", choices=['add', 'set', 'delete'], default="add"),
-    
             app_category=dict(required=False, type="str"),
             app_service_type=dict(required=False, type="str"),
             application=dict(required=False, type="str"),
@@ -770,8 +627,7 @@ Functions
     
         )
     
-        module = AnsibleModule(argument_spec, supports_check_mode=True, )
-    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE DATAGRAM
         paramgram = {
             "adom": module.params["adom"],
@@ -805,57 +661,59 @@ Functions
             "udp-portrange": module.params["udp_portrange"],
             "visibility": module.params["visibility"],
         }
-    
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        username = module.params["username"]
-        if host is None or username is None:
-            module.fail_json(msg="Host and username are required")
-    
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-        response = fmg.login()
-    
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
-    
-        # CHECK FOR CATEGORIES TO ADD
-        # THIS IS ONLY WHEN OBJECT_TYPE ISN'T SPECIFICALLY ADDING A CATEGORY!
-        # WE NEED TO ADD THE CATEGORY BEFORE ADDING THE OBJECT
-        # IF ANY category ARE DEFINED AND MODE IS ADD OR SET LETS ADD THOSE
-        # THIS IS A "BLIND ADD" AND THE EXIT CODE FOR OBJECT ALREADY EXISTS IS TREATED AS A PASS
-        results = (-100000, {"msg": "Nothing Happened."})
-    
-        if paramgram["category"] is not None and paramgram["mode"] in ['add', 'set'] \
-                and paramgram["object_type"] != "category":
-            categoryAdd = fmgr_fwobj_service_category(fmg, paramgram)
-            fmgr_logout(fmg, module, results=categoryAdd, good_codes=[0, -2, -3],
-                        msg="Failed to add/remove service category")
-    
-        # IF OBJECT_TYPE IS CATEGORY...
-        if paramgram["object_type"] == 'category':
-            results = fmgr_fwobj_service_category(fmg, paramgram)
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -2, -3],
-                        msg="Failed to add/remove service category")
-    
-        # IF OBJECT_TYPE IS CUSTOM...
-        if paramgram["object_type"] == 'custom':
-            results = fmgr_fwobj_service_custom(fmg, paramgram)
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -2, -3],
-                        msg="Failed to add/remove custom service")
-    
-        # IF OBJECT_TYPE IS GROUP...
-        if paramgram["object_type"] == 'group':
-            results = fmgr_fwobj_service_group(fmg, paramgram)
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -2, -3],
-                        msg="Failed to add/remove service group")
-    
-        fmg.logout()
-    
-        if results is not None:
-            return module.exit_json(**results[1])
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
         else:
-            return module.exit_json(msg="The service_type parameter wasn't set to category, group, or custom. Exiting...")
+            module.fail_json(**FAIL_SOCKET_MSG)
+    
+        results = DEFAULT_RESULT_OBJ
+    
+        try:
+            # CHECK FOR CATEGORIES TO ADD
+            # THIS IS ONLY WHEN OBJECT_TYPE ISN'T SPECIFICALLY ADDING A CATEGORY!
+            # WE NEED TO ADD THE CATEGORY BEFORE ADDING THE OBJECT
+            # IF ANY category ARE DEFINED AND MODE IS ADD OR SET LETS ADD THOSE
+            # THIS IS A "BLIND ADD" AND THE EXIT CODE FOR OBJECT ALREADY EXISTS IS TREATED AS A PASS
+            if paramgram["category"] is not None and paramgram["mode"] in ['add', 'set'] \
+                    and paramgram["object_type"] != "category":
+                category_add = fmgr_fwobj_service_category(fmgr, paramgram)
+                fmgr.govern_response(module=module, results=category_add,
+                                     ansible_facts=fmgr.construct_ansible_facts(category_add, module.params, paramgram))
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        try:
+            # IF OBJECT_TYPE IS CATEGORY...
+            if paramgram["object_type"] == 'category':
+                results = fmgr_fwobj_service_category(fmgr, paramgram)
+                fmgr.govern_response(module=module, results=results, good_codes=[0, -2, -3],
+                                     ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        try:
+            # IF OBJECT_TYPE IS CUSTOM...
+            if paramgram["object_type"] == 'custom':
+                results = fmgr_fwobj_service_custom(fmgr, paramgram)
+                fmgr.govern_response(module=module, results=results, good_codes=[0, -2, -3],
+                                     ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        try:
+            # IF OBJECT_TYPE IS GROUP...
+            if paramgram["object_type"] == 'group':
+                results = fmgr_fwobj_service_group(fmgr, paramgram)
+                fmgr.govern_response(module=module, results=results, good_codes=[0, -2, -3],
+                                     ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        return module.exit_json(**results[1])
     
     
 
@@ -898,13 +756,15 @@ Module Source Code
     ---
     module: fmgr_fwobj_service
     version_added: "2.8"
+    notes:
+        - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).
     author:
         - Luke Weighall (@lweighall)
         - Andrew Welsh (@Ghilli3)
         - Jim Huber (@p4r4n0y1ng)
-    short_description: Manages FortiManager Firewall Service Objects
+    short_description: Manages FortiManager Firewall Service Objects.
     description:
-      -  Manages FortiManager Firewall Service Objects
+      -  Manages FortiManager Firewall Service Objects.
     
     options:
       adom:
@@ -912,18 +772,6 @@ Module Source Code
          -The ADOM the configuration should belong to.
         required: false
         default: root
-      host:
-        description:
-         -The FortiManager's Address.
-        required: true
-      username:
-        description:
-         -The username used to authenticate with the FortiManager.
-        required: true
-      password:
-        description:
-         -The password associated with the username account.
-        required: true
     
       app_category:
         description:
@@ -963,7 +811,7 @@ Module Source Code
     
       custom_type:
         description:
-          - Tells module what kind of custom service to be added
+          - Tells module what kind of custom service to be added.
         choices: ['tcp_udp_sctp', 'icmp', 'icmp6', 'ip', 'http', 'ftp', 'connect', 'socks_tcp', 'socks_udp', 'all']
         default: all
         required: false
@@ -988,7 +836,7 @@ Module Source Code
     
       group_member:
         description:
-          - Comma Seperated list of members' names.
+          - Comma-Seperated list of members' names.
         required: false
     
       icmp_code:
@@ -1014,14 +862,14 @@ Module Source Code
     
       mode:
         description:
-          - Sets one of three modes for managing the object
+          - Sets one of three modes for managing the object.
         choices: ['add', 'set', 'delete']
         default: add
         required: false
     
       object_type:
         description:
-          - Tells module if we are adding a custom service, category, or group
+          - Tells module if we are adding a custom service, category, or group.
         choices: ['custom', 'group', 'category']
         required: false
     
@@ -1037,12 +885,12 @@ Module Source Code
     
       sctp_portrange:
         description:
-          - Multiple SCTP port ranges. Comma separated list of destination ports to add (i.e. '443,80')
+          - Multiple SCTP port ranges. Comma separated list of destination ports to add (i.e. '443,80').
           - Syntax is <destPort:sourcePort>
           - If no sourcePort is defined, it assumes all of them.
           - Ranges can be defined with a hyphen -
-          - Examples -- '443' (destPort 443 only)  '443:1000-2000' (destPort 443 from source ports 1000-2000)
-          - String multiple together in same quotes, comma separated. ('443:1000-2000, 80:1000-2000')
+          - Examples -- '443' (destPort 443 only)  '443:1000-2000' (destPort 443 from source ports 1000-2000).
+          - String multiple together in same quotes, comma separated. ('443:1000-2000, 80:1000-2000').
         required: false
     
       session_ttl:
@@ -1065,12 +913,12 @@ Module Source Code
     
       tcp_portrange:
         description:
-          - Comma separated list of destination ports to add (i.e. '443,80')
+          - Comma separated list of destination ports to add (i.e. '443,80').
           - Syntax is <destPort:sourcePort>
           - If no sourcePort is defined, it assumes all of them.
           - Ranges can be defined with a hyphen -
-          - Examples -- '443' (destPort 443 only)  '443:1000-2000' (destPort 443 from source ports 1000-2000)
-          - String multiple together in same quotes, comma separated. ('443:1000-2000, 80:1000-2000')
+          - Examples -- '443' (destPort 443 only)  '443:1000-2000' (destPort 443 from source ports 1000-2000).
+          - String multiple together in same quotes, comma separated. ('443:1000-2000, 80:1000-2000').
         required: false
     
       tcp_timewait_timer:
@@ -1087,12 +935,12 @@ Module Source Code
     
       udp_portrange:
         description:
-          - Comma separated list of destination ports to add (i.e. '443,80')
+          - Comma separated list of destination ports to add (i.e. '443,80').
           - Syntax is <destPort:sourcePort>
           - If no sourcePort is defined, it assumes all of them.
           - Ranges can be defined with a hyphen -
-          - Examples -- '443' (destPort 443 only)  '443:1000-2000' (destPort 443 from source ports 1000-2000)
-          - String multiple together in same quotes, comma separated. ('443:1000-2000, 80:1000-2000')
+          - Examples -- '443' (destPort 443 only)  '443:1000-2000' (destPort 443 from source ports 1000-2000).
+          - String multiple together in same quotes, comma separated. ('443:1000-2000, 80:1000-2000').
         required: false
     
       visibility:
@@ -1107,9 +955,6 @@ Module Source Code
     EXAMPLES = '''
     - name: ADD A CUSTOM SERVICE FOR TCP/UDP/SCP
       fmgr_fwobj_service:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "ansible"
         name: "ansible_custom_service"
         object_type: "custom"
@@ -1120,9 +965,6 @@ Module Source Code
     
     - name: ADD A CUSTOM SERVICE FOR TCP/UDP/SCP WITH SOURCE RANGES AND MULTIPLES
       fmgr_fwobj_service:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "ansible"
         name: "ansible_custom_serviceWithSource"
         object_type: "custom"
@@ -1133,9 +975,6 @@ Module Source Code
     
     - name: ADD A CUSTOM SERVICE FOR ICMP
       fmgr_fwobj_service:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "ansible"
         name: "ansible_custom_icmp"
         object_type: "custom"
@@ -1145,9 +984,6 @@ Module Source Code
     
     - name: ADD A CUSTOM SERVICE FOR ICMP6
       fmgr_fwobj_service:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "ansible"
         name: "ansible_custom_icmp6"
         object_type: "custom"
@@ -1157,9 +993,6 @@ Module Source Code
     
     - name: ADD A CUSTOM SERVICE FOR IP - GRE
       fmgr_fwobj_service:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "ansible"
         name: "ansible_custom_icmp6"
         object_type: "custom"
@@ -1168,9 +1001,6 @@ Module Source Code
     
     - name: ADD A CUSTOM PROXY FOR ALL WITH SOURCE RANGES AND MULTIPLES
       fmgr_fwobj_service:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "ansible"
         name: "ansible_custom_proxy_all"
         object_type: "custom"
@@ -1184,44 +1014,37 @@ Module Source Code
     api_result:
       description: full API response, includes status code and message
       returned: always
-      type: string
+      type: str
     """
     
     from ansible.module_utils.basic import AnsibleModule, env_fallback
-    from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-    
-    # check for pyFMG lib
-    try:
-        from pyFMG.fortimgr import FortiManager
-    
-        HAS_PYFMGR = True
-    except ImportError:
-        HAS_PYFMGR = False
+    from ansible.module_utils.connection import Connection
+    from ansible.module_utils.network.fortimanager.fortimanager import FortiManagerHandler
+    from ansible.module_utils.network.fortimanager.common import FMGBaseException
+    from ansible.module_utils.network.fortimanager.common import FMGRCommon
+    from ansible.module_utils.network.fortimanager.common import DEFAULT_RESULT_OBJ
+    from ansible.module_utils.network.fortimanager.common import FAIL_SOCKET_MSG
+    from ansible.module_utils.network.fortimanager.common import scrub_dict
     
     
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    def cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return (str((0xff000000 & mask) >> 24) + '.' +
-                str((0x00ff0000 & mask) >> 16) + '.' +
-                str((0x0000ff00 & mask) >> 8) + '.' +
-                str((0x000000ff & mask)))
-    
-    
-    def fmgr_fwobj_service_custom(fmg, paramgram):
+    def fmgr_fwobj_service_custom(fmgr, paramgram):
         """
-        # NOTES!
-        -- the tcp and udp-portrange parameters are in a list when there are multiple. they are not in a list when they
-            singular or by themselves (only 1 was listed)
-            -- the syntax for this is (destPort:sourcePort). Ranges are (xxxx-xxxx) i.e. 443:443, or 443:1000-2000.
-            -- if you leave out the second field after the colon (source port) it assumes any source port (which is usual)
-            -- multiples would look like ['443:1000-2000','80']
-            -- a single would look simple like "443:1000-2000" without the list around it ( a string!)
-    
-        -- the protocol parameter is the protocol NUMBER, not the string of it.
+        description:
+            - the tcp and udp-portrange parameters are in a list when there are multiple. they are not in a list when they
+              singular or by themselves (only 1 was listed)
+            - the syntax for this is (destPort:sourcePort). Ranges are (xxxx-xxxx) i.e. 443:443, or 443:1000-2000.
+            - if you leave out the second field after the colon (source port) it assumes any source port (which is usual)
+            - multiples would look like ['443:1000-2000','80']
+            - a single would look simple like "443:1000-2000" without the list around it ( a string!)
+            - the protocol parameter is the protocol NUMBER, not the string of it.
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
-        response = (-100000, {"msg": "Nothing Happened."})
+        response = DEFAULT_RESULT_OBJ
         if paramgram["mode"] in ['set', 'add']:
             # SET THE URL FOR ADD / SET
             url = '/pm/config/adom/{adom}/obj/firewall/service/custom'.format(adom=paramgram["adom"])
@@ -1319,32 +1142,21 @@ Module Source Code
             url = '/pm/config/adom/{adom}/obj/firewall/service/custom' \
                   '/{name}'.format(adom=paramgram["adom"], name=paramgram["name"])
     
-        datagram = fmgr_del_none(datagram)
-    
-        if paramgram["mode"] == "set":
-            response = fmg.set(url, datagram)
-            # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        if paramgram["mode"] == "add":
-            response = fmg.add(url, datagram)
-            # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        if paramgram["mode"] == "delete":
-            response = fmg.delete(url, datagram)
-    
+        datagram = scrub_dict(datagram)
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
     
     
-    def fmgr_fwobj_service_group(fmg, paramgram):
+    def fmgr_fwobj_service_group(fmgr, paramgram):
         """
-        # NOTES
-        only advanced option is color
-        when explicit proxy is set no other options are presented
-        add members list and boom
-        explicit-proxy = 0 is default
-        meta fields = {}
-        color =
-        comment
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
-        response = (-100000, {"msg": "Nothing Happened."})
+        response = DEFAULT_RESULT_OBJ
         if paramgram["mode"] in ['set', 'add']:
             url = '/pm/config/adom/{adom}/obj/firewall/service/group'.format(adom=paramgram["adom"])
             datagram = {
@@ -1368,25 +1180,21 @@ Module Source Code
             url = '/pm/config/adom/{adom}/obj/firewall/service/group' \
                   '/{name}'.format(adom=paramgram["adom"], name=paramgram["group-name"])
     
-        datagram = fmgr_del_none(datagram)
-    
-        if paramgram["mode"] == "set":
-            response = fmg.set(url, datagram)
-            # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        if paramgram["mode"] == "add":
-            response = fmg.add(url, datagram)
-            # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        if paramgram["mode"] == "delete":
-            response = fmg.delete(url, datagram)
-    
+        datagram = scrub_dict(datagram)
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
     
     
-    def fmgr_fwobj_service_category(fmg, paramgram):
+    def fmgr_fwobj_service_category(fmgr, paramgram):
         """
-        # NOTES
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
-        response = (-100000, {"msg": "Nothing Happened."})
+        response = DEFAULT_RESULT_OBJ
         if paramgram["mode"] in ['set', 'add']:
             url = '/pm/config/adom/{adom}/obj/firewall/service/category'.format(adom=paramgram["adom"])
             # GET RID OF ANY WHITESPACE
@@ -1407,94 +1215,15 @@ Module Source Code
             url = '/pm/config/adom/{adom}/obj/firewall/service/category' \
                   '/{name}'.format(adom=paramgram["adom"], name=paramgram["category"])
     
-        datagram = fmgr_del_none(datagram)
-    
-        if paramgram["mode"] == "set":
-            response = fmg.set(url, datagram)
-            # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        if paramgram["mode"] == "add":
-            response = fmg.add(url, datagram)
-            # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        if paramgram["mode"] == "delete":
-            response = fmg.delete(url, datagram)
-    
+        datagram = scrub_dict(datagram)
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
-    
-    
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-    
-    
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-    
-        return return_val
-    
-    
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except:
-                pass
-            module.fail_json(msg=msg)
-    
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
-                                     **results[1])
-        return msg
     
     
     def main():
         argument_spec = dict(
             adom=dict(required=False, type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True),
             mode=dict(required=False, type="str", choices=['add', 'set', 'delete'], default="add"),
-    
             app_category=dict(required=False, type="str"),
             app_service_type=dict(required=False, type="str"),
             application=dict(required=False, type="str"),
@@ -1528,8 +1257,7 @@ Module Source Code
     
         )
     
-        module = AnsibleModule(argument_spec, supports_check_mode=True, )
-    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE DATAGRAM
         paramgram = {
             "adom": module.params["adom"],
@@ -1563,57 +1291,59 @@ Module Source Code
             "udp-portrange": module.params["udp_portrange"],
             "visibility": module.params["visibility"],
         }
-    
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        username = module.params["username"]
-        if host is None or username is None:
-            module.fail_json(msg="Host and username are required")
-    
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-        response = fmg.login()
-    
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
-    
-        # CHECK FOR CATEGORIES TO ADD
-        # THIS IS ONLY WHEN OBJECT_TYPE ISN'T SPECIFICALLY ADDING A CATEGORY!
-        # WE NEED TO ADD THE CATEGORY BEFORE ADDING THE OBJECT
-        # IF ANY category ARE DEFINED AND MODE IS ADD OR SET LETS ADD THOSE
-        # THIS IS A "BLIND ADD" AND THE EXIT CODE FOR OBJECT ALREADY EXISTS IS TREATED AS A PASS
-        results = (-100000, {"msg": "Nothing Happened."})
-    
-        if paramgram["category"] is not None and paramgram["mode"] in ['add', 'set'] \
-                and paramgram["object_type"] != "category":
-            categoryAdd = fmgr_fwobj_service_category(fmg, paramgram)
-            fmgr_logout(fmg, module, results=categoryAdd, good_codes=[0, -2, -3],
-                        msg="Failed to add/remove service category")
-    
-        # IF OBJECT_TYPE IS CATEGORY...
-        if paramgram["object_type"] == 'category':
-            results = fmgr_fwobj_service_category(fmg, paramgram)
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -2, -3],
-                        msg="Failed to add/remove service category")
-    
-        # IF OBJECT_TYPE IS CUSTOM...
-        if paramgram["object_type"] == 'custom':
-            results = fmgr_fwobj_service_custom(fmg, paramgram)
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -2, -3],
-                        msg="Failed to add/remove custom service")
-    
-        # IF OBJECT_TYPE IS GROUP...
-        if paramgram["object_type"] == 'group':
-            results = fmgr_fwobj_service_group(fmg, paramgram)
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -2, -3],
-                        msg="Failed to add/remove service group")
-    
-        fmg.logout()
-    
-        if results is not None:
-            return module.exit_json(**results[1])
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
         else:
-            return module.exit_json(msg="The service_type parameter wasn't set to category, group, or custom. Exiting...")
+            module.fail_json(**FAIL_SOCKET_MSG)
+    
+        results = DEFAULT_RESULT_OBJ
+    
+        try:
+            # CHECK FOR CATEGORIES TO ADD
+            # THIS IS ONLY WHEN OBJECT_TYPE ISN'T SPECIFICALLY ADDING A CATEGORY!
+            # WE NEED TO ADD THE CATEGORY BEFORE ADDING THE OBJECT
+            # IF ANY category ARE DEFINED AND MODE IS ADD OR SET LETS ADD THOSE
+            # THIS IS A "BLIND ADD" AND THE EXIT CODE FOR OBJECT ALREADY EXISTS IS TREATED AS A PASS
+            if paramgram["category"] is not None and paramgram["mode"] in ['add', 'set'] \
+                    and paramgram["object_type"] != "category":
+                category_add = fmgr_fwobj_service_category(fmgr, paramgram)
+                fmgr.govern_response(module=module, results=category_add,
+                                     ansible_facts=fmgr.construct_ansible_facts(category_add, module.params, paramgram))
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        try:
+            # IF OBJECT_TYPE IS CATEGORY...
+            if paramgram["object_type"] == 'category':
+                results = fmgr_fwobj_service_category(fmgr, paramgram)
+                fmgr.govern_response(module=module, results=results, good_codes=[0, -2, -3],
+                                     ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        try:
+            # IF OBJECT_TYPE IS CUSTOM...
+            if paramgram["object_type"] == 'custom':
+                results = fmgr_fwobj_service_custom(fmgr, paramgram)
+                fmgr.govern_response(module=module, results=results, good_codes=[0, -2, -3],
+                                     ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        try:
+            # IF OBJECT_TYPE IS GROUP...
+            if paramgram["object_type"] == 'group':
+                results = fmgr_fwobj_service_group(fmgr, paramgram)
+                fmgr.govern_response(module=module, results=results, good_codes=[0, -2, -3],
+                                     ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        return module.exit_json(**results[1])
     
     
     if __name__ == "__main__":

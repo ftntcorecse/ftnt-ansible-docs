@@ -11,7 +11,7 @@ Metadata
 
 **Name:** fmgr_fwpol_ipv4
 
-**Description:** Allows the add/delete of Firewall Policies on Packages in FortiManager
+**Description:** Allows the add/delete of Firewall Policies on Packages in FortiManager.
 
 
 **Author(s):** 
@@ -26,15 +26,11 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+**Dev Status:** COMPLETED/MERGED
 
 **Owning Developer:** Luke Weighall
 
-**Pull Request Started:** 10/25/18
-
-**Days in PR:** 8
-
-**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_fwpol_ipv4
+**Module Link:** https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_fwpol_ipv4.py
 
 Parameters
 ----------
@@ -420,7 +416,7 @@ firewall_session_dirty
 
 - Description: How to handle sessions if the configuration of this firewall policy changes.
 
-  choice | check-all | Flush all current sessions accepted by this policy. These sessions must be started and re-matched with policies.
+  choice | check-all | Flush all current sessions accepted by this policy.
 
   choice | check-new | Continue to allow sessions already accepted by this policy.
 
@@ -495,15 +491,6 @@ gtp_profile
   
 
 - Required: False
-
-host
-++++
-
-- Description: The FortiManager's Address.
-
-  
-
-- Required: True
 
 icap_profile
 ++++++++++++
@@ -896,15 +883,6 @@ package_name
 
 - default: default
 
-password
-++++++++
-
-- Description: The password associated with the username account.
-
-  
-
-- Required: True
-
 per_ip_shaper
 +++++++++++++
 
@@ -1096,7 +1074,7 @@ schedule
 schedule_timeout
 ++++++++++++++++
 
-- Description: Enable to force current sessions to end when the schedule object times out. Disable allows them to end from inactivity.
+- Description: Enable to force current sessions to end when the schedule object times out.
 
   choice | disable | Disable schedule timeout.
 
@@ -1332,15 +1310,6 @@ url_category
 
 - Required: False
 
-username
-++++++++
-
-- Description: The username associated with the account.
-
-  
-
-- Required: True
-
 users
 +++++
 
@@ -1414,8 +1383,6 @@ vpn_dst_node
 
   We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
 
-  WHEN IN DOUBT, OMIT THE USE OF THIS PARAMETER AND USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
-
   
 
 - Required: False
@@ -1423,7 +1390,7 @@ vpn_dst_node
 vpn_dst_node_host
 +++++++++++++++++
 
-- Description: NO DESCRIPTION PARSED ENTER MANUALLY
+- Description: VPN Destination Node Host.
 
   
 
@@ -1432,7 +1399,7 @@ vpn_dst_node_host
 vpn_dst_node_seq
 ++++++++++++++++
 
-- Description: NO DESCRIPTION PARSED ENTER MANUALLY
+- Description: VPN Destination Node Seq.
 
   
 
@@ -1441,7 +1408,7 @@ vpn_dst_node_seq
 vpn_dst_node_subnet
 +++++++++++++++++++
 
-- Description: NO DESCRIPTION PARSED ENTER MANUALLY
+- Description: VPN Destination Node Seq.
 
   
 
@@ -1460,8 +1427,6 @@ vpn_src_node
 
   We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
 
-  WHEN IN DOUBT, OMIT THE USE OF THIS PARAMETER AND USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
-
   
 
 - Required: False
@@ -1469,7 +1434,7 @@ vpn_src_node
 vpn_src_node_host
 +++++++++++++++++
 
-- Description: NO DESCRIPTION PARSED ENTER MANUALLY
+- Description: VPN Source Node Host.
 
   
 
@@ -1478,7 +1443,7 @@ vpn_src_node_host
 vpn_src_node_seq
 ++++++++++++++++
 
-- Description: NO DESCRIPTION PARSED ENTER MANUALLY
+- Description: VPN Source Node Seq.
 
   
 
@@ -1487,7 +1452,7 @@ vpn_src_node_seq
 vpn_src_node_subnet
 +++++++++++++++++++
 
-- Description: NO DESCRIPTION PARSED ENTER MANUALLY
+- Description: VPN Source Node.
 
   
 
@@ -1656,33 +1621,39 @@ Functions
 
 
 
-- fmgr_firewall_policy_addsetdelete
+- fmgr_firewall_policy_modify
 
  .. code-block:: python
 
-    def fmgr_firewall_policy_addsetdelete(fmg, paramgram):
+    def fmgr_firewall_policy_modify(fmgr, paramgram):
         """
-        fmgr_firewall_policy -- Your Description here, bruh
+        fmgr_firewall_policy -- Add/Set/Deletes Firewall Policy Objects defined in the "paramgram"
+    
+        :param fmgr: The fmgr object instance from fmgr_utils.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+    
+        :return: The response from the FortiManager
+        :rtype: dict
         """
     
         mode = paramgram["mode"]
         adom = paramgram["adom"]
         # INIT A BASIC OBJECTS
-        response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
+        response = DEFAULT_RESULT_OBJ
         url = ""
         datagram = {}
     
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/pkg/{pkg}/firewall/policy'.format(adom=adom, pkg=paramgram["package_name"])
-            datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
+            datagram = scrub_dict((prepare_dict(paramgram)))
             del datagram["package_name"]
-            datagram = fmgr_split_comma_strings_into_lists(datagram)
+            datagram = fmgr._tools.split_comma_strings_into_lists(datagram)
     
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
-    
-            # WE NEED TO GET THE POLICY ID FROM THE NAME OF THE POLICY
             url = '/pm/config/adom/{adom}/pkg/{pkg}/firewall' \
                   '/policy/{policyid}'.format(adom=paramgram["adom"],
                                               pkg=paramgram["package_name"],
@@ -1691,155 +1662,8 @@ Functions
                 "policyid": paramgram["policyid"]
             }
     
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if mode == "set":
-            response = fmg.set(url, datagram)
-        # IF MODE = UPDATE -- USER THE 'UPDATE' API CALL MODE
-        elif mode == "update":
-            response = fmg.update(url, datagram)
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        elif mode == "add":
-            response = fmg.add(url, datagram)
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        elif mode == "delete":
-            response = fmg.delete(url, datagram)
-    
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
-    
-    
-    # ADDITIONAL COMMON FUNCTIONS
-    # FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
-
-- fmgr_logout
-
- .. code-block:: python
-
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-    
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except:
-                pass
-            module.fail_json(msg=msg)
-    
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
-                                     **results[1])
-    
-        return msg
-    
-    
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-
-- fmgr_cidr_to_netmask
-
- .. code-block:: python
-
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return (str((0xff000000 & mask) >> 24) + '.' +
-                str((0x00ff0000 & mask) >> 16) + '.' +
-                str((0x0000ff00 & mask) >> 8) + '.' +
-                str((0x000000ff & mask)))
-    
-    
-    # utility function: removing keys wih value of None, nothing in playbook for that key
-
-- fmgr_del_none
-
- .. code-block:: python
-
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-    
-    
-    # utility function: remove keys that are need for the logic but the FMG API won't accept them
-
-- fmgr_prepare_dict
-
- .. code-block:: python
-
-    def fmgr_prepare_dict(obj):
-        list_of_elems = ["mode", "adom", "host", "username", "password"]
-        if isinstance(obj, dict):
-            obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
-        return obj
-    
-    
-
-- fmgr_is_empty_dict
-
- .. code-block:: python
-
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-    
-        return return_val
-    
-    
-
-- fmgr_split_comma_strings_into_lists
-
- .. code-block:: python
-
-    def fmgr_split_comma_strings_into_lists(obj):
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, str):
-                        new_list = list()
-                        if "," in v:
-                            new_items = v.split(",")
-                            for item in new_items:
-                                new_list.append(item.strip())
-                            obj[k] = new_list
-    
-        return obj
     
     
     #############
@@ -1855,9 +1679,6 @@ Functions
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
             package_name=dict(type="str", required=False, default="default"),
     
@@ -1994,8 +1815,7 @@ Functions
     
         )
     
-        module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -2134,70 +1954,50 @@ Functions
                 "subnet": module.params["vpn_src_node_subnet"],
             }
         }
-        list_overrides = ['vpn_dst_node', 'vpn_src_node']
-        for list_variable in list_overrides:
-            override_data = list()
-            try:
-                override_data = module.params[list_variable]
-            except:
-                pass
-            try:
-                if override_data:
-                    del paramgram[list_variable]
-                    paramgram[list_variable] = override_data
-            except:
-                pass
-    
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None or password is None:
-            module.fail_json(msg="Host and username and password are required")
-    
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-    
-        response = fmg.login()
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
-    
-        if paramgram["mode"] == "delete":
-            # WE NEED TO GET THE POLICY ID FROM THE NAME OF THE POLICY TO DELETE IT
-            url = '/pm/config/adom/{adom}/pkg/{pkg}/firewall' \
-                  '/policy/'.format(adom=paramgram["adom"],
-                                    pkg=paramgram["package_name"])
-            datagram = {
-                "filter": ["name", "==", paramgram["name"]]
-            }
-            response = fmg.get(url, datagram)
-            try:
-                if response[1][0]["policyid"]:
-                    policy_id = response[1][0]["policyid"]
-                    paramgram["policyid"] = policy_id
-            except:
-                fmgr_logout(fmg, module, results=response, msg="Couldn't get Policy ID from name, delete failed")
-    
-        results = fmgr_firewall_policy_addsetdelete(fmg, paramgram)
-        if results[0] == -10131:
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -9998, ],
-                        msg=str(results[0]) + " - Object Dependency Failed. Do the objects named in parameters exist?!")
-        elif results[0] == -3:
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -3],
-                        msg="Couldn't Delete - Policy Doesn't Exist")
-        elif results[0] == 0:
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -9998],
-                        msg="Successfully Set FW Policy")
-        elif results[0] not in [0, -9998]:
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -9998],
-                        msg=str(results[0]) + "Could not set FW policy.")
-    
-        fmg.logout()
-    
-        if results is not None:
-            return module.exit_json(**results[1])
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
         else:
-            return module.exit_json(msg="No results were returned from the API call.")
+            module.fail_json(**FAIL_SOCKET_MSG)
+    
+        list_overrides = ['vpn_dst_node', 'vpn_src_node']
+        paramgram = fmgr.tools.paramgram_child_list_override(list_overrides=list_overrides,
+                                                             paramgram=paramgram, module=module)
+    
+        # BEGIN MODULE-SPECIFIC LOGIC -- THINGS NEED TO HAPPEN DEPENDING ON THE ENDPOINT AND OPERATION
+        results = DEFAULT_RESULT_OBJ
+        try:
+            if paramgram["mode"] == "delete":
+                # WE NEED TO GET THE POLICY ID FROM THE NAME OF THE POLICY TO DELETE IT
+                url = '/pm/config/adom/{adom}/pkg/{pkg}/firewall' \
+                      '/policy/'.format(adom=paramgram["adom"],
+                                        pkg=paramgram["package_name"])
+                datagram = {
+                    "filter": ["name", "==", paramgram["name"]]
+                }
+                response = fmgr.process_request(url, datagram, FMGRMethods.GET)
+                try:
+                    if response[1][0]["policyid"]:
+                        policy_id = response[1][0]["policyid"]
+                        paramgram["policyid"] = policy_id
+                except BaseException:
+                    fmgr.return_response(module=module, results=response, good_codes=[0, ], stop_on_success=True,
+                                         ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram),
+                                         msg="Couldn't find policy ID number for policy name specified.")
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        try:
+            results = fmgr_firewall_policy_modify(fmgr, paramgram)
+            fmgr.govern_response(module=module, results=results, good_codes=[0, -9998],
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        return module.exit_json(**results[1])
     
     
 
@@ -2238,13 +2038,15 @@ Module Source Code
     ---
     module: fmgr_fwpol_ipv4
     version_added: "2.8"
+    notes:
+        - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).
     author:
         - Luke Weighall (@lweighall)
         - Andrew Welsh (@Ghilli3)
         - Jim Huber (@p4r4n0y1ng)
-    short_description: Allows the add/delete of Firewall Policies on Packages in FortiManager
+    short_description: Allows the add/delete of Firewall Policies on Packages in FortiManager.
     description:
-      -  Allows the add/delete of Firewall Policies on Packages in FortiManager
+      -  Allows the add/delete of Firewall Policies on Packages in FortiManager.
     
     options:
       adom:
@@ -2252,21 +2054,6 @@ Module Source Code
           - The ADOM the configuration should belong to.
         required: false
         default: root
-    
-      host:
-        description:
-          - The FortiManager's Address.
-        required: true
-    
-      username:
-        description:
-          - The username associated with the account.
-        required: true
-    
-      password:
-        description:
-          - The password associated with the username account.
-        required: true
     
       mode:
         description:
@@ -2522,7 +2309,7 @@ Module Source Code
     
       schedule_timeout:
         description:
-          - Enable to force current sessions to end when the schedule object times out. Disable allows them to end from inactivity.
+          - Enable to force current sessions to end when the schedule object times out.
           - choice | disable | Disable schedule timeout.
           - choice | enable | Enable schedule timeout.
         required: false
@@ -2866,7 +2653,7 @@ Module Source Code
       firewall_session_dirty:
         description:
           - How to handle sessions if the configuration of this firewall policy changes.
-          - choice | check-all | Flush all current sessions accepted by this policy. These sessions must be started and re-matched with policies.
+          - choice | check-all | Flush all current sessions accepted by this policy.
           - choice | check-new | Continue to allow sessions already accepted by this policy.
         required: false
         choices: ["check-all", "check-new"]
@@ -3076,22 +2863,21 @@ Module Source Code
           - Dictionaries must use FortiManager API parameters, not the ansible ones listed below.
           - If submitted, all other prefixed sub-parameters ARE IGNORED. This object is MUTUALLY EXCLUSIVE with its options.
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
-          - WHEN IN DOUBT, OMIT THE USE OF THIS PARAMETER AND USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
     
       vpn_dst_node_host:
         description:
-          - NO DESCRIPTION PARSED ENTER MANUALLY
+          - VPN Destination Node Host.
         required: false
     
       vpn_dst_node_seq:
         description:
-          - NO DESCRIPTION PARSED ENTER MANUALLY
+          - VPN Destination Node Seq.
         required: false
     
       vpn_dst_node_subnet:
         description:
-          - NO DESCRIPTION PARSED ENTER MANUALLY
+          - VPN Destination Node Seq.
         required: false
     
       vpn_src_node:
@@ -3101,22 +2887,21 @@ Module Source Code
           - Dictionaries must use FortiManager API parameters, not the ansible ones listed below.
           - If submitted, all other prefixed sub-parameters ARE IGNORED. This object is MUTUALLY EXCLUSIVE with its options.
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
-          - WHEN IN DOUBT, OMIT THE USE OF THIS PARAMETER AND USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
     
       vpn_src_node_host:
         description:
-          - NO DESCRIPTION PARSED ENTER MANUALLY
+          - VPN Source Node Host.
         required: false
     
       vpn_src_node_seq:
         description:
-          - NO DESCRIPTION PARSED ENTER MANUALLY
+          - VPN Source Node Seq.
         required: false
     
       vpn_src_node_subnet:
         description:
-          - NO DESCRIPTION PARSED ENTER MANUALLY
+          - VPN Source Node.
         required: false
     
     
@@ -3125,9 +2910,6 @@ Module Source Code
     EXAMPLES = '''
     - name: ADD VERY BASIC IPV4 POLICY WITH NO NAT (WIDE OPEN)
       fmgr_fwpol_ipv4:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         mode: "set"
         adom: "ansible"
         package_name: "default"
@@ -3144,9 +2926,6 @@ Module Source Code
     
     - name: ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES
       fmgr_fwpol_ipv4:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         mode: "set"
         adom: "ansible"
         package_name: "default"
@@ -3165,9 +2944,6 @@ Module Source Code
     
     - name: ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES AND SEC PROFILES
       fmgr_fwpol_ipv4:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         mode: "set"
         adom: "ansible"
         package_name: "default"
@@ -3192,48 +2968,50 @@ Module Source Code
     api_result:
       description: full API response, includes status code and message
       returned: always
-      type: string
+      type: str
     """
     
-    from ansible.module_utils.basic import AnsibleModule, env_fallback
-    from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-    
-    # check for pyFMG lib
-    try:
-        from pyFMG.fortimgr import FortiManager
-    
-        HAS_PYFMGR = True
-    except ImportError:
-        HAS_PYFMGR = False
-    
-    ###############
-    # START METHODS
-    ###############
+    from ansible.module_utils.basic import AnsibleModule
+    from ansible.module_utils.connection import Connection
+    from ansible.module_utils.network.fortimanager.fortimanager import FortiManagerHandler
+    from ansible.module_utils.network.fortimanager.common import FMGBaseException
+    from ansible.module_utils.network.fortimanager.common import FMGRCommon
+    from ansible.module_utils.network.fortimanager.common import FMGRMethods
+    from ansible.module_utils.network.fortimanager.common import DEFAULT_RESULT_OBJ
+    from ansible.module_utils.network.fortimanager.common import FAIL_SOCKET_MSG
+    from ansible.module_utils.network.fortimanager.common import prepare_dict
+    from ansible.module_utils.network.fortimanager.common import scrub_dict
     
     
-    def fmgr_firewall_policy_addsetdelete(fmg, paramgram):
+    def fmgr_firewall_policy_modify(fmgr, paramgram):
         """
-        fmgr_firewall_policy -- Your Description here, bruh
+        fmgr_firewall_policy -- Add/Set/Deletes Firewall Policy Objects defined in the "paramgram"
+    
+        :param fmgr: The fmgr object instance from fmgr_utils.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+    
+        :return: The response from the FortiManager
+        :rtype: dict
         """
     
         mode = paramgram["mode"]
         adom = paramgram["adom"]
         # INIT A BASIC OBJECTS
-        response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
+        response = DEFAULT_RESULT_OBJ
         url = ""
         datagram = {}
     
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/pkg/{pkg}/firewall/policy'.format(adom=adom, pkg=paramgram["package_name"])
-            datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
+            datagram = scrub_dict((prepare_dict(paramgram)))
             del datagram["package_name"]
-            datagram = fmgr_split_comma_strings_into_lists(datagram)
+            datagram = fmgr._tools.split_comma_strings_into_lists(datagram)
     
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
-    
-            # WE NEED TO GET THE POLICY ID FROM THE NAME OF THE POLICY
             url = '/pm/config/adom/{adom}/pkg/{pkg}/firewall' \
                   '/policy/{policyid}'.format(adom=paramgram["adom"],
                                               pkg=paramgram["package_name"],
@@ -3242,125 +3020,8 @@ Module Source Code
                 "policyid": paramgram["policyid"]
             }
     
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if mode == "set":
-            response = fmg.set(url, datagram)
-        # IF MODE = UPDATE -- USER THE 'UPDATE' API CALL MODE
-        elif mode == "update":
-            response = fmg.update(url, datagram)
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        elif mode == "add":
-            response = fmg.add(url, datagram)
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        elif mode == "delete":
-            response = fmg.delete(url, datagram)
-    
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
-    
-    
-    # ADDITIONAL COMMON FUNCTIONS
-    # FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-    
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except:
-                pass
-            module.fail_json(msg=msg)
-    
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
-                                     **results[1])
-    
-        return msg
-    
-    
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return (str((0xff000000 & mask) >> 24) + '.' +
-                str((0x00ff0000 & mask) >> 16) + '.' +
-                str((0x0000ff00 & mask) >> 8) + '.' +
-                str((0x000000ff & mask)))
-    
-    
-    # utility function: removing keys wih value of None, nothing in playbook for that key
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-    
-    
-    # utility function: remove keys that are need for the logic but the FMG API won't accept them
-    def fmgr_prepare_dict(obj):
-        list_of_elems = ["mode", "adom", "host", "username", "password"]
-        if isinstance(obj, dict):
-            obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
-        return obj
-    
-    
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-    
-        return return_val
-    
-    
-    def fmgr_split_comma_strings_into_lists(obj):
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, str):
-                        new_list = list()
-                        if "," in v:
-                            new_items = v.split(",")
-                            for item in new_items:
-                                new_list.append(item.strip())
-                            obj[k] = new_list
-    
-        return obj
     
     
     #############
@@ -3371,9 +3032,6 @@ Module Source Code
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
             package_name=dict(type="str", required=False, default="default"),
     
@@ -3510,8 +3168,7 @@ Module Source Code
     
         )
     
-        module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -3650,70 +3307,50 @@ Module Source Code
                 "subnet": module.params["vpn_src_node_subnet"],
             }
         }
-        list_overrides = ['vpn_dst_node', 'vpn_src_node']
-        for list_variable in list_overrides:
-            override_data = list()
-            try:
-                override_data = module.params[list_variable]
-            except:
-                pass
-            try:
-                if override_data:
-                    del paramgram[list_variable]
-                    paramgram[list_variable] = override_data
-            except:
-                pass
-    
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None or password is None:
-            module.fail_json(msg="Host and username and password are required")
-    
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-    
-        response = fmg.login()
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
-    
-        if paramgram["mode"] == "delete":
-            # WE NEED TO GET THE POLICY ID FROM THE NAME OF THE POLICY TO DELETE IT
-            url = '/pm/config/adom/{adom}/pkg/{pkg}/firewall' \
-                  '/policy/'.format(adom=paramgram["adom"],
-                                    pkg=paramgram["package_name"])
-            datagram = {
-                "filter": ["name", "==", paramgram["name"]]
-            }
-            response = fmg.get(url, datagram)
-            try:
-                if response[1][0]["policyid"]:
-                    policy_id = response[1][0]["policyid"]
-                    paramgram["policyid"] = policy_id
-            except:
-                fmgr_logout(fmg, module, results=response, msg="Couldn't get Policy ID from name, delete failed")
-    
-        results = fmgr_firewall_policy_addsetdelete(fmg, paramgram)
-        if results[0] == -10131:
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -9998, ],
-                        msg=str(results[0]) + " - Object Dependency Failed. Do the objects named in parameters exist?!")
-        elif results[0] == -3:
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -3],
-                        msg="Couldn't Delete - Policy Doesn't Exist")
-        elif results[0] == 0:
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -9998],
-                        msg="Successfully Set FW Policy")
-        elif results[0] not in [0, -9998]:
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -9998],
-                        msg=str(results[0]) + "Could not set FW policy.")
-    
-        fmg.logout()
-    
-        if results is not None:
-            return module.exit_json(**results[1])
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
         else:
-            return module.exit_json(msg="No results were returned from the API call.")
+            module.fail_json(**FAIL_SOCKET_MSG)
+    
+        list_overrides = ['vpn_dst_node', 'vpn_src_node']
+        paramgram = fmgr.tools.paramgram_child_list_override(list_overrides=list_overrides,
+                                                             paramgram=paramgram, module=module)
+    
+        # BEGIN MODULE-SPECIFIC LOGIC -- THINGS NEED TO HAPPEN DEPENDING ON THE ENDPOINT AND OPERATION
+        results = DEFAULT_RESULT_OBJ
+        try:
+            if paramgram["mode"] == "delete":
+                # WE NEED TO GET THE POLICY ID FROM THE NAME OF THE POLICY TO DELETE IT
+                url = '/pm/config/adom/{adom}/pkg/{pkg}/firewall' \
+                      '/policy/'.format(adom=paramgram["adom"],
+                                        pkg=paramgram["package_name"])
+                datagram = {
+                    "filter": ["name", "==", paramgram["name"]]
+                }
+                response = fmgr.process_request(url, datagram, FMGRMethods.GET)
+                try:
+                    if response[1][0]["policyid"]:
+                        policy_id = response[1][0]["policyid"]
+                        paramgram["policyid"] = policy_id
+                except BaseException:
+                    fmgr.return_response(module=module, results=response, good_codes=[0, ], stop_on_success=True,
+                                         ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram),
+                                         msg="Couldn't find policy ID number for policy name specified.")
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        try:
+            results = fmgr_firewall_policy_modify(fmgr, paramgram)
+            fmgr.govern_response(module=module, results=results, good_codes=[0, -9998],
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        return module.exit_json(**results[1])
     
     
     if __name__ == "__main__":

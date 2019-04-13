@@ -1,37 +1,28 @@
 ---
 - name: DELETE DEVICE PROVISION TEMPLATES
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
     - name: DELETE SNMP SYSTEM INFO
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
         snmp_status: "enable"
-        state: "absent"
+        mode: "delete"
         adom: "ansible"
 
     - name: DELETE SNMP SYSTEM INFO ANSIBLE ADOM
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
         snmp_status: "enable"
-        state: "absent"
+        mode: "delete"
         adom: "ansible"
 
     - name: DELETE SYSLOG INFO
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "absent"
+        mode: "delete"
         adom: "ansible"
         syslog_server: "10.7.220.59"
         syslog_port: "514"
@@ -41,12 +32,9 @@
 
     - name: DELETE SNMP SYSTEM INFO different template
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
         snmp_status: "enable"
-        state: "absent"
+        mode: "delete"
         adom: "ansible"
         snmp_v2c_query_port: "162"
         snmp_v2c_trap_port: "161"
@@ -61,12 +49,9 @@
 
     - name: DELETE SNMP SYSTEM INFO different template (SNMPv3)
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
         snmp_status: "enable"
-        state: "absent"
+        mode: "delete"
         adom: "ansible"
         snmpv3_auth_proto: "sha"
         snmpv3_auth_pwd: "fortinet"
@@ -84,11 +69,8 @@
 
     - name: DELETE NTP TO FORTIGUARD
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "absent"
+        mode: "delete"
         adom: "ansible"
         ntp_status: "enable"
         ntp_sync_interval: "60"
@@ -96,11 +78,8 @@
 
     - name: DELETE NTP TO CUSTOM SERVER
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "absent"
+        mode: "delete"
         adom: "ansible"
         ntp_status: "enable"
         ntp_sync_interval: "60"
@@ -112,11 +91,8 @@
 
     - name: DELETE ADMIN GLOBAL DELETETINGS
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "absent"
+        mode: "delete"
         adom: "ansible"
         admin_https_redirect: "enable"
         admin_https_port: "4433"
@@ -130,11 +106,8 @@
 
     - name: DELETE CUSTOM SMTP SERVER
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "absent"
+        mode: "delete"
         adom: "ansible"
         smtp_username: "ansible"
         smtp_password: "{{ password }}"
@@ -147,11 +120,8 @@
 
     - name: SET DNS SERVERS
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "absent"
+        mode: "delete"
         adom: "ansible"
         dns_suffix: "ansible.local"
         dns_primary_ipv4: "8.8.8.8"
@@ -159,10 +129,7 @@
 
     - name: SET PROVISIONING TEMPLATE DEVICE TARGETS IN FORTIMANAGER
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "absent"
+        mode: "delete"
         adom: "ansible"
         provision_targets: "FGT1,FGT2"

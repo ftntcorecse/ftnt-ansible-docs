@@ -2,19 +2,16 @@
 
 - name: REMOVE DEVICES FROM FGT GRP
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
     - name: REMOVE DEVICES FROM DEVICE GROUP
       fmgr_device_group:
         #GETTING FORTIMANAGER HOST IP OR NAME FROM ANSIBLE INVENTORY FOR HOSTS GROUP ABOVE
-        host: "{{ inventory_hostname }}"
         #DYNAMIC MAPPING FOR THE FORTIMANAGER LOGIN AS SPECIFIED IN INVENTORY FILE
-        username: "{{ username }}"
-        password: "{{ password }}"
         #STATE if "present" ADD THE GROUP MEMBERS, IF "absent" DELETE THE GROUP MEMBERS
-        state: "absent"
+        mode: "delete"
         #GROUP NAME TO REMOVE THE DEVICES FROM
         grp_name: "testtest"
         #FRIENDLY NAME OF DEVICES IN FORTIMANAGER YOU WISH TO DELETE FROM THE GROUP
@@ -25,10 +22,7 @@
 
     - name: REMOVE DEVICES FROM DEVICE GROUP2
       fmgr_device_group:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
-        state: "absent"
+        mode: "delete"
         grp_name: "TestGroup"
-        grp_members: "FGT1,FGT2"
+        grp_members: "FGT1"
         adom: "ansible"

@@ -2,16 +2,13 @@
 
 - name: CONFIG CUSTOM SERVICES
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
 
   - name: ADD A CUSTOM SERVICE FOR TCP/UDP/SCP
     fmgr_fwobj_service:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       adom: "ansible"
       name: "ansible_custom_service"
       object_type: "custom"
@@ -23,9 +20,6 @@
 
   - name: ADD A CUSTOM SERVICE FOR TCP/UDP/SCP WITH SOURCE RANGES AND MULTIPLES
     fmgr_fwobj_service:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       adom: "ansible"
       name: "ansible_custom_serviceWithSource"
       object_type: "custom"
@@ -36,9 +30,6 @@
 
   - name: ADD A CUSTOM SERVICE FOR ICMP
     fmgr_fwobj_service:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       adom: "ansible"
       name: "ansible_custom_icmp"
       object_type: "custom"
@@ -48,9 +39,6 @@
 
   - name: ADD A CUSTOM SERVICE FOR ICMP6
     fmgr_fwobj_service:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       adom: "ansible"
       name: "ansible_custom_icmp6"
       object_type: "custom"
@@ -60,9 +48,6 @@
 
   - name: ADD A CUSTOM SERVICE FOR IP - GRE
     fmgr_fwobj_service:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       adom: "ansible"
       name: "ansible_custom_ip"
       object_type: "custom"
@@ -71,9 +56,6 @@
 
   - name: ADD A CUSTOM PROXY FOR ALL WITH SOURCE RANGES AND MULTIPLES
     fmgr_fwobj_service:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       adom: "ansible"
       name: "ansible_custom_proxy_all"
       object_type: "custom"

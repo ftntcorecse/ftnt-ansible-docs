@@ -17,10 +17,17 @@ Playbook Task Examples
       tasks:
       - name: Configure IPv4 address groups.
         fortios_firewall_addrgrp:
+<<<<<<< Updated upstream
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+=======
           host:  "{{  host }}"
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{  vdom }}"
+>>>>>>> Stashed changes
           firewall_addrgrp:
             state: "present"
             allow-routing: "enable"
@@ -45,5 +52,47 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
+<<<<<<< Updated upstream
+
+../ansible_fgt_modules/v6.0.2/firewall/fortios_firewall_addrgrp_example.yml
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure IPv4 address groups.
+        fortios_firewall_addrgrp:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          firewall_addrgrp:
+            state: "present"
+            allow-routing: "enable"
+            color: "4"
+            comment: "Comment."
+            member:
+             -
+                name: "default_name_7 (source firewall.address.name firewall.addrgrp.name)"
+            name: "default_name_8"
+            tagging:
+             -
+                category: "<your_own_value> (source system.object-tagging.category)"
+                name: "default_name_11"
+                tags:
+                 -
+                    name: "default_name_13 (source system.object-tagging.tags.name)"
+            uuid: "<your_own_value>"
+            visibility: "enable"
+
+
+
+=======
 %%PB_FILE_EXAMPLE_TOKEN%%
+>>>>>>> Stashed changes
 

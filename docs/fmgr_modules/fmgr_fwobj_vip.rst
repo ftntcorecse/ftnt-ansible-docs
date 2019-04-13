@@ -26,15 +26,11 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+**Dev Status:** COMPLETED/MERGED
 
 **Owning Developer:** Luke Weighall
 
-**Pull Request Started:** 10/26/18
-
-**Days in PR:** 7
-
-**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_fwobj_vip
+**Module Link:** https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_fwobj_vip.py
 
 Parameters
 ----------
@@ -1365,15 +1361,6 @@ gratuitous_arp_interval
 
 - Required: False
 
-host
-++++
-
-- Description: The FortiManager's Address.
-
-  
-
-- Required: True
-
 http_cookie_age
 +++++++++++++++
 
@@ -1460,9 +1447,9 @@ http_ip_header
 http_ip_header_name
 +++++++++++++++++++
 
-- Description: For HTTP multiplexing, enter a custom HTTPS header name. The original client IP address is added to this heade
+- Description: For HTTP multiplexing, enter a custom HTTPS header name. The orig client IP address is added to this header.
 
-  r. If empty, X-Forwarded-For is used.
+  If empty, X-Forwarded-For is used.
 
   
 
@@ -1595,9 +1582,9 @@ name
 nat_source_vip
 ++++++++++++++
 
-- Description: Enable to prevent unintended servers from using a virtual IP. Disable to use the actual IP address of the serv
+- Description: Enable to prevent unintended servers from using a virtual IP.
 
-  er as the source address.
+  Disable to use the actual IP address of the server as the source address.
 
   choice | disable | Do not force to NAT as VIP.
 
@@ -1623,15 +1610,6 @@ outlook_web_access
 - Required: False
 
 - choices: ['disable', 'enable']
-
-password
-++++++++
-
-- Description: The password associated with the username account.
-
-  
-
-- Required: True
 
 persistence
 +++++++++++
@@ -1751,9 +1729,7 @@ realservers_healthcheck
 realservers_holddown_interval
 +++++++++++++++++++++++++++++
 
-- Description: Time in seconds that the health check monitor continues to monitor and unresponsive server that should be acti
-
-  ve.
+- Description: Time in seconds that the health check monitor monitors an unresponsive server that should be active.
 
   
 
@@ -1780,9 +1756,9 @@ realservers_ip
 realservers_max_connections
 +++++++++++++++++++++++++++
 
-- Description: Max number of active connections that can be directed to the real server. When reached, sessions are sent to o
+- Description: Max number of active connections that can be directed to the real server. When reached, sessions are sent to
 
-  ther real servers.
+  their real servers.
 
   
 
@@ -1818,9 +1794,9 @@ realservers_seq
 realservers_status
 ++++++++++++++++++
 
-- Description: Set the status of the real server to active so that it can accept traffic, or on standby or disabled so no tra
+- Description: Set the status of the real server to active so that it can accept traffic.
 
-  ffic is sent.
+  Or on standby or disabled so no traffic is sent.
 
   choice | active | Server status active.
 
@@ -1886,9 +1862,9 @@ service
 src_filter
 ++++++++++
 
-- Description: Source address filter. Each address must be either an IP/subnet (x.x.x.x/n) or a range (x.x.x.x-y.y.y.y). Sepa
+- Description: Source address filter. Each address must be either an IP/subnet (x.x.x.x/n) or a range (x.x.x.x-y.y.y.y).
 
-  rate addresses with spaces.
+  Separate addresses with spaces.
 
   
 
@@ -1914,7 +1890,7 @@ ssl_algorithm
 
   choice | low | Low encryption. Allow AES, ChaCha, 3DES, RC4, and DES.
 
-  choice | custom | Custom encryption. Use config ssl-cipher-suites to select the cipher suites that are allow
+  choice | custom | Custom encryption. Use config ssl-cipher-suites to select the cipher suites that are allowed.
 
   
 
@@ -2142,7 +2118,7 @@ ssl_client_renegotiation
 
   choice | allow | Allow a SSL client to renegotiate.
 
-  choice | secure | Abort any client initiated SSL re-negotiation attempt that does not use RFC 5746 Secure Re
+  choice | secure | Abort any client initiated SSL re-negotiation attempt that does not use RFC 5746.
 
   
 
@@ -2388,9 +2364,7 @@ ssl_min_version
 ssl_mode
 ++++++++
 
-- Description: Apply SSL offloading between the client and the FortiGate (half) or from the client to the FortiGate and from
-
-  the FortiGate to the server (full).
+- Description: Apply SSL offloading mode
 
   choice | half | Client to FortiGate SSL.
 
@@ -2405,9 +2379,7 @@ ssl_mode
 ssl_pfs
 +++++++
 
-- Description: Select the cipher suites that can be used for SSL perfect forward secrecy (PFS). Applies to both client and se
-
-  rver sessions.
+- Description: Select the cipher suites that can be used for SSL perfect forward secrecy (PFS).
 
   choice | require | Allow only Diffie-Hellman cipher-suites, so PFS is applied.
 
@@ -2424,9 +2396,7 @@ ssl_pfs
 ssl_send_empty_frags
 ++++++++++++++++++++
 
-- Description: Enable/disable sending empty fragments to avoid CBC IV attacks (SSL 3.0 &amp; TLS 1.0 only). May need to be di
-
-  sabled for compatibility with older systems.
+- Description: Enable/disable sending empty fragments to avoid CBC IV attacks (SSL 3.0 &amp; TLS 1.0 only).
 
   choice | disable | Do not send empty fragments.
 
@@ -2449,7 +2419,7 @@ ssl_server_algorithm
 
   choice | medium | Medium encryption. Allow AES, ChaCha, 3DES, and RC4.
 
-  choice | custom | Custom encryption. Use ssl-server-cipher-suites to select the cipher suites that are allow
+  choice | custom | Custom encryption. Use ssl-server-cipher-suites to select the cipher suites that are allowed.
 
   choice | client | Use the same encryption algorithms for both client and server sessions.
 
@@ -2755,15 +2725,6 @@ type
 
 - choices: ['static-nat', 'load-balance', 'server-load-balance', 'dns-translation', 'fqdn']
 
-username
-++++++++
-
-- Description: The username associated with the account.
-
-  
-
-- Required: True
-
 weblogic_server
 +++++++++++++++
 
@@ -2803,26 +2764,31 @@ Functions
 
 
 
-- fmgr_firewall_vip_addsetdelete
+- fmgr_firewall_vip_modify
 
  .. code-block:: python
 
-    def fmgr_firewall_vip_addsetdelete(fmg, paramgram):
+    def fmgr_firewall_vip_modify(fmgr, paramgram):
         """
-        fmgr_firewall_vip -- Your Description here, bruh
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
     
         mode = paramgram["mode"]
         adom = paramgram["adom"]
         # INIT A BASIC OBJECTS
-        response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
+        response = DEFAULT_RESULT_OBJ
         url = ""
         datagram = {}
     
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/firewall/vip'.format(adom=adom)
-            datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
+            datagram = scrub_dict(prepare_dict(paramgram))
     
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
@@ -2830,152 +2796,8 @@ Functions
             url = '/pm/config/adom/{adom}/obj/firewall/vip/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
     
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if mode == "set":
-            response = fmg.set(url, datagram)
-        # IF MODE = UPDATE -- USER THE 'UPDATE' API CALL MODE
-        elif mode == "update":
-            response = fmg.update(url, datagram)
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        elif mode == "add":
-            response = fmg.add(url, datagram)
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        elif mode == "delete":
-            response = fmg.delete(url, datagram)
-    
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
-    
-    
-    # ADDITIONAL COMMON FUNCTIONS
-
-- fmgr_logout
-
- .. code-block:: python
-
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except:
-                pass
-            module.fail_json(msg=msg)
-    
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
-                                     **results[1])
-        return msg
-    
-    
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-
-- fmgr_cidr_to_netmask
-
- .. code-block:: python
-
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return (str((0xff000000 & mask) >> 24) + '.' +
-                str((0x00ff0000 & mask) >> 16) + '.' +
-                str((0x0000ff00 & mask) >> 8) + '.' +
-                str((0x000000ff & mask)))
-    
-    
-    # utility function: removing keys wih value of None, nothing in playbook for that key
-
-- fmgr_del_none
-
- .. code-block:: python
-
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-    
-    
-    # utility function: remove keys that are need for the logic but the FMG API won't accept them
-
-- fmgr_prepare_dict
-
- .. code-block:: python
-
-    def fmgr_prepare_dict(obj):
-        list_of_elems = ["mode", "adom", "host", "username", "password"]
-        if isinstance(obj, dict):
-            obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
-        return obj
-    
-    
-
-- fmgr_is_empty_dict
-
- .. code-block:: python
-
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-    
-        return return_val
-    
-    
-
-- fmgr_split_comma_strings_into_lists
-
- .. code-block:: python
-
-    def fmgr_split_comma_strings_into_lists(obj):
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, str):
-                        new_list = list()
-                        if "," in v:
-                            new_items = v.split(",")
-                            for item in new_items:
-                                new_list.append(item.strip())
-                            obj[k] = new_list
-    
-        return obj
     
     
     #############
@@ -2991,9 +2813,6 @@ Functions
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
     
             websphere_server=dict(required=False, type="str", choices=["disable", "enable"]),
@@ -3402,8 +3221,7 @@ Functions
     
         )
     
-        module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -3587,45 +3405,29 @@ Functions
                 "versions": module.params["ssl_server_cipher_suites_versions"],
             }
         }
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
+        else:
+            module.fail_json(**FAIL_SOCKET_MSG)
     
         list_overrides = ['dynamic_mapping', 'realservers', 'ssl-cipher-suites', 'ssl-server-cipher-suites']
-        for list_variable in list_overrides:
-            override_data = list()
-            try:
-                override_data = module.params[list_variable]
-            except:
-                pass
-            try:
-                if override_data:
-                    del paramgram[list_variable]
-                    paramgram[list_variable] = override_data
-            except:
-                pass
+        paramgram = fmgr.tools.paramgram_child_list_override(list_overrides=list_overrides,
+                                                             paramgram=paramgram, module=module)
     
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None or password is None:
-            module.fail_json(msg="Host and username and password are required")
+        results = DEFAULT_RESULT_OBJ
+        try:
+            results = fmgr_firewall_vip_modify(fmgr, paramgram)
+            fmgr.govern_response(module=module, results=results,
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
     
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
+        except Exception as err:
+            raise FMGBaseException(err)
     
-        response = fmg.login()
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
-    
-        results = fmgr_firewall_vip_addsetdelete(fmg, paramgram)
-        if results[0] != 0:
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -3])
-    
-        fmg.logout()
-    
-        if results is not None:
-            return module.exit_json(**results[1])
-        else:
-            return module.exit_json(msg="No results were returned from the API call.")
+        return module.exit_json(**results[1])
     
     
 
@@ -3666,6 +3468,8 @@ Module Source Code
     ---
     module: fmgr_fwobj_vip
     version_added: "2.8"
+    notes:
+        - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).
     author:
         - Luke Weighall (@lweighall)
         - Andrew Welsh (@Ghilli3)
@@ -3680,21 +3484,6 @@ Module Source Code
           - The ADOM the configuration should belong to.
         required: false
         default: root
-    
-      host:
-        description:
-          - The FortiManager's Address.
-        required: true
-    
-      username:
-        description:
-          - The username associated with the account.
-        required: true
-    
-      password:
-        description:
-          - The password associated with the username account.
-        required: true
     
       mode:
         description:
@@ -3779,15 +3568,14 @@ Module Source Code
           - choice | high | High encryption. Allow only AES and ChaCha.
           - choice | low | Low encryption. Allow AES, ChaCha, 3DES, RC4, and DES.
           - choice | medium | Medium encryption. Allow AES, ChaCha, 3DES, and RC4.
-          - choice | custom | Custom encryption. Use ssl-server-cipher-suites to select the cipher suites that are allow
+          - choice | custom | Custom encryption. Use ssl-server-cipher-suites to select the cipher suites that are allowed.
           - choice | client | Use the same encryption algorithms for both client and server sessions.
         required: false
         choices: ["high", "low", "medium", "custom", "client"]
     
       ssl_send_empty_frags:
         description:
-          - Enable/disable sending empty fragments to avoid CBC IV attacks (SSL 3.0 &amp; TLS 1.0 only). May need to be di
-          - sabled for compatibility with older systems.
+          - Enable/disable sending empty fragments to avoid CBC IV attacks (SSL 3.0 &amp; TLS 1.0 only).
           - choice | disable | Do not send empty fragments.
           - choice | enable | Send empty fragments.
         required: false
@@ -3795,8 +3583,7 @@ Module Source Code
     
       ssl_pfs:
         description:
-          - Select the cipher suites that can be used for SSL perfect forward secrecy (PFS). Applies to both client and se
-          - rver sessions.
+          - Select the cipher suites that can be used for SSL perfect forward secrecy (PFS).
           - choice | require | Allow only Diffie-Hellman cipher-suites, so PFS is applied.
           - choice | deny | Allow only non-Diffie-Hellman cipher-suites, so PFS is not applied.
           - choice | allow | Allow use of any cipher suite so PFS may or may not be used depending on the cipher suite
@@ -3805,8 +3592,7 @@ Module Source Code
     
       ssl_mode:
         description:
-          - Apply SSL offloading between the client and the FortiGate (half) or from the client to the FortiGate and from
-          - the FortiGate to the server (full).
+          - Apply SSL offloading mode
           - choice | half | Client to FortiGate SSL.
           - choice | full | Client to FortiGate and FortiGate to Server SSL.
         required: false
@@ -3943,7 +3729,7 @@ Module Source Code
           - Allow, deny, or require secure renegotiation of client sessions to comply with RFC 5746.
           - choice | deny | Abort any client initiated SSL re-negotiation attempt.
           - choice | allow | Allow a SSL client to renegotiate.
-          - choice | secure | Abort any client initiated SSL re-negotiation attempt that does not use RFC 5746 Secure Re
+          - choice | secure | Abort any client initiated SSL re-negotiation attempt that does not use RFC 5746.
         required: false
         choices: ["deny", "allow", "secure"]
     
@@ -3966,7 +3752,7 @@ Module Source Code
           - choice | high | High encryption. Allow only AES and ChaCha.
           - choice | medium | Medium encryption. Allow AES, ChaCha, 3DES, and RC4.
           - choice | low | Low encryption. Allow AES, ChaCha, 3DES, RC4, and DES.
-          - choice | custom | Custom encryption. Use config ssl-cipher-suites to select the cipher suites that are allow
+          - choice | custom | Custom encryption. Use config ssl-cipher-suites to select the cipher suites that are allowed.
         required: false
         choices: ["high", "medium", "low", "custom"]
     
@@ -3977,8 +3763,8 @@ Module Source Code
     
       src_filter:
         description:
-          - Source address filter. Each address must be either an IP/subnet (x.x.x.x/n) or a range (x.x.x.x-y.y.y.y). Sepa
-          - rate addresses with spaces.
+          - Source address filter. Each address must be either an IP/subnet (x.x.x.x/n) or a range (x.x.x.x-y.y.y.y).
+          - Separate addresses with spaces.
         required: false
     
       service:
@@ -4047,8 +3833,8 @@ Module Source Code
     
       nat_source_vip:
         description:
-          - Enable to prevent unintended servers from using a virtual IP. Disable to use the actual IP address of the serv
-          - er as the source address.
+          - Enable to prevent unintended servers from using a virtual IP.
+          - Disable to use the actual IP address of the server as the source address.
           - choice | disable | Do not force to NAT as VIP.
           - choice | enable | Force to NAT as VIP.
         required: false
@@ -4115,8 +3901,8 @@ Module Source Code
     
       http_ip_header_name:
         description:
-          - For HTTP multiplexing, enter a custom HTTPS header name. The original client IP address is added to this heade
-          - r. If empty, X-Forwarded-For is used.
+          - For HTTP multiplexing, enter a custom HTTPS header name. The orig client IP address is added to this header.
+          - If empty, X-Forwarded-For is used.
         required: false
     
       http_ip_header:
@@ -4960,8 +4746,7 @@ Module Source Code
     
       realservers_holddown_interval:
         description:
-          - Time in seconds that the health check monitor continues to monitor and unresponsive server that should be acti
-          - ve.
+          - Time in seconds that the health check monitor monitors an unresponsive server that should be active.
         required: false
     
       realservers_http_host:
@@ -4976,8 +4761,8 @@ Module Source Code
     
       realservers_max_connections:
         description:
-          - Max number of active connections that can be directed to the real server. When reached, sessions are sent to o
-          - ther real servers.
+          - Max number of active connections that can be directed to the real server. When reached, sessions are sent to
+          - their real servers.
         required: false
     
       realservers_monitor:
@@ -4997,8 +4782,8 @@ Module Source Code
     
       realservers_status:
         description:
-          - Set the status of the real server to active so that it can accept traffic, or on standby or disabled so no tra
-          - ffic is sent.
+          - Set the status of the real server to active so that it can accept traffic.
+          - Or on standby or disabled so no traffic is sent.
           - choice | active | Server status active.
           - choice | standby | Server status standby.
           - choice | disable | Server status disable.
@@ -5345,9 +5130,6 @@ Module Source Code
     # BASIC FULL STATIC NAT MAPPING
     - name: EDIT FMGR_FIREWALL_VIP SNAT
       fmgr_fwobj_vip:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         name: "Basic StaticNAT Map"
         mode: "set"
         adom: "ansible"
@@ -5361,9 +5143,6 @@ Module Source Code
     # BASIC PORT PNAT MAPPING
     - name: EDIT FMGR_FIREWALL_VIP PNAT
       fmgr_fwobj_vip:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         name: "Basic PNAT Map Port 10443"
         mode: "set"
         adom: "ansible"
@@ -5381,9 +5160,6 @@ Module Source Code
     # BASIC DNS TRANSLATION NAT
     - name: EDIT FMGR_FIREWALL_DNST
       fmgr_fwobj_vip:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         name: "Basic DNS Translation"
         mode: "set"
         adom: "ansible"
@@ -5397,9 +5173,6 @@ Module Source Code
     # BASIC FQDN NAT
     - name: EDIT FMGR_FIREWALL_FQDN
       fmgr_fwobj_vip:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         name: "Basic FQDN Translation"
         mode: "set"
         adom: "ansible"
@@ -5411,9 +5184,6 @@ Module Source Code
     # DELETE AN ENTRY
     - name: DELETE FMGR_FIREWALL_VIP PNAT
       fmgr_fwobj_vip:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         name: "Basic PNAT Map Port 10443"
         mode: "delete"
         adom: "ansible"
@@ -5423,42 +5193,42 @@ Module Source Code
     api_result:
       description: full API response, includes status code and message
       returned: always
-      type: string
+      type: str
     """
     
     from ansible.module_utils.basic import AnsibleModule, env_fallback
-    from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-    
-    # check for pyFMG lib
-    try:
-        from pyFMG.fortimgr import FortiManager
-    
-        HAS_PYFMGR = True
-    except ImportError:
-        HAS_PYFMGR = False
-    
-    
-    ###############
-    # START METHODS
-    ###############
+    from ansible.module_utils.connection import Connection
+    from ansible.module_utils.network.fortimanager.fortimanager import FortiManagerHandler
+    from ansible.module_utils.network.fortimanager.common import FMGBaseException
+    from ansible.module_utils.network.fortimanager.common import FMGRCommon
+    from ansible.module_utils.network.fortimanager.common import FMGRMethods
+    from ansible.module_utils.network.fortimanager.common import DEFAULT_RESULT_OBJ
+    from ansible.module_utils.network.fortimanager.common import FAIL_SOCKET_MSG
+    from ansible.module_utils.network.fortimanager.common import prepare_dict
+    from ansible.module_utils.network.fortimanager.common import scrub_dict
     
     
-    def fmgr_firewall_vip_addsetdelete(fmg, paramgram):
+    def fmgr_firewall_vip_modify(fmgr, paramgram):
         """
-        fmgr_firewall_vip -- Your Description here, bruh
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
     
         mode = paramgram["mode"]
         adom = paramgram["adom"]
         # INIT A BASIC OBJECTS
-        response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
+        response = DEFAULT_RESULT_OBJ
         url = ""
         datagram = {}
     
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/firewall/vip'.format(adom=adom)
-            datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
+            datagram = scrub_dict(prepare_dict(paramgram))
     
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
@@ -5466,122 +5236,8 @@ Module Source Code
             url = '/pm/config/adom/{adom}/obj/firewall/vip/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
     
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if mode == "set":
-            response = fmg.set(url, datagram)
-        # IF MODE = UPDATE -- USER THE 'UPDATE' API CALL MODE
-        elif mode == "update":
-            response = fmg.update(url, datagram)
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        elif mode == "add":
-            response = fmg.add(url, datagram)
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        elif mode == "delete":
-            response = fmg.delete(url, datagram)
-    
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
-    
-    
-    # ADDITIONAL COMMON FUNCTIONS
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except:
-                pass
-            module.fail_json(msg=msg)
-    
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
-                                     **results[1])
-        return msg
-    
-    
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return (str((0xff000000 & mask) >> 24) + '.' +
-                str((0x00ff0000 & mask) >> 16) + '.' +
-                str((0x0000ff00 & mask) >> 8) + '.' +
-                str((0x000000ff & mask)))
-    
-    
-    # utility function: removing keys wih value of None, nothing in playbook for that key
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-    
-    
-    # utility function: remove keys that are need for the logic but the FMG API won't accept them
-    def fmgr_prepare_dict(obj):
-        list_of_elems = ["mode", "adom", "host", "username", "password"]
-        if isinstance(obj, dict):
-            obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
-        return obj
-    
-    
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-    
-        return return_val
-    
-    
-    def fmgr_split_comma_strings_into_lists(obj):
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, str):
-                        new_list = list()
-                        if "," in v:
-                            new_items = v.split(",")
-                            for item in new_items:
-                                new_list.append(item.strip())
-                            obj[k] = new_list
-    
-        return obj
     
     
     #############
@@ -5592,9 +5248,6 @@ Module Source Code
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
     
             websphere_server=dict(required=False, type="str", choices=["disable", "enable"]),
@@ -6003,8 +5656,7 @@ Module Source Code
     
         )
     
-        module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -6188,45 +5840,29 @@ Module Source Code
                 "versions": module.params["ssl_server_cipher_suites_versions"],
             }
         }
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
+        else:
+            module.fail_json(**FAIL_SOCKET_MSG)
     
         list_overrides = ['dynamic_mapping', 'realservers', 'ssl-cipher-suites', 'ssl-server-cipher-suites']
-        for list_variable in list_overrides:
-            override_data = list()
-            try:
-                override_data = module.params[list_variable]
-            except:
-                pass
-            try:
-                if override_data:
-                    del paramgram[list_variable]
-                    paramgram[list_variable] = override_data
-            except:
-                pass
+        paramgram = fmgr.tools.paramgram_child_list_override(list_overrides=list_overrides,
+                                                             paramgram=paramgram, module=module)
     
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None or password is None:
-            module.fail_json(msg="Host and username and password are required")
+        results = DEFAULT_RESULT_OBJ
+        try:
+            results = fmgr_firewall_vip_modify(fmgr, paramgram)
+            fmgr.govern_response(module=module, results=results,
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
     
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
+        except Exception as err:
+            raise FMGBaseException(err)
     
-        response = fmg.login()
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
-    
-        results = fmgr_firewall_vip_addsetdelete(fmg, paramgram)
-        if results[0] != 0:
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -3])
-    
-        fmg.logout()
-    
-        if results is not None:
-            return module.exit_json(**results[1])
-        else:
-            return module.exit_json(msg="No results were returned from the API call.")
+        return module.exit_json(**results[1])
     
     
     if __name__ == "__main__":

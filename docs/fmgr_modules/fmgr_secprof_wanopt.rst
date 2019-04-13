@@ -26,7 +26,11 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** No Data Exists. Contact DevOps Team.
+**Dev Status:** COMPLETED/MERGED
+
+**Owning Developer:** Andrew Welsh
+
+**Module Link:** https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_secprof_wanopt.py
 
 Parameters
 ----------
@@ -45,9 +49,7 @@ adom
 auth_group
 ++++++++++
 
-- Description: Optionally add an authentication group to restrict access to the WAN Optimization tunnel to peers in the authe
-
-  ntication group.
+- Description: Optionally add an authentication group to restrict access to the WAN Optimization tunnel to peers in the authentication group.
 
   
 
@@ -77,13 +79,7 @@ cifs
 cifs_byte_caching
 +++++++++++++++++
 
-- Description: Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
-
-  oss the WAN and in future serving if from the cache.
-
-  choice | disable | Disable HTTP byte-caching.
-
-  choice | enable | Enable HTTP byte-caching.
+- Description: Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent across the WAN and in future serving if from the cache.
 
   
 
@@ -96,10 +92,6 @@ cifs_log_traffic
 
 - Description: Enable/disable logging.
 
-  choice | disable | Disable logging.
-
-  choice | enable | Enable logging.
-
   
 
 - Required: False
@@ -109,9 +101,7 @@ cifs_log_traffic
 cifs_port
 +++++++++
 
-- Description: Single port number or port number range for CIFS. Only packets with a destination port number that matches thi
-
-  s port number or range are accepted by this profile.
+- Description: Single port number or port number range for CIFS. Only packets with a destination port number that matches this port number or range are accepted by this profile.
 
   
 
@@ -122,10 +112,6 @@ cifs_prefer_chunking
 
 - Description: Select dynamic or fixed-size data chunking for HTTP WAN Optimization.
 
-  choice | dynamic | Select dynamic data chunking to help to detect persistent data chunks in a changed file or
-
-  choice | fix | Select fixed data chunking.
-
   
 
 - Required: False
@@ -135,13 +121,7 @@ cifs_prefer_chunking
 cifs_secure_tunnel
 ++++++++++++++++++
 
-- Description: Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
-
-  0).
-
-  choice | disable | Disable SSL-secured tunnelling.
-
-  choice | enable | Enable SSL-secured tunnelling.
+- Description: Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (7810).
 
   
 
@@ -154,10 +134,6 @@ cifs_status
 
 - Description: Enable/disable HTTP WAN Optimization.
 
-  choice | disable | Disable HTTP WAN Optimization.
-
-  choice | enable | Enable HTTP WAN Optimization.
-
   
 
 - Required: False
@@ -168,12 +144,6 @@ cifs_tunnel_sharing
 +++++++++++++++++++
 
 - Description: Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
-
-  choice | private | For profiles that accept aggressive protocols such as HTTP and FTP so that these aggressiv
-
-  choice | shared | For profiles that accept nonaggressive and non-interactive protocols.
-
-  choice | express-shared | For profiles that accept interactive protocols such as Telnet.
 
   
 
@@ -214,13 +184,7 @@ ftp
 ftp_byte_caching
 ++++++++++++++++
 
-- Description: Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
-
-  oss the WAN and in future serving if from the cache.
-
-  choice | disable | Disable HTTP byte-caching.
-
-  choice | enable | Enable HTTP byte-caching.
+- Description: Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent across the WAN and in future serving if from the cache.
 
   
 
@@ -233,10 +197,6 @@ ftp_log_traffic
 
 - Description: Enable/disable logging.
 
-  choice | disable | Disable logging.
-
-  choice | enable | Enable logging.
-
   
 
 - Required: False
@@ -246,9 +206,7 @@ ftp_log_traffic
 ftp_port
 ++++++++
 
-- Description: Single port number or port number range for FTP. Only packets with a destination port number that matches this
-
-  port number or range are accepted by this profile.
+- Description: Single port number or port number range for FTP. Only packets with a destination port number that matches this port number or range are accepted by this profile.
 
   
 
@@ -259,10 +217,6 @@ ftp_prefer_chunking
 
 - Description: Select dynamic or fixed-size data chunking for HTTP WAN Optimization.
 
-  choice | dynamic | Select dynamic data chunking to help to detect persistent data chunks in a changed file or
-
-  choice | fix | Select fixed data chunking.
-
   
 
 - Required: False
@@ -272,13 +226,7 @@ ftp_prefer_chunking
 ftp_secure_tunnel
 +++++++++++++++++
 
-- Description: Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
-
-  0).
-
-  choice | disable | Disable SSL-secured tunnelling.
-
-  choice | enable | Enable SSL-secured tunnelling.
+- Description: Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (7810).
 
   
 
@@ -291,10 +239,6 @@ ftp_status
 
 - Description: Enable/disable HTTP WAN Optimization.
 
-  choice | disable | Disable HTTP WAN Optimization.
-
-  choice | enable | Enable HTTP WAN Optimization.
-
   
 
 - Required: False
@@ -306,26 +250,11 @@ ftp_tunnel_sharing
 
 - Description: Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
 
-  choice | private | For profiles that accept aggressive protocols such as HTTP and FTP so that these aggressiv
-
-  choice | shared | For profiles that accept nonaggressive and non-interactive protocols.
-
-  choice | express-shared | For profiles that accept interactive protocols such as Telnet.
-
   
 
 - Required: False
 
 - choices: ['private', 'shared', 'express-shared']
-
-host
-++++
-
-- Description: The FortiManager's Address.
-
-  
-
-- Required: True
 
 http
 ++++
@@ -351,13 +280,7 @@ http
 http_byte_caching
 +++++++++++++++++
 
-- Description: Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
-
-  oss the WAN and in future serving if from the cache.
-
-  choice | disable | Disable HTTP byte-caching.
-
-  choice | enable | Enable HTTP byte-caching.
+- Description: Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent across the WAN and in future serving if from the cache.
 
   
 
@@ -370,10 +293,6 @@ http_log_traffic
 
 - Description: Enable/disable logging.
 
-  choice | disable | Disable logging.
-
-  choice | enable | Enable logging.
-
   
 
 - Required: False
@@ -383,9 +302,7 @@ http_log_traffic
 http_port
 +++++++++
 
-- Description: Single port number or port number range for HTTP. Only packets with a destination port number that matches thi
-
-  s port number or range are accepted by this profile.
+- Description: Single port number or port number range for HTTP. Only packets with a destination port number that matches this port number or range are accepted by this profile.
 
   
 
@@ -396,10 +313,6 @@ http_prefer_chunking
 
 - Description: Select dynamic or fixed-size data chunking for HTTP WAN Optimization.
 
-  choice | dynamic | Select dynamic data chunking to help to detect persistent data chunks in a changed file or
-
-  choice | fix | Select fixed data chunking.
-
   
 
 - Required: False
@@ -409,13 +322,7 @@ http_prefer_chunking
 http_secure_tunnel
 ++++++++++++++++++
 
-- Description: Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
-
-  0).
-
-  choice | disable | Disable SSL-secured tunnelling.
-
-  choice | enable | Enable SSL-secured tunnelling.
+- Description: Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (7810).
 
   
 
@@ -427,10 +334,6 @@ http_ssl
 ++++++++
 
 - Description: Enable/disable SSL/TLS offloading (hardware acceleration) for HTTPS traffic in this tunnel.
-
-  choice | disable | Disable SSL/TLS offloading.
-
-  choice | enable | Enable SSL/TLS offloading.
 
   
 
@@ -452,10 +355,6 @@ http_status
 
 - Description: Enable/disable HTTP WAN Optimization.
 
-  choice | disable | Disable HTTP WAN Optimization.
-
-  choice | enable | Enable HTTP WAN Optimization.
-
   
 
 - Required: False
@@ -465,13 +364,7 @@ http_status
 http_tunnel_non_http
 ++++++++++++++++++++
 
-- Description: Configure how to process non-HTTP traffic when a profile configured for HTTP traffic accepts a non-HTTP sessio
-
-  n. Can occur if an application sends non-HTTP traffic using an HTTP destination port.
-
-  choice | disable | Drop or tear down non-HTTP sessions accepted by the profile.
-
-  choice | enable | Pass non-HTTP sessions through the tunnel without applying protocol optimization, byte-cac
+- Description: Configure how to process non-HTTP traffic when a profile configured for HTTP traffic accepts a non-HTTP session. Can occur if an application sends non-HTTP traffic using an HTTP destination port.
 
   
 
@@ -484,12 +377,6 @@ http_tunnel_sharing
 
 - Description: Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
 
-  choice | private | For profiles that accept aggressive protocols such as HTTP and FTP so that these aggressiv
-
-  choice | shared | For profiles that accept nonaggressive and non-interactive protocols.
-
-  choice | express-shared | For profiles that accept interactive protocols such as Telnet.
-
   
 
 - Required: False
@@ -500,12 +387,6 @@ http_unknown_http_version
 +++++++++++++++++++++++++
 
 - Description: How to handle HTTP sessions that do not comply with HTTP 0.9, 1.0, or 1.1.
-
-  choice | best-effort | Assume all HTTP sessions comply with HTTP 0.9, 1.0, or 1.1. If a session uses a different
-
-  choice | reject | Reject or tear down HTTP sessions that do not use HTTP 0.9, 1.0, or 1.1.
-
-  choice | tunnel | Pass HTTP traffic that does not use HTTP 0.9, 1.0, or 1.1 without applying HTTP protocol o
 
   
 
@@ -537,13 +418,7 @@ mapi
 mapi_byte_caching
 +++++++++++++++++
 
-- Description: Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
-
-  oss the WAN and in future serving if from the cache.
-
-  choice | disable | Disable HTTP byte-caching.
-
-  choice | enable | Enable HTTP byte-caching.
+- Description: Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent across the WAN and in future serving if from the cache.
 
   
 
@@ -556,10 +431,6 @@ mapi_log_traffic
 
 - Description: Enable/disable logging.
 
-  choice | disable | Disable logging.
-
-  choice | enable | Enable logging.
-
   
 
 - Required: False
@@ -569,9 +440,7 @@ mapi_log_traffic
 mapi_port
 +++++++++
 
-- Description: Single port number or port number range for MAPI. Only packets with a destination port number that matches thi
-
-  s port number or range are accepted by this profile.
+- Description: Single port number or port number range for MAPI. Only packets with a destination port number that matches this port number or range are accepted by this profile.
 
   
 
@@ -580,13 +449,7 @@ mapi_port
 mapi_secure_tunnel
 ++++++++++++++++++
 
-- Description: Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
-
-  0).
-
-  choice | disable | Disable SSL-secured tunnelling.
-
-  choice | enable | Enable SSL-secured tunnelling.
+- Description: Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (7810).
 
   
 
@@ -599,10 +462,6 @@ mapi_status
 
 - Description: Enable/disable HTTP WAN Optimization.
 
-  choice | disable | Disable HTTP WAN Optimization.
-
-  choice | enable | Enable HTTP WAN Optimization.
-
   
 
 - Required: False
@@ -613,12 +472,6 @@ mapi_tunnel_sharing
 +++++++++++++++++++
 
 - Description: Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
-
-  choice | private | For profiles that accept aggressive protocols such as HTTP and FTP so that these aggressiv
-
-  choice | shared | For profiles that accept nonaggressive and non-interactive protocols.
-
-  choice | express-shared | For profiles that accept interactive protocols such as Telnet.
 
   
 
@@ -650,15 +503,6 @@ name
 
 - Required: False
 
-password
-++++++++
-
-- Description: The password associated with the username account.
-
-  
-
-- Required: True
-
 tcp
 +++
 
@@ -683,13 +527,7 @@ tcp
 tcp_byte_caching
 ++++++++++++++++
 
-- Description: Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
-
-  oss the WAN and in future serving if from the cache.
-
-  choice | disable | Disable HTTP byte-caching.
-
-  choice | enable | Enable HTTP byte-caching.
+- Description: Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent across the WAN and in future serving if from the cache.
 
   
 
@@ -702,10 +540,6 @@ tcp_byte_caching_opt
 
 - Description: Select whether TCP byte-caching uses system memory only or both memory and disk space.
 
-  choice | mem-only | Byte caching with memory only.
-
-  choice | mem-disk | Byte caching with memory and disk.
-
   
 
 - Required: False
@@ -717,10 +551,6 @@ tcp_log_traffic
 
 - Description: Enable/disable logging.
 
-  choice | disable | Disable logging.
-
-  choice | enable | Enable logging.
-
   
 
 - Required: False
@@ -730,9 +560,7 @@ tcp_log_traffic
 tcp_port
 ++++++++
 
-- Description: Single port number or port number range for TCP. Only packets with a destination port number that matches this
-
-  port number or range are accepted by this profile.
+- Description: Single port number or port number range for TCP. Only packets with a destination port number that matches this port number or range are accepted by this profile.
 
   
 
@@ -741,13 +569,7 @@ tcp_port
 tcp_secure_tunnel
 +++++++++++++++++
 
-- Description: Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
-
-  0).
-
-  choice | disable | Disable SSL-secured tunnelling.
-
-  choice | enable | Enable SSL-secured tunnelling.
+- Description: Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (7810).
 
   
 
@@ -759,10 +581,6 @@ tcp_ssl
 +++++++
 
 - Description: Enable/disable SSL/TLS offloading.
-
-  choice | disable | Disable SSL/TLS offloading.
-
-  choice | enable | Enable SSL/TLS offloading.
 
   
 
@@ -784,10 +602,6 @@ tcp_status
 
 - Description: Enable/disable HTTP WAN Optimization.
 
-  choice | disable | Disable HTTP WAN Optimization.
-
-  choice | enable | Enable HTTP WAN Optimization.
-
   
 
 - Required: False
@@ -798,12 +612,6 @@ tcp_tunnel_sharing
 ++++++++++++++++++
 
 - Description: Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
-
-  choice | private | For profiles that accept aggressive protocols such as HTTP and FTP so that these aggressiv
-
-  choice | shared | For profiles that accept nonaggressive and non-interactive protocols.
-
-  choice | express-shared | For profiles that accept interactive protocols such as Telnet.
 
   
 
@@ -816,24 +624,11 @@ transparent
 
 - Description: Enable/disable transparent mode.
 
-  choice | disable | Disable transparent mode. Client packets source addresses are changed to the source addres
-
-  choice | enable | Determine if WAN Optimization changes client packet source addresses. Affects the routing
-
   
 
 - Required: False
 
 - choices: ['disable', 'enable']
-
-username
-++++++++
-
-- Description: The username associated with the account.
-
-  
-
-- Required: True
 
 
 
@@ -844,26 +639,31 @@ Functions
 
 
 
-- fmgr_wanopt_profile_addsetdelete
+- fmgr_wanopt_profile_modify
 
  .. code-block:: python
 
-    def fmgr_wanopt_profile_addsetdelete(fmg, paramgram):
+    def fmgr_wanopt_profile_modify(fmgr, paramgram):
         """
-        fmgr_wanopt_profile -- Your Description here, bruh
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
     
         mode = paramgram["mode"]
         adom = paramgram["adom"]
     
-        response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
+        response = DEFAULT_RESULT_OBJ
         url = ""
         datagram = {}
     
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/wanopt/profile'.format(adom=adom)
-            datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
+            datagram = scrub_dict(prepare_dict(paramgram))
     
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
@@ -871,152 +671,9 @@ Functions
             url = '/pm/config/adom/{adom}/obj/wanopt/profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
     
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if mode == "set":
-            response = fmg.set(url, datagram)
-        # IF MODE = UPDATE -- USER THE 'UPDATE' API CALL MODE
-        elif mode == "update":
-            response = fmg.update(url, datagram)
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        elif mode == "add":
-            response = fmg.add(url, datagram)
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        elif mode == "delete":
-            response = fmg.delete(url, datagram)
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
     
         return response
-    
-    
-    # ADDITIONAL COMMON FUNCTIONS
-
-- fmgr_logout
-
- .. code-block:: python
-
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except:
-                pass
-            module.fail_json(msg=msg)
-    
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
-                                     **results[1])
-        return msg
-    
-    
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-
-- fmgr_cidr_to_netmask
-
- .. code-block:: python
-
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return(str((0xff000000 & mask) >> 24) + '.' +
-               str((0x00ff0000 & mask) >> 16) + '.' +
-               str((0x0000ff00 & mask) >> 8) + '.' +
-               str((0x000000ff & mask)))
-    
-    
-    # utility function: removing keys wih value of None, nothing in playbook for that key
-
-- fmgr_del_none
-
- .. code-block:: python
-
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-    
-    
-    # utility function: remove keys that are need for the logic but the FMG API won't accept them
-
-- fmgr_prepare_dict
-
- .. code-block:: python
-
-    def fmgr_prepare_dict(obj):
-        list_of_elems = ["mode", "adom", "host", "username", "password"]
-        if isinstance(obj, dict):
-            obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
-        return obj
-    
-    
-
-- fmgr_is_empty_dict
-
- .. code-block:: python
-
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-    
-        return return_val
-    
-    
-
-- fmgr_split_comma_strings_into_lists
-
- .. code-block:: python
-
-    def fmgr_split_comma_strings_into_lists(obj):
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, str):
-                        new_list = list()
-                        if "," in v:
-                            new_items = v.split(",")
-                            for item in new_items:
-                                new_list.append(item.strip())
-                            obj[k] = new_list
-    
-        return obj
     
     
     #############
@@ -1032,9 +689,6 @@ Functions
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
     
             transparent=dict(required=False, type="str", choices=["disable", "enable"]),
@@ -1089,8 +743,7 @@ Functions
     
         )
     
-        module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -1150,45 +803,30 @@ Functions
                 "tunnel-sharing": module.params["tcp_tunnel_sharing"],
             }
         }
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
+        else:
+            module.fail_json(**FAIL_SOCKET_MSG)
     
         list_overrides = ['cifs', 'ftp', 'http', 'mapi', 'tcp']
-        for list_variable in list_overrides:
-            override_data = list()
-            try:
-                override_data = module.params[list_variable]
-            except:
-                pass
-            try:
-                if override_data:
-                    del paramgram[list_variable]
-                    paramgram[list_variable] = override_data
-            except:
-                pass
+        paramgram = fmgr.tools.paramgram_child_list_override(list_overrides=list_overrides,
+                                                             paramgram=paramgram, module=module)
     
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None or password is None:
-            module.fail_json(msg="Host and username and password are required")
+        results = DEFAULT_RESULT_OBJ
     
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
+        try:
+            results = fmgr_wanopt_profile_modify(fmgr, paramgram)
+            fmgr.govern_response(module=module, results=results,
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
     
-        response = fmg.login()
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
+        except Exception as err:
+            raise FMGBaseException(err)
     
-        results = fmgr_wanopt_profile_addsetdelete(fmg, paramgram)
-        if results[0] != 0:
-            fmgr_logout(fmg, module, results=results, good_codes=[0])
-    
-        fmg.logout()
-    
-        if results is not None:
-            return module.exit_json(**results[1])
-        else:
-            return module.exit_json(msg="No results were returned from the API call.")
+        return module.exit_json(**results[1])
     
     
 
@@ -1228,6 +866,8 @@ Module Source Code
     ---
     module: fmgr_secprof_wanopt
     version_added: "2.8"
+    notes:
+        - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).
     author:
         - Luke Weighall (@lweighall)
         - Andrew Welsh (@Ghilli3)
@@ -1243,21 +883,6 @@ Module Source Code
         required: false
         default: root
     
-      host:
-        description:
-          - The FortiManager's Address.
-        required: true
-    
-      username:
-        description:
-          - The username associated with the account.
-        required: true
-    
-      password:
-        description:
-          - The password associated with the username account.
-        required: true
-    
       mode:
         description:
           - Sets one of three modes for managing the object.
@@ -1269,10 +894,10 @@ Module Source Code
       transparent:
         description:
           - Enable/disable transparent mode.
-          - choice | disable | Disable transparent mode. Client packets source addresses are changed to the source addres
-          - choice | enable | Determine if WAN Optimization changes client packet source addresses. Affects the routing
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       name:
         description:
@@ -1286,8 +911,8 @@ Module Source Code
     
       auth_group:
         description:
-          - Optionally add an authentication group to restrict access to the WAN Optimization tunnel to peers in the authe
-          - ntication group.
+          - Optionally add an authentication group to restrict access to the WAN Optimization tunnel to
+            peers in the authentication group.
         required: false
     
       cifs:
@@ -1303,60 +928,60 @@ Module Source Code
     
       cifs_byte_caching:
         description:
-          - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
-          - oss the WAN and in future serving if from the cache.
-          - choice | disable | Disable HTTP byte-caching.
-          - choice | enable | Enable HTTP byte-caching.
+          - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching
+            file data sent across the WAN and in future serving if from the cache.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       cifs_log_traffic:
         description:
           - Enable/disable logging.
-          - choice | disable | Disable logging.
-          - choice | enable | Enable logging.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       cifs_port:
         description:
-          - Single port number or port number range for CIFS. Only packets with a destination port number that matches thi
-          - s port number or range are accepted by this profile.
+          - Single port number or port number range for CIFS. Only packets with a destination port number
+            that matches this port number or range are accepted by this profile.
         required: false
     
       cifs_prefer_chunking:
         description:
           - Select dynamic or fixed-size data chunking for HTTP WAN Optimization.
-          - choice | dynamic | Select dynamic data chunking to help to detect persistent data chunks in a changed file or
-          - choice | fix | Select fixed data chunking.
         required: false
-        choices: ["dynamic", "fix"]
+        choices:
+          - dynamic
+          - fix
     
       cifs_secure_tunnel:
         description:
-          - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
-          - 0).
-          - choice | disable | Disable SSL-secured tunnelling.
-          - choice | enable | Enable SSL-secured tunnelling.
+          - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the
+            same TCP port (7810).
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       cifs_status:
         description:
           - Enable/disable HTTP WAN Optimization.
-          - choice | disable | Disable HTTP WAN Optimization.
-          - choice | enable | Enable HTTP WAN Optimization.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       cifs_tunnel_sharing:
         description:
           - Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
-          - choice | private | For profiles that accept aggressive protocols such as HTTP and FTP so that these aggressiv
-          - choice | shared | For profiles that accept nonaggressive and non-interactive protocols.
-          - choice | express-shared | For profiles that accept interactive protocols such as Telnet.
         required: false
-        choices: ["private", "shared", "express-shared"]
+        choices:
+          - private
+          - shared
+          - express-shared
     
       ftp:
         description:
@@ -1371,60 +996,60 @@ Module Source Code
     
       ftp_byte_caching:
         description:
-          - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
-          - oss the WAN and in future serving if from the cache.
-          - choice | disable | Disable HTTP byte-caching.
-          - choice | enable | Enable HTTP byte-caching.
+          - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching
+            file data sent across the WAN and in future serving if from the cache.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       ftp_log_traffic:
         description:
           - Enable/disable logging.
-          - choice | disable | Disable logging.
-          - choice | enable | Enable logging.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       ftp_port:
         description:
-          - Single port number or port number range for FTP. Only packets with a destination port number that matches this
-          -  port number or range are accepted by this profile.
+          - Single port number or port number range for FTP. Only packets with a destination port number
+            that matches this port number or range are accepted by this profile.
         required: false
     
       ftp_prefer_chunking:
         description:
           - Select dynamic or fixed-size data chunking for HTTP WAN Optimization.
-          - choice | dynamic | Select dynamic data chunking to help to detect persistent data chunks in a changed file or
-          - choice | fix | Select fixed data chunking.
         required: false
-        choices: ["dynamic", "fix"]
+        choices:
+          - dynamic
+          - fix
     
       ftp_secure_tunnel:
         description:
-          - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
-          - 0).
-          - choice | disable | Disable SSL-secured tunnelling.
-          - choice | enable | Enable SSL-secured tunnelling.
+          - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the
+            same TCP port (7810).
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       ftp_status:
         description:
           - Enable/disable HTTP WAN Optimization.
-          - choice | disable | Disable HTTP WAN Optimization.
-          - choice | enable | Enable HTTP WAN Optimization.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       ftp_tunnel_sharing:
         description:
           - Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
-          - choice | private | For profiles that accept aggressive protocols such as HTTP and FTP so that these aggressiv
-          - choice | shared | For profiles that accept nonaggressive and non-interactive protocols.
-          - choice | express-shared | For profiles that accept interactive protocols such as Telnet.
         required: false
-        choices: ["private", "shared", "express-shared"]
+        choices:
+          - private
+          - shared
+          - express-shared
     
       http:
         description:
@@ -1439,51 +1064,51 @@ Module Source Code
     
       http_byte_caching:
         description:
-          - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
-          - oss the WAN and in future serving if from the cache.
-          - choice | disable | Disable HTTP byte-caching.
-          - choice | enable | Enable HTTP byte-caching.
+          - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching
+            file data sent across the WAN and in future serving if from the cache.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       http_log_traffic:
         description:
           - Enable/disable logging.
-          - choice | disable | Disable logging.
-          - choice | enable | Enable logging.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       http_port:
         description:
-          - Single port number or port number range for HTTP. Only packets with a destination port number that matches thi
-          - s port number or range are accepted by this profile.
+          - Single port number or port number range for HTTP. Only packets with a destination port number
+            that matches this port number or range are accepted by this profile.
         required: false
     
       http_prefer_chunking:
         description:
           - Select dynamic or fixed-size data chunking for HTTP WAN Optimization.
-          - choice | dynamic | Select dynamic data chunking to help to detect persistent data chunks in a changed file or
-          - choice | fix | Select fixed data chunking.
         required: false
-        choices: ["dynamic", "fix"]
+        choices:
+          - dynamic
+          - fix
     
       http_secure_tunnel:
         description:
-          - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
-          - 0).
-          - choice | disable | Disable SSL-secured tunnelling.
-          - choice | enable | Enable SSL-secured tunnelling.
+          - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the
+            same TCP port (7810).
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       http_ssl:
         description:
           - Enable/disable SSL/TLS offloading (hardware acceleration) for HTTPS traffic in this tunnel.
-          - choice | disable | Disable SSL/TLS offloading.
-          - choice | enable | Enable SSL/TLS offloading.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       http_ssl_port:
         description:
@@ -1493,37 +1118,37 @@ Module Source Code
       http_status:
         description:
           - Enable/disable HTTP WAN Optimization.
-          - choice | disable | Disable HTTP WAN Optimization.
-          - choice | enable | Enable HTTP WAN Optimization.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       http_tunnel_non_http:
         description:
-          - Configure how to process non-HTTP traffic when a profile configured for HTTP traffic accepts a non-HTTP sessio
-          - n. Can occur if an application sends non-HTTP traffic using an HTTP destination port.
-          - choice | disable | Drop or tear down non-HTTP sessions accepted by the profile.
-          - choice | enable | Pass non-HTTP sessions through the tunnel without applying protocol optimization, byte-cac
+          - Configure how to process non-HTTP traffic when a profile configured for HTTP traffic accepts
+            a non-HTTP session. Can occur if an application sends non-HTTP traffic using an HTTP destination port.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       http_tunnel_sharing:
         description:
           - Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
-          - choice | private | For profiles that accept aggressive protocols such as HTTP and FTP so that these aggressiv
-          - choice | shared | For profiles that accept nonaggressive and non-interactive protocols.
-          - choice | express-shared | For profiles that accept interactive protocols such as Telnet.
         required: false
-        choices: ["private", "shared", "express-shared"]
+        choices:
+          - private
+          - shared
+          - express-shared
     
       http_unknown_http_version:
         description:
           - How to handle HTTP sessions that do not comply with HTTP 0.9, 1.0, or 1.1.
-          - choice | best-effort | Assume all HTTP sessions comply with HTTP 0.9, 1.0, or 1.1. If a session uses a different
-          - choice | reject | Reject or tear down HTTP sessions that do not use HTTP 0.9, 1.0, or 1.1.
-          - choice | tunnel | Pass HTTP traffic that does not use HTTP 0.9, 1.0, or 1.1 without applying HTTP protocol o
         required: false
-        choices: ["best-effort", "reject", "tunnel"]
+        choices:
+          - best-effort
+          - reject
+          - tunnel
     
       mapi:
         description:
@@ -1538,52 +1163,52 @@ Module Source Code
     
       mapi_byte_caching:
         description:
-          - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
-          - oss the WAN and in future serving if from the cache.
-          - choice | disable | Disable HTTP byte-caching.
-          - choice | enable | Enable HTTP byte-caching.
+          - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching
+            file data sent across the WAN and in future serving if from the cache.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       mapi_log_traffic:
         description:
           - Enable/disable logging.
-          - choice | disable | Disable logging.
-          - choice | enable | Enable logging.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       mapi_port:
         description:
-          - Single port number or port number range for MAPI. Only packets with a destination port number that matches thi
-          - s port number or range are accepted by this profile.
+          - Single port number or port number range for MAPI. Only packets with a destination port number
+            that matches this port number or range are accepted by this profile.
         required: false
     
       mapi_secure_tunnel:
         description:
-          - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
-          - 0).
-          - choice | disable | Disable SSL-secured tunnelling.
-          - choice | enable | Enable SSL-secured tunnelling.
+          - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the
+            same TCP port (7810).
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       mapi_status:
         description:
           - Enable/disable HTTP WAN Optimization.
-          - choice | disable | Disable HTTP WAN Optimization.
-          - choice | enable | Enable HTTP WAN Optimization.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       mapi_tunnel_sharing:
         description:
           - Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
-          - choice | private | For profiles that accept aggressive protocols such as HTTP and FTP so that these aggressiv
-          - choice | shared | For profiles that accept nonaggressive and non-interactive protocols.
-          - choice | express-shared | For profiles that accept interactive protocols such as Telnet.
         required: false
-        choices: ["private", "shared", "express-shared"]
+        choices:
+          - private
+          - shared
+          - express-shared
     
       tcp:
         description:
@@ -1598,51 +1223,51 @@ Module Source Code
     
       tcp_byte_caching:
         description:
-          - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
-          - oss the WAN and in future serving if from the cache.
-          - choice | disable | Disable HTTP byte-caching.
-          - choice | enable | Enable HTTP byte-caching.
+          - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching
+            file data sent across the WAN and in future serving if from the cache.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       tcp_byte_caching_opt:
         description:
           - Select whether TCP byte-caching uses system memory only or both memory and disk space.
-          - choice | mem-only | Byte caching with memory only.
-          - choice | mem-disk | Byte caching with memory and disk.
         required: false
-        choices: ["mem-only", "mem-disk"]
+        choices:
+          - mem-only
+          - mem-disk
     
       tcp_log_traffic:
         description:
           - Enable/disable logging.
-          - choice | disable | Disable logging.
-          - choice | enable | Enable logging.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       tcp_port:
         description:
-          - Single port number or port number range for TCP. Only packets with a destination port number that matches this
-          -  port number or range are accepted by this profile.
+          - Single port number or port number range for TCP. Only packets with a destination port number
+            that matches this port number or range are accepted by this profile.
         required: false
     
       tcp_secure_tunnel:
         description:
-          - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
-          - 0).
-          - choice | disable | Disable SSL-secured tunnelling.
-          - choice | enable | Enable SSL-secured tunnelling.
+          - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the
+            same TCP port (7810).
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       tcp_ssl:
         description:
           - Enable/disable SSL/TLS offloading.
-          - choice | disable | Disable SSL/TLS offloading.
-          - choice | enable | Enable SSL/TLS offloading.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       tcp_ssl_port:
         description:
@@ -1652,37 +1277,30 @@ Module Source Code
       tcp_status:
         description:
           - Enable/disable HTTP WAN Optimization.
-          - choice | disable | Disable HTTP WAN Optimization.
-          - choice | enable | Enable HTTP WAN Optimization.
         required: false
-        choices: ["disable", "enable"]
+        choices:
+          - disable
+          - enable
     
       tcp_tunnel_sharing:
         description:
           - Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
-          - choice | private | For profiles that accept aggressive protocols such as HTTP and FTP so that these aggressiv
-          - choice | shared | For profiles that accept nonaggressive and non-interactive protocols.
-          - choice | express-shared | For profiles that accept interactive protocols such as Telnet.
         required: false
-        choices: ["private", "shared", "express-shared"]
-    
+        choices:
+          - private
+          - shared
+          - express-shared
     
     '''
     
     EXAMPLES = '''
       - name: DELETE Profile
         fmgr_secprof_wanopt:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_WanOpt_Profile"
           mode: "delete"
     
       - name: Create FMGR_WANOPT_PROFILE
         fmgr_secprof_wanopt:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "set"
           adom: "root"
           transparent: "enable"
@@ -1707,40 +1325,46 @@ Module Source Code
     api_result:
       description: full API response, includes status code and message
       returned: always
-      type: string
+      type: str
     """
     
     from ansible.module_utils.basic import AnsibleModule, env_fallback
-    from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
+    from ansible.module_utils.connection import Connection
+    from ansible.module_utils.network.fortimanager.fortimanager import FortiManagerHandler
+    from ansible.module_utils.network.fortimanager.common import FMGBaseException
+    from ansible.module_utils.network.fortimanager.common import FMGRCommon
+    from ansible.module_utils.network.fortimanager.common import DEFAULT_RESULT_OBJ
+    from ansible.module_utils.network.fortimanager.common import FAIL_SOCKET_MSG
+    from ansible.module_utils.network.fortimanager.common import prepare_dict
+    from ansible.module_utils.network.fortimanager.common import scrub_dict
     
-    # check for pyFMG lib
-    try:
-        from pyFMG.fortimgr import FortiManager
-        HAS_PYFMGR = True
-    except ImportError:
-        HAS_PYFMGR = False
     
     ###############
     # START METHODS
     ###############
     
     
-    def fmgr_wanopt_profile_addsetdelete(fmg, paramgram):
+    def fmgr_wanopt_profile_modify(fmgr, paramgram):
         """
-        fmgr_wanopt_profile -- Your Description here, bruh
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
     
         mode = paramgram["mode"]
         adom = paramgram["adom"]
     
-        response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
+        response = DEFAULT_RESULT_OBJ
         url = ""
         datagram = {}
     
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/wanopt/profile'.format(adom=adom)
-            datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
+            datagram = scrub_dict(prepare_dict(paramgram))
     
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
@@ -1748,122 +1372,9 @@ Module Source Code
             url = '/pm/config/adom/{adom}/obj/wanopt/profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
     
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if mode == "set":
-            response = fmg.set(url, datagram)
-        # IF MODE = UPDATE -- USER THE 'UPDATE' API CALL MODE
-        elif mode == "update":
-            response = fmg.update(url, datagram)
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        elif mode == "add":
-            response = fmg.add(url, datagram)
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        elif mode == "delete":
-            response = fmg.delete(url, datagram)
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
     
         return response
-    
-    
-    # ADDITIONAL COMMON FUNCTIONS
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except:
-                pass
-            module.fail_json(msg=msg)
-    
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
-                                     **results[1])
-        return msg
-    
-    
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return(str((0xff000000 & mask) >> 24) + '.' +
-               str((0x00ff0000 & mask) >> 16) + '.' +
-               str((0x0000ff00 & mask) >> 8) + '.' +
-               str((0x000000ff & mask)))
-    
-    
-    # utility function: removing keys wih value of None, nothing in playbook for that key
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-    
-    
-    # utility function: remove keys that are need for the logic but the FMG API won't accept them
-    def fmgr_prepare_dict(obj):
-        list_of_elems = ["mode", "adom", "host", "username", "password"]
-        if isinstance(obj, dict):
-            obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
-        return obj
-    
-    
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-    
-        return return_val
-    
-    
-    def fmgr_split_comma_strings_into_lists(obj):
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, str):
-                        new_list = list()
-                        if "," in v:
-                            new_items = v.split(",")
-                            for item in new_items:
-                                new_list.append(item.strip())
-                            obj[k] = new_list
-    
-        return obj
     
     
     #############
@@ -1874,9 +1385,6 @@ Module Source Code
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
     
             transparent=dict(required=False, type="str", choices=["disable", "enable"]),
@@ -1931,8 +1439,7 @@ Module Source Code
     
         )
     
-        module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -1992,45 +1499,30 @@ Module Source Code
                 "tunnel-sharing": module.params["tcp_tunnel_sharing"],
             }
         }
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
+        else:
+            module.fail_json(**FAIL_SOCKET_MSG)
     
         list_overrides = ['cifs', 'ftp', 'http', 'mapi', 'tcp']
-        for list_variable in list_overrides:
-            override_data = list()
-            try:
-                override_data = module.params[list_variable]
-            except:
-                pass
-            try:
-                if override_data:
-                    del paramgram[list_variable]
-                    paramgram[list_variable] = override_data
-            except:
-                pass
+        paramgram = fmgr.tools.paramgram_child_list_override(list_overrides=list_overrides,
+                                                             paramgram=paramgram, module=module)
     
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None or password is None:
-            module.fail_json(msg="Host and username and password are required")
+        results = DEFAULT_RESULT_OBJ
     
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
+        try:
+            results = fmgr_wanopt_profile_modify(fmgr, paramgram)
+            fmgr.govern_response(module=module, results=results,
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
     
-        response = fmg.login()
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
+        except Exception as err:
+            raise FMGBaseException(err)
     
-        results = fmgr_wanopt_profile_addsetdelete(fmg, paramgram)
-        if results[0] != 0:
-            fmgr_logout(fmg, module, results=results, good_codes=[0])
-    
-        fmg.logout()
-    
-        if results is not None:
-            return module.exit_json(**results[1])
-        else:
-            return module.exit_json(msg="No results were returned from the API call.")
+        return module.exit_json(**results[1])
     
     
     if __name__ == "__main__":

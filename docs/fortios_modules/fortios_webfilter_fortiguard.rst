@@ -123,7 +123,11 @@ Functions
         dictionary = {}
     
         for attribute in option_list:
+<<<<<<< Updated upstream
+            if attribute in json and json[attribute] is not None:
+=======
             if attribute in json:
+>>>>>>> Stashed changes
                 dictionary[attribute] = json[attribute]
     
         return dictionary
@@ -150,11 +154,15 @@ Functions
  .. code-block:: python
 
     def fortios_webfilter(data, fos):
+<<<<<<< Updated upstream
+        login(data)
+=======
         host = data['host']
         username = data['username']
         password = data['password']
         fos.https('off')
         fos.login(host, username, password)
+>>>>>>> Stashed changes
     
         methodlist = ['webfilter_fortiguard']
         for method in methodlist:
@@ -209,6 +217,10 @@ Functions
         except ImportError:
             module.fail_json(msg="fortiosapi module is required")
     
+<<<<<<< Updated upstream
+        global fos
+=======
+>>>>>>> Stashed changes
         fos = FortiOSAPI()
     
         is_error, has_changed, result = fortios_webfilter(module.params, fos)
@@ -361,10 +373,17 @@ Module Source Code
       tasks:
       - name: Configure FortiGuard Web Filter service.
         fortios_webfilter_fortiguard:
+<<<<<<< Updated upstream
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+=======
           host:  "{{  host }}"
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{  vdom }}"
+>>>>>>> Stashed changes
           webfilter_fortiguard:
             cache-mem-percent: "3"
             cache-mode: "ttl"
@@ -383,57 +402,101 @@ Module Source Code
     build:
       description: Build number of the fortigate image
       returned: always
+<<<<<<< Updated upstream
+      type: string
+=======
       type: str
+>>>>>>> Stashed changes
       sample: '1547'
     http_method:
       description: Last method used to provision the content into FortiGate
       returned: always
+<<<<<<< Updated upstream
+      type: string
+=======
       type: str
+>>>>>>> Stashed changes
       sample: 'PUT'
     http_status:
       description: Last result given by FortiGate on last operation applied
       returned: always
+<<<<<<< Updated upstream
+      type: string
+=======
       type: str
+>>>>>>> Stashed changes
       sample: "200"
     mkey:
       description: Master key (id) used in the last call to FortiGate
       returned: success
+<<<<<<< Updated upstream
+      type: string
+=======
       type: str
+>>>>>>> Stashed changes
       sample: "key1"
     name:
       description: Name of the table used to fulfill the request
       returned: always
+<<<<<<< Updated upstream
+      type: string
+=======
       type: str
+>>>>>>> Stashed changes
       sample: "urlfilter"
     path:
       description: Path of the table used to fulfill the request
       returned: always
+<<<<<<< Updated upstream
+      type: string
+=======
       type: str
+>>>>>>> Stashed changes
       sample: "webfilter"
     revision:
       description: Internal revision number
       returned: always
+<<<<<<< Updated upstream
+      type: string
+=======
       type: str
+>>>>>>> Stashed changes
       sample: "17.0.2.10658"
     serial:
       description: Serial number of the unit
       returned: always
+<<<<<<< Updated upstream
+      type: string
+=======
       type: str
+>>>>>>> Stashed changes
       sample: "FGVMEVYYQT3AB5352"
     status:
       description: Indication of the operation's result
       returned: always
+<<<<<<< Updated upstream
+      type: string
+=======
       type: str
+>>>>>>> Stashed changes
       sample: "success"
     vdom:
       description: Virtual domain used
       returned: always
+<<<<<<< Updated upstream
+      type: string
+=======
       type: str
+>>>>>>> Stashed changes
       sample: "root"
     version:
       description: Version of the FortiGate
       returned: always
+<<<<<<< Updated upstream
+      type: string
+=======
       type: str
+>>>>>>> Stashed changes
       sample: "v5.6.3"
     
     '''
@@ -465,7 +528,11 @@ Module Source Code
         dictionary = {}
     
         for attribute in option_list:
+<<<<<<< Updated upstream
+            if attribute in json and json[attribute] is not None:
+=======
             if attribute in json:
+>>>>>>> Stashed changes
                 dictionary[attribute] = json[attribute]
     
         return dictionary
@@ -482,11 +549,15 @@ Module Source Code
     
     
     def fortios_webfilter(data, fos):
+<<<<<<< Updated upstream
+        login(data)
+=======
         host = data['host']
         username = data['username']
         password = data['password']
         fos.https('off')
         fos.login(host, username, password)
+>>>>>>> Stashed changes
     
         methodlist = ['webfilter_fortiguard']
         for method in methodlist:
@@ -536,6 +607,10 @@ Module Source Code
         except ImportError:
             module.fail_json(msg="fortiosapi module is required")
     
+<<<<<<< Updated upstream
+        global fos
+=======
+>>>>>>> Stashed changes
         fos = FortiOSAPI()
     
         is_error, has_changed, result = fortios_webfilter(module.params, fos)

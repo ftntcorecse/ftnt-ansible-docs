@@ -2,16 +2,13 @@
 
 - name: CONFIG IPv4 IP ADDRESS OBJECT
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
 
   - name: ADD MULTICAST RANGE
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       adom: "ansible"
       mode: "add"
       multicast: "multicastrange"
@@ -20,4 +17,4 @@
       name: "ansible_multicastrange"
       comment: "Dev by Ansible"
       color: "22"
-      tags: "blahBlahBlah"
+      #tags: "blahBlahBlah"

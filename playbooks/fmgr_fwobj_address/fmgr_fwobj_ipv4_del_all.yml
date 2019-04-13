@@ -2,16 +2,13 @@
 
 - name: CONFIG FMGR FIREWALL OBJECTS
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
 
   - name: DELETE IPv4 IP ADDRESS GROUP
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       adom: "ansible"
       mode: "delete"
       ipv4: "group"
@@ -19,9 +16,6 @@
 
   - name: DELETE IPv4 IP ADDRESS RANGE OBJECT
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       mode: "delete"
       adom: "ansible"
       ipv4: "iprange"
@@ -29,9 +23,6 @@
 
   - name: DELETE IPv4 IP ADDRESS RANGE OBJECT 3
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       mode: "delete"
       adom: "ansible"
       ipv4: "iprange"
@@ -39,9 +30,6 @@
 
   - name: DELETE IPv4 IP ADDRESS RANGE OBJECT 4
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       mode: "delete"
       adom: "ansible"
       ipv4: "iprange"
@@ -49,9 +37,6 @@
 
   - name: DELETE IPv4 IP ADDRESS RANGE OBJECT 2
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       mode: "delete"
       adom: "ansible"
       ipv4: "iprange"
@@ -59,9 +44,6 @@
 
   - name: DELETE IPv4 IP ADDRESS OBJECT
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       mode: "delete"
       adom: "ansible"
       ipv4: "ipmask"
@@ -69,9 +51,6 @@
 
   - name: DELETE IPv4 IP ADDRESS OBJECT (NON CIDR TEST)
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       mode: "delete"
       adom: "ansible"
       ipv4: "ipmask"
@@ -79,9 +58,6 @@
 
   - name: DELETE IPv4 IP ADDRESS OBJECT (NON CIDR TEST) 2
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       mode: "delete"
       adom: "ansible"
       ipv4: "ipmask"
@@ -89,9 +65,6 @@
 
   - name: DELETE IPv4 IP ADDRESS WILDCARD OBJECT
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       mode: "delete"
       adom: "ansible"
       ipv4: "wildcard"
@@ -99,9 +72,6 @@
 
   - name: DELETE IPv4 IP ADDRESS WILDCARD FQDN OBJECT
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       ipv4: "wildcard-fqdn"
       mode: "delete"
       adom: "ansible"
@@ -109,9 +79,6 @@
 
   - name: DELETE IPv4 IP ADDRESS FQDN OBJECT
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       ipv4: "fqdn"
       mode: "delete"
       adom: "ansible"
@@ -119,9 +86,6 @@
 
   - name: DELETE IPv4 IP ADDRESS GEO OBJECT
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       ipv4: "geography"
       mode: "delete"
       adom: "ansible"
@@ -129,9 +93,6 @@
 
   - name: DELETE IPv6 IP ADDRESS GROUP
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       adom: "ansible"
       mode: "delete"
       ipv6: "group"
@@ -139,9 +100,6 @@
 
   - name: DELETE IPv6 IP ADDRESS RANGE OBJECT
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       mode: "delete"
       adom: "ansible"
       ipv6: "iprange"
@@ -149,9 +107,6 @@
 
   - name: DELETE IPv6 ADDRESS
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       adom: "ansible"
       mode: "delete"
       ipv6: "ip"
@@ -159,9 +114,6 @@
 
   - name: DELETE BROADCAST SUBNET
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       adom: "ansible"
       multicast: "broadcastmask"
       mode: "delete"
@@ -169,9 +121,6 @@
 
   - name: DELETE MULTICAST RANGE
     fmgr_fwobj_address:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       adom: "ansible"
       mode: "delete"
       multicast: "multicastrange"

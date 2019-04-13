@@ -1,27 +1,21 @@
 ---
 - name: CREATE DEVICE PROVISION TEMPLATES
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
     - name: SET SNMP SYSTEM INFO ANSIBLE ADOM
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
         snmp_status: "enable"
-        state: "present"
+        mode: "set"
         adom: "ansible"
 
     - name: SET SYSLOG INFO
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "present"
+        mode: "set"
         adom: "ansible"
         syslog_server: "10.7.220.59"
         syslog_port: "514"
@@ -32,12 +26,9 @@
 
     - name: SET SNMP SYSTEM INFO different template
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
         snmp_status: "enable"
-        state: "present"
+        mode: "set"
         adom: "ansible"
         snmp_v2c_query_port: "162"
         snmp_v2c_trap_port: "161"
@@ -53,12 +44,9 @@
 
     - name: SET SNMP SYSTEM INFO different template (SNMPv3)
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
         snmp_status: "enable"
-        state: "present"
+        mode: "set"
         adom: "ansible"
         snmpv3_auth_proto: "sha"
         snmpv3_auth_pwd: "fortinet"
@@ -76,11 +64,8 @@
 
     - name: SET NTP TO FORTIGUARD
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "present"
+        mode: "set"
         adom: "ansible"
         ntp_status: "enable"
         ntp_sync_interval: "60"
@@ -88,11 +73,8 @@
 
     - name: SET NTP TO CUSTOM SERVER
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "present"
+        mode: "set"
         adom: "ansible"
         ntp_status: "enable"
         ntp_sync_interval: "60"
@@ -103,11 +85,8 @@
 
     - name: SET ADMIN GLOBAL SETTINGS
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "present"
+        mode: "set"
         adom: "ansible"
         admin_https_redirect: "enable"
         admin_https_port: "4433"
@@ -122,11 +101,8 @@
 
     - name: SET CUSTOM SMTP SERVER
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "present"
+        mode: "set"
         adom: "ansible"
         smtp_username: "ansible"
         smtp_password: "{{ password }}"
@@ -139,11 +115,8 @@
 
     - name: SET DNS SERVERS
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "present"
+        mode: "set"
         adom: "ansible"
         dns_suffix: "ansible.local"
         dns_primary_ipv4: "8.8.8.8"
@@ -151,10 +124,7 @@
 
     - name: SET PROVISIONING TEMPLATE DEVICE TARGETS IN FORTIMANAGER
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "present"
+        mode: "set"
         adom: "ansible"
         provision_targets: "FGT1,FGT2"

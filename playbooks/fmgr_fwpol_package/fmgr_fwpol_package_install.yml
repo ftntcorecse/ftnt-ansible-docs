@@ -2,19 +2,16 @@
 
 - name: CONFIG FW POLICY PACKAGES AND FOLDERS
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
   - name: INSTALL PACKAGE
     fmgr_fwpol_package:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       mode: "set"
       adom: "ansible"
       name: "ansibleTestPackage1"
-      type: "install"
+      object_type: "install"
       scope_members: "FGT2, FGT3"
 
 

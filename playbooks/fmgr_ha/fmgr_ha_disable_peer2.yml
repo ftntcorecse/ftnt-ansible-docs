@@ -1,15 +1,12 @@
 ---
 - name: ADD FMG HA PEER
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
     - name: DISABLE FORTIMANAGER HA PEER
       fmgr_ha:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         fmgr_ha_peer_ipv4: "10.7.220.140"
         fmgr_ha_peer_sn: "FMG-VM0A17005535"
         fmgr_ha_peer_status: "disable"

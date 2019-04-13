@@ -2,16 +2,13 @@
 
 - name: CONFIG CUSTOM SERVICES
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
 
   - name: EDIT FMGR_FIREWALL_FQDN
     fmgr_fwobj_vip:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       name: "Basic FQDN Translation"
       mode: "set"
       adom: "ansible"

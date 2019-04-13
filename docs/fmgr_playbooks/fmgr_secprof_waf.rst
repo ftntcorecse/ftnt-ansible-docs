@@ -10,6 +10,37 @@ Playbook Task Examples
 
       - name: DELETE Profile
         fmgr_secprof_waf:
+          name: "Ansible_WAF_Profile"
+          comment: "Created by Ansible Module TEST"
+          mode: "delete"
+    
+      - name: CREATE Profile
+        fmgr_secprof_waf:
+          name: "Ansible_WAF_Profile"
+          comment: "Created by Ansible Module TEST"
+          mode: "set"
+
+
+
+Playbook File Examples
+----------------------
+
+
+waf.yml
++++++++
+
+.. code-block:: yaml
+
+
+    - name: Create and Delete security profile in FMG
+      hosts: FortiManager
+      connection: local
+      gather_facts: False
+    
+      tasks:
+    
+      - name: DELETE Profile
+        fmgr_secprof_waf:
           host: "{{inventory_hostname}}"
           username: "{{ username }}"
           password: "{{ password }}"
@@ -25,11 +56,8 @@ Playbook Task Examples
           name: "Ansible_WAF_Profile"
           comment: "Created by Ansible Module TEST"
           mode: "set"
+    
 
 
 
-Playbook File Examples
-----------------------
-
-%%PB_FILE_EXAMPLE_TOKEN%%
 

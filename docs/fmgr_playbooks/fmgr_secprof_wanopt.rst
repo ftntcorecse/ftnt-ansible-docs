@@ -10,6 +10,51 @@ Playbook Task Examples
 
       - name: DELETE Profile
         fmgr_secprof_wanopt:
+          name: "Ansible_WanOpt_Profile"
+          mode: "delete"
+    
+      - name: Create FMGR_WANOPT_PROFILE
+        fmgr_secprof_wanopt:
+          mode: "set"
+          adom: "root"
+          transparent: "enable"
+          name: "Ansible_WanOpt_Profile"
+          comments: "Created by Ansible"
+          cifs: {byte-caching: "enable",
+                  log-traffic: "enable",
+                  port: 80,
+                  prefer-chunking: "dynamic",
+                  status: "enable",
+                  tunnel-sharing: "private"}
+          ftp: {byte-caching: "enable",
+                  log-traffic: "enable",
+                  port: 80,
+                  prefer-chunking: "dynamic",
+                  secure-tunnel: "disable",
+                  status: "enable",
+                  tunnel-sharing: "private"}
+
+
+
+Playbook File Examples
+----------------------
+
+
+wanopt.yml
+++++++++++
+
+.. code-block:: yaml
+
+
+    - name: Create and Delete security profile in FMG
+      hosts: FortiManager
+      connection: local
+      gather_facts: False
+    
+      tasks:
+    
+      - name: DELETE Profile
+        fmgr_secprof_wanopt:
           host: "{{inventory_hostname}}"
           username: "{{ username }}"
           password: "{{ password }}"
@@ -41,9 +86,4 @@ Playbook Task Examples
                   tunnel-sharing: "private"}
 
 
-
-Playbook File Examples
-----------------------
-
-%%PB_FILE_EXAMPLE_TOKEN%%
 

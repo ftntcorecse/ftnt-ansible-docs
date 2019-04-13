@@ -2,15 +2,12 @@
 
 - name: CONFIG FMGR FIREWALL OBJECTS
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
     - name: ADD FMGR_FIREWALL_IPPOOL Overload
       fmgr_fwobj_ippool:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         mode: "add"
         adom: "ansible"
         name: "Ansible_pool4_overload"
@@ -54,9 +51,6 @@
 
     - name: ADD FMGR_FIREWALL_IPPOOL one-to-one
       fmgr_fwobj_ippool:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         mode: "add"
         adom: "ansible"
         name: "Ansible_pool4_121"
@@ -70,9 +64,6 @@
 
     - name: ADD FMGR_FIREWALL_IPPOOL FIXED PORT RANGE
       fmgr_fwobj_ippool:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         mode: "add"
         adom: "ansible"
         name: "Ansible_pool4_fixed_port"
@@ -89,9 +80,6 @@
 
     - name: ADD FMGR_FIREWALL_IPPOOL PORT BLOCK ALLOCATION
       fmgr_fwobj_ippool:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         mode: "add"
         adom: "ansible"
         name: "Ansible_pool4_port_block_allocation"

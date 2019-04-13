@@ -1,18 +1,12 @@
 ---
 - name: DISCOVER AND ADD DEVICES
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
     - name: DISCOVER AND ADD DEVICE FGT4
       fmgr_device:
-        #hard coded fortimanager example host and login -- see "fmg_group_add.yml for ansible host file version"
-        host: "{{ inventory_hostname }}"
-        #HARD CODED LOGIN FOR FORTIMANAGER SEE "fmg_group_add.yml" example for anisble host version
-        username: "{{ username }}"
-        password: "{{ password }}"
-        #ADOM TO ADD THE DEVICE TO
         adom: "ansible"
         #DEVICE LOGIN
         device_username: "admin"
@@ -23,9 +17,6 @@
         device_unique_name: "FGT4"
     - name: DISCOVER AND ADD DEVICE FGT5
       fmgr_device:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "ansible"
         device_username: "admin"
         device_password: "fortinet"
@@ -33,9 +24,6 @@
         device_unique_name: "FGT5"
     - name: DISCOVER AND ADD DEVICE FGT6
       fmgr_device:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "ansible"
         device_username: "admin"
         device_password: "fortinet"
@@ -43,12 +31,6 @@
         device_unique_name: "FGT6"
     - name: DISCOVER AND ADD DEVICE FGT1
       fmgr_device:
-        #hard coded fortimanager example host and login -- see "fmg_group_add.yml for ansible host file version"
-        host: "{{ inventory_hostname }}"
-        #HARD CODED LOGIN FOR FORTIMANAGER SEE "fmg_group_add.yml" example for anisble host version
-        username: "{{ username }}"
-        password: "{{ password }}"
-        #ADOM TO ADD THE DEVICE TO
         adom: "ansible"
         #DEVICE LOGIN
         device_username: "admin"
@@ -59,9 +41,6 @@
         device_unique_name: "FGT1"
     - name: DISCOVER AND ADD DEVICE FGT2
       fmgr_device:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "ansible"
         device_username: "admin"
         device_password: "fortinet"
@@ -69,9 +48,6 @@
         device_unique_name: "FGT2"
     - name: DISCOVER AND ADD DEVICE FGT3
       fmgr_device:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "ansible"
         device_username: "admin"
         device_password: "fortinet"

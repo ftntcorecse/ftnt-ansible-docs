@@ -1,0 +1,129 @@
+========================
+fortios_firewall_sniffer
+========================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure sniffer.
+        fortios_firewall_sniffer:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          firewall_sniffer:
+            state: "present"
+            anomaly:
+             -
+                action: "pass"
+                log: "enable"
+                name: "default_name_6"
+                quarantine: "none"
+                quarantine-expiry: "<your_own_value>"
+                quarantine-log: "disable"
+                status: "disable"
+                threshold: "11"
+                threshold(default): "12"
+            application-list: "<your_own_value> (source application.list.name)"
+            application-list-status: "enable"
+            av-profile: "<your_own_value> (source antivirus.profile.name)"
+            av-profile-status: "enable"
+            dlp-sensor: "<your_own_value> (source dlp.sensor.name)"
+            dlp-sensor-status: "enable"
+            dsri: "enable"
+            host: "myhostname"
+            id:  "21"
+            interface: "<your_own_value> (source system.interface.name)"
+            ips-dos-status: "enable"
+            ips-sensor: "<your_own_value> (source ips.sensor.name)"
+            ips-sensor-status: "enable"
+            ipv6: "enable"
+            logtraffic: "all"
+            max-packet-count: "28"
+            non-ip: "enable"
+            port: "<your_own_value>"
+            protocol: "<your_own_value>"
+            scan-botnet-connections: "disable"
+            spamfilter-profile: "<your_own_value> (source spamfilter.profile.name)"
+            spamfilter-profile-status: "enable"
+            status: "enable"
+            vlan: "<your_own_value>"
+            webfilter-profile: "<your_own_value> (source webfilter.profile.name)"
+            webfilter-profile-status: "enable"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/firewall/fortios_firewall_sniffer_example.yml
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure sniffer.
+        fortios_firewall_sniffer:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          firewall_sniffer:
+            state: "present"
+            anomaly:
+             -
+                action: "pass"
+                log: "enable"
+                name: "default_name_6"
+                quarantine: "none"
+                quarantine-expiry: "<your_own_value>"
+                quarantine-log: "disable"
+                status: "disable"
+                threshold: "11"
+                threshold(default): "12"
+            application-list: "<your_own_value> (source application.list.name)"
+            application-list-status: "enable"
+            av-profile: "<your_own_value> (source antivirus.profile.name)"
+            av-profile-status: "enable"
+            dlp-sensor: "<your_own_value> (source dlp.sensor.name)"
+            dlp-sensor-status: "enable"
+            dsri: "enable"
+            host: "myhostname"
+            id:  "21"
+            interface: "<your_own_value> (source system.interface.name)"
+            ips-dos-status: "enable"
+            ips-sensor: "<your_own_value> (source ips.sensor.name)"
+            ips-sensor-status: "enable"
+            ipv6: "enable"
+            logtraffic: "all"
+            max-packet-count: "28"
+            non-ip: "enable"
+            port: "<your_own_value>"
+            protocol: "<your_own_value>"
+            scan-botnet-connections: "disable"
+            spamfilter-profile: "<your_own_value> (source spamfilter.profile.name)"
+            spamfilter-profile-status: "enable"
+            status: "enable"
+            vlan: "<your_own_value>"
+            webfilter-profile: "<your_own_value> (source webfilter.profile.name)"
+            webfilter-profile-status: "enable"
+
+
+
+

@@ -1,16 +1,13 @@
 ---
 - name: DELETE DEVICE PROVISION TEMPLATES
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
     - name: SET PROVISIONING TEMPLATE DEVICE TARGETS IN FORTIMANAGER
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         provisioning_template: "ansibleTest"
-        state: "absent"
+        mode: "delete"
         adom: "ansible"
         provision_targets: "FGT1,FGT2"

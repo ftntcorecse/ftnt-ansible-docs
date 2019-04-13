@@ -1,15 +1,12 @@
 ---
 - name: CREATE DEVICE PROVISION TEMPLATES
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
     - name: DELETE ENTIRE PROVISIONING TEMPLATE
       fmgr_device_provision_template:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         delete_provisioning_template: "ansibleTest"
-        state: "absent"
+        mode: "delete"
         adom: "ansible"

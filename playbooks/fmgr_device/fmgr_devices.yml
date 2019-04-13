@@ -1,15 +1,12 @@
 ---
 - name: DISCOVER AND ADD DEVICES
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
     - name: DISCOVER AND ADD DEVICE FGT1
       fmgr_device:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "root"
         device_username: "admin"
         device_password: "fortinet"
@@ -18,9 +15,6 @@
         device_serial: "FGVM000000117994"
     - name: DISCOVER AND ADD DEVICE FGT2
       fmgr_device:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "root"
         device_username: "admin"
         device_password: "fortinet"

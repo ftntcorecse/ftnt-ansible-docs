@@ -2,7 +2,7 @@
 
 - name: CONFIG CUSTOM SERVICES
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
@@ -10,9 +10,6 @@
   # BASIC FULL STATIC NAT MAPPING
   - name: EDIT FMGR_FIREWALL_VIP SNAT
     fmgr_fwobj_vip:
-      host: "{{ inventory_hostname }}"
-      username: "{{ username }}"
-      password: "{{ password }}"
       name: "Basic StaticNAT Map"
       mode: "set"
       adom: "ansible"

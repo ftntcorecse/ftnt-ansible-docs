@@ -38,5 +38,40 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
+<<<<<<< Updated upstream
+
+../ansible_fgt_modules/v6.0.2/wireless_controller.hotspot20/fortios_wireless_controller.hotspot20_h2qp_wan_metric_example.yml
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure WAN metrics.
+        fortios_wireless_controller.hotspot20_h2qp_wan_metric:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          wireless_controller.hotspot20_h2qp_wan_metric:
+            state: "present"
+            downlink-load: "3"
+            downlink-speed: "4"
+            link-at-capacity: "enable"
+            link-status: "up"
+            load-measurement-duration: "7"
+            name: "default_name_8"
+            symmetric-wan-link: "symmetric"
+            uplink-load: "10"
+            uplink-speed: "11"
+
+
+
+=======
 %%PB_FILE_EXAMPLE_TOKEN%%
+>>>>>>> Stashed changes
 

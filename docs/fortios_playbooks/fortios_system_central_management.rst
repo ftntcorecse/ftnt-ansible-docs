@@ -17,10 +17,17 @@ Playbook Task Examples
       tasks:
       - name: Configure central management.
         fortios_system_central_management:
+<<<<<<< Updated upstream
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+=======
           host:  "{{  host }}"
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{  vdom }}"
+>>>>>>> Stashed changes
           system_central_management:
             allow-monitor: "enable"
             allow-push-configuration: "enable"
@@ -51,5 +58,53 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
+<<<<<<< Updated upstream
+
+../ansible_fgt_modules/v6.0.2/system/fortios_system_central_management_example.yml
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure central management.
+        fortios_system_central_management:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          system_central_management:
+            allow-monitor: "enable"
+            allow-push-configuration: "enable"
+            allow-push-firmware: "enable"
+            allow-remote-firmware-upgrade: "enable"
+            enc-algorithm: "default"
+            fmg: "<your_own_value>"
+            fmg-source-ip: "<your_own_value>"
+            fmg-source-ip6: "<your_own_value>"
+            include-default-servers: "enable"
+            mode: "normal"
+            schedule-config-restore: "enable"
+            schedule-script-restore: "enable"
+            serial-number: "<your_own_value>"
+            server-list:
+             -
+                addr-type: "ipv4"
+                fqdn: "<your_own_value>"
+                id:  "19"
+                server-address: "<your_own_value>"
+                server-address6: "<your_own_value>"
+                server-type: "update"
+            type: "fortimanager"
+            vdom: "<your_own_value> (source system.vdom.name)"
+
+
+
+=======
 %%PB_FILE_EXAMPLE_TOKEN%%
+>>>>>>> Stashed changes
 

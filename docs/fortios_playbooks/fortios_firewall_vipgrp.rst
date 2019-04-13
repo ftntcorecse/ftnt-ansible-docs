@@ -37,5 +37,39 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
+<<<<<<< Updated upstream
+
+../ansible_fgt_modules/v6.0.2/firewall/fortios_firewall_vipgrp_example.yml
+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure IPv4 virtual IP groups.
+        fortios_firewall_vipgrp:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          firewall_vipgrp:
+            state: "present"
+            color: "3"
+            comments: "<your_own_value>"
+            interface: "<your_own_value> (source system.interface.name)"
+            member:
+             -
+                name: "default_name_7 (source firewall.vip.name)"
+            name: "default_name_8"
+            uuid: "<your_own_value>"
+
+
+
+=======
 %%PB_FILE_EXAMPLE_TOKEN%%
+>>>>>>> Stashed changes
 

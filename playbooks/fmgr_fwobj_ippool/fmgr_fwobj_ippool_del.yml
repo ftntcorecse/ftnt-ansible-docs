@@ -2,15 +2,12 @@
 
 - name: CONFIG FMGR FIREWALL OBJECTS
   hosts: FortiManager
-  connection: local
+  connection: httpapi
   gather_facts: False
 
   tasks:
     - name: DELETE FMGR_FIREWALL_IPPOOL Overload
       fmgr_fwobj_ippool:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         mode: "delete"
         adom: "ansible"
         name: "Ansible_pool4_overload"
@@ -18,9 +15,6 @@
 
     - name: DELETE FMGR_FIREWALL_IPPOOL Overload
       fmgr_fwobj_ippool:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         mode: "delete"
         adom: "ansible"
         name: "Ansible_pool4_121"
@@ -28,9 +22,6 @@
 
     - name: DELETE FMGR_FIREWALL_IPPOOL Overload
       fmgr_fwobj_ippool:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         mode: "delete"
         adom: "ansible"
         name: "Ansible_pool4_fixed_port"
@@ -40,9 +31,6 @@
 
     - name: DELETE FMGR_FIREWALL_IPPOOL Overload
       fmgr_fwobj_ippool:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         mode: "delete"
         adom: "ansible"
         name: "Ansible_pool4_port_block_allocation"

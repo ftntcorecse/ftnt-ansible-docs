@@ -1,0 +1,67 @@
+================================
+fortios_system_virtual_wire_pair
+================================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure virtual wire pairs.
+        fortios_system_virtual_wire_pair:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          system_virtual_wire_pair:
+            state: "present"
+            member:
+             -
+                interface-name: "<your_own_value> (source system.interface.name)"
+            name: "default_name_5"
+            vlan-filter: "<your_own_value>"
+            wildcard-vlan: "enable"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/system/fortios_system_virtual_wire_pair_example.yml
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure virtual wire pairs.
+        fortios_system_virtual_wire_pair:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          system_virtual_wire_pair:
+            state: "present"
+            member:
+             -
+                interface-name: "<your_own_value> (source system.interface.name)"
+            name: "default_name_5"
+            vlan-filter: "<your_own_value>"
+            wildcard-vlan: "enable"
+
+
+
+
