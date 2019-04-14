@@ -85,8 +85,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
@@ -113,7 +114,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a></li>
@@ -195,26 +195,24 @@
 <div class="section" id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
 <p><strong>Name:</strong> fmgr_ha</p>
-<p><strong>Description:</strong> Change HA state or settings of FortiManager nodes (Standalone/Master/Slave)</p>
+<p><strong>Description:</strong> Change HA state or settings of FortiManager nodes (Standalone/Master/Slave).</p>
 <p><strong>Author(s):</strong></p>
 <ul class="simple">
 <li>Luke Weighall (github: &#64;lweighall)</li>
 <li>Andrew Welsh (github: &#64;Ghilli3)</li>
 <li>Jim Huber (github: &#64;p4r4n0y1ng)</li>
 </ul>
-<p><strong>Ansible Version Added/Required:</strong> 2.6</p>
-<p><strong>Dev Status:</strong> PR TESTS GREEN - AWAITING APPROVAL</p>
+<p><strong>Ansible Version Added/Required:</strong> 2.8</p>
+<p><strong>Dev Status:</strong> COMPLETED/MERGED</p>
 <p><strong>Owning Developer:</strong> Luke Weighall</p>
-<p><strong>Pull Request Started:</strong> 9/24/18</p>
-<p><strong>Days in PR:</strong> 31</p>
-<p><strong>Branch Link:</strong> <a class="reference external" href="https://github.com/ftntcorecse/ansible/tree/fmgr_ha">https://github.com/ftntcorecse/ansible/tree/fmgr_ha</a></p>
+<p>Module Github <a class="reference external" href="https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_ha.py">Link</a></p>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="fmgr-ha-cluster-id">
 <h3>fmgr_ha_cluster_id<a class="headerlink" href="#fmgr-ha-cluster-id" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: Sets the ID number of the HA cluster. Defaults to 1</li>
+<li>Description: Sets the ID number of the HA cluster. Defaults to 1.</li>
 <li>Required: False</li>
 <li>default: 1</li>
 </ul>
@@ -224,13 +222,12 @@
 <ul class="simple">
 <li>Description: Sets the password for the HA cluster. Only required once. System remembers between HA mode switches.</li>
 <li>Required: False</li>
-<li>default: False</li>
 </ul>
 </div>
 <div class="section" id="fmgr-ha-file-quota">
 <h3>fmgr_ha_file_quota<a class="headerlink" href="#fmgr-ha-file-quota" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: Sets the File quota in MB (2048-20480)</li>
+<li>Description: Sets the File quota in MB (2048-20480).</li>
 <li>Required: False</li>
 <li>default: 4096</li>
 </ul>
@@ -238,7 +235,7 @@
 <div class="section" id="fmgr-ha-hb-interval">
 <h3>fmgr_ha_hb_interval<a class="headerlink" href="#fmgr-ha-hb-interval" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: Sets the heartbeat interval (1-255)</li>
+<li>Description: Sets the heartbeat interval (1-255).</li>
 <li>Required: False</li>
 <li>default: 5</li>
 </ul>
@@ -246,7 +243,7 @@
 <div class="section" id="fmgr-ha-hb-threshold">
 <h3>fmgr_ha_hb_threshold<a class="headerlink" href="#fmgr-ha-hb-threshold" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: Sets heartbeat lost threshold (1-255)</li>
+<li>Description: Sets heartbeat lost threshold (1-255).</li>
 <li>Required: False</li>
 <li>default: 3</li>
 </ul>
@@ -254,9 +251,8 @@
 <div class="section" id="fmgr-ha-mode">
 <h3>fmgr_ha_mode<a class="headerlink" href="#fmgr-ha-mode" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: Sets the role of the FortiManager host for HA</li>
+<li>Description: Sets the role of the FortiManager host for HA.</li>
 <li>Required: False</li>
-<li>default: False</li>
 <li>choices: [‘standalone’, ‘master’, ‘slave’]</li>
 </ul>
 </div>
@@ -265,7 +261,6 @@
 <ul class="simple">
 <li>Description: Sets the IPv4 address of a HA peer.</li>
 <li>Required: False</li>
-<li>default: False</li>
 </ul>
 </div>
 <div class="section" id="fmgr-ha-peer-ipv6">
@@ -273,45 +268,21 @@
 <ul class="simple">
 <li>Description: Sets the IPv6 address of a HA peer.</li>
 <li>Required: False</li>
-<li>default: False</li>
 </ul>
 </div>
 <div class="section" id="fmgr-ha-peer-sn">
 <h3>fmgr_ha_peer_sn<a class="headerlink" href="#fmgr-ha-peer-sn" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: Sets the HA Peer Serial Number</li>
+<li>Description: Sets the HA Peer Serial Number.</li>
 <li>Required: False</li>
-<li>default: False</li>
 </ul>
 </div>
 <div class="section" id="fmgr-ha-peer-status">
 <h3>fmgr_ha_peer_status<a class="headerlink" href="#fmgr-ha-peer-status" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: Sets the peer status enable or disable</li>
+<li>Description: Sets the peer status to enable or disable.</li>
 <li>Required: False</li>
-<li>default: False</li>
 <li>choices: [‘enable’, ‘disable’]</li>
-</ul>
-</div>
-<div class="section" id="host">
-<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The FortiManager’s Address.</li>
-<li>Required: True</li>
-</ul>
-</div>
-<div class="section" id="password">
-<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The password associated with the username account.</li>
-<li>Required: False</li>
-</ul>
-</div>
-<div class="section" id="username">
-<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The username to log into the FortiManager</li>
-<li>Required: True</li>
 </ul>
 </div>
 </div>
@@ -321,12 +292,21 @@
 <li>fmgr_set_ha_mode</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_set_ha_mode</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_set_ha_mode</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This method is used set the HA mode of a FortiManager Node</span>
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># INIT A BASIC OBJECTS</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">])</span> <span class="o">!=</span> <span class="s2">&quot;standalone&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="o">!=</span> <span class="s2">&quot;standalone&quot;</span><span class="p">:</span>
         <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">],</span>
             <span class="s2">&quot;file-quota&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_file_quota&quot;</span><span class="p">],</span>
@@ -335,7 +315,7 @@
             <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">],</span>
             <span class="s2">&quot;clusterid&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_id&quot;</span><span class="p">]</span>
         <span class="p">}</span>
-    <span class="k">elif</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="s2">&quot;standalone&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="o">==</span> <span class="s2">&quot;standalone&quot;</span><span class="p">:</span>
         <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">],</span>
             <span class="s2">&quot;file-quota&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_file_quota&quot;</span><span class="p">],</span>
@@ -345,7 +325,7 @@
         <span class="p">}</span>
 
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/cli/global/system/ha&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">SET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -354,17 +334,23 @@
 <li>fmgr_get_ha_peer_list</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_get_ha_peer_list</span><span class="p">(</span><span class="n">fmg</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_get_ha_peer_list</span><span class="p">(</span><span class="n">fmgr</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This method is used GET the HA PEERS of a FortiManager Node</span>
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># INIT A BASIC OBJECTS</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
 
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;get&quot;</span>
-    <span class="p">}</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/cli/global/system/ha/peer/&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -373,9 +359,14 @@
 <li>fmgr_set_ha_peer</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_set_ha_peer</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_set_ha_peer</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This method is used GET the HA PEERS of a FortiManager Node</span>
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
@@ -387,52 +378,8 @@
     <span class="p">}</span>
 
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/cli/global/system/ha/peer/&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">SET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
-
-
-<span class="c1"># ADDITIONAL COMMON FUNCTIONS</span>
-<span class="c1"># FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>fmgr_logout</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="p">(),</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">logout_on_fail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logout_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># VALIDATION ERROR (NO RESULTS, JUST AN EXIT)</span>
-    <span class="k">if</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">&quot;NULL&quot;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
-
-    <span class="c1"># SUBMISSION ERROR</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;NULL&quot;</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No status message returned from pyFMG. Possible that this was a GET with a tuple result.&quot;</span>
-
-            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">good_codes</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">logout_on_fail</span><span class="p">:</span>
-                    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-                    <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">return</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">logout_on_success</span><span class="p">:</span>
-                    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-                    <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">return</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -442,12 +389,9 @@
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-        <span class="n">fmgr_ha_mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">fmgr_ha_mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;standalone&quot;</span><span class="p">,</span> <span class="s2">&quot;master&quot;</span><span class="p">,</span> <span class="s2">&quot;slave&quot;</span><span class="p">]),</span>
         <span class="n">fmgr_ha_cluster_pw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-        <span class="n">fmgr_ha_peer_status</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">fmgr_ha_peer_status</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="s2">&quot;disable&quot;</span><span class="p">]),</span>
         <span class="n">fmgr_ha_peer_sn</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">fmgr_ha_peer_ipv4</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">fmgr_ha_peer_ipv6</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
@@ -457,9 +401,14 @@
         <span class="n">fmgr_ha_cluster_id</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="p">)</span>
 
-    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,)</span>
+    <span class="n">required_if</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;fmgr_ha_peer_ipv4&#39;</span><span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fmgr_ha_peer_sn&#39;</span><span class="p">,</span> <span class="s1">&#39;fmgr_ha_peer_status&#39;</span><span class="p">]],</span>
+        <span class="p">[</span><span class="s1">&#39;fmgr_ha_peer_ipv6&#39;</span><span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fmgr_ha_peer_sn&#39;</span><span class="p">,</span> <span class="s1">&#39;fmgr_ha_peer_status&#39;</span><span class="p">]],</span>
+        <span class="p">[</span><span class="s1">&#39;fmgr_ha_mode&#39;</span><span class="p">,</span> <span class="s1">&#39;master&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fmgr_ha_cluster_pw&#39;</span><span class="p">,</span> <span class="s1">&#39;fmgr_ha_cluster_id&#39;</span><span class="p">]],</span>
+        <span class="p">[</span><span class="s1">&#39;fmgr_ha_mode&#39;</span><span class="p">,</span> <span class="s1">&#39;slave&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fmgr_ha_cluster_pw&#39;</span><span class="p">,</span> <span class="s1">&#39;fmgr_ha_cluster_id&#39;</span><span class="p">]],</span>
+    <span class="p">]</span>
 
-    <span class="c1"># VALIDATE PARAMS BEFORE ATTEMPTING TO CONNECT</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">required_if</span><span class="o">=</span><span class="n">required_if</span><span class="p">)</span>
     <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">],</span>
         <span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">],</span>
@@ -472,68 +421,45 @@
         <span class="s2">&quot;fmgr_ha_file_quota&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_file_quota&quot;</span><span class="p">],</span>
         <span class="s2">&quot;fmgr_ha_cluster_id&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_id&quot;</span><span class="p">],</span>
     <span class="p">}</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+    <span class="n">fmgr</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">)</span>
+        <span class="n">fmgr</span> <span class="o">=</span> <span class="n">FortiManagerHandler</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="n">fmgr</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">FMGRCommon</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">FAIL_SOCKET_MSG</span><span class="p">)</span>
+
     <span class="c1"># INIT FLAGS AND COUNTERS</span>
     <span class="n">get_ha_peers</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="c1"># validate required arguments are passed; not used in argument_spec to allow params to be called from provider</span>
-    <span class="c1"># check if params are set</span>
-    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
-    <span class="c1"># CHECK IF LOGIN FAILED</span>
-    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">],)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># START SESSION LOGIC</span>
-        <span class="c1"># IF THE PEER SN DEFINED, BUT THE IPS ARE NOT, THEN QUIT</span>
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_sn&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="c1"># CHANGE GET_HA_PEERS TO SHOW INTENT TO EDIT PEERS</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_sn&quot;</span><span class="p">],</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv4&quot;</span><span class="p">],</span>
+                                       <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv6&quot;</span><span class="p">],</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_status&quot;</span><span class="p">])):</span>
             <span class="n">get_ha_peers</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1"># DOUBLE CHECK THAT THE REST OF THE NEEDED PARAMETERS ARE THERE</span>
-            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv4&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv6&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;HA Peer Serial Number is defined but the &quot;</span>
-                                             <span class="s2">&quot;IPv4 and IPv6 fields are empty.&quot;</span>
-                                             <span class="s2">&quot; Fill in the IPv4 or v6 parameters in the playbook&quot;</span><span class="p">)</span>
-
-        <span class="c1"># IF THE PEER IPS ARE DEFINED, BUT NOT THE SERIAL NUMBER, THEN QUIT</span>
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv4&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv6&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="c1"># CHANGE GET_HA_PEERS TO SHOW INTENT TO EDIT PEERS</span>
-            <span class="n">get_ha_peers</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1"># DOUBLE CHECK THAT THE REST OF THE NEEDED PARAMETERS ARE THERE</span>
-            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_sn&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;HA Peer IP Address is defined, but not the Peer Serial Number. &quot;</span>
-                                             <span class="s2">&quot;Fill in the SN parameter in the playbook.&quot;</span><span class="p">)</span>
-
-        <span class="c1"># IF THE PEER STATUS IS SET, BUT THE SERIAL NUMBER OR IP FIELDS AREN&#39;T THERE, THEN EXIT</span>
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_status&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="c1"># CHANGE GET_HA_PEERS TO SHOW INTENT TO EDIT PEERS</span>
-            <span class="n">get_ha_peers</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1"># DOUBLE CHECK THAT THE REST OF THE NEEDED PARAMETERS ARE THERE</span>
-            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv4&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_sn&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_sn&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv6&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                    <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;HA Peer Status was defined, but nothing &quot;</span>
-                                                 <span class="s2">&quot;to identify the peer was set. &quot;</span>
-                                                 <span class="s2">&quot;Fill in one of&quot;</span>
-                                                 <span class="s2">&quot; three parameters peer_ipv4 or v6 or serial_num&quot;</span><span class="p">)</span>
-
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
         <span class="c1"># IF HA MODE IS NOT NULL, SWITCH THAT</span>
         <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">])</span> <span class="o">!=</span> <span class="s2">&quot;standalone&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">)</span>\
                     <span class="ow">or</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="s2">&quot;standalone&quot;</span><span class="p">:</span>
-                <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_set_ha_mode</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to edit HA configuration the HA Peer&quot;</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">])</span> <span class="o">!=</span> <span class="s2">&quot;standalone&quot;</span> <span class="ow">and</span> \
-                    <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;If setting HA Mode of MASTER or SLAVE, &quot;</span>
-                                             <span class="s2">&quot;you must specify a cluster password&quot;</span><span class="p">)</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_set_ha_mode</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+                <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                                     <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
 
+            <span class="k">elif</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">])</span> <span class="o">!=</span> <span class="s2">&quot;standalone&quot;</span> <span class="ow">and</span>\
+                    <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span>\
+                    <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;If setting HA Mode of MASTER or SLAVE, you must specify a cluster password&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
         <span class="c1"># IF GET_HA_PEERS IS ENABLED, LETS PROCESS THE PEERS</span>
-
+    <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">get_ha_peers</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="c1"># GET THE CURRENT LIST OF PEERS FROM THE NODE</span>
-            <span class="n">peers</span> <span class="o">=</span> <span class="n">fmgr_get_ha_peer_list</span><span class="p">(</span><span class="n">fmg</span><span class="p">)</span>
+            <span class="n">peers</span> <span class="o">=</span> <span class="n">fmgr_get_ha_peer_list</span><span class="p">(</span><span class="n">fmgr</span><span class="p">)</span>
             <span class="c1"># GET LENGTH OF RETURNED PEERS LIST AND ADD ONE FOR THE NEXT ID</span>
             <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;next_peer_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">peers</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="c1"># SET THE ACTUAL NUMBER OF PEERS</span>
@@ -558,8 +484,8 @@
                         <span class="k">if</span> <span class="n">sn_compare</span> <span class="o">==</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_sn&quot;</span><span class="p">]:</span>
                             <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;peer_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">peer_loopcount</span>
                             <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;next_peer_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;peer_id&quot;</span><span class="p">]</span>
-                    <span class="k">except</span><span class="p">:</span>
-                        <span class="k">pass</span>
+                    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
                     <span class="c1"># ADVANCE THE LOOP AND REPEAT UNTIL DONE</span>
                     <span class="n">peer_loopcount</span> <span class="o">+=</span> <span class="mi">1</span>
 
@@ -569,19 +495,22 @@
 
             <span class="c1"># IF THE PEER STATUS IS ENABLE, USE THE next_peer_id IN THE API CALL FOR THE ID</span>
             <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
-                <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_set_ha_peer</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Enable the HA Peer&quot;</span><span class="p">)</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_set_ha_peer</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+                <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                     <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
+                                                                                <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
 
             <span class="c1"># IF THE PEER STATUS IS DISABLE, WE HAVE TO HANDLE THAT A BIT DIFFERENTLY</span>
             <span class="c1"># JUST USING TWO DIFFERENT peer_id &#39;s HERE</span>
             <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;disable&quot;</span><span class="p">:</span>
-                <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_set_ha_peer</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Disable the HA Peer&quot;</span><span class="p">)</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_set_ha_peer</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+                <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                     <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
 
-        <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -618,77 +547,70 @@
 <span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">---</span>
 <span class="s1">module: fmgr_ha</span>
-<span class="s1">version_added: &quot;2.6&quot;</span>
+<span class="s1">version_added: &quot;2.8&quot;</span>
+<span class="s1">notes:</span>
+<span class="s1">    - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).</span>
 <span class="s1">author:</span>
 <span class="s1">    - Luke Weighall (@lweighall)</span>
 <span class="s1">    - Andrew Welsh (@Ghilli3)</span>
 <span class="s1">    - Jim Huber (@p4r4n0y1ng)</span>
-<span class="s1">short_description: Manages the High-Availability State of FortiManager Clusters and Nodes</span>
-<span class="s1">description: Change HA state or settings of FortiManager nodes (Standalone/Master/Slave)</span>
+<span class="s1">short_description: Manages the High-Availability State of FortiManager Clusters and Nodes.</span>
+<span class="s1">description: Change HA state or settings of FortiManager nodes (Standalone/Master/Slave).</span>
 
 <span class="s1">options:</span>
-<span class="s1">  host:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The FortiManager&#39;s Address.</span>
-<span class="s1">    required: true</span>
-<span class="s1">  username:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The username to log into the FortiManager</span>
-<span class="s1">    required: true</span>
-<span class="s1">  password:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The password associated with the username account.</span>
-<span class="s1">    required: false</span>
 <span class="s1">  fmgr_ha_mode:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - Sets the role of the FortiManager host for HA</span>
+<span class="s1">      - Sets the role of the FortiManager host for HA.</span>
 <span class="s1">    required: false</span>
-<span class="s1">    default: False</span>
 <span class="s1">    choices: [&quot;standalone&quot;, &quot;master&quot;, &quot;slave&quot;]</span>
+
 <span class="s1">  fmgr_ha_peer_ipv4:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - Sets the IPv4 address of a HA peer.</span>
 <span class="s1">    required: false</span>
-<span class="s1">    default: False</span>
+
 <span class="s1">  fmgr_ha_peer_ipv6:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - Sets the IPv6 address of a HA peer.</span>
 <span class="s1">    required: false</span>
-<span class="s1">    default: False</span>
+
 <span class="s1">  fmgr_ha_peer_sn:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - Sets the HA Peer Serial Number</span>
+<span class="s1">      - Sets the HA Peer Serial Number.</span>
 <span class="s1">    required: false</span>
-<span class="s1">    default: False</span>
+
 <span class="s1">  fmgr_ha_peer_status:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - Sets the peer status enable or disable</span>
+<span class="s1">      - Sets the peer status to enable or disable.</span>
 <span class="s1">    required: false</span>
-<span class="s1">    default: False</span>
 <span class="s1">    choices: [&quot;enable&quot;, &quot;disable&quot;]</span>
+
 <span class="s1">  fmgr_ha_cluster_pw:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - Sets the password for the HA cluster. Only required once. System remembers between HA mode switches.</span>
 <span class="s1">    required: false</span>
-<span class="s1">    default: False</span>
+
 <span class="s1">  fmgr_ha_cluster_id:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - Sets the ID number of the HA cluster. Defaults to 1</span>
+<span class="s1">      - Sets the ID number of the HA cluster. Defaults to 1.</span>
 <span class="s1">    required: false</span>
 <span class="s1">    default: 1</span>
+
 <span class="s1">  fmgr_ha_hb_threshold:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - Sets heartbeat lost threshold (1-255)</span>
+<span class="s1">      - Sets heartbeat lost threshold (1-255).</span>
 <span class="s1">    required: false</span>
 <span class="s1">    default: 3</span>
+
 <span class="s1">  fmgr_ha_hb_interval:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - Sets the heartbeat interval (1-255)</span>
+<span class="s1">      - Sets the heartbeat interval (1-255).</span>
 <span class="s1">    required: false</span>
 <span class="s1">    default: 5</span>
+
 <span class="s1">  fmgr_ha_file_quota:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - Sets the File quota in MB (2048-20480)</span>
+<span class="s1">      - Sets the File quota in MB (2048-20480).</span>
 <span class="s1">    required: false</span>
 <span class="s1">    default: 4096</span>
 <span class="s1">&#39;&#39;&#39;</span>
@@ -697,39 +619,28 @@
 <span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">- name: SET FORTIMANAGER HA NODE TO MASTER</span>
 <span class="s1">  fmgr_ha:</span>
-<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    fmgr_ha_mode: &quot;master&quot;</span>
+<span class="s1">    fmgr_ha_cluster_pw: &quot;fortinet&quot;</span>
+<span class="s1">    fmgr_ha_cluster_id: &quot;1&quot;</span>
 
 <span class="s1">- name: SET FORTIMANAGER HA NODE TO SLAVE</span>
 <span class="s1">  fmgr_ha:</span>
-<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    fmgr_ha_mode: &quot;slave&quot;</span>
+<span class="s1">    fmgr_ha_cluster_pw: &quot;fortinet&quot;</span>
+<span class="s1">    fmgr_ha_cluster_id: &quot;1&quot;</span>
 
 <span class="s1">- name: SET FORTIMANAGER HA NODE TO STANDALONE</span>
 <span class="s1">  fmgr_ha:</span>
-<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    fmgr_ha_mode: &quot;standalone&quot;</span>
 
 <span class="s1">- name: ADD FORTIMANAGER HA PEER</span>
 <span class="s1">  fmgr_ha:</span>
-<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
-<span class="s1">    fmgr_ha_peer_ipv4: &quot;10.7.220.36&quot;</span>
-<span class="s1">    fmgr_ha_peer_sn: &quot;FMG-VM0A17002010&quot;</span>
+<span class="s1">    fmgr_ha_peer_ipv4: &quot;192.168.1.254&quot;</span>
+<span class="s1">    fmgr_ha_peer_sn: &quot;FMG-VM1234567890&quot;</span>
 <span class="s1">    fmgr_ha_peer_status: &quot;enable&quot;</span>
 
 <span class="s1">- name: CREATE CLUSTER ON MASTER</span>
 <span class="s1">  fmgr_ha:</span>
-<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    fmgr_ha_mode: &quot;master&quot;</span>
 <span class="s1">    fmgr_ha_cluster_pw: &quot;fortinet&quot;</span>
 <span class="s1">    fmgr_ha_cluster_id: &quot;1&quot;</span>
@@ -741,26 +652,34 @@
 <span class="s2">api_result:</span>
 <span class="s2">  description: full API response, includes status code and message</span>
 <span class="s2">  returned: always</span>
-<span class="s2">  type: string</span>
+<span class="s2">  type: str</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
-<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">AnsibleFortiManager</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.connection</span> <span class="kn">import</span> <span class="n">Connection</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">FortiManagerHandler</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGBaseException</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGRCommon</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGRMethods</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FAIL_SOCKET_MSG</span>
 
-<span class="c1"># check for pyFMG lib</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">pyFMG.fortimgr</span> <span class="kn">import</span> <span class="n">FortiManager</span>
-    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">True</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">False</span>
 
-
-<span class="k">def</span> <span class="nf">fmgr_set_ha_mode</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">fmgr_set_ha_mode</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This method is used set the HA mode of a FortiManager Node</span>
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># INIT A BASIC OBJECTS</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
 
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">])</span> <span class="o">!=</span> <span class="s2">&quot;standalone&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="o">!=</span> <span class="s2">&quot;standalone&quot;</span><span class="p">:</span>
         <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">],</span>
             <span class="s2">&quot;file-quota&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_file_quota&quot;</span><span class="p">],</span>
@@ -769,7 +688,7 @@
             <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">],</span>
             <span class="s2">&quot;clusterid&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_id&quot;</span><span class="p">]</span>
         <span class="p">}</span>
-    <span class="k">elif</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="s2">&quot;standalone&quot;</span><span class="p">:</span>
+    <span class="k">elif</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span> <span class="o">==</span> <span class="s2">&quot;standalone&quot;</span><span class="p">:</span>
         <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">],</span>
             <span class="s2">&quot;file-quota&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_file_quota&quot;</span><span class="p">],</span>
@@ -779,27 +698,38 @@
         <span class="p">}</span>
 
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/cli/global/system/ha&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">SET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 
 
-<span class="k">def</span> <span class="nf">fmgr_get_ha_peer_list</span><span class="p">(</span><span class="n">fmg</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">fmgr_get_ha_peer_list</span><span class="p">(</span><span class="n">fmgr</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This method is used GET the HA PEERS of a FortiManager Node</span>
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># INIT A BASIC OBJECTS</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
 
-    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;get&quot;</span>
-    <span class="p">}</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/cli/global/system/ha/peer/&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 
 
-<span class="k">def</span> <span class="nf">fmgr_set_ha_peer</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">fmgr_set_ha_peer</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This method is used GET the HA PEERS of a FortiManager Node</span>
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
@@ -811,55 +741,15 @@
     <span class="p">}</span>
 
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/cli/global/system/ha/peer/&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">SET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
-
-
-<span class="c1"># ADDITIONAL COMMON FUNCTIONS</span>
-<span class="c1"># FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES</span>
-<span class="k">def</span> <span class="nf">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="p">(),</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">logout_on_fail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logout_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># VALIDATION ERROR (NO RESULTS, JUST AN EXIT)</span>
-    <span class="k">if</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">&quot;NULL&quot;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
-
-    <span class="c1"># SUBMISSION ERROR</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;NULL&quot;</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No status message returned from pyFMG. Possible that this was a GET with a tuple result.&quot;</span>
-
-            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">good_codes</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">logout_on_fail</span><span class="p">:</span>
-                    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-                    <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">return</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">logout_on_success</span><span class="p">:</span>
-                    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-                    <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-                <span class="k">else</span><span class="p">:</span>
-                    <span class="k">return</span>
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-        <span class="n">fmgr_ha_mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">fmgr_ha_mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;standalone&quot;</span><span class="p">,</span> <span class="s2">&quot;master&quot;</span><span class="p">,</span> <span class="s2">&quot;slave&quot;</span><span class="p">]),</span>
         <span class="n">fmgr_ha_cluster_pw</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-        <span class="n">fmgr_ha_peer_status</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">fmgr_ha_peer_status</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="s2">&quot;disable&quot;</span><span class="p">]),</span>
         <span class="n">fmgr_ha_peer_sn</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">fmgr_ha_peer_ipv4</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">fmgr_ha_peer_ipv6</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
@@ -869,9 +759,14 @@
         <span class="n">fmgr_ha_cluster_id</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
     <span class="p">)</span>
 
-    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,)</span>
+    <span class="n">required_if</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;fmgr_ha_peer_ipv4&#39;</span><span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fmgr_ha_peer_sn&#39;</span><span class="p">,</span> <span class="s1">&#39;fmgr_ha_peer_status&#39;</span><span class="p">]],</span>
+        <span class="p">[</span><span class="s1">&#39;fmgr_ha_peer_ipv6&#39;</span><span class="p">,</span> <span class="s1">&#39;present&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fmgr_ha_peer_sn&#39;</span><span class="p">,</span> <span class="s1">&#39;fmgr_ha_peer_status&#39;</span><span class="p">]],</span>
+        <span class="p">[</span><span class="s1">&#39;fmgr_ha_mode&#39;</span><span class="p">,</span> <span class="s1">&#39;master&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fmgr_ha_cluster_pw&#39;</span><span class="p">,</span> <span class="s1">&#39;fmgr_ha_cluster_id&#39;</span><span class="p">]],</span>
+        <span class="p">[</span><span class="s1">&#39;fmgr_ha_mode&#39;</span><span class="p">,</span> <span class="s1">&#39;slave&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;fmgr_ha_cluster_pw&#39;</span><span class="p">,</span> <span class="s1">&#39;fmgr_ha_cluster_id&#39;</span><span class="p">]],</span>
+    <span class="p">]</span>
 
-    <span class="c1"># VALIDATE PARAMS BEFORE ATTEMPTING TO CONNECT</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">required_if</span><span class="o">=</span><span class="n">required_if</span><span class="p">)</span>
     <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">],</span>
         <span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">],</span>
@@ -884,68 +779,45 @@
         <span class="s2">&quot;fmgr_ha_file_quota&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_file_quota&quot;</span><span class="p">],</span>
         <span class="s2">&quot;fmgr_ha_cluster_id&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_id&quot;</span><span class="p">],</span>
     <span class="p">}</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+    <span class="n">fmgr</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">)</span>
+        <span class="n">fmgr</span> <span class="o">=</span> <span class="n">FortiManagerHandler</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="n">fmgr</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">FMGRCommon</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">FAIL_SOCKET_MSG</span><span class="p">)</span>
+
     <span class="c1"># INIT FLAGS AND COUNTERS</span>
     <span class="n">get_ha_peers</span> <span class="o">=</span> <span class="mi">0</span>
-    <span class="c1"># validate required arguments are passed; not used in argument_spec to allow params to be called from provider</span>
-    <span class="c1"># check if params are set</span>
-    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
-    <span class="c1"># CHECK IF LOGIN FAILED</span>
-    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">],)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># START SESSION LOGIC</span>
-        <span class="c1"># IF THE PEER SN DEFINED, BUT THE IPS ARE NOT, THEN QUIT</span>
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_sn&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="c1"># CHANGE GET_HA_PEERS TO SHOW INTENT TO EDIT PEERS</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_sn&quot;</span><span class="p">],</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv4&quot;</span><span class="p">],</span>
+                                       <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv6&quot;</span><span class="p">],</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_status&quot;</span><span class="p">])):</span>
             <span class="n">get_ha_peers</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1"># DOUBLE CHECK THAT THE REST OF THE NEEDED PARAMETERS ARE THERE</span>
-            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv4&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv6&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;HA Peer Serial Number is defined but the &quot;</span>
-                                             <span class="s2">&quot;IPv4 and IPv6 fields are empty.&quot;</span>
-                                             <span class="s2">&quot; Fill in the IPv4 or v6 parameters in the playbook&quot;</span><span class="p">)</span>
-
-        <span class="c1"># IF THE PEER IPS ARE DEFINED, BUT NOT THE SERIAL NUMBER, THEN QUIT</span>
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv4&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv6&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="c1"># CHANGE GET_HA_PEERS TO SHOW INTENT TO EDIT PEERS</span>
-            <span class="n">get_ha_peers</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1"># DOUBLE CHECK THAT THE REST OF THE NEEDED PARAMETERS ARE THERE</span>
-            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_sn&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;HA Peer IP Address is defined, but not the Peer Serial Number. &quot;</span>
-                                             <span class="s2">&quot;Fill in the SN parameter in the playbook.&quot;</span><span class="p">)</span>
-
-        <span class="c1"># IF THE PEER STATUS IS SET, BUT THE SERIAL NUMBER OR IP FIELDS AREN&#39;T THERE, THEN EXIT</span>
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_status&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="c1"># CHANGE GET_HA_PEERS TO SHOW INTENT TO EDIT PEERS</span>
-            <span class="n">get_ha_peers</span> <span class="o">=</span> <span class="mi">1</span>
-            <span class="c1"># DOUBLE CHECK THAT THE REST OF THE NEEDED PARAMETERS ARE THERE</span>
-            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv4&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_sn&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_sn&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_ipv6&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                    <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;HA Peer Status was defined, but nothing &quot;</span>
-                                                 <span class="s2">&quot;to identify the peer was set. &quot;</span>
-                                                 <span class="s2">&quot;Fill in one of&quot;</span>
-                                                 <span class="s2">&quot; three parameters peer_ipv4 or v6 or serial_num&quot;</span><span class="p">)</span>
-
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
         <span class="c1"># IF HA MODE IS NOT NULL, SWITCH THAT</span>
         <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="p">(</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">])</span> <span class="o">!=</span> <span class="s2">&quot;standalone&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">)</span>\
                     <span class="ow">or</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="s2">&quot;standalone&quot;</span><span class="p">:</span>
-                <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_set_ha_mode</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-                                <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to edit HA configuration the HA Peer&quot;</span><span class="p">)</span>
-            <span class="k">elif</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">])</span> <span class="o">!=</span> <span class="s2">&quot;standalone&quot;</span> <span class="ow">and</span> \
-                    <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;If setting HA Mode of MASTER or SLAVE, &quot;</span>
-                                             <span class="s2">&quot;you must specify a cluster password&quot;</span><span class="p">)</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_set_ha_mode</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+                <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
+                                     <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
 
+            <span class="k">elif</span> <span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">])</span> <span class="o">!=</span> <span class="s2">&quot;standalone&quot;</span> <span class="ow">and</span>\
+                    <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_mode&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span>\
+                    <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_cluster_pw&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;If setting HA Mode of MASTER or SLAVE, you must specify a cluster password&quot;</span><span class="p">)</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
         <span class="c1"># IF GET_HA_PEERS IS ENABLED, LETS PROCESS THE PEERS</span>
-
+    <span class="k">try</span><span class="p">:</span>
         <span class="k">if</span> <span class="n">get_ha_peers</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
             <span class="c1"># GET THE CURRENT LIST OF PEERS FROM THE NODE</span>
-            <span class="n">peers</span> <span class="o">=</span> <span class="n">fmgr_get_ha_peer_list</span><span class="p">(</span><span class="n">fmg</span><span class="p">)</span>
+            <span class="n">peers</span> <span class="o">=</span> <span class="n">fmgr_get_ha_peer_list</span><span class="p">(</span><span class="n">fmgr</span><span class="p">)</span>
             <span class="c1"># GET LENGTH OF RETURNED PEERS LIST AND ADD ONE FOR THE NEXT ID</span>
             <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;next_peer_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">peers</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">+</span> <span class="mi">1</span>
             <span class="c1"># SET THE ACTUAL NUMBER OF PEERS</span>
@@ -970,8 +842,8 @@
                         <span class="k">if</span> <span class="n">sn_compare</span> <span class="o">==</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_sn&quot;</span><span class="p">]:</span>
                             <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;peer_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">peer_loopcount</span>
                             <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;next_peer_id&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;peer_id&quot;</span><span class="p">]</span>
-                    <span class="k">except</span><span class="p">:</span>
-                        <span class="k">pass</span>
+                    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+                        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
                     <span class="c1"># ADVANCE THE LOOP AND REPEAT UNTIL DONE</span>
                     <span class="n">peer_loopcount</span> <span class="o">+=</span> <span class="mi">1</span>
 
@@ -981,19 +853,22 @@
 
             <span class="c1"># IF THE PEER STATUS IS ENABLE, USE THE next_peer_id IN THE API CALL FOR THE ID</span>
             <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;enable&quot;</span><span class="p">:</span>
-                <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_set_ha_peer</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Enable the HA Peer&quot;</span><span class="p">)</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_set_ha_peer</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+                <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                     <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span>
+                                                                                <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
 
             <span class="c1"># IF THE PEER STATUS IS DISABLE, WE HAVE TO HANDLE THAT A BIT DIFFERENTLY</span>
             <span class="c1"># JUST USING TWO DIFFERENT peer_id &#39;s HERE</span>
             <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;fmgr_ha_peer_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;disable&quot;</span><span class="p">:</span>
-                <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_set_ha_peer</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-                <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-                    <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Failed to Disable the HA Peer&quot;</span><span class="p">)</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_set_ha_peer</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+                <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                     <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
 
-        <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
@@ -1023,7 +898,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
 
     </p>
   </div>
@@ -1042,21 +917,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 

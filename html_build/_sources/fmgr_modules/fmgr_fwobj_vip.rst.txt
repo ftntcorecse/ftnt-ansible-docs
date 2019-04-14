@@ -11,9 +11,10 @@ Metadata
 
 **Name:** fmgr_fwobj_vip
 
-**Description:** ['Manages Virtual IP objects in FortiManager for IPv4']
+**Description:** Manages Virtual IP objects in FortiManager for IPv4
 
-**Author(s):**
+
+**Author(s):** 
 
 - Luke Weighall (github: @lweighall)
 
@@ -25,15 +26,14 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+**Dev Status:** COMPLETED/MERGED
 
 **Owning Developer:** Luke Weighall
 
-**Pull Request Started:** 10/26/18
+.. _Link: https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_fwobj_vip.py
 
-**Days in PR:** 7
+Module Github Link_
 
-**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_fwobj_vip
 Parameters
 ----------
 
@@ -42,7 +42,7 @@ adom
 
 - Description: The ADOM the configuration should belong to.
 
-
+  
 
 - Required: False
 
@@ -57,7 +57,7 @@ arp_reply
 
   choice | enable | Enable ARP reply.
 
-
+  
 
 - Required: False
 
@@ -68,7 +68,7 @@ color
 
 - Description: Color of icon on the GUI.
 
-
+  
 
 - Required: False
 
@@ -77,7 +77,7 @@ comment
 
 - Description: Comment.
 
-
+  
 
 - Required: False
 
@@ -86,7 +86,7 @@ dns_mapping_ttl
 
 - Description: DNS mapping TTL (Set to zero to use TTL in DNS response, default = 0).
 
-
+  
 
 - Required: False
 
@@ -107,7 +107,7 @@ dynamic_mapping
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-
+  
 
 - Required: False
 
@@ -120,7 +120,7 @@ dynamic_mapping_arp_reply
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -131,7 +131,7 @@ dynamic_mapping_color
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -140,7 +140,7 @@ dynamic_mapping_comment
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -149,7 +149,7 @@ dynamic_mapping_dns_mapping_ttl
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -158,7 +158,7 @@ dynamic_mapping_extaddr
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -167,7 +167,7 @@ dynamic_mapping_extintf
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -176,7 +176,7 @@ dynamic_mapping_extip
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -185,7 +185,7 @@ dynamic_mapping_extport
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -194,7 +194,7 @@ dynamic_mapping_gratuitous_arp_interval
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -203,7 +203,7 @@ dynamic_mapping_http_cookie_age
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -212,7 +212,7 @@ dynamic_mapping_http_cookie_domain
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -225,7 +225,7 @@ dynamic_mapping_http_cookie_domain_from_host
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -236,7 +236,7 @@ dynamic_mapping_http_cookie_generation
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -245,7 +245,7 @@ dynamic_mapping_http_cookie_path
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -258,7 +258,7 @@ dynamic_mapping_http_cookie_share
 
   choice | same-ip |
 
-
+  
 
 - Required: False
 
@@ -273,7 +273,7 @@ dynamic_mapping_http_ip_header
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -284,7 +284,7 @@ dynamic_mapping_http_ip_header_name
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -297,7 +297,7 @@ dynamic_mapping_http_multiplex
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -312,7 +312,7 @@ dynamic_mapping_https_cookie_secure
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -337,7 +337,7 @@ dynamic_mapping_ldb_method
 
   choice | http-host |
 
-
+  
 
 - Required: False
 
@@ -348,7 +348,7 @@ dynamic_mapping_mapped_addr
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -357,7 +357,7 @@ dynamic_mapping_mappedip
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -366,7 +366,7 @@ dynamic_mapping_mappedport
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -375,7 +375,7 @@ dynamic_mapping_max_embryonic_connections
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -384,7 +384,7 @@ dynamic_mapping_monitor
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -397,7 +397,7 @@ dynamic_mapping_nat_source_vip
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -412,7 +412,7 @@ dynamic_mapping_outlook_web_access
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -429,7 +429,7 @@ dynamic_mapping_persistence
 
   choice | ssl-session-id |
 
-
+  
 
 - Required: False
 
@@ -444,7 +444,7 @@ dynamic_mapping_portforward
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -459,7 +459,7 @@ dynamic_mapping_portmapping_type
 
   choice | m-to-n |
 
-
+  
 
 - Required: False
 
@@ -478,7 +478,7 @@ dynamic_mapping_protocol
 
   choice | icmp |
 
-
+  
 
 - Required: False
 
@@ -489,7 +489,7 @@ dynamic_mapping_realservers_client_ip
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -504,7 +504,7 @@ dynamic_mapping_realservers_healthcheck
 
   choice | vip |
 
-
+  
 
 - Required: False
 
@@ -515,7 +515,7 @@ dynamic_mapping_realservers_holddown_interval
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -524,7 +524,7 @@ dynamic_mapping_realservers_http_host
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -533,7 +533,7 @@ dynamic_mapping_realservers_ip
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -542,7 +542,7 @@ dynamic_mapping_realservers_max_connections
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -551,7 +551,7 @@ dynamic_mapping_realservers_monitor
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -560,7 +560,7 @@ dynamic_mapping_realservers_port
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -569,7 +569,7 @@ dynamic_mapping_realservers_seq
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -584,7 +584,7 @@ dynamic_mapping_realservers_status
 
   choice | disable |
 
-
+  
 
 - Required: False
 
@@ -595,7 +595,7 @@ dynamic_mapping_realservers_weight
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -622,7 +622,7 @@ dynamic_mapping_server_type
 
   choice | smtps |
 
-
+  
 
 - Required: False
 
@@ -633,7 +633,7 @@ dynamic_mapping_service
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -642,7 +642,7 @@ dynamic_mapping_src_filter
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -651,7 +651,7 @@ dynamic_mapping_srcintf_filter
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -668,7 +668,7 @@ dynamic_mapping_ssl_algorithm
 
   choice | custom |
 
-
+  
 
 - Required: False
 
@@ -679,7 +679,7 @@ dynamic_mapping_ssl_certificate
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -822,7 +822,7 @@ dynamic_mapping_ssl_cipher_suites_cipher
 
   choice | TLS-DHE-DSS-WITH-DES-CBC-SHA |
 
-
+  
 
 - Required: False
 
@@ -843,7 +843,7 @@ dynamic_mapping_ssl_cipher_suites_versions
 
   flag | tls-1.2 |
 
-
+  
 
 - Required: False
 
@@ -858,7 +858,7 @@ dynamic_mapping_ssl_client_fallback
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -875,7 +875,7 @@ dynamic_mapping_ssl_client_renegotiation
 
   choice | secure |
 
-
+  
 
 - Required: False
 
@@ -886,7 +886,7 @@ dynamic_mapping_ssl_client_session_state_max
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -895,7 +895,7 @@ dynamic_mapping_ssl_client_session_state_timeout
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -912,7 +912,7 @@ dynamic_mapping_ssl_client_session_state_type
 
   choice | both |
 
-
+  
 
 - Required: False
 
@@ -935,7 +935,7 @@ dynamic_mapping_ssl_dh_bits
 
   choice | 4096 |
 
-
+  
 
 - Required: False
 
@@ -952,7 +952,7 @@ dynamic_mapping_ssl_hpkp
 
   choice | report-only |
 
-
+  
 
 - Required: False
 
@@ -963,7 +963,7 @@ dynamic_mapping_ssl_hpkp_age
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -972,7 +972,7 @@ dynamic_mapping_ssl_hpkp_backup
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -985,7 +985,7 @@ dynamic_mapping_ssl_hpkp_include_subdomains
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -996,7 +996,7 @@ dynamic_mapping_ssl_hpkp_primary
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -1005,7 +1005,7 @@ dynamic_mapping_ssl_hpkp_report_uri
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -1018,7 +1018,7 @@ dynamic_mapping_ssl_hsts
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -1029,7 +1029,7 @@ dynamic_mapping_ssl_hsts_age
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -1042,7 +1042,7 @@ dynamic_mapping_ssl_hsts_include_subdomains
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -1057,7 +1057,7 @@ dynamic_mapping_ssl_http_location_conversion
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -1072,7 +1072,7 @@ dynamic_mapping_ssl_http_match_host
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -1091,7 +1091,7 @@ dynamic_mapping_ssl_max_version
 
   choice | tls-1.2 |
 
-
+  
 
 - Required: False
 
@@ -1110,7 +1110,7 @@ dynamic_mapping_ssl_min_version
 
   choice | tls-1.2 |
 
-
+  
 
 - Required: False
 
@@ -1125,7 +1125,7 @@ dynamic_mapping_ssl_mode
 
   choice | full |
 
-
+  
 
 - Required: False
 
@@ -1142,7 +1142,7 @@ dynamic_mapping_ssl_pfs
 
   choice | allow |
 
-
+  
 
 - Required: False
 
@@ -1157,7 +1157,7 @@ dynamic_mapping_ssl_send_empty_frags
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -1178,7 +1178,7 @@ dynamic_mapping_ssl_server_algorithm
 
   choice | client |
 
-
+  
 
 - Required: False
 
@@ -1199,7 +1199,7 @@ dynamic_mapping_ssl_server_max_version
 
   choice | client |
 
-
+  
 
 - Required: False
 
@@ -1220,7 +1220,7 @@ dynamic_mapping_ssl_server_min_version
 
   choice | client |
 
-
+  
 
 - Required: False
 
@@ -1231,7 +1231,7 @@ dynamic_mapping_ssl_server_session_state_max
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -1240,7 +1240,7 @@ dynamic_mapping_ssl_server_session_state_timeout
 
 - Description: Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
 
-
+  
 
 - Required: False
 
@@ -1257,7 +1257,7 @@ dynamic_mapping_ssl_server_session_state_type
 
   choice | both |
 
-
+  
 
 - Required: False
 
@@ -1278,7 +1278,7 @@ dynamic_mapping_type
 
   choice | fqdn |
 
-
+  
 
 - Required: False
 
@@ -1293,7 +1293,7 @@ dynamic_mapping_weblogic_server
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -1308,7 +1308,7 @@ dynamic_mapping_websphere_server
 
   choice | enable |
 
-
+  
 
 - Required: False
 
@@ -1319,7 +1319,7 @@ extaddr
 
 - Description: External FQDN address name.
 
-
+  
 
 - Required: False
 
@@ -1330,7 +1330,7 @@ extintf
 
   network.
 
-
+  
 
 - Required: False
 
@@ -1341,7 +1341,7 @@ extip
 
   he destination network.
 
-
+  
 
 - Required: False
 
@@ -1350,7 +1350,7 @@ extport
 
 - Description: Incoming port number range that you want to map to a port number range on the destination network.
 
-
+  
 
 - Required: False
 
@@ -1359,25 +1359,16 @@ gratuitous_arp_interval
 
 - Description: Enable to have the VIP send gratuitous ARPs. 0=disabled. Set from 5 up to 8640000 seconds to enable.
 
-
+  
 
 - Required: False
-
-host
-++++
-
-- Description: The FortiManager's Address.
-
-
-
-- Required: True
 
 http_cookie_age
 +++++++++++++++
 
 - Description: Time in minutes that client web browsers should keep a cookie. Default is 60 seconds. 0 = no time limit.
 
-
+  
 
 - Required: False
 
@@ -1386,7 +1377,7 @@ http_cookie_domain
 
 - Description: Domain that HTTP cookie persistence should apply to.
 
-
+  
 
 - Required: False
 
@@ -1399,7 +1390,7 @@ http_cookie_domain_from_host
 
   choice | enable | Enable use of HTTP cookie domain from host field in HTTP.
 
-
+  
 
 - Required: False
 
@@ -1410,7 +1401,7 @@ http_cookie_generation
 
 - Description: Generation of HTTP cookie to be accepted. Changing invalidates all existing cookies.
 
-
+  
 
 - Required: False
 
@@ -1419,7 +1410,7 @@ http_cookie_path
 
 - Description: Limit HTTP cookie persistence to the specified path.
 
-
+  
 
 - Required: False
 
@@ -1434,7 +1425,7 @@ http_cookie_share
 
   choice | same-ip | Allow HTTP cookie to match any virtual server with same IP.
 
-
+  
 
 - Required: False
 
@@ -1449,7 +1440,7 @@ http_ip_header
 
   choice | enable | Enable adding HTTP header.
 
-
+  
 
 - Required: False
 
@@ -1458,11 +1449,11 @@ http_ip_header
 http_ip_header_name
 +++++++++++++++++++
 
-- Description: For HTTP multiplexing, enter a custom HTTPS header name. The original client IP address is added to this heade
+- Description: For HTTP multiplexing, enter a custom HTTPS header name. The orig client IP address is added to this header.
 
-  r. If empty, X-Forwarded-For is used.
+  If empty, X-Forwarded-For is used.
 
-
+  
 
 - Required: False
 
@@ -1475,7 +1466,7 @@ http_multiplex
 
   choice | enable | Enable HTTP session multiplexing.
 
-
+  
 
 - Required: False
 
@@ -1490,7 +1481,7 @@ https_cookie_secure
 
   choice | enable | Mark inserted cookie as secure, cookie can only be used for HTTPS a connection.
 
-
+  
 
 - Required: False
 
@@ -1515,7 +1506,7 @@ ldb_method
 
   choice | http-host | Distribute to server based on host field in HTTP header.
 
-
+  
 
 - Required: False
 
@@ -1526,7 +1517,7 @@ mapped_addr
 
 - Description: Mapped FQDN address name.
 
-
+  
 
 - Required: False
 
@@ -1535,7 +1526,7 @@ mappedip
 
 - Description: IP address or address range on the destination network to which the external IP address is mapped.
 
-
+  
 
 - Required: False
 
@@ -1544,7 +1535,7 @@ mappedport
 
 - Description: Port number range on the destination network to which the external port number range is mapped.
 
-
+  
 
 - Required: False
 
@@ -1553,7 +1544,7 @@ max_embryonic_connections
 
 - Description: Maximum number of incomplete connections.
 
-
+  
 
 - Required: False
 
@@ -1564,7 +1555,7 @@ mode
 
   Allows use of soft-adds instead of overwriting existing values
 
-
+  
 
 - Required: False
 
@@ -1577,7 +1568,7 @@ monitor
 
 - Description: Name of the health check monitor to use when polling to determine a virtual server's connectivity status.
 
-
+  
 
 - Required: False
 
@@ -1586,22 +1577,22 @@ name
 
 - Description: Virtual IP name.
 
-
+  
 
 - Required: False
 
 nat_source_vip
 ++++++++++++++
 
-- Description: Enable to prevent unintended servers from using a virtual IP. Disable to use the actual IP address of the serv
+- Description: Enable to prevent unintended servers from using a virtual IP.
 
-  er as the source address.
+  Disable to use the actual IP address of the server as the source address.
 
   choice | disable | Do not force to NAT as VIP.
 
   choice | enable | Force to NAT as VIP.
 
-
+  
 
 - Required: False
 
@@ -1616,20 +1607,11 @@ outlook_web_access
 
   choice | enable | Enable Outlook Web Access support.
 
-
+  
 
 - Required: False
 
 - choices: ['disable', 'enable']
-
-password
-++++++++
-
-- Description: The password associated with the username account.
-
-
-
-- Required: True
 
 persistence
 +++++++++++
@@ -1644,7 +1626,7 @@ persistence
 
   choice | ssl-session-id | SSL session ID.
 
-
+  
 
 - Required: False
 
@@ -1659,7 +1641,7 @@ portforward
 
   choice | enable | Enable port forward.
 
-
+  
 
 - Required: False
 
@@ -1674,7 +1656,7 @@ portmapping_type
 
   choice | m-to-n | Many to many.
 
-
+  
 
 - Required: False
 
@@ -1693,7 +1675,7 @@ protocol
 
   choice | icmp | ICMP.
 
-
+  
 
 - Required: False
 
@@ -1716,7 +1698,7 @@ realservers
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-
+  
 
 - Required: False
 
@@ -1725,7 +1707,7 @@ realservers_client_ip
 
 - Description: Only clients in this IP range can connect to this real server.
 
-
+  
 
 - Required: False
 
@@ -1740,7 +1722,7 @@ realservers_healthcheck
 
   choice | vip | Use health check defined in VIP.
 
-
+  
 
 - Required: False
 
@@ -1749,11 +1731,9 @@ realservers_healthcheck
 realservers_holddown_interval
 +++++++++++++++++++++++++++++
 
-- Description: Time in seconds that the health check monitor continues to monitor and unresponsive server that should be acti
+- Description: Time in seconds that the health check monitor monitors an unresponsive server that should be active.
 
-  ve.
-
-
+  
 
 - Required: False
 
@@ -1762,7 +1742,7 @@ realservers_http_host
 
 - Description: HTTP server domain name in HTTP header.
 
-
+  
 
 - Required: False
 
@@ -1771,18 +1751,18 @@ realservers_ip
 
 - Description: IP address of the real server.
 
-
+  
 
 - Required: False
 
 realservers_max_connections
 +++++++++++++++++++++++++++
 
-- Description: Max number of active connections that can be directed to the real server. When reached, sessions are sent to o
+- Description: Max number of active connections that can be directed to the real server. When reached, sessions are sent to
 
-  ther real servers.
+  their real servers.
 
-
+  
 
 - Required: False
 
@@ -1791,7 +1771,7 @@ realservers_monitor
 
 - Description: Name of the health check monitor to use when polling to determine a virtual server's connectivity status.
 
-
+  
 
 - Required: False
 
@@ -1800,7 +1780,7 @@ realservers_port
 
 - Description: Port for communicating with the real server. Required if port forwarding is enabled.
 
-
+  
 
 - Required: False
 
@@ -1809,16 +1789,16 @@ realservers_seq
 
 - Description: Real Server Sequence Number
 
-
+  
 
 - Required: False
 
 realservers_status
 ++++++++++++++++++
 
-- Description: Set the status of the real server to active so that it can accept traffic, or on standby or disabled so no tra
+- Description: Set the status of the real server to active so that it can accept traffic.
 
-  ffic is sent.
+  Or on standby or disabled so no traffic is sent.
 
   choice | active | Server status active.
 
@@ -1826,7 +1806,7 @@ realservers_status
 
   choice | disable | Server status disable.
 
-
+  
 
 - Required: False
 
@@ -1839,7 +1819,7 @@ realservers_weight
 
   connections.
 
-
+  
 
 - Required: False
 
@@ -1866,7 +1846,7 @@ server_type
 
   choice | smtps | SMTPS
 
-
+  
 
 - Required: False
 
@@ -1877,18 +1857,18 @@ service
 
 - Description: Service name.
 
-
+  
 
 - Required: False
 
 src_filter
 ++++++++++
 
-- Description: Source address filter. Each address must be either an IP/subnet (x.x.x.x/n) or a range (x.x.x.x-y.y.y.y). Sepa
+- Description: Source address filter. Each address must be either an IP/subnet (x.x.x.x/n) or a range (x.x.x.x-y.y.y.y).
 
-  rate addresses with spaces.
+  Separate addresses with spaces.
 
-
+  
 
 - Required: False
 
@@ -1897,7 +1877,7 @@ srcintf_filter
 
 - Description: Interfaces to which the VIP applies. Separate the names with spaces.
 
-
+  
 
 - Required: False
 
@@ -1912,9 +1892,9 @@ ssl_algorithm
 
   choice | low | Low encryption. Allow AES, ChaCha, 3DES, RC4, and DES.
 
-  choice | custom | Custom encryption. Use config ssl-cipher-suites to select the cipher suites that are allow
+  choice | custom | Custom encryption. Use config ssl-cipher-suites to select the cipher suites that are allowed.
 
-
+  
 
 - Required: False
 
@@ -1925,7 +1905,7 @@ ssl_certificate
 
 - Description: The name of the SSL certificate to use for SSL acceleration.
 
-
+  
 
 - Required: False
 
@@ -1946,7 +1926,7 @@ ssl_cipher_suites
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-
+  
 
 - Required: False
 
@@ -2089,7 +2069,7 @@ ssl_cipher_suites_cipher
 
   choice | TLS-DHE-DSS-WITH-DES-CBC-SHA | Cipher suite TLS-DHE-DSS-WITH-DES-CBC-SHA.
 
-
+  
 
 - Required: False
 
@@ -2110,7 +2090,7 @@ ssl_cipher_suites_versions
 
   flag | tls-1.2 | TLS 1.2.
 
-
+  
 
 - Required: False
 
@@ -2125,7 +2105,7 @@ ssl_client_fallback
 
   choice | enable | Enable.
 
-
+  
 
 - Required: False
 
@@ -2140,9 +2120,9 @@ ssl_client_renegotiation
 
   choice | allow | Allow a SSL client to renegotiate.
 
-  choice | secure | Abort any client initiated SSL re-negotiation attempt that does not use RFC 5746 Secure Re
+  choice | secure | Abort any client initiated SSL re-negotiation attempt that does not use RFC 5746.
 
-
+  
 
 - Required: False
 
@@ -2153,7 +2133,7 @@ ssl_client_session_state_max
 
 - Description: Maximum number of client to FortiGate SSL session states to keep.
 
-
+  
 
 - Required: False
 
@@ -2162,7 +2142,7 @@ ssl_client_session_state_timeout
 
 - Description: Number of minutes to keep client to FortiGate SSL session state.
 
-
+  
 
 - Required: False
 
@@ -2179,7 +2159,7 @@ ssl_client_session_state_type
 
   choice | both | Expire session states based on time or count, whichever occurs first.
 
-
+  
 
 - Required: False
 
@@ -2202,7 +2182,7 @@ ssl_dh_bits
 
   choice | 4096 | 4096-bit Diffie-Hellman prime.
 
-
+  
 
 - Required: False
 
@@ -2219,7 +2199,7 @@ ssl_hpkp
 
   choice | report-only | Add a HPKP Report-Only header to each HTTP response.
 
-
+  
 
 - Required: False
 
@@ -2230,7 +2210,7 @@ ssl_hpkp_age
 
 - Description: Number of seconds the client should honour the HPKP setting.
 
-
+  
 
 - Required: False
 
@@ -2239,7 +2219,7 @@ ssl_hpkp_backup
 
 - Description: Certificate to generate backup HPKP pin from.
 
-
+  
 
 - Required: False
 
@@ -2252,7 +2232,7 @@ ssl_hpkp_include_subdomains
 
   choice | enable | HPKP header applies to subdomains.
 
-
+  
 
 - Required: False
 
@@ -2263,7 +2243,7 @@ ssl_hpkp_primary
 
 - Description: Certificate to generate primary HPKP pin from.
 
-
+  
 
 - Required: False
 
@@ -2272,7 +2252,7 @@ ssl_hpkp_report_uri
 
 - Description: URL to report HPKP violations to.
 
-
+  
 
 - Required: False
 
@@ -2285,7 +2265,7 @@ ssl_hsts
 
   choice | enable | Add a HSTS header to each HTTP response.
 
-
+  
 
 - Required: False
 
@@ -2296,7 +2276,7 @@ ssl_hsts_age
 
 - Description: Number of seconds the client should honour the HSTS setting.
 
-
+  
 
 - Required: False
 
@@ -2309,7 +2289,7 @@ ssl_hsts_include_subdomains
 
   choice | enable | HSTS header applies to subdomains.
 
-
+  
 
 - Required: False
 
@@ -2324,7 +2304,7 @@ ssl_http_location_conversion
 
   choice | enable | Enable HTTP location conversion.
 
-
+  
 
 - Required: False
 
@@ -2339,7 +2319,7 @@ ssl_http_match_host
 
   choice | enable | Match HTTP host in response header.
 
-
+  
 
 - Required: False
 
@@ -2358,7 +2338,7 @@ ssl_max_version
 
   choice | tls-1.2 | TLS 1.2.
 
-
+  
 
 - Required: False
 
@@ -2377,7 +2357,7 @@ ssl_min_version
 
   choice | tls-1.2 | TLS 1.2.
 
-
+  
 
 - Required: False
 
@@ -2386,15 +2366,13 @@ ssl_min_version
 ssl_mode
 ++++++++
 
-- Description: Apply SSL offloading between the client and the FortiGate (half) or from the client to the FortiGate and from
-
-  the FortiGate to the server (full).
+- Description: Apply SSL offloading mode
 
   choice | half | Client to FortiGate SSL.
 
   choice | full | Client to FortiGate and FortiGate to Server SSL.
 
-
+  
 
 - Required: False
 
@@ -2403,9 +2381,7 @@ ssl_mode
 ssl_pfs
 +++++++
 
-- Description: Select the cipher suites that can be used for SSL perfect forward secrecy (PFS). Applies to both client and se
-
-  rver sessions.
+- Description: Select the cipher suites that can be used for SSL perfect forward secrecy (PFS).
 
   choice | require | Allow only Diffie-Hellman cipher-suites, so PFS is applied.
 
@@ -2413,7 +2389,7 @@ ssl_pfs
 
   choice | allow | Allow use of any cipher suite so PFS may or may not be used depending on the cipher suite
 
-
+  
 
 - Required: False
 
@@ -2422,15 +2398,13 @@ ssl_pfs
 ssl_send_empty_frags
 ++++++++++++++++++++
 
-- Description: Enable/disable sending empty fragments to avoid CBC IV attacks (SSL 3.0 &amp; TLS 1.0 only). May need to be di
-
-  sabled for compatibility with older systems.
+- Description: Enable/disable sending empty fragments to avoid CBC IV attacks (SSL 3.0 &amp; TLS 1.0 only).
 
   choice | disable | Do not send empty fragments.
 
   choice | enable | Send empty fragments.
 
-
+  
 
 - Required: False
 
@@ -2447,11 +2421,11 @@ ssl_server_algorithm
 
   choice | medium | Medium encryption. Allow AES, ChaCha, 3DES, and RC4.
 
-  choice | custom | Custom encryption. Use ssl-server-cipher-suites to select the cipher suites that are allow
+  choice | custom | Custom encryption. Use ssl-server-cipher-suites to select the cipher suites that are allowed.
 
   choice | client | Use the same encryption algorithms for both client and server sessions.
 
-
+  
 
 - Required: False
 
@@ -2474,7 +2448,7 @@ ssl_server_cipher_suites
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-
+  
 
 - Required: False
 
@@ -2617,7 +2591,7 @@ ssl_server_cipher_suites_cipher
 
   choice | TLS-DHE-DSS-WITH-DES-CBC-SHA | Cipher suite TLS-DHE-DSS-WITH-DES-CBC-SHA.
 
-
+  
 
 - Required: False
 
@@ -2628,7 +2602,7 @@ ssl_server_cipher_suites_priority
 
 - Description: SSL/TLS cipher suites priority.
 
-
+  
 
 - Required: False
 
@@ -2647,7 +2621,7 @@ ssl_server_cipher_suites_versions
 
   flag | tls-1.2 | TLS 1.2.
 
-
+  
 
 - Required: False
 
@@ -2668,7 +2642,7 @@ ssl_server_max_version
 
   choice | client | Use same value as client configuration.
 
-
+  
 
 - Required: False
 
@@ -2689,7 +2663,7 @@ ssl_server_min_version
 
   choice | client | Use same value as client configuration.
 
-
+  
 
 - Required: False
 
@@ -2700,7 +2674,7 @@ ssl_server_session_state_max
 
 - Description: Maximum number of FortiGate to Server SSL session states to keep.
 
-
+  
 
 - Required: False
 
@@ -2709,7 +2683,7 @@ ssl_server_session_state_timeout
 
 - Description: Number of minutes to keep FortiGate to Server SSL session state.
 
-
+  
 
 - Required: False
 
@@ -2726,7 +2700,7 @@ ssl_server_session_state_type
 
   choice | both | Expire session states based on time or count, whichever occurs first.
 
-
+  
 
 - Required: False
 
@@ -2747,20 +2721,11 @@ type
 
   choice | fqdn | FQDN Translation
 
-
+  
 
 - Required: False
 
 - choices: ['static-nat', 'load-balance', 'server-load-balance', 'dns-translation', 'fqdn']
-
-username
-++++++++
-
-- Description: The username associated with the account.
-
-
-
-- Required: True
 
 weblogic_server
 +++++++++++++++
@@ -2771,7 +2736,7 @@ weblogic_server
 
   choice | enable | Add HTTP header indicating SSL offload for WebLogic server.
 
-
+  
 
 - Required: False
 
@@ -2786,7 +2751,7 @@ websphere_server
 
   choice | enable | Add HTTP header indicating SSL offload for WebSphere server.
 
-
+  
 
 - Required: False
 
@@ -2801,186 +2766,47 @@ Functions
 
 
 
-- fmgr_firewall_vip_addsetdelete
+- fmgr_firewall_vip_modify
 
  .. code-block:: python
 
-    def fmgr_firewall_vip_addsetdelete(fmg, paramgram):
+    def fmgr_firewall_vip_modify(fmgr, paramgram):
         """
-        fmgr_firewall_vip -- Your Description here, bruh
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
-
+    
         mode = paramgram["mode"]
         adom = paramgram["adom"]
         # INIT A BASIC OBJECTS
-        response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
+        response = DEFAULT_RESULT_OBJ
         url = ""
         datagram = {}
-
+    
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/firewall/vip'.format(adom=adom)
-            datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-
+            datagram = scrub_dict(prepare_dict(paramgram))
+    
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/firewall/vip/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if mode == "set":
-            response = fmg.set(url, datagram)
-        # IF MODE = UPDATE -- USER THE 'UPDATE' API CALL MODE
-        elif mode == "update":
-            response = fmg.update(url, datagram)
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        elif mode == "add":
-            response = fmg.add(url, datagram)
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        elif mode == "delete":
-            response = fmg.delete(url, datagram)
-
+    
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
-
-
-    # ADDITIONAL COMMON FUNCTIONS
-
-- fmgr_logout
-
- .. code-block:: python
-
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except:
-                pass
-            module.fail_json(msg=msg)
-
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
-                                     **results[1])
-        return msg
-
-
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-
-- fmgr_cidr_to_netmask
-
- .. code-block:: python
-
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return (str((0xff000000 & mask) >> 24) + '.' +
-                str((0x00ff0000 & mask) >> 16) + '.' +
-                str((0x0000ff00 & mask) >> 8) + '.' +
-                str((0x000000ff & mask)))
-
-
-    # utility function: removing keys wih value of None, nothing in playbook for that key
-
-- fmgr_del_none
-
- .. code-block:: python
-
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-
-
-    # utility function: remove keys that are need for the logic but the FMG API won't accept them
-
-- fmgr_prepare_dict
-
- .. code-block:: python
-
-    def fmgr_prepare_dict(obj):
-        list_of_elems = ["mode", "adom", "host", "username", "password"]
-        if isinstance(obj, dict):
-            obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
-        return obj
-
-
-
-- fmgr_is_empty_dict
-
- .. code-block:: python
-
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-
-        return return_val
-
-
-
-- fmgr_split_comma_strings_into_lists
-
- .. code-block:: python
-
-    def fmgr_split_comma_strings_into_lists(obj):
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, str):
-                        new_list = list()
-                        if "," in v:
-                            new_items = v.split(",")
-                            for item in new_items:
-                                new_list.append(item.strip())
-                            obj[k] = new_list
-
-        return obj
-
-
+    
+    
     #############
     # END METHODS
     #############
-
-
+    
+    
 
 - main
 
@@ -2989,11 +2815,8 @@ Functions
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-
+    
             websphere_server=dict(required=False, type="str", choices=["disable", "enable"]),
             weblogic_server=dict(required=False, type="str", choices=["disable", "enable"]),
             type=dict(required=False, type="str",
@@ -3156,7 +2979,7 @@ Functions
                                                "fqdn"]),
             dynamic_mapping_weblogic_server=dict(required=False, type="str", choices=["disable", "enable"]),
             dynamic_mapping_websphere_server=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             dynamic_mapping_realservers_client_ip=dict(required=False, type="str"),
             dynamic_mapping_realservers_healthcheck=dict(required=False, type="str", choices=["disable", "enable", "vip"]),
             dynamic_mapping_realservers_holddown_interval=dict(required=False, type="int"),
@@ -3168,7 +2991,7 @@ Functions
             dynamic_mapping_realservers_seq=dict(required=False, type="str"),
             dynamic_mapping_realservers_status=dict(required=False, type="str", choices=["active", "standby", "disable"]),
             dynamic_mapping_realservers_weight=dict(required=False, type="int"),
-
+    
             dynamic_mapping_ssl_cipher_suites_cipher=dict(required=False,
                                                           type="str",
                                                           choices=["TLS-RSA-WITH-RC4-128-MD5",
@@ -3397,11 +3220,10 @@ Functions
             ssl_server_cipher_suites_priority=dict(required=False, type="str"),
             ssl_server_cipher_suites_versions=dict(required=False, type="str",
                                                    choices=["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2"]),
-
+    
         )
-
-        module = AnsibleModule(argument_spec, supports_check_mode=False)
-
+    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -3585,47 +3407,31 @@ Functions
                 "versions": module.params["ssl_server_cipher_suites_versions"],
             }
         }
-
-        list_overrides = ['dynamic_mapping', 'realservers', 'ssl-cipher-suites', 'ssl-server-cipher-suites']
-        for list_variable in list_overrides:
-            override_data = list()
-            try:
-                override_data = module.params[list_variable]
-            except:
-                pass
-            try:
-                if override_data:
-                    del paramgram[list_variable]
-                    paramgram[list_variable] = override_data
-            except:
-                pass
-
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None or password is None:
-            module.fail_json(msg="Host and username and password are required")
-
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-
-        response = fmg.login()
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
-
-        results = fmgr_firewall_vip_addsetdelete(fmg, paramgram)
-        if results[0] != 0:
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -3])
-
-        fmg.logout()
-
-        if results is not None:
-            return module.exit_json(**results[1])
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
         else:
-            return module.exit_json(msg="No results were returned from the API call.")
-
-
+            module.fail_json(**FAIL_SOCKET_MSG)
+    
+        list_overrides = ['dynamic_mapping', 'realservers', 'ssl-cipher-suites', 'ssl-server-cipher-suites']
+        paramgram = fmgr.tools.paramgram_child_list_override(list_overrides=list_overrides,
+                                                             paramgram=paramgram, module=module)
+    
+        results = DEFAULT_RESULT_OBJ
+        try:
+            results = fmgr_firewall_vip_modify(fmgr, paramgram)
+            fmgr.govern_response(module=module, results=results,
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+    
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        return module.exit_json(**results[1])
+    
+    
 
 
 
@@ -3651,19 +3457,21 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-
+    
     from __future__ import absolute_import, division, print_function
-
+    
     __metaclass__ = type
-
+    
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-
+    
     DOCUMENTATION = '''
     ---
     module: fmgr_fwobj_vip
     version_added: "2.8"
+    notes:
+        - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).
     author:
         - Luke Weighall (@lweighall)
         - Andrew Welsh (@Ghilli3)
@@ -3671,29 +3479,14 @@ Module Source Code
     short_description: Manages Virtual IPs objects in FortiManager
     description:
       -  Manages Virtual IP objects in FortiManager for IPv4
-
+    
     options:
       adom:
         description:
           - The ADOM the configuration should belong to.
         required: false
         default: root
-
-      host:
-        description:
-          - The FortiManager's Address.
-        required: true
-
-      username:
-        description:
-          - The username associated with the account.
-        required: true
-
-      password:
-        description:
-          - The password associated with the username account.
-        required: true
-
+    
       mode:
         description:
           - Sets one of three modes for managing the object.
@@ -3701,7 +3494,7 @@ Module Source Code
         choices: ['add', 'set', 'delete', 'update']
         required: false
         default: add
-
+    
       websphere_server:
         description:
           - Enable to add an HTTP header to indicate SSL offloading for a WebSphere server.
@@ -3709,7 +3502,7 @@ Module Source Code
           - choice | enable | Add HTTP header indicating SSL offload for WebSphere server.
         required: false
         choices: ["disable", "enable"]
-
+    
       weblogic_server:
         description:
           - Enable to add an HTTP header to indicate SSL offloading for a WebLogic server.
@@ -3717,7 +3510,7 @@ Module Source Code
           - choice | enable | Add HTTP header indicating SSL offload for WebLogic server.
         required: false
         choices: ["disable", "enable"]
-
+    
       type:
         description:
           - Configure a static NAT, load balance, server load balance, DNS translation, or FQDN VIP.
@@ -3728,7 +3521,7 @@ Module Source Code
           - choice | fqdn | FQDN Translation
         required: false
         choices: ["static-nat", "load-balance", "server-load-balance", "dns-translation", "fqdn"]
-
+    
       ssl_server_session_state_type:
         description:
           - How to expire SSL sessions for the segment of the SSL connection between the server and the FortiGate.
@@ -3738,17 +3531,17 @@ Module Source Code
           - choice | both | Expire session states based on time or count, whichever occurs first.
         required: false
         choices: ["disable", "time", "count", "both"]
-
+    
       ssl_server_session_state_timeout:
         description:
           - Number of minutes to keep FortiGate to Server SSL session state.
         required: false
-
+    
       ssl_server_session_state_max:
         description:
           - Maximum number of FortiGate to Server SSL session states to keep.
         required: false
-
+    
       ssl_server_min_version:
         description:
           - Lowest SSL/TLS version acceptable from a server. Use the client setting by default.
@@ -3759,7 +3552,7 @@ Module Source Code
           - choice | client | Use same value as client configuration.
         required: false
         choices: ["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2", "client"]
-
+    
       ssl_server_max_version:
         description:
           - Highest SSL/TLS version acceptable from a server. Use the client setting by default.
@@ -3770,46 +3563,43 @@ Module Source Code
           - choice | client | Use same value as client configuration.
         required: false
         choices: ["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2", "client"]
-
+    
       ssl_server_algorithm:
         description:
           - Permitted encryption algorithms for the server side of SSL full mode sessions according to encryption strength
           - choice | high | High encryption. Allow only AES and ChaCha.
           - choice | low | Low encryption. Allow AES, ChaCha, 3DES, RC4, and DES.
           - choice | medium | Medium encryption. Allow AES, ChaCha, 3DES, and RC4.
-          - choice | custom | Custom encryption. Use ssl-server-cipher-suites to select the cipher suites that are allow
+          - choice | custom | Custom encryption. Use ssl-server-cipher-suites to select the cipher suites that are allowed.
           - choice | client | Use the same encryption algorithms for both client and server sessions.
         required: false
         choices: ["high", "low", "medium", "custom", "client"]
-
+    
       ssl_send_empty_frags:
         description:
-          - Enable/disable sending empty fragments to avoid CBC IV attacks (SSL 3.0 &amp; TLS 1.0 only). May need to be di
-          - sabled for compatibility with older systems.
+          - Enable/disable sending empty fragments to avoid CBC IV attacks (SSL 3.0 &amp; TLS 1.0 only).
           - choice | disable | Do not send empty fragments.
           - choice | enable | Send empty fragments.
         required: false
         choices: ["disable", "enable"]
-
+    
       ssl_pfs:
         description:
-          - Select the cipher suites that can be used for SSL perfect forward secrecy (PFS). Applies to both client and se
-          - rver sessions.
+          - Select the cipher suites that can be used for SSL perfect forward secrecy (PFS).
           - choice | require | Allow only Diffie-Hellman cipher-suites, so PFS is applied.
           - choice | deny | Allow only non-Diffie-Hellman cipher-suites, so PFS is not applied.
           - choice | allow | Allow use of any cipher suite so PFS may or may not be used depending on the cipher suite
         required: false
         choices: ["require", "deny", "allow"]
-
+    
       ssl_mode:
         description:
-          - Apply SSL offloading between the client and the FortiGate (half) or from the client to the FortiGate and from
-          - the FortiGate to the server (full).
+          - Apply SSL offloading mode
           - choice | half | Client to FortiGate SSL.
           - choice | full | Client to FortiGate and FortiGate to Server SSL.
         required: false
         choices: ["half", "full"]
-
+    
       ssl_min_version:
         description:
           - Lowest SSL/TLS version acceptable from a client.
@@ -3819,7 +3609,7 @@ Module Source Code
           - choice | tls-1.2 | TLS 1.2.
         required: false
         choices: ["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2"]
-
+    
       ssl_max_version:
         description:
           - Highest SSL/TLS version acceptable from a client.
@@ -3829,7 +3619,7 @@ Module Source Code
           - choice | tls-1.2 | TLS 1.2.
         required: false
         choices: ["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2"]
-
+    
       ssl_http_match_host:
         description:
           - Enable/disable HTTP host matching for location conversion.
@@ -3837,7 +3627,7 @@ Module Source Code
           - choice | enable | Match HTTP host in response header.
         required: false
         choices: ["disable", "enable"]
-
+    
       ssl_http_location_conversion:
         description:
           - Enable to replace HTTP with HTTPS in the reply's Location HTTP header field.
@@ -3845,7 +3635,7 @@ Module Source Code
           - choice | enable | Enable HTTP location conversion.
         required: false
         choices: ["disable", "enable"]
-
+    
       ssl_hsts_include_subdomains:
         description:
           - Indicate that HSTS header applies to all subdomains.
@@ -3853,12 +3643,12 @@ Module Source Code
           - choice | enable | HSTS header applies to subdomains.
         required: false
         choices: ["disable", "enable"]
-
+    
       ssl_hsts_age:
         description:
           - Number of seconds the client should honour the HSTS setting.
         required: false
-
+    
       ssl_hsts:
         description:
           - Enable/disable including HSTS header in response.
@@ -3866,17 +3656,17 @@ Module Source Code
           - choice | enable | Add a HSTS header to each HTTP response.
         required: false
         choices: ["disable", "enable"]
-
+    
       ssl_hpkp_report_uri:
         description:
           - URL to report HPKP violations to.
         required: false
-
+    
       ssl_hpkp_primary:
         description:
           - Certificate to generate primary HPKP pin from.
         required: false
-
+    
       ssl_hpkp_include_subdomains:
         description:
           - Indicate that HPKP header applies to all subdomains.
@@ -3884,17 +3674,17 @@ Module Source Code
           - choice | enable | HPKP header applies to subdomains.
         required: false
         choices: ["disable", "enable"]
-
+    
       ssl_hpkp_backup:
         description:
           - Certificate to generate backup HPKP pin from.
         required: false
-
+    
       ssl_hpkp_age:
         description:
           - Number of seconds the client should honour the HPKP setting.
         required: false
-
+    
       ssl_hpkp:
         description:
           - Enable/disable including HPKP header in response.
@@ -3903,7 +3693,7 @@ Module Source Code
           - choice | report-only | Add a HPKP Report-Only header to each HTTP response.
         required: false
         choices: ["disable", "enable", "report-only"]
-
+    
       ssl_dh_bits:
         description:
           - Number of bits to use in the Diffie-Hellman exchange for RSA encryption of SSL sessions.
@@ -3915,7 +3705,7 @@ Module Source Code
           - choice | 4096 | 4096-bit Diffie-Hellman prime.
         required: false
         choices: ["768", "1024", "1536", "2048", "3072", "4096"]
-
+    
       ssl_client_session_state_type:
         description:
           - How to expire SSL sessions for the segment of the SSL connection between the client and the FortiGate.
@@ -3925,26 +3715,26 @@ Module Source Code
           - choice | both | Expire session states based on time or count, whichever occurs first.
         required: false
         choices: ["disable", "time", "count", "both"]
-
+    
       ssl_client_session_state_timeout:
         description:
           - Number of minutes to keep client to FortiGate SSL session state.
         required: false
-
+    
       ssl_client_session_state_max:
         description:
           - Maximum number of client to FortiGate SSL session states to keep.
         required: false
-
+    
       ssl_client_renegotiation:
         description:
           - Allow, deny, or require secure renegotiation of client sessions to comply with RFC 5746.
           - choice | deny | Abort any client initiated SSL re-negotiation attempt.
           - choice | allow | Allow a SSL client to renegotiate.
-          - choice | secure | Abort any client initiated SSL re-negotiation attempt that does not use RFC 5746 Secure Re
+          - choice | secure | Abort any client initiated SSL re-negotiation attempt that does not use RFC 5746.
         required: false
         choices: ["deny", "allow", "secure"]
-
+    
       ssl_client_fallback:
         description:
           - Enable/disable support for preventing Downgrade Attacks on client connections (RFC 7507).
@@ -3952,38 +3742,38 @@ Module Source Code
           - choice | enable | Enable.
         required: false
         choices: ["disable", "enable"]
-
+    
       ssl_certificate:
         description:
           - The name of the SSL certificate to use for SSL acceleration.
         required: false
-
+    
       ssl_algorithm:
         description:
           - Permitted encryption algorithms for SSL sessions according to encryption strength.
           - choice | high | High encryption. Allow only AES and ChaCha.
           - choice | medium | Medium encryption. Allow AES, ChaCha, 3DES, and RC4.
           - choice | low | Low encryption. Allow AES, ChaCha, 3DES, RC4, and DES.
-          - choice | custom | Custom encryption. Use config ssl-cipher-suites to select the cipher suites that are allow
+          - choice | custom | Custom encryption. Use config ssl-cipher-suites to select the cipher suites that are allowed.
         required: false
         choices: ["high", "medium", "low", "custom"]
-
+    
       srcintf_filter:
         description:
           - Interfaces to which the VIP applies. Separate the names with spaces.
         required: false
-
+    
       src_filter:
         description:
-          - Source address filter. Each address must be either an IP/subnet (x.x.x.x/n) or a range (x.x.x.x-y.y.y.y). Sepa
-          - rate addresses with spaces.
+          - Source address filter. Each address must be either an IP/subnet (x.x.x.x/n) or a range (x.x.x.x-y.y.y.y).
+          - Separate addresses with spaces.
         required: false
-
+    
       service:
         description:
           - Service name.
         required: false
-
+    
       server_type:
         description:
           - Protocol to be load balanced by the virtual server (also called the server load balance virtual IP).
@@ -3998,7 +3788,7 @@ Module Source Code
           - choice | smtps | SMTPS
         required: false
         choices: ["http", "https", "ssl", "tcp", "udp", "ip", "imaps", "pop3s", "smtps"]
-
+    
       protocol:
         description:
           - Protocol to use when forwarding packets.
@@ -4008,7 +3798,7 @@ Module Source Code
           - choice | icmp | ICMP.
         required: false
         choices: ["tcp", "udp", "sctp", "icmp"]
-
+    
       portmapping_type:
         description:
           - Port mapping type.
@@ -4016,7 +3806,7 @@ Module Source Code
           - choice | m-to-n | Many to many.
         required: false
         choices: ["1-to-1", "m-to-n"]
-
+    
       portforward:
         description:
           - Enable/disable port forwarding.
@@ -4024,7 +3814,7 @@ Module Source Code
           - choice | enable | Enable port forward.
         required: false
         choices: ["disable", "enable"]
-
+    
       persistence:
         description:
           - Configure how to make sure that clients connect to the same server every time they make a request that is part
@@ -4034,7 +3824,7 @@ Module Source Code
           - choice | ssl-session-id | SSL session ID.
         required: false
         choices: ["none", "http-cookie", "ssl-session-id"]
-
+    
       outlook_web_access:
         description:
           - Enable to add the Front-End-Https header for Microsoft Outlook Web Access.
@@ -4042,46 +3832,46 @@ Module Source Code
           - choice | enable | Enable Outlook Web Access support.
         required: false
         choices: ["disable", "enable"]
-
+    
       nat_source_vip:
         description:
-          - Enable to prevent unintended servers from using a virtual IP. Disable to use the actual IP address of the serv
-          - er as the source address.
+          - Enable to prevent unintended servers from using a virtual IP.
+          - Disable to use the actual IP address of the server as the source address.
           - choice | disable | Do not force to NAT as VIP.
           - choice | enable | Force to NAT as VIP.
         required: false
         choices: ["disable", "enable"]
-
+    
       name:
         description:
           - Virtual IP name.
         required: false
-
+    
       monitor:
         description:
           - Name of the health check monitor to use when polling to determine a virtual server's connectivity status.
         required: false
-
+    
       max_embryonic_connections:
         description:
           - Maximum number of incomplete connections.
         required: false
-
+    
       mappedport:
         description:
           - Port number range on the destination network to which the external port number range is mapped.
         required: false
-
+    
       mappedip:
         description:
           - IP address or address range on the destination network to which the external IP address is mapped.
         required: false
-
+    
       mapped_addr:
         description:
           - Mapped FQDN address name.
         required: false
-
+    
       ldb_method:
         description:
           - Method used to distribute sessions to real servers.
@@ -4094,7 +3884,7 @@ Module Source Code
           - choice | http-host | Distribute to server based on host field in HTTP header.
         required: false
         choices: ["static", "round-robin", "weighted", "least-session", "least-rtt", "first-alive", "http-host"]
-
+    
       https_cookie_secure:
         description:
           - Enable/disable verification that inserted HTTPS cookies are secure.
@@ -4102,7 +3892,7 @@ Module Source Code
           - choice | enable | Mark inserted cookie as secure, cookie can only be used for HTTPS a connection.
         required: false
         choices: ["disable", "enable"]
-
+    
       http_multiplex:
         description:
           - Enable/disable HTTP multiplexing.
@@ -4110,13 +3900,13 @@ Module Source Code
           - choice | enable | Enable HTTP session multiplexing.
         required: false
         choices: ["disable", "enable"]
-
+    
       http_ip_header_name:
         description:
-          - For HTTP multiplexing, enter a custom HTTPS header name. The original client IP address is added to this heade
-          - r. If empty, X-Forwarded-For is used.
+          - For HTTP multiplexing, enter a custom HTTPS header name. The orig client IP address is added to this header.
+          - If empty, X-Forwarded-For is used.
         required: false
-
+    
       http_ip_header:
         description:
           - For HTTP multiplexing, enable to add the original client IP address in the XForwarded-For HTTP header.
@@ -4124,7 +3914,7 @@ Module Source Code
           - choice | enable | Enable adding HTTP header.
         required: false
         choices: ["disable", "enable"]
-
+    
       http_cookie_share:
         description:
           - Control sharing of cookies across virtual servers. same-ip means a cookie from one virtual server can be used
@@ -4133,17 +3923,17 @@ Module Source Code
           - choice | same-ip | Allow HTTP cookie to match any virtual server with same IP.
         required: false
         choices: ["disable", "same-ip"]
-
+    
       http_cookie_path:
         description:
           - Limit HTTP cookie persistence to the specified path.
         required: false
-
+    
       http_cookie_generation:
         description:
           - Generation of HTTP cookie to be accepted. Changing invalidates all existing cookies.
         required: false
-
+    
       http_cookie_domain_from_host:
         description:
           - Enable/disable use of HTTP cookie domain from host field in HTTP.
@@ -4151,59 +3941,59 @@ Module Source Code
           - choice | enable | Enable use of HTTP cookie domain from host field in HTTP.
         required: false
         choices: ["disable", "enable"]
-
+    
       http_cookie_domain:
         description:
           - Domain that HTTP cookie persistence should apply to.
         required: false
-
+    
       http_cookie_age:
         description:
           - Time in minutes that client web browsers should keep a cookie. Default is 60 seconds. 0 = no time limit.
         required: false
-
+    
       gratuitous_arp_interval:
         description:
           - Enable to have the VIP send gratuitous ARPs. 0=disabled. Set from 5 up to 8640000 seconds to enable.
         required: false
-
+    
       extport:
         description:
           - Incoming port number range that you want to map to a port number range on the destination network.
         required: false
-
+    
       extip:
         description:
           - IP address or address range on the external interface that you want to map to an address or address range on t
           - he destination network.
         required: false
-
+    
       extintf:
         description:
           - Interface connected to the source network that receives the packets that will be forwarded to the destination
           - network.
         required: false
-
+    
       extaddr:
         description:
           - External FQDN address name.
         required: false
-
+    
       dns_mapping_ttl:
         description:
           - DNS mapping TTL (Set to zero to use TTL in DNS response, default = 0).
         required: false
-
+    
       comment:
         description:
           - Comment.
         required: false
-
+    
       color:
         description:
           - Color of icon on the GUI.
         required: false
-
+    
       arp_reply:
         description:
           - Enable to respond to ARP requests for this virtual IP address. Enabled by default.
@@ -4211,7 +4001,7 @@ Module Source Code
           - choice | enable | Enable ARP reply.
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -4222,7 +4012,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-
+    
       dynamic_mapping_arp_reply:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4230,57 +4020,57 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_color:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_comment:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_dns_mapping_ttl:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_extaddr:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_extintf:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_extip:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_extport:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_gratuitous_arp_interval:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_http_cookie_age:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_http_cookie_domain:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_http_cookie_domain_from_host:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4288,17 +4078,17 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_http_cookie_generation:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_http_cookie_path:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_http_cookie_share:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4306,7 +4096,7 @@ Module Source Code
           - choice | same-ip |
         required: false
         choices: ["disable", "same-ip"]
-
+    
       dynamic_mapping_http_ip_header:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4314,12 +4104,12 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_http_ip_header_name:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_http_multiplex:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4327,7 +4117,7 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_https_cookie_secure:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4335,7 +4125,7 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_ldb_method:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4348,32 +4138,32 @@ Module Source Code
           - choice | http-host |
         required: false
         choices: ["static", "round-robin", "weighted", "least-session", "least-rtt", "first-alive", "http-host"]
-
+    
       dynamic_mapping_mapped_addr:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_mappedip:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_mappedport:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_max_embryonic_connections:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_monitor:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_nat_source_vip:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4381,7 +4171,7 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_outlook_web_access:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4389,7 +4179,7 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_persistence:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4398,7 +4188,7 @@ Module Source Code
           - choice | ssl-session-id |
         required: false
         choices: ["none", "http-cookie", "ssl-session-id"]
-
+    
       dynamic_mapping_portforward:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4406,7 +4196,7 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_portmapping_type:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4414,7 +4204,7 @@ Module Source Code
           - choice | m-to-n |
         required: false
         choices: ["1-to-1", "m-to-n"]
-
+    
       dynamic_mapping_protocol:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4424,7 +4214,7 @@ Module Source Code
           - choice | icmp |
         required: false
         choices: ["tcp", "udp", "sctp", "icmp"]
-
+    
       dynamic_mapping_server_type:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4439,22 +4229,22 @@ Module Source Code
           - choice | smtps |
         required: false
         choices: ["http", "https", "ssl", "tcp", "udp", "ip", "imaps", "pop3s", "smtps"]
-
+    
       dynamic_mapping_service:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_src_filter:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_srcintf_filter:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_ssl_algorithm:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4464,12 +4254,12 @@ Module Source Code
           - choice | custom |
         required: false
         choices: ["high", "medium", "low", "custom"]
-
+    
       dynamic_mapping_ssl_certificate:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_ssl_client_fallback:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4477,7 +4267,7 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_ssl_client_renegotiation:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4486,17 +4276,17 @@ Module Source Code
           - choice | secure |
         required: false
         choices: ["deny", "allow", "secure"]
-
+    
       dynamic_mapping_ssl_client_session_state_max:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_ssl_client_session_state_timeout:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_ssl_client_session_state_type:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4506,7 +4296,7 @@ Module Source Code
           - choice | both |
         required: false
         choices: ["disable", "time", "count", "both"]
-
+    
       dynamic_mapping_ssl_dh_bits:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4518,7 +4308,7 @@ Module Source Code
           - choice | 4096 |
         required: false
         choices: ["768", "1024", "1536", "2048", "3072", "4096"]
-
+    
       dynamic_mapping_ssl_hpkp:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4527,17 +4317,17 @@ Module Source Code
           - choice | report-only |
         required: false
         choices: ["disable", "enable", "report-only"]
-
+    
       dynamic_mapping_ssl_hpkp_age:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_ssl_hpkp_backup:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_ssl_hpkp_include_subdomains:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4545,17 +4335,17 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_ssl_hpkp_primary:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_ssl_hpkp_report_uri:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_ssl_hsts:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4563,12 +4353,12 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_ssl_hsts_age:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_ssl_hsts_include_subdomains:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4576,7 +4366,7 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_ssl_http_location_conversion:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4584,7 +4374,7 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_ssl_http_match_host:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4592,7 +4382,7 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_ssl_max_version:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4602,7 +4392,7 @@ Module Source Code
           - choice | tls-1.2 |
         required: false
         choices: ["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2"]
-
+    
       dynamic_mapping_ssl_min_version:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4612,7 +4402,7 @@ Module Source Code
           - choice | tls-1.2 |
         required: false
         choices: ["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2"]
-
+    
       dynamic_mapping_ssl_mode:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4620,7 +4410,7 @@ Module Source Code
           - choice | full |
         required: false
         choices: ["half", "full"]
-
+    
       dynamic_mapping_ssl_pfs:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4629,7 +4419,7 @@ Module Source Code
           - choice | allow |
         required: false
         choices: ["require", "deny", "allow"]
-
+    
       dynamic_mapping_ssl_send_empty_frags:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4637,7 +4427,7 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_ssl_server_algorithm:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4648,7 +4438,7 @@ Module Source Code
           - choice | client |
         required: false
         choices: ["high", "low", "medium", "custom", "client"]
-
+    
       dynamic_mapping_ssl_server_max_version:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4659,7 +4449,7 @@ Module Source Code
           - choice | client |
         required: false
         choices: ["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2", "client"]
-
+    
       dynamic_mapping_ssl_server_min_version:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4670,17 +4460,17 @@ Module Source Code
           - choice | client |
         required: false
         choices: ["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2", "client"]
-
+    
       dynamic_mapping_ssl_server_session_state_max:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_ssl_server_session_state_timeout:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_ssl_server_session_state_type:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4690,7 +4480,7 @@ Module Source Code
           - choice | both |
         required: false
         choices: ["disable", "time", "count", "both"]
-
+    
       dynamic_mapping_type:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4701,7 +4491,7 @@ Module Source Code
           - choice | fqdn |
         required: false
         choices: ["static-nat", "load-balance", "server-load-balance", "dns-translation", "fqdn"]
-
+    
       dynamic_mapping_weblogic_server:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4709,7 +4499,7 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_websphere_server:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4717,12 +4507,12 @@ Module Source Code
           - choice | enable |
         required: false
         choices: ["disable", "enable"]
-
+    
       dynamic_mapping_realservers_client_ip:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_realservers_healthcheck:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4731,42 +4521,42 @@ Module Source Code
           - choice | vip |
         required: false
         choices: ["disable", "enable", "vip"]
-
+    
       dynamic_mapping_realservers_holddown_interval:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_realservers_http_host:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_realservers_ip:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_realservers_max_connections:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_realservers_monitor:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_realservers_port:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_realservers_seq:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_realservers_status:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4775,12 +4565,12 @@ Module Source Code
           - choice | disable |
         required: false
         choices: ["active", "standby", "disable"]
-
+    
       dynamic_mapping_realservers_weight:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
         required: false
-
+    
       dynamic_mapping_ssl_cipher_suites_cipher:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4919,7 +4709,7 @@ Module Source Code
                     "TLS-ECDHE-ECDSA-WITH-ARIA-256-CBC-SHA384",
                     "TLS-DHE-DSS-WITH-3DES-EDE-CBC-SHA",
                     "TLS-DHE-DSS-WITH-DES-CBC-SHA"]
-
+    
       dynamic_mapping_ssl_cipher_suites_versions:
         description:
           - Dynamic Mapping Version of Suffixed Option Name. Sub-Table. Same Descriptions as Parent.
@@ -4930,7 +4720,7 @@ Module Source Code
           - flag | tls-1.2 |
         required: false
         choices: ["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2"]
-
+    
       realservers:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -4941,12 +4731,12 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-
+    
       realservers_client_ip:
         description:
           - Only clients in this IP range can connect to this real server.
         required: false
-
+    
       realservers_healthcheck:
         description:
           - Enable to check the responsiveness of the real server before forwarding traffic.
@@ -4955,60 +4745,59 @@ Module Source Code
           - choice | vip | Use health check defined in VIP.
         required: false
         choices: ["disable", "enable", "vip"]
-
+    
       realservers_holddown_interval:
         description:
-          - Time in seconds that the health check monitor continues to monitor and unresponsive server that should be acti
-          - ve.
+          - Time in seconds that the health check monitor monitors an unresponsive server that should be active.
         required: false
-
+    
       realservers_http_host:
         description:
           - HTTP server domain name in HTTP header.
         required: false
-
+    
       realservers_ip:
         description:
           - IP address of the real server.
         required: false
-
+    
       realservers_max_connections:
         description:
-          - Max number of active connections that can be directed to the real server. When reached, sessions are sent to o
-          - ther real servers.
+          - Max number of active connections that can be directed to the real server. When reached, sessions are sent to
+          - their real servers.
         required: false
-
+    
       realservers_monitor:
         description:
           - Name of the health check monitor to use when polling to determine a virtual server's connectivity status.
         required: false
-
+    
       realservers_port:
         description:
           - Port for communicating with the real server. Required if port forwarding is enabled.
         required: false
-
+    
       realservers_seq:
         description:
           - Real Server Sequence Number
         required: false
-
+    
       realservers_status:
         description:
-          - Set the status of the real server to active so that it can accept traffic, or on standby or disabled so no tra
-          - ffic is sent.
+          - Set the status of the real server to active so that it can accept traffic.
+          - Or on standby or disabled so no traffic is sent.
           - choice | active | Server status active.
           - choice | standby | Server status standby.
           - choice | disable | Server status disable.
         required: false
         choices: ["active", "standby", "disable"]
-
+    
       realservers_weight:
         description:
           - Weight of the real server. If weighted load balancing is enabled, the server with the highest weight gets more
           - connections.
         required: false
-
+    
       ssl_cipher_suites:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -5019,7 +4808,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-
+    
       ssl_cipher_suites_cipher:
         description:
           - Cipher suite name.
@@ -5158,7 +4947,7 @@ Module Source Code
                 "TLS-ECDHE-ECDSA-WITH-ARIA-256-CBC-SHA384",
                 "TLS-DHE-DSS-WITH-3DES-EDE-CBC-SHA",
                 "TLS-DHE-DSS-WITH-DES-CBC-SHA"]
-
+    
       ssl_cipher_suites_versions:
         description:
           - SSL/TLS versions that the cipher suite can be used with.
@@ -5169,7 +4958,7 @@ Module Source Code
           - flag | tls-1.2 | TLS 1.2.
         required: false
         choices: ["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2"]
-
+    
       ssl_server_cipher_suites:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -5180,7 +4969,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-
+    
       ssl_server_cipher_suites_cipher:
         description:
           - Cipher suite name.
@@ -5319,12 +5108,12 @@ Module Source Code
                 "TLS-ECDHE-ECDSA-WITH-ARIA-256-CBC-SHA384",
                 "TLS-DHE-DSS-WITH-3DES-EDE-CBC-SHA",
                 "TLS-DHE-DSS-WITH-DES-CBC-SHA"]
-
+    
       ssl_server_cipher_suites_priority:
         description:
           - SSL/TLS cipher suites priority.
         required: false
-
+    
       ssl_server_cipher_suites_versions:
         description:
           - SSL/TLS versions that the cipher suite can be used with.
@@ -5335,17 +5124,14 @@ Module Source Code
           - flag | tls-1.2 | TLS 1.2.
         required: false
         choices: ["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2"]
-
-
+    
+    
     '''
-
+    
     EXAMPLES = '''
     # BASIC FULL STATIC NAT MAPPING
     - name: EDIT FMGR_FIREWALL_VIP SNAT
       fmgr_fwobj_vip:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         name: "Basic StaticNAT Map"
         mode: "set"
         adom: "ansible"
@@ -5355,13 +5141,10 @@ Module Source Code
         mappedip: "10.7.220.25"
         comment: "Created by Ansible"
         color: "17"
-
+    
     # BASIC PORT PNAT MAPPING
     - name: EDIT FMGR_FIREWALL_VIP PNAT
       fmgr_fwobj_vip:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         name: "Basic PNAT Map Port 10443"
         mode: "set"
         adom: "ansible"
@@ -5375,13 +5158,10 @@ Module Source Code
         mappedport: "443"
         comment: "Created by Ansible"
         color: "17"
-
+    
     # BASIC DNS TRANSLATION NAT
     - name: EDIT FMGR_FIREWALL_DNST
       fmgr_fwobj_vip:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         name: "Basic DNS Translation"
         mode: "set"
         adom: "ansible"
@@ -5391,13 +5171,10 @@ Module Source Code
         mappedip: "3.3.3.0/24, 4.0.0.0/24"
         comment: "Created by Ansible"
         color: "12"
-
+    
     # BASIC FQDN NAT
     - name: EDIT FMGR_FIREWALL_FQDN
       fmgr_fwobj_vip:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         name: "Basic FQDN Translation"
         mode: "set"
         adom: "ansible"
@@ -5405,196 +5182,76 @@ Module Source Code
         mapped_addr: "google-play"
         comment: "Created by Ansible"
         color: "5"
-
+    
     # DELETE AN ENTRY
     - name: DELETE FMGR_FIREWALL_VIP PNAT
       fmgr_fwobj_vip:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         name: "Basic PNAT Map Port 10443"
         mode: "delete"
         adom: "ansible"
     '''
-
+    
     RETURN = """
     api_result:
       description: full API response, includes status code and message
       returned: always
-      type: string
+      type: str
     """
-
+    
     from ansible.module_utils.basic import AnsibleModule, env_fallback
-    from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-
-    # check for pyFMG lib
-    try:
-        from pyFMG.fortimgr import FortiManager
-
-        HAS_PYFMGR = True
-    except ImportError:
-        HAS_PYFMGR = False
-
-
-    ###############
-    # START METHODS
-    ###############
-
-
-    def fmgr_firewall_vip_addsetdelete(fmg, paramgram):
+    from ansible.module_utils.connection import Connection
+    from ansible.module_utils.network.fortimanager.fortimanager import FortiManagerHandler
+    from ansible.module_utils.network.fortimanager.common import FMGBaseException
+    from ansible.module_utils.network.fortimanager.common import FMGRCommon
+    from ansible.module_utils.network.fortimanager.common import FMGRMethods
+    from ansible.module_utils.network.fortimanager.common import DEFAULT_RESULT_OBJ
+    from ansible.module_utils.network.fortimanager.common import FAIL_SOCKET_MSG
+    from ansible.module_utils.network.fortimanager.common import prepare_dict
+    from ansible.module_utils.network.fortimanager.common import scrub_dict
+    
+    
+    def fmgr_firewall_vip_modify(fmgr, paramgram):
         """
-        fmgr_firewall_vip -- Your Description here, bruh
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
-
+    
         mode = paramgram["mode"]
         adom = paramgram["adom"]
         # INIT A BASIC OBJECTS
-        response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
+        response = DEFAULT_RESULT_OBJ
         url = ""
         datagram = {}
-
+    
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/firewall/vip'.format(adom=adom)
-            datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-
+            datagram = scrub_dict(prepare_dict(paramgram))
+    
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/firewall/vip/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if mode == "set":
-            response = fmg.set(url, datagram)
-        # IF MODE = UPDATE -- USER THE 'UPDATE' API CALL MODE
-        elif mode == "update":
-            response = fmg.update(url, datagram)
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        elif mode == "add":
-            response = fmg.add(url, datagram)
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        elif mode == "delete":
-            response = fmg.delete(url, datagram)
-
+    
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
-
-
-    # ADDITIONAL COMMON FUNCTIONS
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except:
-                pass
-            module.fail_json(msg=msg)
-
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
-                                     **results[1])
-        return msg
-
-
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return (str((0xff000000 & mask) >> 24) + '.' +
-                str((0x00ff0000 & mask) >> 16) + '.' +
-                str((0x0000ff00 & mask) >> 8) + '.' +
-                str((0x000000ff & mask)))
-
-
-    # utility function: removing keys wih value of None, nothing in playbook for that key
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-
-
-    # utility function: remove keys that are need for the logic but the FMG API won't accept them
-    def fmgr_prepare_dict(obj):
-        list_of_elems = ["mode", "adom", "host", "username", "password"]
-        if isinstance(obj, dict):
-            obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
-        return obj
-
-
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-
-        return return_val
-
-
-    def fmgr_split_comma_strings_into_lists(obj):
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, str):
-                        new_list = list()
-                        if "," in v:
-                            new_items = v.split(",")
-                            for item in new_items:
-                                new_list.append(item.strip())
-                            obj[k] = new_list
-
-        return obj
-
-
+    
+    
     #############
     # END METHODS
     #############
-
-
+    
+    
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-
+    
             websphere_server=dict(required=False, type="str", choices=["disable", "enable"]),
             weblogic_server=dict(required=False, type="str", choices=["disable", "enable"]),
             type=dict(required=False, type="str",
@@ -5757,7 +5414,7 @@ Module Source Code
                                                "fqdn"]),
             dynamic_mapping_weblogic_server=dict(required=False, type="str", choices=["disable", "enable"]),
             dynamic_mapping_websphere_server=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             dynamic_mapping_realservers_client_ip=dict(required=False, type="str"),
             dynamic_mapping_realservers_healthcheck=dict(required=False, type="str", choices=["disable", "enable", "vip"]),
             dynamic_mapping_realservers_holddown_interval=dict(required=False, type="int"),
@@ -5769,7 +5426,7 @@ Module Source Code
             dynamic_mapping_realservers_seq=dict(required=False, type="str"),
             dynamic_mapping_realservers_status=dict(required=False, type="str", choices=["active", "standby", "disable"]),
             dynamic_mapping_realservers_weight=dict(required=False, type="int"),
-
+    
             dynamic_mapping_ssl_cipher_suites_cipher=dict(required=False,
                                                           type="str",
                                                           choices=["TLS-RSA-WITH-RC4-128-MD5",
@@ -5998,11 +5655,10 @@ Module Source Code
             ssl_server_cipher_suites_priority=dict(required=False, type="str"),
             ssl_server_cipher_suites_versions=dict(required=False, type="str",
                                                    choices=["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2"]),
-
+    
         )
-
-        module = AnsibleModule(argument_spec, supports_check_mode=False)
-
+    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -6186,47 +5842,31 @@ Module Source Code
                 "versions": module.params["ssl_server_cipher_suites_versions"],
             }
         }
-
-        list_overrides = ['dynamic_mapping', 'realservers', 'ssl-cipher-suites', 'ssl-server-cipher-suites']
-        for list_variable in list_overrides:
-            override_data = list()
-            try:
-                override_data = module.params[list_variable]
-            except:
-                pass
-            try:
-                if override_data:
-                    del paramgram[list_variable]
-                    paramgram[list_variable] = override_data
-            except:
-                pass
-
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None or password is None:
-            module.fail_json(msg="Host and username and password are required")
-
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-
-        response = fmg.login()
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
-
-        results = fmgr_firewall_vip_addsetdelete(fmg, paramgram)
-        if results[0] != 0:
-            fmgr_logout(fmg, module, results=results, good_codes=[0, -3])
-
-        fmg.logout()
-
-        if results is not None:
-            return module.exit_json(**results[1])
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
         else:
-            return module.exit_json(msg="No results were returned from the API call.")
-
-
+            module.fail_json(**FAIL_SOCKET_MSG)
+    
+        list_overrides = ['dynamic_mapping', 'realservers', 'ssl-cipher-suites', 'ssl-server-cipher-suites']
+        paramgram = fmgr.tools.paramgram_child_list_override(list_overrides=list_overrides,
+                                                             paramgram=paramgram, module=module)
+    
+        results = DEFAULT_RESULT_OBJ
+        try:
+            results = fmgr_firewall_vip_modify(fmgr, paramgram)
+            fmgr.govern_response(module=module, results=results,
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+    
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        return module.exit_json(**results[1])
+    
+    
     if __name__ == "__main__":
         main()
 

@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fmgr_sys_proxy" href="fmgr_sys_proxy.html" />
+    <link rel="next" title="Roles" href="../fmgr_roles.html" />
     <link rel="prev" title="fmgr_secprof_wanopt" href="fmgr_secprof_wanopt.html" /> 
 
   
@@ -86,8 +86,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
@@ -112,7 +113,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#playbook-file-examples">Playbook File Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
@@ -194,17 +194,11 @@
 <h2>Playbook Task Examples<a class="headerlink" href="#playbook-task-examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE Profile</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_secprof_web</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_Web_Filter_Profile&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE Profile</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_secprof_web</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_Web_Filter_Profile&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">Ansible</span><span class="nv"> </span><span class="s">Module</span><span class="nv"> </span><span class="s">TEST&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
@@ -238,7 +232,56 @@
 </div>
 <div class="section" id="playbook-file-examples">
 <h2>Playbook File Examples<a class="headerlink" href="#playbook-file-examples" title="Permalink to this headline">¶</a></h2>
-<p>%%PB_FILE_EXAMPLE_TOKEN%%</p>
+<div class="section" id="web-yml">
+<h3>web.yml<a class="headerlink" href="#web-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Create and Delete security profile in FMG</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+
+<span class="c1">#  - name: DELETE Profile</span>
+<span class="c1">#    fmgr_secprof_web:</span>
+<span class="c1">#      name: &quot;Ansible_Web_Proxy_Profile&quot;</span>
+<span class="c1">#      mode: &quot;delete&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE Profile</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_secprof_web</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_Web_Proxy_Profile&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">Ansible</span><span class="nv"> </span><span class="s">Module</span><span class="nv"> </span><span class="s">TEST&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">extended_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">inspection_mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;proxy&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">log_all_url</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">options</span><span class="p p-Indicator">:</span> <span class="s">&quot;js&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ovrd_perm</span><span class="p p-Indicator">:</span> <span class="s">&quot;bannedword-override&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">post_action</span><span class="p p-Indicator">:</span> <span class="s">&quot;block&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_content_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_extended_all_action_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_filter_activex_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_filter_applet_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_filter_command_block_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_filter_cookie_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_filter_cookie_removal_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_filter_js_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_filter_jscript_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_filter_referer_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_filter_unknown_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_filter_vbs_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_ftgd_err_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_ftgd_quota_usage</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_invalid_domain_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">web_url_log</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">wisp</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">wisp_algorithm</span><span class="p p-Indicator">:</span> <span class="s">&quot;auto-learning&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">youtube_channel_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;blacklist&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-secprof-web-run-all-sh">
+<h3>fmgr_secprof_web_run_all.sh<a class="headerlink" href="#fmgr-secprof-web-run-all-sh" title="Permalink to this headline">¶</a></h3>
+</div>
 </div>
 </div>
 
@@ -250,7 +293,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="fmgr_sys_proxy.html" class="btn btn-neutral float-right" title="fmgr_sys_proxy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../fmgr_roles.html" class="btn btn-neutral float-right" title="Roles" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="fmgr_secprof_wanopt.html" class="btn btn-neutral" title="fmgr_secprof_wanopt" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -262,7 +305,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
 
     </p>
   </div>
@@ -281,21 +324,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 

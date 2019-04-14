@@ -85,8 +85,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
@@ -113,7 +114,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a></li>
@@ -195,20 +195,23 @@
 <div class="section" id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
 <p><strong>Name:</strong> fmgr_provisioning</p>
-<p><strong>Description:</strong> [‘Add model devices on the FortiManager using jsonrpc API and have them pre-configured, so when central management is configured, the configuration is pushed down to the registering devices’]</p>
-<p><strong>Author(s):</strong> Andrew Welsh</p>
-<p><strong>Ansible Version Added/Required:</strong> 2.5</p>
-<p><strong>Dev Status:</strong> COMPLETED</p>
+<p><strong>Description:</strong> Add model devices on the FortiManager using jsonrpc API and have them pre-configured, so when central management is configured, the configuration is pushed down to the registering devices</p>
+<p><strong>Author(s):</strong> Andrew Welsh (&#64;Ghilli3)</p>
+<p><strong>Ansible Version Added/Required:</strong> 2.8</p>
+<p><strong>Dev Status:</strong> CODE UPDATE IN PROGRESS</p>
 <p><strong>Owning Developer:</strong>
 Andrew Welsh</p>
+<p><strong>Pull Request Started:</strong></p>
+<p><strong>Days in PR:</strong></p>
+<p>Module Github <a class="reference external" href="https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_provisioning.py">Link</a></p>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="adom">
 <h3>adom<a class="headerlink" href="#adom" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: The administrative domain (admon) the configuration belongs to</li>
-<li>Required: True</li>
+<li>Description: The administrative domain (admon) the configuration belongs to.</li>
+<li>default: root</li>
 </ul>
 </div>
 <div class="section" id="description">
@@ -223,13 +226,6 @@ Andrew Welsh</p>
 <ul class="simple">
 <li>Description: The name of the device group the provisioned device can belong to.</li>
 <li>Required: False</li>
-</ul>
-</div>
-<div class="section" id="host">
-<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The FortiManager’s Address.</li>
-<li>Required: True</li>
 </ul>
 </div>
 <div class="section" id="minor-release">
@@ -250,7 +246,7 @@ Andrew Welsh</p>
 <h3>os_type<a class="headerlink" href="#os-type" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Description: The Fortinet OS type to be pushed to the device, such as ‘FOS’ for FortiOS.</li>
-<li>Required: True</li>
+<li>default: fos</li>
 </ul>
 </div>
 <div class="section" id="os-version">
@@ -258,13 +254,6 @@ Andrew Welsh</p>
 <ul class="simple">
 <li>Description: The Fortinet OS version to be used for the device, such as 5.0 or 6.0.</li>
 <li>Required: True</li>
-</ul>
-</div>
-<div class="section" id="password">
-<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The password associated with the username account.</li>
-<li>Required: False</li>
 </ul>
 </div>
 <div class="section" id="patch-release">
@@ -278,14 +267,14 @@ Andrew Welsh</p>
 <h3>platform<a class="headerlink" href="#platform" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Description: The platform of the device, such as model number or VM.</li>
-<li>Required: True</li>
+<li>default: FortiGate-VM64</li>
 </ul>
 </div>
 <div class="section" id="policy-package">
 <h3>policy_package<a class="headerlink" href="#policy-package" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Description: The name of the policy package to be assigned to the device.</li>
-<li>Required: True</li>
+<li>default: default</li>
 </ul>
 </div>
 <div class="section" id="serial">
@@ -295,17 +284,11 @@ Andrew Welsh</p>
 <li>Required: True</li>
 </ul>
 </div>
-<div class="section" id="username">
-<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The username to log into the FortiManager</li>
-<li>Required: True</li>
-</ul>
-</div>
 <div class="section" id="vdom">
 <h3>vdom<a class="headerlink" href="#vdom" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: The virtual domain (vdom) the configuration belongs to</li>
+<li>Description: The virtual domain (vdom) the configuration belongs to.</li>
+<li>default: root</li>
 </ul>
 </div>
 </div>
@@ -315,14 +298,15 @@ Andrew Welsh</p>
 <li>dev_group_exists</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dev_group_exists</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">dev_grp_name</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">dev_group_exists</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">dev_grp_name</span><span class="p">,</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dev_grp_name&quot;</span><span class="p">],</span>
     <span class="p">}</span>
 
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group/{dev_grp_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">dev_grp_name</span><span class="o">=</span><span class="n">dev_grp_name</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group/{dev_grp_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                           <span class="n">dev_grp_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dev_grp_name&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -331,14 +315,14 @@ Andrew Welsh</p>
 <li>prov_template_exists</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prov_template_exists</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">prov_template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">vdom</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">prov_template_exists</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">prov_template</span><span class="p">,</span>
-        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;prov_template&quot;</span><span class="p">],</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
     <span class="p">}</span>
 
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/devprof/adom/{adom}/devprof/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">prov_template</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/devprof/adom/{adom}/devprof/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;prov_template&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -347,28 +331,27 @@ Andrew Welsh</p>
 <li>create_model_device</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_model_device</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">serial</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">platform</span><span class="p">,</span> <span class="n">os_version</span><span class="p">,</span>
-                        <span class="n">os_type</span><span class="p">,</span> <span class="n">minor_release</span><span class="p">,</span> <span class="n">patch_release</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">create_model_device</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
         <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;create_task&#39;</span><span class="p">,</span> <span class="s1">&#39;nonblocking&#39;</span><span class="p">],</span>
-        <span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">group</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">}],</span>
+        <span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">],</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s1">&#39;vdom&#39;</span><span class="p">]}],</span>
         <span class="s1">&#39;device&#39;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s1">&#39;mr&#39;</span><span class="p">:</span> <span class="n">minor_release</span><span class="p">,</span>
-            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
-            <span class="s1">&#39;sn&#39;</span><span class="p">:</span> <span class="n">serial</span><span class="p">,</span>
+            <span class="s1">&#39;mr&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;minor_release&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;sn&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;serial&quot;</span><span class="p">],</span>
             <span class="s1">&#39;mgmt_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;fmg&#39;</span><span class="p">,</span>
             <span class="s1">&#39;device action&#39;</span><span class="p">:</span> <span class="s1">&#39;add_model&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;platform_str&#39;</span><span class="p">:</span> <span class="n">platform</span><span class="p">,</span>
-            <span class="s1">&#39;os_ver&#39;</span><span class="p">:</span> <span class="n">os_version</span><span class="p">,</span>
-            <span class="s1">&#39;os_type&#39;</span><span class="p">:</span> <span class="n">os_type</span><span class="p">,</span>
-            <span class="s1">&#39;patch&#39;</span><span class="p">:</span> <span class="n">patch_release</span><span class="p">,</span>
+            <span class="s1">&#39;platform_str&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;os_ver&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;os_version&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;os_type&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;patch&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;patch_release&quot;</span><span class="p">],</span>
             <span class="s1">&#39;desc&#39;</span><span class="p">:</span> <span class="s1">&#39;Provisioned by Ansible&#39;</span><span class="p">,</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvm/cmd/add/device&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">EXEC</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -377,12 +360,13 @@ Andrew Welsh</p>
 <li>update_flags</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_flags</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_flags</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;is_model&#39;</span><span class="p">,</span> <span class="s1">&#39;linked_to_model&#39;</span><span class="p">]</span>
     <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;dvmdb/device/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;dvmdb/device/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">UPDATE</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -391,16 +375,19 @@ Andrew Welsh</p>
 <li>assign_provision_template</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">assign_provision_template</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">assign_provision_template</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">template</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;template&quot;</span><span class="p">],</span>
         <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;devprof&#39;</span><span class="p">,</span>
         <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Provisioned by Ansible&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">target</span><span class="p">}]</span>
+        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]}]</span>
     <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">UPDATE</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -408,27 +395,32 @@ Andrew Welsh</p>
 <li>set_devprof_scope</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">set_devprof_scope</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provisioning_template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">provision_targets</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    GET the DevProf (check to see if exists)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">fields</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-    <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">provisioning_template</span>
-    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;devprof&quot;</span>
-    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;CreatedByAnsible&quot;</span>
-
-    <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">provision_targets</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
-        <span class="c1"># split the host on the space to get the mask out</span>
-        <span class="n">new_target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">}</span>
-        <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_target</span><span class="p">)</span>
-
-    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">targets</span>
-
-    <span class="n">body</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">),</span>
-                                         <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">fields</span><span class="p">,</span> <span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">}]}</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_request</span><span class="p">(</span><span class="n">body</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">response</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># def set_devprof_scope(self, provisioning_template, adom, provision_targets):</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="c1">#     :type fmgr: class object</span>
+<span class="c1">#     :param paramgram: The formatted dictionary of options to process</span>
+<span class="c1">#     :type paramgram: dict</span>
+<span class="c1">#     :return: The response from the FortiManager</span>
+<span class="c1">#     :rtype: dict</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     fields = dict()</span>
+<span class="c1">#     targets = []</span>
+<span class="c1">#     fields[&quot;name&quot;] = provisioning_template</span>
+<span class="c1">#     fields[&quot;type&quot;] = &quot;devprof&quot;</span>
+<span class="c1">#     fields[&quot;description&quot;] = &quot;CreatedByAnsible&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#     for target in provision_targets.strip().split(&quot;,&quot;):</span>
+<span class="c1">#         # split the host on the space to get the mask out</span>
+<span class="c1">#         new_target = {&quot;name&quot;: target}</span>
+<span class="c1">#         targets.append(new_target)</span>
+<span class="c1">#</span>
+<span class="c1">#     fields[&quot;scope member&quot;] = targets</span>
+<span class="c1">#     url = &quot;/pm/devprof/adom/{adom}&quot;.format(adom=paramgram[&quot;adom&quot;])</span>
+<span class="c1">#     body = {&quot;method&quot;: &quot;set&quot;, &quot;params&quot;: [{&quot;url&quot;: &quot;/pm/devprof/adom/{adom}&quot;.format(adom=paramgram[&quot;adom&quot;]),</span>
+<span class="c1">#                                          &quot;data&quot;: fields, &quot;session&quot;: self.session}]}</span>
+<span class="c1">#     response = fmgr.process_request(url, body, FMGRMethods.SET)</span>
+<span class="c1">#     return response</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -436,13 +428,15 @@ Andrew Welsh</p>
 <li>assign_dev_grp</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">assign_dev_grp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">grp_name</span><span class="p">,</span> <span class="n">device_name</span><span class="p">,</span> <span class="n">vdom</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">assign_dev_grp</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device_name</span><span class="p">,</span>
-        <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_name&quot;</span><span class="p">],</span>
+        <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">],</span>
     <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/dvmdb/adom/{adom}/group/{grp_name}/object member&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">grp_name</span><span class="o">=</span><span class="n">grp_name</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/dvmdb/adom/{adom}/group/{grp_name}/object member&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                                     <span class="n">grp_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">SET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -451,13 +445,14 @@ Andrew Welsh</p>
 <li>update_install_target</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_install_target</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">pp</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="n">vdom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">update_install_target</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">}],</span>
+        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device&quot;</span><span class="p">],</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]}],</span>
         <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;pkg&#39;</span>
     <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{pkg_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">pkg_name</span><span class="o">=</span><span class="n">pp</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{pkg_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">pkg_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">UPDATE</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -466,15 +461,16 @@ Andrew Welsh</p>
 <li>install_pp</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">install_pp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">pp</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="n">vdom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">install_pp</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
         <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="s1">&#39;nonblocking&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;pkg&#39;</span><span class="p">:</span> <span class="n">pp</span><span class="p">,</span>
-        <span class="s1">&#39;scope&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">}],</span>
+        <span class="s1">&#39;pkg&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">],</span>
+        <span class="s1">&#39;scope&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device&quot;</span><span class="p">],</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]}],</span>
     <span class="p">}</span>
+
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;securityconsole/install/package&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">EXEC</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -486,83 +482,70 @@ Andrew Welsh</p>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
 
     <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">vdom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-
-        <span class="n">policy_package</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">vdom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">policy_package</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">group</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">serial</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">platform</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">platform</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;FortiGate-VM64&quot;</span><span class="p">),</span>
         <span class="n">description</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">os_version</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">minor_release</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">patch_release</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">os_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">os_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;fos&quot;</span><span class="p">),</span>
 
     <span class="p">)</span>
 
-    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="p">)</span>
 
-    <span class="c1"># check if params are set</span>
-    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;vdom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;policy_package&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;serial&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;serial&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;platform&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;os_version&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_version&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;minor_release&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;minor_release&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;patch_release&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;patch_release&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;os_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
 
-    <span class="c1"># check if login failed</span>
-    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
-
-    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+    <span class="n">fmgr</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">)</span>
+        <span class="n">fmgr</span> <span class="o">=</span> <span class="n">FortiManagerHandler</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="n">fmgr</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">FMGRCommon</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">FAIL_SOCKET_MSG</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span>
-        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;root&#39;</span>
-        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;root&#39;</span>
-        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;FortiGate-VM64&#39;</span>
-        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;fos&#39;</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
 
-        <span class="n">results</span> <span class="o">=</span> <span class="n">create_model_device</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;serial&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_ver&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;minor_release&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;patch_release&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">create_model_device</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Create model failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
 
-        <span class="n">results</span> <span class="o">=</span> <span class="n">update_flags</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">update_flags</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Update device flags failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
 
-        <span class="c1"># results = assign_dev_grp(fmg, &#39;Ansible&#39;, &#39;FGVM000000117992&#39;, &#39;root&#39;, &#39;root&#39;)</span>
-        <span class="c1"># if not results[0] == 0:</span>
-        <span class="c1">#     module.fail_json(msg=&quot;Setting device group failed&quot;, **results)</span>
-
-        <span class="n">results</span> <span class="o">=</span> <span class="n">update_install_target</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">update_install_target</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Adding device target to package failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
 
-        <span class="n">results</span> <span class="o">=</span> <span class="n">install_pp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">install_pp</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Installing policy package failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
 
-        <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
 
-        <span class="c1"># results is returned as a tuple</span>
-        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -598,8 +581,10 @@ Andrew Welsh</p>
 <span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">---</span>
 <span class="s1">module: fmgr_provisioning</span>
-<span class="s1">version_added: &quot;2.5&quot;</span>
-<span class="s1">author: Andrew Welsh</span>
+<span class="s1">version_added: &quot;2.8&quot;</span>
+<span class="s1">notes:</span>
+<span class="s1">    - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).</span>
+<span class="s1">author: Andrew Welsh (@Ghilli3)</span>
 <span class="s1">short_description: Provision devices via FortiMananger</span>
 <span class="s1">description:</span>
 <span class="s1">  - Add model devices on the FortiManager using jsonrpc API and have them pre-configured,</span>
@@ -609,110 +594,96 @@ Andrew Welsh</p>
 <span class="s1">options:</span>
 <span class="s1">  adom:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - The administrative domain (admon) the configuration belongs to</span>
-<span class="s1">    required: true</span>
+<span class="s1">      - The administrative domain (admon) the configuration belongs to.</span>
+<span class="s1">    default: &quot;root&quot;</span>
+
 <span class="s1">  vdom:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - The virtual domain (vdom) the configuration belongs to</span>
-<span class="s1">  host:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The FortiManager&#39;s Address.</span>
-<span class="s1">    required: true</span>
-<span class="s1">  username:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The username to log into the FortiManager</span>
-<span class="s1">    required: true</span>
-<span class="s1">  password:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The password associated with the username account.</span>
-<span class="s1">    required: false</span>
+<span class="s1">      - The virtual domain (vdom) the configuration belongs to.</span>
+<span class="s1">    default: &quot;root&quot;</span>
 
 <span class="s1">  policy_package:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The name of the policy package to be assigned to the device.</span>
-<span class="s1">    required: True</span>
+<span class="s1">    default: &quot;default&quot;</span>
+
 <span class="s1">  name:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The name of the device to be provisioned.</span>
 <span class="s1">    required: True</span>
+
 <span class="s1">  group:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The name of the device group the provisioned device can belong to.</span>
 <span class="s1">    required: False</span>
+
 <span class="s1">  serial:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The serial number of the device that will be provisioned.</span>
 <span class="s1">    required: True</span>
+
 <span class="s1">  platform:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The platform of the device, such as model number or VM.</span>
-<span class="s1">    required: True</span>
+<span class="s1">    default: &quot;FortiGate-VM64&quot;</span>
+
 <span class="s1">  description:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - Description of the device to be provisioned.</span>
 <span class="s1">    required: False</span>
+
 <span class="s1">  os_version:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The Fortinet OS version to be used for the device, such as 5.0 or 6.0.</span>
 <span class="s1">    required: True</span>
+
 <span class="s1">  minor_release:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The minor release number such as 6.X.1, as X being the minor release.</span>
 <span class="s1">    required: False</span>
+
 <span class="s1">  patch_release:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The patch release number such as 6.0.X, as X being the patch release.</span>
 <span class="s1">    required: False</span>
+
 <span class="s1">  os_type:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The Fortinet OS type to be pushed to the device, such as &#39;FOS&#39; for FortiOS.</span>
-<span class="s1">    required: True</span>
+<span class="s1">    default: &quot;fos&quot;</span>
 <span class="s1">&#39;&#39;&#39;</span>
 
 <span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
-<span class="s1">- name: Create Model Device</span>
-<span class="s1">  hosts: FortiManager</span>
-<span class="s1">  connection: local</span>
-<span class="s1">  gather_facts: False</span>
-
-<span class="s1">  tasks:</span>
-
-<span class="s1">    - name: Create FGT1 Model Device</span>
-<span class="s1">      fmgr_provision:</span>
-<span class="s1">        host: &quot;{{ inventory_hostname }}&quot;</span>
-<span class="s1">        username: &quot;{{ username }}&quot;</span>
-<span class="s1">        password: &quot;{{ password }}&quot;</span>
-<span class="s1">        adom: &quot;root&quot;</span>
-<span class="s1">        vdom: &quot;root&quot;</span>
-<span class="s1">        policy_package: &quot;default&quot;</span>
-<span class="s1">        name: &quot;FGT1&quot;</span>
-<span class="s1">        group: &quot;Ansible&quot;</span>
-<span class="s1">        serial: &quot;FGVM000000117994&quot;</span>
-<span class="s1">        platform: &quot;FortiGate-VM64&quot;</span>
-<span class="s1">        description: &quot;Provisioned by Ansible&quot;</span>
-<span class="s1">        os_version: &#39;6.0&#39;</span>
-<span class="s1">        minor_release: 0</span>
-<span class="s1">        patch_release: 0</span>
-<span class="s1">        os_type: &#39;fos&#39;</span>
+<span class="s1">- name: Create FGT1 Model Device</span>
+<span class="s1">  fmgr_provisioning:</span>
+<span class="s1">    adom: &quot;root&quot;</span>
+<span class="s1">    vdom: &quot;root&quot;</span>
+<span class="s1">    policy_package: &quot;default&quot;</span>
+<span class="s1">    name: &quot;FGT1&quot;</span>
+<span class="s1">    group: &quot;Ansible&quot;</span>
+<span class="s1">    serial: &quot;FGVM000000117994&quot;</span>
+<span class="s1">    platform: &quot;FortiGate-VM64&quot;</span>
+<span class="s1">    description: &quot;Provisioned by Ansible&quot;</span>
+<span class="s1">    os_version: &#39;6.0&#39;</span>
+<span class="s1">    minor_release: 0</span>
+<span class="s1">    patch_release: 0</span>
+<span class="s1">    os_type: &#39;fos&#39;</span>
 
 
-<span class="s1">    - name: Create FGT2 Model Device</span>
-<span class="s1">      fmgr_provision:</span>
-<span class="s1">        host: &quot;{{ inventory_hostname }}&quot;</span>
-<span class="s1">        username: &quot;{{ username }}&quot;</span>
-<span class="s1">        password: &quot;{{ password }}&quot;</span>
-<span class="s1">        adom: &quot;root&quot;</span>
-<span class="s1">        vdom: &quot;root&quot;</span>
-<span class="s1">        policy_package: &quot;test_pp&quot;</span>
-<span class="s1">        name: &quot;FGT2&quot;</span>
-<span class="s1">        group: &quot;Ansible&quot;</span>
-<span class="s1">        serial: &quot;FGVM000000117992&quot;</span>
-<span class="s1">        platform: &quot;FortiGate-VM64&quot;</span>
-<span class="s1">        description: &quot;Provisioned by Ansible&quot;</span>
-<span class="s1">        os_version: &#39;5.0&#39;</span>
-<span class="s1">        minor_release: 6</span>
-<span class="s1">        patch_release: 0</span>
-<span class="s1">        os_type: &#39;fos&#39;</span>
+<span class="s1">- name: Create FGT2 Model Device</span>
+<span class="s1">  fmgr_provisioning:</span>
+<span class="s1">    adom: &quot;root&quot;</span>
+<span class="s1">    vdom: &quot;root&quot;</span>
+<span class="s1">    policy_package: &quot;test_pp&quot;</span>
+<span class="s1">    name: &quot;FGT2&quot;</span>
+<span class="s1">    group: &quot;Ansible&quot;</span>
+<span class="s1">    serial: &quot;FGVM000000117992&quot;</span>
+<span class="s1">    platform: &quot;FortiGate-VM64&quot;</span>
+<span class="s1">    description: &quot;Provisioned by Ansible&quot;</span>
+<span class="s1">    os_version: &#39;5.0&#39;</span>
+<span class="s1">    minor_release: 6</span>
+<span class="s1">    patch_release: 0</span>
+<span class="s1">    os_type: &#39;fos&#39;</span>
 
 <span class="s1">&#39;&#39;&#39;</span>
 
@@ -720,223 +691,220 @@ Andrew Welsh</p>
 <span class="s2">api_result:</span>
 <span class="s2">  description: full API response, includes status code and message</span>
 <span class="s2">  returned: always</span>
-<span class="s2">  type: string</span>
+<span class="s2">  type: str</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
-<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">AnsibleFortiManager</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.connection</span> <span class="kn">import</span> <span class="n">Connection</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">FortiManagerHandler</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGBaseException</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGRCommon</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FAIL_SOCKET_MSG</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGRMethods</span>
 
-<span class="c1"># check for pyFMG lib</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">pyFMG.fortimgr</span> <span class="kn">import</span> <span class="n">FortiManager</span>
-    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">True</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">False</span>
 
-
-<span class="k">def</span> <span class="nf">dev_group_exists</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">dev_grp_name</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">dev_group_exists</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">dev_grp_name</span><span class="p">,</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dev_grp_name&quot;</span><span class="p">],</span>
     <span class="p">}</span>
 
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group/{dev_grp_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">dev_grp_name</span><span class="o">=</span><span class="n">dev_grp_name</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/group/{dev_grp_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                           <span class="n">dev_grp_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dev_grp_name&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 
 
-<span class="k">def</span> <span class="nf">prov_template_exists</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">prov_template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">vdom</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">prov_template_exists</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">prov_template</span><span class="p">,</span>
-        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;prov_template&quot;</span><span class="p">],</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
     <span class="p">}</span>
 
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/devprof/adom/{adom}/devprof/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">prov_template</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/devprof/adom/{adom}/devprof/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;prov_template&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 
 
-<span class="k">def</span> <span class="nf">create_model_device</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="n">serial</span><span class="p">,</span> <span class="n">group</span><span class="p">,</span> <span class="n">platform</span><span class="p">,</span> <span class="n">os_version</span><span class="p">,</span>
-                        <span class="n">os_type</span><span class="p">,</span> <span class="n">minor_release</span><span class="p">,</span> <span class="n">patch_release</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">create_model_device</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
         <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;create_task&#39;</span><span class="p">,</span> <span class="s1">&#39;nonblocking&#39;</span><span class="p">],</span>
-        <span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">group</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="s1">&#39;root&#39;</span><span class="p">}],</span>
+        <span class="s1">&#39;groups&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">],</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s1">&#39;vdom&#39;</span><span class="p">]}],</span>
         <span class="s1">&#39;device&#39;</span><span class="p">:</span> <span class="p">{</span>
-            <span class="s1">&#39;mr&#39;</span><span class="p">:</span> <span class="n">minor_release</span><span class="p">,</span>
-            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
-            <span class="s1">&#39;sn&#39;</span><span class="p">:</span> <span class="n">serial</span><span class="p">,</span>
+            <span class="s1">&#39;mr&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;minor_release&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;sn&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;serial&quot;</span><span class="p">],</span>
             <span class="s1">&#39;mgmt_mode&#39;</span><span class="p">:</span> <span class="s1">&#39;fmg&#39;</span><span class="p">,</span>
             <span class="s1">&#39;device action&#39;</span><span class="p">:</span> <span class="s1">&#39;add_model&#39;</span><span class="p">,</span>
-            <span class="s1">&#39;platform_str&#39;</span><span class="p">:</span> <span class="n">platform</span><span class="p">,</span>
-            <span class="s1">&#39;os_ver&#39;</span><span class="p">:</span> <span class="n">os_version</span><span class="p">,</span>
-            <span class="s1">&#39;os_type&#39;</span><span class="p">:</span> <span class="n">os_type</span><span class="p">,</span>
-            <span class="s1">&#39;patch&#39;</span><span class="p">:</span> <span class="n">patch_release</span><span class="p">,</span>
+            <span class="s1">&#39;platform_str&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;os_ver&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;os_version&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;os_type&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">],</span>
+            <span class="s1">&#39;patch&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;patch_release&quot;</span><span class="p">],</span>
             <span class="s1">&#39;desc&#39;</span><span class="p">:</span> <span class="s1">&#39;Provisioned by Ansible&#39;</span><span class="p">,</span>
         <span class="p">}</span>
     <span class="p">}</span>
 
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvm/cmd/add/device&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">EXEC</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 
 
-<span class="k">def</span> <span class="nf">update_flags</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">name</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">update_flags</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;is_model&#39;</span><span class="p">,</span> <span class="s1">&#39;linked_to_model&#39;</span><span class="p">]</span>
     <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;dvmdb/device/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">name</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;dvmdb/device/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">UPDATE</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 
 
-<span class="k">def</span> <span class="nf">assign_provision_template</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">target</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">assign_provision_template</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">template</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;template&quot;</span><span class="p">],</span>
         <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;devprof&#39;</span><span class="p">,</span>
         <span class="s1">&#39;description&#39;</span><span class="p">:</span> <span class="s1">&#39;Provisioned by Ansible&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">target</span><span class="p">}]</span>
+        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;target&quot;</span><span class="p">]}]</span>
     <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">UPDATE</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
+<span class="c1">#</span>
+<span class="c1">#</span>
+<span class="c1"># def set_devprof_scope(self, provisioning_template, adom, provision_targets):</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="c1">#     :type fmgr: class object</span>
+<span class="c1">#     :param paramgram: The formatted dictionary of options to process</span>
+<span class="c1">#     :type paramgram: dict</span>
+<span class="c1">#     :return: The response from the FortiManager</span>
+<span class="c1">#     :rtype: dict</span>
+<span class="c1">#     &quot;&quot;&quot;</span>
+<span class="c1">#     fields = dict()</span>
+<span class="c1">#     targets = []</span>
+<span class="c1">#     fields[&quot;name&quot;] = provisioning_template</span>
+<span class="c1">#     fields[&quot;type&quot;] = &quot;devprof&quot;</span>
+<span class="c1">#     fields[&quot;description&quot;] = &quot;CreatedByAnsible&quot;</span>
+<span class="c1">#</span>
+<span class="c1">#     for target in provision_targets.strip().split(&quot;,&quot;):</span>
+<span class="c1">#         # split the host on the space to get the mask out</span>
+<span class="c1">#         new_target = {&quot;name&quot;: target}</span>
+<span class="c1">#         targets.append(new_target)</span>
+<span class="c1">#</span>
+<span class="c1">#     fields[&quot;scope member&quot;] = targets</span>
+<span class="c1">#     url = &quot;/pm/devprof/adom/{adom}&quot;.format(adom=paramgram[&quot;adom&quot;])</span>
+<span class="c1">#     body = {&quot;method&quot;: &quot;set&quot;, &quot;params&quot;: [{&quot;url&quot;: &quot;/pm/devprof/adom/{adom}&quot;.format(adom=paramgram[&quot;adom&quot;]),</span>
+<span class="c1">#                                          &quot;data&quot;: fields, &quot;session&quot;: self.session}]}</span>
+<span class="c1">#     response = fmgr.process_request(url, body, FMGRMethods.SET)</span>
+<span class="c1">#     return response</span>
 
 
-<span class="k">def</span> <span class="nf">set_devprof_scope</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">provisioning_template</span><span class="p">,</span> <span class="n">adom</span><span class="p">,</span> <span class="n">provision_targets</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    GET the DevProf (check to see if exists)</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-    <span class="n">fields</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-    <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">provisioning_template</span>
-    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;devprof&quot;</span>
-    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;CreatedByAnsible&quot;</span>
-
-    <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">provision_targets</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
-        <span class="c1"># split the host on the space to get the mask out</span>
-        <span class="n">new_target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">}</span>
-        <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_target</span><span class="p">)</span>
-
-    <span class="n">fields</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">targets</span>
-
-    <span class="n">body</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;params&quot;</span><span class="p">:</span> <span class="p">[{</span><span class="s2">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;/pm/devprof/adom/{adom}&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">),</span>
-                                         <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">fields</span><span class="p">,</span> <span class="s2">&quot;session&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">session</span><span class="p">}]}</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">make_request</span><span class="p">(</span><span class="n">body</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">response</span>
-
-
-<span class="k">def</span> <span class="nf">assign_dev_grp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">grp_name</span><span class="p">,</span> <span class="n">device_name</span><span class="p">,</span> <span class="n">vdom</span><span class="p">,</span> <span class="n">adom</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">assign_dev_grp</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device_name</span><span class="p">,</span>
-        <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">,</span>
+        <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_name&quot;</span><span class="p">],</span>
+        <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">],</span>
     <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/dvmdb/adom/{adom}/group/{grp_name}/object member&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">grp_name</span><span class="o">=</span><span class="n">grp_name</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/dvmdb/adom/{adom}/group/{grp_name}/object member&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                                                     <span class="n">grp_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;grp_name&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">SET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 
 
-<span class="k">def</span> <span class="nf">update_install_target</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">pp</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="n">vdom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">update_install_target</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">}],</span>
+        <span class="s1">&#39;scope member&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device&quot;</span><span class="p">],</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]}],</span>
         <span class="s1">&#39;type&#39;</span><span class="p">:</span> <span class="s1">&#39;pkg&#39;</span>
     <span class="p">}</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{pkg_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">pkg_name</span><span class="o">=</span><span class="n">pp</span><span class="p">)</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/pkg/adom/{adom}/{pkg_name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span> <span class="n">pkg_name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">])</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">UPDATE</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 
 
-<span class="k">def</span> <span class="nf">install_pp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">device</span><span class="p">,</span> <span class="n">pp</span><span class="o">=</span><span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="n">vdom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">,</span> <span class="n">adom</span><span class="o">=</span><span class="s1">&#39;root&#39;</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">install_pp</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">adom</span><span class="p">,</span>
+        <span class="s1">&#39;adom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
         <span class="s1">&#39;flags&#39;</span><span class="p">:</span> <span class="s1">&#39;nonblocking&#39;</span><span class="p">,</span>
-        <span class="s1">&#39;pkg&#39;</span><span class="p">:</span> <span class="n">pp</span><span class="p">,</span>
-        <span class="s1">&#39;scope&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">device</span><span class="p">,</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">vdom</span><span class="p">}],</span>
+        <span class="s1">&#39;pkg&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">],</span>
+        <span class="s1">&#39;scope&#39;</span><span class="p">:</span> <span class="p">[{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device&quot;</span><span class="p">],</span> <span class="s1">&#39;vdom&#39;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]}],</span>
     <span class="p">}</span>
+
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;securityconsole/install/package&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">EXEC</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
 
     <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
-        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">vdom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-
-        <span class="n">policy_package</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">vdom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">policy_package</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">group</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">serial</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">platform</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">platform</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;FortiGate-VM64&quot;</span><span class="p">),</span>
         <span class="n">description</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">os_version</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">minor_release</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">patch_release</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">os_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">os_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;fos&quot;</span><span class="p">),</span>
 
     <span class="p">)</span>
 
-    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="p">)</span>
 
-    <span class="c1"># check if params are set</span>
-    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;vdom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;policy_package&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;group&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;serial&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;serial&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;platform&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;description&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;description&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;os_version&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_version&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;minor_release&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;minor_release&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;patch_release&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;patch_release&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;os_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
 
-    <span class="c1"># check if login failed</span>
-    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
-
-    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+    <span class="n">fmgr</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">)</span>
+        <span class="n">fmgr</span> <span class="o">=</span> <span class="n">FortiManagerHandler</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="n">fmgr</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">FMGRCommon</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">FAIL_SOCKET_MSG</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;default&#39;</span>
-        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;root&#39;</span>
-        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vdom&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;root&#39;</span>
-        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;FortiGate-VM64&#39;</span>
-        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;fos&#39;</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
 
-        <span class="n">results</span> <span class="o">=</span> <span class="n">create_model_device</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;serial&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;group&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_ver&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;minor_release&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;patch_release&quot;</span><span class="p">],</span>
-                                      <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">create_model_device</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Create model failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
 
-        <span class="n">results</span> <span class="o">=</span> <span class="n">update_flags</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">update_flags</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Update device flags failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
 
-        <span class="c1"># results = assign_dev_grp(fmg, &#39;Ansible&#39;, &#39;FGVM000000117992&#39;, &#39;root&#39;, &#39;root&#39;)</span>
-        <span class="c1"># if not results[0] == 0:</span>
-        <span class="c1">#     module.fail_json(msg=&quot;Setting device group failed&quot;, **results)</span>
-
-        <span class="n">results</span> <span class="o">=</span> <span class="n">update_install_target</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">update_install_target</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Adding device target to package failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
 
-        <span class="n">results</span> <span class="o">=</span> <span class="n">install_pp</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;policy_package&quot;</span><span class="p">])</span>
-        <span class="k">if</span> <span class="ow">not</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">install_pp</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Installing policy package failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
 
-        <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
 
-        <span class="c1"># results is returned as a tuple</span>
-        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
@@ -966,7 +934,7 @@ Andrew Welsh</p>
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
 
     </p>
   </div>
@@ -985,21 +953,13 @@ Andrew Welsh</p>
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 

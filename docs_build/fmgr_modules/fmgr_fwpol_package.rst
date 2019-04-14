@@ -33,7 +33,7 @@ This module controls the creation/edit/delete/assign of these packages.
 
 .. _Link: https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_fwpol_package.py
 
-Link_
+Module Github Link_
 
 Parameters
 ----------

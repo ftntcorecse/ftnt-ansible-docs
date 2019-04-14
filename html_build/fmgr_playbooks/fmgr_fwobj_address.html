@@ -28,8 +28,8 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fmgr_fwobj_service" href="fmgr_fwobj_service.html" />
-    <link rel="prev" title="fmgr_fortimeter" href="fmgr_fortimeter.html" /> 
+    <link rel="next" title="fmgr_fwobj_ippool" href="fmgr_fwobj_ippool.html" />
+    <link rel="prev" title="fmgr_device_provision_template" href="fmgr_device_provision_template.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,12 +86,13 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_fwobj_address</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#playbook-task-examples">Playbook Task Examples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#playbook-file-examples">Playbook File Examples</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
@@ -112,7 +113,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
@@ -194,9 +194,6 @@
 <h2>Playbook Task Examples<a class="headerlink" href="#playbook-task-examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS OBJECT</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipmask&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv4addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.30/32&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj&quot;</span>
@@ -205,9 +202,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS OBJECT MORE OPTIONS</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipmask&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv4addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.34/32&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_MORE&quot;</span>
@@ -220,9 +214,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS SUBNET OBJECT</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipmask&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv4addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.0/255.255.255.128&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_subnet&quot;</span>
@@ -231,9 +222,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS RANGE OBJECT</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">start_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.1&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">end_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.125&quot;</span>
@@ -242,9 +230,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS WILDCARD OBJECT</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;wildcard&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">wildcard</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.30/255.255.255.255&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_wildcard&quot;</span>
@@ -252,9 +237,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS WILDCARD FQDN OBJECT</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;wildcard-fqdn&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">wildcard_fqdn</span><span class="p p-Indicator">:</span> <span class="s">&quot;*.myds.com&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Synology</span><span class="nv"> </span><span class="s">myds</span><span class="nv"> </span><span class="s">DDNS</span><span class="nv"> </span><span class="s">service&quot;</span>
@@ -262,9 +244,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS FQDN OBJECT</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;fqdn&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">fqdn</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible.com&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_fqdn&quot;</span>
@@ -272,9 +251,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS GEO OBJECT</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;geography&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">country</span><span class="p p-Indicator">:</span> <span class="s">&quot;usa&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_geo&quot;</span>
@@ -282,19 +258,13 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv6 ADDRESS</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipprefix&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;ip&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv6addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;2001:0db8:85a3:0000:0000:8a2e:0370:7334&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v6Obj&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv6 ADDRESS RANGE</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">start_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;2001:0db8:85a3:0000:0000:8a2e:0370:7334&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">end_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;2001:0db8:85a3:0000:0000:8a2e:0370:7446&quot;</span>
@@ -303,27 +273,18 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS GROUP</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;group&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">group_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleIPv4Group&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">group_members</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_fqdn,</span><span class="nv"> </span><span class="s">ansible_wildcard,</span><span class="nv"> </span><span class="s">ansible_range&quot;</span>
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv6 IP ADDRESS GROUP</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;group&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">group_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleIPv6Group&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">group_members</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v6Obj,</span><span class="nv"> </span><span class="s">ansible_v6range&quot;</span>
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD MULTICAST RANGE</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">multicast</span><span class="p p-Indicator">:</span> <span class="s">&quot;multicastrange&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">start_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;224.0.0.251&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">end_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;224.0.0.251&quot;</span>
@@ -332,9 +293,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD BROADCAST SUBNET</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">multicast</span><span class="p p-Indicator">:</span> <span class="s">&quot;broadcastmask&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ipv4addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.0/24&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_broadcastSubnet&quot;</span>
@@ -344,20 +302,40 @@
 </div>
 <div class="section" id="playbook-file-examples">
 <h2>Playbook File Examples<a class="headerlink" href="#playbook-file-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fmgr-fwobj-ipv6-add-iprange-yml">
+<h3>fmgr_fwobj_ipv6_add_iprange.yml<a class="headerlink" href="#fmgr-fwobj-ipv6-add-iprange-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv6 IP ADDRESS RANGE OBJECT</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">start_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;2001:0db8:85a3:0000:0000:8a2e:0370:7334&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">end_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;2001:0db8:85a3:0000:0000:8a2e:0370:7446&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v6Obj_Range&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
+      <span class="c1">#tags: &quot;ansible, ipv4, test123, test321&quot;</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="fmgr-fwobj-ipv4-add-fqdn-yml">
 <h3>fmgr_fwobj_ipv4_add_fqdn.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-add-fqdn-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS FQDN OBJECT</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;fqdn&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
@@ -365,24 +343,220 @@
       <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Bluesnews&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible,</span><span class="nv"> </span><span class="s">ipv4,</span><span class="nv"> </span><span class="s">test123,</span><span class="nv"> </span><span class="s">test321&quot;</span>
+      <span class="c1">#tags: &quot;ansible, ipv4, test123, test321&quot;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="fmgr-fwobj-ipv4-del-all-yml">
+<h3>fmgr_fwobj_ipv4_del_all.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-del-all-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS GROUP</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;group&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">group_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleIPv4Group&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS RANGE OBJECT</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Range&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS RANGE OBJECT 3</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_MORE&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS RANGE OBJECT 4</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_ipMask2&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS RANGE OBJECT 2</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Range2&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS OBJECT</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipmask&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_ipMask&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS OBJECT (NON CIDR TEST)</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipmask&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Subnet2&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS OBJECT (NON CIDR TEST) 2</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipmask&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Subnet1&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS WILDCARD OBJECT</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;wildcard&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_wildCard&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS WILDCARD FQDN OBJECT</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;wildcard-fqdn&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Synology</span><span class="nv"> </span><span class="s">myds</span><span class="nv"> </span><span class="s">DDNS</span><span class="nv"> </span><span class="s">service&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS FQDN OBJECT</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;fqdn&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Bluesnews&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS GEO OBJECT</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;geography&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_geo&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv6 IP ADDRESS GROUP</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;group&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">group_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleIPv6Group&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv6 IP ADDRESS RANGE OBJECT</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v6Obj_Range&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv6 ADDRESS</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;ip&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v6Obj&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE BROADCAST SUBNET</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">multicast</span><span class="p p-Indicator">:</span> <span class="s">&quot;broadcastmask&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_broadcastSubnet&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE MULTICAST RANGE</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">multicast</span><span class="p p-Indicator">:</span> <span class="s">&quot;multicastrange&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_multicastrange&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-fwobj-ipv4-broadcast-subnet-yml">
+<h3>fmgr_fwobj_ipv4_broadcast_subnet.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-broadcast-subnet-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG IPv4 IP ADDRESS OBJECT</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD BROADCAST SUBNET</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">multicast</span><span class="p p-Indicator">:</span> <span class="s">&quot;broadcastmask&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.0/24&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_broadcastSubnet&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
+      <span class="c1">#tags: &quot;ansible, ipv4, test123, test321&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-fwobj-ipv6-add-ip-yml">
+<h3>fmgr_fwobj_ipv6_add_ip.yml<a class="headerlink" href="#fmgr-fwobj-ipv6-add-ip-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv6 ADDRESS</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;ip&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv6addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;2001:0db8:85a3:0000:0000:8a2e:0370:7334&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v6Obj&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
+      <span class="c1">#tags: &quot;ansible, ipv4, test123, test321&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-fwobj-ipv6-add-z-group-yml">
+<h3>fmgr_fwobj_ipv6_add_z_group.yml<a class="headerlink" href="#fmgr-fwobj-ipv6-add-z-group-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv6 IP ADDRESS GROUP</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;group&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">group_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleIPv6Group&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">group_members</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v6Obj_Range,</span><span class="nv"> </span><span class="s">ansible_v6Obj&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
+      <span class="c1">#tags: &quot;ansible, ipv4, test123, test321&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;test123</span><span class="nv"> </span><span class="s">comment&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-fwobj-address-run-all-sh">
+<h3>fmgr_fwobj_address_run_all.sh<a class="headerlink" href="#fmgr-fwobj-address-run-all-sh" title="Permalink to this headline">¶</a></h3>
 </div>
 <div class="section" id="fmgr-fwobj-ipv4-add-geo-yml">
 <h3>fmgr_fwobj_ipv4_add_geo.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-add-geo-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS GEO OBJECT</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;geography&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">country</span><span class="p p-Indicator">:</span> <span class="s">&quot;US&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
@@ -390,7 +564,7 @@
       <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_geo&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipv4,</span><span class="nv"> </span><span class="s">test123,</span><span class="nv"> </span><span class="s">test321&quot;</span>
+      <span class="c1">#tags: &quot;ipv4, test123, test321&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -398,35 +572,29 @@
 <h3>fmgr_fwobj_ipv4_add_ipmask.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-add-ipmask-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG IPv4 IP ADDRESS OBJECT</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS OBJECT</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipmask&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">ipv4addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.30/32&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_ipMask2&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible</span><span class="nv"> </span><span class="s">is</span><span class="nv"> </span><span class="s">fun!</span><span class="nv"> </span><span class="s">Paramgram!&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible,</span><span class="nv"> </span><span class="s">ipv4,</span><span class="nv"> </span><span class="s">object&quot;</span>
+      <span class="c1">#tags: &quot;ansible, ipv4, object&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;26&quot;</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS OBJECT MORE OPTIONS</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipmask&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">ipv4addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.41/32&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_MORE&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible</span><span class="nv"> </span><span class="s">more</span><span class="nv"> </span><span class="s">options&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible,</span><span class="nv"> </span><span class="s">ipv4,</span><span class="nv"> </span><span class="s">object&quot;</span>
+      <span class="c1">#tags: &quot;ansible, ipv4, object&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;6&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">allow_routing</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">cache_ttl</span><span class="p p-Indicator">:</span> <span class="s">&quot;180&quot;</span>
@@ -436,150 +604,17 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="fmgr-fwobj-ipv4-add-iprange-yml">
-<h3>fmgr_fwobj_ipv4_add_iprange.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-add-iprange-yml" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
-  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS RANGE OBJECT</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">start_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.1&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">end_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.50&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Range&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible,</span><span class="nv"> </span><span class="s">ipv4,</span><span class="nv"> </span><span class="s">test123,</span><span class="nv"> </span><span class="s">test321&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS RANGE OBJECT 2</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">start_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.100&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">end_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.150&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Range2&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible,</span><span class="nv"> </span><span class="s">ipv4,</span><span class="nv"> </span><span class="s">test123,</span><span class="nv"> </span><span class="s">test321&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="fmgr-fwobj-ipv4-add-ipsubnet-yml">
-<h3>fmgr_fwobj_ipv4_add_ipsubnet.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-add-ipsubnet-yml" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
-  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS OBJECT</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipmask&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.0/25&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Subnet1&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible,</span><span class="nv"> </span><span class="s">ipv4,</span><span class="nv"> </span><span class="s">test123,</span><span class="nv"> </span><span class="s">test321&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS OBJECT (NON CIDR TEST)</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipmask&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.128/255.255.255.128&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Subnet2&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible,</span><span class="nv"> </span><span class="s">ipv4,</span><span class="nv"> </span><span class="s">test123,</span><span class="nv"> </span><span class="s">test321&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="fmgr-fwobj-ipv4-add-wildcard-yml">
-<h3>fmgr_fwobj_ipv4_add_wildcard.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-add-wildcard-yml" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
-  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS WILDCARD OBJECT</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;wildcard&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">wildcard</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.0/24&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_wildCard&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible,</span><span class="nv"> </span><span class="s">ipv4,</span><span class="nv"> </span><span class="s">test123,</span><span class="nv"> </span><span class="s">test321&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="fmgr-fwobj-ipv4-add-wildcard-fqdn-yml">
-<h3>fmgr_fwobj_ipv4_add_wildcard_fqdn.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-add-wildcard-fqdn-yml" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
-  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS WILDCARD FQDN OBJECT</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;wildcard-fqdn&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">wildcard_fqdn</span><span class="p p-Indicator">:</span> <span class="s">&quot;*.myds.com&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Synology</span><span class="nv"> </span><span class="s">myds</span><span class="nv"> </span><span class="s">DDNS</span><span class="nv"> </span><span class="s">service&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible,</span><span class="nv"> </span><span class="s">ipv4,</span><span class="nv"> </span><span class="s">test123,</span><span class="nv"> </span><span class="s">test321&quot;</span>
-</pre></div>
-</div>
-</div>
 <div class="section" id="fmgr-fwobj-ipv4-add-z-group-yml">
 <h3>fmgr_fwobj_ipv4_add_z_group.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-add-z-group-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS GROUP</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;group&quot;</span>
@@ -589,209 +624,36 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="fmgr-fwobj-ipv4-broadcast-subnet-yml">
-<h3>fmgr_fwobj_ipv4_broadcast_subnet.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-broadcast-subnet-yml" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG IPv4 IP ADDRESS OBJECT</span>
-  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD BROADCAST SUBNET</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">multicast</span><span class="p p-Indicator">:</span> <span class="s">&quot;broadcastmask&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.0/24&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_broadcastSubnet&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible,</span><span class="nv"> </span><span class="s">ipv4,</span><span class="nv"> </span><span class="s">test123,</span><span class="nv"> </span><span class="s">test321&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="fmgr-fwobj-ipv4-del-all-yml">
-<h3>fmgr_fwobj_ipv4_del_all.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-del-all-yml" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="fmgr-fwobj-ipv4-add-ipsubnet-yml">
+<h3>fmgr_fwobj_ipv4_add_ipsubnet.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-add-ipsubnet-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
 
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS GROUP</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS OBJECT</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;group&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">group_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleIPv4Group&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS RANGE OBJECT</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Range&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS RANGE OBJECT 3</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_MORE&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS RANGE OBJECT 4</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_ipMask2&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS RANGE OBJECT 2</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Range2&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS OBJECT</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipmask&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_ipMask&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS OBJECT (NON CIDR TEST)</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipmask&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Subnet2&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS OBJECT (NON CIDR TEST) 2</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipmask&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.0/25&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Subnet1&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
+      <span class="c1">#tags: &quot;ansible, ipv4, test123, test321&quot;</span>
 
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS WILDCARD OBJECT</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS OBJECT (NON CIDR TEST)</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;wildcard&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_wildCard&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS WILDCARD FQDN OBJECT</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;wildcard-fqdn&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Synology</span><span class="nv"> </span><span class="s">myds</span><span class="nv"> </span><span class="s">DDNS</span><span class="nv"> </span><span class="s">service&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS FQDN OBJECT</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;fqdn&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Bluesnews&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv4 IP ADDRESS GEO OBJECT</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;geography&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_geo&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv6 IP ADDRESS GROUP</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;group&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">group_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleIPv6Group&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv6 IP ADDRESS RANGE OBJECT</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v6Obj_Range&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE IPv6 ADDRESS</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;ip&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v6Obj&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE BROADCAST SUBNET</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">multicast</span><span class="p p-Indicator">:</span> <span class="s">&quot;broadcastmask&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_broadcastSubnet&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE MULTICAST RANGE</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">multicast</span><span class="p p-Indicator">:</span> <span class="s">&quot;multicastrange&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_multicastrange&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;ipmask&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.128/255.255.255.128&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Subnet2&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
+      <span class="c1">#tags: &quot;ansible, ipv4, test123, test321&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -799,16 +661,13 @@
 <h3>fmgr_fwobj_ipv4_multicast_range.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-multicast-range-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG IPv4 IP ADDRESS OBJECT</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD MULTICAST RANGE</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">multicast</span><span class="p p-Indicator">:</span> <span class="s">&quot;multicastrange&quot;</span>
@@ -817,83 +676,86 @@
       <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_multicastrange&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;blahBlahBlah&quot;</span>
+      <span class="c1">#tags: &quot;blahBlahBlah&quot;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="fmgr-fwobj-ipv6-add-ip-yml">
-<h3>fmgr_fwobj_ipv6_add_ip.yml<a class="headerlink" href="#fmgr-fwobj-ipv6-add-ip-yml" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="fmgr-fwobj-ipv4-add-iprange-yml">
+<h3>fmgr_fwobj_ipv4_add_iprange.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-add-iprange-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
 
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv6 ADDRESS</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS RANGE OBJECT</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;ip&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv6addr</span><span class="p p-Indicator">:</span> <span class="s">&quot;2001:0db8:85a3:0000:0000:8a2e:0370:7334&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v6Obj&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">start_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.1&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">end_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.50&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Range&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible,</span><span class="nv"> </span><span class="s">ipv4,</span><span class="nv"> </span><span class="s">test123,</span><span class="nv"> </span><span class="s">test321&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="fmgr-fwobj-ipv6-add-iprange-yml">
-<h3>fmgr_fwobj_ipv6_add_iprange.yml<a class="headerlink" href="#fmgr-fwobj-ipv6-add-iprange-yml" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
-  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+      <span class="c1">#tags: &quot;ansible, ipv4, test123, test321&quot;</span>
 
-  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv6 IP ADDRESS RANGE OBJECT</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS RANGE OBJECT 2</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">start_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;2001:0db8:85a3:0000:0000:8a2e:0370:7334&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">end_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;2001:0db8:85a3:0000:0000:8a2e:0370:7446&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v6Obj_Range&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;iprange&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">start_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.100&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">end_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.150&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_Range2&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible,</span><span class="nv"> </span><span class="s">ipv4,</span><span class="nv"> </span><span class="s">test123,</span><span class="nv"> </span><span class="s">test321&quot;</span>
+      <span class="c1">#tags: &quot;ansible, ipv4, test123, test321&quot;</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="fmgr-fwobj-ipv6-add-z-group-yml">
-<h3>fmgr_fwobj_ipv6_add_z_group.yml<a class="headerlink" href="#fmgr-fwobj-ipv6-add-z-group-yml" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="fmgr-fwobj-ipv4-add-wildcard-fqdn-yml">
+<h3>fmgr_fwobj_ipv4_add_wildcard_fqdn.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-add-wildcard-fqdn-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
 
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv6 IP ADDRESS GROUP</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS WILDCARD FQDN OBJECT</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;wildcard-fqdn&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="s">&quot;group&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">group_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleIPv6Group&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">group_members</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v6Obj_Range,</span><span class="nv"> </span><span class="s">ansible_v6Obj&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">wildcard_fqdn</span><span class="p p-Indicator">:</span> <span class="s">&quot;*.myds.com&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Synology</span><span class="nv"> </span><span class="s">myds</span><span class="nv"> </span><span class="s">DDNS</span><span class="nv"> </span><span class="s">service&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">tags</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible,</span><span class="nv"> </span><span class="s">ipv4,</span><span class="nv"> </span><span class="s">test123,</span><span class="nv"> </span><span class="s">test321&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;test123</span><span class="nv"> </span><span class="s">comment&quot;</span>
+      <span class="c1">#tags: &quot;ansible, ipv4, test123, test321&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-fwobj-ipv4-add-wildcard-yml">
+<h3>fmgr_fwobj_ipv4_add_wildcard.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-add-wildcard-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD IPv4 IP ADDRESS WILDCARD OBJECT</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_address</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;wildcard&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">wildcard</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.0/24&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_v4Obj_wildCard&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;Dev</span><span class="nv"> </span><span class="s">Example</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;22&quot;</span>
+      <span class="c1">#tags: &quot;ansible, ipv4, test123, test321&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -908,10 +770,10 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="fmgr_fwobj_service.html" class="btn btn-neutral float-right" title="fmgr_fwobj_service" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="fmgr_fwobj_ippool.html" class="btn btn-neutral float-right" title="fmgr_fwobj_ippool" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="fmgr_fortimeter.html" class="btn btn-neutral" title="fmgr_fortimeter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fmgr_device_provision_template.html" class="btn btn-neutral" title="fmgr_device_provision_template" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -920,7 +782,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
 
     </p>
   </div>
@@ -939,21 +801,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 

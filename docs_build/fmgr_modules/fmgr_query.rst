@@ -24,7 +24,7 @@ Metadata
 
 .. _Link: https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_query.py
 
-Link_
+Module Github Link_
 
 Parameters
 ----------

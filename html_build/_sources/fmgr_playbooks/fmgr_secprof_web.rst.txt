@@ -10,17 +10,11 @@ Playbook Task Examples
 
       - name: DELETE Profile
         fmgr_secprof_web:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_Web_Filter_Profile"
           mode: "delete"
     
       - name: CREATE Profile
         fmgr_secprof_web:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_Web_Filter_Profile"
           comment: "Created by Ansible Module TEST"
           mode: "set"
@@ -55,5 +49,65 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-%%PB_FILE_EXAMPLE_TOKEN%%
+
+web.yml
++++++++
+
+.. code-block:: yaml
+
+
+    - name: Create and Delete security profile in FMG
+      hosts: FortiManager
+      connection: httpapi
+      gather_facts: False
+    
+      tasks:
+    
+    #  - name: DELETE Profile
+    #    fmgr_secprof_web:
+    #      name: "Ansible_Web_Proxy_Profile"
+    #      mode: "delete"
+    
+      - name: CREATE Profile
+        fmgr_secprof_web:
+          name: "Ansible_Web_Proxy_Profile"
+          comment: "Created by Ansible Module TEST"
+          mode: "set"
+          extended_log: "enable"
+          inspection_mode: "proxy"
+          log_all_url: "enable"
+          options: "js"
+          ovrd_perm: "bannedword-override"
+          post_action: "block"
+          web_content_log: "enable"
+          web_extended_all_action_log: "enable"
+          web_filter_activex_log: "enable"
+          web_filter_applet_log: "enable"
+          web_filter_command_block_log: "enable"
+          web_filter_cookie_log: "enable"
+          web_filter_cookie_removal_log: "enable"
+          web_filter_js_log: "enable"
+          web_filter_jscript_log: "enable"
+          web_filter_referer_log: "enable"
+          web_filter_unknown_log: "enable"
+          web_filter_vbs_log: "enable"
+          web_ftgd_err_log: "enable"
+          web_ftgd_quota_usage: "enable"
+          web_invalid_domain_log: "enable"
+          web_url_log: "enable"
+          wisp: "enable"
+          wisp_algorithm: "auto-learning"
+          youtube_channel_status: "blacklist"
+    
+
+
+fmgr_secprof_web_run_all.sh
++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook web.yml -vvvv
+
+
+
 

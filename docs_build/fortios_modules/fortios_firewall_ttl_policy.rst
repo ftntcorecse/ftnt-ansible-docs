@@ -14,7 +14,7 @@ Metadata
 **Description:** This module is able to configure a FortiGate or FortiOS by allowing the user to configure firewall feature and ttl_policy category. Examples includes all options and need to be adjusted to datasources before usage. Tested with FOS v6.0.2
 
 
-**Author(s):**
+**Author(s):** 
 
 - Miguel Angel Munoz (github: @mamunozgonzalez)
 
@@ -25,6 +25,7 @@ Metadata
 **Ansible Version Added/Required:** 2.8
 
 **Dev Status:** No Data Exists. Contact DevOps Team.
+
 Parameters
 ----------
 
@@ -33,7 +34,7 @@ firewall_ttl_policy
 
 - Description: Configure TTL policies.
 
-
+  
 
 - default: None
 
@@ -42,7 +43,7 @@ host
 
 - Description: FortiOS or FortiGate ip adress.
 
-
+  
 
 - Required: True
 
@@ -51,7 +52,7 @@ https
 
 - Description: Indicates if the requests towards FortiGate must use HTTPS protocol
 
-
+  
 
 - default: False
 
@@ -60,16 +61,16 @@ password
 
 - Description: FortiOS or FortiGate password.
 
+  
 
-
-- default:
+- default: 
 
 username
 ++++++++
 
 - Description: FortiOS or FortiGate username.
 
-
+  
 
 - Required: True
 
@@ -78,7 +79,7 @@ vdom
 
 - Description: Virtual domain, among those defined previously. A vdom is a virtual instance of the FortiGate that can be configured and used as a different unit.
 
-
+  
 
 - default: root
 
@@ -99,16 +100,16 @@ Functions
         host = data['host']
         username = data['username']
         password = data['password']
-
+    
         fos.debug('on')
         if 'https' in data and not data['https']:
             fos.https('off')
         else:
             fos.https('on')
-
+    
         fos.login(host, username, password)
-
-
+    
+    
 
 - filter_firewall_ttl_policy_data
 
@@ -119,14 +120,14 @@ Functions
                        'service', 'srcaddr', 'srcintf',
                        'status', 'ttl']
         dictionary = {}
-
+    
         for attribute in option_list:
             if attribute in json and json[attribute] is not None:
                 dictionary[attribute] = json[attribute]
-
+    
         return dictionary
-
-
+    
+    
 
 - firewall_ttl_policy
 
@@ -141,14 +142,14 @@ Functions
                            'ttl-policy',
                            data=filtered_data,
                            vdom=vdom)
-
+    
         elif firewall_ttl_policy_data['state'] == "absent":
             return fos.delete('firewall',
                               'ttl-policy',
                               mkey=filtered_data['id'],
                               vdom=vdom)
-
-
+    
+    
 
 - fortios_firewall
 
@@ -156,17 +157,17 @@ Functions
 
     def fortios_firewall(data, fos):
         login(data)
-
+    
         methodlist = ['firewall_ttl_policy']
         for method in methodlist:
             if data[method]:
                 resp = eval(method)(data, fos)
                 break
-
+    
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
-
-
+    
+    
 
 - main
 
@@ -200,29 +201,29 @@ Functions
                     "status": {"required": False, "type": "str",
                                "choices": ["enable", "disable"]},
                     "ttl": {"required": False, "type": "str"}
-
+    
                 }
             }
         }
-
+    
         module = AnsibleModule(argument_spec=fields,
                                supports_check_mode=False)
         try:
             from fortiosapi import FortiOSAPI
         except ImportError:
             module.fail_json(msg="fortiosapi module is required")
-
+    
         global fos
         fos = FortiOSAPI()
-
+    
         is_error, has_changed, result = fortios_firewall(module.params, fos)
-
+    
         if not is_error:
             module.exit_json(changed=has_changed, meta=result)
         else:
             module.fail_json(msg="Error in repo", meta=result)
-
-
+    
+    
 
 
 
@@ -250,13 +251,13 @@ Module Source Code
     #
     # the lib use python logging can get it if the following is set in your
     # Ansible config.
-
+    
     __metaclass__ = type
-
+    
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-
+    
     DOCUMENTATION = '''
     ---
     module: fortios_firewall_ttl_policy
@@ -354,7 +355,7 @@ Module Source Code
                     description:
                         - "Value/range to match against the packet's Time to Live value (format: ttl[ - ttl_high], 1 - 255)."
     '''
-
+    
     EXAMPLES = '''
     - hosts: localhost
       vars:
@@ -384,7 +385,7 @@ Module Source Code
             status: "enable"
             ttl: "<your_own_value>"
     '''
-
+    
     RETURN = '''
     build:
       description: Build number of the fortigate image
@@ -441,41 +442,41 @@ Module Source Code
       returned: always
       type: string
       sample: "v5.6.3"
-
+    
     '''
-
+    
     from ansible.module_utils.basic import AnsibleModule
-
+    
     fos = None
-
-
+    
+    
     def login(data):
         host = data['host']
         username = data['username']
         password = data['password']
-
+    
         fos.debug('on')
         if 'https' in data and not data['https']:
             fos.https('off')
         else:
             fos.https('on')
-
+    
         fos.login(host, username, password)
-
-
+    
+    
     def filter_firewall_ttl_policy_data(json):
         option_list = ['action', 'id', 'schedule',
                        'service', 'srcaddr', 'srcintf',
                        'status', 'ttl']
         dictionary = {}
-
+    
         for attribute in option_list:
             if attribute in json and json[attribute] is not None:
                 dictionary[attribute] = json[attribute]
-
+    
         return dictionary
-
-
+    
+    
     def firewall_ttl_policy(data, fos):
         vdom = data['vdom']
         firewall_ttl_policy_data = data['firewall_ttl_policy']
@@ -485,27 +486,27 @@ Module Source Code
                            'ttl-policy',
                            data=filtered_data,
                            vdom=vdom)
-
+    
         elif firewall_ttl_policy_data['state'] == "absent":
             return fos.delete('firewall',
                               'ttl-policy',
                               mkey=filtered_data['id'],
                               vdom=vdom)
-
-
+    
+    
     def fortios_firewall(data, fos):
         login(data)
-
+    
         methodlist = ['firewall_ttl_policy']
         for method in methodlist:
             if data[method]:
                 resp = eval(method)(data, fos)
                 break
-
+    
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
-
-
+    
+    
     def main():
         fields = {
             "host": {"required": True, "type": "str"},
@@ -534,29 +535,29 @@ Module Source Code
                     "status": {"required": False, "type": "str",
                                "choices": ["enable", "disable"]},
                     "ttl": {"required": False, "type": "str"}
-
+    
                 }
             }
         }
-
+    
         module = AnsibleModule(argument_spec=fields,
                                supports_check_mode=False)
         try:
             from fortiosapi import FortiOSAPI
         except ImportError:
             module.fail_json(msg="fortiosapi module is required")
-
+    
         global fos
         fos = FortiOSAPI()
-
+    
         is_error, has_changed, result = fortios_firewall(module.params, fos)
-
+    
         if not is_error:
             module.exit_json(changed=has_changed, meta=result)
         else:
             module.fail_json(msg="Error in repo", meta=result)
-
-
+    
+    
     if __name__ == '__main__':
         main()
 

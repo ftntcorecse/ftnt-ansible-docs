@@ -10,9 +10,6 @@ Playbook Task Examples
 
     - name: CREATE SCRIPT
       fmgr_script:
-        host: "{{inventory_hostname}}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "root"
         script_name: "TestScript"
         script_type: "cli"
@@ -22,22 +19,16 @@ Playbook Task Examples
     
     - name: EXECUTE SCRIPT
       fmgr_script:
-        host: "{{inventory_hostname}}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "root"
         script_name: "TestScript"
-        state: "execute"
+        mode: "execute"
         script_scope: "FGT1,FGT2"
     
     - name: DELETE SCRIPT
       fmgr_script:
-        host: "{{inventory_hostname}}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         adom: "root"
         script_name: "TestScript"
-        state: "delete"
+        mode: "delete"
 
 
 
@@ -53,15 +44,12 @@ fmgr_faz_scripts.yml
 
     - name: CREATE AND EXECUTE SCRIPTS
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
         - name: CREATE SCRIPT
           fmgr_script:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             adom: "ansible"
             script_name: "faz_init"
             script_type: "cli"
@@ -76,13 +64,20 @@ fmgr_faz_scripts.yml
     
         - name: EXECUTE SCRIPT
           fmgr_script:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             adom: "ansible"
             script_name: "faz_init"
-            state: "execute"
-            script_scope: "seattle-fgt-cluster, nyc-fgt-cluster"
+            mode: "execute"
+            script_scope: "FGT1"
+
+
+fmgr_script_run_all.sh
+++++++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook fmgr_faz_scripts.yml -vvvv
+    ansible-playbook fmgr_script_run_all.sh -vvvv
+    ansible-playbook fmgr_scripts.yml -vvvv
 
 
 fmgr_scripts.yml
@@ -93,39 +88,31 @@ fmgr_scripts.yml
 
     - name: CREATE AND EXECUTE SCRIPTS
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
         - name: CREATE SCRIPT
           fmgr_script:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             adom: "ansible"
             script_name: "TestScript"
             script_type: "cli"
-            script_target: "FG1"
+            script_target: "remote_device"
             script_description: "Create by Ansible"
             script_content: "get system status"
     
         - name: EXECUTE SCRIPT
           fmgr_script:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             adom: "ansible"
             script_name: "TestScript"
-            state: "execute"
+            mode: "execute"
             script_scope: "FGT1"
-        #- name: DELETE SCRIPT
-        #  fmgr_script:
-        #    host: "{{ inventory_hostname }}"
-        #    username: "{{ username }}"
-        #    password: "{{ password }}"
-        #    adom: "ansible"
-        #    script_name: ""
-        #    state: "delete"
+    
+        - name: DELETE SCRIPT
+          fmgr_script:
+            adom: "ansible"
+            script_name: "TestScript"
+            mode: "delete"
 
 
 

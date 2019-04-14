@@ -11,9 +11,10 @@ Metadata
 
 **Name:** fmgr_secprof_profile_group
 
-**Description:** ['Manage security profile group which allows you to create a group of security profiles and apply that to a policy']
+**Description:** Manage security profile group which allows you to create a group of security profiles and apply that to a policy.
 
-**Author(s):**
+
+**Author(s):** 
 
 - Luke Weighall (github: @lweighall)
 
@@ -25,16 +26,15 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+**Dev Status:** COMPLETED/MERGED
 
-**Owning Developer:**
+**Owning Developer:** 
 Andrew Welsh
 
-**Pull Request Started:** 9/27/18
+.. _Link: https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_secprof_profile_group.py
 
-**Days in PR:** 28
+Module Github Link_
 
-**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_secprof_profile_group
 Parameters
 ----------
 
@@ -43,7 +43,7 @@ adom
 
 - Description: The ADOM the configuration should belong to.
 
-
+  
 
 - Required: False
 
@@ -54,7 +54,7 @@ application_list
 
 - Description: Name of an existing Application list.
 
-
+  
 
 - Required: False
 
@@ -63,7 +63,7 @@ av_profile
 
 - Description: Name of an existing Antivirus profile.
 
-
+  
 
 - Required: False
 
@@ -72,7 +72,7 @@ dlp_sensor
 
 - Description: Name of an existing DLP sensor.
 
-
+  
 
 - Required: False
 
@@ -81,25 +81,16 @@ dnsfilter_profile
 
 - Description: Name of an existing DNS filter profile.
 
-
+  
 
 - Required: False
-
-host
-++++
-
-- Description: The FortiManager's Address.
-
-
-
-- Required: True
 
 icap_profile
 ++++++++++++
 
 - Description: Name of an existing ICAP profile.
 
-
+  
 
 - Required: False
 
@@ -108,7 +99,7 @@ ips_sensor
 
 - Description: Name of an existing IPS sensor.
 
-
+  
 
 - Required: False
 
@@ -117,7 +108,7 @@ mms_profile
 
 - Description: Name of an existing MMS profile.
 
-
+  
 
 - Required: False
 
@@ -126,9 +117,9 @@ mode
 
 - Description: Sets one of three modes for managing the object.
 
-  Allows use of soft-adds instead of overwriting existing values
+  Allows use of soft-adds instead of overwriting existing values.
 
-
+  
 
 - Required: False
 
@@ -141,25 +132,16 @@ name
 
 - Description: Profile group name.
 
-
+  
 
 - Required: False
-
-password
-++++++++
-
-- Description: The password associated with the username account.
-
-
-
-- Required: True
 
 profile_protocol_options
 ++++++++++++++++++++++++
 
 - Description: Name of an existing Protocol options profile.
 
-
+  
 
 - Required: False
 
@@ -168,7 +150,7 @@ spamfilter_profile
 
 - Description: Name of an existing Spam filter profile.
 
-
+  
 
 - Required: False
 
@@ -177,7 +159,7 @@ ssh_filter_profile
 
 - Description: Name of an existing SSH filter profile.
 
-
+  
 
 - Required: False
 
@@ -186,25 +168,16 @@ ssl_ssh_profile
 
 - Description: Name of an existing SSL SSH profile.
 
-
+  
 
 - Required: False
-
-username
-++++++++
-
-- Description: The username associated with the account.
-
-
-
-- Required: True
 
 voip_profile
 ++++++++++++
 
 - Description: Name of an existing VoIP profile.
 
-
+  
 
 - Required: False
 
@@ -213,7 +186,7 @@ waf_profile
 
 - Description: Name of an existing Web application firewall profile.
 
-
+  
 
 - Required: False
 
@@ -222,7 +195,7 @@ webfilter_profile
 
 - Description: Name of an existing Web filter profile.
 
-
+  
 
 - Required: False
 
@@ -235,190 +208,48 @@ Functions
 
 
 
-- fmgr_firewall_profile_group_addsetdelete
+- fmgr_firewall_profile_group_modify
 
  .. code-block:: python
 
-    def fmgr_firewall_profile_group_addsetdelete(fmg, paramgram):
+    def fmgr_firewall_profile_group_modify(fmgr, paramgram):
         """
-        fmgr_firewall_profile_group -- Your Description here, bruh
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
-
+    
         mode = paramgram["mode"]
         adom = paramgram["adom"]
         url = ""
         datagram = {}
-
-        response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
-
+    
+        response = DEFAULT_RESULT_OBJ
+    
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/firewall/profile-group'.format(adom=adom)
-            datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-
+            datagram = scrub_dict(prepare_dict(paramgram))
+    
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/firewall/profile-group/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if mode == "set":
-            response = fmg.set(url, datagram)
-        # IF MODE = UPDATE -- USER THE 'UPDATE' API CALL MODE
-        elif mode == "update":
-            response = fmg.update(url, datagram)
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        elif mode == "add":
-            response = fmg.add(url, datagram)
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        elif mode == "delete":
-            response = fmg.delete(url, datagram)
-
+    
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
+    
         return response
-
-
-    # ADDITIONAL COMMON FUNCTIONS
-    # FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
-
-- fmgr_logout
-
- .. code-block:: python
-
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except BaseException:
-                pass
-            module.fail_json(msg=msg)
-
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except BaseException:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-
-                if results[0] not in good_codes:
-                    if logout_on_fail:
-                        fmg.logout()
-                        module.fail_json(msg=msg, **results[1])
-                    else:
-                        return msg
-                else:
-                    if logout_on_success:
-                        fmg.logout()
-                        module.exit_json(msg=msg, **results[1])
-                    else:
-                        return msg
-
-
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-
-- fmgr_cidr_to_netmask
-
- .. code-block:: python
-
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return(str((0xff000000 & mask) >> 24) + '.' +
-               str((0x00ff0000 & mask) >> 16) + '.' +
-               str((0x0000ff00 & mask) >> 8) + '.' +
-               str((0x000000ff & mask)))
-
-
-    # utility function: removing keys wih value of None, nothing in playbook for that key
-
-- fmgr_del_none
-
- .. code-block:: python
-
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-
-
-    # utility function: remove keys that are need for the logic but the FMG API won't accept them
-
-- fmgr_prepare_dict
-
- .. code-block:: python
-
-    def fmgr_prepare_dict(obj):
-        list_of_elems = ["mode", "adom", "host", "username", "password"]
-        if isinstance(obj, dict):
-            obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
-        return obj
-
-
-
-- fmgr_is_empty_dict
-
- .. code-block:: python
-
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-
-        return return_val
-
-
-
-- fmgr_split_comma_strings_into_lists
-
- .. code-block:: python
-
-    def fmgr_split_comma_strings_into_lists(obj):
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, str):
-                        new_list = list()
-                        if "," in v:
-                            new_items = v.split(",")
-                            for item in new_items:
-                                new_list.append(item.strip())
-                            obj[k] = new_list
-
-        return obj
-
-
+    
+    
     #############
     # END METHODS
     #############
-
-
+    
+    
 
 - main
 
@@ -427,11 +258,8 @@ Functions
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-
+    
             webfilter_profile=dict(required=False, type="str"),
             waf_profile=dict(required=False, type="str"),
             voip_profile=dict(required=False, type="str"),
@@ -447,11 +275,10 @@ Functions
             dlp_sensor=dict(required=False, type="str"),
             av_profile=dict(required=False, type="str"),
             application_list=dict(required=False, type="str"),
-
+    
         )
-
-        module = AnsibleModule(argument_spec, supports_check_mode=False)
-
+    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -471,35 +298,30 @@ Functions
             "dlp-sensor": module.params["dlp_sensor"],
             "av-profile": module.params["av_profile"],
             "application-list": module.params["application_list"],
-
+    
         }
-
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None or password is None:
-            module.fail_json(msg="Host and username and password are required")
-
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-
-        response = fmg.login()
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
-
-        results = fmgr_firewall_profile_group_addsetdelete(fmg, paramgram)
-        if results[0] != 0:
-            fmgr_logout(fmg, module, results=results, good_codes=[0])
-
-        fmg.logout()
-
-        if results is not None:
-            return module.exit_json(**results[1])
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
         else:
-            return module.exit_json(msg="No results were returned from the API call.")
-
-
+            module.fail_json(**FAIL_SOCKET_MSG)
+    
+        results = DEFAULT_RESULT_OBJ
+    
+        try:
+            results = fmgr_firewall_profile_group_modify(fmgr, paramgram)
+            fmgr.govern_response(module=module, results=results,
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+    
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        return module.exit_json(**results[1])
+    
+    
 
 
 
@@ -525,349 +347,217 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-
+    
     from __future__ import absolute_import, division, print_function
     __metaclass__ = type
-
+    
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-
+    
     DOCUMENTATION = '''
     ---
     module: fmgr_secprof_profile_group
     version_added: "2.8"
+    notes:
+        - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).
     author:
         - Luke Weighall (@lweighall)
         - Andrew Welsh (@Ghilli3)
         - Jim Huber (@p4r4n0y1ng)
     short_description: Manage security profiles within FortiManager
     description:
-      - Manage security profile group which allows you to create a group of security profiles and apply that to a policy
-
+      - Manage security profile group which allows you to create a group of security profiles and apply that to a policy.
+    
     options:
       adom:
         description:
           - The ADOM the configuration should belong to.
         required: false
         default: root
-
-      host:
-        description:
-          - The FortiManager's Address.
-        required: true
-
-      username:
-        description:
-          - The username associated with the account.
-        required: true
-
-      password:
-        description:
-          - The password associated with the username account.
-        required: true
-
+    
       mode:
         description:
           - Sets one of three modes for managing the object.
-          - Allows use of soft-adds instead of overwriting existing values
+          - Allows use of soft-adds instead of overwriting existing values.
         choices: ['add', 'set', 'delete', 'update']
         required: false
         default: add
-
+    
       webfilter_profile:
         type: str
         description:
           - Name of an existing Web filter profile.
         required: false
-
+    
       waf_profile:
         type: str
         description:
           - Name of an existing Web application firewall profile.
         required: false
-
+    
       voip_profile:
         type: str
         description:
           - Name of an existing VoIP profile.
         required: false
-
+    
       ssl_ssh_profile:
         type: str
         description:
           - Name of an existing SSL SSH profile.
         required: false
-
+    
       ssh_filter_profile:
         type: str
         description:
           - Name of an existing SSH filter profile.
         required: false
-
+    
       spamfilter_profile:
         type: str
         description:
           - Name of an existing Spam filter profile.
         required: false
-
+    
       profile_protocol_options:
         type: str
         description:
           - Name of an existing Protocol options profile.
         required: false
-
+    
       name:
         type: str
         description:
           - Profile group name.
         required: false
-
+    
       mms_profile:
         type: str
         description:
           - Name of an existing MMS profile.
         required: false
-
+    
       ips_sensor:
         type: str
         description:
           - Name of an existing IPS sensor.
         required: false
-
+    
       icap_profile:
         type: str
         description:
           - Name of an existing ICAP profile.
         required: false
-
+    
       dnsfilter_profile:
         type: str
         description:
           - Name of an existing DNS filter profile.
         required: false
-
+    
       dlp_sensor:
         type: str
         description:
           - Name of an existing DLP sensor.
         required: false
-
+    
       av_profile:
         type: str
         description:
           - Name of an existing Antivirus profile.
         required: false
-
+    
       application_list:
         type: str
         description:
           - Name of an existing Application list.
         required: false
-
-
+    
+    
     '''
-
+    
     EXAMPLES = '''
       - name: DELETE Profile
         fmgr_secprof_profile_group:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_TEST_Profile_Group"
           mode: "delete"
-
+    
       - name: CREATE Profile
         fmgr_secprof_profile_group:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_TEST_Profile_Group"
           mode: "set"
           av_profile: "Ansible_AV_Profile"
           profile_protocol_options: "default"
     '''
-
+    
     RETURN = """
     api_result:
       description: full API response, includes status code and message
       returned: always
-      type: string
+      type: str
     """
-
+    
     from ansible.module_utils.basic import AnsibleModule, env_fallback
-    from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-
-    # check for pyFMG lib
-    try:
-        from pyFMG.fortimgr import FortiManager
-        HAS_PYFMGR = True
-    except ImportError:
-        HAS_PYFMGR = False
-
+    from ansible.module_utils.connection import Connection
+    from ansible.module_utils.network.fortimanager.fortimanager import FortiManagerHandler
+    from ansible.module_utils.network.fortimanager.common import FMGBaseException
+    from ansible.module_utils.network.fortimanager.common import FMGRCommon
+    from ansible.module_utils.network.fortimanager.common import FMGRMethods
+    from ansible.module_utils.network.fortimanager.common import DEFAULT_RESULT_OBJ
+    from ansible.module_utils.network.fortimanager.common import FAIL_SOCKET_MSG
+    from ansible.module_utils.network.fortimanager.common import prepare_dict
+    from ansible.module_utils.network.fortimanager.common import scrub_dict
+    
+    
     ###############
     # START METHODS
     ###############
-
-
-    def fmgr_firewall_profile_group_addsetdelete(fmg, paramgram):
+    
+    
+    def fmgr_firewall_profile_group_modify(fmgr, paramgram):
         """
-        fmgr_firewall_profile_group -- Your Description here, bruh
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
-
+    
         mode = paramgram["mode"]
         adom = paramgram["adom"]
         url = ""
         datagram = {}
-
-        response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
-
+    
+        response = DEFAULT_RESULT_OBJ
+    
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/firewall/profile-group'.format(adom=adom)
-            datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-
+            datagram = scrub_dict(prepare_dict(paramgram))
+    
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/firewall/profile-group/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if mode == "set":
-            response = fmg.set(url, datagram)
-        # IF MODE = UPDATE -- USER THE 'UPDATE' API CALL MODE
-        elif mode == "update":
-            response = fmg.update(url, datagram)
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        elif mode == "add":
-            response = fmg.add(url, datagram)
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        elif mode == "delete":
-            response = fmg.delete(url, datagram)
-
+    
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
+    
         return response
-
-
-    # ADDITIONAL COMMON FUNCTIONS
-    # FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except BaseException:
-                pass
-            module.fail_json(msg=msg)
-
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except BaseException:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-
-                if results[0] not in good_codes:
-                    if logout_on_fail:
-                        fmg.logout()
-                        module.fail_json(msg=msg, **results[1])
-                    else:
-                        return msg
-                else:
-                    if logout_on_success:
-                        fmg.logout()
-                        module.exit_json(msg=msg, **results[1])
-                    else:
-                        return msg
-
-
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return(str((0xff000000 & mask) >> 24) + '.' +
-               str((0x00ff0000 & mask) >> 16) + '.' +
-               str((0x0000ff00 & mask) >> 8) + '.' +
-               str((0x000000ff & mask)))
-
-
-    # utility function: removing keys wih value of None, nothing in playbook for that key
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-
-
-    # utility function: remove keys that are need for the logic but the FMG API won't accept them
-    def fmgr_prepare_dict(obj):
-        list_of_elems = ["mode", "adom", "host", "username", "password"]
-        if isinstance(obj, dict):
-            obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
-        return obj
-
-
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-
-        return return_val
-
-
-    def fmgr_split_comma_strings_into_lists(obj):
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, str):
-                        new_list = list()
-                        if "," in v:
-                            new_items = v.split(",")
-                            for item in new_items:
-                                new_list.append(item.strip())
-                            obj[k] = new_list
-
-        return obj
-
-
+    
+    
     #############
     # END METHODS
     #############
-
-
+    
+    
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-
+    
             webfilter_profile=dict(required=False, type="str"),
             waf_profile=dict(required=False, type="str"),
             voip_profile=dict(required=False, type="str"),
@@ -883,11 +573,10 @@ Module Source Code
             dlp_sensor=dict(required=False, type="str"),
             av_profile=dict(required=False, type="str"),
             application_list=dict(required=False, type="str"),
-
+    
         )
-
-        module = AnsibleModule(argument_spec, supports_check_mode=False)
-
+    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -907,35 +596,30 @@ Module Source Code
             "dlp-sensor": module.params["dlp_sensor"],
             "av-profile": module.params["av_profile"],
             "application-list": module.params["application_list"],
-
+    
         }
-
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None or password is None:
-            module.fail_json(msg="Host and username and password are required")
-
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-
-        response = fmg.login()
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
-
-        results = fmgr_firewall_profile_group_addsetdelete(fmg, paramgram)
-        if results[0] != 0:
-            fmgr_logout(fmg, module, results=results, good_codes=[0])
-
-        fmg.logout()
-
-        if results is not None:
-            return module.exit_json(**results[1])
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
         else:
-            return module.exit_json(msg="No results were returned from the API call.")
-
-
+            module.fail_json(**FAIL_SOCKET_MSG)
+    
+        results = DEFAULT_RESULT_OBJ
+    
+        try:
+            results = fmgr_firewall_profile_group_modify(fmgr, paramgram)
+            fmgr.govern_response(module=module, results=results,
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+    
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        return module.exit_json(**results[1])
+    
+    
     if __name__ == "__main__":
         main()
 

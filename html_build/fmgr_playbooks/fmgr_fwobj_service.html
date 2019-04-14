@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="fmgr_fwobj_vip" href="fmgr_fwobj_vip.html" />
-    <link rel="prev" title="fmgr_fwobj_address" href="fmgr_fwobj_address.html" /> 
+    <link rel="prev" title="fmgr_fwobj_ippool6" href="fmgr_fwobj_ippool6.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -86,8 +86,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_fwobj_service</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#playbook-task-examples">Playbook Task Examples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#playbook-file-examples">Playbook File Examples</a></li>
@@ -112,7 +113,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
@@ -194,9 +194,6 @@
 <h2>Playbook Task Examples<a class="headerlink" href="#playbook-task-examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE FOR TCP/UDP/SCP</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_service&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
@@ -207,9 +204,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE FOR TCP/UDP/SCP WITH SOURCE RANGES AND MULTIPLES</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_serviceWithSource&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
@@ -220,9 +214,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE FOR ICMP</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_icmp&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
@@ -232,9 +223,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE FOR ICMP6</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_icmp6&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
@@ -244,9 +232,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE FOR IP - GRE</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_icmp6&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
@@ -255,9 +240,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM PROXY FOR ALL WITH SOURCE RANGES AND MULTIPLES</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_proxy_all&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
@@ -270,25 +252,129 @@
 </div>
 <div class="section" id="playbook-file-examples">
 <h2>Playbook File Examples<a class="headerlink" href="#playbook-file-examples" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="fmgr-fwobj-service-add-category-yml">
-<h3>fmgr_fwobj_service_add_category.yml<a class="headerlink" href="#fmgr-fwobj-service-add-category-yml" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="fmgr-fwobj-service-run-all-sh">
+<h3>fmgr_fwobj_service_run_all.sh<a class="headerlink" href="#fmgr-fwobj-service-run-all-sh" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="fmgr-fwobj-service-delete-group-yml">
+<h3>fmgr_fwobj_service_delete_group.yml<a class="headerlink" href="#fmgr-fwobj-service-delete-group-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG CUSTOM SERVICES</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
 
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE CATEGORY</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE GROUP</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;group&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">group_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTestGroup&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-fwobj-service-add-group-yml">
+<h3>fmgr_fwobj_service_add_group.yml<a class="headerlink" href="#fmgr-fwobj-service-add-group-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG CUSTOM SERVICES</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE GROUP</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;group&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">group_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTestGroup&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">group_member</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_ip,</span><span class="nv"> </span><span class="s">ansible_custom_icmp,</span><span class="nv"> </span><span class="s">ansible_custom_service&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;10&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-fwobj-service-delete-custom-yml">
+<h3>fmgr_fwobj_service_delete_custom.yml<a class="headerlink" href="#fmgr-fwobj-service-delete-custom-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG CUSTOM SERVICES</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_service&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_icmp&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_icmp6&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_ip&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_serviceWithSource&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE A CUSTOM PROXY ALL</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_proxy_all&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-fwobj-service-delete-category-yml">
+<h3>fmgr_fwobj_service_delete_category.yml<a class="headerlink" href="#fmgr-fwobj-service-delete-category-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG CUSTOM SERVICES</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE A CUSTOM SERVICE CATEGORY</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;category&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">category</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleCategory5&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE A CUSTOM SERVICE CATEGORY 2</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;category&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">category</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleCategory2&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE A CUSTOM SERVICE CATEGORY 3</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;category&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">category</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleCategory&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -296,16 +382,13 @@
 <h3>fmgr_fwobj_service_add_custom.yml<a class="headerlink" href="#fmgr-fwobj-service-add-custom-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG CUSTOM SERVICES</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE FOR TCP/UDP/SCP</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_service&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
@@ -317,9 +400,6 @@
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE FOR TCP/UDP/SCP WITH SOURCE RANGES AND MULTIPLES</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_serviceWithSource&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
@@ -330,9 +410,6 @@
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE FOR ICMP</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_icmp&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
@@ -342,9 +419,6 @@
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE FOR ICMP6</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_icmp6&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
@@ -354,9 +428,6 @@
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE FOR IP - GRE</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_ip&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
@@ -365,9 +436,6 @@
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM PROXY FOR ALL WITH SOURCE RANGES AND MULTIPLES</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_proxy_all&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
@@ -378,159 +446,22 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="fmgr-fwobj-service-add-group-yml">
-<h3>fmgr_fwobj_service_add_group.yml<a class="headerlink" href="#fmgr-fwobj-service-add-group-yml" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="fmgr-fwobj-service-add-category-yml">
+<h3>fmgr_fwobj_service_add_category.yml<a class="headerlink" href="#fmgr-fwobj-service-add-category-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG CUSTOM SERVICES</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
 
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE GROUP</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE CATEGORY</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;group&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;category&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&quot;created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">group_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTestGroup&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">group_member</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_ip,</span><span class="nv"> </span><span class="s">ansible_custom_icmp,</span><span class="nv"> </span><span class="s">ansible_custom_service&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">color</span><span class="p p-Indicator">:</span> <span class="s">&quot;10&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="fmgr-fwobj-service-delete-category-yml">
-<h3>fmgr_fwobj_service_delete_category.yml<a class="headerlink" href="#fmgr-fwobj-service-delete-category-yml" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG CUSTOM SERVICES</span>
-  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE A CUSTOM SERVICE CATEGORY</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;category&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">category</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleCategory5&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE A CUSTOM SERVICE CATEGORY 2</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;category&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">category</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleCategory2&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE A CUSTOM SERVICE CATEGORY 3</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;category&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">category</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleCategory&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="fmgr-fwobj-service-delete-custom-yml">
-<h3>fmgr_fwobj_service_delete_custom.yml<a class="headerlink" href="#fmgr-fwobj-service-delete-custom-yml" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG CUSTOM SERVICES</span>
-  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_service&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_icmp&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_icmp6&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_ip&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_serviceWithSource&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE A CUSTOM PROXY ALL</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible_custom_proxy_all&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="fmgr-fwobj-service-delete-group-yml">
-<h3>fmgr_fwobj_service_delete_group.yml<a class="headerlink" href="#fmgr-fwobj-service-delete-group-yml" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG CUSTOM SERVICES</span>
-  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD A CUSTOM SERVICE GROUP</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_service</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">object_type</span><span class="p p-Indicator">:</span> <span class="s">&quot;group&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">group_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTestGroup&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -548,7 +479,7 @@
         <a href="fmgr_fwobj_vip.html" class="btn btn-neutral float-right" title="fmgr_fwobj_vip" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="fmgr_fwobj_address.html" class="btn btn-neutral" title="fmgr_fwobj_address" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fmgr_fwobj_ippool6.html" class="btn btn-neutral" title="fmgr_fwobj_ippool6" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -557,7 +488,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
 
     </p>
   </div>
@@ -576,21 +507,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 

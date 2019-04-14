@@ -11,9 +11,10 @@ Metadata
 
 **Name:** fmgr_secprof_web
 
-**Description:** ['Manage web filter security profiles in FortiManager through playbooks using the FMG API']
+**Description:** Manage web filter security profiles in FortiManager through playbooks using the FMG API
 
-**Author(s):**
+
+**Author(s):** 
 
 - Luke Weighall (github: @lweighall)
 
@@ -25,15 +26,14 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+**Dev Status:** COMPLETED/MERGED
 
 **Owning Developer:** Andrew Welsh
 
-**Pull Request Started:** 10/16/18
+.. _Link: https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_secprof_web.py
 
-**Days in PR:** 15
+Module Github Link_
 
-**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_secprof_web
 Parameters
 ----------
 
@@ -42,7 +42,7 @@ adom
 
 - Description: The ADOM the configuration should belong to.
 
-
+  
 
 - Required: False
 
@@ -53,7 +53,7 @@ comment
 
 - Description: Optional comments.
 
-
+  
 
 - Required: False
 
@@ -66,7 +66,7 @@ extended_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -89,7 +89,7 @@ ftgd_wf
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-
+  
 
 - Required: False
 
@@ -98,7 +98,7 @@ ftgd_wf_exempt_quota
 
 - Description: Do not stop quota for these categories.
 
-
+  
 
 - Required: False
 
@@ -115,7 +115,7 @@ ftgd_wf_filters_action
 
   choice | authenticate | Authenticate user before allowing access.
 
-
+  
 
 - Required: False
 
@@ -126,7 +126,7 @@ ftgd_wf_filters_auth_usr_grp
 
 - Description: Groups with permission to authenticate.
 
-
+  
 
 - Required: False
 
@@ -135,7 +135,7 @@ ftgd_wf_filters_category
 
 - Description: Categories and groups the filter examines.
 
-
+  
 
 - Required: False
 
@@ -148,7 +148,7 @@ ftgd_wf_filters_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -159,7 +159,7 @@ ftgd_wf_filters_override_replacemsg
 
 - Description: Override replacement message.
 
-
+  
 
 - Required: False
 
@@ -168,7 +168,7 @@ ftgd_wf_filters_warn_duration
 
 - Description: Duration of warnings.
 
-
+  
 
 - Required: False
 
@@ -181,7 +181,7 @@ ftgd_wf_filters_warning_duration_type
 
   choice | timeout | After timeout occurs.
 
-
+  
 
 - Required: False
 
@@ -196,7 +196,7 @@ ftgd_wf_filters_warning_prompt
 
   choice | per-category | Per-category warnings.
 
-
+  
 
 - Required: False
 
@@ -207,7 +207,7 @@ ftgd_wf_max_quota_timeout
 
 - Description: Maximum FortiGuard quota used by single page view in seconds (excludes streams).
 
-
+  
 
 - Required: False
 
@@ -226,7 +226,7 @@ ftgd_wf_options
 
   flag | ftgd-disable | Disable FortiGuard scanning.
 
-
+  
 
 - Required: False
 
@@ -237,7 +237,7 @@ ftgd_wf_ovrd
 
 - Description: Allow web filter profile overrides.
 
-
+  
 
 - Required: False
 
@@ -246,7 +246,7 @@ ftgd_wf_quota_category
 
 - Description: FortiGuard categories to apply quota to (category action must be set to monitor).
 
-
+  
 
 - Required: False
 
@@ -255,7 +255,7 @@ ftgd_wf_quota_duration
 
 - Description: Duration of quota.
 
-
+  
 
 - Required: False
 
@@ -264,7 +264,7 @@ ftgd_wf_quota_override_replacemsg
 
 - Description: Override replacement message.
 
-
+  
 
 - Required: False
 
@@ -277,7 +277,7 @@ ftgd_wf_quota_type
 
   choice | traffic | Use a traffic-based quota.
 
-
+  
 
 - Required: False
 
@@ -296,7 +296,7 @@ ftgd_wf_quota_unit
 
   choice | GB | Quota in gigabytes.
 
-
+  
 
 - Required: False
 
@@ -307,7 +307,7 @@ ftgd_wf_quota_value
 
 - Description: Traffic quota value.
 
-
+  
 
 - Required: False
 
@@ -320,7 +320,7 @@ ftgd_wf_rate_crl_urls
 
   choice | enable | Enable rating CRL by URL.
 
-
+  
 
 - Required: False
 
@@ -335,7 +335,7 @@ ftgd_wf_rate_css_urls
 
   choice | enable | Enable rating CSS by URL.
 
-
+  
 
 - Required: False
 
@@ -350,7 +350,7 @@ ftgd_wf_rate_image_urls
 
   choice | enable | Enable rating images by URL (blocked images are replaced with blanks).
 
-
+  
 
 - Required: False
 
@@ -365,20 +365,11 @@ ftgd_wf_rate_javascript_urls
 
   choice | enable | Enable rating JavaScript by URL.
 
-
+  
 
 - Required: False
 
 - choices: ['disable', 'enable']
-
-host
-++++
-
-- Description: The FortiManager's Address.
-
-
-
-- Required: True
 
 https_replacemsg
 ++++++++++++++++
@@ -389,7 +380,7 @@ https_replacemsg
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -404,7 +395,7 @@ inspection_mode
 
   choice | flow-based | Flow based.
 
-
+  
 
 - Required: False
 
@@ -419,7 +410,7 @@ log_all_url
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -432,7 +423,7 @@ mode
 
   Allows use of soft-adds instead of overwriting existing values
 
-
+  
 
 - Required: False
 
@@ -445,7 +436,7 @@ name
 
 - Description: Profile name.
 
-
+  
 
 - Required: False
 
@@ -478,7 +469,7 @@ options
 
   flag | javafilter | Java applet filter.
 
-
+  
 
 - Required: False
 
@@ -501,7 +492,7 @@ override
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-
+  
 
 - Required: False
 
@@ -514,7 +505,7 @@ override_ovrd_cookie
 
   choice | allow | Allow browser-based (cookie) override.
 
-
+  
 
 - Required: False
 
@@ -525,7 +516,7 @@ override_ovrd_dur
 
 - Description: Override duration.
 
-
+  
 
 - Required: False
 
@@ -538,7 +529,7 @@ override_ovrd_dur_mode
 
   choice | ask | Prompt for duration when initiating an override.
 
-
+  
 
 - Required: False
 
@@ -559,7 +550,7 @@ override_ovrd_scope
 
   choice | browser | Create browser-based (cookie) override.
 
-
+  
 
 - Required: False
 
@@ -570,7 +561,7 @@ override_ovrd_user_group
 
 - Description: User groups with permission to use the override.
 
-
+  
 
 - Required: False
 
@@ -579,7 +570,7 @@ override_profile
 
 - Description: Web filter profile with permission to create overrides.
 
-
+  
 
 - Required: False
 
@@ -632,7 +623,7 @@ override_profile_attribute
 
   choice | Acct-Multi-Session-Id | Use this attribute.
 
-
+  
 
 - Required: False
 
@@ -647,7 +638,7 @@ override_profile_type
 
   choice | radius | Profile determined by RADIUS server.
 
-
+  
 
 - Required: False
 
@@ -666,20 +657,11 @@ ovrd_perm
 
   flag | contenttype-check-override | Content-type header override.
 
-
+  
 
 - Required: False
 
 - choices: ['bannedword-override', 'urlfilter-override', 'fortiguard-wf-override', 'contenttype-check-override']
-
-password
-++++++++
-
-- Description: The password associated with the username account.
-
-
-
-- Required: True
 
 post_action
 +++++++++++
@@ -690,7 +672,7 @@ post_action
 
   choice | block | POST requests are blocked.
 
-
+  
 
 - Required: False
 
@@ -701,7 +683,7 @@ replacemsg_group
 
 - Description: Replacement message group.
 
-
+  
 
 - Required: False
 
@@ -722,7 +704,7 @@ url_extraction
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-
+  
 
 - Required: False
 
@@ -731,7 +713,7 @@ url_extraction_redirect_header
 
 - Description: HTTP header name to use for client redirect on blocked requests
 
-
+  
 
 - Required: False
 
@@ -744,7 +726,7 @@ url_extraction_redirect_no_content
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -755,7 +737,7 @@ url_extraction_redirect_url
 
 - Description: HTTP header value to use for client redirect on blocked requests
 
-
+  
 
 - Required: False
 
@@ -764,7 +746,7 @@ url_extraction_server_fqdn
 
 - Description: URL extraction server FQDN (fully qualified domain name)
 
-
+  
 
 - Required: False
 
@@ -777,20 +759,11 @@ url_extraction_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
 - choices: ['disable', 'enable']
-
-username
-++++++++
-
-- Description: The username associated with the account.
-
-
-
-- Required: True
 
 web
 +++
@@ -809,7 +782,7 @@ web
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-
+  
 
 - Required: False
 
@@ -822,7 +795,7 @@ web_blacklist
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -833,7 +806,7 @@ web_bword_table
 
 - Description: Banned word table ID.
 
-
+  
 
 - Required: False
 
@@ -842,7 +815,7 @@ web_bword_threshold
 
 - Description: Banned word score threshold.
 
-
+  
 
 - Required: False
 
@@ -851,7 +824,7 @@ web_content_header_list
 
 - Description: Content header list.
 
-
+  
 
 - Required: False
 
@@ -864,7 +837,7 @@ web_content_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -879,7 +852,7 @@ web_extended_all_action_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -894,7 +867,7 @@ web_filter_activex_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -909,7 +882,7 @@ web_filter_applet_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -924,7 +897,7 @@ web_filter_command_block_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -939,7 +912,7 @@ web_filter_cookie_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -954,7 +927,7 @@ web_filter_cookie_removal_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -969,7 +942,7 @@ web_filter_js_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -984,7 +957,7 @@ web_filter_jscript_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -999,7 +972,7 @@ web_filter_referer_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1014,7 +987,7 @@ web_filter_unknown_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1029,7 +1002,7 @@ web_filter_vbs_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1044,7 +1017,7 @@ web_ftgd_err_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1059,7 +1032,7 @@ web_ftgd_quota_usage
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1074,7 +1047,7 @@ web_invalid_domain_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1085,7 +1058,7 @@ web_keyword_match
 
 - Description: Search keywords to log when match is found.
 
-
+  
 
 - Required: False
 
@@ -1098,7 +1071,7 @@ web_log_search
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1115,7 +1088,7 @@ web_safe_search
 
   flag | header | Insert safe search header.
 
-
+  
 
 - Required: False
 
@@ -1130,7 +1103,7 @@ web_url_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1141,7 +1114,7 @@ web_urlfilter_table
 
 - Description: URL filter table ID.
 
-
+  
 
 - Required: False
 
@@ -1164,7 +1137,7 @@ web_whitelist
 
   flag | extended-log-others | Support extended log.
 
-
+  
 
 - Required: False
 
@@ -1181,7 +1154,7 @@ web_youtube_restrict
 
   choice | moderate | Moderate access for YouTube.
 
-
+  
 
 - Required: False
 
@@ -1196,7 +1169,7 @@ wisp
 
   choice | enable | Enable web proxy WISP.
 
-
+  
 
 - Required: False
 
@@ -1213,7 +1186,7 @@ wisp_algorithm
 
   choice | round-robin | Select the next healthy server.
 
-
+  
 
 - Required: False
 
@@ -1224,7 +1197,7 @@ wisp_servers
 
 - Description: WISP servers.
 
-
+  
 
 - Required: False
 
@@ -1245,7 +1218,7 @@ youtube_channel_filter
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-
+  
 
 - Required: False
 
@@ -1254,7 +1227,7 @@ youtube_channel_filter_channel_id
 
 - Description: YouTube channel ID to be filtered.
 
-
+  
 
 - Required: False
 
@@ -1263,7 +1236,7 @@ youtube_channel_filter_comment
 
 - Description: Comment.
 
-
+  
 
 - Required: False
 
@@ -1278,7 +1251,7 @@ youtube_channel_status
 
   choice | whitelist | Allow matches.
 
-
+  
 
 - Required: False
 
@@ -1293,186 +1266,40 @@ Functions
 
 
 
-- fmgr_webfilter_profile_addsetdelete
+- fmgr_webfilter_profile_modify
 
  .. code-block:: python
 
-    def fmgr_webfilter_profile_addsetdelete(fmg, paramgram):
-        """
-        fmgr_webfilter_profile -- Your Description here, bruh
-        """
-
+    def fmgr_webfilter_profile_modify(fmgr, paramgram):
+    
         mode = paramgram["mode"]
         adom = paramgram["adom"]
-
-        response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
+    
+        response = DEFAULT_RESULT_OBJ
         url = ""
         datagram = {}
-
+    
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/webfilter/profile'.format(adom=adom)
-            datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-
+            datagram = scrub_dict(prepare_dict(paramgram))
+    
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/webfilter/profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if mode == "set":
-            response = fmg.set(url, datagram)
-        # IF MODE = UPDATE -- USER THE 'UPDATE' API CALL MODE
-        elif mode == "update":
-            response = fmg.update(url, datagram)
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        elif mode == "add":
-            response = fmg.add(url, datagram)
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        elif mode == "delete":
-            response = fmg.delete(url, datagram)
-
+    
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
+    
         return response
-
-
-    # ADDITIONAL COMMON FUNCTIONS
-
-- fmgr_logout
-
- .. code-block:: python
-
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except:
-                pass
-            module.fail_json(msg=msg)
-
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
-                                     **results[1])
-        return msg
-
-
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-
-- fmgr_cidr_to_netmask
-
- .. code-block:: python
-
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return(str((0xff000000 & mask) >> 24) + '.' +
-               str((0x00ff0000 & mask) >> 16) + '.' +
-               str((0x0000ff00 & mask) >> 8) + '.' +
-               str((0x000000ff & mask)))
-
-
-    # utility function: removing keys wih value of None, nothing in playbook for that key
-
-- fmgr_del_none
-
- .. code-block:: python
-
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-
-
-    # utility function: remove keys that are need for the logic but the FMG API won't accept them
-
-- fmgr_prepare_dict
-
- .. code-block:: python
-
-    def fmgr_prepare_dict(obj):
-        list_of_elems = ["mode", "adom", "host", "username", "password"]
-        if isinstance(obj, dict):
-            obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
-        return obj
-
-
-
-- fmgr_is_empty_dict
-
- .. code-block:: python
-
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-
-        return return_val
-
-
-
-- fmgr_split_comma_strings_into_lists
-
- .. code-block:: python
-
-    def fmgr_split_comma_strings_into_lists(obj):
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, str):
-                        new_list = list()
-                        if "," in v:
-                            new_items = v.split(",")
-                            for item in new_items:
-                                new_list.append(item.strip())
-                            obj[k] = new_list
-
-        return obj
-
-
+    
+    
     #############
     # END METHODS
     #############
-
-
+    
+    
 
 - main
 
@@ -1481,11 +1308,8 @@ Functions
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-
+    
             youtube_channel_status=dict(required=False, type="str", choices=["disable", "blacklist", "whitelist"]),
             wisp_servers=dict(required=False, type="str"),
             wisp_algorithm=dict(required=False, type="str", choices=["auto-learning", "primary-secondary", "round-robin"]),
@@ -1540,7 +1364,7 @@ Functions
             ftgd_wf_rate_css_urls=dict(required=False, type="str", choices=["disable", "enable"]),
             ftgd_wf_rate_image_urls=dict(required=False, type="str", choices=["disable", "enable"]),
             ftgd_wf_rate_javascript_urls=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             ftgd_wf_filters_action=dict(required=False, type="str", choices=["block", "monitor",
                                                                              "warning", "authenticate"]),
             ftgd_wf_filters_auth_usr_grp=dict(required=False, type="str"),
@@ -1550,7 +1374,7 @@ Functions
             ftgd_wf_filters_warn_duration=dict(required=False, type="str"),
             ftgd_wf_filters_warning_duration_type=dict(required=False, type="str", choices=["session", "timeout"]),
             ftgd_wf_filters_warning_prompt=dict(required=False, type="str", choices=["per-domain", "per-category"]),
-
+    
             ftgd_wf_quota_category=dict(required=False, type="str"),
             ftgd_wf_quota_duration=dict(required=False, type="str"),
             ftgd_wf_quota_override_replacemsg=dict(required=False, type="str"),
@@ -1612,11 +1436,10 @@ Functions
             youtube_channel_filter=dict(required=False, type="list"),
             youtube_channel_filter_channel_id=dict(required=False, type="str"),
             youtube_channel_filter_comment=dict(required=False, type="str"),
-
+    
         )
-
-        module = AnsibleModule(argument_spec, supports_check_mode=False)
-
+    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -1713,47 +1536,33 @@ Functions
                 "comment": module.params["youtube_channel_filter_comment"],
             }
         }
-
-        list_overrides = ['ftgd-wf', 'override', 'url-extraction', 'web', 'youtube-channel-filter']
-        for list_variable in list_overrides:
-            override_data = list()
-            try:
-                override_data = module.params[list_variable]
-            except:
-                pass
-            try:
-                if override_data:
-                    del paramgram[list_variable]
-                    paramgram[list_variable] = override_data
-            except:
-                pass
-
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None or password is None:
-            module.fail_json(msg="Host and username and password are required")
-
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-
-        response = fmg.login()
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
-
-        results = fmgr_webfilter_profile_addsetdelete(fmg, paramgram)
-        if results[0] != 0:
-            fmgr_logout(fmg, module, results=results, good_codes=[0])
-
-        fmg.logout()
-
-        if results is not None:
-            return module.exit_json(**results[1])
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
         else:
-            return module.exit_json(msg="No results were returned from the API call.")
-
-
+            module.fail_json(**FAIL_SOCKET_MSG)
+    
+        list_overrides = ['ftgd-wf', 'override', 'url-extraction', 'web', 'youtube-channel-filter']
+        paramgram = fmgr.tools.paramgram_child_list_override(list_overrides=list_overrides,
+                                                             paramgram=paramgram, module=module)
+    
+        results = DEFAULT_RESULT_OBJ
+    
+        try:
+    
+            results = fmgr_webfilter_profile_modify(fmgr, paramgram)
+            fmgr.govern_response(module=module, results=results,
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+    
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        return module.exit_json(**results[1])
+    
+    
 
 
 
@@ -1779,18 +1588,20 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-
+    
     from __future__ import absolute_import, division, print_function
     __metaclass__ = type
-
+    
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-
+    
     DOCUMENTATION = '''
     ---
     module: fmgr_secprof_web
     version_added: "2.8"
+    notes:
+        - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).
     author:
         - Luke Weighall (@lweighall)
         - Andrew Welsh (@Ghilli3)
@@ -1798,29 +1609,14 @@ Module Source Code
     short_description: Manage web filter security profiles in FortiManager
     description:
       -  Manage web filter security profiles in FortiManager through playbooks using the FMG API
-
+    
     options:
       adom:
         description:
           - The ADOM the configuration should belong to.
         required: false
         default: root
-
-      host:
-        description:
-          - The FortiManager's Address.
-        required: true
-
-      username:
-        description:
-          - The username associated with the account.
-        required: true
-
-      password:
-        description:
-          - The password associated with the username account.
-        required: true
-
+    
       mode:
         description:
           - Sets one of three modes for managing the object.
@@ -1828,7 +1624,7 @@ Module Source Code
         choices: ['add', 'set', 'delete', 'update']
         required: false
         default: add
-
+    
       youtube_channel_status:
         description:
           - YouTube channel filter status.
@@ -1837,12 +1633,12 @@ Module Source Code
           - choice | whitelist | Allow matches.
         required: false
         choices: ["disable", "blacklist", "whitelist"]
-
+    
       wisp_servers:
         description:
           - WISP servers.
         required: false
-
+    
       wisp_algorithm:
         description:
           - WISP server selection algorithm.
@@ -1851,7 +1647,7 @@ Module Source Code
           - choice | round-robin | Select the next healthy server.
         required: false
         choices: ["auto-learning", "primary-secondary", "round-robin"]
-
+    
       wisp:
         description:
           - Enable/disable web proxy WISP.
@@ -1859,7 +1655,7 @@ Module Source Code
           - choice | enable | Enable web proxy WISP.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_url_log:
         description:
           - Enable/disable logging URL filtering.
@@ -1867,7 +1663,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_invalid_domain_log:
         description:
           - Enable/disable logging invalid domain names.
@@ -1875,7 +1671,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_ftgd_quota_usage:
         description:
           - Enable/disable logging daily quota usage.
@@ -1883,7 +1679,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_ftgd_err_log:
         description:
           - Enable/disable logging rating errors.
@@ -1891,7 +1687,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_filter_vbs_log:
         description:
           - Enable/disable logging VBS scripts.
@@ -1899,7 +1695,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_filter_unknown_log:
         description:
           - Enable/disable logging unknown scripts.
@@ -1907,7 +1703,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_filter_referer_log:
         description:
           - Enable/disable logging referrers.
@@ -1915,7 +1711,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_filter_jscript_log:
         description:
           - Enable/disable logging JScripts.
@@ -1923,7 +1719,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_filter_js_log:
         description:
           - Enable/disable logging Java scripts.
@@ -1931,7 +1727,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_filter_cookie_removal_log:
         description:
           - Enable/disable logging blocked cookies.
@@ -1939,7 +1735,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_filter_cookie_log:
         description:
           - Enable/disable logging cookie filtering.
@@ -1947,7 +1743,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_filter_command_block_log:
         description:
           - Enable/disable logging blocked commands.
@@ -1955,7 +1751,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_filter_applet_log:
         description:
           - Enable/disable logging Java applets.
@@ -1963,7 +1759,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_filter_activex_log:
         description:
           - Enable/disable logging ActiveX.
@@ -1971,7 +1767,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_extended_all_action_log:
         description:
           - Enable/disable extended any filter action logging for web filtering.
@@ -1979,7 +1775,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_content_log:
         description:
           - Enable/disable logging logging blocked web content.
@@ -1987,12 +1783,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       replacemsg_group:
         description:
           - Replacement message group.
         required: false
-
+    
       post_action:
         description:
           - Action taken for HTTP POST traffic.
@@ -2000,7 +1796,7 @@ Module Source Code
           - choice | block | POST requests are blocked.
         required: false
         choices: ["normal", "block"]
-
+    
       ovrd_perm:
         description:
           - FLAG Based Options. Specify multiple in list form.
@@ -2014,7 +1810,7 @@ Module Source Code
           - urlfilter-override
           - fortiguard-wf-override
           - contenttype-check-override
-
+    
       options:
         description:
           - FLAG Based Options. Specify multiple in list form.
@@ -2044,12 +1840,12 @@ Module Source Code
           - activexfilter
           - cookiefilter
           - javafilter
-
+    
       name:
         description:
           - Profile name.
         required: false
-
+    
       log_all_url:
         description:
           - Enable/disable logging all URLs visited.
@@ -2057,7 +1853,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       inspection_mode:
         description:
           - Web filtering inspection mode.
@@ -2065,7 +1861,7 @@ Module Source Code
           - choice | flow-based | Flow based.
         required: false
         choices: ["proxy", "flow-based"]
-
+    
       https_replacemsg:
         description:
           - Enable replacement messages for HTTPS.
@@ -2073,7 +1869,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       extended_log:
         description:
           - Enable/disable extended logging for web filtering.
@@ -2081,12 +1877,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       comment:
         description:
           - Optional comments.
         required: false
-
+    
       ftgd_wf:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2097,17 +1893,17 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-
+    
       ftgd_wf_exempt_quota:
         description:
           - Do not stop quota for these categories.
         required: false
-
+    
       ftgd_wf_max_quota_timeout:
         description:
           - Maximum FortiGuard quota used by single page view in seconds (excludes streams).
         required: false
-
+    
       ftgd_wf_options:
         description:
           - Options for FortiGuard Web Filter.
@@ -2118,12 +1914,12 @@ Module Source Code
           - flag | ftgd-disable | Disable FortiGuard scanning.
         required: false
         choices: ["error-allow", "rate-server-ip", "connect-request-bypass", "ftgd-disable"]
-
+    
       ftgd_wf_ovrd:
         description:
           - Allow web filter profile overrides.
         required: false
-
+    
       ftgd_wf_rate_crl_urls:
         description:
           - Enable/disable rating CRL by URL.
@@ -2131,7 +1927,7 @@ Module Source Code
           - choice | enable | Enable rating CRL by URL.
         required: false
         choices: ["disable", "enable"]
-
+    
       ftgd_wf_rate_css_urls:
         description:
           - Enable/disable rating CSS by URL.
@@ -2139,7 +1935,7 @@ Module Source Code
           - choice | enable | Enable rating CSS by URL.
         required: false
         choices: ["disable", "enable"]
-
+    
       ftgd_wf_rate_image_urls:
         description:
           - Enable/disable rating images by URL.
@@ -2147,7 +1943,7 @@ Module Source Code
           - choice | enable | Enable rating images by URL (blocked images are replaced with blanks).
         required: false
         choices: ["disable", "enable"]
-
+    
       ftgd_wf_rate_javascript_urls:
         description:
           - Enable/disable rating JavaScript by URL.
@@ -2155,7 +1951,7 @@ Module Source Code
           - choice | enable | Enable rating JavaScript by URL.
         required: false
         choices: ["disable", "enable"]
-
+    
       ftgd_wf_filters_action:
         description:
           - Action to take for matches.
@@ -2165,17 +1961,17 @@ Module Source Code
           - choice | authenticate | Authenticate user before allowing access.
         required: false
         choices: ["block", "monitor", "warning", "authenticate"]
-
+    
       ftgd_wf_filters_auth_usr_grp:
         description:
           - Groups with permission to authenticate.
         required: false
-
+    
       ftgd_wf_filters_category:
         description:
           - Categories and groups the filter examines.
         required: false
-
+    
       ftgd_wf_filters_log:
         description:
           - Enable/disable logging.
@@ -2183,17 +1979,17 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       ftgd_wf_filters_override_replacemsg:
         description:
           - Override replacement message.
         required: false
-
+    
       ftgd_wf_filters_warn_duration:
         description:
           - Duration of warnings.
         required: false
-
+    
       ftgd_wf_filters_warning_duration_type:
         description:
           - Re-display warning after closing browser or after a timeout.
@@ -2201,7 +1997,7 @@ Module Source Code
           - choice | timeout | After timeout occurs.
         required: false
         choices: ["session", "timeout"]
-
+    
       ftgd_wf_filters_warning_prompt:
         description:
           - Warning prompts in each category or each domain.
@@ -2209,22 +2005,22 @@ Module Source Code
           - choice | per-category | Per-category warnings.
         required: false
         choices: ["per-domain", "per-category"]
-
+    
       ftgd_wf_quota_category:
         description:
           - FortiGuard categories to apply quota to (category action must be set to monitor).
         required: false
-
+    
       ftgd_wf_quota_duration:
         description:
           - Duration of quota.
         required: false
-
+    
       ftgd_wf_quota_override_replacemsg:
         description:
           - Override replacement message.
         required: false
-
+    
       ftgd_wf_quota_type:
         description:
           - Quota type.
@@ -2232,7 +2028,7 @@ Module Source Code
           - choice | traffic | Use a traffic-based quota.
         required: false
         choices: ["time", "traffic"]
-
+    
       ftgd_wf_quota_unit:
         description:
           - Traffic quota unit of measurement.
@@ -2242,12 +2038,12 @@ Module Source Code
           - choice | GB | Quota in gigabytes.
         required: false
         choices: ["B", "KB", "MB", "GB"]
-
+    
       ftgd_wf_quota_value:
         description:
           - Traffic quota value.
         required: false
-
+    
       override:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2258,7 +2054,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-
+    
       override_ovrd_cookie:
         description:
           - Allow/deny browser-based (cookie) overrides.
@@ -2266,12 +2062,12 @@ Module Source Code
           - choice | allow | Allow browser-based (cookie) override.
         required: false
         choices: ["deny", "allow"]
-
+    
       override_ovrd_dur:
         description:
           - Override duration.
         required: false
-
+    
       override_ovrd_dur_mode:
         description:
           - Override duration mode.
@@ -2279,7 +2075,7 @@ Module Source Code
           - choice | ask | Prompt for duration when initiating an override.
         required: false
         choices: ["constant", "ask"]
-
+    
       override_ovrd_scope:
         description:
           - Override scope.
@@ -2290,17 +2086,17 @@ Module Source Code
           - choice | browser | Create browser-based (cookie) override.
         required: false
         choices: ["user", "user-group", "ip", "ask", "browser"]
-
+    
       override_ovrd_user_group:
         description:
           - User groups with permission to use the override.
         required: false
-
+    
       override_profile:
         description:
           - Web filter profile with permission to create overrides.
         required: false
-
+    
       override_profile_attribute:
         description:
           - Profile attribute to retrieve from the RADIUS server.
@@ -2350,7 +2146,7 @@ Module Source Code
           - Framed-AppleTalk-Zone
           - Acct-Session-Id
           - Acct-Multi-Session-Id
-
+    
       override_profile_type:
         description:
           - Override profile type.
@@ -2358,7 +2154,7 @@ Module Source Code
           - choice | radius | Profile determined by RADIUS server.
         required: false
         choices: ["list", "radius"]
-
+    
       url_extraction:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2369,12 +2165,12 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-
+    
       url_extraction_redirect_header:
         description:
           - HTTP header name to use for client redirect on blocked requests
         required: false
-
+    
       url_extraction_redirect_no_content:
         description:
           - Enable / Disable empty message-body entity in HTTP response
@@ -2382,17 +2178,17 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       url_extraction_redirect_url:
         description:
           - HTTP header value to use for client redirect on blocked requests
         required: false
-
+    
       url_extraction_server_fqdn:
         description:
           - URL extraction server FQDN (fully qualified domain name)
         required: false
-
+    
       url_extraction_status:
         description:
           - Enable URL Extraction
@@ -2400,7 +2196,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2411,7 +2207,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-
+    
       web_blacklist:
         description:
           - Enable/disable automatic addition of URLs detected by FortiSandbox to blacklist.
@@ -2419,27 +2215,27 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_bword_table:
         description:
           - Banned word table ID.
         required: false
-
+    
       web_bword_threshold:
         description:
           - Banned word score threshold.
         required: false
-
+    
       web_content_header_list:
         description:
           - Content header list.
         required: false
-
+    
       web_keyword_match:
         description:
           - Search keywords to log when match is found.
         required: false
-
+    
       web_log_search:
         description:
           - Enable/disable logging all search phrases.
@@ -2447,7 +2243,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       web_safe_search:
         description:
           - Safe search type.
@@ -2456,12 +2252,12 @@ Module Source Code
           - flag | header | Insert safe search header.
         required: false
         choices: ["url", "header"]
-
+    
       web_urlfilter_table:
         description:
           - URL filter table ID.
         required: false
-
+    
       web_whitelist:
         description:
           - FortiGuard whitelist settings.
@@ -2480,7 +2276,7 @@ Module Source Code
           - exempt-dlp
           - exempt-rangeblock
           - extended-log-others
-
+    
       web_youtube_restrict:
         description:
           - YouTube EDU filter level.
@@ -2489,7 +2285,7 @@ Module Source Code
           - choice | moderate | Moderate access for YouTube.
         required: false
         choices: ["strict", "none", "moderate"]
-
+    
       youtube_channel_filter:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2500,34 +2296,28 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-
+    
       youtube_channel_filter_channel_id:
         description:
           - YouTube channel ID to be filtered.
         required: false
-
+    
       youtube_channel_filter_comment:
         description:
           - Comment.
         required: false
-
-
+    
+    
     '''
-
+    
     EXAMPLES = '''
       - name: DELETE Profile
         fmgr_secprof_web:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_Web_Filter_Profile"
           mode: "delete"
-
+    
       - name: CREATE Profile
         fmgr_secprof_web:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_Web_Filter_Profile"
           comment: "Created by Ansible Module TEST"
           mode: "set"
@@ -2557,177 +2347,61 @@ Module Source Code
           wisp_algorithm: "auto-learning"
           youtube_channel_status: "blacklist"
     '''
-
+    
     RETURN = """
     api_result:
       description: full API response, includes status code and message
       returned: always
-      type: string
+      type: str
     """
-
+    
     from ansible.module_utils.basic import AnsibleModule, env_fallback
-    from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-
-
-    ###############
-    # START METHODS
-    ###############
-
-
-    def fmgr_webfilter_profile_addsetdelete(fmg, paramgram):
-        """
-        fmgr_webfilter_profile -- Your Description here, bruh
-        """
-
+    from ansible.module_utils.connection import Connection
+    from ansible.module_utils.network.fortimanager.fortimanager import FortiManagerHandler
+    from ansible.module_utils.network.fortimanager.common import FMGBaseException
+    from ansible.module_utils.network.fortimanager.common import FMGRCommon
+    from ansible.module_utils.network.fortimanager.common import FMGRMethods
+    from ansible.module_utils.network.fortimanager.common import DEFAULT_RESULT_OBJ
+    from ansible.module_utils.network.fortimanager.common import FAIL_SOCKET_MSG
+    from ansible.module_utils.network.fortimanager.common import prepare_dict
+    from ansible.module_utils.network.fortimanager.common import scrub_dict
+    
+    
+    def fmgr_webfilter_profile_modify(fmgr, paramgram):
+    
         mode = paramgram["mode"]
         adom = paramgram["adom"]
-
-        response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
+    
+        response = DEFAULT_RESULT_OBJ
         url = ""
         datagram = {}
-
+    
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/webfilter/profile'.format(adom=adom)
-            datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-
+            datagram = scrub_dict(prepare_dict(paramgram))
+    
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/webfilter/profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if mode == "set":
-            response = fmg.set(url, datagram)
-        # IF MODE = UPDATE -- USER THE 'UPDATE' API CALL MODE
-        elif mode == "update":
-            response = fmg.update(url, datagram)
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        elif mode == "add":
-            response = fmg.add(url, datagram)
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        elif mode == "delete":
-            response = fmg.delete(url, datagram)
-
+    
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
+    
         return response
-
-
-    # ADDITIONAL COMMON FUNCTIONS
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except:
-                pass
-            module.fail_json(msg=msg)
-
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
-                                     **results[1])
-        return msg
-
-
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return(str((0xff000000 & mask) >> 24) + '.' +
-               str((0x00ff0000 & mask) >> 16) + '.' +
-               str((0x0000ff00 & mask) >> 8) + '.' +
-               str((0x000000ff & mask)))
-
-
-    # utility function: removing keys wih value of None, nothing in playbook for that key
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-
-
-    # utility function: remove keys that are need for the logic but the FMG API won't accept them
-    def fmgr_prepare_dict(obj):
-        list_of_elems = ["mode", "adom", "host", "username", "password"]
-        if isinstance(obj, dict):
-            obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
-        return obj
-
-
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-
-        return return_val
-
-
-    def fmgr_split_comma_strings_into_lists(obj):
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, str):
-                        new_list = list()
-                        if "," in v:
-                            new_items = v.split(",")
-                            for item in new_items:
-                                new_list.append(item.strip())
-                            obj[k] = new_list
-
-        return obj
-
-
+    
+    
     #############
     # END METHODS
     #############
-
-
+    
+    
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-
+    
             youtube_channel_status=dict(required=False, type="str", choices=["disable", "blacklist", "whitelist"]),
             wisp_servers=dict(required=False, type="str"),
             wisp_algorithm=dict(required=False, type="str", choices=["auto-learning", "primary-secondary", "round-robin"]),
@@ -2782,7 +2456,7 @@ Module Source Code
             ftgd_wf_rate_css_urls=dict(required=False, type="str", choices=["disable", "enable"]),
             ftgd_wf_rate_image_urls=dict(required=False, type="str", choices=["disable", "enable"]),
             ftgd_wf_rate_javascript_urls=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             ftgd_wf_filters_action=dict(required=False, type="str", choices=["block", "monitor",
                                                                              "warning", "authenticate"]),
             ftgd_wf_filters_auth_usr_grp=dict(required=False, type="str"),
@@ -2792,7 +2466,7 @@ Module Source Code
             ftgd_wf_filters_warn_duration=dict(required=False, type="str"),
             ftgd_wf_filters_warning_duration_type=dict(required=False, type="str", choices=["session", "timeout"]),
             ftgd_wf_filters_warning_prompt=dict(required=False, type="str", choices=["per-domain", "per-category"]),
-
+    
             ftgd_wf_quota_category=dict(required=False, type="str"),
             ftgd_wf_quota_duration=dict(required=False, type="str"),
             ftgd_wf_quota_override_replacemsg=dict(required=False, type="str"),
@@ -2854,11 +2528,10 @@ Module Source Code
             youtube_channel_filter=dict(required=False, type="list"),
             youtube_channel_filter_channel_id=dict(required=False, type="str"),
             youtube_channel_filter_comment=dict(required=False, type="str"),
-
+    
         )
-
-        module = AnsibleModule(argument_spec, supports_check_mode=False)
-
+    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -2955,47 +2628,33 @@ Module Source Code
                 "comment": module.params["youtube_channel_filter_comment"],
             }
         }
-
-        list_overrides = ['ftgd-wf', 'override', 'url-extraction', 'web', 'youtube-channel-filter']
-        for list_variable in list_overrides:
-            override_data = list()
-            try:
-                override_data = module.params[list_variable]
-            except:
-                pass
-            try:
-                if override_data:
-                    del paramgram[list_variable]
-                    paramgram[list_variable] = override_data
-            except:
-                pass
-
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None or password is None:
-            module.fail_json(msg="Host and username and password are required")
-
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-
-        response = fmg.login()
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
-
-        results = fmgr_webfilter_profile_addsetdelete(fmg, paramgram)
-        if results[0] != 0:
-            fmgr_logout(fmg, module, results=results, good_codes=[0])
-
-        fmg.logout()
-
-        if results is not None:
-            return module.exit_json(**results[1])
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
         else:
-            return module.exit_json(msg="No results were returned from the API call.")
-
-
+            module.fail_json(**FAIL_SOCKET_MSG)
+    
+        list_overrides = ['ftgd-wf', 'override', 'url-extraction', 'web', 'youtube-channel-filter']
+        paramgram = fmgr.tools.paramgram_child_list_override(list_overrides=list_overrides,
+                                                             paramgram=paramgram, module=module)
+    
+        results = DEFAULT_RESULT_OBJ
+    
+        try:
+    
+            results = fmgr_webfilter_profile_modify(fmgr, paramgram)
+            fmgr.govern_response(module=module, results=results,
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+    
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        return module.exit_json(**results[1])
+    
+    
     if __name__ == "__main__":
         main()
 

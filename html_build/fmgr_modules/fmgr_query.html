@@ -85,8 +85,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
@@ -113,7 +114,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a></li>
@@ -195,14 +195,12 @@
 <div class="section" id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
 <p><strong>Name:</strong> fmgr_query</p>
-<p><strong>Description:</strong> [‘Provides information on data objects within FortiManager so that playbooks can perform conditionals.’]</p>
+<p><strong>Description:</strong> Provides information on data objects within FortiManager so that playbooks can perform conditionals.</p>
 <p><strong>Author(s):</strong> Luke Weighall (&#64;lweighall)</p>
 <p><strong>Ansible Version Added/Required:</strong> 2.8</p>
-<p><strong>Dev Status:</strong> PR TESTS GREEN - AWAITING APPROVAL</p>
+<p><strong>Dev Status:</strong> COMPLETED/MERGED</p>
 <p><strong>Owning Developer:</strong> Luke Weighall</p>
-<p><strong>Pull Request Started:</strong> 10/9/18</p>
-<p><strong>Days in PR:</strong> 20</p>
-<p><strong>Branch Link:</strong> <a class="reference external" href="https://github.com/ftntcorecse/ansible/tree/fmgr_query">https://github.com/ftntcorecse/ansible/tree/fmgr_query</a></p>
+<p>Module Github <a class="reference external" href="https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_query.py">Link</a></p>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
@@ -210,7 +208,7 @@
 <h3>adom<a class="headerlink" href="#adom" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Description: The ADOM the configuration should belong to.</li>
-<li>Required: True</li>
+<li>Required: False</li>
 <li>default: root</li>
 </ul>
 </div>
@@ -255,17 +253,10 @@
 <li>Required: False</li>
 </ul>
 </div>
-<div class="section" id="host">
-<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The FortiManager’s Address.</li>
-<li>Required: True</li>
-</ul>
-</div>
 <div class="section" id="nodes">
 <h3>nodes<a class="headerlink" href="#nodes" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: A LIST of firewalls in the cluster you want to verify i.e. [“firewall_A”,”firewall_B”]</li>
+<li>Description: A LIST of firewalls in the cluster you want to verify i.e. [“firewall_A”,”firewall_B”].</li>
 <li>Required: False</li>
 </ul>
 </div>
@@ -277,24 +268,10 @@
 <li>choices: [‘device’, ‘cluster_nodes’, ‘task’, ‘custom’]</li>
 </ul>
 </div>
-<div class="section" id="password">
-<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The password associated with the username account.</li>
-<li>Required: False</li>
-</ul>
-</div>
 <div class="section" id="task-id">
 <h3>task_id<a class="headerlink" href="#task-id" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Description: The ID of the task you wish to query status on. If left blank and object = ‘task’ a list of tasks are returned.</li>
-<li>Required: False</li>
-</ul>
-</div>
-<div class="section" id="username">
-<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The username used to authenticate with the FortiManager.</li>
 <li>Required: False</li>
 </ul>
 </div>
@@ -305,9 +282,14 @@
 <li>fmgr_get_custom</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_get_custom</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_get_custom</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This method is used to perform very custom queries ad-hoc</span>
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># IF THE CUSTOM DICTIONARY (OFTEN CONTAINING FILTERS) IS DEFINED CREATED THAT</span>
     <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_dict&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
@@ -318,7 +300,7 @@
     <span class="c1"># SET THE CUSTOM ENDPOINT PROVIDED</span>
     <span class="n">url</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_endpoint&quot;</span><span class="p">]</span>
     <span class="c1"># MAKE THE CALL AND RETURN RESULTS</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -327,9 +309,14 @@
 <li>fmgr_get_task_status</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_get_task_status</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_get_task_status</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This method is used to get information on tasks within the FortiManager Task Manager</span>
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># IF THE TASK_ID IS DEFINED, THEN GET THAT SPECIFIC TASK</span>
     <span class="c1"># OTHERWISE, GET ALL RECENT TASKS IN A LIST</span>
@@ -339,13 +326,13 @@
             <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
         <span class="p">}</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/task/task/{task_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;task_id&quot;</span><span class="p">])</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
         <span class="p">}</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/task/task&#39;</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -354,13 +341,24 @@
 <li>fmgr_get_device</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_get_device</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_get_device</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This method is used to get information on devices. This will not work on HA_SLAVE nodes, only top level devices.</span>
 <span class="sd">    Such as cluster objects and standalone devices.</span>
+
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># FIRST TRY TO RUN AN UPDATE ON THE DEVICE</span>
     <span class="c1"># RUN A QUICK CLUSTER REFRESH/UPDATE ATTEMPT TO ENSURE WE&#39;RE GETTING THE LATEST INFORMOATION</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
+
     <span class="n">update_url</span> <span class="o">=</span> <span class="s1">&#39;/dvm/cmd/update/device&#39;</span>
     <span class="n">update_dict</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s1">&#39;adom&#39;</span><span class="p">],</span>
@@ -368,7 +366,7 @@
         <span class="s2">&quot;flags&quot;</span><span class="p">:</span> <span class="s2">&quot;create_task&quot;</span>
     <span class="p">}</span>
     <span class="c1"># DO THE UPDATE CALL</span>
-    <span class="n">update_call</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">update_url</span><span class="p">,</span> <span class="n">update_dict</span><span class="p">)</span>
+    <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">update_url</span><span class="p">,</span> <span class="n">update_dict</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">EXEC</span><span class="p">)</span>
 
     <span class="c1"># SET THE URL</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/device&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
@@ -380,7 +378,7 @@
         <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;sn&quot;</span><span class="p">,</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_serial&quot;</span><span class="p">]]</span>
         <span class="p">}</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">device_found</span> <span class="o">=</span> <span class="mi">1</span>
 
@@ -389,7 +387,7 @@
         <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">]]</span>
         <span class="p">}</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">device_found</span> <span class="o">=</span> <span class="mi">1</span>
 
@@ -398,9 +396,10 @@
         <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ip&quot;</span><span class="p">,</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_ip&quot;</span><span class="p">]]</span>
         <span class="p">}</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">device_found</span> <span class="o">=</span> <span class="mi">1</span>
+
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -409,19 +408,29 @@
 <li>fmgr_get_cluster_nodes</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_get_cluster_nodes</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_get_cluster_nodes</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This method is used to get information on devices. This WILL work on HA_SLAVE nodes, but NOT top level standalone</span>
 <span class="sd">    devices.</span>
 <span class="sd">    Such as cluster objects and standalone devices.</span>
+
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="c1"># USE THE DEVICE METHOD TO GET THE CLUSTER INFORMATION SO WE CAN SEE THE HA_SLAVE NODES</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr_get_device</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr_get_device</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
     <span class="c1"># CHECK FOR HA_SLAVE NODES, IF CLUSTER IS MISSING COMPLETELY THEN QUIT</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">returned_nodes</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;ha_slave&quot;</span><span class="p">]</span>
         <span class="n">num_of_nodes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">returned_nodes</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
         <span class="n">error_msg</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;cluster_status&quot;</span><span class="p">:</span> <span class="s2">&quot;MISSING&quot;</span><span class="p">}</span>
         <span class="k">return</span> <span class="n">error_msg</span>
 
@@ -476,11 +485,7 @@
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
         <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
-        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">])),</span>
-        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
         <span class="nb">object</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;device&quot;</span><span class="p">,</span> <span class="s2">&quot;cluster_nodes&quot;</span><span class="p">,</span> <span class="s2">&quot;task&quot;</span><span class="p">,</span> <span class="s2">&quot;custom&quot;</span><span class="p">]),</span>
-
         <span class="n">custom_endpoint</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">custom_dict</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;dict&quot;</span><span class="p">),</span>
         <span class="n">device_ip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
@@ -490,23 +495,7 @@
         <span class="n">task_id</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">)</span>
     <span class="p">)</span>
 
-    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
-
-    <span class="c1"># CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.</span>
-    <span class="n">host</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span>
-    <span class="n">username</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">username</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required&quot;</span><span class="p">)</span>
-
-    <span class="c1"># CHECK IF LOGIN FAILED</span>
-    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
-
-    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
-
-    <span class="c1"># START SESSION LOGIC</span>
-    <span class="c1"># MODULE PARAMGRAM</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="p">)</span>
     <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
         <span class="s2">&quot;object&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">],</span>
@@ -518,56 +507,77 @@
         <span class="s2">&quot;custom_endpoint&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;custom_endpoint&quot;</span><span class="p">],</span>
         <span class="s2">&quot;custom_dict&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;custom_dict&quot;</span><span class="p">]</span>
     <span class="p">}</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+    <span class="n">fmgr</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">)</span>
+        <span class="n">fmgr</span> <span class="o">=</span> <span class="n">FortiManagerHandler</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="n">fmgr</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">FMGRCommon</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">FAIL_SOCKET_MSG</span><span class="p">)</span>
 
-    <span class="c1"># IF OBJECT IS DEVICE</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;device&quot;</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">],</span>
-                                               <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_serial&quot;</span><span class="p">],</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_ip&quot;</span><span class="p">]]):</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_device</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Device query failed!&quot;</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Device NOT FOUND!&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Device Found&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
 
-    <span class="c1"># IF OBJECT IS CLUSTER_NODES</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;cluster_nodes&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;nodes&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_cluster_nodes</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;cluster_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;MISSING&quot;</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;No cluster device found!&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;query_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;good&quot;</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Cluster Found - Showing Nodes&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">results</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Query FAILED -- Check module or playbook syntax&quot;</span><span class="p">)</span>
-
-    <span class="c1"># IF OBJECT IS TASK</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;task&quot;</span><span class="p">:</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_task_status</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;QUERY FAILED -- Is FMGR online? Good Creds?&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Task Found&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-    <span class="c1"># IF OBJECT IS CUSTOM</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;custom&quot;</span><span class="p">:</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_custom</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;QUERY FAILED -- Please check syntax check JSON guide if needed.&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">results_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-            <span class="k">if</span> <span class="n">results_len</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">results_combine</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
-                    <span class="n">results_combine</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
-                    <span class="n">results_combine</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">results_len</span><span class="p">]</span>
-                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Custom Query Success&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results_combine</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># IF OBJECT IS DEVICE</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;device&quot;</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">],</span>
+                                                                           <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_serial&quot;</span><span class="p">],</span>
+                                                                           <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_ip&quot;</span><span class="p">]]):</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_device</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Device query failed!&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Device NOT FOUND!&quot;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NO RESULTS&quot;</span><span class="p">)</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Device Found&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
 
-    <span class="c1"># logout</span>
-    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Parameters weren&#39;t right, logic tree didn&#39;t validate. Check playbook.&quot;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># IF OBJECT IS CLUSTER_NODES</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;cluster_nodes&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;nodes&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_cluster_nodes</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;cluster_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;MISSING&quot;</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;No cluster device found!&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;query_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;good&quot;</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Cluster Found - Showing Nodes&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">results</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Query FAILED -- Check module or playbook syntax&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># IF OBJECT IS TASK</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;task&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_task_status</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># IF OBJECT IS CUSTOM</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;custom&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_custom</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;QUERY FAILED -- Please check syntax check JSON guide if needed.&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">results_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">results_len</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">results_combine</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                        <span class="n">results_combine</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                        <span class="n">results_combine</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">results_len</span><span class="p">]</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Custom Query Success&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results_combine</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NO RESULTS&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -605,6 +615,8 @@
 <span class="s1">---</span>
 <span class="s1">module: fmgr_query</span>
 <span class="s1">version_added: &quot;2.8&quot;</span>
+<span class="s1">notes:</span>
+<span class="s1">    - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).</span>
 <span class="s1">author: Luke Weighall (@lweighall)</span>
 <span class="s1">short_description: Query FortiManager data objects for use in Ansible workflows.</span>
 <span class="s1">description:</span>
@@ -614,54 +626,54 @@
 <span class="s1">  adom:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The ADOM the configuration should belong to.</span>
-<span class="s1">    required: true</span>
+<span class="s1">    required: false</span>
 <span class="s1">    default: root</span>
-<span class="s1">  host:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The FortiManager&#39;s Address.</span>
-<span class="s1">    required: true</span>
-<span class="s1">  username:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The username used to authenticate with the FortiManager.</span>
-<span class="s1">    required: false</span>
-<span class="s1">  password:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The password associated with the username account.</span>
-<span class="s1">    required: false</span>
+
 <span class="s1">  object:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The data object we wish to query (device, package, rule, etc). Will expand choices as improves.</span>
 <span class="s1">    required: true</span>
-<span class="s1">    choices: [&#39;device&#39;, &#39;cluster_nodes&#39;, &#39;task&#39;, &#39;custom&#39;]</span>
+<span class="s1">    choices:</span>
+<span class="s1">    - device</span>
+<span class="s1">    - cluster_nodes</span>
+<span class="s1">    - task</span>
+<span class="s1">    - custom</span>
+
 <span class="s1">  custom_endpoint:</span>
 <span class="s1">    description:</span>
 <span class="s1">        - ADVANCED USERS ONLY! REQUIRES KNOWLEDGE OF FMGR JSON API!</span>
 <span class="s1">        - The HTTP Endpoint on FortiManager you wish to GET from.</span>
 <span class="s1">    required: false</span>
+
 <span class="s1">  custom_dict:</span>
 <span class="s1">    description:</span>
 <span class="s1">        - ADVANCED USERS ONLY! REQUIRES KNOWLEDGE OF FMGR JSON API!</span>
 <span class="s1">        - DICTIONARY JSON FORMAT ONLY -- Custom dictionary/datagram to send to the endpoint.</span>
 <span class="s1">    required: false</span>
+
 <span class="s1">  device_ip:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The IP of the device you want to query.</span>
 <span class="s1">    required: false</span>
+
 <span class="s1">  device_unique_name:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The desired &quot;friendly&quot; name of the device you want to query.</span>
 <span class="s1">    required: false</span>
+
 <span class="s1">  device_serial:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The serial number of the device you want to query.</span>
 <span class="s1">    required: false</span>
+
 <span class="s1">  task_id:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The ID of the task you wish to query status on. If left blank and object = &#39;task&#39; a list of tasks are returned.</span>
 <span class="s1">    required: false</span>
+
 <span class="s1">  nodes:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - A LIST of firewalls in the cluster you want to verify i.e. [&quot;firewall_A&quot;,&quot;firewall_B&quot;]</span>
+<span class="s1">      - A LIST of firewalls in the cluster you want to verify i.e. [&quot;firewall_A&quot;,&quot;firewall_B&quot;].</span>
 <span class="s1">    required: false</span>
 <span class="s1">&#39;&#39;&#39;</span>
 
@@ -669,36 +681,24 @@
 <span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">- name: QUERY FORTIGATE DEVICE BY IP</span>
 <span class="s1">  fmgr_query:</span>
-<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    object: &quot;device&quot;</span>
 <span class="s1">    adom: &quot;ansible&quot;</span>
 <span class="s1">    device_ip: &quot;10.7.220.41&quot;</span>
 
 <span class="s1">- name: QUERY FORTIGATE DEVICE BY SERIAL</span>
 <span class="s1">  fmgr_query:</span>
-<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    adom: &quot;ansible&quot;</span>
 <span class="s1">    object: &quot;device&quot;</span>
 <span class="s1">    device_serial: &quot;FGVM000000117992&quot;</span>
 
 <span class="s1">- name: QUERY FORTIGATE DEVICE BY FRIENDLY NAME</span>
 <span class="s1">  fmgr_query:</span>
-<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    adom: &quot;ansible&quot;</span>
 <span class="s1">    object: &quot;device&quot;</span>
 <span class="s1">    device_unique_name: &quot;ansible-fgt01&quot;</span>
 
 <span class="s1">- name: VERIFY CLUSTER MEMBERS AND STATUS</span>
 <span class="s1">  fmgr_query:</span>
-<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    adom: &quot;ansible&quot;</span>
 <span class="s1">    object: &quot;cluster_nodes&quot;</span>
 <span class="s1">    device_unique_name: &quot;fgt-cluster01&quot;</span>
@@ -706,18 +706,12 @@
 
 <span class="s1">- name: GET STATUS OF TASK ID</span>
 <span class="s1">  fmgr_query:</span>
-<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    adom: &quot;ansible&quot;</span>
 <span class="s1">    object: &quot;task&quot;</span>
 <span class="s1">    task_id: &quot;3&quot;</span>
 
 <span class="s1">- name: USE CUSTOM TYPE TO QUERY AVAILABLE SCRIPTS</span>
 <span class="s1">  fmgr_query:</span>
-<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    adom: &quot;ansible&quot;</span>
 <span class="s1">    object: &quot;custom&quot;</span>
 <span class="s1">    custom_endpoint: &quot;/dvmdb/adom/ansible/script&quot;</span>
@@ -728,23 +722,27 @@
 <span class="s2">api_result:</span>
 <span class="s2">  description: full API response, includes status code and message</span>
 <span class="s2">  returned: always</span>
-<span class="s2">  type: string</span>
+<span class="s2">  type: str</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
 <span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
-<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">AnsibleFortiManager</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.connection</span> <span class="kn">import</span> <span class="n">Connection</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">FortiManagerHandler</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGBaseException</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGRCommon</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGRMethods</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FAIL_SOCKET_MSG</span>
 
-<span class="c1"># check for pyFMG lib</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">pyFMG.fortimgr</span> <span class="kn">import</span> <span class="n">FortiManager</span>
-    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">True</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">False</span>
 
-
-<span class="k">def</span> <span class="nf">fmgr_get_custom</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">fmgr_get_custom</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This method is used to perform very custom queries ad-hoc</span>
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># IF THE CUSTOM DICTIONARY (OFTEN CONTAINING FILTERS) IS DEFINED CREATED THAT</span>
     <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_dict&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
@@ -755,13 +753,18 @@
     <span class="c1"># SET THE CUSTOM ENDPOINT PROVIDED</span>
     <span class="n">url</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_endpoint&quot;</span><span class="p">]</span>
     <span class="c1"># MAKE THE CALL AND RETURN RESULTS</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 
 
-<span class="k">def</span> <span class="nf">fmgr_get_task_status</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">fmgr_get_task_status</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This method is used to get information on tasks within the FortiManager Task Manager</span>
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># IF THE TASK_ID IS DEFINED, THEN GET THAT SPECIFIC TASK</span>
     <span class="c1"># OTHERWISE, GET ALL RECENT TASKS IN A LIST</span>
@@ -771,23 +774,34 @@
             <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
         <span class="p">}</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/task/task/{task_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;task_id&quot;</span><span class="p">])</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
     <span class="k">else</span><span class="p">:</span>
         <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
         <span class="p">}</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/task/task&#39;</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 
 
-<span class="k">def</span> <span class="nf">fmgr_get_device</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">fmgr_get_device</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This method is used to get information on devices. This will not work on HA_SLAVE nodes, only top level devices.</span>
 <span class="sd">    Such as cluster objects and standalone devices.</span>
+
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># FIRST TRY TO RUN AN UPDATE ON THE DEVICE</span>
     <span class="c1"># RUN A QUICK CLUSTER REFRESH/UPDATE ATTEMPT TO ENSURE WE&#39;RE GETTING THE LATEST INFORMOATION</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
+
     <span class="n">update_url</span> <span class="o">=</span> <span class="s1">&#39;/dvm/cmd/update/device&#39;</span>
     <span class="n">update_dict</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s1">&#39;adom&#39;</span><span class="p">],</span>
@@ -795,7 +809,7 @@
         <span class="s2">&quot;flags&quot;</span><span class="p">:</span> <span class="s2">&quot;create_task&quot;</span>
     <span class="p">}</span>
     <span class="c1"># DO THE UPDATE CALL</span>
-    <span class="n">update_call</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">update_url</span><span class="p">,</span> <span class="n">update_dict</span><span class="p">)</span>
+    <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">update_url</span><span class="p">,</span> <span class="n">update_dict</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">EXEC</span><span class="p">)</span>
 
     <span class="c1"># SET THE URL</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvmdb/adom/{adom}/device&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">])</span>
@@ -807,7 +821,7 @@
         <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;sn&quot;</span><span class="p">,</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_serial&quot;</span><span class="p">]]</span>
         <span class="p">}</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">device_found</span> <span class="o">=</span> <span class="mi">1</span>
 
@@ -816,7 +830,7 @@
         <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">]]</span>
         <span class="p">}</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">device_found</span> <span class="o">=</span> <span class="mi">1</span>
 
@@ -825,25 +839,36 @@
         <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
             <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;ip&quot;</span><span class="p">,</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_ip&quot;</span><span class="p">]]</span>
         <span class="p">}</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">device_found</span> <span class="o">=</span> <span class="mi">1</span>
+
     <span class="k">return</span> <span class="n">response</span>
 
 
-<span class="k">def</span> <span class="nf">fmgr_get_cluster_nodes</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">fmgr_get_cluster_nodes</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This method is used to get information on devices. This WILL work on HA_SLAVE nodes, but NOT top level standalone</span>
 <span class="sd">    devices.</span>
 <span class="sd">    Such as cluster objects and standalone devices.</span>
+
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
     <span class="c1"># USE THE DEVICE METHOD TO GET THE CLUSTER INFORMATION SO WE CAN SEE THE HA_SLAVE NODES</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr_get_device</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr_get_device</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
     <span class="c1"># CHECK FOR HA_SLAVE NODES, IF CLUSTER IS MISSING COMPLETELY THEN QUIT</span>
     <span class="k">try</span><span class="p">:</span>
         <span class="n">returned_nodes</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;ha_slave&quot;</span><span class="p">]</span>
         <span class="n">num_of_nodes</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">returned_nodes</span><span class="p">)</span>
-    <span class="k">except</span><span class="p">:</span>
+    <span class="k">except</span> <span class="ne">Exception</span><span class="p">:</span>
         <span class="n">error_msg</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;cluster_status&quot;</span><span class="p">:</span> <span class="s2">&quot;MISSING&quot;</span><span class="p">}</span>
         <span class="k">return</span> <span class="n">error_msg</span>
 
@@ -893,11 +918,7 @@
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
         <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
-        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">])),</span>
-        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
         <span class="nb">object</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;device&quot;</span><span class="p">,</span> <span class="s2">&quot;cluster_nodes&quot;</span><span class="p">,</span> <span class="s2">&quot;task&quot;</span><span class="p">,</span> <span class="s2">&quot;custom&quot;</span><span class="p">]),</span>
-
         <span class="n">custom_endpoint</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">custom_dict</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;dict&quot;</span><span class="p">),</span>
         <span class="n">device_ip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
@@ -907,23 +928,7 @@
         <span class="n">task_id</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">)</span>
     <span class="p">)</span>
 
-    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="p">)</span>
-
-    <span class="c1"># CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.</span>
-    <span class="n">host</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span>
-    <span class="n">username</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">username</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required&quot;</span><span class="p">)</span>
-
-    <span class="c1"># CHECK IF LOGIN FAILED</span>
-    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
-
-    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
-
-    <span class="c1"># START SESSION LOGIC</span>
-    <span class="c1"># MODULE PARAMGRAM</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="p">)</span>
     <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
         <span class="s2">&quot;object&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">],</span>
@@ -935,56 +940,77 @@
         <span class="s2">&quot;custom_endpoint&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;custom_endpoint&quot;</span><span class="p">],</span>
         <span class="s2">&quot;custom_dict&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;custom_dict&quot;</span><span class="p">]</span>
     <span class="p">}</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+    <span class="n">fmgr</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">)</span>
+        <span class="n">fmgr</span> <span class="o">=</span> <span class="n">FortiManagerHandler</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="n">fmgr</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">FMGRCommon</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">FAIL_SOCKET_MSG</span><span class="p">)</span>
 
-    <span class="c1"># IF OBJECT IS DEVICE</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;device&quot;</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">],</span>
-                                               <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_serial&quot;</span><span class="p">],</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_ip&quot;</span><span class="p">]]):</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_device</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Device query failed!&quot;</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Device NOT FOUND!&quot;</span><span class="p">)</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Device Found&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
 
-    <span class="c1"># IF OBJECT IS CLUSTER_NODES</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;cluster_nodes&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;nodes&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_cluster_nodes</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;cluster_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;MISSING&quot;</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;No cluster device found!&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;query_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;good&quot;</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Cluster Found - Showing Nodes&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
-        <span class="k">elif</span> <span class="n">results</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Query FAILED -- Check module or playbook syntax&quot;</span><span class="p">)</span>
-
-    <span class="c1"># IF OBJECT IS TASK</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;task&quot;</span><span class="p">:</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_task_status</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;QUERY FAILED -- Is FMGR online? Good Creds?&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Task Found&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-    <span class="c1"># IF OBJECT IS CUSTOM</span>
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;custom&quot;</span><span class="p">:</span>
-        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_custom</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;QUERY FAILED -- Please check syntax check JSON guide if needed.&quot;</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">results_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-            <span class="k">if</span> <span class="n">results_len</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                <span class="n">results_combine</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
-                    <span class="n">results_combine</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
-                    <span class="n">results_combine</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">results_len</span><span class="p">]</span>
-                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Custom Query Success&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results_combine</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># IF OBJECT IS DEVICE</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;device&quot;</span> <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">[</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">],</span>
+                                                                           <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_serial&quot;</span><span class="p">],</span>
+                                                                           <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_ip&quot;</span><span class="p">]]):</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_device</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Device query failed!&quot;</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Device NOT FOUND!&quot;</span><span class="p">)</span>
             <span class="k">else</span><span class="p">:</span>
-                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NO RESULTS&quot;</span><span class="p">)</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Device Found&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
 
-    <span class="c1"># logout</span>
-    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Parameters weren&#39;t right, logic tree didn&#39;t validate. Check playbook.&quot;</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># IF OBJECT IS CLUSTER_NODES</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;cluster_nodes&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;nodes&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_cluster_nodes</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;cluster_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;MISSING&quot;</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;No cluster device found!&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">results</span><span class="p">[</span><span class="s2">&quot;query_status&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;good&quot;</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Cluster Found - Showing Nodes&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">results</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Query FAILED -- Check module or playbook syntax&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># IF OBJECT IS TASK</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;task&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_task_status</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># IF OBJECT IS CUSTOM</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;custom&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_get_custom</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;QUERY FAILED -- Please check syntax check JSON guide if needed.&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">results_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">results_len</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">results_combine</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                        <span class="n">results_combine</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                        <span class="n">results_combine</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">results_len</span><span class="p">]</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Custom Query Success&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results_combine</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NO RESULTS&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
@@ -1014,7 +1040,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
 
     </p>
   </div>
@@ -1033,21 +1059,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 

@@ -86,8 +86,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_fwpol_ipv4</a><ul>
@@ -112,7 +113,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
@@ -194,9 +194,6 @@
 <h2>Playbook Task Examples<a class="headerlink" href="#playbook-task-examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD VERY BASIC IPV4 POLICY WITH NO NAT (WIDE OPEN)</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwpol_ipv4</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">package_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;default&quot;</span>
@@ -213,9 +210,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwpol_ipv4</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">package_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;default&quot;</span>
@@ -234,9 +228,6 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES AND SEC PROFILES</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_fwpol_ipv4</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">package_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;default&quot;</span>
@@ -263,16 +254,13 @@
 <h3>fmgr_fwpol_ipv4_add_basic.yml<a class="headerlink" href="#fmgr-fwpol-ipv4-add-basic-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FW POLICIES</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD VERY BASIC IPV4 POLICY WITH NO NAT (WIDE OPEN)</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwpol_ipv4</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">package_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;default&quot;</span>
@@ -286,12 +274,11 @@
       <span class="l l-Scalar l-Scalar-Plain">logtraffic</span><span class="p p-Indicator">:</span> <span class="s">&quot;utm&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">service</span><span class="p p-Indicator">:</span> <span class="s">&quot;ALL&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">schedule</span><span class="p p-Indicator">:</span> <span class="s">&quot;always&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ignore_errors</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">yes</span>
+    <span class="l l-Scalar l-Scalar-Plain">ignore_unreachable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">yes</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwpol_ipv4</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">package_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;default&quot;</span>
@@ -306,30 +293,63 @@
       <span class="l l-Scalar l-Scalar-Plain">service</span><span class="p p-Indicator">:</span> <span class="s">&quot;HTTP,</span><span class="nv"> </span><span class="s">HTTPS&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">schedule</span><span class="p p-Indicator">:</span> <span class="s">&quot;always&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">nat</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">users</span><span class="p p-Indicator">:</span> <span class="s">&quot;karen,</span><span class="nv"> </span><span class="s">kevin&quot;</span>
+      <span class="c1">#users: &quot;karen, kevin&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ignore_errors</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">yes</span>
+    <span class="l l-Scalar l-Scalar-Plain">ignore_unreachable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">yes</span>
 
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES AND SEC PROFILES</span>
+<span class="c1">#  - name: ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES AND SEC PROFILES</span>
+<span class="c1">#    fmgr_fwpol_ipv4:</span>
+<span class="c1">#      mode: &quot;set&quot;</span>
+<span class="c1">#      adom: &quot;ansible&quot;</span>
+<span class="c1">#      package_name: &quot;default&quot;</span>
+<span class="c1">#      name: &quot;Basic_IPv4_Policy_3&quot;</span>
+<span class="c1">#      comments: &quot;Created by Ansible&quot;</span>
+<span class="c1">#      action: &quot;accept&quot;</span>
+<span class="c1">#      dstaddr: &quot;google-play, autoupdate.opera.com&quot;</span>
+<span class="c1">#      srcaddr: &quot;any&quot;</span>
+<span class="c1">#      dstintf: &quot;zone_wan1, zone_wan2&quot;</span>
+<span class="c1">#      srcintf: &quot;zone_int1&quot;</span>
+<span class="c1">#      logtraffic: &quot;utm&quot;</span>
+<span class="c1">#      service: &quot;HTTP, HTTPS&quot;</span>
+<span class="c1">#      schedule: &quot;always&quot;</span>
+<span class="c1">#      nat: &quot;enable&quot;</span>
+<span class="c1">#      #users: &quot;karen, kevin&quot;</span>
+<span class="c1">#      av_profile: &quot;sniffer-profile&quot;</span>
+<span class="c1">#      ips_sensor: &quot;default&quot;</span>
+<span class="c1">#    ignore_errors: yes</span>
+<span class="c1">#    ignore_unreachable: yes</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-fwpol-ipv4-run-all-sh">
+<h3>fmgr_fwpol_ipv4_run_all.sh<a class="headerlink" href="#fmgr-fwpol-ipv4-run-all-sh" title="Permalink to this headline">¶</a></h3>
+</div>
+<div class="section" id="fmgr-fwpol-ipv4-add-fsso-yml">
+<h3>fmgr_fwpol_ipv4_add_fsso.yml<a class="headerlink" href="#fmgr-fwpol-ipv4-add-fsso-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FW POLICIES</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD VERY BASIC IPV4 POLICY WITH FSSO</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwpol_ipv4</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">package_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;default&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Basic_IPv4_Policy_3&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Test_FSSO_IPv4_Policy&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">comments</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">Ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">action</span><span class="p p-Indicator">:</span> <span class="s">&quot;accept&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">dstaddr</span><span class="p p-Indicator">:</span> <span class="s">&quot;google-play,</span><span class="nv"> </span><span class="s">autoupdate.opera.com&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">srcaddr</span><span class="p p-Indicator">:</span> <span class="s">&quot;corp_internal&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">dstintf</span><span class="p p-Indicator">:</span> <span class="s">&quot;zone_wan1,</span><span class="nv"> </span><span class="s">zone_wan2&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">srcintf</span><span class="p p-Indicator">:</span> <span class="s">&quot;zone_int1&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">logtraffic</span><span class="p p-Indicator">:</span> <span class="s">&quot;utm&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">service</span><span class="p p-Indicator">:</span> <span class="s">&quot;HTTP,</span><span class="nv"> </span><span class="s">HTTPS&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">dstaddr</span><span class="p p-Indicator">:</span> <span class="s">&quot;srcaddr2&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">srcaddr</span><span class="p p-Indicator">:</span> <span class="s">&quot;srcaddr1&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">dstintf</span><span class="p p-Indicator">:</span> <span class="s">&quot;wan1&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">srcintf</span><span class="p p-Indicator">:</span> <span class="s">&quot;lan&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">logtraffic</span><span class="p p-Indicator">:</span> <span class="s">&quot;all&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">service</span><span class="p p-Indicator">:</span> <span class="s">&quot;ALL&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">schedule</span><span class="p p-Indicator">:</span> <span class="s">&quot;always&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">nat</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">users</span><span class="p p-Indicator">:</span> <span class="s">&quot;karen,</span><span class="nv"> </span><span class="s">kevin&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">av_profile</span><span class="p p-Indicator">:</span> <span class="s">&quot;sniffer-profile&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">ips_sensor</span><span class="p p-Indicator">:</span> <span class="s">&quot;default&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">fsso</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">groups</span><span class="p p-Indicator">:</span> <span class="s">&quot;SSL_OMG_GR&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -337,16 +357,13 @@
 <h3>fmgr_fwpol_ipv4_delete_basic.yml<a class="headerlink" href="#fmgr-fwpol-ipv4-delete-basic-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FW POLICIES</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD VERY BASIC IPV4 POLICY WITH NO NAT (WIDE OPEN)</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwpol_ipv4</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">package_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;default&quot;</span>
@@ -355,23 +372,17 @@
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_fwpol_ipv4</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">package_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;default&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Basic_IPv4_Policy_2&quot;</span>
 
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_fwpol_ipv4</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">package_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;default&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Basic_IPv4_Policy_3&quot;</span>
+<span class="c1">#  - name: ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES</span>
+<span class="c1">#    fmgr_fwpol_ipv4:</span>
+<span class="c1">#      mode: &quot;delete&quot;</span>
+<span class="c1">#      adom: &quot;ansible&quot;</span>
+<span class="c1">#      package_name: &quot;default&quot;</span>
+<span class="c1">#      name: &quot;Basic_IPv4_Policy_3&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -398,7 +409,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
 
     </p>
   </div>
@@ -417,21 +428,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 

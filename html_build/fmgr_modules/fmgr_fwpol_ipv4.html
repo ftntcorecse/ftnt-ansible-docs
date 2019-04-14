@@ -85,8 +85,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_fwpol_ipv4</a><ul>
@@ -113,7 +114,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a></li>
@@ -195,7 +195,7 @@
 <div class="section" id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
 <p><strong>Name:</strong> fmgr_fwpol_ipv4</p>
-<p><strong>Description:</strong> [‘Allows the add/delete of Firewall Policies on Packages in FortiManager’]</p>
+<p><strong>Description:</strong> Allows the add/delete of Firewall Policies on Packages in FortiManager.</p>
 <p><strong>Author(s):</strong></p>
 <ul class="simple">
 <li>Luke Weighall (github: &#64;lweighall)</li>
@@ -203,11 +203,9 @@
 <li>Jim Huber (github: &#64;p4r4n0y1ng)</li>
 </ul>
 <p><strong>Ansible Version Added/Required:</strong> 2.8</p>
-<p><strong>Dev Status:</strong> PR TESTS GREEN - AWAITING APPROVAL</p>
+<p><strong>Dev Status:</strong> COMPLETED/MERGED</p>
 <p><strong>Owning Developer:</strong> Luke Weighall</p>
-<p><strong>Pull Request Started:</strong> 10/25/18</p>
-<p><strong>Days in PR:</strong> 8</p>
-<p><strong>Branch Link:</strong> <a class="reference external" href="https://github.com/ftntcorecse/ansible/tree/fmgr_fwpol_ipv4">https://github.com/ftntcorecse/ansible/tree/fmgr_fwpol_ipv4</a></p>
+<p>Module Github <a class="reference external" href="https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_fwpol_ipv4.py">Link</a></p>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
@@ -525,7 +523,7 @@
 <h3>firewall_session_dirty<a class="headerlink" href="#firewall-session-dirty" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p class="first">Description: How to handle sessions if the configuration of this firewall policy changes.</p>
-<p>choice | check-all | Flush all current sessions accepted by this policy. These sessions must be started and re-matched with policies.</p>
+<p>choice | check-all | Flush all current sessions accepted by this policy.</p>
 <p>choice | check-new | Continue to allow sessions already accepted by this policy.</p>
 </li>
 <li><p class="first">Required: False</p>
@@ -586,13 +584,6 @@
 <ul class="simple">
 <li>Description: GTP profile.</li>
 <li>Required: False</li>
-</ul>
-</div>
-<div class="section" id="host">
-<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The FortiManager’s Address.</li>
-<li>Required: True</li>
 </ul>
 </div>
 <div class="section" id="icap-profile">
@@ -923,13 +914,6 @@
 <li>default: default</li>
 </ul>
 </div>
-<div class="section" id="password">
-<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The password associated with the username account.</li>
-<li>Required: True</li>
-</ul>
-</div>
 <div class="section" id="per-ip-shaper">
 <h3>per_ip_shaper<a class="headerlink" href="#per-ip-shaper" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -1088,7 +1072,7 @@
 <div class="section" id="schedule-timeout">
 <h3>schedule_timeout<a class="headerlink" href="#schedule-timeout" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first">Description: Enable to force current sessions to end when the schedule object times out. Disable allows them to end from inactivity.</p>
+<li><p class="first">Description: Enable to force current sessions to end when the schedule object times out.</p>
 <p>choice | disable | Disable schedule timeout.</p>
 <p>choice | enable | Enable schedule timeout.</p>
 </li>
@@ -1281,13 +1265,6 @@
 <li>Required: False</li>
 </ul>
 </div>
-<div class="section" id="username">
-<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The username associated with the account.</li>
-<li>Required: True</li>
-</ul>
-</div>
 <div class="section" id="users">
 <h3>users<a class="headerlink" href="#users" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
@@ -1344,7 +1321,6 @@
 <p>Dictionaries must use FortiManager API parameters, not the ansible ones listed below.</p>
 <p>If submitted, all other prefixed sub-parameters ARE IGNORED. This object is MUTUALLY EXCLUSIVE with its options.</p>
 <p>We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.</p>
-<p>WHEN IN DOUBT, OMIT THE USE OF THIS PARAMETER AND USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS</p>
 </li>
 <li><p class="first">Required: False</p>
 </li>
@@ -1353,21 +1329,21 @@
 <div class="section" id="vpn-dst-node-host">
 <h3>vpn_dst_node_host<a class="headerlink" href="#vpn-dst-node-host" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: NO DESCRIPTION PARSED ENTER MANUALLY</li>
+<li>Description: VPN Destination Node Host.</li>
 <li>Required: False</li>
 </ul>
 </div>
 <div class="section" id="vpn-dst-node-seq">
 <h3>vpn_dst_node_seq<a class="headerlink" href="#vpn-dst-node-seq" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: NO DESCRIPTION PARSED ENTER MANUALLY</li>
+<li>Description: VPN Destination Node Seq.</li>
 <li>Required: False</li>
 </ul>
 </div>
 <div class="section" id="vpn-dst-node-subnet">
 <h3>vpn_dst_node_subnet<a class="headerlink" href="#vpn-dst-node-subnet" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: NO DESCRIPTION PARSED ENTER MANUALLY</li>
+<li>Description: VPN Destination Node Seq.</li>
 <li>Required: False</li>
 </ul>
 </div>
@@ -1379,7 +1355,6 @@
 <p>Dictionaries must use FortiManager API parameters, not the ansible ones listed below.</p>
 <p>If submitted, all other prefixed sub-parameters ARE IGNORED. This object is MUTUALLY EXCLUSIVE with its options.</p>
 <p>We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.</p>
-<p>WHEN IN DOUBT, OMIT THE USE OF THIS PARAMETER AND USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS</p>
 </li>
 <li><p class="first">Required: False</p>
 </li>
@@ -1388,21 +1363,21 @@
 <div class="section" id="vpn-src-node-host">
 <h3>vpn_src_node_host<a class="headerlink" href="#vpn-src-node-host" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: NO DESCRIPTION PARSED ENTER MANUALLY</li>
+<li>Description: VPN Source Node Host.</li>
 <li>Required: False</li>
 </ul>
 </div>
 <div class="section" id="vpn-src-node-seq">
 <h3>vpn_src_node_seq<a class="headerlink" href="#vpn-src-node-seq" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: NO DESCRIPTION PARSED ENTER MANUALLY</li>
+<li>Description: VPN Source Node Seq.</li>
 <li>Required: False</li>
 </ul>
 </div>
 <div class="section" id="vpn-src-node-subnet">
 <h3>vpn_src_node_subnet<a class="headerlink" href="#vpn-src-node-subnet" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: NO DESCRIPTION PARSED ENTER MANUALLY</li>
+<li>Description: VPN Source Node.</li>
 <li>Required: False</li>
 </ul>
 </div>
@@ -1538,32 +1513,38 @@
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li>fmgr_firewall_policy_addsetdelete</li>
+<li>fmgr_firewall_policy_modify</li>
 </ul>
 <blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_firewall_policy_addsetdelete</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_firewall_policy_modify</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    fmgr_firewall_policy -- Your Description here, bruh</span>
+<span class="sd">    fmgr_firewall_policy -- Add/Set/Deletes Firewall Policy Objects defined in the &quot;paramgram&quot;</span>
+
+<span class="sd">    :param fmgr: The fmgr object instance from fmgr_utils.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">mode</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span>
     <span class="n">adom</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
     <span class="c1"># INIT A BASIC OBJECTS</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Illegal or malformed paramgram discovered. System Exception&quot;</span><span class="p">})</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="c1"># EVAL THE MODE PARAMETER FOR SET OR ADD</span>
     <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">]:</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/pkg/{pkg}/firewall/policy&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">pkg</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;package_name&quot;</span><span class="p">])</span>
-        <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">fmgr_prepare_dict</span><span class="p">(</span><span class="n">paramgram</span><span class="p">))</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="n">scrub_dict</span><span class="p">((</span><span class="n">prepare_dict</span><span class="p">(</span><span class="n">paramgram</span><span class="p">)))</span>
         <span class="k">del</span> <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;package_name&quot;</span><span class="p">]</span>
-        <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr_split_comma_strings_into_lists</span><span class="p">(</span><span class="n">datagram</span><span class="p">)</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">_tools</span><span class="o">.</span><span class="n">split_comma_strings_into_lists</span><span class="p">(</span><span class="n">datagram</span><span class="p">)</span>
 
     <span class="c1"># EVAL THE MODE PARAMETER FOR DELETE</span>
     <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
-
-        <span class="c1"># WE NEED TO GET THE POLICY ID FROM THE NAME OF THE POLICY</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/pkg/{pkg}/firewall&#39;</span> \
               <span class="s1">&#39;/policy/{policyid}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
                                           <span class="n">pkg</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;package_name&quot;</span><span class="p">],</span>
@@ -1572,163 +1553,8 @@
             <span class="s2">&quot;policyid&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;policyid&quot;</span><span class="p">]</span>
         <span class="p">}</span>
 
-    <span class="c1"># IF MODE = SET -- USE THE &#39;SET&#39; API CALL MODE</span>
-    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;set&quot;</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-    <span class="c1"># IF MODE = UPDATE -- USER THE &#39;UPDATE&#39; API CALL MODE</span>
-    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;update&quot;</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-    <span class="c1"># IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE</span>
-    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-    <span class="c1"># IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE</span>
-    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">response</span>
-
-
-<span class="c1"># ADDITIONAL COMMON FUNCTIONS</span>
-<span class="c1"># FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>fmgr_logout</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="p">(),</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">logout_on_fail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logout_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># VALIDATION ERROR (NO RESULTS, JUST AN EXIT)</span>
-    <span class="k">if</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">&quot;NULL&quot;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
-
-    <span class="c1"># SUBMISSION ERROR</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;NULL&quot;</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No status message returned from pyFMG. Possible that this was a GET with a tuple result.&quot;</span>
-
-        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">good_codes</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">logout_on_fail</span><span class="p">:</span>
-                <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">logout_on_success</span><span class="p">:</span>
-                <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;API Called worked, but logout handler has been asked to logout on success&quot;</span><span class="p">,</span>
-                                 <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-    <span class="k">return</span> <span class="n">msg</span>
-
-
-<span class="c1"># FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK</span>
-<span class="c1"># DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>fmgr_cidr_to_netmask</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_cidr_to_netmask</span><span class="p">(</span><span class="n">cidr</span><span class="p">):</span>
-    <span class="n">cidr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cidr</span><span class="p">)</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0xffffffff</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="nb">str</span><span class="p">((</span><span class="mh">0xff000000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
-            <span class="nb">str</span><span class="p">((</span><span class="mh">0x00ff0000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
-            <span class="nb">str</span><span class="p">((</span><span class="mh">0x0000ff00</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
-            <span class="nb">str</span><span class="p">((</span><span class="mh">0x000000ff</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)))</span>
-
-
-<span class="c1"># utility function: removing keys wih value of None, nothing in playbook for that key</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>fmgr_del_none</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_del_none</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)((</span><span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-                         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">fmgr_is_empty_dict</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">obj</span>
-
-
-<span class="c1"># utility function: remove keys that are need for the logic but the FMG API won&#39;t accept them</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>fmgr_prepare_dict</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_prepare_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-    <span class="n">list_of_elems</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="s2">&quot;adom&quot;</span><span class="p">,</span> <span class="s2">&quot;host&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">]</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="n">obj</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">key</span><span class="p">,</span> <span class="n">fmgr_prepare_dict</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">list_of_elems</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">obj</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>fmgr_is_empty_dict</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_is_empty_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
-                    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="k">for</span> <span class="n">k1</span><span class="p">,</span> <span class="n">v1</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                            <span class="k">if</span> <span class="n">v1</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                                <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
-                            <span class="k">elif</span> <span class="n">v1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-                                <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
-                                <span class="k">return</span> <span class="n">return_val</span>
-                <span class="k">elif</span> <span class="n">v</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
-                <span class="k">elif</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-                    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
-                    <span class="k">return</span> <span class="n">return_val</span>
-        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
-
-    <span class="k">return</span> <span class="n">return_val</span>
-</pre></div>
-</div>
-</div></blockquote>
-<ul class="simple">
-<li>fmgr_split_comma_strings_into_lists</li>
-</ul>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_split_comma_strings_into_lists</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-                    <span class="n">new_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-                    <span class="k">if</span> <span class="s2">&quot;,&quot;</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
-                        <span class="n">new_items</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-                        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">new_items</span><span class="p">:</span>
-                            <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-                        <span class="n">obj</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_list</span>
-
-    <span class="k">return</span> <span class="n">obj</span>
 
 
 <span class="c1">#############</span>
@@ -1744,9 +1570,6 @@
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
         <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
-        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
         <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;update&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
         <span class="n">package_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">),</span>
 
@@ -1883,8 +1706,7 @@
 
     <span class="p">)</span>
 
-    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="p">)</span>
     <span class="c1"># MODULE PARAMGRAM</span>
     <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
@@ -2023,70 +1845,50 @@
             <span class="s2">&quot;subnet&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vpn_src_node_subnet&quot;</span><span class="p">],</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="n">list_overrides</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;vpn_dst_node&#39;</span><span class="p">,</span> <span class="s1">&#39;vpn_src_node&#39;</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">list_variable</span> <span class="ow">in</span> <span class="n">list_overrides</span><span class="p">:</span>
-        <span class="n">override_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">override_data</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">list_variable</span><span class="p">]</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">override_data</span><span class="p">:</span>
-                <span class="k">del</span> <span class="n">paramgram</span><span class="p">[</span><span class="n">list_variable</span><span class="p">]</span>
-                <span class="n">paramgram</span><span class="p">[</span><span class="n">list_variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">override_data</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">pass</span>
-
-    <span class="c1"># CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.</span>
-    <span class="n">host</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span>
-    <span class="n">password</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">]</span>
-    <span class="n">username</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">username</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">password</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username and password are required&quot;</span><span class="p">)</span>
-
-    <span class="c1"># CHECK IF LOGIN FAILED</span>
-    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
-        <span class="c1"># WE NEED TO GET THE POLICY ID FROM THE NAME OF THE POLICY TO DELETE IT</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/pkg/{pkg}/firewall&#39;</span> \
-              <span class="s1">&#39;/policy/&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                <span class="n">pkg</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;package_name&quot;</span><span class="p">])</span>
-        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
-        <span class="p">}</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;policyid&quot;</span><span class="p">]:</span>
-                <span class="n">policy_id</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;policyid&quot;</span><span class="p">]</span>
-                <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;policyid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">policy_id</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">response</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Couldn&#39;t get Policy ID from name, delete failed&quot;</span><span class="p">)</span>
-
-    <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_firewall_policy_addsetdelete</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">10131</span><span class="p">:</span>
-        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">9998</span><span class="p">,</span> <span class="p">],</span>
-                    <span class="n">msg</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; - Object Dependency Failed. Do the objects named in parameters exist?!&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">3</span><span class="p">:</span>
-        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span>
-                    <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Couldn&#39;t Delete - Policy Doesn&#39;t Exist&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">9998</span><span class="p">],</span>
-                    <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Successfully Set FW Policy&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">9998</span><span class="p">]:</span>
-        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">9998</span><span class="p">],</span>
-                    <span class="n">msg</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;Could not set FW policy.&quot;</span><span class="p">)</span>
-
-    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-
-    <span class="k">if</span> <span class="n">results</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+    <span class="n">fmgr</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">)</span>
+        <span class="n">fmgr</span> <span class="o">=</span> <span class="n">FortiManagerHandler</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="n">fmgr</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">FMGRCommon</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;No results were returned from the API call.&quot;</span><span class="p">)</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">FAIL_SOCKET_MSG</span><span class="p">)</span>
+
+    <span class="n">list_overrides</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;vpn_dst_node&#39;</span><span class="p">,</span> <span class="s1">&#39;vpn_src_node&#39;</span><span class="p">]</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">paramgram_child_list_override</span><span class="p">(</span><span class="n">list_overrides</span><span class="o">=</span><span class="n">list_overrides</span><span class="p">,</span>
+                                                         <span class="n">paramgram</span><span class="o">=</span><span class="n">paramgram</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">)</span>
+
+    <span class="c1"># BEGIN MODULE-SPECIFIC LOGIC -- THINGS NEED TO HAPPEN DEPENDING ON THE ENDPOINT AND OPERATION</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+            <span class="c1"># WE NEED TO GET THE POLICY ID FROM THE NAME OF THE POLICY TO DELETE IT</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/pkg/{pkg}/firewall&#39;</span> \
+                  <span class="s1">&#39;/policy/&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                    <span class="n">pkg</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;package_name&quot;</span><span class="p">])</span>
+            <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+            <span class="p">}</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;policyid&quot;</span><span class="p">]:</span>
+                    <span class="n">policy_id</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;policyid&quot;</span><span class="p">]</span>
+                    <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;policyid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">policy_id</span>
+            <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+                <span class="n">fmgr</span><span class="o">.</span><span class="n">return_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">response</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">],</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                     <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">),</span>
+                                     <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Couldn&#39;t find policy ID number for policy name specified.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_firewall_policy_modify</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">9998</span><span class="p">],</span>
+                             <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
 </div></blockquote>
@@ -2123,13 +1925,15 @@
 <span class="s1">---</span>
 <span class="s1">module: fmgr_fwpol_ipv4</span>
 <span class="s1">version_added: &quot;2.8&quot;</span>
+<span class="s1">notes:</span>
+<span class="s1">    - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).</span>
 <span class="s1">author:</span>
 <span class="s1">    - Luke Weighall (@lweighall)</span>
 <span class="s1">    - Andrew Welsh (@Ghilli3)</span>
 <span class="s1">    - Jim Huber (@p4r4n0y1ng)</span>
-<span class="s1">short_description: Allows the add/delete of Firewall Policies on Packages in FortiManager</span>
+<span class="s1">short_description: Allows the add/delete of Firewall Policies on Packages in FortiManager.</span>
 <span class="s1">description:</span>
-<span class="s1">  -  Allows the add/delete of Firewall Policies on Packages in FortiManager</span>
+<span class="s1">  -  Allows the add/delete of Firewall Policies on Packages in FortiManager.</span>
 
 <span class="s1">options:</span>
 <span class="s1">  adom:</span>
@@ -2137,21 +1941,6 @@
 <span class="s1">      - The ADOM the configuration should belong to.</span>
 <span class="s1">    required: false</span>
 <span class="s1">    default: root</span>
-
-<span class="s1">  host:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The FortiManager&#39;s Address.</span>
-<span class="s1">    required: true</span>
-
-<span class="s1">  username:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The username associated with the account.</span>
-<span class="s1">    required: true</span>
-
-<span class="s1">  password:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The password associated with the username account.</span>
-<span class="s1">    required: true</span>
 
 <span class="s1">  mode:</span>
 <span class="s1">    description:</span>
@@ -2407,7 +2196,7 @@
 
 <span class="s1">  schedule_timeout:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - Enable to force current sessions to end when the schedule object times out. Disable allows them to end from inactivity.</span>
+<span class="s1">      - Enable to force current sessions to end when the schedule object times out.</span>
 <span class="s1">      - choice | disable | Disable schedule timeout.</span>
 <span class="s1">      - choice | enable | Enable schedule timeout.</span>
 <span class="s1">    required: false</span>
@@ -2751,7 +2540,7 @@
 <span class="s1">  firewall_session_dirty:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - How to handle sessions if the configuration of this firewall policy changes.</span>
-<span class="s1">      - choice | check-all | Flush all current sessions accepted by this policy. These sessions must be started and re-matched with policies.</span>
+<span class="s1">      - choice | check-all | Flush all current sessions accepted by this policy.</span>
 <span class="s1">      - choice | check-new | Continue to allow sessions already accepted by this policy.</span>
 <span class="s1">    required: false</span>
 <span class="s1">    choices: [&quot;check-all&quot;, &quot;check-new&quot;]</span>
@@ -2961,22 +2750,21 @@
 <span class="s1">      - Dictionaries must use FortiManager API parameters, not the ansible ones listed below.</span>
 <span class="s1">      - If submitted, all other prefixed sub-parameters ARE IGNORED. This object is MUTUALLY EXCLUSIVE with its options.</span>
 <span class="s1">      - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.</span>
-<span class="s1">      - WHEN IN DOUBT, OMIT THE USE OF THIS PARAMETER AND USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS</span>
 <span class="s1">    required: false</span>
 
 <span class="s1">  vpn_dst_node_host:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - NO DESCRIPTION PARSED ENTER MANUALLY</span>
+<span class="s1">      - VPN Destination Node Host.</span>
 <span class="s1">    required: false</span>
 
 <span class="s1">  vpn_dst_node_seq:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - NO DESCRIPTION PARSED ENTER MANUALLY</span>
+<span class="s1">      - VPN Destination Node Seq.</span>
 <span class="s1">    required: false</span>
 
 <span class="s1">  vpn_dst_node_subnet:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - NO DESCRIPTION PARSED ENTER MANUALLY</span>
+<span class="s1">      - VPN Destination Node Seq.</span>
 <span class="s1">    required: false</span>
 
 <span class="s1">  vpn_src_node:</span>
@@ -2986,22 +2774,21 @@
 <span class="s1">      - Dictionaries must use FortiManager API parameters, not the ansible ones listed below.</span>
 <span class="s1">      - If submitted, all other prefixed sub-parameters ARE IGNORED. This object is MUTUALLY EXCLUSIVE with its options.</span>
 <span class="s1">      - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.</span>
-<span class="s1">      - WHEN IN DOUBT, OMIT THE USE OF THIS PARAMETER AND USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS</span>
 <span class="s1">    required: false</span>
 
 <span class="s1">  vpn_src_node_host:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - NO DESCRIPTION PARSED ENTER MANUALLY</span>
+<span class="s1">      - VPN Source Node Host.</span>
 <span class="s1">    required: false</span>
 
 <span class="s1">  vpn_src_node_seq:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - NO DESCRIPTION PARSED ENTER MANUALLY</span>
+<span class="s1">      - VPN Source Node Seq.</span>
 <span class="s1">    required: false</span>
 
 <span class="s1">  vpn_src_node_subnet:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - NO DESCRIPTION PARSED ENTER MANUALLY</span>
+<span class="s1">      - VPN Source Node.</span>
 <span class="s1">    required: false</span>
 
 
@@ -3010,9 +2797,6 @@
 <span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">- name: ADD VERY BASIC IPV4 POLICY WITH NO NAT (WIDE OPEN)</span>
 <span class="s1">  fmgr_fwpol_ipv4:</span>
-<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    mode: &quot;set&quot;</span>
 <span class="s1">    adom: &quot;ansible&quot;</span>
 <span class="s1">    package_name: &quot;default&quot;</span>
@@ -3029,9 +2813,6 @@
 
 <span class="s1">- name: ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES</span>
 <span class="s1">  fmgr_fwpol_ipv4:</span>
-<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    mode: &quot;set&quot;</span>
 <span class="s1">    adom: &quot;ansible&quot;</span>
 <span class="s1">    package_name: &quot;default&quot;</span>
@@ -3050,9 +2831,6 @@
 
 <span class="s1">- name: ADD VERY BASIC IPV4 POLICY WITH NAT AND MULTIPLE ENTRIES AND SEC PROFILES</span>
 <span class="s1">  fmgr_fwpol_ipv4:</span>
-<span class="s1">    host: &quot;{{ inventory_hostname }}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    mode: &quot;set&quot;</span>
 <span class="s1">    adom: &quot;ansible&quot;</span>
 <span class="s1">    package_name: &quot;default&quot;</span>
@@ -3077,48 +2855,50 @@
 <span class="s2">api_result:</span>
 <span class="s2">  description: full API response, includes status code and message</span>
 <span class="s2">  returned: always</span>
-<span class="s2">  type: string</span>
+<span class="s2">  type: str</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
-<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">AnsibleFortiManager</span>
-
-<span class="c1"># check for pyFMG lib</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">pyFMG.fortimgr</span> <span class="kn">import</span> <span class="n">FortiManager</span>
-
-    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">True</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">False</span>
-
-<span class="c1">###############</span>
-<span class="c1"># START METHODS</span>
-<span class="c1">###############</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.connection</span> <span class="kn">import</span> <span class="n">Connection</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">FortiManagerHandler</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGBaseException</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGRCommon</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGRMethods</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FAIL_SOCKET_MSG</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">prepare_dict</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">scrub_dict</span>
 
 
-<span class="k">def</span> <span class="nf">fmgr_firewall_policy_addsetdelete</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+<span class="k">def</span> <span class="nf">fmgr_firewall_policy_modify</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    fmgr_firewall_policy -- Your Description here, bruh</span>
+<span class="sd">    fmgr_firewall_policy -- Add/Set/Deletes Firewall Policy Objects defined in the &quot;paramgram&quot;</span>
+
+<span class="sd">    :param fmgr: The fmgr object instance from fmgr_utils.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
 <span class="sd">    &quot;&quot;&quot;</span>
 
     <span class="n">mode</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span>
     <span class="n">adom</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
     <span class="c1"># INIT A BASIC OBJECTS</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="p">(</span><span class="o">-</span><span class="mi">100000</span><span class="p">,</span> <span class="p">{</span><span class="s2">&quot;msg&quot;</span><span class="p">:</span> <span class="s2">&quot;Illegal or malformed paramgram discovered. System Exception&quot;</span><span class="p">})</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="c1"># EVAL THE MODE PARAMETER FOR SET OR ADD</span>
     <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">]:</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/pkg/{pkg}/firewall/policy&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">pkg</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;package_name&quot;</span><span class="p">])</span>
-        <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">fmgr_prepare_dict</span><span class="p">(</span><span class="n">paramgram</span><span class="p">))</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="n">scrub_dict</span><span class="p">((</span><span class="n">prepare_dict</span><span class="p">(</span><span class="n">paramgram</span><span class="p">)))</span>
         <span class="k">del</span> <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;package_name&quot;</span><span class="p">]</span>
-        <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr_split_comma_strings_into_lists</span><span class="p">(</span><span class="n">datagram</span><span class="p">)</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">_tools</span><span class="o">.</span><span class="n">split_comma_strings_into_lists</span><span class="p">(</span><span class="n">datagram</span><span class="p">)</span>
 
     <span class="c1"># EVAL THE MODE PARAMETER FOR DELETE</span>
     <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
-
-        <span class="c1"># WE NEED TO GET THE POLICY ID FROM THE NAME OF THE POLICY</span>
         <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/pkg/{pkg}/firewall&#39;</span> \
               <span class="s1">&#39;/policy/{policyid}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
                                           <span class="n">pkg</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;package_name&quot;</span><span class="p">],</span>
@@ -3127,125 +2907,8 @@
             <span class="s2">&quot;policyid&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;policyid&quot;</span><span class="p">]</span>
         <span class="p">}</span>
 
-    <span class="c1"># IF MODE = SET -- USE THE &#39;SET&#39; API CALL MODE</span>
-    <span class="k">if</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;set&quot;</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-    <span class="c1"># IF MODE = UPDATE -- USER THE &#39;UPDATE&#39; API CALL MODE</span>
-    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;update&quot;</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-    <span class="c1"># IF MODE = ADD  -- USE THE &#39;ADD&#39; API CALL MODE</span>
-    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-    <span class="c1"># IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE</span>
-    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">response</span>
-
-
-<span class="c1"># ADDITIONAL COMMON FUNCTIONS</span>
-<span class="c1"># FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES</span>
-<span class="k">def</span> <span class="nf">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NULL&quot;</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="p">(),</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,),</span> <span class="n">logout_on_fail</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">logout_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">):</span>
-    <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS</span>
-<span class="sd">    &quot;&quot;&quot;</span>
-
-    <span class="c1"># VALIDATION ERROR (NO RESULTS, JUST AN EXIT)</span>
-    <span class="k">if</span> <span class="n">msg</span> <span class="o">!=</span> <span class="s2">&quot;NULL&quot;</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">)</span>
-
-    <span class="c1"># SUBMISSION ERROR</span>
-    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">msg</span> <span class="o">==</span> <span class="s2">&quot;NULL&quot;</span><span class="p">:</span>
-            <span class="k">try</span><span class="p">:</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;message&#39;</span><span class="p">]</span>
-            <span class="k">except</span><span class="p">:</span>
-                <span class="n">msg</span> <span class="o">=</span> <span class="s2">&quot;No status message returned from pyFMG. Possible that this was a GET with a tuple result.&quot;</span>
-
-        <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">good_codes</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">logout_on_fail</span><span class="p">:</span>
-                <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="n">msg</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">logout_on_success</span><span class="p">:</span>
-                <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;API Called worked, but logout handler has been asked to logout on success&quot;</span><span class="p">,</span>
-                                 <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-
-    <span class="k">return</span> <span class="n">msg</span>
-
-
-<span class="c1"># FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK</span>
-<span class="c1"># DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM</span>
-<span class="k">def</span> <span class="nf">fmgr_cidr_to_netmask</span><span class="p">(</span><span class="n">cidr</span><span class="p">):</span>
-    <span class="n">cidr</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">cidr</span><span class="p">)</span>
-    <span class="n">mask</span> <span class="o">=</span> <span class="p">(</span><span class="mh">0xffffffff</span> <span class="o">&gt;&gt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">))</span> <span class="o">&lt;&lt;</span> <span class="p">(</span><span class="mi">32</span> <span class="o">-</span> <span class="n">cidr</span><span class="p">)</span>
-    <span class="k">return</span> <span class="p">(</span><span class="nb">str</span><span class="p">((</span><span class="mh">0xff000000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">24</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
-            <span class="nb">str</span><span class="p">((</span><span class="mh">0x00ff0000</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">16</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
-            <span class="nb">str</span><span class="p">((</span><span class="mh">0x0000ff00</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)</span> <span class="o">&gt;&gt;</span> <span class="mi">8</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;.&#39;</span> <span class="o">+</span>
-            <span class="nb">str</span><span class="p">((</span><span class="mh">0x000000ff</span> <span class="o">&amp;</span> <span class="n">mask</span><span class="p">)))</span>
-
-
-<span class="c1"># utility function: removing keys wih value of None, nothing in playbook for that key</span>
-<span class="k">def</span> <span class="nf">fmgr_del_none</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="k">return</span> <span class="nb">type</span><span class="p">(</span><span class="n">obj</span><span class="p">)((</span><span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">k</span><span class="p">),</span> <span class="n">fmgr_del_none</span><span class="p">(</span><span class="n">v</span><span class="p">))</span>
-                         <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">k</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">fmgr_is_empty_dict</span><span class="p">(</span><span class="n">v</span><span class="p">)))</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">obj</span>
-
-
-<span class="c1"># utility function: remove keys that are need for the logic but the FMG API won&#39;t accept them</span>
-<span class="k">def</span> <span class="nf">fmgr_prepare_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-    <span class="n">list_of_elems</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">,</span> <span class="s2">&quot;adom&quot;</span><span class="p">,</span> <span class="s2">&quot;host&quot;</span><span class="p">,</span> <span class="s2">&quot;username&quot;</span><span class="p">,</span> <span class="s2">&quot;password&quot;</span><span class="p">]</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="n">obj</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">((</span><span class="n">key</span><span class="p">,</span> <span class="n">fmgr_prepare_dict</span><span class="p">(</span><span class="n">value</span><span class="p">))</span> <span class="k">for</span> <span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">)</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">()</span> <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">list_of_elems</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">obj</span>
-
-
-<span class="k">def</span> <span class="nf">fmgr_is_empty_dict</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-                    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
-                    <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">v</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-                        <span class="k">for</span> <span class="n">k1</span><span class="p">,</span> <span class="n">v1</span> <span class="ow">in</span> <span class="n">v</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                            <span class="k">if</span> <span class="n">v1</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                                <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
-                            <span class="k">elif</span> <span class="n">v1</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-                                <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
-                                <span class="k">return</span> <span class="n">return_val</span>
-                <span class="k">elif</span> <span class="n">v</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-                    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
-                <span class="k">elif</span> <span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-                    <span class="n">return_val</span> <span class="o">=</span> <span class="bp">False</span>
-                    <span class="k">return</span> <span class="n">return_val</span>
-        <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">return_val</span> <span class="o">=</span> <span class="bp">True</span>
-
-    <span class="k">return</span> <span class="n">return_val</span>
-
-
-<span class="k">def</span> <span class="nf">fmgr_split_comma_strings_into_lists</span><span class="p">(</span><span class="n">obj</span><span class="p">):</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">obj</span><span class="p">,</span> <span class="nb">dict</span><span class="p">):</span>
-        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">obj</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">obj</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-                <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">v</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
-                    <span class="n">new_list</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-                    <span class="k">if</span> <span class="s2">&quot;,&quot;</span> <span class="ow">in</span> <span class="n">v</span><span class="p">:</span>
-                        <span class="n">new_items</span> <span class="o">=</span> <span class="n">v</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
-                        <span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">new_items</span><span class="p">:</span>
-                            <span class="n">new_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">strip</span><span class="p">())</span>
-                        <span class="n">obj</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">new_list</span>
-
-    <span class="k">return</span> <span class="n">obj</span>
 
 
 <span class="c1">#############</span>
@@ -3256,9 +2919,6 @@
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
         <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
-        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
         <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;update&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
         <span class="n">package_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;default&quot;</span><span class="p">),</span>
 
@@ -3395,8 +3055,7 @@
 
     <span class="p">)</span>
 
-    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
-
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="p">)</span>
     <span class="c1"># MODULE PARAMGRAM</span>
     <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
@@ -3535,70 +3194,50 @@
             <span class="s2">&quot;subnet&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;vpn_src_node_subnet&quot;</span><span class="p">],</span>
         <span class="p">}</span>
     <span class="p">}</span>
-    <span class="n">list_overrides</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;vpn_dst_node&#39;</span><span class="p">,</span> <span class="s1">&#39;vpn_src_node&#39;</span><span class="p">]</span>
-    <span class="k">for</span> <span class="n">list_variable</span> <span class="ow">in</span> <span class="n">list_overrides</span><span class="p">:</span>
-        <span class="n">override_data</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="n">override_data</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="n">list_variable</span><span class="p">]</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">pass</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">override_data</span><span class="p">:</span>
-                <span class="k">del</span> <span class="n">paramgram</span><span class="p">[</span><span class="n">list_variable</span><span class="p">]</span>
-                <span class="n">paramgram</span><span class="p">[</span><span class="n">list_variable</span><span class="p">]</span> <span class="o">=</span> <span class="n">override_data</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="k">pass</span>
-
-    <span class="c1"># CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.</span>
-    <span class="n">host</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span>
-    <span class="n">password</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">]</span>
-    <span class="n">username</span> <span class="o">=</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">host</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">username</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">password</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username and password are required&quot;</span><span class="p">)</span>
-
-    <span class="c1"># CHECK IF LOGIN FAILED</span>
-    <span class="n">fmg</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
-
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
-    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;status&#39;</span><span class="p">][</span><span class="s1">&#39;code&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiManager Failed&quot;</span><span class="p">)</span>
-
-    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
-        <span class="c1"># WE NEED TO GET THE POLICY ID FROM THE NAME OF THE POLICY TO DELETE IT</span>
-        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/pkg/{pkg}/firewall&#39;</span> \
-              <span class="s1">&#39;/policy/&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-                                <span class="n">pkg</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;package_name&quot;</span><span class="p">])</span>
-        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
-        <span class="p">}</span>
-        <span class="n">response</span> <span class="o">=</span> <span class="n">fmg</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
-        <span class="k">try</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;policyid&quot;</span><span class="p">]:</span>
-                <span class="n">policy_id</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;policyid&quot;</span><span class="p">]</span>
-                <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;policyid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">policy_id</span>
-        <span class="k">except</span><span class="p">:</span>
-            <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">response</span><span class="p">,</span> <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Couldn&#39;t get Policy ID from name, delete failed&quot;</span><span class="p">)</span>
-
-    <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_firewall_policy_addsetdelete</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-    <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">10131</span><span class="p">:</span>
-        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">9998</span><span class="p">,</span> <span class="p">],</span>
-                    <span class="n">msg</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot; - Object Dependency Failed. Do the objects named in parameters exist?!&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="o">-</span><span class="mi">3</span><span class="p">:</span>
-        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">3</span><span class="p">],</span>
-                    <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Couldn&#39;t Delete - Policy Doesn&#39;t Exist&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">9998</span><span class="p">],</span>
-                    <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Successfully Set FW Policy&quot;</span><span class="p">)</span>
-    <span class="k">elif</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">9998</span><span class="p">]:</span>
-        <span class="n">fmgr_logout</span><span class="p">(</span><span class="n">fmg</span><span class="p">,</span> <span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">9998</span><span class="p">],</span>
-                    <span class="n">msg</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;Could not set FW policy.&quot;</span><span class="p">)</span>
-
-    <span class="n">fmg</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-
-    <span class="k">if</span> <span class="n">results</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+    <span class="n">fmgr</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">)</span>
+        <span class="n">fmgr</span> <span class="o">=</span> <span class="n">FortiManagerHandler</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="n">fmgr</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">FMGRCommon</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;No results were returned from the API call.&quot;</span><span class="p">)</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">FAIL_SOCKET_MSG</span><span class="p">)</span>
+
+    <span class="n">list_overrides</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;vpn_dst_node&#39;</span><span class="p">,</span> <span class="s1">&#39;vpn_src_node&#39;</span><span class="p">]</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">paramgram_child_list_override</span><span class="p">(</span><span class="n">list_overrides</span><span class="o">=</span><span class="n">list_overrides</span><span class="p">,</span>
+                                                         <span class="n">paramgram</span><span class="o">=</span><span class="n">paramgram</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">)</span>
+
+    <span class="c1"># BEGIN MODULE-SPECIFIC LOGIC -- THINGS NEED TO HAPPEN DEPENDING ON THE ENDPOINT AND OPERATION</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+            <span class="c1"># WE NEED TO GET THE POLICY ID FROM THE NAME OF THE POLICY TO DELETE IT</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/pkg/{pkg}/firewall&#39;</span> \
+                  <span class="s1">&#39;/policy/&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+                                    <span class="n">pkg</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;package_name&quot;</span><span class="p">])</span>
+            <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+                <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]]</span>
+            <span class="p">}</span>
+            <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+            <span class="k">try</span><span class="p">:</span>
+                <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;policyid&quot;</span><span class="p">]:</span>
+                    <span class="n">policy_id</span> <span class="o">=</span> <span class="n">response</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">][</span><span class="s2">&quot;policyid&quot;</span><span class="p">]</span>
+                    <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;policyid&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">policy_id</span>
+            <span class="k">except</span> <span class="ne">BaseException</span><span class="p">:</span>
+                <span class="n">fmgr</span><span class="o">.</span><span class="n">return_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">response</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">],</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span>
+                                     <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">),</span>
+                                     <span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Couldn&#39;t find policy ID number for policy name specified.&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_firewall_policy_modify</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">9998</span><span class="p">],</span>
+                             <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 
 <span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
@@ -3628,7 +3267,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
 
     </p>
   </div>
@@ -3647,21 +3286,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 

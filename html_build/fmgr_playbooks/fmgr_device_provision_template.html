@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fmgr_fortimeter" href="fmgr_fortimeter.html" />
+    <link rel="next" title="fmgr_fwobj_address" href="fmgr_fwobj_address.html" />
     <link rel="prev" title="fmgr_device_group" href="fmgr_device_group.html" /> 
 
   
@@ -90,8 +90,9 @@
 <li class="toctree-l4"><a class="reference internal" href="#playbook-file-examples">Playbook File Examples</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
@@ -112,7 +113,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
@@ -194,31 +194,22 @@
 <h2>Playbook Task Examples<a class="headerlink" href="#playbook-task-examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET SNMP SYSTEM INFO</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;default&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">snmp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET SNMP SYSTEM INFO ANSIBLE ADOM</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;default&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">snmp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET SNMP SYSTEM INFO different template (SNMPv2)</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">snmp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">snmp_v2c_query_port</span><span class="p p-Indicator">:</span> <span class="s">&quot;162&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">snmp_v2c_trap_port</span><span class="p p-Indicator">:</span> <span class="s">&quot;161&quot;</span>
@@ -233,12 +224,9 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET SNMP SYSTEM INFO different template (SNMPv3)</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">snmp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">snmpv3_auth_proto</span><span class="p p-Indicator">:</span> <span class="s">&quot;sha&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">snmpv3_auth_pwd</span><span class="p p-Indicator">:</span> <span class="s">&quot;fortinet&quot;</span>
@@ -256,11 +244,8 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET SYSLOG INFO</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">syslog_server</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.59&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">syslog_port</span><span class="p p-Indicator">:</span> <span class="s">&quot;514&quot;</span>
@@ -270,11 +255,8 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET NTP TO FORTIGUARD</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ntp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ntp_sync_interval</span><span class="p p-Indicator">:</span> <span class="s">&quot;60&quot;</span>
@@ -282,11 +264,8 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET NTP TO CUSTOM SERVER</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ntp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">ntp_sync_interval</span><span class="p p-Indicator">:</span> <span class="s">&quot;60&quot;</span>
@@ -298,11 +277,8 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET ADMIN GLOBAL SETTINGS</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">admin_https_redirect</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">admin_https_port</span><span class="p p-Indicator">:</span> <span class="s">&quot;4433&quot;</span>
@@ -317,11 +293,8 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET CUSTOM SMTP SERVER</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">smtp_username</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">smtp_password</span><span class="p p-Indicator">:</span> <span class="s">&quot;fortinet&quot;</span>
@@ -334,11 +307,8 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET DNS SERVERS</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">dns_suffix</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible.local&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">dns_primary_ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;8.8.8.8&quot;</span>
@@ -346,42 +316,50 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET PROVISIONING TEMPLATE DEVICE TARGETS IN FORTIMANAGER</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">provision_targets</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT1,</span><span class="nv"> </span><span class="s">FGT2&quot;</span>
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE ENTIRE PROVISIONING TEMPLATE</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">delete_provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="playbook-file-examples">
 <h2>Playbook File Examples<a class="headerlink" href="#playbook-file-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fmgr-device-provision-template-remove-scope-yml">
+<h3>fmgr_device_provision_template_remove_scope.yml<a class="headerlink" href="#fmgr-device-provision-template-remove-scope-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE DEVICE PROVISION TEMPLATES</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET PROVISIONING TEMPLATE DEVICE TARGETS IN FORTIMANAGER</span>
+      <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">provision_targets</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT1,FGT2&quot;</span>
+</pre></div>
+</div>
+</div>
 <div class="section" id="fmgr-device-proftemplate-faz-assign-yml">
 <h3>fmgr_device_proftemplate_faz_assign.yml<a class="headerlink" href="#fmgr-device-proftemplate-faz-assign-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE PROVISION TEMPLATES</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
 <span class="c1">#    - name: SET ADMIN GLOBAL SETTINGS</span>
 <span class="c1">#      fmgr_device_provision_template:</span>
-<span class="c1">#        host: &quot;{{ inventory_hostname }}&quot;</span>
-<span class="c1">#        username: &quot;{{ username }}&quot;</span>
-<span class="c1">#        password: &quot;{{ password }}&quot;</span>
 <span class="c1">#        provisioning_template: &quot;testTemplate&quot;</span>
-<span class="c1">#        state: &quot;present&quot;</span>
+<span class="c1">#        mode: &quot;set&quot;</span>
 <span class="c1">#        adom: &quot;ansible&quot;</span>
 <span class="c1">#        admin_https_redirect: &quot;enable&quot;</span>
 <span class="c1">#        admin_timeout: &quot;60&quot;</span>
@@ -390,23 +368,33 @@
 <span class="c1">#</span>
 <span class="c1">#    - name: SET PROVISIONING TEMPLATE DEVICE TARGETS IN FORTIMANAGER</span>
 <span class="c1">#      fmgr_device_provision_template:</span>
-<span class="c1">#        host: &quot;{{ inventory_hostname }}&quot;</span>
-<span class="c1">#        username: &quot;{{ username }}&quot;</span>
-<span class="c1">#        password: &quot;{{ password }}&quot;</span>
 <span class="c1">#        provisioning_template: &quot;testTemplate&quot;</span>
-<span class="c1">#        state: &quot;present&quot;</span>
+<span class="c1">#        mode: &quot;set&quot;</span>
 <span class="c1">#        adom: &quot;ansible&quot;</span>
 <span class="c1">#        provision_targets: &quot;seattle-fgt-cluster&quot;</span>
 
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">INSTALL CONFIG</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_config</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">device_unique_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;seattle-fgt-cluster&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">install_config</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-device-provision-template-delete-yml">
+<h3>fmgr_device_provision_template_delete.yml<a class="headerlink" href="#fmgr-device-provision-template-delete-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE PROVISION TEMPLATES</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE ENTIRE PROVISIONING TEMPLATE</span>
+      <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">delete_provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -414,27 +402,21 @@
 <h3>fmgr_device_provision_template.yml<a class="headerlink" href="#fmgr-device-provision-template-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE PROVISION TEMPLATES</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET SNMP SYSTEM INFO ANSIBLE ADOM</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET SYSLOG INFO</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">syslog_server</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.59&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">syslog_port</span><span class="p p-Indicator">:</span> <span class="s">&quot;514&quot;</span>
@@ -445,12 +427,9 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET SNMP SYSTEM INFO different template</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmp_v2c_query_port</span><span class="p p-Indicator">:</span> <span class="s">&quot;162&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmp_v2c_trap_port</span><span class="p p-Indicator">:</span> <span class="s">&quot;161&quot;</span>
@@ -466,12 +445,9 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET SNMP SYSTEM INFO different template (SNMPv3)</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmpv3_auth_proto</span><span class="p p-Indicator">:</span> <span class="s">&quot;sha&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmpv3_auth_pwd</span><span class="p p-Indicator">:</span> <span class="s">&quot;fortinet&quot;</span>
@@ -489,11 +465,8 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET NTP TO FORTIGUARD</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">ntp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">ntp_sync_interval</span><span class="p p-Indicator">:</span> <span class="s">&quot;60&quot;</span>
@@ -501,11 +474,8 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET NTP TO CUSTOM SERVER</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">ntp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">ntp_sync_interval</span><span class="p p-Indicator">:</span> <span class="s">&quot;60&quot;</span>
@@ -516,11 +486,8 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET ADMIN GLOBAL SETTINGS</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">admin_https_redirect</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">admin_https_port</span><span class="p p-Indicator">:</span> <span class="s">&quot;4433&quot;</span>
@@ -535,11 +502,8 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET CUSTOM SMTP SERVER</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">smtp_username</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">smtp_password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
@@ -552,11 +516,8 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET DNS SERVERS</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">dns_suffix</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible.local&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">dns_primary_ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;8.8.8.8&quot;</span>
@@ -564,51 +525,42 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET PROVISIONING TEMPLATE DEVICE TARGETS IN FORTIMANAGER</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;set&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provision_targets</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT1,FGT2&quot;</span>
 </pre></div>
 </div>
 </div>
+<div class="section" id="fmgr-device-provision-template-run-all-sh">
+<h3>fmgr_device_provision_template_run_all.sh<a class="headerlink" href="#fmgr-device-provision-template-run-all-sh" title="Permalink to this headline">¶</a></h3>
+</div>
 <div class="section" id="fmgr-device-provision-template-absent-yml">
 <h3>fmgr_device_provision_template_absent.yml<a class="headerlink" href="#fmgr-device-provision-template-absent-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE DEVICE PROVISION TEMPLATES</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE SNMP SYSTEM INFO</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE SNMP SYSTEM INFO ANSIBLE ADOM</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE SYSLOG INFO</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">syslog_server</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.59&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">syslog_port</span><span class="p p-Indicator">:</span> <span class="s">&quot;514&quot;</span>
@@ -618,12 +570,9 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE SNMP SYSTEM INFO different template</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmp_v2c_query_port</span><span class="p p-Indicator">:</span> <span class="s">&quot;162&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmp_v2c_trap_port</span><span class="p p-Indicator">:</span> <span class="s">&quot;161&quot;</span>
@@ -638,12 +587,9 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE SNMP SYSTEM INFO different template (SNMPv3)</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmpv3_auth_proto</span><span class="p p-Indicator">:</span> <span class="s">&quot;sha&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">snmpv3_auth_pwd</span><span class="p p-Indicator">:</span> <span class="s">&quot;fortinet&quot;</span>
@@ -661,11 +607,8 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE NTP TO FORTIGUARD</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">ntp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">ntp_sync_interval</span><span class="p p-Indicator">:</span> <span class="s">&quot;60&quot;</span>
@@ -673,11 +616,8 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE NTP TO CUSTOM SERVER</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">ntp_status</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">ntp_sync_interval</span><span class="p p-Indicator">:</span> <span class="s">&quot;60&quot;</span>
@@ -689,11 +629,8 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE ADMIN GLOBAL DELETETINGS</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">admin_https_redirect</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">admin_https_port</span><span class="p p-Indicator">:</span> <span class="s">&quot;4433&quot;</span>
@@ -707,11 +644,8 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE CUSTOM SMTP SERVER</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">smtp_username</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">smtp_password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
@@ -724,11 +658,8 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET DNS SERVERS</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">dns_suffix</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible.local&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">dns_primary_ipv4</span><span class="p p-Indicator">:</span> <span class="s">&quot;8.8.8.8&quot;</span>
@@ -736,50 +667,8 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET PROVISIONING TEMPLATE DEVICE TARGETS IN FORTIMANAGER</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">provision_targets</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT1,FGT2&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="fmgr-device-provision-template-delete-yml">
-<h3>fmgr_device_provision_template_delete.yml<a class="headerlink" href="#fmgr-device-provision-template-delete-yml" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE PROVISION TEMPLATES</span>
-  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE ENTIRE PROVISIONING TEMPLATE</span>
-      <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">delete_provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="fmgr-device-provision-template-remove-scope-yml">
-<h3>fmgr_device_provision_template_remove_scope.yml<a class="headerlink" href="#fmgr-device-provision-template-remove-scope-yml" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE DEVICE PROVISION TEMPLATES</span>
-  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SET PROVISIONING TEMPLATE DEVICE TARGETS IN FORTIMANAGER</span>
-      <span class="l l-Scalar l-Scalar-Plain">fmgr_device_provision_template</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">provisioning_template</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansibleTest&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">provision_targets</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT1,FGT2&quot;</span>
 </pre></div>
@@ -796,7 +685,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="fmgr_fortimeter.html" class="btn btn-neutral float-right" title="fmgr_fortimeter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="fmgr_fwobj_address.html" class="btn btn-neutral float-right" title="fmgr_fwobj_address" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="fmgr_device_group.html" class="btn btn-neutral" title="fmgr_device_group" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
@@ -808,7 +697,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
 
     </p>
   </div>
@@ -827,21 +716,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 

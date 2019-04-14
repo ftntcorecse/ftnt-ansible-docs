@@ -86,8 +86,9 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
@@ -112,7 +113,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
@@ -194,36 +194,24 @@
 <h2>Playbook Task Examples<a class="headerlink" href="#playbook-task-examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">QUERY FORTIGATE DEVICE BY IP</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_query</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">object</span><span class="p p-Indicator">:</span> <span class="s">&quot;device&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">device_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.41&quot;</span>
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">QUERY FORTIGATE DEVICE BY SERIAL</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_query</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">object</span><span class="p p-Indicator">:</span> <span class="s">&quot;device&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">device_serial</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGVM000000117992&quot;</span>
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">QUERY FORTIGATE DEVICE BY FRIENDLY NAME</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_query</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">object</span><span class="p p-Indicator">:</span> <span class="s">&quot;device&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">device_unique_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible-fgt01&quot;</span>
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">VERIFY CLUSTER MEMBERS AND STATUS</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_query</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">object</span><span class="p p-Indicator">:</span> <span class="s">&quot;cluster_nodes&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">device_unique_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;fgt-cluster01&quot;</span>
@@ -231,18 +219,12 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET STATUS OF TASK ID</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_query</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">object</span><span class="p p-Indicator">:</span> <span class="s">&quot;task&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">task_id</span><span class="p p-Indicator">:</span> <span class="s">&quot;3&quot;</span>
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">USE CUSTOM TYPE TO QUERY AVAILABLE SCRIPTS</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_query</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">object</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">custom_endpoint</span><span class="p p-Indicator">:</span> <span class="s">&quot;/dvmdb/adom/ansible/script&quot;</span>
@@ -256,67 +238,52 @@
 <h3>fmgr_query_test.yml<a class="headerlink" href="#fmgr-query-test-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FW POLICY PACKAGES AND FOLDERS</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">QUERY FORTIGATE DEVICE BY IP</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_query</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">object</span><span class="p p-Indicator">:</span> <span class="s">&quot;device&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">device_ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.151&quot;</span>
+<span class="c1">#  - name: QUERY FORTIGATE DEVICE BY IP</span>
+<span class="c1">#    fmgr_query:</span>
+<span class="c1">#      object: &quot;device&quot;</span>
+<span class="c1">#      adom: &quot;ansible&quot;</span>
+<span class="c1">#      device_ip: &quot;10.7.220.151&quot;</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">QUERY FORTIGATE DEVICE BY SERIAL</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_query</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">object</span><span class="p p-Indicator">:</span> <span class="s">&quot;device&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">device_serial</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGVM010000122995&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">device_serial</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGVM04TM18000391&quot;</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">QUERY FORTIGATE DEVICE BY FRIENDLY NAME</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_query</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">object</span><span class="p p-Indicator">:</span> <span class="s">&quot;device&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">device_unique_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT3&quot;</span>
 
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">VERIFY CLUSTER MEMBERS AND STATUS</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_query</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">object</span><span class="p p-Indicator">:</span> <span class="s">&quot;cluster_nodes&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">device_unique_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;nyc-fgt-cluster&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">nodes</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">[</span><span class="s">&quot;nyc-fgt01&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;nyc-fgt02&quot;</span><span class="p p-Indicator">,</span> <span class="s">&quot;nyc-fgt03&quot;</span><span class="p p-Indicator">]</span>
+<span class="c1">#  - name: VERIFY CLUSTER MEMBERS AND STATUS</span>
+<span class="c1">#    fmgr_query:</span>
+<span class="c1">#      adom: &quot;ansible&quot;</span>
+<span class="c1">#      object: &quot;cluster_nodes&quot;</span>
+<span class="c1">#      device_unique_name: &quot;nyc-fgt-cluster&quot;</span>
+<span class="c1">#      nodes: [&quot;nyc-fgt01&quot;, &quot;nyc-fgt02&quot;, &quot;nyc-fgt03&quot;]</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET STATUS OF TASK ID</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_query</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">object</span><span class="p p-Indicator">:</span> <span class="s">&quot;task&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">task_id</span><span class="p p-Indicator">:</span> <span class="s">&quot;3&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">task_id</span><span class="p p-Indicator">:</span> <span class="s">&quot;247&quot;</span>
 
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">USE CUSTOM TYPE TO QUERY AVAILABLE SCRIPTS</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_query</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">object</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">custom_endpoint</span><span class="p p-Indicator">:</span> <span class="s">&quot;/dvmdb/adom/ansible/script&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">custom_dict</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">{</span> <span class="s">&quot;type&quot;</span><span class="p p-Indicator">:</span> <span class="s">&quot;cli&quot;</span> <span class="p p-Indicator">}</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="fmgr-query-run-all-sh">
+<h3>fmgr_query_run_all.sh<a class="headerlink" href="#fmgr-query-run-all-sh" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>
@@ -341,7 +308,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
 
     </p>
   </div>
@@ -360,21 +327,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 

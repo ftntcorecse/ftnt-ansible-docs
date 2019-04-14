@@ -90,8 +90,9 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
@@ -112,7 +113,6 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
-<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
@@ -194,30 +194,21 @@
 <h2>Playbook Task Examples<a class="headerlink" href="#playbook-task-examples" title="Permalink to this headline">¶</a></h2>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE GROUP</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;TestGroup&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE GROUP 2</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;AnsibleGroup&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD DEVICES TO DEVICE GROUP</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;TestGroup&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">grp_members</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT1,FGT2&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
@@ -225,186 +216,49 @@
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE DEVICES TO DEVICE GROUP</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;TestGroup&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">grp_members</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT1,FGT2&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
 
 <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE DEVICE GROUP</span>
   <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{inventory_hostname}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;AnsibleGroup&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
-    <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
     <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="playbook-file-examples">
 <h2>Playbook File Examples<a class="headerlink" href="#playbook-file-examples" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="fmgr-device-groups-yml">
-<h3>fmgr_device_groups.yml<a class="headerlink" href="#fmgr-device-groups-yml" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE GROUP AND ADD MEMBERS</span>
-  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE GROUP</span>
-      <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;TestGroup&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE GROUP</span>
-      <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;AnsibleGroup&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD DEVICES TO DEVICE GROUP</span>
-      <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;TestGroup&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">grp_members</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT1,FGT2&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE DEVICE GROUP</span>
-      <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;AnsibleGroup&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="fmgr-group-add-yml">
-<h3>fmgr_group_add.yml<a class="headerlink" href="#fmgr-group-add-yml" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE FGT GRP</span>
-  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE GROUP</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-      <span class="c1">#GETTING FORTIMANAGER HOST IP OR NAME FROM ANSIBLE INVENTORY FOR HOSTS GROUP ABOVE</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="c1">#DYNAMIC MAPPING FOR THE FORTIMANAGER LOGIN AS SPECIFIED IN INVENTORY FILE</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="c1">#NAME OF GROUP YOU WANT TO ADD</span>
-      <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;TestGroup&quot;</span>
-      <span class="c1">#DESCRIPTION TO ADD TO GROUP</span>
-      <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
-      <span class="c1">#ADOM TO CREATE THE GROUP IN</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="c1">#STATE if &quot;present&quot; add the group, if &quot;absent&quot; delete the GROUP</span>
-      <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE GROUP2</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;testtest&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
-</pre></div>
-</div>
-</div>
 <div class="section" id="fmgr-group-delete-yml">
 <h3>fmgr_group_delete.yml<a class="headerlink" href="#fmgr-group-delete-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE FGT GRP</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE DEVICE GROUP</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
         <span class="c1">#GETTING FORTIMANAGER HOST IP OR NAME FROM ANSIBLE INVENTORY FOR HOSTS GROUP ABOVE</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="c1">#DYNAMIC MAPPING FOR THE FORTIMANAGER LOGIN AS SPECIFIED IN INVENTORY FILE</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="c1">#NAME OF GROUP YOU WANT TO ADD</span>
         <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;TestGroup&quot;</span>
         <span class="c1">#DESCRIPTION TO ADD TO GROUP</span>
         <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
         <span class="c1">#STATE if &quot;present&quot; add the group, if &quot;absent&quot; delete the GROUP</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="c1">#ADOM TO CREATE THE GROUP IN</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE DEVICE GROUP 2</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;testtest&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="section" id="fmgr-group-edit-add-yml">
-<h3>fmgr_group_edit_add.yml<a class="headerlink" href="#fmgr-group-edit-add-yml" title="Permalink to this headline">¶</a></h3>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE FGT GRP</span>
-  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
-  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-
-  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD DEVICES TO DEVICE GROUP</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-      <span class="c1">#GETTING FORTIMANAGER HOST IP OR NAME FROM ANSIBLE INVENTORY FOR HOSTS GROUP ABOVE</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="c1">#DYNAMIC MAPPING FOR THE FORTIMANAGER LOGIN AS SPECIFIED IN INVENTORY FILE</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="c1">#STATE if &quot;present&quot; ADD THE GROUP MEMBERS, IF &quot;absent&quot; DELETE THE GROUP MEMBERS</span>
-      <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
-      <span class="c1">#GROUP NAME TO ADD THE DEVICES TO</span>
-      <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;TestGroup&quot;</span>
-      <span class="c1">#FRIENDLY NAME OF DEVICES IN FORTIMANAGER YOU WISH TO ADD TO THE GROUP</span>
-      <span class="c1">#MULTIPLE DEVICES CAN BE SPECIFIED BY COMMA SEPARATION (CSV)</span>
-      <span class="l l-Scalar l-Scalar-Plain">grp_members</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT1,FGT2&quot;</span>
-      <span class="c1">#ADOM TO CREATE THE GROUP IN</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">vdom</span><span class="p p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
-
-  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD DEVICES TO DEVICE GROUP 2</span>
-    <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;present&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;testtest&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">grp_members</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT3&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
-      <span class="l l-Scalar l-Scalar-Plain">vdom</span><span class="p p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
 </pre></div>
 </div>
 </div>
@@ -412,19 +266,16 @@
 <h3>fmgr_group_edit_remove.yml<a class="headerlink" href="#fmgr-group-edit-remove-yml" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE DEVICES FROM FGT GRP</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
-  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
 
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE DEVICES FROM DEVICE GROUP</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
         <span class="c1">#GETTING FORTIMANAGER HOST IP OR NAME FROM ANSIBLE INVENTORY FOR HOSTS GROUP ABOVE</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="c1">#DYNAMIC MAPPING FOR THE FORTIMANAGER LOGIN AS SPECIFIED IN INVENTORY FILE</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
         <span class="c1">#STATE if &quot;present&quot; ADD THE GROUP MEMBERS, IF &quot;absent&quot; DELETE THE GROUP MEMBERS</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="c1">#GROUP NAME TO REMOVE THE DEVICES FROM</span>
         <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;testtest&quot;</span>
         <span class="c1">#FRIENDLY NAME OF DEVICES IN FORTIMANAGER YOU WISH TO DELETE FROM THE GROUP</span>
@@ -435,15 +286,116 @@
 
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">REMOVE DEVICES FROM DEVICE GROUP2</span>
       <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">state</span><span class="p p-Indicator">:</span> <span class="s">&quot;absent&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;TestGroup&quot;</span>
-        <span class="l l-Scalar l-Scalar-Plain">grp_members</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT1,FGT2&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">grp_members</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT1&quot;</span>
         <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
 </pre></div>
 </div>
+</div>
+<div class="section" id="fmgr-device-groups-yml">
+<h3>fmgr_device_groups.yml<a class="headerlink" href="#fmgr-device-groups-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE GROUP AND ADD MEMBERS</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE GROUP</span>
+      <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;TestGroup&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE GROUP</span>
+      <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;AnsibleGroup&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD DEVICES TO DEVICE GROUP</span>
+      <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;TestGroup&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">grp_members</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT1&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE DEVICE GROUP</span>
+      <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;AnsibleGroup&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-group-edit-add-yml">
+<h3>fmgr_group_edit_add.yml<a class="headerlink" href="#fmgr-group-edit-add-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE FGT GRP</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD DEVICES TO DEVICE GROUP</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
+      <span class="c1">#GETTING FORTIMANAGER HOST IP OR NAME FROM ANSIBLE INVENTORY FOR HOSTS GROUP ABOVE</span>
+      <span class="c1">#DYNAMIC MAPPING FOR THE FORTIMANAGER LOGIN AS SPECIFIED IN INVENTORY FILE</span>
+      <span class="c1">#STATE if &quot;present&quot; ADD THE GROUP MEMBERS, IF &quot;absent&quot; DELETE THE GROUP MEMBERS</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+      <span class="c1">#GROUP NAME TO ADD THE DEVICES TO</span>
+      <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;TestGroup&quot;</span>
+      <span class="c1">#FRIENDLY NAME OF DEVICES IN FORTIMANAGER YOU WISH TO ADD TO THE GROUP</span>
+      <span class="c1">#MULTIPLE DEVICES CAN BE SPECIFIED BY COMMA SEPARATION (CSV)</span>
+      <span class="l l-Scalar l-Scalar-Plain">grp_members</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT1&quot;</span>
+      <span class="c1">#ADOM TO CREATE THE GROUP IN</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">vdom</span><span class="p p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD DEVICES TO DEVICE GROUP 2</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;testtest&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">grp_members</span><span class="p p-Indicator">:</span> <span class="s">&quot;FGT3&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">vdom</span><span class="p p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-group-add-yml">
+<h3>fmgr_group_add.yml<a class="headerlink" href="#fmgr-group-add-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE FGT GRP</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE GROUP</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
+      <span class="c1">#GETTING FORTIMANAGER HOST IP OR NAME FROM ANSIBLE INVENTORY FOR HOSTS GROUP ABOVE</span>
+      <span class="c1">#DYNAMIC MAPPING FOR THE FORTIMANAGER LOGIN AS SPECIFIED IN INVENTORY FILE</span>
+      <span class="c1">#NAME OF GROUP YOU WANT TO ADD</span>
+      <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;TestGroup&quot;</span>
+      <span class="c1">#DESCRIPTION TO ADD TO GROUP</span>
+      <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
+      <span class="c1">#ADOM TO CREATE THE GROUP IN</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="c1">#STATE if &quot;present&quot; add the group, if &quot;absent&quot; delete the GROUP</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CREATE DEVICE GROUP2</span>
+    <span class="l l-Scalar l-Scalar-Plain">fmgr_device_group</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">grp_name</span><span class="p p-Indicator">:</span> <span class="s">&quot;testtest&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">grp_desc</span><span class="p p-Indicator">:</span> <span class="s">&quot;CreatedbyAnsible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-device-group-run-all-sh">
+<h3>fmgr_device_group_run_all.sh<a class="headerlink" href="#fmgr-device-group-run-all-sh" title="Permalink to this headline">¶</a></h3>
 </div>
 </div>
 </div>
@@ -468,7 +420,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
 
     </p>
   </div>
@@ -487,21 +439,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 
