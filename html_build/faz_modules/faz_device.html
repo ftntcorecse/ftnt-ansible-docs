@@ -87,7 +87,6 @@
 <li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#raw-html-json-guide">RAW HTML JSON Guide</a></li>
 </ul>
 </li>
 </ul>
@@ -170,10 +169,10 @@
 <div class="section" id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
 <p><strong>Name:</strong> faz_device</p>
-<p><strong>Description:</strong> [‘Add or remove a device or list of devices to FortiAnalyzer Device Manager’]</p>
+<p><strong>Description:</strong> Add or remove a device or list of devices to FortiAnalyzer Device Manager</p>
 <p><strong>Author(s):</strong> Luke Weighall (&#64;lweighall)</p>
 <p><strong>Ansible Version Added/Required:</strong> 2.6</p>
-<p><strong>Dev Status:</strong> Not currently tracked. Likelihood is this is a private module for a one-off need that hasn’t been finalized for Ansible testing yet.</p>
+<p><strong>Dev Status:</strong> No Data Exists. Contact DevOps Team.</p>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
@@ -954,308 +953,6 @@
 </pre></div>
 </div>
 </div>
-<div class="section" id="raw-html-json-guide">
-<h2>RAW HTML JSON Guide<a class="headerlink" href="#raw-html-json-guide" title="Permalink to this headline">¶</a></h2>
-<html>
-<body>
-    <h2 id='add_device'>add/device (command)</h2><p>Add a device to the Device Manager database.</p><p>Supported methods: <a href="dvmcmd-methods.htm#exec">exec</a>
-    </p>
-    <h6>Object URL:</h6>
-    <table>
-        <tr>
-            <td class="table_col_name">Command object</td>
-            <td class="table_col_desc">/dvm/cmd/add/device<br/>
-            </td>
-        </tr>
-    </table>
-    <table class='param_table'>
-        <col class='table_hdr_name'/>
-        <col class='table_hdr_desc'/>
-        <thead>
-            <tr>
-                <th class='table_hdr_name'>Attribute List</th>
-                <th class='table_hdr_desc'>Descriptions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="odd_row">
-                <td class="table_col_name">adom</td>
-                <td class="table_col_desc">
-                    <i>datasource</i>, refer to <a href="dvmdb-objects.htm#adom">adom object</a> (36 bytes)<br/>Name or ID of the ADOM where the command is to be executed on.</td>
-            </tr>
-            <tr class="even_row">
-                <td class="table_col_name">device</td>
-                <td class="table_col_desc">
-                    <i>object</i>
-                    <br/>Device object to be added. Refer to <i>device action</i> attribute to select different type of add operation.<table>
-    <tr class="odd_row">
-        <td class="table_col_name">adm_pass</td>
-        <td class="table_col_desc">
-            <i>password</i> (128 bytes)<br/>
-            <i>add real and promote device</i>.</td>
-    </tr>
-    <tr class="even_row">
-        <td class="table_col_name">adm_usr</td>
-        <td class="table_col_desc">
-            <i>string</i> (36 bytes)<br/>
-            <i>add real and promote device</i>.</td>
-    </tr>
-    <tr class="odd_row">
-        <td class="table_col_name">desc</td>
-        <td class="table_col_desc">
-            <i>string</i> (128 bytes)<br/>
-            <i>available for all operations</i>.</td>
-    </tr>
-    <tr class="even_row">
-        <td class="table_col_name">device action</td>
-        <td class="table_col_desc">
-            <i>string</i>
-            <br/>Specify add device operations, or leave blank to add real device:<ul>
-                <li>"add_model" - add a model device.<li>"promote_unreg" - promote an unregistered device to be managed by FortiManager using information from database.</ul>
-                </td>
-            </tr>
-            <tr class="odd_row">
-                <td class="table_col_name">faz.quota</td>
-                <td class="table_col_desc">
-                    <i>unsigned int32</i>
-                    <br/>
-                    <i>available for all operations</i>.</td>
-            </tr>
-            <tr class="even_row">
-                <td class="table_col_name">ip</td>
-                <td class="table_col_desc">
-                    <i>string</i> (45 bytes)<br/>
-                    <i>add real device only</i>. Add device will probe with this IP using the log in credential specified.</td>
-            </tr>
-            <tr class="odd_row">
-                <td class="table_col_name">meta fields</td>
-                <td class="table_col_desc">
-                    <i>string</i>
-                    <br/>
-                    <i>add real and model device</i>.</td>
-            </tr>
-            <tr class="even_row">
-                <td class="table_col_name">mgmt_mode</td>
-                <td class="table_col_desc">
-                    <i>option</i>
-                    <br/>
-                    <i>add real and model device</i>.<table>
-                        <tr>
-        <td class="table_col_name">&quot;unreg&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;fmg&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;faz&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;fmgfaz&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr class="odd_row">
-                <td class="table_col_name">mr</td>
-                <td class="table_col_desc">
-                    <i>int16</i>
-                    <br/>
-                    <i>add model device only</i>.</td>
-            </tr>
-            <tr class="even_row">
-                <td class="table_col_name">name</td>
-                <td class="table_col_desc">
-                    <i>string</i> (36 bytes)<br/>
-                    <i>required for all operations</i>. Unique name for the device.</td>
-            </tr>
-            <tr class="odd_row">
-                <td class="table_col_name">os_type</td>
-                <td class="table_col_desc">
-                    <i>option</i>
-                    <br/>
-                    <i>add model device only</i>.<table>
-                        <tr>
-        <td class="table_col_name">&quot;unknown&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;fos&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;fsw&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;foc&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;fml&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;faz&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;fwb&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;fch&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;fct&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;log&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;fmg&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;fsa&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;fdd&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;fac&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr class="even_row">
-                <td class="table_col_name">os_ver</td>
-                <td class="table_col_desc">
-                    <i>option</i>
-                    <br/>
-                    <i>add model device only</i>.<table>
-                        <tr>
-        <td class="table_col_name">&quot;unknown&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;0.0&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;1.0&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;2.0&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;3.0&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;4.0&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                        <tr>
-        <td class="table_col_name">&quot;5.0&quot;</td>
-        <td class="table_col_desc"/>
-                        </tr>
-                    </table>
-                </td>
-            </tr>
-            <tr class="odd_row">
-                <td class="table_col_name">patch</td>
-                <td class="table_col_desc">
-                    <i>int16</i>
-                    <br/>
-                    <i>add model device only</i>.</td>
-            </tr>
-            <tr class="even_row">
-                <td class="table_col_name">platform_str</td>
-                <td class="table_col_desc">
-                    <i>string</i> (32 bytes)<br/>
-                    <i>add model device only</i>. Required for determine the platform for VM platforms.</td>
-            </tr>
-            <tr class="odd_row">
-                <td class="table_col_name">sn</td>
-                <td class="table_col_desc">
-                    <i>string</i> (16 bytes)<br/>
-                    <i>add model device only</i>. This attribute will be used to determine the device platform, except for VM platforms, where <i>platform_str</i> is also required.</td>
-            </tr>
-        </table>
-    </td>
-                    </tr>
-                    <tr class="odd_row">
-    <td class="table_col_name">flags</td>
-    <td class="table_col_desc">
-        <i>flags</i>
-        <table>
-            <tr>
-                <td class="table_col_name">&quot;none&quot;</td>
-                <td class="table_col_desc">[<i>Default value</i>]<br/>
-                </td>
-            </tr>
-            <tr>
-                <td class="table_col_name">&quot;create_task&quot;</td>
-                <td class="table_col_desc">Create a new task in task manager database.</td>
-            </tr>
-            <tr>
-                <td class="table_col_name">&quot;nonblocking&quot;</td>
-                <td class="table_col_desc">The API will return immediately in for non-blocking call. This flag will be set automatically when the adding, importing, updating, and deleting a list of devices.</td>
-            </tr>
-        </table>
-    </td>
-                    </tr>
-                    <tr class="even_row">
-    <td class="table_col_name">groups</td>
-    <td class="table_col_desc">
-        <i>datasource</i>, refer to <a href="dvmdb-objects.htm#group">group object</a>
-    </td>
-                    </tr>
-                </tbody>
-            </table>
-            <table class='param_table'>
-                <col class='table_hdr_name'/>
-                <col class='table_hdr_desc'/>
-                <thead>
-                    <tr>
-    <th class='table_hdr_name'>Response Data</th>
-    <th class='table_hdr_desc'>Descriptions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="odd_row">
-    <td class="table_col_name">device</td>
-    <td class="table_col_desc">
-        <i>datasource</i>, refer to <a href="dvmdb-objects.htm#device">device object</a>
-        <br/>Name or ID of the target device.<table/>
-    </td>
-                    </tr>
-                    <tr class="even_row">
-    <td class="table_col_name">pid</td>
-    <td class="table_col_desc">
-        <i>unsigned int32</i>
-        <br/>When "nonblocking" flag is set, return the process ID for the command.</td>
-                    </tr>
-                    <tr class="odd_row">
-    <td class="table_col_name">taskid</td>
-    <td class="table_col_desc">
-        <i>datasource</i>, refer to <a href="task-objects.htm#task">task</a>
-        <br/>When "create_task" flag is set, return the ID of the task associated with the command.</td>
-                    </tr>
-                </tbody>
-</table>    </body></html></div>
 </div>
 
 
@@ -1278,7 +975,7 @@
 
   <div role="contentinfo">
     <p>
-        &copy; Copyright 2018, Fortinet, CSE - DevOps.
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
 
     </p>
   </div>
@@ -1297,21 +994,13 @@
 
   
 
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'1.0',
-            LANGUAGE:'None',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true,
-            SOURCELINK_SUFFIX: '.txt'
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
 
   
 

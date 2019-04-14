@@ -19,6 +19,7 @@ Metadata
 **Ansible Version Added/Required:** 2.6
 
 **Dev Status:** No Data Exists. Contact DevOps Team.
+
 Parameters
 ----------
 
@@ -27,7 +28,7 @@ adom
 
 - Description: The ADOM the configuration should belong to.
 
-
+  
 
 - Required: True
 
@@ -38,7 +39,7 @@ device_action
 
 - Description: Specify add device operations, or leave blank to add a real device from scratch
 
-
+  
 
 - Required: False
 
@@ -51,7 +52,7 @@ device_ip
 
 - Description: The IP of the device being added to FortiManager.
 
-
+  
 
 - Required: False
 
@@ -60,7 +61,7 @@ device_password
 
 - Description: The password of the device being added to FortiManager.
 
-
+  
 
 - Required: False
 
@@ -69,7 +70,7 @@ device_serial
 
 - Description: The serial number of the device being added to FortiManager.
 
-
+  
 
 - Required: False
 
@@ -78,7 +79,7 @@ device_unique_name
 
 - Description: The desired "friendly" name of the device being added to FortiManager.
 
-
+  
 
 - Required: False
 
@@ -87,7 +88,7 @@ device_username
 
 - Description: The username of the device being added to FortiManager.
 
-
+  
 
 - Required: False
 
@@ -96,7 +97,7 @@ faz_quota
 
 - Description: Specifies the quota for the device in FAZ
 
-
+  
 
 - Required: False
 
@@ -105,7 +106,7 @@ host
 
 - Description: The FortiManager's Address.
 
-
+  
 
 - Required: True
 
@@ -114,7 +115,7 @@ mgmt_mode
 
 - Description: Management Mode of the device you are adding.
 
-
+  
 
 - Required: True
 
@@ -125,7 +126,7 @@ os_minor_vers
 
 - Description: Minor OS rev of the device
 
-
+  
 
 - Required: True
 
@@ -134,7 +135,7 @@ os_type
 
 - Description: The os type of the device being added (default 0).
 
-
+  
 
 - Required: True
 
@@ -145,7 +146,7 @@ os_ver
 
 - Description: Major OS rev of the device
 
-
+  
 
 - Required: True
 
@@ -156,7 +157,7 @@ password
 
 - Description: The password associated with the username account.
 
-
+  
 
 - Required: False
 
@@ -165,7 +166,7 @@ platform_str
 
 - Description: Required for determine the platform for VM platforms. ie FortiGate-VM64
 
-
+  
 
 - Required: False
 
@@ -178,7 +179,7 @@ state
 
   present will create the configuration if needed.
 
-
+  
 
 - Required: False
 
@@ -191,7 +192,7 @@ username
 
 - Description: The username used to authenticate with the FortiManager.
 
-
+  
 
 - Required: False
 
@@ -212,7 +213,7 @@ Functions
         """
         This method is used to add devices to the faz or delete them
         """
-
+    
         datagram = {
             "adom": paramgram["adom"],
             "device": {"adm_usr": paramgram["device_username"], "adm_pass": paramgram["device_password"],
@@ -220,25 +221,25 @@ Functions
                        "mgmt_mode": paramgram["mgmt_mode"], "os_type": paramgram["os_type"],
                        "mr": paramgram["os_minor_vers"]}
         }
-
+    
         if paramgram["platform_str"] is not None:
             datagram["device"]["platform_str"] = paramgram["platform_str"]
-
+    
         if paramgram["sn"] is not None:
             datagram["device"]["sn"] = paramgram["sn"]
-
+    
         if paramgram["device_action"] is not None:
             datagram["device"]["device_action"] = paramgram["device_action"]
-
+    
         if paramgram["faz.quota"] is not None:
             datagram["device"]["faz.quota"] = paramgram["faz.quota"]
-
-
+    
+    
         url = '/dvm/cmd/add/device/'
         response = faz.execute(url, datagram)
         return response
-
-
+    
+    
 
 - faz_delete_device
 
@@ -252,12 +253,12 @@ Functions
             "adom": paramgram["adom"],
             "device": paramgram["device_unique_name"],
         }
-
+    
         url = '/dvm/cmd/del/device/'
         response = faz.execute(url, datagram)
         return response
-
-
+    
+    
 
 - faz_get_unknown_devices
 
@@ -267,26 +268,26 @@ Functions
         '''
         This method gets devices with an unknown management type field
         '''
-
+    
         filter = ["mgmt_mode", "==", "0"]
-
+    
         datagram = {
             "filter": filter
         }
-
+    
         url = "/dvmdb/device"
         response = faz.get(url, datagram)
-
+    
         return response
-
-
+    
+    
 
 - faz_approve_unregistered_device_by_ip
 
  .. code-block:: python
 
     def faz_approve_unregistered_device_by_ip(faz, paramgram):
-
+    
         # TRY TO FIND DETAILS ON THIS UNREGISTERED DEVICE
         unknown_devices = faz_get_unknown_devices(faz)
         target_device = None
@@ -296,7 +297,7 @@ Functions
                     target_device = device
         else:
             return "No devices are waiting to be registered!"
-
+    
         # now that we have the target device details...fill out the datagram and make the call to promote it
         if target_device is not None:
             target_device_paramgram = {
@@ -314,21 +315,21 @@ Functions
                 "faz.quota": target_device["faz.quota"],
                 "device_action": paramgram["device_action"]
             }
-
+    
             add_device = faz_add_device(faz, target_device_paramgram)
             return add_device
-
-
+    
+    
         return str("Couldn't find the desired device with ip: " + str(paramgram["device_ip"]))
-
-
+    
+    
 
 - faz_approve_unregistered_device_by_name
 
  .. code-block:: python
 
     def faz_approve_unregistered_device_by_name(faz, paramgram):
-
+    
         # TRY TO FIND DETAILS ON THIS UNREGISTERED DEVICE
         unknown_devices = faz_get_unknown_devices(faz)
         target_device = None
@@ -338,7 +339,7 @@ Functions
                     target_device = device
         else:
             return "No devices are waiting to be registered!"
-
+    
         # now that we have the target device details...fill out the datagram and make the call to promote it
         if target_device is not None:
             target_device_paramgram = {
@@ -356,14 +357,14 @@ Functions
                 "faz.quota": target_device["faz.quota"],
                 "device_action": paramgram["device_action"]
             }
-
+    
             add_device = faz_add_device(faz, target_device_paramgram)
             return add_device
-
-
+    
+    
         return str("Couldn't find the desired device with name: " + str(paramgram["device_unique_name"]))
-
-
+    
+    
 
 - main
 
@@ -376,13 +377,13 @@ Functions
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"])),
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
             state=dict(choices=["absent", "present"], type="str", default="present"),
-
+    
             device_ip=dict(required=False, type="str"),
             device_username=dict(required=False, type="str"),
             device_password=dict(required=False, type="str", no_log=True),
             device_unique_name=dict(required=True, type="str"),
             device_serial=dict(required=False, type="str"),
-
+    
             os_type=dict(required=False, type="str"),
             mgmt_mode=dict(required=False, type="str"),
             os_minor_vers=dict(required=False, type="str"),
@@ -391,18 +392,18 @@ Functions
             device_action=dict(required=False, type="str", default="add_model"),
             faz_quota=dict(required=False, type="str")
         )
-
+    
         module = AnsibleModule(argument_spec, supports_check_mode=True,)
-
+    
         # validate required arguments are passed; not used in argument_spec to allow params to be called from provider
         # check if params are set
         if module.params["host"] is None or module.params["username"] is None:
             module.fail_json(msg="Host and username are required for connection")
-
+    
         # CHECK IF LOGIN FAILED
         faz = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
         response = faz.login()
-
+    
         if response[0] != 0:
             module.fail_json(msg="Connection to FortiAnalyzer Failed")
         else:
@@ -422,7 +423,7 @@ Functions
                 "faz.quota": module.params["faz_quota"],
                 "device_action": module.params["device_action"]
             }
-
+    
             if module.params["state"] == "present":
                 if paramgram["device_action"] == "promote_unreg":
                     if paramgram["ip"] is not None:
@@ -433,8 +434,8 @@ Functions
                     results = faz_add_device(faz, paramgram)
                 if results[0] not in [0, -20010]:
                     module.fail_json(msg="ADDING Device Failed", **results[1])
-
-
+    
+    
             if module.params["state"] == "absent":
                 results = faz_delete_device(faz, paramgram)
                 if results[0] not in [0]:
@@ -443,8 +444,8 @@ Functions
         faz.logout()
         # results is returned as a tuple
         return module.exit_json(**results[1])
-
-
+    
+    
 
 
 
@@ -470,16 +471,16 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-
+    
     from __future__ import absolute_import, division, print_function
     __metaclass__ = type
-
+    
     ANSIBLE_METADATA = {
         "metadata_version": "1.1",
         "status": ["preview"],
         "supported_by": "community"
     }
-
+    
     DOCUMENTATION = '''
     ---
     module: faz_device
@@ -488,7 +489,7 @@ Module Source Code
     short_description: Add or remove device
     description:
       - Add or remove a device or list of devices to FortiAnalyzer Device Manager
-
+    
     options:
       adom:
         description:
@@ -515,7 +516,7 @@ Module Source Code
         required: false
         default: present
         choices: ["absent", "present"]
-
+    
       device_username:
         description:
           - The username of the device being added to FortiManager.
@@ -536,7 +537,7 @@ Module Source Code
         description:
           - The serial number of the device being added to FortiManager.
         required: false
-
+        
       os_type:
         description:
           - The os type of the device being added (default 0).
@@ -549,16 +550,16 @@ Module Source Code
         required: true
       os_minor_vers:
         description:
-          - Minor OS rev of the device
+          - Minor OS rev of the device  
         required: true
       os_ver:
         description:
           - Major OS rev of the device
         required: true
-        choices: ["unknown", "0.0", "1.0", "2.0", "3.0", "4.0", "5.0", "6.0"]
+        choices: ["unknown", "0.0", "1.0", "2.0", "3.0", "4.0", "5.0", "6.0"] 
       platform_str:
         description:
-          - Required for determine the platform for VM platforms. ie FortiGate-VM64
+          - Required for determine the platform for VM platforms. ie FortiGate-VM64 
         required: false
       device_action:
         description:
@@ -570,10 +571,10 @@ Module Source Code
         description:
           - Specifies the quota for the device in FAZ
         required: False
-
+        
     '''
-
-
+    
+    
     EXAMPLES = '''
     - name: DISCOVER AND ADD DEVICE A PHYSICAL FORTIGATE
       faz_device:
@@ -591,8 +592,8 @@ Module Source Code
         os_type: "fos"
         os_ver: "5.0"
         minor_rev: 6
-
-
+        
+    
     - name: DISCOVER AND ADD DEVICE A VIRTUAL FORTIGATE
       faz_device:
         host: "{{inventory_hostname}}"
@@ -610,33 +611,33 @@ Module Source Code
         state: "present"
         platform_str: "FortiGate-VM64"
     '''
-
+    
     RETURN = """
     api_result:
       description: full API response, includes status code and message
       returned: always
       type: string
     """
-
+    
     from ansible.module_utils.basic import AnsibleModule, env_fallback
     from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-
-
-
+    
+    
+    
     # check for pyFMG lib
     try:
         from pyFMG.fortimgr import FortiManager
         HAS_PYFMGR = True
     except ImportError:
         HAS_PYFMGR = False
-
+    
     #import pydevd
-
+    
     def faz_add_device(faz, paramgram):
         """
         This method is used to add devices to the faz or delete them
         """
-
+    
         datagram = {
             "adom": paramgram["adom"],
             "device": {"adm_usr": paramgram["device_username"], "adm_pass": paramgram["device_password"],
@@ -644,25 +645,25 @@ Module Source Code
                        "mgmt_mode": paramgram["mgmt_mode"], "os_type": paramgram["os_type"],
                        "mr": paramgram["os_minor_vers"]}
         }
-
+    
         if paramgram["platform_str"] is not None:
             datagram["device"]["platform_str"] = paramgram["platform_str"]
-
+    
         if paramgram["sn"] is not None:
             datagram["device"]["sn"] = paramgram["sn"]
-
+    
         if paramgram["device_action"] is not None:
             datagram["device"]["device_action"] = paramgram["device_action"]
-
+    
         if paramgram["faz.quota"] is not None:
             datagram["device"]["faz.quota"] = paramgram["faz.quota"]
-
-
+    
+    
         url = '/dvm/cmd/add/device/'
         response = faz.execute(url, datagram)
         return response
-
-
+    
+    
     def faz_delete_device(faz, paramgram):
         """
         This method deletes a device from the FMGR
@@ -671,31 +672,31 @@ Module Source Code
             "adom": paramgram["adom"],
             "device": paramgram["device_unique_name"],
         }
-
+    
         url = '/dvm/cmd/del/device/'
         response = faz.execute(url, datagram)
         return response
-
-
+    
+    
     def faz_get_unknown_devices(faz):
         '''
         This method gets devices with an unknown management type field
         '''
-
+    
         filter = ["mgmt_mode", "==", "0"]
-
+    
         datagram = {
             "filter": filter
         }
-
+    
         url = "/dvmdb/device"
         response = faz.get(url, datagram)
-
+    
         return response
-
-
+    
+    
     def faz_approve_unregistered_device_by_ip(faz, paramgram):
-
+    
         # TRY TO FIND DETAILS ON THIS UNREGISTERED DEVICE
         unknown_devices = faz_get_unknown_devices(faz)
         target_device = None
@@ -705,7 +706,7 @@ Module Source Code
                     target_device = device
         else:
             return "No devices are waiting to be registered!"
-
+    
         # now that we have the target device details...fill out the datagram and make the call to promote it
         if target_device is not None:
             target_device_paramgram = {
@@ -723,16 +724,16 @@ Module Source Code
                 "faz.quota": target_device["faz.quota"],
                 "device_action": paramgram["device_action"]
             }
-
+    
             add_device = faz_add_device(faz, target_device_paramgram)
             return add_device
-
-
+    
+    
         return str("Couldn't find the desired device with ip: " + str(paramgram["device_ip"]))
-
-
+    
+    
     def faz_approve_unregistered_device_by_name(faz, paramgram):
-
+    
         # TRY TO FIND DETAILS ON THIS UNREGISTERED DEVICE
         unknown_devices = faz_get_unknown_devices(faz)
         target_device = None
@@ -742,7 +743,7 @@ Module Source Code
                     target_device = device
         else:
             return "No devices are waiting to be registered!"
-
+    
         # now that we have the target device details...fill out the datagram and make the call to promote it
         if target_device is not None:
             target_device_paramgram = {
@@ -760,14 +761,14 @@ Module Source Code
                 "faz.quota": target_device["faz.quota"],
                 "device_action": paramgram["device_action"]
             }
-
+    
             add_device = faz_add_device(faz, target_device_paramgram)
             return add_device
-
-
+    
+    
         return str("Couldn't find the desired device with name: " + str(paramgram["device_unique_name"]))
-
-
+    
+    
     def main():
         argument_spec = dict(
             adom=dict(required=False, type="str", default="root"),
@@ -775,13 +776,13 @@ Module Source Code
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"])),
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
             state=dict(choices=["absent", "present"], type="str", default="present"),
-
+    
             device_ip=dict(required=False, type="str"),
             device_username=dict(required=False, type="str"),
             device_password=dict(required=False, type="str", no_log=True),
             device_unique_name=dict(required=True, type="str"),
             device_serial=dict(required=False, type="str"),
-
+    
             os_type=dict(required=False, type="str"),
             mgmt_mode=dict(required=False, type="str"),
             os_minor_vers=dict(required=False, type="str"),
@@ -790,18 +791,18 @@ Module Source Code
             device_action=dict(required=False, type="str", default="add_model"),
             faz_quota=dict(required=False, type="str")
         )
-
+    
         module = AnsibleModule(argument_spec, supports_check_mode=True,)
-
+    
         # validate required arguments are passed; not used in argument_spec to allow params to be called from provider
         # check if params are set
         if module.params["host"] is None or module.params["username"] is None:
             module.fail_json(msg="Host and username are required for connection")
-
+    
         # CHECK IF LOGIN FAILED
         faz = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
         response = faz.login()
-
+    
         if response[0] != 0:
             module.fail_json(msg="Connection to FortiAnalyzer Failed")
         else:
@@ -821,7 +822,7 @@ Module Source Code
                 "faz.quota": module.params["faz_quota"],
                 "device_action": module.params["device_action"]
             }
-
+    
             if module.params["state"] == "present":
                 if paramgram["device_action"] == "promote_unreg":
                     if paramgram["ip"] is not None:
@@ -832,8 +833,8 @@ Module Source Code
                     results = faz_add_device(faz, paramgram)
                 if results[0] not in [0, -20010]:
                     module.fail_json(msg="ADDING Device Failed", **results[1])
-
-
+    
+    
             if module.params["state"] == "absent":
                 results = faz_delete_device(faz, paramgram)
                 if results[0] not in [0]:
@@ -842,8 +843,8 @@ Module Source Code
         faz.logout()
         # results is returned as a tuple
         return module.exit_json(**results[1])
-
-
+    
+    
     if __name__ == "__main__":
         main()
 

@@ -11,9 +11,10 @@ Metadata
 
 **Name:** fmgr_secprof_waf
 
-**Description:** ['Manage web application firewall security profiles for FGTs via FMG']
+**Description:** Manage web application firewall security profiles for FGTs via FMG
 
-**Author(s):**
+
+**Author(s):** 
 
 - Luke Weighall (github: @lweighall)
 
@@ -25,17 +26,15 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+**Dev Status:** COMPLETED/MERGED
 
-**Owning Developer:**
+**Owning Developer:** 
 Andrew Welsh
 
-**Pull Request Started:** 10/11/18
+.. _Link: https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_secprof_waf.py
 
-**Days in PR:** 18
+Link_
 
-**Branch Link:** https://github.com/ftntcorecse/ansible/tree/
-fmgr_secprof_waf
 Parameters
 ----------
 
@@ -56,7 +55,7 @@ address_list
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-
+  
 
 - Required: False
 
@@ -65,7 +64,7 @@ address_list_blocked_address
 
 - Description: Blocked address.
 
-
+  
 
 - Required: False
 
@@ -78,7 +77,7 @@ address_list_blocked_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -95,7 +94,7 @@ address_list_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -110,7 +109,7 @@ address_list_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -121,7 +120,7 @@ address_list_trusted_address
 
 - Description: Trusted address.
 
-
+  
 
 - Required: False
 
@@ -130,7 +129,7 @@ adom
 
 - Description: The ADOM the configuration should belong to.
 
-
+  
 
 - Required: False
 
@@ -141,7 +140,7 @@ comment
 
 - Description: Comment.
 
-
+  
 
 - Required: False
 
@@ -162,7 +161,7 @@ constraint
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-
+  
 
 - Required: False
 
@@ -175,7 +174,7 @@ constraint_content_length_action
 
   choice | block | Block.
 
-
+  
 
 - Required: False
 
@@ -186,7 +185,7 @@ constraint_content_length_length
 
 - Description: Length of HTTP content in bytes (0 to 2147483647).
 
-
+  
 
 - Required: False
 
@@ -199,7 +198,7 @@ constraint_content_length_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -216,7 +215,7 @@ constraint_content_length_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -231,7 +230,7 @@ constraint_content_length_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -242,7 +241,7 @@ constraint_exception_address
 
 - Description: Host address.
 
-
+  
 
 - Required: False
 
@@ -255,7 +254,7 @@ constraint_exception_content_length
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -270,7 +269,7 @@ constraint_exception_header_length
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -285,7 +284,7 @@ constraint_exception_hostname
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -300,7 +299,7 @@ constraint_exception_line_length
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -315,7 +314,7 @@ constraint_exception_malformed
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -330,7 +329,7 @@ constraint_exception_max_cookie
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -345,7 +344,7 @@ constraint_exception_max_header_line
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -360,7 +359,7 @@ constraint_exception_max_range_segment
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -375,7 +374,7 @@ constraint_exception_max_url_param
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -390,7 +389,7 @@ constraint_exception_method
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -405,7 +404,7 @@ constraint_exception_param_length
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -416,7 +415,7 @@ constraint_exception_pattern
 
 - Description: URL pattern.
 
-
+  
 
 - Required: False
 
@@ -429,7 +428,7 @@ constraint_exception_regex
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -444,7 +443,7 @@ constraint_exception_url_param_length
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -459,7 +458,7 @@ constraint_exception_version
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -474,7 +473,7 @@ constraint_header_length_action
 
   choice | block | Block.
 
-
+  
 
 - Required: False
 
@@ -485,7 +484,7 @@ constraint_header_length_length
 
 - Description: Length of HTTP header in bytes (0 to 2147483647).
 
-
+  
 
 - Required: False
 
@@ -498,7 +497,7 @@ constraint_header_length_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -515,7 +514,7 @@ constraint_header_length_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -530,7 +529,7 @@ constraint_header_length_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -539,13 +538,13 @@ constraint_header_length_status
 constraint_hostname_action
 ++++++++++++++++++++++++++
 
-- Description: Action.
+- Description: Action for a hostname constraint.
 
   choice | allow | Allow.
 
   choice | block | Block.
 
-
+  
 
 - Required: False
 
@@ -560,7 +559,7 @@ constraint_hostname_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -577,7 +576,7 @@ constraint_hostname_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -592,7 +591,7 @@ constraint_hostname_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -607,7 +606,7 @@ constraint_line_length_action
 
   choice | block | Block.
 
-
+  
 
 - Required: False
 
@@ -618,7 +617,7 @@ constraint_line_length_length
 
 - Description: Length of HTTP line in bytes (0 to 2147483647).
 
-
+  
 
 - Required: False
 
@@ -631,7 +630,7 @@ constraint_line_length_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -648,7 +647,7 @@ constraint_line_length_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -663,7 +662,7 @@ constraint_line_length_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -678,7 +677,7 @@ constraint_malformed_action
 
   choice | block | Block.
 
-
+  
 
 - Required: False
 
@@ -693,7 +692,7 @@ constraint_malformed_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -710,7 +709,7 @@ constraint_malformed_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -725,7 +724,7 @@ constraint_malformed_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -740,7 +739,7 @@ constraint_max_cookie_action
 
   choice | block | Block.
 
-
+  
 
 - Required: False
 
@@ -755,7 +754,7 @@ constraint_max_cookie_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -766,7 +765,7 @@ constraint_max_cookie_max_cookie
 
 - Description: Maximum number of cookies in HTTP request (0 to 2147483647).
 
-
+  
 
 - Required: False
 
@@ -781,7 +780,7 @@ constraint_max_cookie_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -796,7 +795,7 @@ constraint_max_cookie_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -811,7 +810,7 @@ constraint_max_header_line_action
 
   choice | block | Block.
 
-
+  
 
 - Required: False
 
@@ -826,7 +825,7 @@ constraint_max_header_line_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -837,7 +836,7 @@ constraint_max_header_line_max_header_line
 
 - Description: Maximum number HTTP header lines (0 to 2147483647).
 
-
+  
 
 - Required: False
 
@@ -852,7 +851,7 @@ constraint_max_header_line_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -867,7 +866,7 @@ constraint_max_header_line_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -882,7 +881,7 @@ constraint_max_range_segment_action
 
   choice | block | Block.
 
-
+  
 
 - Required: False
 
@@ -897,7 +896,7 @@ constraint_max_range_segment_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -908,7 +907,7 @@ constraint_max_range_segment_max_range_segment
 
 - Description: Maximum number of range segments in HTTP range line (0 to 2147483647).
 
-
+  
 
 - Required: False
 
@@ -923,7 +922,7 @@ constraint_max_range_segment_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -938,7 +937,7 @@ constraint_max_range_segment_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -953,7 +952,7 @@ constraint_max_url_param_action
 
   choice | block | Block.
 
-
+  
 
 - Required: False
 
@@ -968,7 +967,7 @@ constraint_max_url_param_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -979,7 +978,7 @@ constraint_max_url_param_max_url_param
 
 - Description: Maximum number of parameters in URL (0 to 2147483647).
 
-
+  
 
 - Required: False
 
@@ -994,7 +993,7 @@ constraint_max_url_param_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -1009,7 +1008,7 @@ constraint_max_url_param_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1024,7 +1023,7 @@ constraint_method_action
 
   choice | block | Block.
 
-
+  
 
 - Required: False
 
@@ -1039,7 +1038,7 @@ constraint_method_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1056,7 +1055,7 @@ constraint_method_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -1071,7 +1070,7 @@ constraint_method_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1086,7 +1085,7 @@ constraint_param_length_action
 
   choice | block | Block.
 
-
+  
 
 - Required: False
 
@@ -1097,7 +1096,7 @@ constraint_param_length_length
 
 - Description: Maximum length of parameter in URL, HTTP POST request or HTTP body in bytes (0 to 2147483647).
 
-
+  
 
 - Required: False
 
@@ -1110,7 +1109,7 @@ constraint_param_length_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1127,7 +1126,7 @@ constraint_param_length_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -1142,7 +1141,7 @@ constraint_param_length_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1157,7 +1156,7 @@ constraint_url_param_length_action
 
   choice | block | Block.
 
-
+  
 
 - Required: False
 
@@ -1168,7 +1167,7 @@ constraint_url_param_length_length
 
 - Description: Maximum length of URL parameter in bytes (0 to 2147483647).
 
-
+  
 
 - Required: False
 
@@ -1181,7 +1180,7 @@ constraint_url_param_length_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1198,7 +1197,7 @@ constraint_url_param_length_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -1213,7 +1212,7 @@ constraint_url_param_length_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1228,7 +1227,7 @@ constraint_version_action
 
   choice | block | Block.
 
-
+  
 
 - Required: False
 
@@ -1243,7 +1242,7 @@ constraint_version_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1260,7 +1259,7 @@ constraint_version_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -1275,7 +1274,7 @@ constraint_version_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1290,7 +1289,7 @@ extended_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1305,20 +1304,11 @@ external
 
   choice | enable | Enable external inspection.
 
-
+  
 
 - Required: False
 
 - choices: ['disable', 'enable']
-
-host
-++++
-
-- Description: The FortiManager's Address.
-
-
-
-- Required: True
 
 method
 ++++++
@@ -1337,7 +1327,7 @@ method
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-
+  
 
 - Required: False
 
@@ -1366,7 +1356,7 @@ method_default_allowed_methods
 
   flag | connect | HTTP CONNECT method.
 
-
+  
 
 - Required: False
 
@@ -1381,7 +1371,7 @@ method_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1392,7 +1382,7 @@ method_method_policy_address
 
 - Description: Host address.
 
-
+  
 
 - Required: False
 
@@ -1421,7 +1411,7 @@ method_method_policy_allowed_methods
 
   flag | connect | HTTP CONNECT method.
 
-
+  
 
 - Required: False
 
@@ -1432,7 +1422,7 @@ method_method_policy_pattern
 
 - Description: URL pattern.
 
-
+  
 
 - Required: False
 
@@ -1445,7 +1435,7 @@ method_method_policy_regex
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1462,7 +1452,7 @@ method_severity
 
   choice | high | High severity
 
-
+  
 
 - Required: False
 
@@ -1477,7 +1467,7 @@ method_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1490,7 +1480,7 @@ mode
 
   Allows use of soft-adds instead of overwriting existing values
 
-
+  
 
 - Required: False
 
@@ -1503,18 +1493,9 @@ name
 
 - Description: WAF Profile name.
 
-
+  
 
 - Required: False
-
-password
-++++++++
-
-- Description: The password associated with the username account.
-
-
-
-- Required: True
 
 signature
 +++++++++
@@ -1533,7 +1514,7 @@ signature
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-
+  
 
 - Required: False
 
@@ -1542,7 +1523,7 @@ signature_credit_card_detection_threshold
 
 - Description: The minimum number of Credit cards to detect violation.
 
-
+  
 
 - Required: False
 
@@ -1557,7 +1538,7 @@ signature_custom_signature_action
 
   choice | erase | Erase credit card numbers.
 
-
+  
 
 - Required: False
 
@@ -1572,7 +1553,7 @@ signature_custom_signature_case_sensitivity
 
   choice | enable | Case sensitive in pattern.
 
-
+  
 
 - Required: False
 
@@ -1587,7 +1568,7 @@ signature_custom_signature_direction
 
   choice | response | Match HTTP response.
 
-
+  
 
 - Required: False
 
@@ -1602,7 +1583,7 @@ signature_custom_signature_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1613,7 +1594,7 @@ signature_custom_signature_name
 
 - Description: Signature name.
 
-
+  
 
 - Required: False
 
@@ -1622,7 +1603,7 @@ signature_custom_signature_pattern
 
 - Description: Match pattern.
 
-
+  
 
 - Required: False
 
@@ -1637,7 +1618,7 @@ signature_custom_signature_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -1652,7 +1633,7 @@ signature_custom_signature_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1691,7 +1672,7 @@ signature_custom_signature_target
 
   flag | resp-status | HTTP response status.
 
-
+  
 
 - Required: False
 
@@ -1702,7 +1683,7 @@ signature_disabled_signature
 
 - Description: Disabled signatures
 
-
+  
 
 - Required: False
 
@@ -1711,7 +1692,7 @@ signature_disabled_sub_class
 
 - Description: Disabled signature subclasses.
 
-
+  
 
 - Required: False
 
@@ -1726,7 +1707,7 @@ signature_main_class_action
 
   choice | erase | Erase credit card numbers.
 
-
+  
 
 - Required: False
 
@@ -1741,7 +1722,7 @@ signature_main_class_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1758,7 +1739,7 @@ signature_main_class_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
@@ -1773,7 +1754,7 @@ signature_main_class_status
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1796,7 +1777,7 @@ url_access
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-
+  
 
 - Required: False
 
@@ -1809,7 +1790,7 @@ url_access_access_pattern_negate
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1820,7 +1801,7 @@ url_access_access_pattern_pattern
 
 - Description: URL pattern.
 
-
+  
 
 - Required: False
 
@@ -1833,7 +1814,7 @@ url_access_access_pattern_regex
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1844,7 +1825,7 @@ url_access_access_pattern_srcaddr
 
 - Description: Source address.
 
-
+  
 
 - Required: False
 
@@ -1859,7 +1840,7 @@ url_access_action
 
   choice | block | Block HTTP request.
 
-
+  
 
 - Required: False
 
@@ -1870,7 +1851,7 @@ url_access_address
 
 - Description: Host address.
 
-
+  
 
 - Required: False
 
@@ -1883,7 +1864,7 @@ url_access_log
 
   choice | enable | Enable setting.
 
-
+  
 
 - Required: False
 
@@ -1900,20 +1881,11 @@ url_access_severity
 
   choice | high | High severity.
 
-
+  
 
 - Required: False
 
 - choices: ['low', 'medium', 'high']
-
-username
-++++++++
-
-- Description: The username associated with the account.
-
-
-
-- Required: True
 
 
 
@@ -1924,191 +1896,47 @@ Functions
 
 
 
-- fmgr_waf_profile_addsetdelete
+- fmgr_waf_profile_modify
 
  .. code-block:: python
 
-    def fmgr_waf_profile_addsetdelete(fmg, paramgram):
+    def fmgr_waf_profile_modify(fmgr, paramgram):
         """
-        fmgr_waf_profile -- Your Description here, bruh
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
-
         mode = paramgram["mode"]
         adom = paramgram["adom"]
         # INIT A BASIC OBJECTS
-        response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
+        response = DEFAULT_RESULT_OBJ
         url = ""
         datagram = {}
-
+    
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/waf/profile'.format(adom=adom)
-            datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-
+            datagram = scrub_dict(prepare_dict(paramgram))
+    
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/waf/profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if mode == "set":
-            response = fmg.set(url, datagram)
-        # IF MODE = UPDATE -- USER THE 'UPDATE' API CALL MODE
-        elif mode == "update":
-            response = fmg.update(url, datagram)
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        elif mode == "add":
-            response = fmg.add(url, datagram)
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        elif mode == "delete":
-            response = fmg.delete(url, datagram)
-
+    
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
+    
         return response
-
-
-    # ADDITIONAL COMMON FUNCTIONS
-    # FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
-
-- fmgr_logout
-
- .. code-block:: python
-
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-        # pydevd.settrace('10.0.0.122', port=54654, stdoutToServer=True, stderrToServer=True)
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except BaseException:
-                pass
-            module.fail_json(msg=msg)
-
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except BaseException:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-                else:
-                    return msg
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
-                                     **results[1])
-                else:
-                    return msg
-
-
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-
-- fmgr_cidr_to_netmask
-
- .. code-block:: python
-
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return (str((0xff000000 & mask) >> 24) + '.' +
-                str((0x00ff0000 & mask) >> 16) + '.' +
-                str((0x0000ff00 & mask) >> 8) + '.' +
-                str((0x000000ff & mask)))
-
-
-    # utility function: removing keys wih value of None, nothing in playbook for that key
-
-- fmgr_del_none
-
- .. code-block:: python
-
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-
-
-    # utility function: remove keys that are need for the logic but the FMG API won't accept them
-
-- fmgr_prepare_dict
-
- .. code-block:: python
-
-    def fmgr_prepare_dict(obj):
-        list_of_elems = ["mode", "adom", "host", "username", "password"]
-        if isinstance(obj, dict):
-            obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
-        return obj
-
-
-
-- fmgr_is_empty_dict
-
- .. code-block:: python
-
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-
-        return return_val
-
-
-
-- fmgr_split_comma_strings_into_lists
-
- .. code-block:: python
-
-    def fmgr_split_comma_strings_into_lists(obj):
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, str):
-                        new_list = list()
-                        if "," in v:
-                            new_items = v.split(",")
-                            for item in new_items:
-                                new_list.append(item.strip())
-                            obj[k] = new_list
-
-        return obj
-
-
+    
+    
     #############
     # END METHODS
     #############
-
-
+    
+    
 
 - main
 
@@ -2117,11 +1945,8 @@ Functions
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-
+    
             name=dict(required=False, type="str"),
             external=dict(required=False, type="str", choices=["disable", "enable"]),
             extended_log=dict(required=False, type="str", choices=["disable", "enable"]),
@@ -2133,13 +1958,13 @@ Functions
             address_list_status=dict(required=False, type="str", choices=["disable", "enable"]),
             address_list_trusted_address=dict(required=False, type="str"),
             constraint=dict(required=False, type="list"),
-
+    
             constraint_content_length_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_content_length_length=dict(required=False, type="int"),
             constraint_content_length_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_content_length_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_content_length_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_exception_address=dict(required=False, type="str"),
             constraint_exception_content_length=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_exception_header_length=dict(required=False, type="str", choices=["disable", "enable"]),
@@ -2156,70 +1981,70 @@ Functions
             constraint_exception_regex=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_exception_url_param_length=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_exception_version=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_header_length_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_header_length_length=dict(required=False, type="int"),
             constraint_header_length_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_header_length_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_header_length_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_hostname_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_hostname_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_hostname_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_hostname_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_line_length_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_line_length_length=dict(required=False, type="int"),
             constraint_line_length_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_line_length_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_line_length_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_malformed_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_malformed_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_malformed_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_malformed_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_max_cookie_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_max_cookie_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_max_cookie_max_cookie=dict(required=False, type="int"),
             constraint_max_cookie_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_max_cookie_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_max_header_line_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_max_header_line_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_max_header_line_max_header_line=dict(required=False, type="int"),
             constraint_max_header_line_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_max_header_line_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_max_range_segment_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_max_range_segment_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_max_range_segment_max_range_segment=dict(required=False, type="int"),
             constraint_max_range_segment_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_max_range_segment_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_max_url_param_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_max_url_param_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_max_url_param_max_url_param=dict(required=False, type="int"),
             constraint_max_url_param_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_max_url_param_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_method_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_method_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_method_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_method_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_param_length_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_param_length_length=dict(required=False, type="int"),
             constraint_param_length_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_param_length_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_param_length_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_url_param_length_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_url_param_length_length=dict(required=False, type="int"),
             constraint_url_param_length_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_url_param_length_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_url_param_length_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_version_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_version_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_version_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
@@ -2237,7 +2062,7 @@ Functions
             method_log=dict(required=False, type="str", choices=["disable", "enable"]),
             method_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             method_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             method_method_policy_address=dict(required=False, type="str"),
             method_method_policy_allowed_methods=dict(required=False, type="str", choices=["delete",
                                                                                            "get",
@@ -2254,7 +2079,7 @@ Functions
             signature_credit_card_detection_threshold=dict(required=False, type="int"),
             signature_disabled_signature=dict(required=False, type="str"),
             signature_disabled_sub_class=dict(required=False, type="str"),
-
+    
             signature_custom_signature_action=dict(required=False, type="str", choices=["allow", "block", "erase"]),
             signature_custom_signature_case_sensitivity=dict(required=False, type="str", choices=["disable", "enable"]),
             signature_custom_signature_direction=dict(required=False, type="str", choices=["request", "response"]),
@@ -2276,7 +2101,7 @@ Functions
                                                                                         "resp-body",
                                                                                         "resp-hdr",
                                                                                         "resp-status"]),
-
+    
             signature_main_class_action=dict(required=False, type="str", choices=["allow", "block", "erase"]),
             signature_main_class_log=dict(required=False, type="str", choices=["disable", "enable"]),
             signature_main_class_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
@@ -2286,16 +2111,15 @@ Functions
             url_access_address=dict(required=False, type="str"),
             url_access_log=dict(required=False, type="str", choices=["disable", "enable"]),
             url_access_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
-
+    
             url_access_access_pattern_negate=dict(required=False, type="str", choices=["disable", "enable"]),
             url_access_access_pattern_pattern=dict(required=False, type="str"),
             url_access_access_pattern_regex=dict(required=False, type="str", choices=["disable", "enable"]),
             url_access_access_pattern_srcaddr=dict(required=False, type="str"),
-
+    
         )
-
-        module = AnsibleModule(argument_spec, supports_check_mode=False)
-
+    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -2465,47 +2289,33 @@ Functions
                 }
             }
         }
-
-        list_overrides = ['address-list', 'constraint', 'method', 'signature', 'url-access']
-        for list_variable in list_overrides:
-            override_data = list()
-            try:
-                override_data = module.params[list_variable]
-            except BaseException:
-                pass
-            try:
-                if override_data:
-                    del paramgram[list_variable]
-                    paramgram[list_variable] = override_data
-            except BaseException:
-                pass
-
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None or password is None:
-            module.fail_json(msg="Host and username and password are required")
-
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-
-        response = fmg.login()
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
-
-        results = fmgr_waf_profile_addsetdelete(fmg, paramgram)
-        if results[0] != 0:
-            fmgr_logout(fmg, module, results=results, good_codes=[0])
-
-        fmg.logout()
-
-        if results is not None:
-            return module.exit_json(**results[1])
+    
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
         else:
-            return module.exit_json(msg="No results were returned from the API call.")
-
-
+            module.fail_json(**FAIL_SOCKET_MSG)
+    
+        list_overrides = ['address-list', 'constraint', 'method', 'signature', 'url-access']
+        paramgram = fmgr.tools.paramgram_child_list_override(list_overrides=list_overrides,
+                                                             paramgram=paramgram, module=module)
+    
+        results = DEFAULT_RESULT_OBJ
+    
+        try:
+            results = fmgr_waf_profile_modify(fmgr, paramgram)
+            fmgr.govern_response(module=module, results=results,
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+    
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        return module.exit_json(**results[1])
+    
+    
 
 
 
@@ -2531,19 +2341,21 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-
+    
     from __future__ import absolute_import, division, print_function
-
+    
     __metaclass__ = type
-
+    
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-
+    
     DOCUMENTATION = '''
     ---
     module: fmgr_secprof_waf
     version_added: "2.8"
+    notes:
+        - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).
     author:
         - Luke Weighall (@lweighall)
         - Andrew Welsh (@Ghilli3)
@@ -2551,29 +2363,14 @@ Module Source Code
     short_description: FortiManager web application firewall security profile
     description:
       -  Manage web application firewall security profiles for FGTs via FMG
-
+    
     options:
       adom:
         description:
           - The ADOM the configuration should belong to.
         required: false
         default: root
-
-      host:
-        description:
-          - The FortiManager's Address.
-        required: true
-
-      username:
-        description:
-          - The username associated with the account.
-        required: true
-
-      password:
-        description:
-          - The password associated with the username account.
-        required: true
-
+    
       mode:
         description:
           - Sets one of three modes for managing the object.
@@ -2581,12 +2378,12 @@ Module Source Code
         choices: ['add', 'set', 'delete', 'update']
         required: false
         default: add
-
+    
       name:
         description:
           - WAF Profile name.
         required: false
-
+    
       external:
         description:
           - Disable/Enable external HTTP Inspection.
@@ -2594,7 +2391,7 @@ Module Source Code
           - choice | enable | Enable external inspection.
         required: false
         choices: ["disable", "enable"]
-
+    
       extended_log:
         description:
           - Enable/disable extended logging.
@@ -2602,12 +2399,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       comment:
         description:
           - Comment.
         required: false
-
+    
       address_list:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2618,12 +2415,12 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-
+    
       address_list_blocked_address:
         description:
           - Blocked address.
         required: false
-
+    
       address_list_blocked_log:
         description:
           - Enable/disable logging on blocked addresses.
@@ -2631,7 +2428,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       address_list_severity:
         description:
           - Severity.
@@ -2640,7 +2437,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       address_list_status:
         description:
           - Status.
@@ -2648,12 +2445,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       address_list_trusted_address:
         description:
           - Trusted address.
         required: false
-
+    
       constraint:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2664,7 +2461,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-
+    
       constraint_content_length_action:
         description:
           - Action.
@@ -2672,12 +2469,12 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["allow", "block"]
-
+    
       constraint_content_length_length:
         description:
           - Length of HTTP content in bytes (0 to 2147483647).
         required: false
-
+    
       constraint_content_length_log:
         description:
           - Enable/disable logging.
@@ -2685,7 +2482,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_content_length_severity:
         description:
           - Severity.
@@ -2694,7 +2491,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       constraint_content_length_status:
         description:
           - Enable/disable the constraint.
@@ -2702,12 +2499,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_exception_address:
         description:
           - Host address.
         required: false
-
+    
       constraint_exception_content_length:
         description:
           - HTTP content length in request.
@@ -2715,7 +2512,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_exception_header_length:
         description:
           - HTTP header length in request.
@@ -2723,7 +2520,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_exception_hostname:
         description:
           - Enable/disable hostname check.
@@ -2731,7 +2528,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_exception_line_length:
         description:
           - HTTP line length in request.
@@ -2739,7 +2536,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_exception_malformed:
         description:
           - Enable/disable malformed HTTP request check.
@@ -2747,7 +2544,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_exception_max_cookie:
         description:
           - Maximum number of cookies in HTTP request.
@@ -2755,7 +2552,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_exception_max_header_line:
         description:
           - Maximum number of HTTP header line.
@@ -2763,7 +2560,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_exception_max_range_segment:
         description:
           - Maximum number of range segments in HTTP range line.
@@ -2771,7 +2568,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_exception_max_url_param:
         description:
           - Maximum number of parameters in URL.
@@ -2779,7 +2576,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_exception_method:
         description:
           - Enable/disable HTTP method check.
@@ -2787,7 +2584,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_exception_param_length:
         description:
           - Maximum length of parameter in URL, HTTP POST request or HTTP body.
@@ -2795,12 +2592,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_exception_pattern:
         description:
           - URL pattern.
         required: false
-
+    
       constraint_exception_regex:
         description:
           - Enable/disable regular expression based pattern match.
@@ -2808,7 +2605,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_exception_url_param_length:
         description:
           - Maximum length of parameter in URL.
@@ -2816,7 +2613,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_exception_version:
         description:
           - Enable/disable HTTP version check.
@@ -2824,7 +2621,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_header_length_action:
         description:
           - Action.
@@ -2832,12 +2629,12 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["allow", "block"]
-
+    
       constraint_header_length_length:
         description:
           - Length of HTTP header in bytes (0 to 2147483647).
         required: false
-
+    
       constraint_header_length_log:
         description:
           - Enable/disable logging.
@@ -2845,7 +2642,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_header_length_severity:
         description:
           - Severity.
@@ -2854,7 +2651,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       constraint_header_length_status:
         description:
           - Enable/disable the constraint.
@@ -2862,15 +2659,15 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_hostname_action:
         description:
-          - Action.
+          - Action for a hostname constraint.
           - choice | allow | Allow.
           - choice | block | Block.
         required: false
         choices: ["allow", "block"]
-
+    
       constraint_hostname_log:
         description:
           - Enable/disable logging.
@@ -2878,7 +2675,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_hostname_severity:
         description:
           - Severity.
@@ -2887,7 +2684,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       constraint_hostname_status:
         description:
           - Enable/disable the constraint.
@@ -2895,7 +2692,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_line_length_action:
         description:
           - Action.
@@ -2903,12 +2700,12 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["allow", "block"]
-
+    
       constraint_line_length_length:
         description:
           - Length of HTTP line in bytes (0 to 2147483647).
         required: false
-
+    
       constraint_line_length_log:
         description:
           - Enable/disable logging.
@@ -2916,7 +2713,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_line_length_severity:
         description:
           - Severity.
@@ -2925,7 +2722,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       constraint_line_length_status:
         description:
           - Enable/disable the constraint.
@@ -2933,7 +2730,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_malformed_action:
         description:
           - Action.
@@ -2941,7 +2738,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["allow", "block"]
-
+    
       constraint_malformed_log:
         description:
           - Enable/disable logging.
@@ -2949,7 +2746,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_malformed_severity:
         description:
           - Severity.
@@ -2958,7 +2755,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       constraint_malformed_status:
         description:
           - Enable/disable the constraint.
@@ -2966,7 +2763,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_max_cookie_action:
         description:
           - Action.
@@ -2974,7 +2771,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["allow", "block"]
-
+    
       constraint_max_cookie_log:
         description:
           - Enable/disable logging.
@@ -2982,12 +2779,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_max_cookie_max_cookie:
         description:
           - Maximum number of cookies in HTTP request (0 to 2147483647).
         required: false
-
+    
       constraint_max_cookie_severity:
         description:
           - Severity.
@@ -2996,7 +2793,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       constraint_max_cookie_status:
         description:
           - Enable/disable the constraint.
@@ -3004,7 +2801,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_max_header_line_action:
         description:
           - Action.
@@ -3012,7 +2809,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["allow", "block"]
-
+    
       constraint_max_header_line_log:
         description:
           - Enable/disable logging.
@@ -3020,12 +2817,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_max_header_line_max_header_line:
         description:
           - Maximum number HTTP header lines (0 to 2147483647).
         required: false
-
+    
       constraint_max_header_line_severity:
         description:
           - Severity.
@@ -3034,7 +2831,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       constraint_max_header_line_status:
         description:
           - Enable/disable the constraint.
@@ -3042,7 +2839,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_max_range_segment_action:
         description:
           - Action.
@@ -3050,7 +2847,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["allow", "block"]
-
+    
       constraint_max_range_segment_log:
         description:
           - Enable/disable logging.
@@ -3058,12 +2855,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_max_range_segment_max_range_segment:
         description:
           - Maximum number of range segments in HTTP range line (0 to 2147483647).
         required: false
-
+    
       constraint_max_range_segment_severity:
         description:
           - Severity.
@@ -3072,7 +2869,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       constraint_max_range_segment_status:
         description:
           - Enable/disable the constraint.
@@ -3080,7 +2877,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_max_url_param_action:
         description:
           - Action.
@@ -3088,7 +2885,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["allow", "block"]
-
+    
       constraint_max_url_param_log:
         description:
           - Enable/disable logging.
@@ -3096,12 +2893,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_max_url_param_max_url_param:
         description:
           - Maximum number of parameters in URL (0 to 2147483647).
         required: false
-
+    
       constraint_max_url_param_severity:
         description:
           - Severity.
@@ -3110,7 +2907,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       constraint_max_url_param_status:
         description:
           - Enable/disable the constraint.
@@ -3118,7 +2915,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_method_action:
         description:
           - Action.
@@ -3126,7 +2923,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["allow", "block"]
-
+    
       constraint_method_log:
         description:
           - Enable/disable logging.
@@ -3134,7 +2931,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_method_severity:
         description:
           - Severity.
@@ -3143,7 +2940,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       constraint_method_status:
         description:
           - Enable/disable the constraint.
@@ -3151,7 +2948,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_param_length_action:
         description:
           - Action.
@@ -3159,12 +2956,12 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["allow", "block"]
-
+    
       constraint_param_length_length:
         description:
           - Maximum length of parameter in URL, HTTP POST request or HTTP body in bytes (0 to 2147483647).
         required: false
-
+    
       constraint_param_length_log:
         description:
           - Enable/disable logging.
@@ -3172,7 +2969,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_param_length_severity:
         description:
           - Severity.
@@ -3181,7 +2978,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       constraint_param_length_status:
         description:
           - Enable/disable the constraint.
@@ -3189,7 +2986,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_url_param_length_action:
         description:
           - Action.
@@ -3197,12 +2994,12 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["allow", "block"]
-
+    
       constraint_url_param_length_length:
         description:
           - Maximum length of URL parameter in bytes (0 to 2147483647).
         required: false
-
+    
       constraint_url_param_length_log:
         description:
           - Enable/disable logging.
@@ -3210,7 +3007,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_url_param_length_severity:
         description:
           - Severity.
@@ -3219,7 +3016,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       constraint_url_param_length_status:
         description:
           - Enable/disable the constraint.
@@ -3227,7 +3024,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_version_action:
         description:
           - Action.
@@ -3235,7 +3032,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["allow", "block"]
-
+    
       constraint_version_log:
         description:
           - Enable/disable logging.
@@ -3243,7 +3040,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       constraint_version_severity:
         description:
           - Severity.
@@ -3252,7 +3049,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       constraint_version_status:
         description:
           - Enable/disable the constraint.
@@ -3260,7 +3057,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       method:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -3271,7 +3068,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-
+    
       method_default_allowed_methods:
         description:
           - Methods.
@@ -3287,7 +3084,7 @@ Module Source Code
           - flag | connect | HTTP CONNECT method.
         required: false
         choices: ["delete", "get", "head", "options", "post", "put", "trace", "others", "connect"]
-
+    
       method_log:
         description:
           - Enable/disable logging.
@@ -3295,7 +3092,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       method_severity:
         description:
           - Severity.
@@ -3304,7 +3101,7 @@ Module Source Code
           - choice | high | High severity
         required: false
         choices: ["low", "medium", "high"]
-
+    
       method_status:
         description:
           - Status.
@@ -3312,12 +3109,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       method_method_policy_address:
         description:
           - Host address.
         required: false
-
+    
       method_method_policy_allowed_methods:
         description:
           - Allowed Methods.
@@ -3333,12 +3130,12 @@ Module Source Code
           - flag | connect | HTTP CONNECT method.
         required: false
         choices: ["delete", "get", "head", "options", "post", "put", "trace", "others", "connect"]
-
+    
       method_method_policy_pattern:
         description:
           - URL pattern.
         required: false
-
+    
       method_method_policy_regex:
         description:
           - Enable/disable regular expression based pattern match.
@@ -3346,7 +3143,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       signature:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -3357,22 +3154,22 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-
+    
       signature_credit_card_detection_threshold:
         description:
           - The minimum number of Credit cards to detect violation.
         required: false
-
+    
       signature_disabled_signature:
         description:
           - Disabled signatures
         required: false
-
+    
       signature_disabled_sub_class:
         description:
           - Disabled signature subclasses.
         required: false
-
+    
       signature_custom_signature_action:
         description:
           - Action.
@@ -3381,7 +3178,7 @@ Module Source Code
           - choice | erase | Erase credit card numbers.
         required: false
         choices: ["allow", "block", "erase"]
-
+    
       signature_custom_signature_case_sensitivity:
         description:
           - Case sensitivity in pattern.
@@ -3389,7 +3186,7 @@ Module Source Code
           - choice | enable | Case sensitive in pattern.
         required: false
         choices: ["disable", "enable"]
-
+    
       signature_custom_signature_direction:
         description:
           - Traffic direction.
@@ -3397,7 +3194,7 @@ Module Source Code
           - choice | response | Match HTTP response.
         required: false
         choices: ["request", "response"]
-
+    
       signature_custom_signature_log:
         description:
           - Enable/disable logging.
@@ -3405,17 +3202,17 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       signature_custom_signature_name:
         description:
           - Signature name.
         required: false
-
+    
       signature_custom_signature_pattern:
         description:
           - Match pattern.
         required: false
-
+    
       signature_custom_signature_severity:
         description:
           - Severity.
@@ -3424,7 +3221,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       signature_custom_signature_status:
         description:
           - Status.
@@ -3432,7 +3229,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       signature_custom_signature_target:
         description:
           - Match HTTP target.
@@ -3453,7 +3250,7 @@ Module Source Code
         required: false
         choices: ["arg","arg-name","req-body","req-cookie","req-cookie-name","req-filename","req-header","req-header-name",
           "req-raw-uri","req-uri","resp-body","resp-hdr","resp-status"]
-
+    
       signature_main_class_action:
         description:
           - Action.
@@ -3462,7 +3259,7 @@ Module Source Code
           - choice | erase | Erase credit card numbers.
         required: false
         choices: ["allow", "block", "erase"]
-
+    
       signature_main_class_log:
         description:
           - Enable/disable logging.
@@ -3470,7 +3267,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       signature_main_class_severity:
         description:
           - Severity.
@@ -3479,7 +3276,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       signature_main_class_status:
         description:
           - Status.
@@ -3487,7 +3284,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       url_access:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -3498,7 +3295,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-
+    
       url_access_action:
         description:
           - Action.
@@ -3507,12 +3304,12 @@ Module Source Code
           - choice | block | Block HTTP request.
         required: false
         choices: ["bypass", "permit", "block"]
-
+    
       url_access_address:
         description:
           - Host address.
         required: false
-
+    
       url_access_log:
         description:
           - Enable/disable logging.
@@ -3520,7 +3317,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       url_access_severity:
         description:
           - Severity.
@@ -3529,7 +3326,7 @@ Module Source Code
           - choice | high | High severity.
         required: false
         choices: ["low", "medium", "high"]
-
+    
       url_access_access_pattern_negate:
         description:
           - Enable/disable match negation.
@@ -3537,12 +3334,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       url_access_access_pattern_pattern:
         description:
           - URL pattern.
         required: false
-
+    
       url_access_access_pattern_regex:
         description:
           - Enable/disable regular expression based pattern match.
@@ -3550,217 +3347,94 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-
+    
       url_access_access_pattern_srcaddr:
         description:
           - Source address.
         required: false
-
+    
     '''
-
+    
     EXAMPLES = '''
       - name: DELETE Profile
         fmgr_secprof_waf:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_WAF_Profile"
           comment: "Created by Ansible Module TEST"
           mode: "delete"
-
+    
       - name: CREATE Profile
         fmgr_secprof_waf:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_WAF_Profile"
           comment: "Created by Ansible Module TEST"
           mode: "set"
     '''
-
+    
     RETURN = """
     api_result:
       description: full API response, includes status code and message
       returned: always
-      type: string
+      type: str
     """
-
+    
     from ansible.module_utils.basic import AnsibleModule, env_fallback
-    from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-
-    # check for pyFMG lib
-    try:
-        from pyFMG.fortimgr import FortiManager
-
-        HAS_PYFMGR = True
-    except ImportError:
-        HAS_PYFMGR = False
-
-
+    from ansible.module_utils.connection import Connection
+    from ansible.module_utils.network.fortimanager.fortimanager import FortiManagerHandler
+    from ansible.module_utils.network.fortimanager.common import FMGBaseException
+    from ansible.module_utils.network.fortimanager.common import FMGRCommon
+    from ansible.module_utils.network.fortimanager.common import FMGRMethods
+    from ansible.module_utils.network.fortimanager.common import DEFAULT_RESULT_OBJ
+    from ansible.module_utils.network.fortimanager.common import FAIL_SOCKET_MSG
+    from ansible.module_utils.network.fortimanager.common import prepare_dict
+    from ansible.module_utils.network.fortimanager.common import scrub_dict
+    
+    
     ###############
     # START METHODS
     ###############
-
-
-    def fmgr_waf_profile_addsetdelete(fmg, paramgram):
+    
+    
+    def fmgr_waf_profile_modify(fmgr, paramgram):
         """
-        fmgr_waf_profile -- Your Description here, bruh
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
-
         mode = paramgram["mode"]
         adom = paramgram["adom"]
         # INIT A BASIC OBJECTS
-        response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
+        response = DEFAULT_RESULT_OBJ
         url = ""
         datagram = {}
-
+    
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/waf/profile'.format(adom=adom)
-            datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-
+            datagram = scrub_dict(prepare_dict(paramgram))
+    
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/waf/profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if mode == "set":
-            response = fmg.set(url, datagram)
-        # IF MODE = UPDATE -- USER THE 'UPDATE' API CALL MODE
-        elif mode == "update":
-            response = fmg.update(url, datagram)
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        elif mode == "add":
-            response = fmg.add(url, datagram)
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        elif mode == "delete":
-            response = fmg.delete(url, datagram)
-
+    
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
+    
         return response
-
-
-    # ADDITIONAL COMMON FUNCTIONS
-    # FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-        # pydevd.settrace('10.0.0.122', port=54654, stdoutToServer=True, stderrToServer=True)
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except BaseException:
-                pass
-            module.fail_json(msg=msg)
-
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except BaseException:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-
-            if results[0] not in good_codes:
-                if logout_on_fail:
-                    fmg.logout()
-                    module.fail_json(msg=msg, **results[1])
-                else:
-                    return msg
-            else:
-                if logout_on_success:
-                    fmg.logout()
-                    module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
-                                     **results[1])
-                else:
-                    return msg
-
-
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return (str((0xff000000 & mask) >> 24) + '.' +
-                str((0x00ff0000 & mask) >> 16) + '.' +
-                str((0x0000ff00 & mask) >> 8) + '.' +
-                str((0x000000ff & mask)))
-
-
-    # utility function: removing keys wih value of None, nothing in playbook for that key
-    def fmgr_del_none(obj):
-        if isinstance(obj, dict):
-            return type(obj)((fmgr_del_none(k), fmgr_del_none(v))
-                             for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
-        else:
-            return obj
-
-
-    # utility function: remove keys that are need for the logic but the FMG API won't accept them
-    def fmgr_prepare_dict(obj):
-        list_of_elems = ["mode", "adom", "host", "username", "password"]
-        if isinstance(obj, dict):
-            obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
-        return obj
-
-
-    def fmgr_is_empty_dict(obj):
-        return_val = False
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, dict):
-                        if len(v) == 0:
-                            return_val = True
-                        elif len(v) > 0:
-                            for k1, v1 in v.items():
-                                if v1 is None:
-                                    return_val = True
-                                elif v1 is not None:
-                                    return_val = False
-                                    return return_val
-                    elif v is None:
-                        return_val = True
-                    elif v is not None:
-                        return_val = False
-                        return return_val
-            elif len(obj) == 0:
-                return_val = True
-
-        return return_val
-
-
-    def fmgr_split_comma_strings_into_lists(obj):
-        if isinstance(obj, dict):
-            if len(obj) > 0:
-                for k, v in obj.items():
-                    if isinstance(v, str):
-                        new_list = list()
-                        if "," in v:
-                            new_items = v.split(",")
-                            for item in new_items:
-                                new_list.append(item.strip())
-                            obj[k] = new_list
-
-        return obj
-
-
+    
+    
     #############
     # END METHODS
     #############
-
-
+    
+    
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-
+    
             name=dict(required=False, type="str"),
             external=dict(required=False, type="str", choices=["disable", "enable"]),
             extended_log=dict(required=False, type="str", choices=["disable", "enable"]),
@@ -3772,13 +3446,13 @@ Module Source Code
             address_list_status=dict(required=False, type="str", choices=["disable", "enable"]),
             address_list_trusted_address=dict(required=False, type="str"),
             constraint=dict(required=False, type="list"),
-
+    
             constraint_content_length_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_content_length_length=dict(required=False, type="int"),
             constraint_content_length_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_content_length_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_content_length_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_exception_address=dict(required=False, type="str"),
             constraint_exception_content_length=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_exception_header_length=dict(required=False, type="str", choices=["disable", "enable"]),
@@ -3795,70 +3469,70 @@ Module Source Code
             constraint_exception_regex=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_exception_url_param_length=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_exception_version=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_header_length_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_header_length_length=dict(required=False, type="int"),
             constraint_header_length_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_header_length_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_header_length_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_hostname_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_hostname_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_hostname_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_hostname_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_line_length_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_line_length_length=dict(required=False, type="int"),
             constraint_line_length_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_line_length_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_line_length_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_malformed_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_malformed_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_malformed_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_malformed_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_max_cookie_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_max_cookie_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_max_cookie_max_cookie=dict(required=False, type="int"),
             constraint_max_cookie_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_max_cookie_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_max_header_line_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_max_header_line_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_max_header_line_max_header_line=dict(required=False, type="int"),
             constraint_max_header_line_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_max_header_line_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_max_range_segment_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_max_range_segment_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_max_range_segment_max_range_segment=dict(required=False, type="int"),
             constraint_max_range_segment_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_max_range_segment_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_max_url_param_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_max_url_param_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_max_url_param_max_url_param=dict(required=False, type="int"),
             constraint_max_url_param_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_max_url_param_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_method_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_method_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_method_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_method_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_param_length_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_param_length_length=dict(required=False, type="int"),
             constraint_param_length_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_param_length_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_param_length_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_url_param_length_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_url_param_length_length=dict(required=False, type="int"),
             constraint_url_param_length_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_url_param_length_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             constraint_url_param_length_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             constraint_version_action=dict(required=False, type="str", choices=["allow", "block"]),
             constraint_version_log=dict(required=False, type="str", choices=["disable", "enable"]),
             constraint_version_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
@@ -3876,7 +3550,7 @@ Module Source Code
             method_log=dict(required=False, type="str", choices=["disable", "enable"]),
             method_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
             method_status=dict(required=False, type="str", choices=["disable", "enable"]),
-
+    
             method_method_policy_address=dict(required=False, type="str"),
             method_method_policy_allowed_methods=dict(required=False, type="str", choices=["delete",
                                                                                            "get",
@@ -3893,7 +3567,7 @@ Module Source Code
             signature_credit_card_detection_threshold=dict(required=False, type="int"),
             signature_disabled_signature=dict(required=False, type="str"),
             signature_disabled_sub_class=dict(required=False, type="str"),
-
+    
             signature_custom_signature_action=dict(required=False, type="str", choices=["allow", "block", "erase"]),
             signature_custom_signature_case_sensitivity=dict(required=False, type="str", choices=["disable", "enable"]),
             signature_custom_signature_direction=dict(required=False, type="str", choices=["request", "response"]),
@@ -3915,7 +3589,7 @@ Module Source Code
                                                                                         "resp-body",
                                                                                         "resp-hdr",
                                                                                         "resp-status"]),
-
+    
             signature_main_class_action=dict(required=False, type="str", choices=["allow", "block", "erase"]),
             signature_main_class_log=dict(required=False, type="str", choices=["disable", "enable"]),
             signature_main_class_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
@@ -3925,16 +3599,15 @@ Module Source Code
             url_access_address=dict(required=False, type="str"),
             url_access_log=dict(required=False, type="str", choices=["disable", "enable"]),
             url_access_severity=dict(required=False, type="str", choices=["low", "medium", "high"]),
-
+    
             url_access_access_pattern_negate=dict(required=False, type="str", choices=["disable", "enable"]),
             url_access_access_pattern_pattern=dict(required=False, type="str"),
             url_access_access_pattern_regex=dict(required=False, type="str", choices=["disable", "enable"]),
             url_access_access_pattern_srcaddr=dict(required=False, type="str"),
-
+    
         )
-
-        module = AnsibleModule(argument_spec, supports_check_mode=False)
-
+    
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False, )
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -4104,47 +3777,33 @@ Module Source Code
                 }
             }
         }
-
-        list_overrides = ['address-list', 'constraint', 'method', 'signature', 'url-access']
-        for list_variable in list_overrides:
-            override_data = list()
-            try:
-                override_data = module.params[list_variable]
-            except BaseException:
-                pass
-            try:
-                if override_data:
-                    del paramgram[list_variable]
-                    paramgram[list_variable] = override_data
-            except BaseException:
-                pass
-
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None or password is None:
-            module.fail_json(msg="Host and username and password are required")
-
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-
-        response = fmg.login()
-        if response[1]['status']['code'] != 0:
-            module.fail_json(msg="Connection to FortiManager Failed")
-
-        results = fmgr_waf_profile_addsetdelete(fmg, paramgram)
-        if results[0] != 0:
-            fmgr_logout(fmg, module, results=results, good_codes=[0])
-
-        fmg.logout()
-
-        if results is not None:
-            return module.exit_json(**results[1])
+    
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr.tools = FMGRCommon()
         else:
-            return module.exit_json(msg="No results were returned from the API call.")
-
-
+            module.fail_json(**FAIL_SOCKET_MSG)
+    
+        list_overrides = ['address-list', 'constraint', 'method', 'signature', 'url-access']
+        paramgram = fmgr.tools.paramgram_child_list_override(list_overrides=list_overrides,
+                                                             paramgram=paramgram, module=module)
+    
+        results = DEFAULT_RESULT_OBJ
+    
+        try:
+            results = fmgr_waf_profile_modify(fmgr, paramgram)
+            fmgr.govern_response(module=module, results=results,
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
+    
+        except Exception as err:
+            raise FMGBaseException(err)
+    
+        return module.exit_json(**results[1])
+    
+    
     if __name__ == "__main__":
         main()
 

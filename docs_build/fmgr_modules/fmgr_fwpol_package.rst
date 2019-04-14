@@ -630,7 +630,6 @@ Functions
     
         try:
             # IF THE object_type IS FOLDER LETS RUN THAT METHOD
-            pydevd.settrace('10.0.0.151', port=54654, stdoutToServer=True, stderrToServer=True)
             if paramgram["object_type"] == "folder":
                 results = fmgr_fwpol_package_folder(fmgr, paramgram)
                 fmgr.govern_response(module=module, results=results,
@@ -904,7 +903,6 @@ Module Source Code
     from ansible.module_utils.network.fortimanager.common import FAIL_SOCKET_MSG
     from ansible.module_utils.network.fortimanager.common import FMGRMethods
     
-    import pydevd
     
     
     def fmgr_fwpol_package(fmgr, paramgram):
@@ -1277,7 +1275,6 @@ Module Source Code
     
         try:
             # IF THE object_type IS FOLDER LETS RUN THAT METHOD
-            pydevd.settrace('10.0.0.151', port=54654, stdoutToServer=True, stderrToServer=True)
             if paramgram["object_type"] == "folder":
                 results = fmgr_fwpol_package_folder(fmgr, paramgram)
                 fmgr.govern_response(module=module, results=results,
