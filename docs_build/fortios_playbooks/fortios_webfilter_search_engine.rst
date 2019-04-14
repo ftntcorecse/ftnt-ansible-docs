@@ -17,10 +17,17 @@ Playbook Task Examples
       tasks:
       - name: Configure web filter search engines.
         fortios_webfilter_search_engine:
+<<<<<<< Updated upstream
           host:  "{{ host }}"
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+=======
+          host:  "{{  host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{  vdom }}"
+>>>>>>> Stashed changes
           webfilter_search_engine:
             state: "present"
             charset: "utf-8"
@@ -29,13 +36,18 @@ Playbook Task Examples
             query: "<your_own_value>"
             safesearch: "disable"
             safesearch-str: "<your_own_value>"
+<<<<<<< Updated upstream
             url: "myurl.com"
+=======
+            url: "http://myurl.com"
+>>>>>>> Stashed changes
 
 
 
 Playbook File Examples
 ----------------------
 
+<<<<<<< Updated upstream
 
 ../ansible_fgt_modules/v6.0.2/webfilter/fortios_webfilter_search_engine_example.yml
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -66,4 +78,7 @@ Playbook File Examples
 
 
 
+=======
+%%PB_FILE_EXAMPLE_TOKEN%%
+>>>>>>> Stashed changes
 

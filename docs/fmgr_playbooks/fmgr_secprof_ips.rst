@@ -36,25 +36,19 @@ ips.yml
 
     - name: Create and Delete security profile in FMG
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
     #  - name: DELETE Profile
     #    fmgr_secprof_ips:
-    #      host: "{{inventory_hostname}}"
-    #      username: "{{ username }}"
-    #      password: "{{ password }}"
     #      name: "Ansible_IPS_Profile"
     #      comment: "Created by Ansible Module TEST"
     #      mode: "delete"
     
       - name: CREATE Profile
         fmgr_secprof_ips:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_IPS_Profile"
           comment: "Created by Ansible Module TEST"
           mode: "set"
@@ -73,6 +67,47 @@ ips.yml
     #      ]
     
     
+
+
+ips2.yml
+++++++++
+
+.. code-block:: yaml
+
+
+    - name: Create and Delete security profile in FMG
+      hosts: FortiManager
+      connection: httpapi
+      gather_facts: False
+    
+      tasks:
+    #    - name: DELETE Profile
+    #      fmgr_ips_sensor:
+    #        name: "Ansible_IPS_Profile"
+    #        comment: "Created by Ansible Module TEST"
+    #        mode: "delete"
+    
+    
+        - name: CREATE Profile
+          fmgr_ips_sensor:
+            name: "Ansible_IPS_Profile"
+            comment: "Created by Ansible Module TEST"
+            mode: "set"
+            block_malicious_url: "enable"
+    
+            entries_action: "block"
+            entries_severity: "high"
+            entries_log: "enable"
+            entries_status: "enable"
+    
+            entries: [{severity: "high", action: "block"}, {severity: "low", action: "pass"}]
+
+fmgr_secprof_ips_run_all.sh
++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook ips.yml -vvvv
 
 
 

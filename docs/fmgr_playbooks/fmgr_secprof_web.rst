@@ -58,24 +58,18 @@ web.yml
 
     - name: Create and Delete security profile in FMG
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
-      - name: DELETE Profile
-        fmgr_secprof_web:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          name: "Ansible_Web_Proxy_Profile"
-          mode: "delete"
+    #  - name: DELETE Profile
+    #    fmgr_secprof_web:
+    #      name: "Ansible_Web_Proxy_Profile"
+    #      mode: "delete"
     
       - name: CREATE Profile
         fmgr_secprof_web:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_Web_Proxy_Profile"
           comment: "Created by Ansible Module TEST"
           mode: "set"
@@ -105,6 +99,14 @@ web.yml
           wisp_algorithm: "auto-learning"
           youtube_channel_status: "blacklist"
     
+
+
+fmgr_secprof_web_run_all.sh
++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook web.yml -vvvv
 
 
 

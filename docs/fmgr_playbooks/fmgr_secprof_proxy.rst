@@ -44,24 +44,18 @@ proxy.yml
 
     - name: Create and Delete security profile in FMG
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: DELETE Profile
         fmgr_secprof_proxy:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_Web_Proxy_Profile"
           mode: "delete"
     
       - name: CREATE Profile
         fmgr_secprof_proxy:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_Web_Proxy_Profile"
           mode: "set"
           header_client_ip: "pass"
@@ -76,6 +70,14 @@ proxy.yml
           headers_action: "add-to-request"
           headers_content: "test"
           headers_name: "test_header"
+
+fmgr_secprof_proxy_run_all.sh
++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook proxy.yml -vvvv
+
 
 
 

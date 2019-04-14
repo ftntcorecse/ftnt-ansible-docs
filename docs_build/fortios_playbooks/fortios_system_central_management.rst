@@ -17,10 +17,17 @@ Playbook Task Examples
       tasks:
       - name: Configure central management.
         fortios_system_central_management:
+<<<<<<< Updated upstream
           host:  "{{ host }}"
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+=======
+          host:  "{{  host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{  vdom }}"
+>>>>>>> Stashed changes
           system_central_management:
             allow-monitor: "enable"
             allow-push-configuration: "enable"
@@ -51,6 +58,7 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
+<<<<<<< Updated upstream
 
 ../ansible_fgt_modules/v6.0.2/system/fortios_system_central_management_example.yml
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -96,4 +104,7 @@ Playbook File Examples
 
 
 
+=======
+%%PB_FILE_EXAMPLE_TOKEN%%
+>>>>>>> Stashed changes
 

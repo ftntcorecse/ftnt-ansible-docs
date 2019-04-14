@@ -20,9 +20,8 @@ Metadata
 
 **Dev Status:** COMPLETED
 
-**Owning Developer:** 
+**Owning Developer:**
 Andrew Welsh
-
 Parameters
 ----------
 
@@ -31,7 +30,7 @@ action
 
 - Description: Specify HTTP action for the request. Either 'get' or 'post'
 
-  
+
 
 - Required: True
 
@@ -40,7 +39,7 @@ adom
 
 - Description: The administrative domain (admon) the configuration belongs to
 
-  
+
 
 - Required: True
 
@@ -49,7 +48,7 @@ host
 
 - Description: The FortiManager's Address.
 
-  
+
 
 - Required: True
 
@@ -58,7 +57,7 @@ password
 
 - Description: The password associated with the username account.
 
-  
+
 
 - Required: False
 
@@ -67,7 +66,7 @@ payload
 
 - Description: JSON payload of the request. The payload will be URL-encoded and becomes the "json" field in the query string for both GET and POST request.
 
-  
+
 
 - Required: False
 
@@ -76,7 +75,7 @@ resource
 
 - Description: URL on the remote device to be accessed, string
 
-  
+
 
 - Required: True
 
@@ -85,7 +84,7 @@ target
 
 - Description: FOS datasource, either device or group object
 
-  
+
 
 - Required: True
 
@@ -94,7 +93,7 @@ username
 
 - Description: The username to log into the FortiManager
 
-  
+
 
 - Required: True
 
@@ -112,7 +111,7 @@ Functions
  .. code-block:: python
 
     def fos_request(fmg, action, resource, target, payload, adom='root'):
-    
+
         datagram = {
             "data": {
                 # get or post
@@ -124,65 +123,65 @@ Functions
                 # FMG device to make API calls to
                 "target": target
             },
-    
+
         }
         url = "/sys/proxy/json"
-    
+
         status, response = fmg.execute(url, datagram)
         return status, response
-    
-    
+
+
 
 - main
 
  .. code-block:: python
 
     def main():
-    
+
         argument_spec = dict(
             adom=dict(required=False, type="str"),
             host=dict(required=True, type="str"),
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True),
-    
+
             action=dict(required=False, type="str"),
             resource=dict(required=False, type="str"),
             target=dict(required=False, type="str"),
             payload=dict(required=False, type="str"),
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=True, )
-    
+
         action = module.params["action"]
         resource = module.params["resource"]
         target = module.params["target"]
         payload = module.params["payload"]
-    
+
         # check if params are set
         if module.params["host"] is None or module.params["username"] is None:
             module.fail_json(msg="Host and username are required for connection")
-    
+
         # check if login failed
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
         response = fmg.login()
-    
+
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
         else:
             if module.params["adom"] is None:
                 module.params["adom"] = 'root'
-    
+
             status, result = fos_request(fmg, action, resource, target, payload, module.params["adom"])
-    
+
             if not status == 0:
                 module.fail_json(msg="Failure showing upgrade path", **result)
-    
+
             fmg.logout()
-    
+
             # results is returned as a tuple
             return module.exit_json(changed=True, **result)
-    
-    
+
+
 
 
 
@@ -208,15 +207,15 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-    
+
     from __future__ import absolute_import, division, print_function
-    
+
     __metaclass__ = type
-    
+
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-    
+
     DOCUMENTATION = '''
     ---
     module: fmgr_sys_proxy
@@ -226,7 +225,7 @@ Module Source Code
     description:
       - The FMG proxies FOS API calls via the FMG.  Review FortiGate API documentation to ensure you are passing correct
         parameters for both the FortiManager and FortiGate
-    
+
     options:
       adom:
         description:
@@ -244,7 +243,7 @@ Module Source Code
         description:
           - The password associated with the username account.
         required: false
-    
+
       action:
         description:
           - Specify HTTP action for the request. Either 'get' or 'post'
@@ -261,17 +260,17 @@ Module Source Code
         description:
           - FOS datasource, either device or group object
         required: True
-    
+
     '''
-    
+
     EXAMPLES = '''
     - name: Proxy FOS requests via FMG
       hosts: FortiManager
       connection: local
       gather_facts: False
-    
+
       tasks:
-    
+
         - name: Get upgrade path for FGT1
           fmgr_provision:
             host: "{{ inventory_hostname }}"
@@ -291,31 +290,31 @@ Module Source Code
             payload: {source: upload, file_content: b64_encoded_string, file_name: file_name}
             resource: "/api/v2/monitor/system/firmware/upgrade?vdom=vdom"
             target: ["/adom/root/device/FGT1"]
-    
+
     '''
-    
+
     RETURN = """
     api_result:
       description: full API response, includes status code and message
       returned: always
       type: string
     """
-    
-    
+
+
     from ansible.module_utils.basic import AnsibleModule, env_fallback
     from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-    
-    
+
+
     # check for pyFMG lib
     try:
         from pyFMG.fortimgr import FortiManager
         HAS_PYFMGR = True
     except ImportError:
         HAS_PYFMGR = False
-    
-    
+
+
     def fos_request(fmg, action, resource, target, payload, adom='root'):
-    
+
         datagram = {
             "data": {
                 # get or post
@@ -327,60 +326,60 @@ Module Source Code
                 # FMG device to make API calls to
                 "target": target
             },
-    
+
         }
         url = "/sys/proxy/json"
-    
+
         status, response = fmg.execute(url, datagram)
         return status, response
-    
-    
+
+
     def main():
-    
+
         argument_spec = dict(
             adom=dict(required=False, type="str"),
             host=dict(required=True, type="str"),
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True),
-    
+
             action=dict(required=False, type="str"),
             resource=dict(required=False, type="str"),
             target=dict(required=False, type="str"),
             payload=dict(required=False, type="str"),
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=True, )
-    
+
         action = module.params["action"]
         resource = module.params["resource"]
         target = module.params["target"]
         payload = module.params["payload"]
-    
+
         # check if params are set
         if module.params["host"] is None or module.params["username"] is None:
             module.fail_json(msg="Host and username are required for connection")
-    
+
         # check if login failed
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
         response = fmg.login()
-    
+
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
         else:
             if module.params["adom"] is None:
                 module.params["adom"] = 'root'
-    
+
             status, result = fos_request(fmg, action, resource, target, payload, module.params["adom"])
-    
+
             if not status == 0:
                 module.fail_json(msg="Failure showing upgrade path", **result)
-    
+
             fmg.logout()
-    
+
             # results is returned as a tuple
             return module.exit_json(changed=True, **result)
-    
-    
+
+
     if __name__ == "__main__":
         main()
 

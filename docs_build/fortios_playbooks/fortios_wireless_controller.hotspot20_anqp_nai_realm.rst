@@ -44,6 +44,7 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
+<<<<<<< Updated upstream
 
 ../ansible_fgt_modules/v6.0.2/wireless_controller.hotspot20/fortios_wireless_controller.hotspot20_anqp_nai_realm_example.yml
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -82,4 +83,7 @@ Playbook File Examples
 
 
 
+=======
+%%PB_FILE_EXAMPLE_TOKEN%%
+>>>>>>> Stashed changes
 

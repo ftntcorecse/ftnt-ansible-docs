@@ -40,6 +40,14 @@ Playbook File Examples
 ----------------------
 
 
+fmgr_secprof_wanopt_run_all.sh
+++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook wanopt.yml -vvvv
+
+
 wanopt.yml
 ++++++++++
 
@@ -48,24 +56,18 @@ wanopt.yml
 
     - name: Create and Delete security profile in FMG
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: DELETE Profile
         fmgr_secprof_wanopt:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_WanOpt_Profile"
           mode: "delete"
     
       - name: Create FMGR_WANOPT_PROFILE
         fmgr_secprof_wanopt:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "set"
           adom: "root"
           transparent: "enable"

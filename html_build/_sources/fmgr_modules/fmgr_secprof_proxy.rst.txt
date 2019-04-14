@@ -13,7 +13,7 @@ Metadata
 
 **Description:** ['Manage proxy security profiles for FortiGates via FortiManager using the FMG API with playbooks']
 
-**Author(s):** 
+**Author(s):**
 
 - Luke Weighall (github: @lweighall)
 
@@ -34,7 +34,6 @@ Metadata
 **Days in PR:** 12
 
 **Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_secprof_proxy
-
 Parameters
 ----------
 
@@ -43,7 +42,7 @@ adom
 
 - Description: The ADOM the configuration should belong to.
 
-  
+
 
 - Required: False
 
@@ -62,7 +61,7 @@ header_client_ip
 
   choice | remove | Remove the HTTP header.
 
-  
+
 
 - Required: False
 
@@ -81,7 +80,7 @@ header_front_end_https
 
   choice | remove | Remove the HTTP header.
 
-  
+
 
 - Required: False
 
@@ -100,7 +99,7 @@ header_via_request
 
   choice | remove | Remove the HTTP header.
 
-  
+
 
 - Required: False
 
@@ -119,7 +118,7 @@ header_via_response
 
   choice | remove | Remove the HTTP header.
 
-  
+
 
 - Required: False
 
@@ -138,7 +137,7 @@ header_x_authenticated_groups
 
   choice | remove | Remove the HTTP header.
 
-  
+
 
 - Required: False
 
@@ -157,7 +156,7 @@ header_x_authenticated_user
 
   choice | remove | Remove the HTTP header.
 
-  
+
 
 - Required: False
 
@@ -176,7 +175,7 @@ header_x_forwarded_for
 
   choice | remove | Remove the HTTP header.
 
-  
+
 
 - Required: False
 
@@ -199,7 +198,7 @@ headers
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -216,7 +215,7 @@ headers_action
 
   choice | remove-from-response | Remove the HTTP header from response.
 
-  
+
 
 - Required: False
 
@@ -227,7 +226,7 @@ headers_content
 
 - Description: HTTP header's content.
 
-  
+
 
 - Required: False
 
@@ -236,7 +235,7 @@ headers_name
 
 - Description: HTTP forwarded header name.
 
-  
+
 
 - Required: False
 
@@ -245,7 +244,7 @@ host
 
 - Description: The FortiManager's Address.
 
-  
+
 
 - Required: True
 
@@ -258,7 +257,7 @@ log_header_change
 
   choice | enable | Enable Enable/disable logging HTTP header changes.
 
-  
+
 
 - Required: False
 
@@ -271,7 +270,7 @@ mode
 
   Allows use of soft-adds instead of overwriting existing values
 
-  
+
 
 - Required: False
 
@@ -284,7 +283,7 @@ name
 
 - Description: Profile name.
 
-  
+
 
 - Required: False
 
@@ -293,7 +292,7 @@ password
 
 - Description: The password associated with the username account.
 
-  
+
 
 - Required: True
 
@@ -306,7 +305,7 @@ strip_encoding
 
   choice | enable | Enable stripping of unsupported encoding from the request header.
 
-  
+
 
 - Required: False
 
@@ -317,7 +316,7 @@ username
 
 - Description: The username associated with the account.
 
-  
+
 
 - Required: True
 
@@ -338,25 +337,25 @@ Functions
         """
         fmgr_web_proxy_profile -- Your Description here, bruh
         """
-    
+
         mode = paramgram["mode"]
         adom = paramgram["adom"]
-    
+
         response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
         url = ""
         datagram = {}
-    
+
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/web-proxy/profile'.format(adom=adom)
             datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-    
+
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/web-proxy/profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-    
+
         # IF MODE = SET -- USE THE 'SET' API CALL MODE
         if mode == "set":
             response = fmg.set(url, datagram)
@@ -369,10 +368,10 @@ Functions
         # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
         elif mode == "delete":
             response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     # ADDITIONAL COMMON FUNCTIONS
 
 - fmgr_logout
@@ -390,7 +389,7 @@ Functions
             except:
                 pass
             module.fail_json(msg=msg)
-    
+
         # SUBMISSION ERROR
         if len(results) > 0:
             if msg == "NULL":
@@ -398,7 +397,7 @@ Functions
                     msg = results[1]['status']['message']
                 except:
                     msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
+
             if results[0] not in good_codes:
                 if logout_on_fail:
                     fmg.logout()
@@ -409,8 +408,8 @@ Functions
                     module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
                                      **results[1])
         return msg
-    
-    
+
+
     # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
     # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
 
@@ -425,8 +424,8 @@ Functions
                str((0x00ff0000 & mask) >> 16) + '.' +
                str((0x0000ff00 & mask) >> 8) + '.' +
                str((0x000000ff & mask)))
-    
-    
+
+
     # utility function: removing keys wih value of None, nothing in playbook for that key
 
 - fmgr_del_none
@@ -439,8 +438,8 @@ Functions
                              for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
         else:
             return obj
-    
-    
+
+
     # utility function: remove keys that are need for the logic but the FMG API won't accept them
 
 - fmgr_prepare_dict
@@ -452,8 +451,8 @@ Functions
         if isinstance(obj, dict):
             obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
         return obj
-    
-    
+
+
 
 - fmgr_is_empty_dict
 
@@ -481,10 +480,10 @@ Functions
                         return return_val
             elif len(obj) == 0:
                 return_val = True
-    
+
         return return_val
-    
-    
+
+
 
 - fmgr_split_comma_strings_into_lists
 
@@ -501,15 +500,15 @@ Functions
                             for item in new_items:
                                 new_list.append(item.strip())
                             obj[k] = new_list
-    
+
         return obj
-    
-    
+
+
     #############
     # END METHODS
     #############
-    
-    
+
+
 
 - main
 
@@ -522,7 +521,7 @@ Functions
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-    
+
             strip_encoding=dict(required=False, type="str", choices=["disable", "enable"]),
             name=dict(required=False, type="str"),
             log_header_change=dict(required=False, type="str", choices=["disable", "enable"]),
@@ -538,11 +537,11 @@ Functions
                                                                      "remove-from-request", "remove-from-response"]),
             headers_content=dict(required=False, type="str"),
             headers_name=dict(required=False, type="str"),
-    
+
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -563,7 +562,7 @@ Functions
                 "name": module.params["headers_name"],
             }
         }
-    
+
         list_overrides = ['headers']
         for list_variable in list_overrides:
             override_data = list()
@@ -577,33 +576,33 @@ Functions
                     paramgram[list_variable] = override_data
             except:
                 pass
-    
+
         # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
         host = module.params["host"]
         password = module.params["password"]
         username = module.params["username"]
         if host is None or username is None or password is None:
             module.fail_json(msg="Host and username and password are required")
-    
+
         # CHECK IF LOGIN FAILED
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-    
+
         response = fmg.login()
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
-    
+
         results = fmgr_web_proxy_profile_addsetdelete(fmg, paramgram)
         if results[0] != 0:
             fmgr_logout(fmg, module, results=results, good_codes=[0])
-    
+
         fmg.logout()
-    
+
         if results is not None:
             return module.exit_json(**results[1])
         else:
             return module.exit_json(msg="No results were returned from the API call.")
-    
-    
+
+
 
 
 
@@ -629,14 +628,14 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-    
+
     from __future__ import absolute_import, division, print_function
     __metaclass__ = type
-    
+
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-    
+
     DOCUMENTATION = '''
     ---
     module: fmgr_secprof_proxy
@@ -648,29 +647,29 @@ Module Source Code
     short_description: Manage proxy security profiles in FortiManager
     description:
       -  Manage proxy security profiles for FortiGates via FortiManager using the FMG API with playbooks
-    
+
     options:
       adom:
         description:
           - The ADOM the configuration should belong to.
         required: false
         default: root
-    
+
       host:
         description:
           - The FortiManager's Address.
         required: true
-    
+
       username:
         description:
           - The username associated with the account.
         required: true
-    
+
       password:
         description:
           - The password associated with the username account.
         required: true
-    
+
       mode:
         description:
           - Sets one of three modes for managing the object.
@@ -678,7 +677,7 @@ Module Source Code
         choices: ['add', 'set', 'delete', 'update']
         required: false
         default: add
-    
+
       strip_encoding:
         description:
           - Enable/disable stripping unsupported encoding from the request header.
@@ -686,12 +685,12 @@ Module Source Code
           - choice | enable | Enable stripping of unsupported encoding from the request header.
         required: false
         choices: ["disable", "enable"]
-    
+
       name:
         description:
           - Profile name.
         required: false
-    
+
       log_header_change:
         description:
           - Enable/disable logging HTTP header changes.
@@ -699,7 +698,7 @@ Module Source Code
           - choice | enable | Enable Enable/disable logging HTTP header changes.
         required: false
         choices: ["disable", "enable"]
-    
+
       header_x_forwarded_for:
         description:
           - Action to take on the HTTP x-forwarded-for header in forwarded requests| forwards (pass), adds, or removes the
@@ -709,7 +708,7 @@ Module Source Code
           - choice | remove | Remove the HTTP header.
         required: false
         choices: ["pass", "add", "remove"]
-    
+
       header_x_authenticated_user:
         description:
           - Action to take on the HTTP x-authenticated-user header in forwarded requests| forwards (pass), adds, or remove
@@ -719,7 +718,7 @@ Module Source Code
           - choice | remove | Remove the HTTP header.
         required: false
         choices: ["pass", "add", "remove"]
-    
+
       header_x_authenticated_groups:
         description:
           - Action to take on the HTTP x-authenticated-groups header in forwarded requests| forwards (pass), adds, or remo
@@ -729,7 +728,7 @@ Module Source Code
           - choice | remove | Remove the HTTP header.
         required: false
         choices: ["pass", "add", "remove"]
-    
+
       header_via_response:
         description:
           - Action to take on the HTTP via header in forwarded responses| forwards (pass), adds, or removes the HTTP heade
@@ -739,7 +738,7 @@ Module Source Code
           - choice | remove | Remove the HTTP header.
         required: false
         choices: ["pass", "add", "remove"]
-    
+
       header_via_request:
         description:
           - Action to take on the HTTP via header in forwarded requests| forwards (pass), adds, or removes the HTTP header
@@ -749,7 +748,7 @@ Module Source Code
           - choice | remove | Remove the HTTP header.
         required: false
         choices: ["pass", "add", "remove"]
-    
+
       header_front_end_https:
         description:
           - Action to take on the HTTP front-end-HTTPS header in forwarded requests| forwards (pass), adds, or removes the
@@ -759,7 +758,7 @@ Module Source Code
           - choice | remove | Remove the HTTP header.
         required: false
         choices: ["pass", "add", "remove"]
-    
+
       header_client_ip:
         description:
           - Actions to take on the HTTP client-IP header in forwarded requests| forwards (pass), adds, or removes the HTTP
@@ -769,7 +768,7 @@ Module Source Code
           - choice | remove | Remove the HTTP header.
         required: false
         choices: ["pass", "add", "remove"]
-    
+
       headers:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -780,7 +779,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       headers_action:
         description:
           - Action when HTTP the header forwarded.
@@ -790,20 +789,20 @@ Module Source Code
           - choice | remove-from-response | Remove the HTTP header from response.
         required: false
         choices: ["add-to-request", "add-to-response", "remove-from-request", "remove-from-response"]
-    
+
       headers_content:
         description:
           - HTTP header's content.
         required: false
-    
+
       headers_name:
         description:
           - HTTP forwarded header name.
         required: false
-    
-    
+
+
     '''
-    
+
     EXAMPLES = '''
       - name: DELETE Profile
         fmgr_secprof_proxy:
@@ -812,7 +811,7 @@ Module Source Code
           password: "{{ password }}"
           name: "Ansible_Web_Proxy_Profile"
           mode: "delete"
-    
+
       - name: CREATE Profile
         fmgr_secprof_proxy:
           host: "{{inventory_hostname}}"
@@ -833,52 +832,52 @@ Module Source Code
           headers_content: "test"
           headers_name: "test_header"
     '''
-    
+
     RETURN = """
     api_result:
       description: full API response, includes status code and message
       returned: always
       type: string
     """
-    
+
     from ansible.module_utils.basic import AnsibleModule, env_fallback
     from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-    
+
     # check for pyFMG lib
     try:
         from pyFMG.fortimgr import FortiManager
         HAS_PYFMGR = True
     except ImportError:
         HAS_PYFMGR = False
-    
+
     ###############
     # START METHODS
     ###############
-    
-    
+
+
     def fmgr_web_proxy_profile_addsetdelete(fmg, paramgram):
         """
         fmgr_web_proxy_profile -- Your Description here, bruh
         """
-    
+
         mode = paramgram["mode"]
         adom = paramgram["adom"]
-    
+
         response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
         url = ""
         datagram = {}
-    
+
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/web-proxy/profile'.format(adom=adom)
             datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-    
+
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/web-proxy/profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-    
+
         # IF MODE = SET -- USE THE 'SET' API CALL MODE
         if mode == "set":
             response = fmg.set(url, datagram)
@@ -891,10 +890,10 @@ Module Source Code
         # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
         elif mode == "delete":
             response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     # ADDITIONAL COMMON FUNCTIONS
     def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
         """
@@ -907,7 +906,7 @@ Module Source Code
             except:
                 pass
             module.fail_json(msg=msg)
-    
+
         # SUBMISSION ERROR
         if len(results) > 0:
             if msg == "NULL":
@@ -915,7 +914,7 @@ Module Source Code
                     msg = results[1]['status']['message']
                 except:
                     msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
+
             if results[0] not in good_codes:
                 if logout_on_fail:
                     fmg.logout()
@@ -926,8 +925,8 @@ Module Source Code
                     module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
                                      **results[1])
         return msg
-    
-    
+
+
     # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
     # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
     def fmgr_cidr_to_netmask(cidr):
@@ -937,8 +936,8 @@ Module Source Code
                str((0x00ff0000 & mask) >> 16) + '.' +
                str((0x0000ff00 & mask) >> 8) + '.' +
                str((0x000000ff & mask)))
-    
-    
+
+
     # utility function: removing keys wih value of None, nothing in playbook for that key
     def fmgr_del_none(obj):
         if isinstance(obj, dict):
@@ -946,16 +945,16 @@ Module Source Code
                              for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
         else:
             return obj
-    
-    
+
+
     # utility function: remove keys that are need for the logic but the FMG API won't accept them
     def fmgr_prepare_dict(obj):
         list_of_elems = ["mode", "adom", "host", "username", "password"]
         if isinstance(obj, dict):
             obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
         return obj
-    
-    
+
+
     def fmgr_is_empty_dict(obj):
         return_val = False
         if isinstance(obj, dict):
@@ -978,10 +977,10 @@ Module Source Code
                         return return_val
             elif len(obj) == 0:
                 return_val = True
-    
+
         return return_val
-    
-    
+
+
     def fmgr_split_comma_strings_into_lists(obj):
         if isinstance(obj, dict):
             if len(obj) > 0:
@@ -993,15 +992,15 @@ Module Source Code
                             for item in new_items:
                                 new_list.append(item.strip())
                             obj[k] = new_list
-    
+
         return obj
-    
-    
+
+
     #############
     # END METHODS
     #############
-    
-    
+
+
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
@@ -1009,7 +1008,7 @@ Module Source Code
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-    
+
             strip_encoding=dict(required=False, type="str", choices=["disable", "enable"]),
             name=dict(required=False, type="str"),
             log_header_change=dict(required=False, type="str", choices=["disable", "enable"]),
@@ -1025,11 +1024,11 @@ Module Source Code
                                                                      "remove-from-request", "remove-from-response"]),
             headers_content=dict(required=False, type="str"),
             headers_name=dict(required=False, type="str"),
-    
+
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -1050,7 +1049,7 @@ Module Source Code
                 "name": module.params["headers_name"],
             }
         }
-    
+
         list_overrides = ['headers']
         for list_variable in list_overrides:
             override_data = list()
@@ -1064,33 +1063,33 @@ Module Source Code
                     paramgram[list_variable] = override_data
             except:
                 pass
-    
+
         # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
         host = module.params["host"]
         password = module.params["password"]
         username = module.params["username"]
         if host is None or username is None or password is None:
             module.fail_json(msg="Host and username and password are required")
-    
+
         # CHECK IF LOGIN FAILED
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-    
+
         response = fmg.login()
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
-    
+
         results = fmgr_web_proxy_profile_addsetdelete(fmg, paramgram)
         if results[0] != 0:
             fmgr_logout(fmg, module, results=results, good_codes=[0])
-    
+
         fmg.logout()
-    
+
         if results is not None:
             return module.exit_json(**results[1])
         else:
             return module.exit_json(msg="No results were returned from the API call.")
-    
-    
+
+
     if __name__ == "__main__":
         main()
 

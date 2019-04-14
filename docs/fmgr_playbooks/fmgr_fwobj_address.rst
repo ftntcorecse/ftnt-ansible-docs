@@ -129,16 +129,13 @@ fmgr_fwobj_ipv6_add_iprange.yml
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD IPv6 IP ADDRESS RANGE OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "add"
           adom: "ansible"
           ipv6: "iprange"
@@ -147,7 +144,7 @@ fmgr_fwobj_ipv6_add_iprange.yml
           name: "ansible_v6Obj_Range"
           comment: "Dev Example for Ansible"
           color: "22"
-          tags: "ansible, ipv4, test123, test321"
+          #tags: "ansible, ipv4, test123, test321"
 
 fmgr_fwobj_ipv4_add_fqdn.yml
 ++++++++++++++++++++++++++++
@@ -158,16 +155,13 @@ fmgr_fwobj_ipv4_add_fqdn.yml
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD IPv4 IP ADDRESS FQDN OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           ipv4: "fqdn"
           mode: "add"
           adom: "ansible"
@@ -175,7 +169,7 @@ fmgr_fwobj_ipv4_add_fqdn.yml
           name: "Bluesnews"
           comment: "Dev Example for Ansible"
           color: "22"
-          tags: "ansible, ipv4, test123, test321"
+          #tags: "ansible, ipv4, test123, test321"
 
 
 fmgr_fwobj_ipv4_del_all.yml
@@ -187,16 +181,13 @@ fmgr_fwobj_ipv4_del_all.yml
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: DELETE IPv4 IP ADDRESS GROUP
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           mode: "delete"
           ipv4: "group"
@@ -204,9 +195,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE IPv4 IP ADDRESS RANGE OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "delete"
           adom: "ansible"
           ipv4: "iprange"
@@ -214,9 +202,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE IPv4 IP ADDRESS RANGE OBJECT 3
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "delete"
           adom: "ansible"
           ipv4: "iprange"
@@ -224,9 +209,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE IPv4 IP ADDRESS RANGE OBJECT 4
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "delete"
           adom: "ansible"
           ipv4: "iprange"
@@ -234,9 +216,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE IPv4 IP ADDRESS RANGE OBJECT 2
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "delete"
           adom: "ansible"
           ipv4: "iprange"
@@ -244,9 +223,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE IPv4 IP ADDRESS OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "delete"
           adom: "ansible"
           ipv4: "ipmask"
@@ -254,9 +230,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE IPv4 IP ADDRESS OBJECT (NON CIDR TEST)
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "delete"
           adom: "ansible"
           ipv4: "ipmask"
@@ -264,9 +237,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE IPv4 IP ADDRESS OBJECT (NON CIDR TEST) 2
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "delete"
           adom: "ansible"
           ipv4: "ipmask"
@@ -274,9 +244,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE IPv4 IP ADDRESS WILDCARD OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "delete"
           adom: "ansible"
           ipv4: "wildcard"
@@ -284,9 +251,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE IPv4 IP ADDRESS WILDCARD FQDN OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           ipv4: "wildcard-fqdn"
           mode: "delete"
           adom: "ansible"
@@ -294,9 +258,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE IPv4 IP ADDRESS FQDN OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           ipv4: "fqdn"
           mode: "delete"
           adom: "ansible"
@@ -304,9 +265,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE IPv4 IP ADDRESS GEO OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           ipv4: "geography"
           mode: "delete"
           adom: "ansible"
@@ -314,9 +272,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE IPv6 IP ADDRESS GROUP
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           mode: "delete"
           ipv6: "group"
@@ -324,9 +279,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE IPv6 IP ADDRESS RANGE OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "delete"
           adom: "ansible"
           ipv6: "iprange"
@@ -334,9 +286,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE IPv6 ADDRESS
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           mode: "delete"
           ipv6: "ip"
@@ -344,9 +293,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE BROADCAST SUBNET
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           multicast: "broadcastmask"
           mode: "delete"
@@ -354,9 +300,6 @@ fmgr_fwobj_ipv4_del_all.yml
     
       - name: DELETE MULTICAST RANGE
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           mode: "delete"
           multicast: "multicastrange"
@@ -371,16 +314,13 @@ fmgr_fwobj_ipv4_broadcast_subnet.yml
     
     - name: CONFIG IPv4 IP ADDRESS OBJECT
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD BROADCAST SUBNET
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           mode: "add"
           multicast: "broadcastmask"
@@ -388,7 +328,7 @@ fmgr_fwobj_ipv4_broadcast_subnet.yml
           name: "ansible_broadcastSubnet"
           comment: "Dev Example for Ansible"
           color: "22"
-          tags: "ansible, ipv4, test123, test321"
+          #tags: "ansible, ipv4, test123, test321"
 
 
 fmgr_fwobj_ipv6_add_ip.yml
@@ -400,16 +340,13 @@ fmgr_fwobj_ipv6_add_ip.yml
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD IPv6 ADDRESS
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           mode: "add"
           ipv6: "ip"
@@ -417,7 +354,7 @@ fmgr_fwobj_ipv6_add_ip.yml
           name: "ansible_v6Obj"
           comment: "Dev Example for Ansible"
           color: "22"
-          tags: "ansible, ipv4, test123, test321"
+          #tags: "ansible, ipv4, test123, test321"
 
 
 fmgr_fwobj_ipv6_add_z_group.yml
@@ -429,24 +366,42 @@ fmgr_fwobj_ipv6_add_z_group.yml
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD IPv6 IP ADDRESS GROUP
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           mode: "add"
           ipv6: "group"
           group_name: "ansibleIPv6Group"
           group_members: "ansible_v6Obj_Range, ansible_v6Obj"
           color: "22"
-          tags: "ansible, ipv4, test123, test321"
+          #tags: "ansible, ipv4, test123, test321"
           comment: "test123 comment"
+
+
+fmgr_fwobj_address_run_all.sh
++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook fmgr_fwobj_ipv6_add_iprange.yml -vvvv
+    ansible-playbook fmgr_fwobj_ipv4_add_fqdn.yml -vvvv
+    ansible-playbook fmgr_fwobj_ipv4_del_all.yml -vvvv
+    ansible-playbook fmgr_fwobj_ipv4_broadcast_subnet.yml -vvvv
+    ansible-playbook fmgr_fwobj_ipv6_add_ip.yml -vvvv
+    ansible-playbook fmgr_fwobj_ipv6_add_z_group.yml -vvvv
+    ansible-playbook fmgr_fwobj_ipv4_add_geo.yml -vvvv
+    ansible-playbook fmgr_fwobj_ipv4_add_ipmask.yml -vvvv
+    ansible-playbook fmgr_fwobj_ipv4_add_z_group.yml -vvvv
+    ansible-playbook fmgr_fwobj_ipv4_add_ipsubnet.yml -vvvv
+    ansible-playbook fmgr_fwobj_ipv4_multicast_range.yml -vvvv
+    ansible-playbook fmgr_fwobj_ipv4_add_iprange.yml -vvvv
+    ansible-playbook fmgr_fwobj_ipv4_add_wildcard_fqdn.yml -vvvv
+    ansible-playbook fmgr_fwobj_ipv4_add_wildcard.yml -vvvv
 
 
 fmgr_fwobj_ipv4_add_geo.yml
@@ -458,16 +413,13 @@ fmgr_fwobj_ipv4_add_geo.yml
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD IPv4 IP ADDRESS GEO OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           ipv4: "geography"
           country: "US"
           mode: "add"
@@ -475,7 +427,7 @@ fmgr_fwobj_ipv4_add_geo.yml
           name: "ansible_geo"
           comment: "Dev Example for Ansible"
           color: "22"
-          tags: "ipv4, test123, test321"
+          #tags: "ipv4, test123, test321"
 
 fmgr_fwobj_ipv4_add_ipmask.yml
 ++++++++++++++++++++++++++++++
@@ -486,35 +438,29 @@ fmgr_fwobj_ipv4_add_ipmask.yml
     
     - name: CONFIG IPv4 IP ADDRESS OBJECT
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD IPv4 IP ADDRESS OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "delete"
           adom: "ansible"
           ipv4: "ipmask"
           ipv4addr: "10.7.220.30/32"
           name: "ansible_v4Obj_ipMask2"
           comment: "Ansible is fun! Paramgram!"
-          tags: "ansible, ipv4, object"
+          #tags: "ansible, ipv4, object"
           color: "26"
     
       - name: ADD IPv4 IP ADDRESS OBJECT MORE OPTIONS
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           ipv4: "ipmask"
           ipv4addr: "10.7.220.41/32"
           name: "ansible_v4Obj_MORE"
           comment: "Ansible more options"
-          tags: "ansible, ipv4, object"
+          #tags: "ansible, ipv4, object"
           color: "6"
           allow_routing: "enable"
           cache_ttl: "180"
@@ -532,16 +478,13 @@ fmgr_fwobj_ipv4_add_z_group.yml
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD IPv4 IP ADDRESS GROUP
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           mode: "add"
           ipv4: "group"
@@ -559,16 +502,13 @@ fmgr_fwobj_ipv4_add_ipsubnet.yml
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD IPv4 IP ADDRESS OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "add"
           adom: "ansible"
           ipv4: "ipmask"
@@ -576,13 +516,10 @@ fmgr_fwobj_ipv4_add_ipsubnet.yml
           name: "ansible_v4Obj_Subnet1"
           comment: "Dev Example for Ansible"
           color: "22"
-          tags: "ansible, ipv4, test123, test321"
+          #tags: "ansible, ipv4, test123, test321"
     
       - name: ADD IPv4 IP ADDRESS OBJECT (NON CIDR TEST)
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "add"
           adom: "ansible"
           ipv4: "ipmask"
@@ -590,7 +527,7 @@ fmgr_fwobj_ipv4_add_ipsubnet.yml
           name: "ansible_v4Obj_Subnet2"
           comment: "Dev Example for Ansible"
           color: "22"
-          tags: "ansible, ipv4, test123, test321"
+          #tags: "ansible, ipv4, test123, test321"
 
 
 fmgr_fwobj_ipv4_multicast_range.yml
@@ -602,16 +539,13 @@ fmgr_fwobj_ipv4_multicast_range.yml
     
     - name: CONFIG IPv4 IP ADDRESS OBJECT
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD MULTICAST RANGE
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           mode: "add"
           multicast: "multicastrange"
@@ -620,7 +554,7 @@ fmgr_fwobj_ipv4_multicast_range.yml
           name: "ansible_multicastrange"
           comment: "Dev by Ansible"
           color: "22"
-          tags: "blahBlahBlah"
+          #tags: "blahBlahBlah"
 
 
 fmgr_fwobj_ipv4_add_iprange.yml
@@ -632,16 +566,13 @@ fmgr_fwobj_ipv4_add_iprange.yml
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD IPv4 IP ADDRESS RANGE OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "set"
           adom: "ansible"
           ipv4: "iprange"
@@ -650,13 +581,10 @@ fmgr_fwobj_ipv4_add_iprange.yml
           name: "ansible_v4Obj_Range"
           comment: "Dev Example for Ansible"
           color: "22"
-          tags: "ansible, ipv4, test123, test321"
+          #tags: "ansible, ipv4, test123, test321"
     
       - name: ADD IPv4 IP ADDRESS RANGE OBJECT 2
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "set"
           adom: "ansible"
           ipv4: "iprange"
@@ -665,7 +593,7 @@ fmgr_fwobj_ipv4_add_iprange.yml
           name: "ansible_v4Obj_Range2"
           comment: "Dev Example for Ansible"
           color: "22"
-          tags: "ansible, ipv4, test123, test321"
+          #tags: "ansible, ipv4, test123, test321"
 
 fmgr_fwobj_ipv4_add_wildcard_fqdn.yml
 +++++++++++++++++++++++++++++++++++++
@@ -676,16 +604,13 @@ fmgr_fwobj_ipv4_add_wildcard_fqdn.yml
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD IPv4 IP ADDRESS WILDCARD FQDN OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           ipv4: "wildcard-fqdn"
           mode: "add"
           adom: "ansible"
@@ -693,7 +618,7 @@ fmgr_fwobj_ipv4_add_wildcard_fqdn.yml
           name: "Synology myds DDNS service"
           comment: "Dev Example for Ansible"
           color: "22"
-          tags: "ansible, ipv4, test123, test321"
+          #tags: "ansible, ipv4, test123, test321"
 
 
 fmgr_fwobj_ipv4_add_wildcard.yml
@@ -705,16 +630,13 @@ fmgr_fwobj_ipv4_add_wildcard.yml
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD IPv4 IP ADDRESS WILDCARD OBJECT
         fmgr_fwobj_address:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "add"
           adom: "ansible"
           ipv4: "wildcard"
@@ -722,7 +644,7 @@ fmgr_fwobj_ipv4_add_wildcard.yml
           name: "ansible_v4Obj_wildCard"
           comment: "Dev Example for Ansible"
           color: "22"
-          tags: "ansible, ipv4, test123, test321"
+          #tags: "ansible, ipv4, test123, test321"
 
 
 

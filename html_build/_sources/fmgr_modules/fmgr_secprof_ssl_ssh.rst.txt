@@ -13,7 +13,7 @@ Metadata
 
 **Description:** ['Manage SSL and SSH security profiles in FortiManager via the FMG API']
 
-**Author(s):** 
+**Author(s):**
 
 - Luke Weighall (github: @lweighall)
 
@@ -34,7 +34,6 @@ Metadata
 **Days in PR:** 15
 
 **Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_secprof_ssl_ssh
-
 Parameters
 ----------
 
@@ -43,7 +42,7 @@ adom
 
 - Description: The ADOM the configuration should belong to.
 
-  
+
 
 - Required: False
 
@@ -54,7 +53,7 @@ caname
 
 - Description: CA certificate used by SSL Inspection.
 
-  
+
 
 - Required: False
 
@@ -63,7 +62,7 @@ comment
 
 - Description: Optional comments.
 
-  
+
 
 - Required: False
 
@@ -84,7 +83,7 @@ ftps
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -97,7 +96,7 @@ ftps_allow_invalid_server_cert
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -114,7 +113,7 @@ ftps_client_cert_request
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -125,7 +124,7 @@ ftps_ports
 
 - Description: Ports to use for scanning (1 - 65535, default = 443).
 
-  
+
 
 - Required: False
 
@@ -138,7 +137,7 @@ ftps_status
 
   choice | deep-inspection | Full SSL inspection.
 
-  
+
 
 - Required: False
 
@@ -155,7 +154,7 @@ ftps_unsupported_ssl
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -172,7 +171,7 @@ ftps_untrusted_cert
 
   choice | ignore | Always take the server certificate as trusted.
 
-  
+
 
 - Required: False
 
@@ -183,7 +182,7 @@ host
 
 - Description: The FortiManager's Address.
 
-  
+
 
 - Required: True
 
@@ -204,7 +203,7 @@ https
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -217,7 +216,7 @@ https_allow_invalid_server_cert
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -234,7 +233,7 @@ https_client_cert_request
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -245,7 +244,7 @@ https_ports
 
 - Description: Ports to use for scanning (1 - 65535, default = 443).
 
-  
+
 
 - Required: False
 
@@ -260,7 +259,7 @@ https_status
 
   choice | deep-inspection | Full SSL inspection.
 
-  
+
 
 - Required: False
 
@@ -277,7 +276,7 @@ https_unsupported_ssl
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -294,7 +293,7 @@ https_untrusted_cert
 
   choice | ignore | Always take the server certificate as trusted.
 
-  
+
 
 - Required: False
 
@@ -317,7 +316,7 @@ imaps
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -330,7 +329,7 @@ imaps_allow_invalid_server_cert
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -347,7 +346,7 @@ imaps_client_cert_request
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -358,7 +357,7 @@ imaps_ports
 
 - Description: Ports to use for scanning (1 - 65535, default = 443).
 
-  
+
 
 - Required: False
 
@@ -371,7 +370,7 @@ imaps_status
 
   choice | deep-inspection | Full SSL inspection.
 
-  
+
 
 - Required: False
 
@@ -388,7 +387,7 @@ imaps_unsupported_ssl
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -405,7 +404,7 @@ imaps_untrusted_cert
 
   choice | ignore | Always take the server certificate as trusted.
 
-  
+
 
 - Required: False
 
@@ -420,7 +419,7 @@ mapi_over_https
 
   choice | enable | Enable inspection of MAPI over HTTPS.
 
-  
+
 
 - Required: False
 
@@ -433,7 +432,7 @@ mode
 
   Allows use of soft-adds instead of overwriting existing values
 
-  
+
 
 - Required: False
 
@@ -446,7 +445,7 @@ name
 
 - Description: Name.
 
-  
+
 
 - Required: False
 
@@ -455,7 +454,7 @@ password
 
 - Description: The password associated with the username account.
 
-  
+
 
 - Required: True
 
@@ -476,7 +475,7 @@ pop3s
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -489,7 +488,7 @@ pop3s_allow_invalid_server_cert
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -506,7 +505,7 @@ pop3s_client_cert_request
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -517,7 +516,7 @@ pop3s_ports
 
 - Description: Ports to use for scanning (1 - 65535, default = 443).
 
-  
+
 
 - Required: False
 
@@ -530,7 +529,7 @@ pop3s_status
 
   choice | deep-inspection | Full SSL inspection.
 
-  
+
 
 - Required: False
 
@@ -547,7 +546,7 @@ pop3s_unsupported_ssl
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -564,7 +563,7 @@ pop3s_untrusted_cert
 
   choice | ignore | Always take the server certificate as trusted.
 
-  
+
 
 - Required: False
 
@@ -579,7 +578,7 @@ rpc_over_https
 
   choice | enable | Enable inspection of RPC over HTTPS.
 
-  
+
 
 - Required: False
 
@@ -590,7 +589,7 @@ server_cert
 
 - Description: Certificate used by SSL Inspection to replace server certificate.
 
-  
+
 
 - Required: False
 
@@ -603,7 +602,7 @@ server_cert_mode
 
   choice | replace | Protect an SSL server.
 
-  
+
 
 - Required: False
 
@@ -626,7 +625,7 @@ smtps
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -639,7 +638,7 @@ smtps_allow_invalid_server_cert
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -656,7 +655,7 @@ smtps_client_cert_request
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -667,7 +666,7 @@ smtps_ports
 
 - Description: Ports to use for scanning (1 - 65535, default = 443).
 
-  
+
 
 - Required: False
 
@@ -680,7 +679,7 @@ smtps_status
 
   choice | deep-inspection | Full SSL inspection.
 
-  
+
 
 - Required: False
 
@@ -697,7 +696,7 @@ smtps_unsupported_ssl
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -714,7 +713,7 @@ smtps_untrusted_cert
 
   choice | ignore | Always take the server certificate as trusted.
 
-  
+
 
 - Required: False
 
@@ -737,7 +736,7 @@ ssh
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -750,7 +749,7 @@ ssh_inspect_all
 
   choice | deep-inspection | Full SSL inspection.
 
-  
+
 
 - Required: False
 
@@ -761,7 +760,7 @@ ssh_ports
 
 - Description: Ports to use for scanning (1 - 65535, default = 443).
 
-  
+
 
 - Required: False
 
@@ -774,7 +773,7 @@ ssh_ssh_algorithm
 
   choice | high-encryption | Allow only AES-CTR, AES-GCM ciphers and high encryption algorithms.
 
-  
+
 
 - Required: False
 
@@ -789,7 +788,7 @@ ssh_ssh_policy_check
 
   choice | enable | Enable SSH policy check.
 
-  
+
 
 - Required: False
 
@@ -804,7 +803,7 @@ ssh_ssh_tun_policy_check
 
   choice | enable | Enable SSH tunnel policy check.
 
-  
+
 
 - Required: False
 
@@ -819,7 +818,7 @@ ssh_status
 
   choice | deep-inspection | Full SSL inspection.
 
-  
+
 
 - Required: False
 
@@ -834,7 +833,7 @@ ssh_unsupported_version
 
   choice | bypass | Bypass.
 
-  
+
 
 - Required: False
 
@@ -857,7 +856,7 @@ ssl
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -870,7 +869,7 @@ ssl_allow_invalid_server_cert
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -885,7 +884,7 @@ ssl_anomalies_log
 
   choice | enable | Enable logging SSL anomalies.
 
-  
+
 
 - Required: False
 
@@ -902,7 +901,7 @@ ssl_client_cert_request
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -925,7 +924,7 @@ ssl_exempt
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -934,7 +933,7 @@ ssl_exempt_address
 
 - Description: IPv4 address object.
 
-  
+
 
 - Required: False
 
@@ -943,7 +942,7 @@ ssl_exempt_address6
 
 - Description: IPv6 address object.
 
-  
+
 
 - Required: False
 
@@ -952,7 +951,7 @@ ssl_exempt_fortiguard_category
 
 - Description: FortiGuard category ID.
 
-  
+
 
 - Required: False
 
@@ -961,7 +960,7 @@ ssl_exempt_regex
 
 - Description: Exempt servers by regular expression.
 
-  
+
 
 - Required: False
 
@@ -980,7 +979,7 @@ ssl_exempt_type
 
   choice | regex | Regular expression FQDN.
 
-  
+
 
 - Required: False
 
@@ -991,7 +990,7 @@ ssl_exempt_wildcard_fqdn
 
 - Description: Exempt servers by wildcard FQDN.
 
-  
+
 
 - Required: False
 
@@ -1004,7 +1003,7 @@ ssl_exemptions_log
 
   choice | enable | Enable logging SSL exemptions.
 
-  
+
 
 - Required: False
 
@@ -1021,7 +1020,7 @@ ssl_inspect_all
 
   choice | deep-inspection | Full SSL inspection.
 
-  
+
 
 - Required: False
 
@@ -1044,7 +1043,7 @@ ssl_server
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -1059,7 +1058,7 @@ ssl_server_ftps_client_cert_request
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -1076,7 +1075,7 @@ ssl_server_https_client_cert_request
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -1093,7 +1092,7 @@ ssl_server_imaps_client_cert_request
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -1104,7 +1103,7 @@ ssl_server_ip
 
 - Description: IPv4 address of the SSL server.
 
-  
+
 
 - Required: False
 
@@ -1119,7 +1118,7 @@ ssl_server_pop3s_client_cert_request
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -1136,7 +1135,7 @@ ssl_server_smtps_client_cert_request
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -1153,7 +1152,7 @@ ssl_server_ssl_other_client_cert_request
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -1170,7 +1169,7 @@ ssl_unsupported_ssl
 
   choice | block | Block.
 
-  
+
 
 - Required: False
 
@@ -1187,7 +1186,7 @@ ssl_untrusted_cert
 
   choice | ignore | Always take the server certificate as trusted.
 
-  
+
 
 - Required: False
 
@@ -1198,7 +1197,7 @@ untrusted_caname
 
 - Description: Untrusted CA certificate used by SSL Inspection.
 
-  
+
 
 - Required: False
 
@@ -1211,7 +1210,7 @@ use_ssl_server
 
   choice | enable | Use SSL server configuration.
 
-  
+
 
 - Required: False
 
@@ -1222,7 +1221,7 @@ username
 
 - Description: The username associated with the account.
 
-  
+
 
 - Required: True
 
@@ -1235,7 +1234,7 @@ whitelist
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -1258,25 +1257,25 @@ Functions
         """
         fmgr_firewall_ssl_ssh_profile -- Your Description here, bruh
         """
-    
+
         mode = paramgram["mode"]
         adom = paramgram["adom"]
-    
+
         response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
         url = ""
         datagram = {}
-    
+
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/firewall/ssl-ssh-profile'.format(adom=adom)
             datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-    
+
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/firewall/ssl-ssh-profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-    
+
         # IF MODE = SET -- USE THE 'SET' API CALL MODE
         if mode == "set":
             response = fmg.set(url, datagram)
@@ -1289,10 +1288,10 @@ Functions
         # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
         elif mode == "delete":
             response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     # ADDITIONAL COMMON FUNCTIONS
 
 - fmgr_logout
@@ -1310,7 +1309,7 @@ Functions
             except:
                 pass
             module.fail_json(msg=msg)
-    
+
         # SUBMISSION ERROR
         if len(results) > 0:
             if msg == "NULL":
@@ -1318,7 +1317,7 @@ Functions
                     msg = results[1]['status']['message']
                 except:
                     msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
+
             if results[0] not in good_codes:
                 if logout_on_fail:
                     fmg.logout()
@@ -1329,8 +1328,8 @@ Functions
                     module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
                                      **results[1])
         return msg
-    
-    
+
+
     # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
     # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
 
@@ -1345,8 +1344,8 @@ Functions
                str((0x00ff0000 & mask) >> 16) + '.' +
                str((0x0000ff00 & mask) >> 8) + '.' +
                str((0x000000ff & mask)))
-    
-    
+
+
     # utility function: removing keys wih value of None, nothing in playbook for that key
 
 - fmgr_del_none
@@ -1359,8 +1358,8 @@ Functions
                              for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
         else:
             return obj
-    
-    
+
+
     # utility function: remove keys that are need for the logic but the FMG API won't accept them
 
 - fmgr_prepare_dict
@@ -1372,8 +1371,8 @@ Functions
         if isinstance(obj, dict):
             obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
         return obj
-    
-    
+
+
 
 - fmgr_is_empty_dict
 
@@ -1401,10 +1400,10 @@ Functions
                         return return_val
             elif len(obj) == 0:
                 return_val = True
-    
+
         return return_val
-    
-    
+
+
 
 - fmgr_split_comma_strings_into_lists
 
@@ -1421,15 +1420,15 @@ Functions
                             for item in new_items:
                                 new_list.append(item.strip())
                             obj[k] = new_list
-    
+
         return obj
-    
-    
+
+
     #############
     # END METHODS
     #############
-    
-    
+
+
 
 - main
 
@@ -1442,7 +1441,7 @@ Functions
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-    
+
             whitelist=dict(required=False, type="str", choices=["disable", "enable"]),
             use_ssl_server=dict(required=False, type="str", choices=["disable", "enable"]),
             untrusted_caname=dict(required=False, type="str"),
@@ -1522,11 +1521,11 @@ Functions
             ssl_server_smtps_client_cert_request=dict(required=False, type="str", choices=["bypass", "inspect", "block"]),
             ssl_server_ssl_other_client_cert_request=dict(required=False, type="str", choices=["bypass", "inspect",
                                                                                                "block"]),
-    
+
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -1617,7 +1616,7 @@ Functions
                 "ssl-other-client-cert-request": module.params["ssl_server_ssl_other_client_cert_request"],
             }
         }
-    
+
         list_overrides = ['ftps', 'https', 'imaps', 'pop3s', 'smtps', 'ssh', 'ssl', 'ssl-exempt', 'ssl-server']
         for list_variable in list_overrides:
             override_data = list()
@@ -1631,33 +1630,33 @@ Functions
                     paramgram[list_variable] = override_data
             except:
                 pass
-    
+
         # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
         host = module.params["host"]
         password = module.params["password"]
         username = module.params["username"]
         if host is None or username is None or password is None:
             module.fail_json(msg="Host and username and password are required")
-    
+
         # CHECK IF LOGIN FAILED
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-    
+
         response = fmg.login()
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
-    
+
         results = fmgr_firewall_ssl_ssh_profile_addsetdelete(fmg, paramgram)
         if results[0] != 0:
             fmgr_logout(fmg, module, results=results, good_codes=[0])
-    
+
         fmg.logout()
-    
+
         if results is not None:
             return module.exit_json(**results[1])
         else:
             return module.exit_json(msg="No results were returned from the API call.")
-    
-    
+
+
 
 
 
@@ -1683,14 +1682,14 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-    
+
     from __future__ import absolute_import, division, print_function
     __metaclass__ = type
-    
+
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-    
+
     DOCUMENTATION = '''
     ---
     module: fmgr_secprof_ssl_ssh
@@ -1702,29 +1701,29 @@ Module Source Code
     short_description: Manage SSL and SSH security profiles in FortiManager
     description:
       -  Manage SSL and SSH security profiles in FortiManager via the FMG API
-    
+
     options:
       adom:
         description:
           - The ADOM the configuration should belong to.
         required: false
         default: root
-    
+
       host:
         description:
           - The FortiManager's Address.
         required: true
-    
+
       username:
         description:
           - The username associated with the account.
         required: true
-    
+
       password:
         description:
           - The password associated with the username account.
         required: true
-    
+
       mode:
         description:
           - Sets one of three modes for managing the object.
@@ -1732,7 +1731,7 @@ Module Source Code
         choices: ['add', 'set', 'delete', 'update']
         required: false
         default: add
-    
+
       whitelist:
         description:
           - Enable/disable exempting servers by FortiGuard whitelist.
@@ -1740,7 +1739,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       use_ssl_server:
         description:
           - Enable/disable the use of SSL server table for SSL offloading.
@@ -1748,12 +1747,12 @@ Module Source Code
           - choice | enable | Use SSL server configuration.
         required: false
         choices: ["disable", "enable"]
-    
+
       untrusted_caname:
         description:
           - Untrusted CA certificate used by SSL Inspection.
         required: false
-    
+
       ssl_exemptions_log:
         description:
           - Enable/disable logging SSL exemptions.
@@ -1761,7 +1760,7 @@ Module Source Code
           - choice | enable | Enable logging SSL exemptions.
         required: false
         choices: ["disable", "enable"]
-    
+
       ssl_anomalies_log:
         description:
           - Enable/disable logging SSL anomalies.
@@ -1769,7 +1768,7 @@ Module Source Code
           - choice | enable | Enable logging SSL anomalies.
         required: false
         choices: ["disable", "enable"]
-    
+
       server_cert_mode:
         description:
           - Re-sign or replace the server's certificate.
@@ -1777,12 +1776,12 @@ Module Source Code
           - choice | replace | Protect an SSL server.
         required: false
         choices: ["re-sign", "replace"]
-    
+
       server_cert:
         description:
           - Certificate used by SSL Inspection to replace server certificate.
         required: false
-    
+
       rpc_over_https:
         description:
           - Enable/disable inspection of RPC over HTTPS.
@@ -1790,12 +1789,12 @@ Module Source Code
           - choice | enable | Enable inspection of RPC over HTTPS.
         required: false
         choices: ["disable", "enable"]
-    
+
       name:
         description:
           - Name.
         required: false
-    
+
       mapi_over_https:
         description:
           - Enable/disable inspection of MAPI over HTTPS.
@@ -1803,17 +1802,17 @@ Module Source Code
           - choice | enable | Enable inspection of MAPI over HTTPS.
         required: false
         choices: ["disable", "enable"]
-    
+
       comment:
         description:
           - Optional comments.
         required: false
-    
+
       caname:
         description:
           - CA certificate used by SSL Inspection.
         required: false
-    
+
       ftps:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1824,7 +1823,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       ftps_allow_invalid_server_cert:
         description:
           - When enabled, allows SSL sessions whose server certificate validation failed.
@@ -1832,7 +1831,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       ftps_client_cert_request:
         description:
           - Action based on client certificate request failure.
@@ -1841,12 +1840,12 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       ftps_ports:
         description:
           - Ports to use for scanning (1 - 65535, default = 443).
         required: false
-    
+
       ftps_status:
         description:
           - Configure protocol inspection status.
@@ -1854,7 +1853,7 @@ Module Source Code
           - choice | deep-inspection | Full SSL inspection.
         required: false
         choices: ["disable", "deep-inspection"]
-    
+
       ftps_unsupported_ssl:
         description:
           - Action based on the SSL encryption used being unsupported.
@@ -1863,7 +1862,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       ftps_untrusted_cert:
         description:
           - Allow, ignore, or block the untrusted SSL session server certificate.
@@ -1872,7 +1871,7 @@ Module Source Code
           - choice | ignore | Always take the server certificate as trusted.
         required: false
         choices: ["allow", "block", "ignore"]
-    
+
       https:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1883,7 +1882,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       https_allow_invalid_server_cert:
         description:
           - When enabled, allows SSL sessions whose server certificate validation failed.
@@ -1891,7 +1890,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       https_client_cert_request:
         description:
           - Action based on client certificate request failure.
@@ -1900,12 +1899,12 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       https_ports:
         description:
           - Ports to use for scanning (1 - 65535, default = 443).
         required: false
-    
+
       https_status:
         description:
           - Configure protocol inspection status.
@@ -1914,7 +1913,7 @@ Module Source Code
           - choice | deep-inspection | Full SSL inspection.
         required: false
         choices: ["disable", "certificate-inspection", "deep-inspection"]
-    
+
       https_unsupported_ssl:
         description:
           - Action based on the SSL encryption used being unsupported.
@@ -1923,7 +1922,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       https_untrusted_cert:
         description:
           - Allow, ignore, or block the untrusted SSL session server certificate.
@@ -1932,7 +1931,7 @@ Module Source Code
           - choice | ignore | Always take the server certificate as trusted.
         required: false
         choices: ["allow", "block", "ignore"]
-    
+
       imaps:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1943,7 +1942,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       imaps_allow_invalid_server_cert:
         description:
           - When enabled, allows SSL sessions whose server certificate validation failed.
@@ -1951,7 +1950,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       imaps_client_cert_request:
         description:
           - Action based on client certificate request failure.
@@ -1960,12 +1959,12 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       imaps_ports:
         description:
           - Ports to use for scanning (1 - 65535, default = 443).
         required: false
-    
+
       imaps_status:
         description:
           - Configure protocol inspection status.
@@ -1973,7 +1972,7 @@ Module Source Code
           - choice | deep-inspection | Full SSL inspection.
         required: false
         choices: ["disable", "deep-inspection"]
-    
+
       imaps_unsupported_ssl:
         description:
           - Action based on the SSL encryption used being unsupported.
@@ -1982,7 +1981,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       imaps_untrusted_cert:
         description:
           - Allow, ignore, or block the untrusted SSL session server certificate.
@@ -1991,7 +1990,7 @@ Module Source Code
           - choice | ignore | Always take the server certificate as trusted.
         required: false
         choices: ["allow", "block", "ignore"]
-    
+
       pop3s:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2002,7 +2001,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       pop3s_allow_invalid_server_cert:
         description:
           - When enabled, allows SSL sessions whose server certificate validation failed.
@@ -2010,7 +2009,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       pop3s_client_cert_request:
         description:
           - Action based on client certificate request failure.
@@ -2019,12 +2018,12 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       pop3s_ports:
         description:
           - Ports to use for scanning (1 - 65535, default = 443).
         required: false
-    
+
       pop3s_status:
         description:
           - Configure protocol inspection status.
@@ -2032,7 +2031,7 @@ Module Source Code
           - choice | deep-inspection | Full SSL inspection.
         required: false
         choices: ["disable", "deep-inspection"]
-    
+
       pop3s_unsupported_ssl:
         description:
           - Action based on the SSL encryption used being unsupported.
@@ -2041,7 +2040,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       pop3s_untrusted_cert:
         description:
           - Allow, ignore, or block the untrusted SSL session server certificate.
@@ -2050,7 +2049,7 @@ Module Source Code
           - choice | ignore | Always take the server certificate as trusted.
         required: false
         choices: ["allow", "block", "ignore"]
-    
+
       smtps:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2061,7 +2060,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       smtps_allow_invalid_server_cert:
         description:
           - When enabled, allows SSL sessions whose server certificate validation failed.
@@ -2069,7 +2068,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       smtps_client_cert_request:
         description:
           - Action based on client certificate request failure.
@@ -2078,12 +2077,12 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       smtps_ports:
         description:
           - Ports to use for scanning (1 - 65535, default = 443).
         required: false
-    
+
       smtps_status:
         description:
           - Configure protocol inspection status.
@@ -2091,7 +2090,7 @@ Module Source Code
           - choice | deep-inspection | Full SSL inspection.
         required: false
         choices: ["disable", "deep-inspection"]
-    
+
       smtps_unsupported_ssl:
         description:
           - Action based on the SSL encryption used being unsupported.
@@ -2100,7 +2099,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       smtps_untrusted_cert:
         description:
           - Allow, ignore, or block the untrusted SSL session server certificate.
@@ -2109,7 +2108,7 @@ Module Source Code
           - choice | ignore | Always take the server certificate as trusted.
         required: false
         choices: ["allow", "block", "ignore"]
-    
+
       ssh:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2120,7 +2119,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       ssh_inspect_all:
         description:
           - Level of SSL inspection.
@@ -2128,12 +2127,12 @@ Module Source Code
           - choice | deep-inspection | Full SSL inspection.
         required: false
         choices: ["disable", "deep-inspection"]
-    
+
       ssh_ports:
         description:
           - Ports to use for scanning (1 - 65535, default = 443).
         required: false
-    
+
       ssh_ssh_algorithm:
         description:
           - Relative strength of encryption algorithms accepted during negotiation.
@@ -2141,7 +2140,7 @@ Module Source Code
           - choice | high-encryption | Allow only AES-CTR, AES-GCM ciphers and high encryption algorithms.
         required: false
         choices: ["compatible", "high-encryption"]
-    
+
       ssh_ssh_policy_check:
         description:
           - Enable/disable SSH policy check.
@@ -2149,7 +2148,7 @@ Module Source Code
           - choice | enable | Enable SSH policy check.
         required: false
         choices: ["disable", "enable"]
-    
+
       ssh_ssh_tun_policy_check:
         description:
           - Enable/disable SSH tunnel policy check.
@@ -2157,7 +2156,7 @@ Module Source Code
           - choice | enable | Enable SSH tunnel policy check.
         required: false
         choices: ["disable", "enable"]
-    
+
       ssh_status:
         description:
           - Configure protocol inspection status.
@@ -2165,7 +2164,7 @@ Module Source Code
           - choice | deep-inspection | Full SSL inspection.
         required: false
         choices: ["disable", "deep-inspection"]
-    
+
       ssh_unsupported_version:
         description:
           - Action based on SSH version being unsupported.
@@ -2173,7 +2172,7 @@ Module Source Code
           - choice | bypass | Bypass.
         required: false
         choices: ["block", "bypass"]
-    
+
       ssl:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2184,7 +2183,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       ssl_allow_invalid_server_cert:
         description:
           - When enabled, allows SSL sessions whose server certificate validation failed.
@@ -2192,7 +2191,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       ssl_client_cert_request:
         description:
           - Action based on client certificate request failure.
@@ -2201,7 +2200,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       ssl_inspect_all:
         description:
           - Level of SSL inspection.
@@ -2210,7 +2209,7 @@ Module Source Code
           - choice | deep-inspection | Full SSL inspection.
         required: false
         choices: ["disable", "certificate-inspection", "deep-inspection"]
-    
+
       ssl_unsupported_ssl:
         description:
           - Action based on the SSL encryption used being unsupported.
@@ -2219,7 +2218,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       ssl_untrusted_cert:
         description:
           - Allow, ignore, or block the untrusted SSL session server certificate.
@@ -2228,7 +2227,7 @@ Module Source Code
           - choice | ignore | Always take the server certificate as trusted.
         required: false
         choices: ["allow", "block", "ignore"]
-    
+
       ssl_exempt:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2239,27 +2238,27 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       ssl_exempt_address:
         description:
           - IPv4 address object.
         required: false
-    
+
       ssl_exempt_address6:
         description:
           - IPv6 address object.
         required: false
-    
+
       ssl_exempt_fortiguard_category:
         description:
           - FortiGuard category ID.
         required: false
-    
+
       ssl_exempt_regex:
         description:
           - Exempt servers by regular expression.
         required: false
-    
+
       ssl_exempt_type:
         description:
           - Type of address object (IPv4 or IPv6) or FortiGuard category.
@@ -2270,12 +2269,12 @@ Module Source Code
           - choice | regex | Regular expression FQDN.
         required: false
         choices: ["fortiguard-category", "address", "address6", "wildcard-fqdn", "regex"]
-    
+
       ssl_exempt_wildcard_fqdn:
         description:
           - Exempt servers by wildcard FQDN.
         required: false
-    
+
       ssl_server:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2286,7 +2285,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       ssl_server_ftps_client_cert_request:
         description:
           - Action based on client certificate request failure during the FTPS handshake.
@@ -2295,7 +2294,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       ssl_server_https_client_cert_request:
         description:
           - Action based on client certificate request failure during the HTTPS handshake.
@@ -2304,7 +2303,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       ssl_server_imaps_client_cert_request:
         description:
           - Action based on client certificate request failure during the IMAPS handshake.
@@ -2313,12 +2312,12 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       ssl_server_ip:
         description:
           - IPv4 address of the SSL server.
         required: false
-    
+
       ssl_server_pop3s_client_cert_request:
         description:
           - Action based on client certificate request failure during the POP3S handshake.
@@ -2327,7 +2326,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       ssl_server_smtps_client_cert_request:
         description:
           - Action based on client certificate request failure during the SMTPS handshake.
@@ -2336,7 +2335,7 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
+
       ssl_server_ssl_other_client_cert_request:
         description:
           - Action based on client certificate request failure during an SSL protocol handshake.
@@ -2345,10 +2344,10 @@ Module Source Code
           - choice | block | Block.
         required: false
         choices: ["bypass", "inspect", "block"]
-    
-    
+
+
     '''
-    
+
     EXAMPLES = '''
       - name: DELETE Profile
         fmgr_secprof_ssl_ssh:
@@ -2357,7 +2356,7 @@ Module Source Code
           password: "{{ password }}"
           name: "Ansible_SSL_SSH_Profile"
           mode: "delete"
-    
+
       - name: CREATE Profile
         fmgr_secprof_ssl_ssh:
           host: "{{inventory_hostname}}"
@@ -2374,45 +2373,45 @@ Module Source Code
           use_ssl_server: "enable"
           whitelist: "enable"
     '''
-    
+
     RETURN = """
     api_result:
       description: full API response, includes status code and message
       returned: always
       type: string
     """
-    
+
     from ansible.module_utils.basic import AnsibleModule, env_fallback
     from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-    
+
     ###############
     # START METHODS
     ###############
-    
-    
+
+
     def fmgr_firewall_ssl_ssh_profile_addsetdelete(fmg, paramgram):
         """
         fmgr_firewall_ssl_ssh_profile -- Your Description here, bruh
         """
-    
+
         mode = paramgram["mode"]
         adom = paramgram["adom"]
-    
+
         response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
         url = ""
         datagram = {}
-    
+
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/firewall/ssl-ssh-profile'.format(adom=adom)
             datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-    
+
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/firewall/ssl-ssh-profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-    
+
         # IF MODE = SET -- USE THE 'SET' API CALL MODE
         if mode == "set":
             response = fmg.set(url, datagram)
@@ -2425,10 +2424,10 @@ Module Source Code
         # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
         elif mode == "delete":
             response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     # ADDITIONAL COMMON FUNCTIONS
     def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
         """
@@ -2441,7 +2440,7 @@ Module Source Code
             except:
                 pass
             module.fail_json(msg=msg)
-    
+
         # SUBMISSION ERROR
         if len(results) > 0:
             if msg == "NULL":
@@ -2449,7 +2448,7 @@ Module Source Code
                     msg = results[1]['status']['message']
                 except:
                     msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
+
             if results[0] not in good_codes:
                 if logout_on_fail:
                     fmg.logout()
@@ -2460,8 +2459,8 @@ Module Source Code
                     module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
                                      **results[1])
         return msg
-    
-    
+
+
     # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
     # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
     def fmgr_cidr_to_netmask(cidr):
@@ -2471,8 +2470,8 @@ Module Source Code
                str((0x00ff0000 & mask) >> 16) + '.' +
                str((0x0000ff00 & mask) >> 8) + '.' +
                str((0x000000ff & mask)))
-    
-    
+
+
     # utility function: removing keys wih value of None, nothing in playbook for that key
     def fmgr_del_none(obj):
         if isinstance(obj, dict):
@@ -2480,16 +2479,16 @@ Module Source Code
                              for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
         else:
             return obj
-    
-    
+
+
     # utility function: remove keys that are need for the logic but the FMG API won't accept them
     def fmgr_prepare_dict(obj):
         list_of_elems = ["mode", "adom", "host", "username", "password"]
         if isinstance(obj, dict):
             obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
         return obj
-    
-    
+
+
     def fmgr_is_empty_dict(obj):
         return_val = False
         if isinstance(obj, dict):
@@ -2512,10 +2511,10 @@ Module Source Code
                         return return_val
             elif len(obj) == 0:
                 return_val = True
-    
+
         return return_val
-    
-    
+
+
     def fmgr_split_comma_strings_into_lists(obj):
         if isinstance(obj, dict):
             if len(obj) > 0:
@@ -2527,15 +2526,15 @@ Module Source Code
                             for item in new_items:
                                 new_list.append(item.strip())
                             obj[k] = new_list
-    
+
         return obj
-    
-    
+
+
     #############
     # END METHODS
     #############
-    
-    
+
+
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
@@ -2543,7 +2542,7 @@ Module Source Code
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-    
+
             whitelist=dict(required=False, type="str", choices=["disable", "enable"]),
             use_ssl_server=dict(required=False, type="str", choices=["disable", "enable"]),
             untrusted_caname=dict(required=False, type="str"),
@@ -2623,11 +2622,11 @@ Module Source Code
             ssl_server_smtps_client_cert_request=dict(required=False, type="str", choices=["bypass", "inspect", "block"]),
             ssl_server_ssl_other_client_cert_request=dict(required=False, type="str", choices=["bypass", "inspect",
                                                                                                "block"]),
-    
+
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -2718,7 +2717,7 @@ Module Source Code
                 "ssl-other-client-cert-request": module.params["ssl_server_ssl_other_client_cert_request"],
             }
         }
-    
+
         list_overrides = ['ftps', 'https', 'imaps', 'pop3s', 'smtps', 'ssh', 'ssl', 'ssl-exempt', 'ssl-server']
         for list_variable in list_overrides:
             override_data = list()
@@ -2732,33 +2731,33 @@ Module Source Code
                     paramgram[list_variable] = override_data
             except:
                 pass
-    
+
         # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
         host = module.params["host"]
         password = module.params["password"]
         username = module.params["username"]
         if host is None or username is None or password is None:
             module.fail_json(msg="Host and username and password are required")
-    
+
         # CHECK IF LOGIN FAILED
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-    
+
         response = fmg.login()
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
-    
+
         results = fmgr_firewall_ssl_ssh_profile_addsetdelete(fmg, paramgram)
         if results[0] != 0:
             fmgr_logout(fmg, module, results=results, good_codes=[0])
-    
+
         fmg.logout()
-    
+
         if results is not None:
             return module.exit_json(**results[1])
         else:
             return module.exit_json(msg="No results were returned from the API call.")
-    
-    
+
+
     if __name__ == "__main__":
         main()
 

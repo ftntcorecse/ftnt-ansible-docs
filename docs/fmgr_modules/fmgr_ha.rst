@@ -29,7 +29,9 @@ Metadata
 
 **Owning Developer:** Luke Weighall
 
-**Module Link:** https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_ha.py
+.. _Link: https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_ha.py
+
+Link_
 
 Parameters
 ----------

@@ -18,7 +18,7 @@ Metadata
 
 **Ansible Version Added/Required:** 2.6
 
-**Dev Status:** UNDER DEVELOPMENT - Converting to Plugin
+**Dev Status:** No Data Exists. Contact DevOps Team.
 
 Parameters
 ----------

@@ -26,7 +26,6 @@ Metadata
 **Days in PR:** 27
 
 **Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_device_provision_template
-
 Parameters
 ----------
 
@@ -53,7 +52,7 @@ admin_fortiguard_target
 
   admin_enable_fortiguard must be set to "direct"
 
-  
+
 
 - Required: False
 
@@ -126,7 +125,7 @@ delete_provisioning_template
 
 - Description: If specified, all other options are ignored. The specified provisioning template will be deleted.
 
-  
+
 
 - Required: False
 
@@ -510,7 +509,7 @@ syslog_certificate
 
 - Description: Certificate used to communicate with Syslog server if encryption on.
 
-  
+
 
 - Required: False
 
@@ -527,7 +526,7 @@ syslog_enc_algorithm
 
   choice | high-medium | SSL communication with high and medium encryption algorithms.
 
-  
+
 
 - Required: False
 
@@ -588,7 +587,7 @@ syslog_facility
 
   choice | local7 | Reserved for local use.
 
-  
+
 
 - Required: False
 
@@ -616,7 +615,7 @@ syslog_mode
 
   choice | reliable | Enable reliable syslogging by RFC6587 (Transmission of Syslog Messages over TCP).
 
-  
+
 
 - Required: False
 
@@ -674,13 +673,13 @@ Functions
         datagram = {
             # "name": paramgram["provisioning_template"]
         }
-    
+
         url = "/pm/devprof/adom/{adom}/{name}".format(adom=paramgram["adom"], name=paramgram["provisioning_template"])
         response = fmg.get(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - del_devprof
 
@@ -690,18 +689,18 @@ Functions
         """
         DELETE the DevProf
         """
-    
+
         datagram = {
             # "name": paramgram["delete_provisioning_template"]
         }
-    
+
         url = "/pm/devprof/adom/{adom}/{name}".format(adom=paramgram["adom"],
                                                       name=paramgram["delete_provisioning_template"])
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - add_devprof
 
@@ -718,10 +717,10 @@ Functions
         }
         url = "/pm/devprof/adom/{adom}".format(adom=paramgram["adom"])
         response = fmg.add(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - get_devprof_scope
 
@@ -736,13 +735,13 @@ Functions
             "type": "devprof",
             "description": "CreatedByAnsible",
         }
-    
+
         url = "/pm/devprof/adom/{adom}".format(adom=paramgram["adom"])
         response = fmg.get(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - set_devprof_scope
 
@@ -757,21 +756,21 @@ Functions
             "type": "devprof",
             "description": "CreatedByAnsible",
         }
-    
+
         targets = []
         for target in paramgram["provision_targets"].strip().split(","):
             # split the host on the space to get the mask out
             new_target = {"name": target}
             targets.append(new_target)
-    
+
         datagram["scope member"] = targets
-    
+
         url = "/pm/devprof/adom/{adom}".format(adom=paramgram["adom"])
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - delete_devprof_scope
 
@@ -787,13 +786,13 @@ Functions
             "description": "CreatedByAnsible",
             "scope member": paramgram["targets_to_add"]
         }
-    
+
         url = "/pm/devprof/adom/{adom}".format(adom=paramgram["adom"])
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - set_devprof_snmp
 
@@ -806,15 +805,15 @@ Functions
         datagram = {
             "status": paramgram["snmp_status"]
         }
-    
+
         url = "/pm/config/adom/{adom}/devprof/" \
               "{provisioning_template}/system/snmp/sysinfo".format(adom=paramgram["adom"],
                                                                    provisioning_template=paramgram["provisioning_template"])
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - delete_devprof_snmp
 
@@ -827,16 +826,16 @@ Functions
         datagram = {
             "status": paramgram["snmp_status"]
         }
-    
+
         url = "/pm/config/adom/{adom}/devprof/" \
               "{provisioning_template}/system/snmp/sysinfo".format(adom=paramgram["adom"],
                                                                    provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - set_devprof_snmp_v2c
 
@@ -864,7 +863,7 @@ Functions
             "trap-v1-rport": 162,
             "trap-v2c-lport": 162,
         }
-    
+
         # BUILD THE HOST STRINGS
         id_counter = 1
         if paramgram["snmp_v2c_trap_hosts_ipv4"] or paramgram["snmp_v2c_query_hosts_ipv4"]:
@@ -880,7 +879,7 @@ Functions
                                      "source-ip": "0.0.0.0"}
                     hosts.append(new_ipv4_host)
                     id_counter += 1
-    
+
             if paramgram["snmp_v2c_trap_hosts_ipv4"]:
                 for ipv4_host in paramgram["snmp_v2c_trap_hosts_ipv4"].strip().split(","):
                     # split the host on the space to get the mask out
@@ -893,17 +892,17 @@ Functions
                     hosts.append(new_ipv4_host)
                     id_counter += 1
             datagram["hosts"] = hosts
-    
+
         url = "/pm/config/adom/{adom}/devprof/" \
               "{provisioning_template}/system/snmp/community".format(adom=paramgram["adom"],
                                                                      provisioning_template=paramgram[
                                                                          "provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - delete_devprof_snmp_v2c
 
@@ -916,18 +915,18 @@ Functions
         datagram = {
             "confirm": 1
         }
-    
+
         url = "/pm/config/adom/{adom}/" \
               "devprof/{provisioning_template}/" \
               "system/snmp/community/{snmp_v2c_id}".format(adom=paramgram["adom"],
                                                            provisioning_template=paramgram["provisioning_template"],
                                                            snmp_v2c_id=paramgram["snmp_v2c_id"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - set_devprof_snmp_v3
 
@@ -969,7 +968,7 @@ Functions
             datagram["security-level"] = 2
         if paramgram["snmpv3_security_level"] == "auth-priv":
             datagram["security-level"] = 3
-    
+
         datagram["auth-pwd"] = paramgram["snmpv3_auth_pwd"]
         datagram["priv-pwd"] = paramgram["snmpv3_priv_pwd"]
         datagram["trap-rport"] = paramgram["snmpv3_trap_rport"]
@@ -978,20 +977,20 @@ Functions
         datagram["notify-hosts"] = paramgram["snmpv3_notify_hosts"].strip().split(",")
         datagram["events"] = 1647387997183
         datagram["trap-lport"] = 162
-    
+
         datagram["source-ip"] = paramgram["snmpv3_source_ip"]
         datagram["ha-direct"] = 0
-    
+
         url = "/pm/config/adom/{adom}/" \
               "devprof/{provisioning_template}/" \
               "system/snmp/user".format(adom=paramgram["adom"],
                                         provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - delete_devprof_snmp_v3
 
@@ -1004,18 +1003,18 @@ Functions
         datagram = {
             "confirm": 1
         }
-    
+
         url = "/pm/config/adom/{adom}/devprof/" \
               "{provisioning_template}/system/snmp" \
               "/user/{snmpv3_name}".format(adom=paramgram["adom"],
                                            provisioning_template=paramgram["provisioning_template"],
                                            snmpv3_name=paramgram["snmpv3_name"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - set_devprof_syslog
 
@@ -1032,22 +1031,22 @@ Functions
             "mode": paramgram["syslog_mode"],
             "facility": paramgram["syslog_facility"]
         }
-    
+
         if paramgram["syslog_enc_algorithm"] in ["high", "low", "high-medium"] \
                 and paramgram["syslog_certificate"] is not None:
             datagram["certificate"] = paramgram["certificate"]
             datagram["enc-algorithm"] = paramgram["syslog_enc_algorithm"]
-    
+
         url = "/pm/config/adom/{adom}/" \
               "devprof/{provisioning_template}/" \
               "log/syslogd/setting".format(adom=paramgram["adom"],
                                            provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - delete_devprof_syslog
 
@@ -1068,12 +1067,12 @@ Functions
               "devprof/{provisioning_template}/" \
               "log/syslogd/setting".format(adom=paramgram["adom"],
                                            provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - set_devprof_syslog_filter
 
@@ -1086,17 +1085,17 @@ Functions
         datagram = {
             "severity": paramgram["syslog_filter"]
         }
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/log/syslogd/filter".format(adom=paramgram["adom"],
                                            provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - delete_devprof_syslog_filter
 
@@ -1109,16 +1108,16 @@ Functions
         datagram = {
             "severity": paramgram["syslog_filter"]
         }
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/log/syslogd/filter".format(adom=paramgram["adom"],
                                            provisioning_template=paramgram["provisioning_template"])
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - set_devprof_ntp
 
@@ -1140,9 +1139,9 @@ Functions
                 datagram["syncinterval"] = 1
             else:
                 datagram["syncinterval"] = paramgram["ntp_sync_interval"]
-    
+
             datagram["type"] = 0
-    
+
         # IF THE NTP TYPE IS CUSTOM BUILD THE SERVER LIST
         if paramgram["ntp_type"] == "custom":
             id_counter = 0
@@ -1158,11 +1157,11 @@ Functions
             except:
                 datagram["syncinterval"] = 1
             datagram["type"] = 1
-    
+
             for server in paramgram["ntp_server"].strip().split(","):
                 id_counter += 1
                 server_fields = dict()
-    
+
                 key_counter += 1
                 if paramgram["ntp_auth"] == "enable":
                     server_fields["authentication"] = 1
@@ -1172,12 +1171,12 @@ Functions
                     server_fields["authentication"] = 0
                     server_fields["key"] = ""
                     server_fields["key-id"] = key_counter
-    
+
                 if paramgram["ntp_v3"] == "enable":
                     server_fields["ntp_v3"] = 1
                 else:
                     server_fields["ntp_v3"] = 0
-    
+
                 # split the host on the space to get the mask out
                 new_ntp_server = {"authentication": server_fields["authentication"],
                                   "id": id_counter, "key": server_fields["key"],
@@ -1185,7 +1184,7 @@ Functions
                                   "server": server}
                 ntpservers.append(new_ntp_server)
             datagram["ntpserver"] = ntpservers
-    
+
         # SET THE BODY FOR THE FORTIGUARD REQUEST
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
@@ -1193,8 +1192,8 @@ Functions
                                    provisioning_template=paramgram["provisioning_template"])
         response = fmg.set(url, datagram)
         return response
-    
-    
+
+
 
 - delete_devprof_ntp
 
@@ -1216,9 +1215,9 @@ Functions
                 datagram["syncinterval"] = 1
             else:
                 datagram["syncinterval"] = paramgram["ntp_sync_interval"]
-    
+
             datagram["type"] = 0
-    
+
         # IF THE NTP TYPE IS CUSTOM BUILD THE SERVER LIST
         if paramgram["ntp_type"] == "custom":
             id_counter = 0
@@ -1234,11 +1233,11 @@ Functions
             else:
                 datagram["syncinterval"] = paramgram["ntp_sync_interval"]
                 datagram["type"] = 1
-    
+
             for server in paramgram["ntp_server"].strip().split(","):
                 id_counter += 1
                 server_fields = dict()
-    
+
                 key_counter += 1
                 if paramgram["ntp_auth"] == "enable":
                     server_fields["authentication"] = 1
@@ -1248,20 +1247,20 @@ Functions
                     server_fields["authentication"] = 0
                     server_fields["key"] = ""
                     server_fields["key-id"] = key_counter
-    
+
                 if paramgram["ntp_v3"] == "enable":
                     server_fields["ntpv3"] = 1
                 else:
                     server_fields["ntpv3"] = 0
-    
+
                 # split the host on the space to get the mask out
                 new_ntp_server = {"authentication": server_fields["authentication"], "id": id_counter,
                                   "key": server_fields["key"], "key-id": id_counter, "ntpv3": server_fields["ntpv3"],
                                   "server": server}
                 ntpservers.append(new_ntp_server)
-    
+
             datagram["ntpserver"] = ntpservers
-    
+
         # SET THE BODY FOR THE FORTIGUARD REQUEST
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
@@ -1269,8 +1268,8 @@ Functions
                                    provisioning_template=paramgram["provisioning_template"])
         response = fmg.delete(url, datagram)
         return response
-    
-    
+
+
 
 - set_devprof_admin
 
@@ -1289,17 +1288,17 @@ Functions
             "gui-theme": paramgram["admin_gui_theme"],
             "switch-controller": paramgram["admin_switch_controller"],
         }
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/system/global".format(adom=paramgram["adom"],
                                       provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - delete_devprof_admin
 
@@ -1318,17 +1317,17 @@ Functions
             "gui-theme": paramgram["admin_gui_theme"],
             "switch-controller": paramgram["admin_switch_controller"],
         }
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/system/global".format(adom=paramgram["adom"],
                                       provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - set_devprof_smtp
 
@@ -1344,34 +1343,34 @@ Functions
             "server": paramgram["smtp_server"],
             "source-ip": paramgram["smtp_source_ipv4"]
         }
-    
+
         if paramgram["smtp_username"]:
             datagram["authenticate"] = 1
             datagram["username"] = paramgram["smtp_username"]
             datagram["password"] = paramgram["smtp_password"]
-    
+
         if paramgram["smtp_conn_sec"] == "none":
             datagram["security"] = 0
         if paramgram["smtp_conn_sec"] == "starttls":
             datagram["security"] = 1
         if paramgram["smtp_conn_sec"] == "smtps":
             datagram["security"] = 2
-    
+
         if paramgram["smtp_validate_cert"] == "enable":
             datagram["validate-server"] = 1
         else:
             datagram["validate-server"] = 0
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/system/email-server".format(adom=paramgram["adom"],
                                             provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - delete_devprof_smtp
 
@@ -1387,34 +1386,34 @@ Functions
             "server": paramgram["smtp_server"],
             "source-ip": paramgram["smtp_source_ipv4"],
         }
-    
+
         if paramgram["smtp_username"]:
             datagram["authenticate"] = 1
             datagram["username"] = paramgram["smtp_username"]
             datagram["password"] = paramgram["smtp_password"]
-    
+
         if paramgram["smtp_conn_sec"] == "none":
             datagram["security"] = 0
         if paramgram["smtp_conn_sec"] == "starttls":
             datagram["security"] = 1
         if paramgram["smtp_conn_sec"] == "smtps":
             datagram["security"] = 2
-    
+
         if paramgram["smtp_validate_cert"] == "enable":
             datagram["validate-server"] = 1
         else:
             datagram["validate-server"] = 0
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/system/email-server".format(adom=paramgram["adom"],
                                             provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - set_devprof_dns
 
@@ -1433,12 +1432,12 @@ Functions
               "/devprof/{provisioning_template}" \
               "/system/dns".format(adom=paramgram["adom"],
                                    provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - delete_devprof_dns
 
@@ -1453,17 +1452,17 @@ Functions
             "primary": paramgram["dns_primary_ipv4"],
             "secondary": paramgram["dns_secondary_ipv4"],
         }
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/system/dns".format(adom=paramgram["adom"],
                                    provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - set_devprof_toggle_fg
 
@@ -1479,19 +1478,19 @@ Functions
             datagram["include-default-servers"] = "enable"
         elif paramgram["admin_enable_fortiguard"] == "none":
             datagram["include-default-servers"] = "disable"
-    
+
         datagram["server-list"] = list()
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/system/central-management".format(adom=paramgram["adom"],
                                                   provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - set_devprof_fg
 
@@ -1508,17 +1507,17 @@ Functions
         }
         if paramgram["admin_fortiguard_target"] is not None and datagram["target"] == "direct":
             datagram["target-ip"] = paramgram["admin_fortiguard_target"]
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/device/profile/fortiguard".format(adom=paramgram["adom"],
                                                   provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - delete_devprof_fg
 
@@ -1532,17 +1531,17 @@ Functions
             "target": paramgram["admin_enable_fortiguard"],
             "target-ip": None
         }
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/device/profile/fortiguard".format(adom=paramgram["adom"],
                                                   provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - set_devprof_faz
 
@@ -1560,12 +1559,12 @@ Functions
               "/devprof/{provisioning_template}" \
               "/device/profile/fortianalyzer".format(adom=paramgram["adom"],
                                                      provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - delete_devprof_faz
 
@@ -1580,17 +1579,17 @@ Functions
             "target": 4,
             "hastarget": "true",
         }
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/device/profile/fortianalyzer".format(adom=paramgram["adom"],
                                                      provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - fmgr_logout
 
@@ -1607,7 +1606,7 @@ Functions
             except:
                 pass
             module.fail_json(msg=msg)
-    
+
         # SUBMISSION ERROR
         if len(results) > 0:
             if msg == "NULL":
@@ -1615,7 +1614,7 @@ Functions
                     msg = results[1]['status']['message']
                 except:
                     msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
+
             if results[0] not in good_codes:
                 if logout_on_fail:
                     fmg.logout()
@@ -1626,8 +1625,8 @@ Functions
                     module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
                                      **results[1])
         return msg
-    
-    
+
+
 
 - main
 
@@ -1640,10 +1639,10 @@ Functions
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"])),
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
             state=dict(required=False, type="str", default="present", choices=["absent", "present"]),
-    
+
             provisioning_template=dict(required=False, type="str"),
             provision_targets=dict(required=False, type="str"),
-    
+
             device_unique_name=dict(required=False, type="str"),
             snmp_status=dict(required=False, type="str", choices=["enable", "disable"]),
             snmp_v2c_query_port=dict(required=False, type="int"),
@@ -1656,7 +1655,7 @@ Functions
             snmp_v2c_trap_src_ipv4=dict(required=False, type="str"),
             snmp_v2c_trap_hosts_ipv4=dict(required=False, type="str"),
             snmp_v2c_query_hosts_ipv4=dict(required=False, type="str"),
-    
+
             snmpv3_auth_proto=dict(required=False, type="str", choices=["md5", "sha"]),
             snmpv3_auth_pwd=dict(required=False, type="str", no_log=True),
             snmpv3_name=dict(required=False, type="str"),
@@ -1671,7 +1670,7 @@ Functions
             snmpv3_status=dict(required=False, type="str", choices=["enable", "disable"]),
             snmpv3_trap_rport=dict(required=False, type="int"),
             snmpv3_trap_status=dict(required=False, type="str", choices=["enable", "disable"]),
-    
+
             syslog_port=dict(required=False, type="int"),
             syslog_server=dict(required=False, type="str"),
             syslog_mode=dict(required=False, type="str", choices=["udp", "legacy-reliable", "reliable"], default="udp"),
@@ -1686,7 +1685,7 @@ Functions
                                                                       "local1", "local2", "local3", "local4", "local5",
                                                                       "local6", "local7"], default="syslog"),
             syslog_certificate=dict(required=False, type="str"),
-    
+
             ntp_status=dict(required=False, type="str", choices=["enable", "disable"]),
             ntp_sync_interval=dict(required=False, type="int"),
             ntp_type=dict(required=False, type="str", choices=["fortiguard", "custom"]),
@@ -1694,7 +1693,7 @@ Functions
             ntp_auth=dict(required=False, type="str", choices=["enable", "disable"]),
             ntp_auth_pwd=dict(required=False, type="str", no_log=True),
             ntp_v3=dict(required=False, type="str", choices=["enable", "disable"]),
-    
+
             admin_https_redirect=dict(required=False, type="str", choices=["enable", "disable"]),
             admin_https_port=dict(required=False, type="int"),
             admin_http_port=dict(required=False, type="int"),
@@ -1707,7 +1706,7 @@ Functions
             admin_enable_fortiguard=dict(required=False, type="str", choices=["none", "direct", "this-fmg"]),
             admin_fortianalyzer_target=dict(required=False, type="str"),
             admin_fortiguard_target=dict(required=False, type="str"),
-    
+
             smtp_username=dict(required=False, type="str"),
             smtp_password=dict(required=False, type="str", no_log=True),
             smtp_port=dict(required=False, type="int"),
@@ -1716,22 +1715,22 @@ Functions
             smtp_server=dict(required=False, type="str"),
             smtp_source_ipv4=dict(required=False, type="str"),
             smtp_validate_cert=dict(required=False, type="str", choices=["enable", "disable"]),
-    
+
             dns_suffix=dict(required=False, type="str"),
             dns_primary_ipv4=dict(required=False, type="str"),
             dns_secondary_ipv4=dict(required=False, type="str"),
             delete_provisioning_template=dict(required=False, type="str")
-    
+
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=True, )
-    
+
         paramgram = {
             "adom": module.params["adom"],
             "state": module.params["state"],
             "provision_targets": module.params["provision_targets"],
             "provisioning_template": module.params["provisioning_template"],
-    
+
             "snmp_status": module.params["snmp_status"],
             "snmp_v2c_query_port": module.params["snmp_v2c_query_port"],
             "snmp_v2c_trap_port": module.params["snmp_v2c_trap_port"],
@@ -1743,7 +1742,7 @@ Functions
             "snmp_v2c_trap_src_ipv4": module.params["snmp_v2c_trap_src_ipv4"],
             "snmp_v2c_trap_hosts_ipv4": module.params["snmp_v2c_trap_hosts_ipv4"],
             "snmp_v2c_query_hosts_ipv4": module.params["snmp_v2c_query_hosts_ipv4"],
-    
+
             "snmpv3_auth_proto": module.params["snmpv3_auth_proto"],
             "snmpv3_auth_pwd": module.params["snmpv3_auth_pwd"],
             "snmpv3_name": module.params["snmpv3_name"],
@@ -1757,7 +1756,7 @@ Functions
             "snmpv3_status": module.params["snmpv3_status"],
             "snmpv3_trap_rport": module.params["snmpv3_trap_rport"],
             "snmpv3_trap_status": module.params["snmpv3_trap_status"],
-    
+
             "syslog_port": module.params["syslog_port"],
             "syslog_server": module.params["syslog_server"],
             "syslog_mode": module.params["syslog_mode"],
@@ -1766,7 +1765,7 @@ Functions
             "syslog_facility": module.params["syslog_facility"],
             "syslog_enc_algorithm": module.params["syslog_enc_algorithm"],
             "syslog_certificate": module.params["syslog_certificate"],
-    
+
             "ntp_status": module.params["ntp_status"],
             "ntp_sync_interval": module.params["ntp_sync_interval"],
             "ntp_type": module.params["ntp_type"],
@@ -1774,7 +1773,7 @@ Functions
             "ntp_auth": module.params["ntp_auth"],
             "ntp_auth_pwd": module.params["ntp_auth_pwd"],
             "ntp_v3": module.params["ntp_v3"],
-    
+
             "admin_https_redirect": module.params["admin_https_redirect"],
             "admin_https_port": module.params["admin_https_port"],
             "admin_http_port": module.params["admin_http_port"],
@@ -1785,7 +1784,7 @@ Functions
             "admin_enable_fortiguard": module.params["admin_enable_fortiguard"],
             "admin_fortianalyzer_target": module.params["admin_fortianalyzer_target"],
             "admin_fortiguard_target": module.params["admin_fortiguard_target"],
-    
+
             "smtp_username": module.params["smtp_username"],
             "smtp_password": module.params["smtp_password"],
             "smtp_port": module.params["smtp_port"],
@@ -1794,38 +1793,38 @@ Functions
             "smtp_server": module.params["smtp_server"],
             "smtp_source_ipv4": module.params["smtp_source_ipv4"],
             "smtp_validate_cert": module.params["smtp_validate_cert"],
-    
+
             "dns_suffix": module.params["dns_suffix"],
             "dns_primary_ipv4": module.params["dns_primary_ipv4"],
             "dns_secondary_ipv4": module.params["dns_secondary_ipv4"],
             "delete_provisioning_template": module.params["delete_provisioning_template"]
         }
-    
+
         # validate required arguments are passed; not used in argument_spec to allow params to be called from provider
         # check if params are set
         results = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
         if module.params["host"] is None or module.params["username"] is None or module.params["password"] is None:
             module.fail_json(msg="Host and username are required for connection")
-    
+
         # CHECK IF LOGIN FAILED
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
         response = fmg.login()
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
-    
+
         # START SESSION LOGIC
         # CHECK IF WE ARE DELETING AN ENTIRE TEMPLATE. IF THAT'S THE CASE DO IT FIRST AND IGNORE THE REST.
         if paramgram["delete_provisioning_template"] is not None:
             results = del_devprof(fmg, paramgram)
             fmgr_logout(fmg, module, results=results, good_codes=[0, -10, -1],
                         msg="Failed to delete provisioning template", logout_on_success=True)
-    
+
         # CHECK TO SEE IF THE DEVPROF TEMPLATE EXISTS
         devprof = get_devprof(fmg, paramgram)
         if not devprof[0] == 0:
             results = add_devprof(fmg, paramgram)
             fmgr_logout(fmg, module, results=results, good_codes=[0, -2])
-    
+
         # PROCESS THE SNMP SETTINGS IF THE SNMP_STATUS VARIABLE IS SET
         if paramgram["snmp_status"] is not None:
             if paramgram["state"] == "present":
@@ -1837,7 +1836,7 @@ Functions
                 results = delete_devprof_snmp(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10000],
                             msg="Failed to delete SNMP status")
-    
+
         # PROCESS THE SNMP V2C COMMUNITY SETTINGS IF THEY ARE ALL HERE
         if all(v is not None for v in (paramgram["snmp_v2c_query_port"], paramgram["snmp_v2c_trap_port"],
                                        paramgram["snmp_v2c_status"], paramgram["snmp_v2c_trap_status"],
@@ -1847,12 +1846,12 @@ Functions
                 results = set_devprof_snmp_v2c(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033],
                             msg="Failed to create SNMP V2C Community")
-    
+
             if paramgram["state"] == "absent":
                 results = delete_devprof_snmp_v2c(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete SNMP V2C Community")
-    
+
         # PROCESS THE SNMPV3 USER IF THERE
         if all(v is not None for v in (
                 [paramgram["snmpv3_auth_proto"], paramgram["snmpv3_auth_pwd"], paramgram["snmpv3_name"],
@@ -1866,12 +1865,12 @@ Functions
                 results = set_devprof_snmp_v3(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to create SNMP V3 Community")
-    
+
             if paramgram["state"] == "absent":
                 results = delete_devprof_snmp_v3(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to create SNMP V3 Community")
-    
+
         # PROCESS THE SYSLOG SETTINGS IF THE ALL THE NEEDED SYSLOG VARIABLES ARE PRESENT
         if all(v is not None for v in [paramgram["syslog_port"], paramgram["syslog_mode"],
                                        paramgram["syslog_server"], paramgram["syslog_status"]]):
@@ -1885,7 +1884,7 @@ Functions
                 results = delete_devprof_syslog(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete syslog server settings")
-    
+
         # IF THE SYSLOG FILTER IS PRESENT THEN RUN THAT
         if paramgram["syslog_filter"] is not None:
             if paramgram["state"] == "present":
@@ -1898,7 +1897,7 @@ Functions
                 results = delete_devprof_syslog_filter(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete syslog settings")
-    
+
         # PROCESS NTP OPTIONS
         if paramgram["ntp_status"]:
             # VALIDATE INPUT
@@ -1914,7 +1913,7 @@ Functions
                 results = delete_devprof_ntp(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete NTP settings")
-    
+
         # PROCESS THE ADMIN OPTIONS
         if any(v is not None for v in (
                 paramgram["admin_https_redirect"], paramgram["admin_https_port"], paramgram["admin_http_port"],
@@ -1928,7 +1927,7 @@ Functions
                 results = delete_devprof_admin(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete NTP settings")
-    
+
         # PROCESS FORTIGUARD OPTIONS
         if paramgram["admin_enable_fortiguard"] is not None:
             if paramgram["state"] == "present":
@@ -1943,7 +1942,7 @@ Functions
                 results = set_devprof_toggle_fg(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to toggle Fortiguard on/off")
-    
+
         # PROCESS THE SMTP OPTIONS
         if all(v is not None for v in (
                 paramgram["smtp_username"], paramgram["smtp_password"], paramgram["smtp_port"],
@@ -1953,41 +1952,41 @@ Functions
             if paramgram["state"] == "present":
                 results = set_devprof_smtp(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0], msg="Failed to set SMTP settings")
-    
+
             if paramgram["state"] == "absent":
                 results = delete_devprof_smtp(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete SMTP settings")
-    
+
         # PROCESS THE DNS OPTIONS
         if any(v is not None for v in
                (paramgram["dns_suffix"], paramgram["dns_primary_ipv4"], paramgram["dns_secondary_ipv4"])):
             if paramgram["state"] == "present":
                 results = set_devprof_dns(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0], msg="Failed to set DNS settings")
-    
+
             if paramgram["state"] == "absent":
                 results = delete_devprof_dns(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete DNS settings")
-    
+
         # PROCESS THE admin_fortianalyzer_target OPTIONS
         if paramgram["admin_fortianalyzer_target"] is not None:
             if paramgram["state"] == "present":
                 results = set_devprof_faz(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0], msg="Failed to set FAZ settings")
-    
+
             if paramgram["state"] == "absent":
                 results = delete_devprof_faz(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete FAZ settings")
-    
+
         # PROCESS THE PROVISIONING TEMPLATE TARGET PARAMETER
         if paramgram["provision_targets"] is not None:
             if paramgram["state"] == "present":
                 results = set_devprof_scope(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0], msg="Failed to set provision targets")
-    
+
             if paramgram["state"] == "absent":
                 # WE NEED TO FIGURE OUT WHAT'S THERE FIRST, BEFORE WE CAN RUN THIS
                 targets_to_add = list()
@@ -2005,11 +2004,11 @@ Functions
                 results = delete_devprof_scope(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete provision targets")
-    
+
         fmg.logout()
         return module.exit_json(**results[1])
-    
-    
+
+
 
 
 
@@ -2035,17 +2034,17 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-    
+
     from __future__ import absolute_import, division, print_function
-    
+
     __metaclass__ = type
-    
+
     ANSIBLE_METADATA = {
         "metadata_version": "1.1",
         "status": ["preview"],
         "supported_by": "community"
     }
-    
+
     DOCUMENTATION = '''
     ---
     module: fmgr_device_provision_template
@@ -2054,7 +2053,7 @@ Module Source Code
     short_description: Manages Device Provisioning Templates in FortiManager
     description:
         - Allows the editing and assignment of device provisioning templates in FortiManager
-    
+
     options:
       adom:
         description:
@@ -2080,7 +2079,7 @@ Module Source Code
         required: true
         default: present
         choices: ["absent", "present"]
-    
+
       device_unique_name:
         description:
          -The unique device's name that you are editing
@@ -2402,9 +2401,9 @@ Module Source Code
         description:
          - If specified, all other options are ignored. The specified provisioning template will be deleted.
         required: False
-    
+
     '''
-    
+
     EXAMPLES = '''
     - name: SET SNMP SYSTEM INFO
       fmgr_device_provision_template:
@@ -2414,7 +2413,7 @@ Module Source Code
         provisioning_template: "default"
         snmp_status: "enable"
         state: "present"
-    
+
     - name: SET SNMP SYSTEM INFO ANSIBLE ADOM
       fmgr_device_provision_template:
         host: "{{inventory_hostname}}"
@@ -2424,7 +2423,7 @@ Module Source Code
         snmp_status: "enable"
         state: "present"
         adom: "ansible"
-    
+
     - name: SET SNMP SYSTEM INFO different template (SNMPv2)
       fmgr_device_provision_template:
         host: "{{inventory_hostname}}"
@@ -2444,7 +2443,7 @@ Module Source Code
         snmp_v2c_trap_src_ipv4: "10.7.220.41"
         snmp_v2c_trap_hosts_ipv4: "10.7.220.59 255.255.255.255, 10.7.220.60 255.255.255.255"
         snmp_v2c_query_hosts_ipv4: "10.7.220.59 255.255.255.255, 10.7.220.0 255.255.255.0"
-    
+
     - name: SET SNMP SYSTEM INFO different template (SNMPv3)
       fmgr_device_provision_template:
         host: "{{inventory_hostname}}"
@@ -2467,7 +2466,7 @@ Module Source Code
         snmpv3_status: "enable"
         snmpv3_trap_rport: "162"
         snmpv3_trap_status: "enable"
-    
+
     - name: SET SYSLOG INFO
       fmgr_device_provision_template:
         host: "{{inventory_hostname}}"
@@ -2481,7 +2480,7 @@ Module Source Code
         syslog_mode: "disable"
         syslog_status: "enable"
         syslog_filter: "information"
-    
+
     - name: SET NTP TO FORTIGUARD
       fmgr_device_provision_template:
         host: "{{inventory_hostname}}"
@@ -2493,7 +2492,7 @@ Module Source Code
         ntp_status: "enable"
         ntp_sync_interval: "60"
         type: "fortiguard"
-    
+
     - name: SET NTP TO CUSTOM SERVER
       fmgr_device_provision_template:
         host: "{{inventory_hostname}}"
@@ -2509,7 +2508,7 @@ Module Source Code
         ntp_auth: "enable"
         ntp_auth_pwd: "fortinet"
         ntp_v3: "disable"
-    
+
     - name: SET ADMIN GLOBAL SETTINGS
       fmgr_device_provision_template:
         host: "{{inventory_hostname}}"
@@ -2528,7 +2527,7 @@ Module Source Code
         admin_enable_fortiguard: "direct"
         admin_fortiguard_target: "10.7.220.128"
         admin_fortianalyzer_target: "10.7.220.61"
-    
+
     - name: SET CUSTOM SMTP SERVER
       fmgr_device_provision_template:
         host: "{{inventory_hostname}}"
@@ -2545,7 +2544,7 @@ Module Source Code
         smtp_server: "10.7.220.32"
         smtp_source_ipv4: "0.0.0.0"
         smtp_validate_cert: "disable"
-    
+
     - name: SET DNS SERVERS
       fmgr_device_provision_template:
         host: "{{inventory_hostname}}"
@@ -2557,7 +2556,7 @@ Module Source Code
         dns_suffix: "ansible.local"
         dns_primary_ipv4: "8.8.8.8"
         dns_secondary_ipv4: "4.4.4.4"
-    
+
     - name: SET PROVISIONING TEMPLATE DEVICE TARGETS IN FORTIMANAGER
       fmgr_device_provision_template:
         host: "{{inventory_hostname}}"
@@ -2567,7 +2566,7 @@ Module Source Code
         state: "present"
         adom: "ansible"
         provision_targets: "FGT1, FGT2"
-    
+
     - name: DELETE ENTIRE PROVISIONING TEMPLATE
       fmgr_device_provision_template:
         host: "{{ inventory_hostname }}"
@@ -2576,7 +2575,7 @@ Module Source Code
         delete_provisioning_template: "ansibleTest"
         state: "absent"
         adom: "ansible"
-    
+
     '''
     RETURN = """
     api_result:
@@ -2584,19 +2583,19 @@ Module Source Code
       returned: always
       type: string
     """
-    
+
     from ansible.module_utils.basic import AnsibleModule, env_fallback
     from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-    
+
     # check for pyFMG lib
     try:
         from pyFMG.fortimgr import FortiManager
-    
+
         HAS_PYFMGR = True
     except ImportError:
         HAS_PYFMGR = False
-    
-    
+
+
     def get_devprof(fmg, paramgram):
         """
         GET the DevProf (check to see if exists)
@@ -2604,29 +2603,29 @@ Module Source Code
         datagram = {
             # "name": paramgram["provisioning_template"]
         }
-    
+
         url = "/pm/devprof/adom/{adom}/{name}".format(adom=paramgram["adom"], name=paramgram["provisioning_template"])
         response = fmg.get(url, datagram)
-    
+
         return response
-    
-    
+
+
     def del_devprof(fmg, paramgram):
         """
         DELETE the DevProf
         """
-    
+
         datagram = {
             # "name": paramgram["delete_provisioning_template"]
         }
-    
+
         url = "/pm/devprof/adom/{adom}/{name}".format(adom=paramgram["adom"],
                                                       name=paramgram["delete_provisioning_template"])
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     def add_devprof(fmg, paramgram):
         """
         GET the DevProf (check to see if exists)
@@ -2638,10 +2637,10 @@ Module Source Code
         }
         url = "/pm/devprof/adom/{adom}".format(adom=paramgram["adom"])
         response = fmg.add(url, datagram)
-    
+
         return response
-    
-    
+
+
     def get_devprof_scope(fmg, paramgram):
         """
         GETS a device provisioning template and its scope
@@ -2651,13 +2650,13 @@ Module Source Code
             "type": "devprof",
             "description": "CreatedByAnsible",
         }
-    
+
         url = "/pm/devprof/adom/{adom}".format(adom=paramgram["adom"])
         response = fmg.get(url, datagram)
-    
+
         return response
-    
-    
+
+
     def set_devprof_scope(fmg, paramgram):
         """
         SETS a device provisioning template and its scope
@@ -2667,21 +2666,21 @@ Module Source Code
             "type": "devprof",
             "description": "CreatedByAnsible",
         }
-    
+
         targets = []
         for target in paramgram["provision_targets"].strip().split(","):
             # split the host on the space to get the mask out
             new_target = {"name": target}
             targets.append(new_target)
-    
+
         datagram["scope member"] = targets
-    
+
         url = "/pm/devprof/adom/{adom}".format(adom=paramgram["adom"])
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
     def delete_devprof_scope(fmg, paramgram):
         """
         DELETES the Current Scope for ProvTemplate
@@ -2692,13 +2691,13 @@ Module Source Code
             "description": "CreatedByAnsible",
             "scope member": paramgram["targets_to_add"]
         }
-    
+
         url = "/pm/devprof/adom/{adom}".format(adom=paramgram["adom"])
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
     def set_devprof_snmp(fmg, paramgram):
         """
         ENABLE SNMP ON DevProf
@@ -2706,15 +2705,15 @@ Module Source Code
         datagram = {
             "status": paramgram["snmp_status"]
         }
-    
+
         url = "/pm/config/adom/{adom}/devprof/" \
               "{provisioning_template}/system/snmp/sysinfo".format(adom=paramgram["adom"],
                                                                    provisioning_template=paramgram["provisioning_template"])
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
     def delete_devprof_snmp(fmg, paramgram):
         """
         DISABLE SNMP on Provision Template
@@ -2722,16 +2721,16 @@ Module Source Code
         datagram = {
             "status": paramgram["snmp_status"]
         }
-    
+
         url = "/pm/config/adom/{adom}/devprof/" \
               "{provisioning_template}/system/snmp/sysinfo".format(adom=paramgram["adom"],
                                                                    provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     def set_devprof_snmp_v2c(fmg, paramgram):
         """
         ENABLE SNMP ON DevProf
@@ -2754,7 +2753,7 @@ Module Source Code
             "trap-v1-rport": 162,
             "trap-v2c-lport": 162,
         }
-    
+
         # BUILD THE HOST STRINGS
         id_counter = 1
         if paramgram["snmp_v2c_trap_hosts_ipv4"] or paramgram["snmp_v2c_query_hosts_ipv4"]:
@@ -2770,7 +2769,7 @@ Module Source Code
                                      "source-ip": "0.0.0.0"}
                     hosts.append(new_ipv4_host)
                     id_counter += 1
-    
+
             if paramgram["snmp_v2c_trap_hosts_ipv4"]:
                 for ipv4_host in paramgram["snmp_v2c_trap_hosts_ipv4"].strip().split(","):
                     # split the host on the space to get the mask out
@@ -2783,17 +2782,17 @@ Module Source Code
                     hosts.append(new_ipv4_host)
                     id_counter += 1
             datagram["hosts"] = hosts
-    
+
         url = "/pm/config/adom/{adom}/devprof/" \
               "{provisioning_template}/system/snmp/community".format(adom=paramgram["adom"],
                                                                      provisioning_template=paramgram[
                                                                          "provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
     def delete_devprof_snmp_v2c(fmg, paramgram):
         """
         DISABLE SNMP on Provision Template
@@ -2801,18 +2800,18 @@ Module Source Code
         datagram = {
             "confirm": 1
         }
-    
+
         url = "/pm/config/adom/{adom}/" \
               "devprof/{provisioning_template}/" \
               "system/snmp/community/{snmp_v2c_id}".format(adom=paramgram["adom"],
                                                            provisioning_template=paramgram["provisioning_template"],
                                                            snmp_v2c_id=paramgram["snmp_v2c_id"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     def set_devprof_snmp_v3(fmg, paramgram):
         """
         ENABLE SNMP ON DevProf
@@ -2849,7 +2848,7 @@ Module Source Code
             datagram["security-level"] = 2
         if paramgram["snmpv3_security_level"] == "auth-priv":
             datagram["security-level"] = 3
-    
+
         datagram["auth-pwd"] = paramgram["snmpv3_auth_pwd"]
         datagram["priv-pwd"] = paramgram["snmpv3_priv_pwd"]
         datagram["trap-rport"] = paramgram["snmpv3_trap_rport"]
@@ -2858,20 +2857,20 @@ Module Source Code
         datagram["notify-hosts"] = paramgram["snmpv3_notify_hosts"].strip().split(",")
         datagram["events"] = 1647387997183
         datagram["trap-lport"] = 162
-    
+
         datagram["source-ip"] = paramgram["snmpv3_source_ip"]
         datagram["ha-direct"] = 0
-    
+
         url = "/pm/config/adom/{adom}/" \
               "devprof/{provisioning_template}/" \
               "system/snmp/user".format(adom=paramgram["adom"],
                                         provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
     def delete_devprof_snmp_v3(fmg, paramgram):
         """
         DISABLE SNMP on Provision Template
@@ -2879,18 +2878,18 @@ Module Source Code
         datagram = {
             "confirm": 1
         }
-    
+
         url = "/pm/config/adom/{adom}/devprof/" \
               "{provisioning_template}/system/snmp" \
               "/user/{snmpv3_name}".format(adom=paramgram["adom"],
                                            provisioning_template=paramgram["provisioning_template"],
                                            snmpv3_name=paramgram["snmpv3_name"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     def set_devprof_syslog(fmg, paramgram):
         """
         Set the SYSLOG SETTINGS
@@ -2902,22 +2901,22 @@ Module Source Code
             "mode": paramgram["syslog_mode"],
             "facility": paramgram["syslog_facility"]
         }
-    
+
         if paramgram["syslog_enc_algorithm"] in ["high", "low", "high-medium"] \
                 and paramgram["syslog_certificate"] is not None:
             datagram["certificate"] = paramgram["certificate"]
             datagram["enc-algorithm"] = paramgram["syslog_enc_algorithm"]
-    
+
         url = "/pm/config/adom/{adom}/" \
               "devprof/{provisioning_template}/" \
               "log/syslogd/setting".format(adom=paramgram["adom"],
                                            provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
     def delete_devprof_syslog(fmg, paramgram):
         """
         DISABLE SYSLOG SETTINGS
@@ -2933,12 +2932,12 @@ Module Source Code
               "devprof/{provisioning_template}/" \
               "log/syslogd/setting".format(adom=paramgram["adom"],
                                            provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     def set_devprof_syslog_filter(fmg, paramgram):
         """
         Set the SYSLOG SETTINGS
@@ -2946,17 +2945,17 @@ Module Source Code
         datagram = {
             "severity": paramgram["syslog_filter"]
         }
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/log/syslogd/filter".format(adom=paramgram["adom"],
                                            provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
     def delete_devprof_syslog_filter(fmg, paramgram):
         """
         DISABLE SYSLOG SETTINGS
@@ -2964,16 +2963,16 @@ Module Source Code
         datagram = {
             "severity": paramgram["syslog_filter"]
         }
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/log/syslogd/filter".format(adom=paramgram["adom"],
                                            provisioning_template=paramgram["provisioning_template"])
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     def set_devprof_ntp(fmg, paramgram):
         """
         Set the NTP SETTINGS
@@ -2990,9 +2989,9 @@ Module Source Code
                 datagram["syncinterval"] = 1
             else:
                 datagram["syncinterval"] = paramgram["ntp_sync_interval"]
-    
+
             datagram["type"] = 0
-    
+
         # IF THE NTP TYPE IS CUSTOM BUILD THE SERVER LIST
         if paramgram["ntp_type"] == "custom":
             id_counter = 0
@@ -3008,11 +3007,11 @@ Module Source Code
             except:
                 datagram["syncinterval"] = 1
             datagram["type"] = 1
-    
+
             for server in paramgram["ntp_server"].strip().split(","):
                 id_counter += 1
                 server_fields = dict()
-    
+
                 key_counter += 1
                 if paramgram["ntp_auth"] == "enable":
                     server_fields["authentication"] = 1
@@ -3022,12 +3021,12 @@ Module Source Code
                     server_fields["authentication"] = 0
                     server_fields["key"] = ""
                     server_fields["key-id"] = key_counter
-    
+
                 if paramgram["ntp_v3"] == "enable":
                     server_fields["ntp_v3"] = 1
                 else:
                     server_fields["ntp_v3"] = 0
-    
+
                 # split the host on the space to get the mask out
                 new_ntp_server = {"authentication": server_fields["authentication"],
                                   "id": id_counter, "key": server_fields["key"],
@@ -3035,7 +3034,7 @@ Module Source Code
                                   "server": server}
                 ntpservers.append(new_ntp_server)
             datagram["ntpserver"] = ntpservers
-    
+
         # SET THE BODY FOR THE FORTIGUARD REQUEST
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
@@ -3043,8 +3042,8 @@ Module Source Code
                                    provisioning_template=paramgram["provisioning_template"])
         response = fmg.set(url, datagram)
         return response
-    
-    
+
+
     def delete_devprof_ntp(fmg, paramgram):
         """
         DISABLE NTP SETTINGS
@@ -3061,9 +3060,9 @@ Module Source Code
                 datagram["syncinterval"] = 1
             else:
                 datagram["syncinterval"] = paramgram["ntp_sync_interval"]
-    
+
             datagram["type"] = 0
-    
+
         # IF THE NTP TYPE IS CUSTOM BUILD THE SERVER LIST
         if paramgram["ntp_type"] == "custom":
             id_counter = 0
@@ -3079,11 +3078,11 @@ Module Source Code
             else:
                 datagram["syncinterval"] = paramgram["ntp_sync_interval"]
                 datagram["type"] = 1
-    
+
             for server in paramgram["ntp_server"].strip().split(","):
                 id_counter += 1
                 server_fields = dict()
-    
+
                 key_counter += 1
                 if paramgram["ntp_auth"] == "enable":
                     server_fields["authentication"] = 1
@@ -3093,20 +3092,20 @@ Module Source Code
                     server_fields["authentication"] = 0
                     server_fields["key"] = ""
                     server_fields["key-id"] = key_counter
-    
+
                 if paramgram["ntp_v3"] == "enable":
                     server_fields["ntpv3"] = 1
                 else:
                     server_fields["ntpv3"] = 0
-    
+
                 # split the host on the space to get the mask out
                 new_ntp_server = {"authentication": server_fields["authentication"], "id": id_counter,
                                   "key": server_fields["key"], "key-id": id_counter, "ntpv3": server_fields["ntpv3"],
                                   "server": server}
                 ntpservers.append(new_ntp_server)
-    
+
             datagram["ntpserver"] = ntpservers
-    
+
         # SET THE BODY FOR THE FORTIGUARD REQUEST
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
@@ -3114,8 +3113,8 @@ Module Source Code
                                    provisioning_template=paramgram["provisioning_template"])
         response = fmg.delete(url, datagram)
         return response
-    
-    
+
+
     def set_devprof_admin(fmg, paramgram):
         """
             DISABLE NTP SETTINGS
@@ -3129,17 +3128,17 @@ Module Source Code
             "gui-theme": paramgram["admin_gui_theme"],
             "switch-controller": paramgram["admin_switch_controller"],
         }
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/system/global".format(adom=paramgram["adom"],
                                       provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
     def delete_devprof_admin(fmg, paramgram):
         """
             CHANGE ADMIN SETTINGS
@@ -3153,17 +3152,17 @@ Module Source Code
             "gui-theme": paramgram["admin_gui_theme"],
             "switch-controller": paramgram["admin_switch_controller"],
         }
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/system/global".format(adom=paramgram["adom"],
                                       provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     def set_devprof_smtp(fmg, paramgram):
         """
            ENABLE SMTP SETTINGS
@@ -3174,34 +3173,34 @@ Module Source Code
             "server": paramgram["smtp_server"],
             "source-ip": paramgram["smtp_source_ipv4"]
         }
-    
+
         if paramgram["smtp_username"]:
             datagram["authenticate"] = 1
             datagram["username"] = paramgram["smtp_username"]
             datagram["password"] = paramgram["smtp_password"]
-    
+
         if paramgram["smtp_conn_sec"] == "none":
             datagram["security"] = 0
         if paramgram["smtp_conn_sec"] == "starttls":
             datagram["security"] = 1
         if paramgram["smtp_conn_sec"] == "smtps":
             datagram["security"] = 2
-    
+
         if paramgram["smtp_validate_cert"] == "enable":
             datagram["validate-server"] = 1
         else:
             datagram["validate-server"] = 0
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/system/email-server".format(adom=paramgram["adom"],
                                             provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
     def delete_devprof_smtp(fmg, paramgram):
         """
             DISABLE SMTP SETTINGS
@@ -3212,34 +3211,34 @@ Module Source Code
             "server": paramgram["smtp_server"],
             "source-ip": paramgram["smtp_source_ipv4"],
         }
-    
+
         if paramgram["smtp_username"]:
             datagram["authenticate"] = 1
             datagram["username"] = paramgram["smtp_username"]
             datagram["password"] = paramgram["smtp_password"]
-    
+
         if paramgram["smtp_conn_sec"] == "none":
             datagram["security"] = 0
         if paramgram["smtp_conn_sec"] == "starttls":
             datagram["security"] = 1
         if paramgram["smtp_conn_sec"] == "smtps":
             datagram["security"] = 2
-    
+
         if paramgram["smtp_validate_cert"] == "enable":
             datagram["validate-server"] = 1
         else:
             datagram["validate-server"] = 0
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/system/email-server".format(adom=paramgram["adom"],
                                             provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     def set_devprof_dns(fmg, paramgram):
         """
            ENABLE DNS SETTINGS
@@ -3253,12 +3252,12 @@ Module Source Code
               "/devprof/{provisioning_template}" \
               "/system/dns".format(adom=paramgram["adom"],
                                    provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
     def delete_devprof_dns(fmg, paramgram):
         """
             DISABLE DNS SETTINGS
@@ -3268,17 +3267,17 @@ Module Source Code
             "primary": paramgram["dns_primary_ipv4"],
             "secondary": paramgram["dns_secondary_ipv4"],
         }
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/system/dns".format(adom=paramgram["adom"],
                                    provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     def set_devprof_toggle_fg(fmg, paramgram):
         """
            TOGGLE FG SETTINGS
@@ -3289,19 +3288,19 @@ Module Source Code
             datagram["include-default-servers"] = "enable"
         elif paramgram["admin_enable_fortiguard"] == "none":
             datagram["include-default-servers"] = "disable"
-    
+
         datagram["server-list"] = list()
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/system/central-management".format(adom=paramgram["adom"],
                                                   provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
     def set_devprof_fg(fmg, paramgram):
         """
            ENABLE FG SETTINGS
@@ -3313,17 +3312,17 @@ Module Source Code
         }
         if paramgram["admin_fortiguard_target"] is not None and datagram["target"] == "direct":
             datagram["target-ip"] = paramgram["admin_fortiguard_target"]
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/device/profile/fortiguard".format(adom=paramgram["adom"],
                                                   provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
     def delete_devprof_fg(fmg, paramgram):
         """
             DISABLE FG SETTINGS
@@ -3332,17 +3331,17 @@ Module Source Code
             "target": paramgram["admin_enable_fortiguard"],
             "target-ip": None
         }
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/device/profile/fortiguard".format(adom=paramgram["adom"],
                                                   provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     def set_devprof_faz(fmg, paramgram):
         """
            ENABLE FAZ SETTINGS
@@ -3355,12 +3354,12 @@ Module Source Code
               "/devprof/{provisioning_template}" \
               "/device/profile/fortianalyzer".format(adom=paramgram["adom"],
                                                      provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
     def delete_devprof_faz(fmg, paramgram):
         """
             DISABLE FAZ SETTINGS
@@ -3370,17 +3369,17 @@ Module Source Code
             "target": 4,
             "hastarget": "true",
         }
-    
+
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/device/profile/fortianalyzer".format(adom=paramgram["adom"],
                                                      provisioning_template=paramgram["provisioning_template"])
-    
+
         response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
         """
         THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
@@ -3392,7 +3391,7 @@ Module Source Code
             except:
                 pass
             module.fail_json(msg=msg)
-    
+
         # SUBMISSION ERROR
         if len(results) > 0:
             if msg == "NULL":
@@ -3400,7 +3399,7 @@ Module Source Code
                     msg = results[1]['status']['message']
                 except:
                     msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
+
             if results[0] not in good_codes:
                 if logout_on_fail:
                     fmg.logout()
@@ -3411,8 +3410,8 @@ Module Source Code
                     module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
                                      **results[1])
         return msg
-    
-    
+
+
     def main():
         argument_spec = dict(
             adom=dict(required=False, type="str"),
@@ -3420,10 +3419,10 @@ Module Source Code
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"])),
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
             state=dict(required=False, type="str", default="present", choices=["absent", "present"]),
-    
+
             provisioning_template=dict(required=False, type="str"),
             provision_targets=dict(required=False, type="str"),
-    
+
             device_unique_name=dict(required=False, type="str"),
             snmp_status=dict(required=False, type="str", choices=["enable", "disable"]),
             snmp_v2c_query_port=dict(required=False, type="int"),
@@ -3436,7 +3435,7 @@ Module Source Code
             snmp_v2c_trap_src_ipv4=dict(required=False, type="str"),
             snmp_v2c_trap_hosts_ipv4=dict(required=False, type="str"),
             snmp_v2c_query_hosts_ipv4=dict(required=False, type="str"),
-    
+
             snmpv3_auth_proto=dict(required=False, type="str", choices=["md5", "sha"]),
             snmpv3_auth_pwd=dict(required=False, type="str", no_log=True),
             snmpv3_name=dict(required=False, type="str"),
@@ -3451,7 +3450,7 @@ Module Source Code
             snmpv3_status=dict(required=False, type="str", choices=["enable", "disable"]),
             snmpv3_trap_rport=dict(required=False, type="int"),
             snmpv3_trap_status=dict(required=False, type="str", choices=["enable", "disable"]),
-    
+
             syslog_port=dict(required=False, type="int"),
             syslog_server=dict(required=False, type="str"),
             syslog_mode=dict(required=False, type="str", choices=["udp", "legacy-reliable", "reliable"], default="udp"),
@@ -3466,7 +3465,7 @@ Module Source Code
                                                                       "local1", "local2", "local3", "local4", "local5",
                                                                       "local6", "local7"], default="syslog"),
             syslog_certificate=dict(required=False, type="str"),
-    
+
             ntp_status=dict(required=False, type="str", choices=["enable", "disable"]),
             ntp_sync_interval=dict(required=False, type="int"),
             ntp_type=dict(required=False, type="str", choices=["fortiguard", "custom"]),
@@ -3474,7 +3473,7 @@ Module Source Code
             ntp_auth=dict(required=False, type="str", choices=["enable", "disable"]),
             ntp_auth_pwd=dict(required=False, type="str", no_log=True),
             ntp_v3=dict(required=False, type="str", choices=["enable", "disable"]),
-    
+
             admin_https_redirect=dict(required=False, type="str", choices=["enable", "disable"]),
             admin_https_port=dict(required=False, type="int"),
             admin_http_port=dict(required=False, type="int"),
@@ -3487,7 +3486,7 @@ Module Source Code
             admin_enable_fortiguard=dict(required=False, type="str", choices=["none", "direct", "this-fmg"]),
             admin_fortianalyzer_target=dict(required=False, type="str"),
             admin_fortiguard_target=dict(required=False, type="str"),
-    
+
             smtp_username=dict(required=False, type="str"),
             smtp_password=dict(required=False, type="str", no_log=True),
             smtp_port=dict(required=False, type="int"),
@@ -3496,22 +3495,22 @@ Module Source Code
             smtp_server=dict(required=False, type="str"),
             smtp_source_ipv4=dict(required=False, type="str"),
             smtp_validate_cert=dict(required=False, type="str", choices=["enable", "disable"]),
-    
+
             dns_suffix=dict(required=False, type="str"),
             dns_primary_ipv4=dict(required=False, type="str"),
             dns_secondary_ipv4=dict(required=False, type="str"),
             delete_provisioning_template=dict(required=False, type="str")
-    
+
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=True, )
-    
+
         paramgram = {
             "adom": module.params["adom"],
             "state": module.params["state"],
             "provision_targets": module.params["provision_targets"],
             "provisioning_template": module.params["provisioning_template"],
-    
+
             "snmp_status": module.params["snmp_status"],
             "snmp_v2c_query_port": module.params["snmp_v2c_query_port"],
             "snmp_v2c_trap_port": module.params["snmp_v2c_trap_port"],
@@ -3523,7 +3522,7 @@ Module Source Code
             "snmp_v2c_trap_src_ipv4": module.params["snmp_v2c_trap_src_ipv4"],
             "snmp_v2c_trap_hosts_ipv4": module.params["snmp_v2c_trap_hosts_ipv4"],
             "snmp_v2c_query_hosts_ipv4": module.params["snmp_v2c_query_hosts_ipv4"],
-    
+
             "snmpv3_auth_proto": module.params["snmpv3_auth_proto"],
             "snmpv3_auth_pwd": module.params["snmpv3_auth_pwd"],
             "snmpv3_name": module.params["snmpv3_name"],
@@ -3537,7 +3536,7 @@ Module Source Code
             "snmpv3_status": module.params["snmpv3_status"],
             "snmpv3_trap_rport": module.params["snmpv3_trap_rport"],
             "snmpv3_trap_status": module.params["snmpv3_trap_status"],
-    
+
             "syslog_port": module.params["syslog_port"],
             "syslog_server": module.params["syslog_server"],
             "syslog_mode": module.params["syslog_mode"],
@@ -3546,7 +3545,7 @@ Module Source Code
             "syslog_facility": module.params["syslog_facility"],
             "syslog_enc_algorithm": module.params["syslog_enc_algorithm"],
             "syslog_certificate": module.params["syslog_certificate"],
-    
+
             "ntp_status": module.params["ntp_status"],
             "ntp_sync_interval": module.params["ntp_sync_interval"],
             "ntp_type": module.params["ntp_type"],
@@ -3554,7 +3553,7 @@ Module Source Code
             "ntp_auth": module.params["ntp_auth"],
             "ntp_auth_pwd": module.params["ntp_auth_pwd"],
             "ntp_v3": module.params["ntp_v3"],
-    
+
             "admin_https_redirect": module.params["admin_https_redirect"],
             "admin_https_port": module.params["admin_https_port"],
             "admin_http_port": module.params["admin_http_port"],
@@ -3565,7 +3564,7 @@ Module Source Code
             "admin_enable_fortiguard": module.params["admin_enable_fortiguard"],
             "admin_fortianalyzer_target": module.params["admin_fortianalyzer_target"],
             "admin_fortiguard_target": module.params["admin_fortiguard_target"],
-    
+
             "smtp_username": module.params["smtp_username"],
             "smtp_password": module.params["smtp_password"],
             "smtp_port": module.params["smtp_port"],
@@ -3574,38 +3573,38 @@ Module Source Code
             "smtp_server": module.params["smtp_server"],
             "smtp_source_ipv4": module.params["smtp_source_ipv4"],
             "smtp_validate_cert": module.params["smtp_validate_cert"],
-    
+
             "dns_suffix": module.params["dns_suffix"],
             "dns_primary_ipv4": module.params["dns_primary_ipv4"],
             "dns_secondary_ipv4": module.params["dns_secondary_ipv4"],
             "delete_provisioning_template": module.params["delete_provisioning_template"]
         }
-    
+
         # validate required arguments are passed; not used in argument_spec to allow params to be called from provider
         # check if params are set
         results = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
         if module.params["host"] is None or module.params["username"] is None or module.params["password"] is None:
             module.fail_json(msg="Host and username are required for connection")
-    
+
         # CHECK IF LOGIN FAILED
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
         response = fmg.login()
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
-    
+
         # START SESSION LOGIC
         # CHECK IF WE ARE DELETING AN ENTIRE TEMPLATE. IF THAT'S THE CASE DO IT FIRST AND IGNORE THE REST.
         if paramgram["delete_provisioning_template"] is not None:
             results = del_devprof(fmg, paramgram)
             fmgr_logout(fmg, module, results=results, good_codes=[0, -10, -1],
                         msg="Failed to delete provisioning template", logout_on_success=True)
-    
+
         # CHECK TO SEE IF THE DEVPROF TEMPLATE EXISTS
         devprof = get_devprof(fmg, paramgram)
         if not devprof[0] == 0:
             results = add_devprof(fmg, paramgram)
             fmgr_logout(fmg, module, results=results, good_codes=[0, -2])
-    
+
         # PROCESS THE SNMP SETTINGS IF THE SNMP_STATUS VARIABLE IS SET
         if paramgram["snmp_status"] is not None:
             if paramgram["state"] == "present":
@@ -3617,7 +3616,7 @@ Module Source Code
                 results = delete_devprof_snmp(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10000],
                             msg="Failed to delete SNMP status")
-    
+
         # PROCESS THE SNMP V2C COMMUNITY SETTINGS IF THEY ARE ALL HERE
         if all(v is not None for v in (paramgram["snmp_v2c_query_port"], paramgram["snmp_v2c_trap_port"],
                                        paramgram["snmp_v2c_status"], paramgram["snmp_v2c_trap_status"],
@@ -3627,12 +3626,12 @@ Module Source Code
                 results = set_devprof_snmp_v2c(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033],
                             msg="Failed to create SNMP V2C Community")
-    
+
             if paramgram["state"] == "absent":
                 results = delete_devprof_snmp_v2c(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete SNMP V2C Community")
-    
+
         # PROCESS THE SNMPV3 USER IF THERE
         if all(v is not None for v in (
                 [paramgram["snmpv3_auth_proto"], paramgram["snmpv3_auth_pwd"], paramgram["snmpv3_name"],
@@ -3646,12 +3645,12 @@ Module Source Code
                 results = set_devprof_snmp_v3(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to create SNMP V3 Community")
-    
+
             if paramgram["state"] == "absent":
                 results = delete_devprof_snmp_v3(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to create SNMP V3 Community")
-    
+
         # PROCESS THE SYSLOG SETTINGS IF THE ALL THE NEEDED SYSLOG VARIABLES ARE PRESENT
         if all(v is not None for v in [paramgram["syslog_port"], paramgram["syslog_mode"],
                                        paramgram["syslog_server"], paramgram["syslog_status"]]):
@@ -3665,7 +3664,7 @@ Module Source Code
                 results = delete_devprof_syslog(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete syslog server settings")
-    
+
         # IF THE SYSLOG FILTER IS PRESENT THEN RUN THAT
         if paramgram["syslog_filter"] is not None:
             if paramgram["state"] == "present":
@@ -3678,7 +3677,7 @@ Module Source Code
                 results = delete_devprof_syslog_filter(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete syslog settings")
-    
+
         # PROCESS NTP OPTIONS
         if paramgram["ntp_status"]:
             # VALIDATE INPUT
@@ -3694,7 +3693,7 @@ Module Source Code
                 results = delete_devprof_ntp(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete NTP settings")
-    
+
         # PROCESS THE ADMIN OPTIONS
         if any(v is not None for v in (
                 paramgram["admin_https_redirect"], paramgram["admin_https_port"], paramgram["admin_http_port"],
@@ -3708,7 +3707,7 @@ Module Source Code
                 results = delete_devprof_admin(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete NTP settings")
-    
+
         # PROCESS FORTIGUARD OPTIONS
         if paramgram["admin_enable_fortiguard"] is not None:
             if paramgram["state"] == "present":
@@ -3723,7 +3722,7 @@ Module Source Code
                 results = set_devprof_toggle_fg(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to toggle Fortiguard on/off")
-    
+
         # PROCESS THE SMTP OPTIONS
         if all(v is not None for v in (
                 paramgram["smtp_username"], paramgram["smtp_password"], paramgram["smtp_port"],
@@ -3733,41 +3732,41 @@ Module Source Code
             if paramgram["state"] == "present":
                 results = set_devprof_smtp(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0], msg="Failed to set SMTP settings")
-    
+
             if paramgram["state"] == "absent":
                 results = delete_devprof_smtp(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete SMTP settings")
-    
+
         # PROCESS THE DNS OPTIONS
         if any(v is not None for v in
                (paramgram["dns_suffix"], paramgram["dns_primary_ipv4"], paramgram["dns_secondary_ipv4"])):
             if paramgram["state"] == "present":
                 results = set_devprof_dns(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0], msg="Failed to set DNS settings")
-    
+
             if paramgram["state"] == "absent":
                 results = delete_devprof_dns(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete DNS settings")
-    
+
         # PROCESS THE admin_fortianalyzer_target OPTIONS
         if paramgram["admin_fortianalyzer_target"] is not None:
             if paramgram["state"] == "present":
                 results = set_devprof_faz(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0], msg="Failed to set FAZ settings")
-    
+
             if paramgram["state"] == "absent":
                 results = delete_devprof_faz(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete FAZ settings")
-    
+
         # PROCESS THE PROVISIONING TEMPLATE TARGET PARAMETER
         if paramgram["provision_targets"] is not None:
             if paramgram["state"] == "present":
                 results = set_devprof_scope(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0], msg="Failed to set provision targets")
-    
+
             if paramgram["state"] == "absent":
                 # WE NEED TO FIGURE OUT WHAT'S THERE FIRST, BEFORE WE CAN RUN THIS
                 targets_to_add = list()
@@ -3785,11 +3784,11 @@ Module Source Code
                 results = delete_devprof_scope(fmg, paramgram)
                 fmgr_logout(fmg, module, results=results, good_codes=[0, -10033, -10000, -3],
                             msg="Failed to delete provision targets")
-    
+
         fmg.logout()
         return module.exit_json(**results[1])
-    
-    
+
+
     if __name__ == "__main__":
         main()
 

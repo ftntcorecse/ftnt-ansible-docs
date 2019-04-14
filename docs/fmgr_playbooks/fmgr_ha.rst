@@ -45,6 +45,22 @@ Playbook File Examples
 ----------------------
 
 
+fmgr_ha_run_all.sh
+++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook fmgr_ha_run_all.sh -vvvv
+    ansible-playbook fmgr_ha_standalone.yml -vvvv
+    ansible-playbook fmgr_ha_enable_peer2.yml -vvvv
+    ansible-playbook fmgr_ha_slave.yml -vvvv
+    ansible-playbook fmgr_ha_enable_peer.yml -vvvv
+    ansible-playbook fmgr_ha_enable_peer_slave.yml -vvvv
+    ansible-playbook fmgr_ha_master.yml -vvvv
+    ansible-playbook fmgr_ha_disable_peer2.yml -vvvv
+    ansible-playbook fmgr_ha_disable_peer.yml -vvvv
+
+
 fmgr_ha_standalone.yml
 ++++++++++++++++++++++
 
@@ -54,16 +70,13 @@ fmgr_ha_standalone.yml
     
     - name: SET FORTIMANAGER HA MODE TO STANDALONE
       hosts: FortiManager, FortiManagerSlave
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: SET FORTIMANAGER HA NODE TO STANDALONE
         fmgr_ha:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           fmgr_ha_mode: "standalone"
 
 fmgr_ha_enable_peer2.yml
@@ -74,15 +87,12 @@ fmgr_ha_enable_peer2.yml
 
     - name: ADD FMG HA PEER
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
-        - name: DISABLE FORTIMANAGER HA PEER
+        - name: ENABLE FORTIMANAGER HA PEER
           fmgr_ha:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             fmgr_ha_peer_ipv4: "10.7.220.140"
             fmgr_ha_peer_sn: "FMG-VM0A17005535"
             fmgr_ha_peer_status: "enable"
@@ -96,15 +106,12 @@ fmgr_ha_slave.yml
 
     - name: SET FORTIMANAGER HA MODE TO SLAVE
       hosts: FortiManagerSlave
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
         - name: SET FORTIMANAGER HA NODE TO SLAVE
           fmgr_ha:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             fmgr_ha_mode: "slave"
             fmgr_ha_cluster_pw: "fortinet"
             fmgr_ha_cluster_id: "2"
@@ -117,17 +124,14 @@ fmgr_ha_enable_peer.yml
 
     - name: ADD FMG HA PEER
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
         - name: ENABLE FORTIMANAGER HA PEER
           fmgr_ha:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             fmgr_ha_peer_ipv4: "10.7.220.36"
-            fmgr_ha_peer_sn: "FMG-VM0A17005528"
+            fmgr_ha_peer_sn: "FMG-VMTM18001882"
             fmgr_ha_peer_status: "enable"
 
 
@@ -139,17 +143,14 @@ fmgr_ha_enable_peer_slave.yml
 
     - name: ADD FMG HA PEER
       hosts: FortiManagerSlave
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
         - name: ADD FORTIMANAGER HA PEER
           fmgr_ha:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             fmgr_ha_peer_ipv4: "10.7.220.35"
-            fmgr_ha_peer_sn: "FMG-VM0A17004505"
+            fmgr_ha_peer_sn: "FMG-VMTM18001881"
             fmgr_ha_peer_status: "enable"
             fmgr_ha_mode: "slave"
             fmgr_ha_cluster_pw: "fortinet"
@@ -164,15 +165,12 @@ fmgr_ha_master.yml
 
     - name: SET FORTIMANAGER HA MODE TO MASTER
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
         - name: SET FORTIMANAGER HA NODE TO MASTER
           fmgr_ha:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             fmgr_ha_mode: "master"
             fmgr_ha_cluster_pw: "fortinet"
             fmgr_ha_cluster_id: "2"
@@ -189,15 +187,12 @@ fmgr_ha_disable_peer2.yml
 
     - name: ADD FMG HA PEER
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
         - name: DISABLE FORTIMANAGER HA PEER
           fmgr_ha:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             fmgr_ha_peer_ipv4: "10.7.220.140"
             fmgr_ha_peer_sn: "FMG-VM0A17005535"
             fmgr_ha_peer_status: "disable"
@@ -211,17 +206,14 @@ fmgr_ha_disable_peer.yml
 
     - name: ADD FMG HA PEER
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
         - name: DISABLE FORTIMANAGER HA PEER
           fmgr_ha:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             fmgr_ha_peer_ipv4: "10.7.220.36"
-            fmgr_ha_peer_sn: "FMG-VM0A17005528"
+            fmgr_ha_peer_sn: "FMG-VMTM18001882"
             fmgr_ha_peer_status: "disable"
 
 

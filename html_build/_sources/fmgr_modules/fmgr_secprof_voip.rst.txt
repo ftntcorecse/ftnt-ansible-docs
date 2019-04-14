@@ -13,7 +13,7 @@ Metadata
 
 **Description:** ['Manage VOIP security profiles in FortiManager via API']
 
-**Author(s):** 
+**Author(s):**
 
 - Luke Weighall (github: @lweighall)
 
@@ -34,7 +34,6 @@ Metadata
 **Days in PR:** 8
 
 **Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_secprof_voip
-
 Parameters
 ----------
 
@@ -43,7 +42,7 @@ adom
 
 - Description: The ADOM the configuration should belong to.
 
-  
+
 
 - Required: False
 
@@ -54,7 +53,7 @@ comment
 
 - Description: Comment.
 
-  
+
 
 - Required: False
 
@@ -63,7 +62,7 @@ host
 
 - Description: The FortiManager's Address.
 
-  
+
 
 - Required: True
 
@@ -74,7 +73,7 @@ mode
 
   Allows use of soft-adds instead of overwriting existing values
 
-  
+
 
 - Required: False
 
@@ -87,7 +86,7 @@ name
 
 - Description: Profile name.
 
-  
+
 
 - Required: False
 
@@ -96,7 +95,7 @@ password
 
 - Description: The password associated with the username account.
 
-  
+
 
 - Required: True
 
@@ -117,7 +116,7 @@ sccp
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -130,7 +129,7 @@ sccp_block_mcast
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -145,7 +144,7 @@ sccp_log_call_summary
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -160,7 +159,7 @@ sccp_log_violations
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -171,7 +170,7 @@ sccp_max_calls
 
 - Description: Maximum calls per minute per SCCP client (max 65535).
 
-  
+
 
 - Required: False
 
@@ -184,7 +183,7 @@ sccp_status
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -199,7 +198,7 @@ sccp_verify_header
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -222,7 +221,7 @@ sip
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -231,7 +230,7 @@ sip_ack_rate
 
 - Description: ACK request rate limit (per second, per policy).
 
-  
+
 
 - Required: False
 
@@ -244,7 +243,7 @@ sip_block_ack
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -259,7 +258,7 @@ sip_block_bye
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -274,7 +273,7 @@ sip_block_cancel
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -289,7 +288,7 @@ sip_block_geo_red_options
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -304,7 +303,7 @@ sip_block_info
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -319,7 +318,7 @@ sip_block_invite
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -334,7 +333,7 @@ sip_block_long_lines
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -349,7 +348,7 @@ sip_block_message
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -364,7 +363,7 @@ sip_block_notify
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -379,7 +378,7 @@ sip_block_options
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -394,7 +393,7 @@ sip_block_prack
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -409,7 +408,7 @@ sip_block_publish
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -424,7 +423,7 @@ sip_block_refer
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -439,7 +438,7 @@ sip_block_register
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -454,7 +453,7 @@ sip_block_subscribe
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -469,7 +468,7 @@ sip_block_unknown
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -484,7 +483,7 @@ sip_block_update
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -495,7 +494,7 @@ sip_bye_rate
 
 - Description: BYE request rate limit (per second, per policy).
 
-  
+
 
 - Required: False
 
@@ -504,7 +503,7 @@ sip_call_keepalive
 
 - Description: Continue tracking calls with no RTP for this many minutes.
 
-  
+
 
 - Required: False
 
@@ -513,7 +512,7 @@ sip_cancel_rate
 
 - Description: CANCEL request rate limit (per second, per policy).
 
-  
+
 
 - Required: False
 
@@ -526,7 +525,7 @@ sip_contact_fixup
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -541,7 +540,7 @@ sip_hnt_restrict_source_ip
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -556,7 +555,7 @@ sip_hosted_nat_traversal
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -567,7 +566,7 @@ sip_info_rate
 
 - Description: INFO request rate limit (per second, per policy).
 
-  
+
 
 - Required: False
 
@@ -576,7 +575,7 @@ sip_invite_rate
 
 - Description: INVITE request rate limit (per second, per policy).
 
-  
+
 
 - Required: False
 
@@ -589,7 +588,7 @@ sip_ips_rtp
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -604,7 +603,7 @@ sip_log_call_summary
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -619,7 +618,7 @@ sip_log_violations
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -636,7 +635,7 @@ sip_malformed_header_allow
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -653,7 +652,7 @@ sip_malformed_header_call_id
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -670,7 +669,7 @@ sip_malformed_header_contact
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -687,7 +686,7 @@ sip_malformed_header_content_length
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -704,7 +703,7 @@ sip_malformed_header_content_type
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -721,7 +720,7 @@ sip_malformed_header_cseq
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -738,7 +737,7 @@ sip_malformed_header_expires
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -755,7 +754,7 @@ sip_malformed_header_from
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -772,7 +771,7 @@ sip_malformed_header_max_forwards
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -789,7 +788,7 @@ sip_malformed_header_p_asserted_identity
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -806,7 +805,7 @@ sip_malformed_header_rack
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -823,7 +822,7 @@ sip_malformed_header_record_route
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -840,7 +839,7 @@ sip_malformed_header_route
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -857,7 +856,7 @@ sip_malformed_header_rseq
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -874,7 +873,7 @@ sip_malformed_header_sdp_a
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -891,7 +890,7 @@ sip_malformed_header_sdp_b
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -908,7 +907,7 @@ sip_malformed_header_sdp_c
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -925,7 +924,7 @@ sip_malformed_header_sdp_i
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -942,7 +941,7 @@ sip_malformed_header_sdp_k
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -959,7 +958,7 @@ sip_malformed_header_sdp_m
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -976,7 +975,7 @@ sip_malformed_header_sdp_o
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -993,7 +992,7 @@ sip_malformed_header_sdp_r
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -1010,7 +1009,7 @@ sip_malformed_header_sdp_s
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -1027,7 +1026,7 @@ sip_malformed_header_sdp_t
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -1044,7 +1043,7 @@ sip_malformed_header_sdp_v
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -1061,7 +1060,7 @@ sip_malformed_header_sdp_z
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -1078,7 +1077,7 @@ sip_malformed_header_to
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -1095,7 +1094,7 @@ sip_malformed_header_via
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -1112,7 +1111,7 @@ sip_malformed_request_line
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -1123,7 +1122,7 @@ sip_max_body_length
 
 - Description: Maximum SIP message body length (0 meaning no limit).
 
-  
+
 
 - Required: False
 
@@ -1132,7 +1131,7 @@ sip_max_dialogs
 
 - Description: Maximum number of concurrent calls/dialogs (per policy).
 
-  
+
 
 - Required: False
 
@@ -1141,7 +1140,7 @@ sip_max_idle_dialogs
 
 - Description: Maximum number established but idle dialogs to retain (per policy).
 
-  
+
 
 - Required: False
 
@@ -1150,7 +1149,7 @@ sip_max_line_length
 
 - Description: Maximum SIP header line length (78-4096).
 
-  
+
 
 - Required: False
 
@@ -1159,7 +1158,7 @@ sip_message_rate
 
 - Description: MESSAGE request rate limit (per second, per policy).
 
-  
+
 
 - Required: False
 
@@ -1172,7 +1171,7 @@ sip_nat_trace
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -1187,7 +1186,7 @@ sip_no_sdp_fixup
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -1198,7 +1197,7 @@ sip_notify_rate
 
 - Description: NOTIFY request rate limit (per second, per policy).
 
-  
+
 
 - Required: False
 
@@ -1211,7 +1210,7 @@ sip_open_contact_pinhole
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -1226,7 +1225,7 @@ sip_open_record_route_pinhole
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -1241,7 +1240,7 @@ sip_open_register_pinhole
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -1256,7 +1255,7 @@ sip_open_via_pinhole
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -1267,7 +1266,7 @@ sip_options_rate
 
 - Description: OPTIONS request rate limit (per second, per policy).
 
-  
+
 
 - Required: False
 
@@ -1276,7 +1275,7 @@ sip_prack_rate
 
 - Description: PRACK request rate limit (per second, per policy).
 
-  
+
 
 - Required: False
 
@@ -1289,7 +1288,7 @@ sip_preserve_override
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -1300,7 +1299,7 @@ sip_provisional_invite_expiry_time
 
 - Description: Expiry time for provisional INVITE (10 - 3600 sec).
 
-  
+
 
 - Required: False
 
@@ -1309,7 +1308,7 @@ sip_publish_rate
 
 - Description: PUBLISH request rate limit (per second, per policy).
 
-  
+
 
 - Required: False
 
@@ -1318,7 +1317,7 @@ sip_refer_rate
 
 - Description: REFER request rate limit (per second, per policy).
 
-  
+
 
 - Required: False
 
@@ -1331,7 +1330,7 @@ sip_register_contact_trace
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -1342,7 +1341,7 @@ sip_register_rate
 
 - Description: REGISTER request rate limit (per second, per policy).
 
-  
+
 
 - Required: False
 
@@ -1355,7 +1354,7 @@ sip_rfc2543_branch
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -1370,7 +1369,7 @@ sip_rtp
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -1387,7 +1386,7 @@ sip_ssl_algorithm
 
   choice | low | Low encryption. Allow AES, ChaCha, 3DES, RC4, and DES.
 
-  
+
 
 - Required: False
 
@@ -1398,7 +1397,7 @@ sip_ssl_auth_client
 
 - Description: Require a client certificate and authenticate it with the peer/peergrp.
 
-  
+
 
 - Required: False
 
@@ -1407,7 +1406,7 @@ sip_ssl_auth_server
 
 - Description: Authenticate the server's certificate with the peer/peergrp.
 
-  
+
 
 - Required: False
 
@@ -1416,7 +1415,7 @@ sip_ssl_client_certificate
 
 - Description: Name of Certificate to offer to server if requested.
 
-  
+
 
 - Required: False
 
@@ -1431,7 +1430,7 @@ sip_ssl_client_renegotiation
 
   choice | secure | Reject any SSL connection that does not offer a RFC 5746 Secure Renegotiation Indication.
 
-  
+
 
 - Required: False
 
@@ -1450,7 +1449,7 @@ sip_ssl_max_version
 
   choice | tls-1.2 | TLS 1.2.
 
-  
+
 
 - Required: False
 
@@ -1469,7 +1468,7 @@ sip_ssl_min_version
 
   choice | tls-1.2 | TLS 1.2.
 
-  
+
 
 - Required: False
 
@@ -1484,7 +1483,7 @@ sip_ssl_mode
 
   choice | full | Client to FortiGate and FortiGate to Server SSL.
 
-  
+
 
 - Required: False
 
@@ -1501,7 +1500,7 @@ sip_ssl_pfs
 
   choice | allow | PFS allowed.
 
-  
+
 
 - Required: False
 
@@ -1516,7 +1515,7 @@ sip_ssl_send_empty_frags
 
   choice | enable | Send empty fragments.
 
-  
+
 
 - Required: False
 
@@ -1527,7 +1526,7 @@ sip_ssl_server_certificate
 
 - Description: Name of Certificate return to the client in every SSL connection.
 
-  
+
 
 - Required: False
 
@@ -1540,7 +1539,7 @@ sip_status
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -1555,7 +1554,7 @@ sip_strict_register
 
   choice | enable | Enable status.
 
-  
+
 
 - Required: False
 
@@ -1566,7 +1565,7 @@ sip_subscribe_rate
 
 - Description: SUBSCRIBE request rate limit (per second, per policy).
 
-  
+
 
 - Required: False
 
@@ -1581,7 +1580,7 @@ sip_unknown_header
 
   choice | respond | Respond with error code.
 
-  
+
 
 - Required: False
 
@@ -1592,7 +1591,7 @@ sip_update_rate
 
 - Description: UPDATE request rate limit (per second, per policy).
 
-  
+
 
 - Required: False
 
@@ -1601,7 +1600,7 @@ username
 
 - Description: The username associated with the account.
 
-  
+
 
 - Required: True
 
@@ -1622,25 +1621,25 @@ Functions
         """
         fmgr_voip_profile -- Your Description here, bruh
         """
-    
+
         mode = paramgram["mode"]
         adom = paramgram["adom"]
-    
+
         response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
         url = ""
         datagram = {}
-    
+
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/voip/profile'.format(adom=adom)
             datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-    
+
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/voip/profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-    
+
         # IF MODE = SET -- USE THE 'SET' API CALL MODE
         if mode == "set":
             response = fmg.set(url, datagram)
@@ -1653,10 +1652,10 @@ Functions
         # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
         elif mode == "delete":
             response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     # ADDITIONAL COMMON FUNCTIONS
 
 - fmgr_logout
@@ -1674,7 +1673,7 @@ Functions
             except:
                 pass
             module.fail_json(msg=msg)
-    
+
         # SUBMISSION ERROR
         if len(results) > 0:
             if msg == "NULL":
@@ -1682,7 +1681,7 @@ Functions
                     msg = results[1]['status']['message']
                 except:
                     msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
+
             if results[0] not in good_codes:
                 if logout_on_fail:
                     fmg.logout()
@@ -1693,8 +1692,8 @@ Functions
                     module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
                                      **results[1])
         return msg
-    
-    
+
+
     # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
     # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
 
@@ -1709,8 +1708,8 @@ Functions
                str((0x00ff0000 & mask) >> 16) + '.' +
                str((0x0000ff00 & mask) >> 8) + '.' +
                str((0x000000ff & mask)))
-    
-    
+
+
     # utility function: removing keys wih value of None, nothing in playbook for that key
 
 - fmgr_del_none
@@ -1723,8 +1722,8 @@ Functions
                              for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
         else:
             return obj
-    
-    
+
+
     # utility function: remove keys that are need for the logic but the FMG API won't accept them
 
 - fmgr_prepare_dict
@@ -1736,8 +1735,8 @@ Functions
         if isinstance(obj, dict):
             obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
         return obj
-    
-    
+
+
 
 - fmgr_is_empty_dict
 
@@ -1765,10 +1764,10 @@ Functions
                         return return_val
             elif len(obj) == 0:
                 return_val = True
-    
+
         return return_val
-    
-    
+
+
 
 - fmgr_split_comma_strings_into_lists
 
@@ -1785,15 +1784,15 @@ Functions
                             for item in new_items:
                                 new_list.append(item.strip())
                             obj[k] = new_list
-    
+
         return obj
-    
-    
+
+
     #############
     # END METHODS
     #############
-    
-    
+
+
 
 - main
 
@@ -1806,7 +1805,7 @@ Functions
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-    
+
             name=dict(required=False, type="str"),
             comment=dict(required=False, type="str"),
             sccp=dict(required=False, type="dict"),
@@ -1915,11 +1914,11 @@ Functions
             sip_subscribe_rate=dict(required=False, type="int"),
             sip_unknown_header=dict(required=False, type="str", choices=["pass", "discard", "respond"]),
             sip_update_rate=dict(required=False, type="int"),
-    
+
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -2033,7 +2032,7 @@ Functions
                 "update-rate": module.params["sip_update_rate"],
             }
         }
-    
+
         list_overrides = ['sccp', 'sip']
         for list_variable in list_overrides:
             override_data = list()
@@ -2047,33 +2046,33 @@ Functions
                     paramgram[list_variable] = override_data
             except:
                 pass
-    
+
         # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
         host = module.params["host"]
         password = module.params["password"]
         username = module.params["username"]
         if host is None or username is None or password is None:
             module.fail_json(msg="Host and username and password are required")
-    
+
         # CHECK IF LOGIN FAILED
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-    
+
         response = fmg.login()
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
-    
+
         results = fmgr_voip_profile_addsetdelete(fmg, paramgram)
         if results[0] != 0:
             fmgr_logout(fmg, module, results=results, good_codes=[0])
-    
+
         fmg.logout()
-    
+
         if results is not None:
             return module.exit_json(**results[1])
         else:
             return module.exit_json(msg="No results were returned from the API call.")
-    
-    
+
+
 
 
 
@@ -2099,14 +2098,14 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-    
+
     from __future__ import absolute_import, division, print_function
     __metaclass__ = type
-    
+
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-    
+
     DOCUMENTATION = '''
     ---
     module: fmgr_secprof_voip
@@ -2118,29 +2117,29 @@ Module Source Code
     short_description: VOIP security profiles in FMG
     description:
       -  Manage VOIP security profiles in FortiManager via API
-    
+
     options:
       adom:
         description:
           - The ADOM the configuration should belong to.
         required: false
         default: root
-    
+
       host:
         description:
           - The FortiManager's Address.
         required: true
-    
+
       username:
         description:
           - The username associated with the account.
         required: true
-    
+
       password:
         description:
           - The password associated with the username account.
         required: true
-    
+
       mode:
         description:
           - Sets one of three modes for managing the object.
@@ -2148,17 +2147,17 @@ Module Source Code
         choices: ['add', 'set', 'delete', 'update']
         required: false
         default: add
-    
+
       name:
         description:
           - Profile name.
         required: false
-    
+
       comment:
         description:
           - Comment.
         required: false
-    
+
       sccp:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2169,7 +2168,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       sccp_block_mcast:
         description:
           - Enable/disable block multicast RTP connections.
@@ -2177,7 +2176,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sccp_log_call_summary:
         description:
           - Enable/disable log summary of SCCP calls.
@@ -2185,7 +2184,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sccp_log_violations:
         description:
           - Enable/disable logging of SCCP violations.
@@ -2193,12 +2192,12 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sccp_max_calls:
         description:
           - Maximum calls per minute per SCCP client (max 65535).
         required: false
-    
+
       sccp_status:
         description:
           - Enable/disable SCCP.
@@ -2206,7 +2205,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sccp_verify_header:
         description:
           - Enable/disable verify SCCP header content.
@@ -2214,7 +2213,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -2225,12 +2224,12 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       sip_ack_rate:
         description:
           - ACK request rate limit (per second, per policy).
         required: false
-    
+
       sip_block_ack:
         description:
           - Enable/disable block ACK requests.
@@ -2238,7 +2237,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_bye:
         description:
           - Enable/disable block BYE requests.
@@ -2246,7 +2245,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_cancel:
         description:
           - Enable/disable block CANCEL requests.
@@ -2254,7 +2253,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_geo_red_options:
         description:
           - Enable/disable block OPTIONS requests, but OPTIONS requests still notify for redundancy.
@@ -2262,7 +2261,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_info:
         description:
           - Enable/disable block INFO requests.
@@ -2270,7 +2269,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_invite:
         description:
           - Enable/disable block INVITE requests.
@@ -2278,7 +2277,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_long_lines:
         description:
           - Enable/disable block requests with headers exceeding max-line-length.
@@ -2286,7 +2285,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_message:
         description:
           - Enable/disable block MESSAGE requests.
@@ -2294,7 +2293,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_notify:
         description:
           - Enable/disable block NOTIFY requests.
@@ -2302,7 +2301,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_options:
         description:
           - Enable/disable block OPTIONS requests and no OPTIONS as notifying message for redundancy either.
@@ -2310,7 +2309,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_prack:
         description:
           - Enable/disable block prack requests.
@@ -2318,7 +2317,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_publish:
         description:
           - Enable/disable block PUBLISH requests.
@@ -2326,7 +2325,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_refer:
         description:
           - Enable/disable block REFER requests.
@@ -2334,7 +2333,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_register:
         description:
           - Enable/disable block REGISTER requests.
@@ -2342,7 +2341,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_subscribe:
         description:
           - Enable/disable block SUBSCRIBE requests.
@@ -2350,7 +2349,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_unknown:
         description:
           - Block unrecognized SIP requests (enabled by default).
@@ -2358,7 +2357,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_block_update:
         description:
           - Enable/disable block UPDATE requests.
@@ -2366,22 +2365,22 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_bye_rate:
         description:
           - BYE request rate limit (per second, per policy).
         required: false
-    
+
       sip_call_keepalive:
         description:
           - Continue tracking calls with no RTP for this many minutes.
         required: false
-    
+
       sip_cancel_rate:
         description:
           - CANCEL request rate limit (per second, per policy).
         required: false
-    
+
       sip_contact_fixup:
         description:
           - Fixup contact anyway even if contact's IP|port doesn't match session's IP|port.
@@ -2389,7 +2388,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_hnt_restrict_source_ip:
         description:
           - Enable/disable restrict RTP source IP to be the same as SIP source IP when HNT is enabled.
@@ -2397,7 +2396,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_hosted_nat_traversal:
         description:
           - Hosted NAT Traversal (HNT).
@@ -2405,17 +2404,17 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_info_rate:
         description:
           - INFO request rate limit (per second, per policy).
         required: false
-    
+
       sip_invite_rate:
         description:
           - INVITE request rate limit (per second, per policy).
         required: false
-    
+
       sip_ips_rtp:
         description:
           - Enable/disable allow IPS on RTP.
@@ -2423,7 +2422,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_log_call_summary:
         description:
           - Enable/disable logging of SIP call summary.
@@ -2431,7 +2430,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_log_violations:
         description:
           - Enable/disable logging of SIP violations.
@@ -2439,7 +2438,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_malformed_header_allow:
         description:
           - Action for malformed Allow header.
@@ -2448,7 +2447,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_call_id:
         description:
           - Action for malformed Call-ID header.
@@ -2457,7 +2456,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_contact:
         description:
           - Action for malformed Contact header.
@@ -2466,7 +2465,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_content_length:
         description:
           - Action for malformed Content-Length header.
@@ -2475,7 +2474,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_content_type:
         description:
           - Action for malformed Content-Type header.
@@ -2484,7 +2483,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_cseq:
         description:
           - Action for malformed CSeq header.
@@ -2493,7 +2492,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_expires:
         description:
           - Action for malformed Expires header.
@@ -2502,7 +2501,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_from:
         description:
           - Action for malformed From header.
@@ -2511,7 +2510,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_max_forwards:
         description:
           - Action for malformed Max-Forwards header.
@@ -2520,7 +2519,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_p_asserted_identity:
         description:
           - Action for malformed P-Asserted-Identity header.
@@ -2529,7 +2528,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_rack:
         description:
           - Action for malformed RAck header.
@@ -2538,7 +2537,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_record_route:
         description:
           - Action for malformed Record-Route header.
@@ -2547,7 +2546,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_route:
         description:
           - Action for malformed Route header.
@@ -2556,7 +2555,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_rseq:
         description:
           - Action for malformed RSeq header.
@@ -2565,7 +2564,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_sdp_a:
         description:
           - Action for malformed SDP a line.
@@ -2574,7 +2573,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_sdp_b:
         description:
           - Action for malformed SDP b line.
@@ -2583,7 +2582,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_sdp_c:
         description:
           - Action for malformed SDP c line.
@@ -2592,7 +2591,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_sdp_i:
         description:
           - Action for malformed SDP i line.
@@ -2601,7 +2600,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_sdp_k:
         description:
           - Action for malformed SDP k line.
@@ -2610,7 +2609,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_sdp_m:
         description:
           - Action for malformed SDP m line.
@@ -2619,7 +2618,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_sdp_o:
         description:
           - Action for malformed SDP o line.
@@ -2628,7 +2627,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_sdp_r:
         description:
           - Action for malformed SDP r line.
@@ -2637,7 +2636,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_sdp_s:
         description:
           - Action for malformed SDP s line.
@@ -2646,7 +2645,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_sdp_t:
         description:
           - Action for malformed SDP t line.
@@ -2655,7 +2654,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_sdp_v:
         description:
           - Action for malformed SDP v line.
@@ -2664,7 +2663,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_sdp_z:
         description:
           - Action for malformed SDP z line.
@@ -2673,7 +2672,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_to:
         description:
           - Action for malformed To header.
@@ -2682,7 +2681,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_header_via:
         description:
           - Action for malformed VIA header.
@@ -2691,7 +2690,7 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_malformed_request_line:
         description:
           - Action for malformed request line.
@@ -2700,32 +2699,32 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_max_body_length:
         description:
           - Maximum SIP message body length (0 meaning no limit).
         required: false
-    
+
       sip_max_dialogs:
         description:
           - Maximum number of concurrent calls/dialogs (per policy).
         required: false
-    
+
       sip_max_idle_dialogs:
         description:
           - Maximum number established but idle dialogs to retain (per policy).
         required: false
-    
+
       sip_max_line_length:
         description:
           - Maximum SIP header line length (78-4096).
         required: false
-    
+
       sip_message_rate:
         description:
           - MESSAGE request rate limit (per second, per policy).
         required: false
-    
+
       sip_nat_trace:
         description:
           - Enable/disable preservation of original IP in SDP i line.
@@ -2733,7 +2732,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_no_sdp_fixup:
         description:
           - Enable/disable no SDP fix-up.
@@ -2741,12 +2740,12 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_notify_rate:
         description:
           - NOTIFY request rate limit (per second, per policy).
         required: false
-    
+
       sip_open_contact_pinhole:
         description:
           - Enable/disable open pinhole for non-REGISTER Contact port.
@@ -2754,7 +2753,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_open_record_route_pinhole:
         description:
           - Enable/disable open pinhole for Record-Route port.
@@ -2762,7 +2761,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_open_register_pinhole:
         description:
           - Enable/disable open pinhole for REGISTER Contact port.
@@ -2770,7 +2769,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_open_via_pinhole:
         description:
           - Enable/disable open pinhole for Via port.
@@ -2778,17 +2777,17 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_options_rate:
         description:
           - OPTIONS request rate limit (per second, per policy).
         required: false
-    
+
       sip_prack_rate:
         description:
           - PRACK request rate limit (per second, per policy).
         required: false
-    
+
       sip_preserve_override:
         description:
           - Override i line to preserve original IPS (default| append).
@@ -2796,22 +2795,22 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_provisional_invite_expiry_time:
         description:
           - Expiry time for provisional INVITE (10 - 3600 sec).
         required: false
-    
+
       sip_publish_rate:
         description:
           - PUBLISH request rate limit (per second, per policy).
         required: false
-    
+
       sip_refer_rate:
         description:
           - REFER request rate limit (per second, per policy).
         required: false
-    
+
       sip_register_contact_trace:
         description:
           - Enable/disable trace original IP/port within the contact header of REGISTER requests.
@@ -2819,12 +2818,12 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_register_rate:
         description:
           - REGISTER request rate limit (per second, per policy).
         required: false
-    
+
       sip_rfc2543_branch:
         description:
           - Enable/disable support via branch compliant with RFC 2543.
@@ -2832,7 +2831,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_rtp:
         description:
           - Enable/disable create pinholes for RTP traffic to traverse firewall.
@@ -2840,7 +2839,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_ssl_algorithm:
         description:
           - Relative strength of encryption algorithms accepted in negotiation.
@@ -2849,22 +2848,22 @@ Module Source Code
           - choice | low | Low encryption. Allow AES, ChaCha, 3DES, RC4, and DES.
         required: false
         choices: ["high", "medium", "low"]
-    
+
       sip_ssl_auth_client:
         description:
           - Require a client certificate and authenticate it with the peer/peergrp.
         required: false
-    
+
       sip_ssl_auth_server:
         description:
           - Authenticate the server's certificate with the peer/peergrp.
         required: false
-    
+
       sip_ssl_client_certificate:
         description:
           - Name of Certificate to offer to server if requested.
         required: false
-    
+
       sip_ssl_client_renegotiation:
         description:
           - Allow/block client renegotiation by server.
@@ -2873,7 +2872,7 @@ Module Source Code
           - choice | secure | Reject any SSL connection that does not offer a RFC 5746 Secure Renegotiation Indication.
         required: false
         choices: ["allow", "deny", "secure"]
-    
+
       sip_ssl_max_version:
         description:
           - Highest SSL/TLS version to negotiate.
@@ -2883,7 +2882,7 @@ Module Source Code
           - choice | tls-1.2 | TLS 1.2.
         required: false
         choices: ["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2"]
-    
+
       sip_ssl_min_version:
         description:
           - Lowest SSL/TLS version to negotiate.
@@ -2893,7 +2892,7 @@ Module Source Code
           - choice | tls-1.2 | TLS 1.2.
         required: false
         choices: ["ssl-3.0", "tls-1.0", "tls-1.1", "tls-1.2"]
-    
+
       sip_ssl_mode:
         description:
           - SSL/TLS mode for encryption &amp; decryption of traffic.
@@ -2901,7 +2900,7 @@ Module Source Code
           - choice | full | Client to FortiGate and FortiGate to Server SSL.
         required: false
         choices: ["off", "full"]
-    
+
       sip_ssl_pfs:
         description:
           - SSL Perfect Forward Secrecy.
@@ -2910,7 +2909,7 @@ Module Source Code
           - choice | allow | PFS allowed.
         required: false
         choices: ["require", "deny", "allow"]
-    
+
       sip_ssl_send_empty_frags:
         description:
           - Send empty fragments to avoid attack on CBC IV (SSL 3.0 &amp; TLS 1.0 only).
@@ -2918,12 +2917,12 @@ Module Source Code
           - choice | enable | Send empty fragments.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_ssl_server_certificate:
         description:
           - Name of Certificate return to the client in every SSL connection.
         required: false
-    
+
       sip_status:
         description:
           - Enable/disable SIP.
@@ -2931,7 +2930,7 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_strict_register:
         description:
           - Enable/disable only allow the registrar to connect.
@@ -2939,12 +2938,12 @@ Module Source Code
           - choice | enable | Enable status.
         required: false
         choices: ["disable", "enable"]
-    
+
       sip_subscribe_rate:
         description:
           - SUBSCRIBE request rate limit (per second, per policy).
         required: false
-    
+
       sip_unknown_header:
         description:
           - Action for unknown SIP header.
@@ -2953,15 +2952,15 @@ Module Source Code
           - choice | respond | Respond with error code.
         required: false
         choices: ["pass", "discard", "respond"]
-    
+
       sip_update_rate:
         description:
           - UPDATE request rate limit (per second, per policy).
         required: false
-    
-    
+
+
     '''
-    
+
     EXAMPLES = '''
       - name: DELETE Profile
         fmgr_secprof_voip:
@@ -2970,7 +2969,7 @@ Module Source Code
           password: "{{ password }}"
           name: "Ansible_VOIP_Profile"
           mode: "delete"
-    
+
       - name: Create FMGR_VOIP_PROFILE
         fmgr_secprof_voip:
           host: "{{ inventory_hostname }}"
@@ -2982,52 +2981,52 @@ Module Source Code
           comment: "Created by Ansible"
           sccp: {block-mcast: "enable", log-call-summary: "enable", log-violations: "enable", status: "enable"}
     '''
-    
+
     RETURN = """
     api_result:
       description: full API response, includes status code and message
       returned: always
       type: string
     """
-    
+
     from ansible.module_utils.basic import AnsibleModule, env_fallback
     from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-    
+
     # check for pyFMG lib
     try:
         from pyFMG.fortimgr import FortiManager
         HAS_PYFMGR = True
     except ImportError:
         HAS_PYFMGR = False
-    
+
     ###############
     # START METHODS
     ###############
-    
-    
+
+
     def fmgr_voip_profile_addsetdelete(fmg, paramgram):
         """
         fmgr_voip_profile -- Your Description here, bruh
         """
-    
+
         mode = paramgram["mode"]
         adom = paramgram["adom"]
-    
+
         response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
         url = ""
         datagram = {}
-    
+
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/voip/profile'.format(adom=adom)
             datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-    
+
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/voip/profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-    
+
         # IF MODE = SET -- USE THE 'SET' API CALL MODE
         if mode == "set":
             response = fmg.set(url, datagram)
@@ -3040,10 +3039,10 @@ Module Source Code
         # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
         elif mode == "delete":
             response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     # ADDITIONAL COMMON FUNCTIONS
     def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
         """
@@ -3056,7 +3055,7 @@ Module Source Code
             except:
                 pass
             module.fail_json(msg=msg)
-    
+
         # SUBMISSION ERROR
         if len(results) > 0:
             if msg == "NULL":
@@ -3064,7 +3063,7 @@ Module Source Code
                     msg = results[1]['status']['message']
                 except:
                     msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
+
             if results[0] not in good_codes:
                 if logout_on_fail:
                     fmg.logout()
@@ -3075,8 +3074,8 @@ Module Source Code
                     module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
                                      **results[1])
         return msg
-    
-    
+
+
     # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
     # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
     def fmgr_cidr_to_netmask(cidr):
@@ -3086,8 +3085,8 @@ Module Source Code
                str((0x00ff0000 & mask) >> 16) + '.' +
                str((0x0000ff00 & mask) >> 8) + '.' +
                str((0x000000ff & mask)))
-    
-    
+
+
     # utility function: removing keys wih value of None, nothing in playbook for that key
     def fmgr_del_none(obj):
         if isinstance(obj, dict):
@@ -3095,16 +3094,16 @@ Module Source Code
                              for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
         else:
             return obj
-    
-    
+
+
     # utility function: remove keys that are need for the logic but the FMG API won't accept them
     def fmgr_prepare_dict(obj):
         list_of_elems = ["mode", "adom", "host", "username", "password"]
         if isinstance(obj, dict):
             obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
         return obj
-    
-    
+
+
     def fmgr_is_empty_dict(obj):
         return_val = False
         if isinstance(obj, dict):
@@ -3127,10 +3126,10 @@ Module Source Code
                         return return_val
             elif len(obj) == 0:
                 return_val = True
-    
+
         return return_val
-    
-    
+
+
     def fmgr_split_comma_strings_into_lists(obj):
         if isinstance(obj, dict):
             if len(obj) > 0:
@@ -3142,15 +3141,15 @@ Module Source Code
                             for item in new_items:
                                 new_list.append(item.strip())
                             obj[k] = new_list
-    
+
         return obj
-    
-    
+
+
     #############
     # END METHODS
     #############
-    
-    
+
+
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
@@ -3158,7 +3157,7 @@ Module Source Code
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-    
+
             name=dict(required=False, type="str"),
             comment=dict(required=False, type="str"),
             sccp=dict(required=False, type="dict"),
@@ -3267,11 +3266,11 @@ Module Source Code
             sip_subscribe_rate=dict(required=False, type="int"),
             sip_unknown_header=dict(required=False, type="str", choices=["pass", "discard", "respond"]),
             sip_update_rate=dict(required=False, type="int"),
-    
+
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -3385,7 +3384,7 @@ Module Source Code
                 "update-rate": module.params["sip_update_rate"],
             }
         }
-    
+
         list_overrides = ['sccp', 'sip']
         for list_variable in list_overrides:
             override_data = list()
@@ -3399,33 +3398,33 @@ Module Source Code
                     paramgram[list_variable] = override_data
             except:
                 pass
-    
+
         # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
         host = module.params["host"]
         password = module.params["password"]
         username = module.params["username"]
         if host is None or username is None or password is None:
             module.fail_json(msg="Host and username and password are required")
-    
+
         # CHECK IF LOGIN FAILED
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-    
+
         response = fmg.login()
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
-    
+
         results = fmgr_voip_profile_addsetdelete(fmg, paramgram)
         if results[0] != 0:
             fmgr_logout(fmg, module, results=results, good_codes=[0])
-    
+
         fmg.logout()
-    
+
         if results is not None:
             return module.exit_json(**results[1])
         else:
             return module.exit_json(msg="No results were returned from the API call.")
-    
-    
+
+
     if __name__ == "__main__":
         main()
 

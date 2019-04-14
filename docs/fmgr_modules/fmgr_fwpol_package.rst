@@ -15,7 +15,7 @@ Metadata
 This module controls the creation/edit/delete/assign of these packages.
 
 
-**Author(s):**
+**Author(s):** 
 
 - Luke Weighall (github: @lweighall)
 
@@ -31,7 +31,9 @@ This module controls the creation/edit/delete/assign of these packages.
 
 **Owning Developer:** Luke Weighall
 
-**Module Link:** https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_fwpol_package.py
+.. _Link: https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_fwpol_package.py
+
+Link_
 
 Parameters
 ----------
@@ -41,7 +43,7 @@ adom
 
 - Description: The ADOM the configuration should belong to.
 
-
+  
 
 - Required: False
 
@@ -52,7 +54,7 @@ central_nat
 
 - Description: Central NAT setting.
 
-
+  
 
 - Required: False
 
@@ -65,7 +67,7 @@ fwpolicy6_implicit_log
 
 - Description: Implicit Log setting for all IPv6 policies in package.
 
-
+  
 
 - Required: False
 
@@ -78,7 +80,7 @@ fwpolicy_implicit_log
 
 - Description: Implicit Log setting for all IPv4 policies in package.
 
-
+  
 
 - Required: False
 
@@ -91,7 +93,7 @@ inspection_mode
 
 - Description: Inspection mode setting for the policies flow or proxy.
 
-
+  
 
 - Required: False
 
@@ -116,7 +118,7 @@ mode
 
   Update your installation targets BEFORE running install task.
 
-
+  
 
 - default: add
 
@@ -127,7 +129,7 @@ name
 
 - Description: Name of the FortiManager package or folder.
 
-
+  
 
 - Required: True
 
@@ -136,7 +138,7 @@ ngfw_mode
 
 - Description: NGFW mode setting for the policies flow or proxy.
 
-
+  
 
 - Required: False
 
@@ -149,7 +151,7 @@ object_type
 
 - Description: Are we managing packages or package folders?
 
-
+  
 
 - Required: True
 
@@ -164,7 +166,7 @@ package_folder
 
   Do not include leading or trailing forwardslashes. We take care of that for you.
 
-
+  
 
 - Required: False
 
@@ -173,7 +175,7 @@ parent_folder
 
 - Description: The parent folder name you want to add this object under.
 
-
+  
 
 - Required: False
 
@@ -182,7 +184,7 @@ scope_groups
 
 - Description: List of groups to add to the scope of the fw pol package
 
-
+  
 
 - Required: False
 
@@ -191,7 +193,7 @@ scope_members
 
 - Description: The devices or scope that you want to assign this policy package to. Only assign to one VDOM at a time.
 
-
+  
 
 - Required: False
 
@@ -200,7 +202,7 @@ scope_members_vdom
 
 - Description: The members VDOM you want to assign the package to. Only assign to one VDOM at a time.
 
-
+  
 
 - Required: False
 
@@ -211,7 +213,7 @@ ssl_ssh_profile
 
 - Description: if policy-based ngfw-mode, refer to firewall ssl-ssh-profile.
 
-
+  
 
 - Required: False
 
@@ -232,12 +234,12 @@ Functions
         """
         This function will create FMGR Firewall Policy Packages, or delete them. It is also capable of assigning packages.
         This function DOES NOT install the package. See the function fmgr_fwpol_package_install()
-
+    
         :param fmgr: The fmgr object instance from fmgr_utils.py
         :type fmgr: class object
         :param paramgram: The formatted dictionary of options to process
         :type paramgram: dict
-
+    
         :return: The response from the FortiManager
         :rtype: dict
         """
@@ -254,20 +256,20 @@ Functions
                     "ngfw-mode": paramgram["ngfw-mode"],
                 }
             }
-
+    
             if paramgram["ngfw-mode"] == "policy-based" and paramgram["ssl-ssh-profile"] is not None:
                 datagram["package settings"]["ssl-ssh-profile"] = paramgram["ssl-ssh-profile"]
-
+    
             # SET THE SCOPE MEMBERS ACCORDING TO MODE AND WHAT WAS SUPPLIED
             if len(paramgram["append_members_list"]) > 0:
                 datagram["scope member"] = paramgram["append_members_list"]
             elif len(paramgram["append_members_list"]) == 0:
                 datagram["scope member"] = None
-
+    
             # IF PARENT FOLDER IS DEFINED
             if paramgram["parent_folder"] is not None:
                 datagram = fmgr_fwpol_package_create_parent_folder_objects(paramgram, datagram)
-
+    
         # NORMAL DELETE NO PARENT
         if paramgram["mode"] == "delete" and paramgram["parent_folder"] is None:
             datagram = {
@@ -275,7 +277,7 @@ Functions
             }
             # SET DELETE URL
             url = '/pm/pkg/adom/{adom}/{name}'.format(adom=paramgram["adom"], name=paramgram["name"])
-
+    
         # DELETE WITH PARENT
         if paramgram["mode"] == "delete" and paramgram["parent_folder"] is not None:
             datagram = {
@@ -285,11 +287,11 @@ Functions
             url = '/pm/pkg/adom/{adom}/{parent_folder}/{name}'.format(adom=paramgram["adom"],
                                                                       name=paramgram["name"],
                                                                       parent_folder=paramgram["parent_folder"])
-
+    
         response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
-
-
+    
+    
 
 - fmgr_fwpol_package_edit_targets
 
@@ -298,12 +300,12 @@ Functions
     def fmgr_fwpol_package_edit_targets(fmgr, paramgram):
         """
         This function will append scope targets to an existing policy package.
-
+    
         :param fmgr: The fmgr object instance from fmgr_utils.py
         :type fmgr: class object
         :param paramgram: The formatted dictionary of options to process
         :type paramgram: dict
-
+    
         :return: The response from the FortiManager
         :rtype: dict
         """
@@ -316,7 +318,7 @@ Functions
             for member in paramgram["existing_members_list"]:
                 if member not in members_list:
                     members_list.append(member)
-
+    
         elif paramgram["mode"] == "delete_targets":
             method = FMGRMethods.DELETE
             members_list = list()
@@ -326,7 +328,7 @@ Functions
         datagram = {
             "data": members_list
         }
-
+    
         if paramgram["parent_folder"] is not None:
             url = '/pm/pkg/adom/{adom}/{parent_folder}/{name}/scope member'.format(adom=paramgram["adom"],
                                                                                    name=paramgram["name"],
@@ -336,8 +338,8 @@ Functions
                                                                    name=paramgram["name"])
         response = fmgr.process_request(url, datagram, method)
         return response
-
-
+    
+    
 
 - fmgr_fwpol_package_folder
 
@@ -348,27 +350,27 @@ Functions
         This function will create folders for firewall packages. It can create down to two levels deep.
         We haven't yet tested for any more layers below two levels.
         parent_folders for multiple levels may need to defined as "level1/level2/level3" for the URL parameters and such.
-
+    
         :param fmgr: The fmgr object instance from fmgr_utils.py
         :type fmgr: class object
         :param paramgram: The formatted dictionary of options to process
         :type paramgram: dict
-
+    
         :return: The response from the FortiManager
         :rtype: dict
         """
         if paramgram["mode"] in ['set', 'add']:
             url = '/pm/pkg/adom/{adom}'.format(adom=paramgram["adom"])
-
+    
             datagram = {
                 "type": paramgram["object_type"],
                 "name": paramgram["name"],
             }
-
+    
             # IF PARENT FOLDER IS DEFINED
             if paramgram["parent_folder"] is not None:
                 datagram = fmgr_fwpol_package_create_parent_folder_objects(paramgram, datagram)
-
+    
         # NORMAL DELETE NO PARENT
         if paramgram["mode"] == "delete" and paramgram["parent_folder"] is None:
             datagram = {
@@ -376,7 +378,7 @@ Functions
             }
             # SET DELETE URL
             url = '/pm/pkg/adom/{adom}/{name}'.format(adom=paramgram["adom"], name=paramgram["name"])
-
+    
         # DELETE WITH PARENT
         if paramgram["mode"] == "delete" and paramgram["parent_folder"] is not None:
             datagram = {
@@ -386,11 +388,11 @@ Functions
             url = '/pm/pkg/adom/{adom}/{parent_folder}/{name}'.format(adom=paramgram["adom"],
                                                                       name=paramgram["name"],
                                                                       parent_folder=paramgram["parent_folder"])
-
+    
         response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
-
-
+    
+    
 
 - fmgr_fwpol_package_install
 
@@ -399,12 +401,12 @@ Functions
     def fmgr_fwpol_package_install(fmgr, paramgram):
         """
         This method/function installs FMGR FW Policy Packages to the scope members defined in the playbook.
-
+    
         :param fmgr: The fmgr object instance from fmgr_utils.py
         :type fmgr: class object
         :param paramgram: The formatted dictionary of options to process
         :type paramgram: dict
-
+    
         :return: The response from the FortiManager
         :rtype: dict
         """
@@ -415,13 +417,13 @@ Functions
         if paramgram["parent_folder"]:
             new_path = str(paramgram["parent_folder"]) + "/" + str(paramgram["name"])
             datagram["pkg"] = new_path
-
+    
         # EXECUTE THE INSTALL REQUEST
         url = '/securityconsole/install/package'
         response = fmgr.process_request(url, datagram, FMGRMethods.EXEC)
         return response
-
-
+    
+    
 
 - fmgr_fwpol_package_get_details
 
@@ -431,12 +433,12 @@ Functions
         """
         This method/function will attempt to get existing package details, and append findings to the paramgram.
         If nothing is found, the paramgram additions are simply empty.
-
+    
         :param fmgr: The fmgr object instance from fmgr_utils.py
         :type fmgr: class object
         :param paramgram: The formatted dictionary of options to process
         :type paramgram: dict
-
+    
         :return: The response from the FortiManager
         :rtype: dict
         """
@@ -454,7 +456,7 @@ Functions
                     "vdom": paramgram["scope_members_vdom"],
                 }
                 members_list.append(scope_dict)
-
+    
         # CHECK FOR SCOPE GROUPS AND ADD THAT TO THE MEMBERS LIST
         # WE MUST PROPERLY FORMAT THE JSON FOR SCOPE GROUPS
         if paramgram["scope_groups"] is not None and paramgram["mode"] in ['add', 'set', 'add_targets', 'delete_targets']:
@@ -467,7 +469,7 @@ Functions
                     "name": member
                 }
                 members_list.append(scope_dict)
-
+    
         # CHECK FOR AN EXISTING POLICY PACKAGE, AND GET ITS MEMBERS SO WE DON'T OVERWRITE THEM WITH NOTHING
         pol_datagram = {"type": paramgram["object_type"], "name": paramgram["name"]}
         if paramgram["parent_folder"]:
@@ -488,15 +490,15 @@ Functions
                 existing_members = list()
         else:
             package_exists = False
-
+    
         # ADD COLLECTED DATA TO PARAMGRAM FOR USE IN METHODS
         paramgram["existing_members_list"] = existing_members
         paramgram["append_members_list"] = members_list
         paramgram["package_exists"] = package_exists
-
+    
         return paramgram
-
-
+    
+    
 
 - fmgr_fwpol_package_create_parent_folder_objects
 
@@ -506,12 +508,12 @@ Functions
         """
         This function/method will take a paramgram with parent folders defined, and create the proper structure
         so that objects are nested correctly.
-
+    
         :param paramgram: The paramgram used
         :type paramgram: dict
         :param datagram: The datagram, so far, as created by another function.
         :type datagram: dict
-
+    
         :return: new_datagram
         """
         # SPLIT THE PARENT FOLDER INTO A LIST BASED ON FORWARD SLASHES
@@ -543,8 +545,8 @@ Functions
                 parent_list_position -= 1
             # SET DATAGRAM TO THE NEWLY NESTED DATAGRAM
         return new_datagram
-
-
+    
+    
 
 - main
 
@@ -555,7 +557,7 @@ Functions
             adom=dict(required=False, type="str", default="root"),
             mode=dict(choices=["add", "set", "delete", "add_targets", "delete_targets", "install"],
                       type="str", default="add"),
-
+    
             name=dict(required=False, type="str"),
             object_type=dict(required=True, type="str", choices=['pkg', 'folder']),
             package_folder=dict(required=False, type="str"),
@@ -569,7 +571,7 @@ Functions
             scope_members=dict(required=False, type="str"),
             scope_members_vdom=dict(required=False, type="str", default="root"),
             parent_folder=dict(required=False, type="str"),
-
+    
         )
         module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False,)
         # MODULE DATAGRAM
@@ -601,13 +603,13 @@ Functions
             fmgr.tools = FMGRCommon()
         else:
             module.fail_json(**FAIL_SOCKET_MSG)
-
+    
         # BEGIN MODULE-SPECIFIC LOGIC -- THINGS NEED TO HAPPEN DEPENDING ON THE ENDPOINT AND OPERATION
         results = DEFAULT_RESULT_OBJ
-
+    
         # QUERY FORTIMANAGER FOR EXISTING PACKAGE DETAILS AND UPDATE PARAMGRAM
         paramgram = fmgr_fwpol_package_get_details(fmgr, paramgram)
-
+    
         try:
             if paramgram["object_type"] == "pkg" and paramgram["mode"] in ["add", "set", "delete"]:
                 results = fmgr_fwpol_package(fmgr, paramgram)
@@ -615,7 +617,7 @@ Functions
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
-
+    
         try:
             if paramgram["object_type"] == "pkg" and paramgram["package_exists"] \
                     and len(paramgram["append_members_list"]) > 0 \
@@ -625,16 +627,17 @@ Functions
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
-
+    
         try:
             # IF THE object_type IS FOLDER LETS RUN THAT METHOD
+            pydevd.settrace('10.0.0.151', port=54654, stdoutToServer=True, stderrToServer=True)
             if paramgram["object_type"] == "folder":
                 results = fmgr_fwpol_package_folder(fmgr, paramgram)
                 fmgr.govern_response(module=module, results=results,
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
-
+    
         try:
             # IF THE object_type IS INSTALL AND NEEDED PARAMETERS ARE DEFINED INSTALL THE PACKAGE
             if paramgram["name"] is not None and paramgram["object_type"] == "pkg" and paramgram["mode"] == "install":
@@ -643,10 +646,10 @@ Functions
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
-
+    
         return module.exit_json(**results[1])
-
-
+    
+    
 
 
 
@@ -672,16 +675,16 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-
+    
     from __future__ import absolute_import, division, print_function
     __metaclass__ = type
-
+    
     ANSIBLE_METADATA = {
         "metadata_version": "1.1",
         "status": ["preview"],
         "supported_by": "community"
     }
-
+    
     DOCUMENTATION = '''
     ---
     module: fmgr_fwpol_package
@@ -707,14 +710,14 @@ Module Source Code
       -  Manages FortiManager Firewall Policies Packages. Policy Packages contain one or more Firewall Policies/Rules and
          are distritbuted via FortiManager to Fortigates.
       -  This module controls the creation/edit/delete/assign of these packages.
-
+    
     options:
       adom:
         description:
           - The ADOM the configuration should belong to.
         required: false
         default: root
-
+    
       mode:
         description:
           - Set will overwrite existing installation targets with scope members.
@@ -726,88 +729,88 @@ Module Source Code
           - Update your installation targets BEFORE running install task.
         choices: ['add', 'set', 'delete', 'add_targets', 'delete_targets', 'install']
         default: add
-
+    
       name:
         description:
           - Name of the FortiManager package or folder.
         required: True
-
+    
       object_type:
         description:
           - Are we managing packages or package folders?
         required: True
         choices: ['pkg','folder']
-
+    
       package_folder:
         description:
           - Name of the folder you want to put the package into.
           - Nested folders are supported with forwardslashes. i.e. ansibleTestFolder1/ansibleTestFolder2/etc...
           - Do not include leading or trailing forwardslashes. We take care of that for you.
         required: false
-
+    
       central_nat:
         description:
           - Central NAT setting.
         required: false
         choices: ['enable', 'disable']
         default: disable
-
+    
       fwpolicy_implicit_log:
         description:
           - Implicit Log setting for all IPv4 policies in package.
         required: false
         choices: ['enable', 'disable']
         default: disable
-
+    
       fwpolicy6_implicit_log:
         description:
           - Implicit Log setting for all IPv6 policies in package.
         required: false
         choices: ['enable', 'disable']
         default: disable
-
+    
       inspection_mode:
         description:
           - Inspection mode setting for the policies flow or proxy.
         required: false
         choices: ['flow', 'proxy']
         default: flow
-
+    
       ngfw_mode:
         description:
           - NGFW mode setting for the policies flow or proxy.
         required: false
         choices: ['profile-based', 'policy-based']
         default: profile-based
-
+    
       ssl_ssh_profile:
         description:
           - if policy-based ngfw-mode, refer to firewall ssl-ssh-profile.
         required: false
-
+    
       scope_groups:
         description:
           - List of groups to add to the scope of the fw pol package
         required: false
-
+    
       scope_members:
         description:
           - The devices or scope that you want to assign this policy package to. Only assign to one VDOM at a time.
         required: false
-
+    
       scope_members_vdom:
         description:
           - The members VDOM you want to assign the package to. Only assign to one VDOM at a time.
         required: false
         default: root
-
+    
       parent_folder:
         description:
           - The parent folder name you want to add this object under.
         required: false
     '''
-
-
+    
+    
     EXAMPLES = '''
     - name: CREATE BASIC POLICY PACKAGE
       fmgr_fwpol_package:
@@ -815,7 +818,7 @@ Module Source Code
         mode: "add"
         name: "testPackage"
         object_type: "pkg"
-
+    
     - name: ADD PACKAGE WITH TARGETS
       fmgr_fwpol_package:
         mode: "add"
@@ -825,14 +828,14 @@ Module Source Code
         inspection_mode: "flow"
         ngfw_mode: "profile-based"
         scope_members: "seattle-fgt02, seattle-fgt03"
-
+    
     - name: ADD FOLDER
       fmgr_fwpol_package:
         mode: "add"
         adom: "ansible"
         name: "ansibleTestFolder1"
         object_type: "folder"
-
+    
     - name: ADD PACKAGE INTO PARENT FOLDER
       fmgr_fwpol_package:
         mode: "set"
@@ -840,7 +843,7 @@ Module Source Code
         name: "ansibleTestPackage2"
         object_type: "pkg"
         parent_folder: "ansibleTestFolder1"
-
+    
     - name: ADD FOLDER INTO PARENT FOLDER
       fmgr_fwpol_package:
         mode: "set"
@@ -848,20 +851,20 @@ Module Source Code
         name: "ansibleTestFolder2"
         object_type: "folder"
         parent_folder: "ansibleTestFolder1"
-
+    
     - name: INSTALL PACKAGE
       fmgr_fwpol_package:
         mode: "install"
         adom: "ansible"
         name: "ansibleTestPackage1"
-
+    
     - name: REMOVE PACKAGE
       fmgr_fwpol_package:
         mode: "delete"
         adom: "ansible"
         name: "ansibleTestPackage1"
         object_type: "pkg"
-
+    
     - name: REMOVE NESTED PACKAGE
       fmgr_fwpol_package:
         mode: "delete"
@@ -869,7 +872,7 @@ Module Source Code
         name: "ansibleTestPackage2"
         object_type: "pkg"
         parent_folder: "ansibleTestFolder1"
-
+    
     - name: REMOVE NESTED FOLDER
       fmgr_fwpol_package:
         mode: "delete"
@@ -877,7 +880,7 @@ Module Source Code
         name: "ansibleTestFolder2"
         object_type: "folder"
         parent_folder: "ansibleTestFolder1"
-
+    
     - name: REMOVE FOLDER
       fmgr_fwpol_package:
         mode: "delete"
@@ -891,7 +894,7 @@ Module Source Code
       returned: always
       type: str
     """
-
+    
     from ansible.module_utils.basic import AnsibleModule
     from ansible.module_utils.connection import Connection
     from ansible.module_utils.network.fortimanager.fortimanager import FortiManagerHandler
@@ -900,19 +903,20 @@ Module Source Code
     from ansible.module_utils.network.fortimanager.common import DEFAULT_RESULT_OBJ
     from ansible.module_utils.network.fortimanager.common import FAIL_SOCKET_MSG
     from ansible.module_utils.network.fortimanager.common import FMGRMethods
-
-
-
+    
+    import pydevd
+    
+    
     def fmgr_fwpol_package(fmgr, paramgram):
         """
         This function will create FMGR Firewall Policy Packages, or delete them. It is also capable of assigning packages.
         This function DOES NOT install the package. See the function fmgr_fwpol_package_install()
-
+    
         :param fmgr: The fmgr object instance from fmgr_utils.py
         :type fmgr: class object
         :param paramgram: The formatted dictionary of options to process
         :type paramgram: dict
-
+    
         :return: The response from the FortiManager
         :rtype: dict
         """
@@ -929,20 +933,20 @@ Module Source Code
                     "ngfw-mode": paramgram["ngfw-mode"],
                 }
             }
-
+    
             if paramgram["ngfw-mode"] == "policy-based" and paramgram["ssl-ssh-profile"] is not None:
                 datagram["package settings"]["ssl-ssh-profile"] = paramgram["ssl-ssh-profile"]
-
+    
             # SET THE SCOPE MEMBERS ACCORDING TO MODE AND WHAT WAS SUPPLIED
             if len(paramgram["append_members_list"]) > 0:
                 datagram["scope member"] = paramgram["append_members_list"]
             elif len(paramgram["append_members_list"]) == 0:
                 datagram["scope member"] = None
-
+    
             # IF PARENT FOLDER IS DEFINED
             if paramgram["parent_folder"] is not None:
                 datagram = fmgr_fwpol_package_create_parent_folder_objects(paramgram, datagram)
-
+    
         # NORMAL DELETE NO PARENT
         if paramgram["mode"] == "delete" and paramgram["parent_folder"] is None:
             datagram = {
@@ -950,7 +954,7 @@ Module Source Code
             }
             # SET DELETE URL
             url = '/pm/pkg/adom/{adom}/{name}'.format(adom=paramgram["adom"], name=paramgram["name"])
-
+    
         # DELETE WITH PARENT
         if paramgram["mode"] == "delete" and paramgram["parent_folder"] is not None:
             datagram = {
@@ -960,20 +964,20 @@ Module Source Code
             url = '/pm/pkg/adom/{adom}/{parent_folder}/{name}'.format(adom=paramgram["adom"],
                                                                       name=paramgram["name"],
                                                                       parent_folder=paramgram["parent_folder"])
-
+    
         response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
-
-
+    
+    
     def fmgr_fwpol_package_edit_targets(fmgr, paramgram):
         """
         This function will append scope targets to an existing policy package.
-
+    
         :param fmgr: The fmgr object instance from fmgr_utils.py
         :type fmgr: class object
         :param paramgram: The formatted dictionary of options to process
         :type paramgram: dict
-
+    
         :return: The response from the FortiManager
         :rtype: dict
         """
@@ -986,7 +990,7 @@ Module Source Code
             for member in paramgram["existing_members_list"]:
                 if member not in members_list:
                     members_list.append(member)
-
+    
         elif paramgram["mode"] == "delete_targets":
             method = FMGRMethods.DELETE
             members_list = list()
@@ -996,7 +1000,7 @@ Module Source Code
         datagram = {
             "data": members_list
         }
-
+    
         if paramgram["parent_folder"] is not None:
             url = '/pm/pkg/adom/{adom}/{parent_folder}/{name}/scope member'.format(adom=paramgram["adom"],
                                                                                    name=paramgram["name"],
@@ -1006,34 +1010,34 @@ Module Source Code
                                                                    name=paramgram["name"])
         response = fmgr.process_request(url, datagram, method)
         return response
-
-
+    
+    
     def fmgr_fwpol_package_folder(fmgr, paramgram):
         """
         This function will create folders for firewall packages. It can create down to two levels deep.
         We haven't yet tested for any more layers below two levels.
         parent_folders for multiple levels may need to defined as "level1/level2/level3" for the URL parameters and such.
-
+    
         :param fmgr: The fmgr object instance from fmgr_utils.py
         :type fmgr: class object
         :param paramgram: The formatted dictionary of options to process
         :type paramgram: dict
-
+    
         :return: The response from the FortiManager
         :rtype: dict
         """
         if paramgram["mode"] in ['set', 'add']:
             url = '/pm/pkg/adom/{adom}'.format(adom=paramgram["adom"])
-
+    
             datagram = {
                 "type": paramgram["object_type"],
                 "name": paramgram["name"],
             }
-
+    
             # IF PARENT FOLDER IS DEFINED
             if paramgram["parent_folder"] is not None:
                 datagram = fmgr_fwpol_package_create_parent_folder_objects(paramgram, datagram)
-
+    
         # NORMAL DELETE NO PARENT
         if paramgram["mode"] == "delete" and paramgram["parent_folder"] is None:
             datagram = {
@@ -1041,7 +1045,7 @@ Module Source Code
             }
             # SET DELETE URL
             url = '/pm/pkg/adom/{adom}/{name}'.format(adom=paramgram["adom"], name=paramgram["name"])
-
+    
         # DELETE WITH PARENT
         if paramgram["mode"] == "delete" and paramgram["parent_folder"] is not None:
             datagram = {
@@ -1051,20 +1055,20 @@ Module Source Code
             url = '/pm/pkg/adom/{adom}/{parent_folder}/{name}'.format(adom=paramgram["adom"],
                                                                       name=paramgram["name"],
                                                                       parent_folder=paramgram["parent_folder"])
-
+    
         response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
-
-
+    
+    
     def fmgr_fwpol_package_install(fmgr, paramgram):
         """
         This method/function installs FMGR FW Policy Packages to the scope members defined in the playbook.
-
+    
         :param fmgr: The fmgr object instance from fmgr_utils.py
         :type fmgr: class object
         :param paramgram: The formatted dictionary of options to process
         :type paramgram: dict
-
+    
         :return: The response from the FortiManager
         :rtype: dict
         """
@@ -1075,23 +1079,23 @@ Module Source Code
         if paramgram["parent_folder"]:
             new_path = str(paramgram["parent_folder"]) + "/" + str(paramgram["name"])
             datagram["pkg"] = new_path
-
+    
         # EXECUTE THE INSTALL REQUEST
         url = '/securityconsole/install/package'
         response = fmgr.process_request(url, datagram, FMGRMethods.EXEC)
         return response
-
-
+    
+    
     def fmgr_fwpol_package_get_details(fmgr, paramgram):
         """
         This method/function will attempt to get existing package details, and append findings to the paramgram.
         If nothing is found, the paramgram additions are simply empty.
-
+    
         :param fmgr: The fmgr object instance from fmgr_utils.py
         :type fmgr: class object
         :param paramgram: The formatted dictionary of options to process
         :type paramgram: dict
-
+    
         :return: The response from the FortiManager
         :rtype: dict
         """
@@ -1109,7 +1113,7 @@ Module Source Code
                     "vdom": paramgram["scope_members_vdom"],
                 }
                 members_list.append(scope_dict)
-
+    
         # CHECK FOR SCOPE GROUPS AND ADD THAT TO THE MEMBERS LIST
         # WE MUST PROPERLY FORMAT THE JSON FOR SCOPE GROUPS
         if paramgram["scope_groups"] is not None and paramgram["mode"] in ['add', 'set', 'add_targets', 'delete_targets']:
@@ -1122,7 +1126,7 @@ Module Source Code
                     "name": member
                 }
                 members_list.append(scope_dict)
-
+    
         # CHECK FOR AN EXISTING POLICY PACKAGE, AND GET ITS MEMBERS SO WE DON'T OVERWRITE THEM WITH NOTHING
         pol_datagram = {"type": paramgram["object_type"], "name": paramgram["name"]}
         if paramgram["parent_folder"]:
@@ -1143,25 +1147,25 @@ Module Source Code
                 existing_members = list()
         else:
             package_exists = False
-
+    
         # ADD COLLECTED DATA TO PARAMGRAM FOR USE IN METHODS
         paramgram["existing_members_list"] = existing_members
         paramgram["append_members_list"] = members_list
         paramgram["package_exists"] = package_exists
-
+    
         return paramgram
-
-
+    
+    
     def fmgr_fwpol_package_create_parent_folder_objects(paramgram, datagram):
         """
         This function/method will take a paramgram with parent folders defined, and create the proper structure
         so that objects are nested correctly.
-
+    
         :param paramgram: The paramgram used
         :type paramgram: dict
         :param datagram: The datagram, so far, as created by another function.
         :type datagram: dict
-
+    
         :return: new_datagram
         """
         # SPLIT THE PARENT FOLDER INTO A LIST BASED ON FORWARD SLASHES
@@ -1193,14 +1197,14 @@ Module Source Code
                 parent_list_position -= 1
             # SET DATAGRAM TO THE NEWLY NESTED DATAGRAM
         return new_datagram
-
-
+    
+    
     def main():
         argument_spec = dict(
             adom=dict(required=False, type="str", default="root"),
             mode=dict(choices=["add", "set", "delete", "add_targets", "delete_targets", "install"],
                       type="str", default="add"),
-
+    
             name=dict(required=False, type="str"),
             object_type=dict(required=True, type="str", choices=['pkg', 'folder']),
             package_folder=dict(required=False, type="str"),
@@ -1214,7 +1218,7 @@ Module Source Code
             scope_members=dict(required=False, type="str"),
             scope_members_vdom=dict(required=False, type="str", default="root"),
             parent_folder=dict(required=False, type="str"),
-
+    
         )
         module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False,)
         # MODULE DATAGRAM
@@ -1246,13 +1250,13 @@ Module Source Code
             fmgr.tools = FMGRCommon()
         else:
             module.fail_json(**FAIL_SOCKET_MSG)
-
+    
         # BEGIN MODULE-SPECIFIC LOGIC -- THINGS NEED TO HAPPEN DEPENDING ON THE ENDPOINT AND OPERATION
         results = DEFAULT_RESULT_OBJ
-
+    
         # QUERY FORTIMANAGER FOR EXISTING PACKAGE DETAILS AND UPDATE PARAMGRAM
         paramgram = fmgr_fwpol_package_get_details(fmgr, paramgram)
-
+    
         try:
             if paramgram["object_type"] == "pkg" and paramgram["mode"] in ["add", "set", "delete"]:
                 results = fmgr_fwpol_package(fmgr, paramgram)
@@ -1260,7 +1264,7 @@ Module Source Code
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
-
+    
         try:
             if paramgram["object_type"] == "pkg" and paramgram["package_exists"] \
                     and len(paramgram["append_members_list"]) > 0 \
@@ -1270,16 +1274,17 @@ Module Source Code
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
-
+    
         try:
             # IF THE object_type IS FOLDER LETS RUN THAT METHOD
+            pydevd.settrace('10.0.0.151', port=54654, stdoutToServer=True, stderrToServer=True)
             if paramgram["object_type"] == "folder":
                 results = fmgr_fwpol_package_folder(fmgr, paramgram)
                 fmgr.govern_response(module=module, results=results,
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
-
+    
         try:
             # IF THE object_type IS INSTALL AND NEEDED PARAMETERS ARE DEFINED INSTALL THE PACKAGE
             if paramgram["name"] is not None and paramgram["object_type"] == "pkg" and paramgram["mode"] == "install":
@@ -1288,10 +1293,10 @@ Module Source Code
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
-
+    
         return module.exit_json(**results[1])
-
-
+    
+    
     if __name__ == "__main__":
         main()
 

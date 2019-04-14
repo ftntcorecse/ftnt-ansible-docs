@@ -19,9 +19,8 @@ Metadata
 
 **Dev Status:** COMPLETED
 
-**Owning Developer:** 
+**Owning Developer:**
 Andrew Welsh
-
 Parameters
 ----------
 
@@ -30,7 +29,7 @@ adom
 
 - Description: The administrative domain (admon) the configuration belongs to
 
-  
+
 
 - Required: True
 
@@ -39,7 +38,7 @@ description
 
 - Description: Description of the device to be provisioned.
 
-  
+
 
 - Required: False
 
@@ -48,7 +47,7 @@ group
 
 - Description: The name of the device group the provisioned device can belong to.
 
-  
+
 
 - Required: False
 
@@ -57,7 +56,7 @@ host
 
 - Description: The FortiManager's Address.
 
-  
+
 
 - Required: True
 
@@ -66,7 +65,7 @@ minor_release
 
 - Description: The minor release number such as 6.X.1, as X being the minor release.
 
-  
+
 
 - Required: False
 
@@ -75,7 +74,7 @@ name
 
 - Description: The name of the device to be provisioned.
 
-  
+
 
 - Required: True
 
@@ -84,7 +83,7 @@ os_type
 
 - Description: The Fortinet OS type to be pushed to the device, such as 'FOS' for FortiOS.
 
-  
+
 
 - Required: True
 
@@ -93,7 +92,7 @@ os_version
 
 - Description: The Fortinet OS version to be used for the device, such as 5.0 or 6.0.
 
-  
+
 
 - Required: True
 
@@ -102,7 +101,7 @@ password
 
 - Description: The password associated with the username account.
 
-  
+
 
 - Required: False
 
@@ -111,7 +110,7 @@ patch_release
 
 - Description: The patch release number such as 6.0.X, as X being the patch release.
 
-  
+
 
 - Required: False
 
@@ -120,7 +119,7 @@ platform
 
 - Description: The platform of the device, such as model number or VM.
 
-  
+
 
 - Required: True
 
@@ -129,7 +128,7 @@ policy_package
 
 - Description: The name of the policy package to be assigned to the device.
 
-  
+
 
 - Required: True
 
@@ -138,7 +137,7 @@ serial
 
 - Description: The serial number of the device that will be provisioned.
 
-  
+
 
 - Required: True
 
@@ -147,7 +146,7 @@ username
 
 - Description: The username to log into the FortiManager
 
-  
+
 
 - Required: True
 
@@ -156,7 +155,7 @@ vdom
 
 - Description: The virtual domain (vdom) the configuration belongs to
 
-  
+
 
 
 
@@ -176,12 +175,12 @@ Functions
             'adom': adom,
             'name': dev_grp_name,
         }
-    
+
         url = '/dvmdb/adom/{adom}/group/{dev_grp_name}'.format(adom=adom, dev_grp_name=dev_grp_name)
         response = fmg.get(url, datagram)
         return response
-    
-    
+
+
 
 - prov_template_exists
 
@@ -192,12 +191,12 @@ Functions
             'name': prov_template,
             'adom': adom,
         }
-    
+
         url = '/pm/devprof/adom/{adom}/devprof/{name}'.format(adom=adom, name=prov_template)
         response = fmg.get(url, datagram)
         return response
-    
-    
+
+
 
 - create_model_device
 
@@ -222,12 +221,12 @@ Functions
                 'desc': 'Provisioned by Ansible',
             }
         }
-    
+
         url = '/dvm/cmd/add/device'
         response = fmg.execute(url, datagram)
         return response
-    
-    
+
+
 
 - update_flags
 
@@ -240,8 +239,8 @@ Functions
         url = 'dvmdb/device/{name}'.format(name=name)
         response = fmg.update(url, datagram)
         return response
-    
-    
+
+
 
 - assign_provision_template
 
@@ -257,8 +256,8 @@ Functions
         url = "/pm/devprof/adom/{adom}".format(adom=adom)
         response = fmg.update(url, datagram)
         return response
-    
-    
+
+
 
 - set_devprof_scope
 
@@ -273,20 +272,20 @@ Functions
         fields["name"] = provisioning_template
         fields["type"] = "devprof"
         fields["description"] = "CreatedByAnsible"
-    
+
         for target in provision_targets.strip().split(","):
             # split the host on the space to get the mask out
             new_target = {"name": target}
             targets.append(new_target)
-    
+
         fields["scope member"] = targets
-    
+
         body = {"method": "set", "params": [{"url": "/pm/devprof/adom/{adom}".format(adom=adom),
                                              "data": fields, "session": self.session}]}
         response = self.make_request(body).json()
         return response
-    
-    
+
+
 
 - assign_dev_grp
 
@@ -300,8 +299,8 @@ Functions
         url = "/dvmdb/adom/{adom}/group/{grp_name}/object member".format(adom=adom, grp_name=grp_name)
         response = fmg.set(url, datagram)
         return response
-    
-    
+
+
 
 - update_install_target
 
@@ -315,8 +314,8 @@ Functions
         url = '/pm/pkg/adom/{adom}/{pkg_name}'.format(adom=adom, pkg_name=pp)
         response = fmg.update(url, datagram)
         return response
-    
-    
+
+
 
 - install_pp
 
@@ -332,22 +331,22 @@ Functions
         url = 'securityconsole/install/package'
         response = fmg.execute(url, datagram)
         return response
-    
-    
+
+
 
 - main
 
  .. code-block:: python
 
     def main():
-    
+
         argument_spec = dict(
             adom=dict(required=False, type="str"),
             vdom=dict(required=False, type="str"),
             host=dict(required=True, type="str"),
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True),
-    
+
             policy_package=dict(required=False, type="str"),
             name=dict(required=False, type="str"),
             group=dict(required=False, type="str"),
@@ -358,23 +357,23 @@ Functions
             minor_release=dict(required=False, type="str"),
             patch_release=dict(required=False, type="str"),
             os_type=dict(required=False, type="str"),
-    
+
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=True, )
-    
+
         # check if params are set
         if module.params["host"] is None or module.params["username"] is None:
             module.fail_json(msg="Host and username are required for connection")
-    
+
         # check if login failed
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
         response = fmg.login()
-    
+
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
         else:
-    
+
             if module.params["policy_package"] is None:
                 module.params["policy_package"] = 'default'
             if module.params["adom"] is None:
@@ -385,7 +384,7 @@ Functions
                 module.params["platform"] = 'FortiGate-VM64'
             if module.params["os_type"] is None:
                 module.params["os_type"] = 'fos'
-    
+
             results = create_model_device(fmg,
                                           module.params["name"],
                                           module.params["serial"],
@@ -398,29 +397,29 @@ Functions
                                           module.params["adom"])
             if not results[0] == 0:
                 module.fail_json(msg="Create model failed", **results)
-    
+
             results = update_flags(fmg, module.params["name"])
             if not results[0] == 0:
                 module.fail_json(msg="Update device flags failed", **results)
-    
+
             # results = assign_dev_grp(fmg, 'Ansible', 'FGVM000000117992', 'root', 'root')
             # if not results[0] == 0:
             #     module.fail_json(msg="Setting device group failed", **results)
-    
+
             results = update_install_target(fmg, module.params["name"], module.params["policy_package"])
             if not results[0] == 0:
                 module.fail_json(msg="Adding device target to package failed", **results)
-    
+
             results = install_pp(fmg, module.params["name"], module.params["policy_package"])
             if not results[0] == 0:
                 module.fail_json(msg="Installing policy package failed", **results)
-    
+
             fmg.logout()
-    
+
             # results is returned as a tuple
             return module.exit_json(**results[1])
-    
-    
+
+
 
 
 
@@ -446,15 +445,15 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-    
+
     from __future__ import absolute_import, division, print_function
-    
+
     __metaclass__ = type
-    
+
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-    
+
     DOCUMENTATION = '''
     ---
     module: fmgr_provisioning
@@ -465,7 +464,7 @@ Module Source Code
       - Add model devices on the FortiManager using jsonrpc API and have them pre-configured,
         so when central management is configured, the configuration is pushed down to the
         registering devices
-    
+
     options:
       adom:
         description:
@@ -486,7 +485,7 @@ Module Source Code
         description:
           - The password associated with the username account.
         required: false
-    
+
       policy_package:
         description:
           - The name of the policy package to be assigned to the device.
@@ -528,15 +527,15 @@ Module Source Code
           - The Fortinet OS type to be pushed to the device, such as 'FOS' for FortiOS.
         required: True
     '''
-    
+
     EXAMPLES = '''
     - name: Create Model Device
       hosts: FortiManager
       connection: local
       gather_facts: False
-    
+
       tasks:
-    
+
         - name: Create FGT1 Model Device
           fmgr_provision:
             host: "{{ inventory_hostname }}"
@@ -554,8 +553,8 @@ Module Source Code
             minor_release: 0
             patch_release: 0
             os_type: 'fos'
-    
-    
+
+
         - name: Create FGT2 Model Device
           fmgr_provision:
             host: "{{ inventory_hostname }}"
@@ -573,49 +572,49 @@ Module Source Code
             minor_release: 6
             patch_release: 0
             os_type: 'fos'
-    
+
     '''
-    
+
     RETURN = """
     api_result:
       description: full API response, includes status code and message
       returned: always
       type: string
     """
-    
+
     from ansible.module_utils.basic import AnsibleModule, env_fallback
     from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-    
+
     # check for pyFMG lib
     try:
         from pyFMG.fortimgr import FortiManager
         HAS_PYFMGR = True
     except ImportError:
         HAS_PYFMGR = False
-    
-    
+
+
     def dev_group_exists(fmg, dev_grp_name, adom):
         datagram = {
             'adom': adom,
             'name': dev_grp_name,
         }
-    
+
         url = '/dvmdb/adom/{adom}/group/{dev_grp_name}'.format(adom=adom, dev_grp_name=dev_grp_name)
         response = fmg.get(url, datagram)
         return response
-    
-    
+
+
     def prov_template_exists(fmg, prov_template, adom, vdom):
         datagram = {
             'name': prov_template,
             'adom': adom,
         }
-    
+
         url = '/pm/devprof/adom/{adom}/devprof/{name}'.format(adom=adom, name=prov_template)
         response = fmg.get(url, datagram)
         return response
-    
-    
+
+
     def create_model_device(fmg, name, serial, group, platform, os_version,
                             os_type, minor_release, patch_release=0, adom='root'):
         datagram = {
@@ -635,12 +634,12 @@ Module Source Code
                 'desc': 'Provisioned by Ansible',
             }
         }
-    
+
         url = '/dvm/cmd/add/device'
         response = fmg.execute(url, datagram)
         return response
-    
-    
+
+
     def update_flags(fmg, name):
         datagram = {
             'flags': ['is_model', 'linked_to_model']
@@ -648,8 +647,8 @@ Module Source Code
         url = 'dvmdb/device/{name}'.format(name=name)
         response = fmg.update(url, datagram)
         return response
-    
-    
+
+
     def assign_provision_template(fmg, template, adom, target):
         datagram = {
             'name': template,
@@ -660,8 +659,8 @@ Module Source Code
         url = "/pm/devprof/adom/{adom}".format(adom=adom)
         response = fmg.update(url, datagram)
         return response
-    
-    
+
+
     def set_devprof_scope(self, provisioning_template, adom, provision_targets):
         """
         GET the DevProf (check to see if exists)
@@ -671,20 +670,20 @@ Module Source Code
         fields["name"] = provisioning_template
         fields["type"] = "devprof"
         fields["description"] = "CreatedByAnsible"
-    
+
         for target in provision_targets.strip().split(","):
             # split the host on the space to get the mask out
             new_target = {"name": target}
             targets.append(new_target)
-    
+
         fields["scope member"] = targets
-    
+
         body = {"method": "set", "params": [{"url": "/pm/devprof/adom/{adom}".format(adom=adom),
                                              "data": fields, "session": self.session}]}
         response = self.make_request(body).json()
         return response
-    
-    
+
+
     def assign_dev_grp(fmg, grp_name, device_name, vdom, adom):
         datagram = {
             'name': device_name,
@@ -693,8 +692,8 @@ Module Source Code
         url = "/dvmdb/adom/{adom}/group/{grp_name}/object member".format(adom=adom, grp_name=grp_name)
         response = fmg.set(url, datagram)
         return response
-    
-    
+
+
     def update_install_target(fmg, device, pp='default', vdom='root', adom='root'):
         datagram = {
             'scope member': [{'name': device, 'vdom': vdom}],
@@ -703,8 +702,8 @@ Module Source Code
         url = '/pm/pkg/adom/{adom}/{pkg_name}'.format(adom=adom, pkg_name=pp)
         response = fmg.update(url, datagram)
         return response
-    
-    
+
+
     def install_pp(fmg, device, pp='default', vdom='root', adom='root'):
         datagram = {
             'adom': adom,
@@ -715,17 +714,17 @@ Module Source Code
         url = 'securityconsole/install/package'
         response = fmg.execute(url, datagram)
         return response
-    
-    
+
+
     def main():
-    
+
         argument_spec = dict(
             adom=dict(required=False, type="str"),
             vdom=dict(required=False, type="str"),
             host=dict(required=True, type="str"),
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True),
-    
+
             policy_package=dict(required=False, type="str"),
             name=dict(required=False, type="str"),
             group=dict(required=False, type="str"),
@@ -736,23 +735,23 @@ Module Source Code
             minor_release=dict(required=False, type="str"),
             patch_release=dict(required=False, type="str"),
             os_type=dict(required=False, type="str"),
-    
+
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=True, )
-    
+
         # check if params are set
         if module.params["host"] is None or module.params["username"] is None:
             module.fail_json(msg="Host and username are required for connection")
-    
+
         # check if login failed
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
         response = fmg.login()
-    
+
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
         else:
-    
+
             if module.params["policy_package"] is None:
                 module.params["policy_package"] = 'default'
             if module.params["adom"] is None:
@@ -763,7 +762,7 @@ Module Source Code
                 module.params["platform"] = 'FortiGate-VM64'
             if module.params["os_type"] is None:
                 module.params["os_type"] = 'fos'
-    
+
             results = create_model_device(fmg,
                                           module.params["name"],
                                           module.params["serial"],
@@ -776,29 +775,29 @@ Module Source Code
                                           module.params["adom"])
             if not results[0] == 0:
                 module.fail_json(msg="Create model failed", **results)
-    
+
             results = update_flags(fmg, module.params["name"])
             if not results[0] == 0:
                 module.fail_json(msg="Update device flags failed", **results)
-    
+
             # results = assign_dev_grp(fmg, 'Ansible', 'FGVM000000117992', 'root', 'root')
             # if not results[0] == 0:
             #     module.fail_json(msg="Setting device group failed", **results)
-    
+
             results = update_install_target(fmg, module.params["name"], module.params["policy_package"])
             if not results[0] == 0:
                 module.fail_json(msg="Adding device target to package failed", **results)
-    
+
             results = install_pp(fmg, module.params["name"], module.params["policy_package"])
             if not results[0] == 0:
                 module.fail_json(msg="Installing policy package failed", **results)
-    
+
             fmg.logout()
-    
+
             # results is returned as a tuple
             return module.exit_json(**results[1])
-    
-    
+
+
     if __name__ == "__main__":
         main()
 

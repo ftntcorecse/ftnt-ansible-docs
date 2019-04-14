@@ -10,17 +10,11 @@ Playbook Task Examples
 
       - name: DELETE Profile
         fmgr_secprof_voip:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_VOIP_Profile"
           mode: "delete"
     
       - name: Create FMGR_VOIP_PROFILE
         fmgr_secprof_voip:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           mode: "set"
           adom: "root"
           name: "Ansible_VOIP_Profile"
@@ -32,5 +26,40 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-%%PB_FILE_EXAMPLE_TOKEN%%
+
+voip.yml
+++++++++
+
+.. code-block:: yaml
+
+
+    - name: Create and Delete security profile in FMG
+      hosts: FortiManager
+      connection: httpapi
+      gather_facts: False
+    
+      tasks:
+    
+      - name: DELETE Profile
+        fmgr_secprof_voip:
+          name: "Ansible_VOIP_Profile"
+          mode: "delete"
+    
+      - name: Create FMGR_VOIP_PROFILE
+        fmgr_secprof_voip:
+          mode: "set"
+          adom: "root"
+          name: "Ansible_VOIP_Profile"
+          comment: "Created by Ansible"
+          sccp: {block-mcast: "enable", log-call-summary: "enable", log-violations: "enable", status: "enable"}
+
+fmgr_secprof_voip_run_all.sh
+++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook voip.yml -vvvv
+
+
+
 

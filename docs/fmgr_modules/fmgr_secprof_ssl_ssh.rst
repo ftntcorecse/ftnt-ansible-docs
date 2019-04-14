@@ -30,7 +30,9 @@ Metadata
 
 **Owning Developer:** Andrew Welsh
 
-**Module Link:** https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_secprof_ssl_ssh.py
+.. _Link: https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_secprof_ssl_ssh.py
+
+Link_
 
 Parameters
 ----------

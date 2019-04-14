@@ -40,24 +40,18 @@ ssl.yml
 
     - name: Create and Delete security profile in FMG
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: DELETE Profile
         fmgr_secprof_ssl_ssh:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_SSL_SSH_Profile"
           mode: "delete"
     
       - name: CREATE Profile
         fmgr_secprof_ssl_ssh:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_SSL_SSH_Profile"
           comment: "Created by Ansible Module TEST"
           mode: "set"
@@ -70,6 +64,14 @@ ssl.yml
           whitelist: "enable"
     
     
+
+
+fmgr_secprof_ssl_ssh_run_all.sh
++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook ssl.yml -vvvv
 
 
 

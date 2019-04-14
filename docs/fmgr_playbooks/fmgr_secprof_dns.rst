@@ -29,6 +29,14 @@ Playbook File Examples
 ----------------------
 
 
+fmgr_secprof_dns_run_all.sh
++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook dns.yml -vvvv
+
+
 dns.yml
 +++++++
 
@@ -37,26 +45,20 @@ dns.yml
 
     - name: Create and Delete security profile in FMG
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
-      - name: DELETE Profile
-        fmgr_secprof_dns:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          name: "Ansible_DNS_Profile"
-          comment: "Created by Ansible Module TEST"
-          mode: "delete"
+    #  - name: DELETE Profile
+    #    fmgr_secprof_dns:
+    #      name: "Ansible_DNS_Profile"
+    #      comment: "Created by Ansible Module TEST"
+    #      mode: "delete"
     
     
       - name: CREATE Profile
         fmgr_secprof_dns:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_DNS_Profile"
           comment: "Created by Ansible Module TEST"
           mode: "set"

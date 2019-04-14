@@ -17,10 +17,17 @@ Playbook Task Examples
       tasks:
       - name: Configure content types used by Web filter.
         fortios_webfilter_content_header:
+<<<<<<< Updated upstream
           host:  "{{ host }}"
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+=======
+          host:  "{{  host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{  vdom }}"
+>>>>>>> Stashed changes
           webfilter_content_header:
             state: "present"
             comment: "Optional comments."
@@ -37,6 +44,7 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
+<<<<<<< Updated upstream
 
 ../ansible_fgt_modules/v6.0.2/webfilter/fortios_webfilter_content_header_example.yml
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -68,4 +76,7 @@ Playbook File Examples
 
 
 
+=======
+%%PB_FILE_EXAMPLE_TOKEN%%
+>>>>>>> Stashed changes
 

@@ -70,6 +70,19 @@ Playbook File Examples
 ----------------------
 
 
+fmgr_fwobj_service_run_all.sh
++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook fmgr_fwobj_service_delete_group.yml -vvvv
+    ansible-playbook fmgr_fwobj_service_add_group.yml -vvvv
+    ansible-playbook fmgr_fwobj_service_delete_custom.yml -vvvv
+    ansible-playbook fmgr_fwobj_service_delete_category.yml -vvvv
+    ansible-playbook fmgr_fwobj_service_add_custom.yml -vvvv
+    ansible-playbook fmgr_fwobj_service_add_category.yml -vvvv
+
+
 fmgr_fwobj_service_delete_group.yml
 +++++++++++++++++++++++++++++++++++
 
@@ -79,16 +92,13 @@ fmgr_fwobj_service_delete_group.yml
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD A CUSTOM SERVICE GROUP
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           object_type: "group"
           group_name: "ansibleTestGroup"
@@ -103,16 +113,13 @@ fmgr_fwobj_service_add_group.yml
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD A CUSTOM SERVICE GROUP
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           object_type: "group"
           comment: "created by ansible"
@@ -129,16 +136,13 @@ fmgr_fwobj_service_delete_custom.yml
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           name: "ansible_custom_service"
           object_type: "custom"
@@ -146,9 +150,6 @@ fmgr_fwobj_service_delete_custom.yml
     
       - name: REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           name: "ansible_custom_icmp"
           object_type: "custom"
@@ -156,9 +157,6 @@ fmgr_fwobj_service_delete_custom.yml
     
       - name: REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           name: "ansible_custom_icmp6"
           object_type: "custom"
@@ -166,9 +164,6 @@ fmgr_fwobj_service_delete_custom.yml
     
       - name: REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           name: "ansible_custom_ip"
           object_type: "custom"
@@ -176,9 +171,6 @@ fmgr_fwobj_service_delete_custom.yml
     
       - name: REMOVE A CUSTOM SERVICE FOR TCP/UDP/SCP
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           name: "ansible_custom_serviceWithSource"
           object_type: "custom"
@@ -186,9 +178,6 @@ fmgr_fwobj_service_delete_custom.yml
     
       - name: REMOVE A CUSTOM PROXY ALL
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           name: "ansible_custom_proxy_all"
           object_type: "custom"
@@ -205,16 +194,13 @@ fmgr_fwobj_service_delete_category.yml
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: DELETE A CUSTOM SERVICE CATEGORY
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           object_type: "category"
           category: "ansibleCategory5"
@@ -222,9 +208,6 @@ fmgr_fwobj_service_delete_category.yml
     
       - name: DELETE A CUSTOM SERVICE CATEGORY 2
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           object_type: "category"
           category: "ansibleCategory2"
@@ -232,9 +215,6 @@ fmgr_fwobj_service_delete_category.yml
     
       - name: DELETE A CUSTOM SERVICE CATEGORY 3
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           object_type: "category"
           category: "ansibleCategory"
@@ -249,16 +229,13 @@ fmgr_fwobj_service_add_custom.yml
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD A CUSTOM SERVICE FOR TCP/UDP/SCP
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           name: "ansible_custom_service"
           object_type: "custom"
@@ -270,9 +247,6 @@ fmgr_fwobj_service_add_custom.yml
     
       - name: ADD A CUSTOM SERVICE FOR TCP/UDP/SCP WITH SOURCE RANGES AND MULTIPLES
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           name: "ansible_custom_serviceWithSource"
           object_type: "custom"
@@ -283,9 +257,6 @@ fmgr_fwobj_service_add_custom.yml
     
       - name: ADD A CUSTOM SERVICE FOR ICMP
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           name: "ansible_custom_icmp"
           object_type: "custom"
@@ -295,9 +266,6 @@ fmgr_fwobj_service_add_custom.yml
     
       - name: ADD A CUSTOM SERVICE FOR ICMP6
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           name: "ansible_custom_icmp6"
           object_type: "custom"
@@ -307,9 +275,6 @@ fmgr_fwobj_service_add_custom.yml
     
       - name: ADD A CUSTOM SERVICE FOR IP - GRE
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           name: "ansible_custom_ip"
           object_type: "custom"
@@ -318,9 +283,6 @@ fmgr_fwobj_service_add_custom.yml
     
       - name: ADD A CUSTOM PROXY FOR ALL WITH SOURCE RANGES AND MULTIPLES
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           name: "ansible_custom_proxy_all"
           object_type: "custom"
@@ -338,16 +300,13 @@ fmgr_fwobj_service_add_category.yml
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: ADD A CUSTOM SERVICE CATEGORY
         fmgr_fwobj_service:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           object_type: "category"
           comment: "created by ansible"

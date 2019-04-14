@@ -30,7 +30,9 @@ Metadata
 
 **Owning Developer:** Andrew Welsh
 
-**Module Link:** https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_secprof_proxy.py
+.. _Link: https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_secprof_proxy.py
+
+Link_
 
 Parameters
 ----------

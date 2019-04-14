@@ -13,7 +13,7 @@ Metadata
 
 **Description:** ['Manage spam filter security profiles within FortiManager via API']
 
-**Author(s):** 
+**Author(s):**
 
 - Luke Weighall (github: @lweighall)
 
@@ -34,7 +34,6 @@ Metadata
 **Days in PR:** 8
 
 **Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_secprof_spam
-
 Parameters
 ----------
 
@@ -43,7 +42,7 @@ adom
 
 - Description: The ADOM the configuration should belong to.
 
-  
+
 
 - Required: False
 
@@ -54,7 +53,7 @@ comment
 
 - Description: Comment.
 
-  
+
 
 - Required: False
 
@@ -67,7 +66,7 @@ external
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -82,7 +81,7 @@ flow_based
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -105,7 +104,7 @@ gmail
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -118,7 +117,7 @@ gmail_log
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -129,7 +128,7 @@ host
 
 - Description: The FortiManager's Address.
 
-  
+
 
 - Required: True
 
@@ -150,7 +149,7 @@ imap
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -163,7 +162,7 @@ imap_action
 
   choice | tag | Tag spam email with configured text in subject or header.
 
-  
+
 
 - Required: False
 
@@ -178,7 +177,7 @@ imap_log
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -189,7 +188,7 @@ imap_tag_msg
 
 - Description: Subject text or header added to spam email.
 
-  
+
 
 - Required: False
 
@@ -206,7 +205,7 @@ imap_tag_type
 
   flag | spaminfo | Append spam info to spam email header.
 
-  
+
 
 - Required: False
 
@@ -229,7 +228,7 @@ mapi
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -242,7 +241,7 @@ mapi_action
 
   choice | discard | Discard (block) spam email.
 
-  
+
 
 - Required: False
 
@@ -257,7 +256,7 @@ mapi_log
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -270,7 +269,7 @@ mode
 
   Allows use of soft-adds instead of overwriting existing values
 
-  
+
 
 - Required: False
 
@@ -295,7 +294,7 @@ msn_hotmail
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -308,7 +307,7 @@ msn_hotmail_log
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -319,7 +318,7 @@ name
 
 - Description: Profile name.
 
-  
+
 
 - Required: False
 
@@ -350,7 +349,7 @@ options
 
   flag | spambwl | Black/white list.
 
-  
+
 
 - Required: False
 
@@ -361,7 +360,7 @@ password
 
 - Description: The password associated with the username account.
 
-  
+
 
 - Required: True
 
@@ -382,7 +381,7 @@ pop3
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -395,7 +394,7 @@ pop3_action
 
   choice | tag | Tag spam email with configured text in subject or header.
 
-  
+
 
 - Required: False
 
@@ -410,7 +409,7 @@ pop3_log
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -421,7 +420,7 @@ pop3_tag_msg
 
 - Description: Subject text or header added to spam email.
 
-  
+
 
 - Required: False
 
@@ -438,7 +437,7 @@ pop3_tag_type
 
   flag | spaminfo | Append spam info to spam email header.
 
-  
+
 
 - Required: False
 
@@ -449,7 +448,7 @@ replacemsg_group
 
 - Description: Replacement message group.
 
-  
+
 
 - Required: False
 
@@ -470,7 +469,7 @@ smtp
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -485,7 +484,7 @@ smtp_action
 
   choice | discard | Discard (block) spam email.
 
-  
+
 
 - Required: False
 
@@ -500,7 +499,7 @@ smtp_hdrip
 
   choice | enable | Enable SMTP email header IP checks for spamfsip, spamrbl and spambwl filters.
 
-  
+
 
 - Required: False
 
@@ -515,7 +514,7 @@ smtp_local_override
 
   choice | enable | Enable local filter to override SMTP remote check result.
 
-  
+
 
 - Required: False
 
@@ -530,7 +529,7 @@ smtp_log
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -541,7 +540,7 @@ smtp_tag_msg
 
 - Description: Subject text or header added to spam email.
 
-  
+
 
 - Required: False
 
@@ -558,7 +557,7 @@ smtp_tag_type
 
   flag | spaminfo | Append spam info to spam email header.
 
-  
+
 
 - Required: False
 
@@ -569,7 +568,7 @@ spam_bwl_table
 
 - Description: Anti-spam black/white list table ID.
 
-  
+
 
 - Required: False
 
@@ -578,7 +577,7 @@ spam_bword_table
 
 - Description: Anti-spam banned word table ID.
 
-  
+
 
 - Required: False
 
@@ -587,7 +586,7 @@ spam_bword_threshold
 
 - Description: Spam banned word threshold.
 
-  
+
 
 - Required: False
 
@@ -600,7 +599,7 @@ spam_filtering
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -611,7 +610,7 @@ spam_iptrust_table
 
 - Description: Anti-spam IP trust table ID.
 
-  
+
 
 - Required: False
 
@@ -624,7 +623,7 @@ spam_log
 
   choice | enable | Enable spam logging for email filtering.
 
-  
+
 
 - Required: False
 
@@ -639,7 +638,7 @@ spam_log_fortiguard_response
 
   choice | enable | Enable logging FortiGuard spam response.
 
-  
+
 
 - Required: False
 
@@ -650,7 +649,7 @@ spam_mheader_table
 
 - Description: Anti-spam MIME header table ID.
 
-  
+
 
 - Required: False
 
@@ -659,7 +658,7 @@ spam_rbl_table
 
 - Description: Anti-spam DNSBL table ID.
 
-  
+
 
 - Required: False
 
@@ -668,7 +667,7 @@ username
 
 - Description: The username associated with the account.
 
-  
+
 
 - Required: True
 
@@ -689,7 +688,7 @@ yahoo_mail
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -702,7 +701,7 @@ yahoo_mail_log
 
   choice | enable | Enable setting.
 
-  
+
 
 - Required: False
 
@@ -725,25 +724,25 @@ Functions
         """
         fmgr_spamfilter_profile -- Your Description here, bruh
         """
-    
+
         mode = paramgram["mode"]
         adom = paramgram["adom"]
-    
+
         response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
         url = ""
         datagram = {}
-    
+
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/spamfilter/profile'.format(adom=adom)
             datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-    
+
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/spamfilter/profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-    
+
         # IF MODE = SET -- USE THE 'SET' API CALL MODE
         if mode == "set":
             response = fmg.set(url, datagram)
@@ -756,10 +755,10 @@ Functions
         # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
         elif mode == "delete":
             response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     # ADDITIONAL COMMON FUNCTIONS
 
 - fmgr_logout
@@ -777,7 +776,7 @@ Functions
             except:
                 pass
             module.fail_json(msg=msg)
-    
+
         # SUBMISSION ERROR
         if len(results) > 0:
             if msg == "NULL":
@@ -785,7 +784,7 @@ Functions
                     msg = results[1]['status']['message']
                 except:
                     msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
+
             if results[0] not in good_codes:
                 if logout_on_fail:
                     fmg.logout()
@@ -796,8 +795,8 @@ Functions
                     module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
                                      **results[1])
         return msg
-    
-    
+
+
     # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
     # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
 
@@ -812,8 +811,8 @@ Functions
                str((0x00ff0000 & mask) >> 16) + '.' +
                str((0x0000ff00 & mask) >> 8) + '.' +
                str((0x000000ff & mask)))
-    
-    
+
+
     # utility function: removing keys wih value of None, nothing in playbook for that key
 
 - fmgr_del_none
@@ -826,8 +825,8 @@ Functions
                              for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
         else:
             return obj
-    
-    
+
+
     # utility function: remove keys that are need for the logic but the FMG API won't accept them
 
 - fmgr_prepare_dict
@@ -839,8 +838,8 @@ Functions
         if isinstance(obj, dict):
             obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
         return obj
-    
-    
+
+
 
 - fmgr_is_empty_dict
 
@@ -868,10 +867,10 @@ Functions
                         return return_val
             elif len(obj) == 0:
                 return_val = True
-    
+
         return return_val
-    
-    
+
+
 
 - fmgr_split_comma_strings_into_lists
 
@@ -888,15 +887,15 @@ Functions
                             for item in new_items:
                                 new_list.append(item.strip())
                             obj[k] = new_list
-    
+
         return obj
-    
-    
+
+
     #############
     # END METHODS
     #############
-    
-    
+
+
 
 - main
 
@@ -909,7 +908,7 @@ Functions
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-    
+
             spam_rbl_table=dict(required=False, type="str"),
             spam_mheader_table=dict(required=False, type="str"),
             spam_log_fortiguard_response=dict(required=False, type="str", choices=["disable", "enable"]),
@@ -961,11 +960,11 @@ Functions
             smtp_tag_type=dict(required=False, type="str", choices=["subject", "header", "spaminfo"]),
             yahoo_mail=dict(required=False, type="dict"),
             yahoo_mail_log=dict(required=False, type="str", choices=["disable", "enable"]),
-    
+
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -1019,7 +1018,7 @@ Functions
                 "log": module.params["yahoo_mail_log"],
             }
         }
-    
+
         list_overrides = ['gmail', 'imap', 'mapi', 'msn-hotmail', 'pop3', 'smtp', 'yahoo-mail']
         for list_variable in list_overrides:
             override_data = list()
@@ -1033,33 +1032,33 @@ Functions
                     paramgram[list_variable] = override_data
             except:
                 pass
-    
+
         # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
         host = module.params["host"]
         password = module.params["password"]
         username = module.params["username"]
         if host is None or username is None or password is None:
             module.fail_json(msg="Host and username and password are required")
-    
+
         # CHECK IF LOGIN FAILED
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-    
+
         response = fmg.login()
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
-    
+
         results = fmgr_spamfilter_profile_addsetdelete(fmg, paramgram)
         if results[0] != 0:
             fmgr_logout(fmg, module, results=results, good_codes=[0])
-    
+
         fmg.logout()
-    
+
         if results is not None:
             return module.exit_json(**results[1])
         else:
             return module.exit_json(msg="No results were returned from the API call.")
-    
-    
+
+
 
 
 
@@ -1085,14 +1084,14 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-    
+
     from __future__ import absolute_import, division, print_function
     __metaclass__ = type
-    
+
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-    
+
     DOCUMENTATION = '''
     ---
     module: fmgr_secprof_spam
@@ -1104,29 +1103,29 @@ Module Source Code
     short_description: spam filter profile for FMG
     description:
       -  Manage spam filter security profiles within FortiManager via API
-    
+
     options:
       adom:
         description:
           - The ADOM the configuration should belong to.
         required: false
         default: root
-    
+
       host:
         description:
           - The FortiManager's Address.
         required: true
-    
+
       username:
         description:
           - The username associated with the account.
         required: true
-    
+
       password:
         description:
           - The password associated with the username account.
         required: true
-    
+
       mode:
         description:
           - Sets one of three modes for managing the object.
@@ -1134,17 +1133,17 @@ Module Source Code
         choices: ['add', 'set', 'delete', 'update']
         required: false
         default: add
-    
+
       spam_rbl_table:
         description:
           - Anti-spam DNSBL table ID.
         required: false
-    
+
       spam_mheader_table:
         description:
           - Anti-spam MIME header table ID.
         required: false
-    
+
       spam_log_fortiguard_response:
         description:
           - Enable/disable logging FortiGuard spam response.
@@ -1152,7 +1151,7 @@ Module Source Code
           - choice | enable | Enable logging FortiGuard spam response.
         required: false
         choices: ["disable", "enable"]
-    
+
       spam_log:
         description:
           - Enable/disable spam logging for email filtering.
@@ -1160,12 +1159,12 @@ Module Source Code
           - choice | enable | Enable spam logging for email filtering.
         required: false
         choices: ["disable", "enable"]
-    
+
       spam_iptrust_table:
         description:
           - Anti-spam IP trust table ID.
         required: false
-    
+
       spam_filtering:
         description:
           - Enable/disable spam filtering.
@@ -1173,27 +1172,27 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       spam_bword_threshold:
         description:
           - Spam banned word threshold.
         required: false
-    
+
       spam_bword_table:
         description:
           - Anti-spam banned word table ID.
         required: false
-    
+
       spam_bwl_table:
         description:
           - Anti-spam black/white list table ID.
         required: false
-    
+
       replacemsg_group:
         description:
           - Replacement message group.
         required: false
-    
+
       options:
         description:
           - FLAG Based Options. Specify multiple in list form.
@@ -1221,12 +1220,12 @@ Module Source Code
           - spamhdrcheck
           - spamfsphish
           - spambwl
-    
+
       name:
         description:
           - Profile name.
         required: false
-    
+
       flow_based:
         description:
           - Enable/disable flow-based spam filtering.
@@ -1234,7 +1233,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       external:
         description:
           - Enable/disable external Email inspection.
@@ -1242,12 +1241,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       comment:
         description:
           - Comment.
         required: false
-    
+
       gmail:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1258,7 +1257,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       gmail_log:
         description:
           - Enable/disable logging.
@@ -1266,7 +1265,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       imap:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1277,7 +1276,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       imap_action:
         description:
           - Action for spam email.
@@ -1285,7 +1284,7 @@ Module Source Code
           - choice | tag | Tag spam email with configured text in subject or header.
         required: false
         choices: ["pass", "tag"]
-    
+
       imap_log:
         description:
           - Enable/disable logging.
@@ -1293,12 +1292,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       imap_tag_msg:
         description:
           - Subject text or header added to spam email.
         required: false
-    
+
       imap_tag_type:
         description:
           - Tag subject or header for spam email.
@@ -1308,7 +1307,7 @@ Module Source Code
           - flag | spaminfo | Append spam info to spam email header.
         required: false
         choices: ["subject", "header", "spaminfo"]
-    
+
       mapi:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1319,7 +1318,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       mapi_action:
         description:
           - Action for spam email.
@@ -1327,7 +1326,7 @@ Module Source Code
           - choice | discard | Discard (block) spam email.
         required: false
         choices: ["pass", "discard"]
-    
+
       mapi_log:
         description:
           - Enable/disable logging.
@@ -1335,7 +1334,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       msn_hotmail:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1346,7 +1345,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       msn_hotmail_log:
         description:
           - Enable/disable logging.
@@ -1354,7 +1353,7 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       pop3:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1365,7 +1364,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       pop3_action:
         description:
           - Action for spam email.
@@ -1373,7 +1372,7 @@ Module Source Code
           - choice | tag | Tag spam email with configured text in subject or header.
         required: false
         choices: ["pass", "tag"]
-    
+
       pop3_log:
         description:
           - Enable/disable logging.
@@ -1381,12 +1380,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       pop3_tag_msg:
         description:
           - Subject text or header added to spam email.
         required: false
-    
+
       pop3_tag_type:
         description:
           - Tag subject or header for spam email.
@@ -1396,7 +1395,7 @@ Module Source Code
           - flag | spaminfo | Append spam info to spam email header.
         required: false
         choices: ["subject", "header", "spaminfo"]
-    
+
       smtp:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1407,7 +1406,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       smtp_action:
         description:
           - Action for spam email.
@@ -1416,7 +1415,7 @@ Module Source Code
           - choice | discard | Discard (block) spam email.
         required: false
         choices: ["pass", "tag", "discard"]
-    
+
       smtp_hdrip:
         description:
           - Enable/disable SMTP email header IP checks for spamfsip, spamrbl and spambwl filters.
@@ -1424,7 +1423,7 @@ Module Source Code
           - choice | enable | Enable SMTP email header IP checks for spamfsip, spamrbl and spambwl filters.
         required: false
         choices: ["disable", "enable"]
-    
+
       smtp_local_override:
         description:
           - Enable/disable local filter to override SMTP remote check result.
@@ -1432,7 +1431,7 @@ Module Source Code
           - choice | enable | Enable local filter to override SMTP remote check result.
         required: false
         choices: ["disable", "enable"]
-    
+
       smtp_log:
         description:
           - Enable/disable logging.
@@ -1440,12 +1439,12 @@ Module Source Code
           - choice | enable | Enable setting.
         required: false
         choices: ["disable", "enable"]
-    
+
       smtp_tag_msg:
         description:
           - Subject text or header added to spam email.
         required: false
-    
+
       smtp_tag_type:
         description:
           - Tag subject or header for spam email.
@@ -1455,7 +1454,7 @@ Module Source Code
           - flag | spaminfo | Append spam info to spam email header.
         required: false
         choices: ["subject", "header", "spaminfo"]
-    
+
       yahoo_mail:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1466,7 +1465,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       yahoo_mail_log:
         description:
           - Enable/disable logging.
@@ -1475,7 +1474,7 @@ Module Source Code
         required: false
         choices: ["disable", "enable"]
     '''
-    
+
     EXAMPLES = '''
       - name: DELETE Profile
         fmgr_secprof_spam:
@@ -1484,7 +1483,7 @@ Module Source Code
           password: "{{ password }}"
           name: "Ansible_Spam_Filter_Profile"
           mode: "delete"
-    
+
       - name: Create FMGR_SPAMFILTER_PROFILE
         fmgr_secprof_spam:
           host: "{{ inventory_hostname }}"
@@ -1504,45 +1503,45 @@ Module Source Code
           gmail_log: "enable"
           spam_log: "enable"
     '''
-    
+
     RETURN = """
     api_result:
       description: full API response, includes status code and message
       returned: always
       type: string
     """
-    
+
     from ansible.module_utils.basic import AnsibleModule, env_fallback
     from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-    
+
     ###############
     # START METHODS
     ###############
-    
-    
+
+
     def fmgr_spamfilter_profile_addsetdelete(fmg, paramgram):
         """
         fmgr_spamfilter_profile -- Your Description here, bruh
         """
-    
+
         mode = paramgram["mode"]
         adom = paramgram["adom"]
-    
+
         response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
         url = ""
         datagram = {}
-    
+
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/spamfilter/profile'.format(adom=adom)
             datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-    
+
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/spamfilter/profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-    
+
         # IF MODE = SET -- USE THE 'SET' API CALL MODE
         if mode == "set":
             response = fmg.set(url, datagram)
@@ -1555,10 +1554,10 @@ Module Source Code
         # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
         elif mode == "delete":
             response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     # ADDITIONAL COMMON FUNCTIONS
     def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
         """
@@ -1571,7 +1570,7 @@ Module Source Code
             except:
                 pass
             module.fail_json(msg=msg)
-    
+
         # SUBMISSION ERROR
         if len(results) > 0:
             if msg == "NULL":
@@ -1579,7 +1578,7 @@ Module Source Code
                     msg = results[1]['status']['message']
                 except:
                     msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
+
             if results[0] not in good_codes:
                 if logout_on_fail:
                     fmg.logout()
@@ -1590,8 +1589,8 @@ Module Source Code
                     module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
                                      **results[1])
         return msg
-    
-    
+
+
     # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
     # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
     def fmgr_cidr_to_netmask(cidr):
@@ -1601,8 +1600,8 @@ Module Source Code
                str((0x00ff0000 & mask) >> 16) + '.' +
                str((0x0000ff00 & mask) >> 8) + '.' +
                str((0x000000ff & mask)))
-    
-    
+
+
     # utility function: removing keys wih value of None, nothing in playbook for that key
     def fmgr_del_none(obj):
         if isinstance(obj, dict):
@@ -1610,16 +1609,16 @@ Module Source Code
                              for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
         else:
             return obj
-    
-    
+
+
     # utility function: remove keys that are need for the logic but the FMG API won't accept them
     def fmgr_prepare_dict(obj):
         list_of_elems = ["mode", "adom", "host", "username", "password"]
         if isinstance(obj, dict):
             obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
         return obj
-    
-    
+
+
     def fmgr_is_empty_dict(obj):
         return_val = False
         if isinstance(obj, dict):
@@ -1642,10 +1641,10 @@ Module Source Code
                         return return_val
             elif len(obj) == 0:
                 return_val = True
-    
+
         return return_val
-    
-    
+
+
     def fmgr_split_comma_strings_into_lists(obj):
         if isinstance(obj, dict):
             if len(obj) > 0:
@@ -1657,15 +1656,15 @@ Module Source Code
                             for item in new_items:
                                 new_list.append(item.strip())
                             obj[k] = new_list
-    
+
         return obj
-    
-    
+
+
     #############
     # END METHODS
     #############
-    
-    
+
+
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
@@ -1673,7 +1672,7 @@ Module Source Code
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-    
+
             spam_rbl_table=dict(required=False, type="str"),
             spam_mheader_table=dict(required=False, type="str"),
             spam_log_fortiguard_response=dict(required=False, type="str", choices=["disable", "enable"]),
@@ -1725,11 +1724,11 @@ Module Source Code
             smtp_tag_type=dict(required=False, type="str", choices=["subject", "header", "spaminfo"]),
             yahoo_mail=dict(required=False, type="dict"),
             yahoo_mail_log=dict(required=False, type="str", choices=["disable", "enable"]),
-    
+
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -1783,7 +1782,7 @@ Module Source Code
                 "log": module.params["yahoo_mail_log"],
             }
         }
-    
+
         list_overrides = ['gmail', 'imap', 'mapi', 'msn-hotmail', 'pop3', 'smtp', 'yahoo-mail']
         for list_variable in list_overrides:
             override_data = list()
@@ -1797,33 +1796,33 @@ Module Source Code
                     paramgram[list_variable] = override_data
             except:
                 pass
-    
+
         # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
         host = module.params["host"]
         password = module.params["password"]
         username = module.params["username"]
         if host is None or username is None or password is None:
             module.fail_json(msg="Host and username and password are required")
-    
+
         # CHECK IF LOGIN FAILED
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-    
+
         response = fmg.login()
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
-    
+
         results = fmgr_spamfilter_profile_addsetdelete(fmg, paramgram)
         if results[0] != 0:
             fmgr_logout(fmg, module, results=results, good_codes=[0])
-    
+
         fmg.logout()
-    
+
         if results is not None:
             return module.exit_json(**results[1])
         else:
             return module.exit_json(msg="No results were returned from the API call.")
-    
-    
+
+
     if __name__ == "__main__":
         main()
 

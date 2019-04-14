@@ -40,6 +40,7 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
+<<<<<<< Updated upstream
 
 ../ansible_fgt_modules/v6.0.2/webfilter/fortios_webfilter_override_example.yml
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -74,4 +75,7 @@ Playbook File Examples
 
 
 
+=======
+%%PB_FILE_EXAMPLE_TOKEN%%
+>>>>>>> Stashed changes
 

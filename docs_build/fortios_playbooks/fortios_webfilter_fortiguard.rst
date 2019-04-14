@@ -17,10 +17,17 @@ Playbook Task Examples
       tasks:
       - name: Configure FortiGuard Web Filter service.
         fortios_webfilter_fortiguard:
+<<<<<<< Updated upstream
           host:  "{{ host }}"
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+=======
+          host:  "{{  host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{  vdom }}"
+>>>>>>> Stashed changes
           webfilter_fortiguard:
             cache-mem-percent: "3"
             cache-mode: "ttl"
@@ -39,6 +46,7 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
+<<<<<<< Updated upstream
 
 ../ansible_fgt_modules/v6.0.2/webfilter/fortios_webfilter_fortiguard_example.yml
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -72,4 +80,7 @@ Playbook File Examples
 
 
 
+=======
+%%PB_FILE_EXAMPLE_TOKEN%%
+>>>>>>> Stashed changes
 

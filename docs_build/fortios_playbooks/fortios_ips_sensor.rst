@@ -17,10 +17,17 @@ Playbook Task Examples
       tasks:
       - name: Configure IPS sensor.
         fortios_ips_sensor:
+<<<<<<< Updated upstream
           host:  "{{ host }}"
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+=======
+          host:  "{{  host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{  vdom }}"
+>>>>>>> Stashed changes
           ips_sensor:
             state: "present"
             block-malicious-url: "disable"
@@ -92,6 +99,7 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
+<<<<<<< Updated upstream
 
 ../ansible_fgt_modules/v6.0.2/ips/fortios_ips_sensor_example.yml
 ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
@@ -178,4 +186,7 @@ Playbook File Examples
 
 
 
+=======
+%%PB_FILE_EXAMPLE_TOKEN%%
+>>>>>>> Stashed changes
 

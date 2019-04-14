@@ -14,7 +14,7 @@ Metadata
 **Description:** This module is able to configure a FortiGate or FortiOS by allowing the user to configure firewall feature and proxy_address category. Examples includes all options and need to be adjusted to datasources before usage. Tested with FOS v6.0.2
 
 
-**Author(s):** 
+**Author(s):**
 
 - Miguel Angel Munoz (github: @mamunozgonzalez)
 
@@ -25,7 +25,6 @@ Metadata
 **Ansible Version Added/Required:** 2.8
 
 **Dev Status:** No Data Exists. Contact DevOps Team.
-
 Parameters
 ----------
 
@@ -34,7 +33,7 @@ firewall_proxy_address
 
 - Description: Web proxy address configuration.
 
-  
+
 
 - default: None
 
@@ -43,7 +42,7 @@ host
 
 - Description: FortiOS or FortiGate ip adress.
 
-  
+
 
 - Required: True
 
@@ -52,7 +51,7 @@ https
 
 - Description: Indicates if the requests towards FortiGate must use HTTPS protocol
 
-  
+
 
 - default: False
 
@@ -61,16 +60,16 @@ password
 
 - Description: FortiOS or FortiGate password.
 
-  
 
-- default: 
+
+- default:
 
 username
 ++++++++
 
 - Description: FortiOS or FortiGate username.
 
-  
+
 
 - Required: True
 
@@ -79,7 +78,7 @@ vdom
 
 - Description: Virtual domain, among those defined previously. A vdom is a virtual instance of the FortiGate that can be configured and used as a different unit.
 
-  
+
 
 - default: root
 
@@ -100,16 +99,16 @@ Functions
         host = data['host']
         username = data['username']
         password = data['password']
-    
+
         fos.debug('on')
         if 'https' in data and not data['https']:
             fos.https('off')
         else:
             fos.https('on')
-    
+
         fos.login(host, username, password)
-    
-    
+
+
 
 - filter_firewall_proxy_address_data
 
@@ -124,14 +123,14 @@ Functions
                        'type', 'ua', 'uuid',
                        'visibility']
         dictionary = {}
-    
+
         for attribute in option_list:
             if attribute in json and json[attribute] is not None:
                 dictionary[attribute] = json[attribute]
-    
+
         return dictionary
-    
-    
+
+
 
 - firewall_proxy_address
 
@@ -147,14 +146,14 @@ Functions
                            'proxy-address',
                            data=filtered_data,
                            vdom=vdom)
-    
+
         elif firewall_proxy_address_data['state'] == "absent":
             return fos.delete('firewall',
                               'proxy-address',
                               mkey=filtered_data['name'],
                               vdom=vdom)
-    
-    
+
+
 
 - fortios_firewall
 
@@ -162,17 +161,17 @@ Functions
 
     def fortios_firewall(data, fos):
         login(data)
-    
+
         methodlist = ['firewall_proxy_address']
         for method in methodlist:
             if data[method]:
                 resp = eval(method)(data, fos)
                 break
-    
+
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
-    
-    
+
+
 
 - main
 
@@ -238,29 +237,29 @@ Functions
                     "uuid": {"required": False, "type": "str"},
                     "visibility": {"required": False, "type": "str",
                                    "choices": ["enable", "disable"]}
-    
+
                 }
             }
         }
-    
+
         module = AnsibleModule(argument_spec=fields,
                                supports_check_mode=False)
         try:
             from fortiosapi import FortiOSAPI
         except ImportError:
             module.fail_json(msg="fortiosapi module is required")
-    
+
         global fos
         fos = FortiOSAPI()
-    
+
         is_error, has_changed, result = fortios_firewall(module.params, fos)
-    
+
         if not is_error:
             module.exit_json(changed=has_changed, meta=result)
         else:
             module.fail_json(msg="Error in repo", meta=result)
-    
-    
+
+
 
 
 
@@ -288,13 +287,13 @@ Module Source Code
     #
     # the lib use python logging can get it if the following is set in your
     # Ansible config.
-    
+
     __metaclass__ = type
-    
+
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-    
+
     DOCUMENTATION = '''
     ---
     module: fortios_firewall_proxy_address
@@ -479,7 +478,7 @@ Module Source Code
                         - enable
                         - disable
     '''
-    
+
     EXAMPLES = '''
     - hosts: localhost
       vars:
@@ -529,7 +528,7 @@ Module Source Code
             uuid: "<your_own_value>"
             visibility: "enable"
     '''
-    
+
     RETURN = '''
     build:
       description: Build number of the fortigate image
@@ -586,28 +585,28 @@ Module Source Code
       returned: always
       type: string
       sample: "v5.6.3"
-    
+
     '''
-    
+
     from ansible.module_utils.basic import AnsibleModule
-    
+
     fos = None
-    
-    
+
+
     def login(data):
         host = data['host']
         username = data['username']
         password = data['password']
-    
+
         fos.debug('on')
         if 'https' in data and not data['https']:
             fos.https('off')
         else:
             fos.https('on')
-    
+
         fos.login(host, username, password)
-    
-    
+
+
     def filter_firewall_proxy_address_data(json):
         option_list = ['case-sensitivity', 'category', 'color',
                        'comment', 'header', 'header-group',
@@ -617,14 +616,14 @@ Module Source Code
                        'type', 'ua', 'uuid',
                        'visibility']
         dictionary = {}
-    
+
         for attribute in option_list:
             if attribute in json and json[attribute] is not None:
                 dictionary[attribute] = json[attribute]
-    
+
         return dictionary
-    
-    
+
+
     def firewall_proxy_address(data, fos):
         vdom = data['vdom']
         firewall_proxy_address_data = data['firewall_proxy_address']
@@ -635,27 +634,27 @@ Module Source Code
                            'proxy-address',
                            data=filtered_data,
                            vdom=vdom)
-    
+
         elif firewall_proxy_address_data['state'] == "absent":
             return fos.delete('firewall',
                               'proxy-address',
                               mkey=filtered_data['name'],
                               vdom=vdom)
-    
-    
+
+
     def fortios_firewall(data, fos):
         login(data)
-    
+
         methodlist = ['firewall_proxy_address']
         for method in methodlist:
             if data[method]:
                 resp = eval(method)(data, fos)
                 break
-    
+
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
-    
-    
+
+
     def main():
         fields = {
             "host": {"required": True, "type": "str"},
@@ -716,29 +715,29 @@ Module Source Code
                     "uuid": {"required": False, "type": "str"},
                     "visibility": {"required": False, "type": "str",
                                    "choices": ["enable", "disable"]}
-    
+
                 }
             }
         }
-    
+
         module = AnsibleModule(argument_spec=fields,
                                supports_check_mode=False)
         try:
             from fortiosapi import FortiOSAPI
         except ImportError:
             module.fail_json(msg="fortiosapi module is required")
-    
+
         global fos
         fos = FortiOSAPI()
-    
+
         is_error, has_changed, result = fortios_firewall(module.params, fos)
-    
+
         if not is_error:
             module.exit_json(changed=has_changed, meta=result)
         else:
             module.fail_json(msg="Error in repo", meta=result)
-    
-    
+
+
     if __name__ == '__main__':
         main()
 

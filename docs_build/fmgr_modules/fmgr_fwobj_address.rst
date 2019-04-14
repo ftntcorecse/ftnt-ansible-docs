@@ -16,25 +16,23 @@ Metadata
 
 **Author(s):** 
 
-- Luke Weighall - lweighall
+- Luke Weighall (github: @lweighall)
 
-- Andrew Welsh - Ghilli3
+- Andrew Welsh (github: @Ghilli3)
 
-- Jim Huber - p4r4n0y1ng
+- Jim Huber (github: @p4r4n0y1ng)
 
 
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** PR TESTS GREEN - AWAITING APPROVAL
+**Dev Status:** COMPLETED/MERGED
 
 **Owning Developer:** Luke Weighall
 
-**Pull Request Started:** 9/24/18
+.. _Link: https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_fwobj_address.py
 
-**Days in PR:** 31
-
-**Branch Link:** https://github.com/ftntcorecse/ansible/tree/fmgr_fwobj_address
+Link_
 
 Parameters
 ----------
@@ -46,12 +44,18 @@ adom
 
   
 
+- Required: False
+
+- default: root
+
 allow_routing
 +++++++++++++
 
 - Description: Enable/disable use of this address in the static route configuration.
 
   
+
+- default: disable
 
 - choices: ['enable', 'disable']
 
@@ -77,6 +81,8 @@ color
   Takes integers 1-32
 
   
+
+- default: 22
 
 comment
 +++++++
@@ -119,15 +125,6 @@ group_name
 - Description: Address group name. If this is defined in playbook task, all other options are ignored.
 
   
-
-host
-++++
-
-- Description: The FortiManager address.
-
-  
-
-- Required: True
 
 ipv4
 ++++
@@ -215,15 +212,6 @@ obj_id
 
   
 
-password
-++++++++
-
-- Description: The password associated with the username account.
-
-  
-
-- Required: True
-
 start_ip
 ++++++++
 
@@ -231,21 +219,14 @@ start_ip
 
   
 
-username
-++++++++
-
-- Description: The username used to authenticate with the FortiManager.
-
-  
-
-- Required: True
-
 visibility
 ++++++++++
 
 - Description: Enable/disable address visibility.
 
   
+
+- default: enable
 
 - choices: ['enable', 'disable']
 
@@ -272,35 +253,18 @@ Functions
 
 
 
-- fmgr_fwobj_tags
-
- .. code-block:: python
-
-    def fmgr_fwobj_tags(fmg, adom, tag):
-        """
-        This method sets tag objects so they can be used below
-        """
-        # GET RID OF ANY WHITESPACE
-        tag = tag.strip()
-    
-        datagram = {
-            "name": tag
-        }
-    
-        url = '/pm/config/adom/{adom}/obj/system/object-tag'.format(adom=adom)
-        response = fmg.set(url, datagram)
-    
-        return response
-    
-    
-
 - fmgr_fwobj_ipv4
 
  .. code-block:: python
 
-    def fmgr_fwobj_ipv4(fmg, paramgram):
+    def fmgr_fwobj_ipv4(fmgr, paramgram):
         """
-        This method sets a ipv4 address object
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if paramgram["mode"] in ['set', 'add']:
@@ -319,14 +283,6 @@ Functions
                 "visibility": paramgram["allow-routing"],
                 "type": paramgram["ipv4"],
             }
-    
-            # # PROCESS TAGS
-            # if paramgram["tags"] is not None:
-            #     tag_list = []
-            #     for tag in paramgram["tags"].split(","):
-            #         tag = tag.strip()
-            #         tag_list.append(tag)
-            #     datagram["tags"] = tag_list
     
             # SET THE CORRECT URL BASED ON THE TYPE (WE'RE DOING GROUPS IN THIS METHOD, TOO)
             if datagram["type"] == "group":
@@ -350,7 +306,7 @@ Functions
                 if not re.match(r'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}', subnet[1]):
                     # IF THE SUBNET PARAMETER INPUT DIDN'T LOOK LIKE xxx.xxx.xxx.xxx TO REGEX...
                     # ... RUN IT THROUGH THE CIDR_TO_NETMASK() FUNCTION
-                    mask = fmgr_cidr_to_netmask(subnet[1])
+                    mask = fmgr._tools.cidr_to_netmask(subnet[1])
                     # AND THEN UPDATE THE SUBNET LIST OBJECT
                     subnet[1] = mask
     
@@ -381,7 +337,7 @@ Functions
                     subnet.append(subnets)
     
                 if not re.match(r'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}', subnet[1]):
-                    mask = fmgr_cidr_to_netmask(subnet[1])
+                    mask = fmgr._tools.cidr_to_netmask(subnet[1])
                     subnet[1] = mask
     
                 datagram["wildcard"] = subnet
@@ -411,20 +367,12 @@ Functions
                     "visibility": paramgram["visibility"]
                 }
     
-                # PROCESS TAGS
-                # if paramgram["tags"] is not None:
-                #     tag_list = []
-                #     for tag in paramgram["tags"].split(","):
-                #         tag = tag.strip()
-                #         tag_list.append(tag)
-                #     datagram["tags"] = tag_list
-    
                 members = []
                 group_members = paramgram["group_members"].replace(" ", "")
                 try:
                     for member in group_members.split(","):
                         members.append(member)
-                except:
+                except Exception:
                     pass
     
                 datagram["member"] = members
@@ -442,18 +390,8 @@ Functions
                 url = '/pm/config/adom/{adom}/obj/firewall/address/{name}'.format(adom=paramgram["adom"],
                                                                                   name=paramgram["name"])
     
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if paramgram["mode"] == "set":
-            response = fmg.set(url, datagram)
-            return response
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        if paramgram["mode"] == "add":
-            response = fmg.add(url, datagram)
-            return response
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        if paramgram["mode"] == "delete":
-            response = fmg.delete(url, datagram)
-            return response
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
+        return response
     
     
 
@@ -461,9 +399,14 @@ Functions
 
  .. code-block:: python
 
-    def fmgr_fwobj_ipv6(fmg, paramgram):
+    def fmgr_fwobj_ipv6(fmgr, paramgram):
         """
-        This method sets a ipv6 address object
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if paramgram["mode"] in ['set', 'add']:
@@ -478,14 +421,6 @@ Functions
                 "visibility": paramgram["visibility"],
                 "type": paramgram["ipv6"]
             }
-    
-            # PROCESS TAGS
-            # if paramgram["tags"] is not None:
-            #     tag_list = []
-            #     for tag in paramgram["tags"].split(","):
-            #         tag = tag.strip()
-            #         tag_list.append(tag)
-            #     datagram["tags"] = tag_list
     
             # SET THE CORRECT URL BASED ON THE TYPE (WE'RE DOING GROUPS IN THIS METHOD, TOO)
             if datagram["type"] == "group":
@@ -519,20 +454,12 @@ Functions
                     "visibility": paramgram["visibility"]
                 }
     
-                # PROCESS TAGS
-                # if paramgram["tags"] is not None:
-                #     tag_list = []
-                #     for tag in paramgram["tags"].split(","):
-                #         tag = tag.strip()
-                #         tag_list.append(tag)
-                #     datagram["tags"] = tag_list
-    
                 members = []
                 group_members = paramgram["group_members"].replace(" ", "")
                 try:
                     for member in group_members.split(","):
                         members.append(member)
-                except:
+                except Exception:
                     pass
     
                 datagram["member"] = members
@@ -550,18 +477,8 @@ Functions
                 url = '/pm/config/adom/{adom}/obj/firewall/address6/{name}'.format(adom=paramgram["adom"],
                                                                                    name=paramgram["name"])
     
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if paramgram["mode"] == "set":
-            response = fmg.set(url, datagram)
-            return response
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        if paramgram["mode"] == "add":
-            response = fmg.add(url, datagram)
-            return response
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        if paramgram["mode"] == "delete":
-            response = fmg.delete(url, datagram)
-            return response
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
+        return response
     
     
 
@@ -569,9 +486,14 @@ Functions
 
  .. code-block:: python
 
-    def fmgr_fwobj_multicast(fmg, paramgram):
+    def fmgr_fwobj_multicast(fmgr, paramgram):
         """
-        This method sets a multicast address object (ipv4 only as of this version).
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if paramgram["mode"] in ['set', 'add']:
@@ -586,14 +508,6 @@ Functions
                 "type": paramgram["multicast"],
                 "visibility": paramgram["visibility"],
             }
-    
-            # # PROCESS TAGS
-            # if paramgram["tags"] is not None:
-            #     tag_list = []
-            #     for tag in paramgram["tags"].split(","):
-            #         tag = tag.strip()
-            #         tag_list.append(tag)
-            #     datagram["tags"] = tag_list
     
             # SET THE CORRECT URL
             url = '/pm/config/adom/{adom}/obj/firewall/multicast-address'.format(adom=paramgram["adom"])
@@ -620,7 +534,7 @@ Functions
                 if not re.match(r'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}', subnet[1]):
                     # IF THE SUBNET PARAMETER INPUT DIDN'T LOOK LIKE 255.255.255.255 TO REGEX...
                     # ... RUN IT THROUGH THE fmgr_cidr_to_netmask() FUNCTION
-                    mask = fmgr_cidr_to_netmask(subnet[1])
+                    mask = fmgr._tools.cidr_to_netmask(subnet[1])
                     # AND THEN UPDATE THE SUBNET LIST OBJECT
                     subnet[1] = mask
     
@@ -636,78 +550,8 @@ Functions
             url = '/pm/config/adom/{adom}/obj/firewall/multicast-address/{name}'.format(adom=paramgram["adom"],
                                                                                         name=paramgram["name"])
     
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if paramgram["mode"] == "set":
-            response = fmg.set(url, datagram)
-            return response
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        if paramgram["mode"] == "add":
-            response = fmg.add(url, datagram)
-            return response
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        if paramgram["mode"] == "delete":
-            response = fmg.delete(url, datagram)
-            return response
-    
-    
-    # ADDITIONAL COMMON FUNCTIONS
-    # FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
-
-- fmgr_logout
-
- .. code-block:: python
-
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-    
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except:
-                pass
-            module.fail_json(msg=msg)
-    
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
-                if results[0] not in good_codes:
-                    if logout_on_fail:
-                        fmg.logout()
-                        module.fail_json(msg=msg, **results[1])
-                    else:
-                        return_msg = msg + " -- LOGOUT ON FAIL IS OFF, MOVING ON"
-                        return return_msg
-                else:
-                    if logout_on_success:
-                        fmg.logout()
-                        module.exit_json(msg=msg, **results[1])
-                    else:
-                        return_msg = msg + " -- LOGOUT ON SUCCESS IS OFF, MOVING ON TO REST OF CODE"
-                        return return_msg
-    
-    
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-
-- fmgr_cidr_to_netmask
-
- .. code-block:: python
-
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return(str((0xff000000 & mask) >> 24) + '.' +
-               str((0x00ff0000 & mask) >> 16) + '.' +
-               str((0x0000ff00 & mask) >> 8) + '.' +
-               str((0x000000ff & mask)))
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
+        return response
     
     
 
@@ -717,16 +561,13 @@ Functions
 
     def main():
         argument_spec = dict(
-            adom=dict(required=False, type="str"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True),
+            adom=dict(required=False, type="str", default="root"),
             mode=dict(choices=["add", "set", "delete"], type="str", default="add"),
     
-            allow_routing=dict(required=False, type="str", choices=['enable', 'disable']),
+            allow_routing=dict(required=False, type="str", choices=['enable', 'disable'], default="disable"),
             associated_interface=dict(required=False, type="str"),
             cache_ttl=dict(required=False, type="str"),
-            color=dict(required=False, type="str"),
+            color=dict(required=False, type="str", default=22),
             comment=dict(required=False, type="str"),
             country=dict(required=False, type="str"),
             fqdn=dict(required=False, type="str"),
@@ -735,7 +576,7 @@ Functions
             end_ip=dict(required=False, type="str"),
             ipv4=dict(required=False, type="str", choices=['ipmask', 'iprange', 'fqdn', 'wildcard',
                                                            'geography', 'wildcard-fqdn', 'group']),
-            visibility=dict(required=False, type="str", choices=['enable', 'disable']),
+            visibility=dict(required=False, type="str", choices=['enable', 'disable'], default="enable"),
             wildcard=dict(required=False, type="str"),
             wildcard_fqdn=dict(required=False, type="str"),
             ipv6=dict(required=False, type="str", choices=['ip', 'iprange', 'group']),
@@ -748,84 +589,63 @@ Functions
     
         )
     
-        module = AnsibleModule(argument_spec, supports_check_mode=False, )
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False,
+                               mutually_exclusive=[
+                                   ['ipv4', 'ipv6'],
+                                   ['ipv4', 'multicast'],
+                                   ['ipv6', 'multicast']
+                               ])
+        paramgram = {
+            "adom": module.params["adom"],
+            "allow-routing": module.params["allow_routing"],
+            "associated-interface": module.params["associated_interface"],
+            "cache-ttl": module.params["cache_ttl"],
+            "color": module.params["color"],
+            "comment": module.params["comment"],
+            "country": module.params["country"],
+            "end-ip": module.params["end_ip"],
+            "fqdn": module.params["fqdn"],
+            "name": module.params["name"],
+            "start-ip": module.params["start_ip"],
+            "visibility": module.params["visibility"],
+            "wildcard": module.params["wildcard"],
+            "wildcard-fqdn": module.params["wildcard_fqdn"],
+            "ipv6": module.params["ipv6"],
+            "ipv4": module.params["ipv4"],
+            "group_members": module.params["group_members"],
+            "group_name": module.params["group_name"],
+            "ipv4addr": module.params["ipv4addr"],
+            "ipv6addr": module.params["ipv6addr"],
+            "multicast": module.params["multicast"],
+            "mode": module.params["mode"],
+            "obj-id": module.params["obj_id"],
+        }
     
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None:
-            module.fail_json(msg="Host and username are required")
-    
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-    
-        try:
-            response = fmg.login()
-            if response[1]['status']['code'] != 0:
-                module.fail_json(msg="Connection to FortiManager Failed")
-        except:
-            module.fail_json(msg="Connection to FortiManager Failed")
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr._tools = FMGRCommon()
         else:
-            # START SESSION LOGIC
-            # MODULE PARAMGRAM
-            paramgram = {
-                "adom": module.params["adom"],
-                "allow-routing": module.params["allow_routing"],
-                "associated-interface": module.params["associated_interface"],
-                "cache-ttl": module.params["cache_ttl"],
-                "color": module.params["color"],
-                "comment": module.params["comment"],
-                "country": module.params["country"],
-                "end-ip": module.params["end_ip"],
-                "fqdn": module.params["fqdn"],
-                "name": module.params["name"],
-                "start-ip": module.params["start_ip"],
-                "visibility": module.params["visibility"],
-                "wildcard": module.params["wildcard"],
-                "wildcard-fqdn": module.params["wildcard_fqdn"],
-                "ipv6": module.params["ipv6"],
-                "ipv4": module.params["ipv4"],
-                "group_members": module.params["group_members"],
-                "group_name": module.params["group_name"],
-                "ipv4addr": module.params["ipv4addr"],
-                "ipv6addr": module.params["ipv6addr"],
-                "multicast": module.params["multicast"],
-                "mode": module.params["mode"],
-                "obj-id": module.params["obj_id"],
-            }
+            module.fail_json(**FAIL_SOCKET_MSG)
     
-            if paramgram["adom"] is None:
-                paramgram["adom"] = "root"
-            if paramgram["mode"] is None:
-                paramgram["mode"] = "add"
-            if paramgram["color"] is None:
-                paramgram["color"] = 22
-            if paramgram["comment"] is None:
-                paramgram["comment"] = "Created by Ansible"
-            if paramgram["allow-routing"] is None:
-                paramgram["allow-routing"] = "disable"
-            if paramgram["visibility"] is None:
-                paramgram["visibility"] = "enable"
+        results = DEFAULT_RESULT_OBJ
+        try:
+            if paramgram["ipv4"]:
+                results = fmgr_fwobj_ipv4(fmgr, paramgram)
     
-            if paramgram["ipv4"] is not None and paramgram["ipv6"] is None and paramgram["multicast"] is None:
-                # PROCESS IPv4
-                results = fmgr_fwobj_ipv4(fmg, paramgram)
-                fmgr_logout(fmg, module, results=results, good_codes=[0, -2, -3])
+            elif paramgram["ipv6"]:
+                results = fmgr_fwobj_ipv6(fmgr, paramgram)
     
-            if paramgram["ipv4"] is None and paramgram["ipv6"] is not None and paramgram["multicast"] is None:
-                # PROCESS IPv6
-                results = fmgr_fwobj_ipv6(fmg, paramgram)
-                if results[0] not in [0, -2, -3]:
-                    module.fail_json(msg="Failed to process IPv6 Object", **results[1])
+            elif paramgram["multicast"]:
+                results = fmgr_fwobj_multicast(fmgr, paramgram)
     
-            if paramgram["ipv4"] is None and paramgram["ipv6"] is None and paramgram["multicast"] is not None:
-                # PROCESS MULTICAST
-                results = fmgr_fwobj_multicast(fmg, paramgram)
-                if results[0] not in [0, -2, -3]:
-                    module.fail_json(msg="Failed to process Multicast Object", **results[1])
+            fmgr.govern_response(module=module, results=results,
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
     
-        fmg.logout()
+        except Exception as err:
+            raise FMGBaseException(err)
     
         if results is not None:
             return module.exit_json(**results[1])
@@ -873,36 +693,28 @@ Module Source Code
     ---
     module: fmgr_fwobj_address
     version_added: "2.8"
+    notes:
+        - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).
     author:
-        - Luke Weighall - lweighall
-        - Andrew Welsh - Ghilli3
-        - Jim Huber - p4r4n0y1ng
+        - Luke Weighall (@lweighall)
+        - Andrew Welsh (@Ghilli3)
+        - Jim Huber (@p4r4n0y1ng)
     short_description: Allows the management of firewall objects in FortiManager
     description:
       -  Allows for the management of IPv4, IPv6, and multicast address objects within FortiManager.
     
     options:
-      host:
-        description:
-          - The FortiManager address.
-        required: true
-      username:
-        description:
-          - The username used to authenticate with the FortiManager.
-        required: true
-      password:
-        description:
-          - The password associated with the username account.
-        required: true
-    
       adom:
         description:
           - The ADOM the configuration should belong to.
+        required: false
+        default: root
     
       allow_routing:
         description:
           - Enable/disable use of this address in the static route configuration.
         choices: ['enable', 'disable']
+        default: 'disable'
     
       associated_interface:
         description:
@@ -916,6 +728,7 @@ Module Source Code
         description:
           - Color of the object in FortiManager GUI.
           - Takes integers 1-32
+        default: 22
     
       comment:
         description:
@@ -996,6 +809,7 @@ Module Source Code
         description:
           - Enable/disable address visibility.
         choices: ['enable', 'disable']
+        default: 'enable'
     
       wildcard:
         description:
@@ -1009,9 +823,6 @@ Module Source Code
     EXAMPLES = '''
     - name: ADD IPv4 IP ADDRESS OBJECT
       fmgr_fwobj_address:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         ipv4: "ipmask"
         ipv4addr: "10.7.220.30/32"
         name: "ansible_v4Obj"
@@ -1020,9 +831,6 @@ Module Source Code
     
     - name: ADD IPv4 IP ADDRESS OBJECT MORE OPTIONS
       fmgr_fwobj_address:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         ipv4: "ipmask"
         ipv4addr: "10.7.220.34/32"
         name: "ansible_v4Obj_MORE"
@@ -1035,9 +843,6 @@ Module Source Code
     
     - name: ADD IPv4 IP ADDRESS SUBNET OBJECT
       fmgr_fwobj_address:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         ipv4: "ipmask"
         ipv4addr: "10.7.220.0/255.255.255.128"
         name: "ansible_subnet"
@@ -1046,9 +851,6 @@ Module Source Code
     
     - name: ADD IPv4 IP ADDRESS RANGE OBJECT
       fmgr_fwobj_address:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         ipv4: "iprange"
         start_ip: "10.7.220.1"
         end_ip: "10.7.220.125"
@@ -1057,9 +859,6 @@ Module Source Code
     
     - name: ADD IPv4 IP ADDRESS WILDCARD OBJECT
       fmgr_fwobj_address:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         ipv4: "wildcard"
         wildcard: "10.7.220.30/255.255.255.255"
         name: "ansible_wildcard"
@@ -1067,9 +866,6 @@ Module Source Code
     
     - name: ADD IPv4 IP ADDRESS WILDCARD FQDN OBJECT
       fmgr_fwobj_address:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         ipv4: "wildcard-fqdn"
         wildcard_fqdn: "*.myds.com"
         name: "Synology myds DDNS service"
@@ -1077,9 +873,6 @@ Module Source Code
     
     - name: ADD IPv4 IP ADDRESS FQDN OBJECT
       fmgr_fwobj_address:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         ipv4: "fqdn"
         fqdn: "ansible.com"
         name: "ansible_fqdn"
@@ -1087,9 +880,6 @@ Module Source Code
     
     - name: ADD IPv4 IP ADDRESS GEO OBJECT
       fmgr_fwobj_address:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         ipv4: "geography"
         country: "usa"
         name: "ansible_geo"
@@ -1097,9 +887,6 @@ Module Source Code
     
     - name: ADD IPv6 ADDRESS
       fmgr_fwobj_address:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         ipv6: "ip"
         ipv6addr: "2001:0db8:85a3:0000:0000:8a2e:0370:7334"
         name: "ansible_v6Obj"
@@ -1107,9 +894,6 @@ Module Source Code
     
     - name: ADD IPv6 ADDRESS RANGE
       fmgr_fwobj_address:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         ipv6: "iprange"
         start_ip: "2001:0db8:85a3:0000:0000:8a2e:0370:7334"
         end_ip: "2001:0db8:85a3:0000:0000:8a2e:0370:7446"
@@ -1118,27 +902,18 @@ Module Source Code
     
     - name: ADD IPv4 IP ADDRESS GROUP
       fmgr_fwobj_address:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         ipv4: "group"
         group_name: "ansibleIPv4Group"
         group_members: "ansible_fqdn, ansible_wildcard, ansible_range"
     
     - name: ADD IPv6 IP ADDRESS GROUP
       fmgr_fwobj_address:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         ipv6: "group"
         group_name: "ansibleIPv6Group"
         group_members: "ansible_v6Obj, ansible_v6range"
     
     - name: ADD MULTICAST RANGE
       fmgr_fwobj_address:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         multicast: "multicastrange"
         start_ip: "224.0.0.251"
         end_ip: "224.0.0.251"
@@ -1147,9 +922,6 @@ Module Source Code
     
     - name: ADD BROADCAST SUBNET
       fmgr_fwobj_address:
-        host: "{{ inventory_hostname }}"
-        username: "{{ username }}"
-        password: "{{ password }}"
         multicast: "broadcastmask"
         ipv4addr: "10.7.220.0/24"
         name: "ansible_broadcastSubnet"
@@ -1160,43 +932,28 @@ Module Source Code
     api_result:
       description: full API response, includes status code and message
       returned: always
-      type: string
+      type: str
     """
     
     
     import re
     from ansible.module_utils.basic import AnsibleModule, env_fallback
-    from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
+    from ansible.module_utils.connection import Connection
+    from ansible.module_utils.network.fortimanager.fortimanager import FortiManagerHandler
+    from ansible.module_utils.network.fortimanager.common import FMGBaseException
+    from ansible.module_utils.network.fortimanager.common import FMGRCommon
+    from ansible.module_utils.network.fortimanager.common import DEFAULT_RESULT_OBJ
+    from ansible.module_utils.network.fortimanager.common import FAIL_SOCKET_MSG
     
     
-    # check for pyFMG lib
-    try:
-        from pyFMG.fortimgr import FortiManager
-        HAS_PYFMGR = True
-    except ImportError:
-        HAS_PYFMGR = False
-    
-    
-    def fmgr_fwobj_tags(fmg, adom, tag):
+    def fmgr_fwobj_ipv4(fmgr, paramgram):
         """
-        This method sets tag objects so they can be used below
-        """
-        # GET RID OF ANY WHITESPACE
-        tag = tag.strip()
-    
-        datagram = {
-            "name": tag
-        }
-    
-        url = '/pm/config/adom/{adom}/obj/system/object-tag'.format(adom=adom)
-        response = fmg.set(url, datagram)
-    
-        return response
-    
-    
-    def fmgr_fwobj_ipv4(fmg, paramgram):
-        """
-        This method sets a ipv4 address object
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if paramgram["mode"] in ['set', 'add']:
@@ -1215,14 +972,6 @@ Module Source Code
                 "visibility": paramgram["allow-routing"],
                 "type": paramgram["ipv4"],
             }
-    
-            # # PROCESS TAGS
-            # if paramgram["tags"] is not None:
-            #     tag_list = []
-            #     for tag in paramgram["tags"].split(","):
-            #         tag = tag.strip()
-            #         tag_list.append(tag)
-            #     datagram["tags"] = tag_list
     
             # SET THE CORRECT URL BASED ON THE TYPE (WE'RE DOING GROUPS IN THIS METHOD, TOO)
             if datagram["type"] == "group":
@@ -1246,7 +995,7 @@ Module Source Code
                 if not re.match(r'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}', subnet[1]):
                     # IF THE SUBNET PARAMETER INPUT DIDN'T LOOK LIKE xxx.xxx.xxx.xxx TO REGEX...
                     # ... RUN IT THROUGH THE CIDR_TO_NETMASK() FUNCTION
-                    mask = fmgr_cidr_to_netmask(subnet[1])
+                    mask = fmgr._tools.cidr_to_netmask(subnet[1])
                     # AND THEN UPDATE THE SUBNET LIST OBJECT
                     subnet[1] = mask
     
@@ -1277,7 +1026,7 @@ Module Source Code
                     subnet.append(subnets)
     
                 if not re.match(r'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}', subnet[1]):
-                    mask = fmgr_cidr_to_netmask(subnet[1])
+                    mask = fmgr._tools.cidr_to_netmask(subnet[1])
                     subnet[1] = mask
     
                 datagram["wildcard"] = subnet
@@ -1307,20 +1056,12 @@ Module Source Code
                     "visibility": paramgram["visibility"]
                 }
     
-                # PROCESS TAGS
-                # if paramgram["tags"] is not None:
-                #     tag_list = []
-                #     for tag in paramgram["tags"].split(","):
-                #         tag = tag.strip()
-                #         tag_list.append(tag)
-                #     datagram["tags"] = tag_list
-    
                 members = []
                 group_members = paramgram["group_members"].replace(" ", "")
                 try:
                     for member in group_members.split(","):
                         members.append(member)
-                except:
+                except Exception:
                     pass
     
                 datagram["member"] = members
@@ -1338,23 +1079,18 @@ Module Source Code
                 url = '/pm/config/adom/{adom}/obj/firewall/address/{name}'.format(adom=paramgram["adom"],
                                                                                   name=paramgram["name"])
     
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if paramgram["mode"] == "set":
-            response = fmg.set(url, datagram)
-            return response
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        if paramgram["mode"] == "add":
-            response = fmg.add(url, datagram)
-            return response
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        if paramgram["mode"] == "delete":
-            response = fmg.delete(url, datagram)
-            return response
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
+        return response
     
     
-    def fmgr_fwobj_ipv6(fmg, paramgram):
+    def fmgr_fwobj_ipv6(fmgr, paramgram):
         """
-        This method sets a ipv6 address object
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if paramgram["mode"] in ['set', 'add']:
@@ -1369,14 +1105,6 @@ Module Source Code
                 "visibility": paramgram["visibility"],
                 "type": paramgram["ipv6"]
             }
-    
-            # PROCESS TAGS
-            # if paramgram["tags"] is not None:
-            #     tag_list = []
-            #     for tag in paramgram["tags"].split(","):
-            #         tag = tag.strip()
-            #         tag_list.append(tag)
-            #     datagram["tags"] = tag_list
     
             # SET THE CORRECT URL BASED ON THE TYPE (WE'RE DOING GROUPS IN THIS METHOD, TOO)
             if datagram["type"] == "group":
@@ -1410,20 +1138,12 @@ Module Source Code
                     "visibility": paramgram["visibility"]
                 }
     
-                # PROCESS TAGS
-                # if paramgram["tags"] is not None:
-                #     tag_list = []
-                #     for tag in paramgram["tags"].split(","):
-                #         tag = tag.strip()
-                #         tag_list.append(tag)
-                #     datagram["tags"] = tag_list
-    
                 members = []
                 group_members = paramgram["group_members"].replace(" ", "")
                 try:
                     for member in group_members.split(","):
                         members.append(member)
-                except:
+                except Exception:
                     pass
     
                 datagram["member"] = members
@@ -1441,23 +1161,18 @@ Module Source Code
                 url = '/pm/config/adom/{adom}/obj/firewall/address6/{name}'.format(adom=paramgram["adom"],
                                                                                    name=paramgram["name"])
     
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if paramgram["mode"] == "set":
-            response = fmg.set(url, datagram)
-            return response
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        if paramgram["mode"] == "add":
-            response = fmg.add(url, datagram)
-            return response
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        if paramgram["mode"] == "delete":
-            response = fmg.delete(url, datagram)
-            return response
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
+        return response
     
     
-    def fmgr_fwobj_multicast(fmg, paramgram):
+    def fmgr_fwobj_multicast(fmgr, paramgram):
         """
-        This method sets a multicast address object (ipv4 only as of this version).
+        :param fmgr: The fmgr object instance from fortimanager.py
+        :type fmgr: class object
+        :param paramgram: The formatted dictionary of options to process
+        :type paramgram: dict
+        :return: The response from the FortiManager
+        :rtype: dict
         """
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if paramgram["mode"] in ['set', 'add']:
@@ -1472,14 +1187,6 @@ Module Source Code
                 "type": paramgram["multicast"],
                 "visibility": paramgram["visibility"],
             }
-    
-            # # PROCESS TAGS
-            # if paramgram["tags"] is not None:
-            #     tag_list = []
-            #     for tag in paramgram["tags"].split(","):
-            #         tag = tag.strip()
-            #         tag_list.append(tag)
-            #     datagram["tags"] = tag_list
     
             # SET THE CORRECT URL
             url = '/pm/config/adom/{adom}/obj/firewall/multicast-address'.format(adom=paramgram["adom"])
@@ -1506,7 +1213,7 @@ Module Source Code
                 if not re.match(r'\d{1,3}.\d{1,3}.\d{1,3}.\d{1,3}', subnet[1]):
                     # IF THE SUBNET PARAMETER INPUT DIDN'T LOOK LIKE 255.255.255.255 TO REGEX...
                     # ... RUN IT THROUGH THE fmgr_cidr_to_netmask() FUNCTION
-                    mask = fmgr_cidr_to_netmask(subnet[1])
+                    mask = fmgr._tools.cidr_to_netmask(subnet[1])
                     # AND THEN UPDATE THE SUBNET LIST OBJECT
                     subnet[1] = mask
     
@@ -1522,82 +1229,19 @@ Module Source Code
             url = '/pm/config/adom/{adom}/obj/firewall/multicast-address/{name}'.format(adom=paramgram["adom"],
                                                                                         name=paramgram["name"])
     
-        # IF MODE = SET -- USE THE 'SET' API CALL MODE
-        if paramgram["mode"] == "set":
-            response = fmg.set(url, datagram)
-            return response
-        # IF MODE = ADD  -- USE THE 'ADD' API CALL MODE
-        if paramgram["mode"] == "add":
-            response = fmg.add(url, datagram)
-            return response
-        # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
-        if paramgram["mode"] == "delete":
-            response = fmg.delete(url, datagram)
-            return response
-    
-    
-    # ADDITIONAL COMMON FUNCTIONS
-    # FUNCTION/METHOD FOR LOGGING OUT AND ANALYZING ERROR CODES
-    def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
-        """
-        THIS METHOD CONTROLS THE LOGOUT AND ERROR REPORTING AFTER AN METHOD OR FUNCTION RUNS
-        """
-    
-        # VALIDATION ERROR (NO RESULTS, JUST AN EXIT)
-        if msg != "NULL" and len(results) == 0:
-            try:
-                fmg.logout()
-            except:
-                pass
-            module.fail_json(msg=msg)
-    
-        # SUBMISSION ERROR
-        if len(results) > 0:
-            if msg == "NULL":
-                try:
-                    msg = results[1]['status']['message']
-                except:
-                    msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
-                if results[0] not in good_codes:
-                    if logout_on_fail:
-                        fmg.logout()
-                        module.fail_json(msg=msg, **results[1])
-                    else:
-                        return_msg = msg + " -- LOGOUT ON FAIL IS OFF, MOVING ON"
-                        return return_msg
-                else:
-                    if logout_on_success:
-                        fmg.logout()
-                        module.exit_json(msg=msg, **results[1])
-                    else:
-                        return_msg = msg + " -- LOGOUT ON SUCCESS IS OFF, MOVING ON TO REST OF CODE"
-                        return return_msg
-    
-    
-    # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
-    # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
-    def fmgr_cidr_to_netmask(cidr):
-        cidr = int(cidr)
-        mask = (0xffffffff >> (32 - cidr)) << (32 - cidr)
-        return(str((0xff000000 & mask) >> 24) + '.' +
-               str((0x00ff0000 & mask) >> 16) + '.' +
-               str((0x0000ff00 & mask) >> 8) + '.' +
-               str((0x000000ff & mask)))
+        response = fmgr.process_request(url, datagram, paramgram["mode"])
+        return response
     
     
     def main():
         argument_spec = dict(
-            adom=dict(required=False, type="str"),
-            host=dict(required=True, type="str"),
-            password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
-            username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True),
+            adom=dict(required=False, type="str", default="root"),
             mode=dict(choices=["add", "set", "delete"], type="str", default="add"),
     
-            allow_routing=dict(required=False, type="str", choices=['enable', 'disable']),
+            allow_routing=dict(required=False, type="str", choices=['enable', 'disable'], default="disable"),
             associated_interface=dict(required=False, type="str"),
             cache_ttl=dict(required=False, type="str"),
-            color=dict(required=False, type="str"),
+            color=dict(required=False, type="str", default=22),
             comment=dict(required=False, type="str"),
             country=dict(required=False, type="str"),
             fqdn=dict(required=False, type="str"),
@@ -1606,7 +1250,7 @@ Module Source Code
             end_ip=dict(required=False, type="str"),
             ipv4=dict(required=False, type="str", choices=['ipmask', 'iprange', 'fqdn', 'wildcard',
                                                            'geography', 'wildcard-fqdn', 'group']),
-            visibility=dict(required=False, type="str", choices=['enable', 'disable']),
+            visibility=dict(required=False, type="str", choices=['enable', 'disable'], default="enable"),
             wildcard=dict(required=False, type="str"),
             wildcard_fqdn=dict(required=False, type="str"),
             ipv6=dict(required=False, type="str", choices=['ip', 'iprange', 'group']),
@@ -1619,84 +1263,63 @@ Module Source Code
     
         )
     
-        module = AnsibleModule(argument_spec, supports_check_mode=False, )
+        module = AnsibleModule(argument_spec=argument_spec, supports_check_mode=False,
+                               mutually_exclusive=[
+                                   ['ipv4', 'ipv6'],
+                                   ['ipv4', 'multicast'],
+                                   ['ipv6', 'multicast']
+                               ])
+        paramgram = {
+            "adom": module.params["adom"],
+            "allow-routing": module.params["allow_routing"],
+            "associated-interface": module.params["associated_interface"],
+            "cache-ttl": module.params["cache_ttl"],
+            "color": module.params["color"],
+            "comment": module.params["comment"],
+            "country": module.params["country"],
+            "end-ip": module.params["end_ip"],
+            "fqdn": module.params["fqdn"],
+            "name": module.params["name"],
+            "start-ip": module.params["start_ip"],
+            "visibility": module.params["visibility"],
+            "wildcard": module.params["wildcard"],
+            "wildcard-fqdn": module.params["wildcard_fqdn"],
+            "ipv6": module.params["ipv6"],
+            "ipv4": module.params["ipv4"],
+            "group_members": module.params["group_members"],
+            "group_name": module.params["group_name"],
+            "ipv4addr": module.params["ipv4addr"],
+            "ipv6addr": module.params["ipv6addr"],
+            "multicast": module.params["multicast"],
+            "mode": module.params["mode"],
+            "obj-id": module.params["obj_id"],
+        }
     
-        # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
-        host = module.params["host"]
-        password = module.params["password"]
-        username = module.params["username"]
-        if host is None or username is None:
-            module.fail_json(msg="Host and username are required")
-    
-        # CHECK IF LOGIN FAILED
-        fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-    
-        try:
-            response = fmg.login()
-            if response[1]['status']['code'] != 0:
-                module.fail_json(msg="Connection to FortiManager Failed")
-        except:
-            module.fail_json(msg="Connection to FortiManager Failed")
+        module.paramgram = paramgram
+        fmgr = None
+        if module._socket_path:
+            connection = Connection(module._socket_path)
+            fmgr = FortiManagerHandler(connection, module)
+            fmgr._tools = FMGRCommon()
         else:
-            # START SESSION LOGIC
-            # MODULE PARAMGRAM
-            paramgram = {
-                "adom": module.params["adom"],
-                "allow-routing": module.params["allow_routing"],
-                "associated-interface": module.params["associated_interface"],
-                "cache-ttl": module.params["cache_ttl"],
-                "color": module.params["color"],
-                "comment": module.params["comment"],
-                "country": module.params["country"],
-                "end-ip": module.params["end_ip"],
-                "fqdn": module.params["fqdn"],
-                "name": module.params["name"],
-                "start-ip": module.params["start_ip"],
-                "visibility": module.params["visibility"],
-                "wildcard": module.params["wildcard"],
-                "wildcard-fqdn": module.params["wildcard_fqdn"],
-                "ipv6": module.params["ipv6"],
-                "ipv4": module.params["ipv4"],
-                "group_members": module.params["group_members"],
-                "group_name": module.params["group_name"],
-                "ipv4addr": module.params["ipv4addr"],
-                "ipv6addr": module.params["ipv6addr"],
-                "multicast": module.params["multicast"],
-                "mode": module.params["mode"],
-                "obj-id": module.params["obj_id"],
-            }
+            module.fail_json(**FAIL_SOCKET_MSG)
     
-            if paramgram["adom"] is None:
-                paramgram["adom"] = "root"
-            if paramgram["mode"] is None:
-                paramgram["mode"] = "add"
-            if paramgram["color"] is None:
-                paramgram["color"] = 22
-            if paramgram["comment"] is None:
-                paramgram["comment"] = "Created by Ansible"
-            if paramgram["allow-routing"] is None:
-                paramgram["allow-routing"] = "disable"
-            if paramgram["visibility"] is None:
-                paramgram["visibility"] = "enable"
+        results = DEFAULT_RESULT_OBJ
+        try:
+            if paramgram["ipv4"]:
+                results = fmgr_fwobj_ipv4(fmgr, paramgram)
     
-            if paramgram["ipv4"] is not None and paramgram["ipv6"] is None and paramgram["multicast"] is None:
-                # PROCESS IPv4
-                results = fmgr_fwobj_ipv4(fmg, paramgram)
-                fmgr_logout(fmg, module, results=results, good_codes=[0, -2, -3])
+            elif paramgram["ipv6"]:
+                results = fmgr_fwobj_ipv6(fmgr, paramgram)
     
-            if paramgram["ipv4"] is None and paramgram["ipv6"] is not None and paramgram["multicast"] is None:
-                # PROCESS IPv6
-                results = fmgr_fwobj_ipv6(fmg, paramgram)
-                if results[0] not in [0, -2, -3]:
-                    module.fail_json(msg="Failed to process IPv6 Object", **results[1])
+            elif paramgram["multicast"]:
+                results = fmgr_fwobj_multicast(fmgr, paramgram)
     
-            if paramgram["ipv4"] is None and paramgram["ipv6"] is None and paramgram["multicast"] is not None:
-                # PROCESS MULTICAST
-                results = fmgr_fwobj_multicast(fmg, paramgram)
-                if results[0] not in [0, -2, -3]:
-                    module.fail_json(msg="Failed to process Multicast Object", **results[1])
+            fmgr.govern_response(module=module, results=results,
+                                 ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
     
-        fmg.logout()
+        except Exception as err:
+            raise FMGBaseException(err)
     
         if results is not None:
             return module.exit_json(**results[1])

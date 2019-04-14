@@ -41,27 +41,33 @@ fmgr_device_exec_config.yml
 
     - name: DISCOVER AND ADD DEVICES
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
         - name: INSTALL CONFIG FGT1
           fmgr_device_config:
-            host: "{{inventory_hostname}}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             adom: "ansible"
             device_unique_name: "FGT1"
             install_config: "enable"
     
         - name: INSTALL CONFIG FGT2 and FGT3
           fmgr_device_config:
-            host: "{{inventory_hostname}}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             adom: "ansible"
             device_unique_name: "FGT2, FGT3"
             install_config: "enable"
+
+
+fmgr_device_config_run_all.sh
++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook fmgr_device_exec_config.yml -vvvv
+    ansible-playbook fgt01_config.yml -vvvv
+    ansible-playbook fgt03_config.yml -vvvv
+    ansible-playbook fmgr_device_config.yml -vvvv
+    ansible-playbook fgt02_config.yml -vvvv
 
 
 fgt01_config.yml
@@ -73,16 +79,13 @@ fgt01_config.yml
     
     - name: CONFIG FGT HOSTNAME AND INTERFACE
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: CHANGE HOSTNAME
         fmgr_device_config:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           device_hostname: "ansible-fgt01"
           device_unique_name: "FGT1"
           adom: "ansible"
@@ -90,9 +93,6 @@ fgt01_config.yml
     
       - name: EDIT INTERFACE INFORMATION
         fmgr_device_config:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           device_unique_name: "FGT1"
           interface: "port2"
@@ -109,16 +109,13 @@ fgt03_config.yml
     
     - name: CONFIG FGT HOSTNAME AND INTERFACE
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: CHANGE HOSTNAME
         fmgr_device_config:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           #the new hostname for the Fortigate
           device_hostname: "ansible-fgt03"
           #the "friendly name" of the device in FortiManager
@@ -129,9 +126,6 @@ fgt03_config.yml
     
       - name: EDIT INTERFACE INFORMATION
         fmgr_device_config:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           device_unique_name: "FGT3"
           #interface to configure
@@ -150,23 +144,17 @@ fmgr_device_config.yml
 
     - name: DISCOVER AND ADD DEVICES
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
         - name: CHANGE HOSTNAME
           fmgr_device_config:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             device_hostname: "ChangedbyAnsible"
             device_unique_name: "FGT1"
     
         - name: EDIT INTERFACE INFORMATION
           fmgr_device_config:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             adom: "root"
             device_unique_name: "FGT2"
             interface: "port3"
@@ -183,7 +171,7 @@ fgt02_config.yml
     
     - name: CONFIG FGT HOSTNAME AND INTERFACE
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
@@ -191,9 +179,6 @@ fgt02_config.yml
       - name: CHANGE HOSTNAME
         fmgr_device_config:
           #hard coded fortimanager example host and login -- see "fmg_group_add.yml for ansible host file version"
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           #the new hostname for the fortigate
           device_hostname: "ansible-fgt02"
           #the "friendly name" of the device in FortiManager
@@ -204,9 +189,6 @@ fgt02_config.yml
     
       - name: EDIT INTERFACE INFORMATION
         fmgr_device_config:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           adom: "ansible"
           device_unique_name: "FGT2"
           #interface to configure

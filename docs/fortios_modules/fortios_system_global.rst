@@ -14,7 +14,7 @@ Metadata
 **Description:** This module is able to configure a FortiGate or FortiOS by allowing the user to configure system feature and global category. Examples includes all options and need to be adjusted to datasources before usage. Tested with FOS v6.0.2
 
 
-**Author(s):** 
+**Author(s):**
 
 - Miguel Angel Munoz (github: @mamunozgonzalez)
 
@@ -25,7 +25,6 @@ Metadata
 **Ansible Version Added/Required:** 2.8
 
 **Dev Status:** No Data Exists. Contact DevOps Team.
-
 Parameters
 ----------
 
@@ -34,7 +33,7 @@ host
 
 - Description: FortiOS or FortiGate ip adress.
 
-  
+
 
 - Required: True
 
@@ -43,7 +42,7 @@ https
 
 - Description: Indicates if the requests towards FortiGate must use HTTPS protocol
 
-  
+
 
 - default: False
 
@@ -52,16 +51,16 @@ password
 
 - Description: FortiOS or FortiGate password.
 
-  
 
-- default: 
+
+- default:
 
 system_global
 +++++++++++++
 
 - Description: Configure global attributes.
 
-  
+
 
 - default: None
 
@@ -70,7 +69,7 @@ username
 
 - Description: FortiOS or FortiGate username.
 
-  
+
 
 - Required: True
 
@@ -79,7 +78,7 @@ vdom
 
 - Description: Virtual domain, among those defined previously. A vdom is a virtual instance of the FortiGate that can be configured and used as a different unit.
 
-  
+
 
 - default: root
 
@@ -100,16 +99,16 @@ Functions
         host = data['host']
         username = data['username']
         password = data['password']
-    
+
         fos.debug('on')
         if 'https' in data and not data['https']:
             fos.https('off')
         else:
             fos.https('on')
-    
+
         fos.login(host, username, password)
-    
-    
+
+
 
 - filter_system_global_data
 
@@ -175,14 +174,14 @@ Functions
                        'wifi-certificate', 'wimax-4g-usb', 'wireless-controller',
                        'wireless-controller-port']
         dictionary = {}
-    
+
         for attribute in option_list:
             if attribute in json and json[attribute] is not None:
                 dictionary[attribute] = json[attribute]
-    
+
         return dictionary
-    
-    
+
+
 
 - system_global
 
@@ -196,8 +195,8 @@ Functions
                        'global',
                        data=filtered_data,
                        vdom=vdom)
-    
-    
+
+
 
 - fortios_system
 
@@ -205,17 +204,17 @@ Functions
 
     def fortios_system(data, fos):
         login(data)
-    
+
         methodlist = ['system_global']
         for method in methodlist:
             if data[method]:
                 resp = eval(method)(data, fos)
                 break
-    
+
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
-    
-    
+
+
 
 - main
 
@@ -533,29 +532,29 @@ Functions
                     "wireless-controller": {"required": False, "type": "str",
                                             "choices": ["enable", "disable"]},
                     "wireless-controller-port": {"required": False, "type": "int"}
-    
+
                 }
             }
         }
-    
+
         module = AnsibleModule(argument_spec=fields,
                                supports_check_mode=False)
         try:
             from fortiosapi import FortiOSAPI
         except ImportError:
             module.fail_json(msg="fortiosapi module is required")
-    
+
         global fos
         fos = FortiOSAPI()
-    
+
         is_error, has_changed, result = fortios_system(module.params, fos)
-    
+
         if not is_error:
             module.exit_json(changed=has_changed, meta=result)
         else:
             module.fail_json(msg="Error in repo", meta=result)
-    
-    
+
+
 
 
 
@@ -583,13 +582,13 @@ Module Source Code
     #
     # the lib use python logging can get it if the following is set in your
     # Ansible config.
-    
+
     __metaclass__ = type
-    
+
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-    
+
     DOCUMENTATION = '''
     ---
     module: fortios_system_global
@@ -1579,7 +1578,7 @@ Module Source Code
                         - Port used for the control channel in wireless controller mode (wireless-mode is ac). The data channel port is the control channel port
                            number plus one (1024 - 49150, default = 5246).
     '''
-    
+
     EXAMPLES = '''
     - hosts: localhost
       vars:
@@ -1768,7 +1767,7 @@ Module Source Code
             wireless-controller: "enable"
             wireless-controller-port: "174"
     '''
-    
+
     RETURN = '''
     build:
       description: Build number of the fortigate image
@@ -1825,28 +1824,28 @@ Module Source Code
       returned: always
       type: string
       sample: "v5.6.3"
-    
+
     '''
-    
+
     from ansible.module_utils.basic import AnsibleModule
-    
+
     fos = None
-    
-    
+
+
     def login(data):
         host = data['host']
         username = data['username']
         password = data['password']
-    
+
         fos.debug('on')
         if 'https' in data and not data['https']:
             fos.https('off')
         else:
             fos.https('on')
-    
+
         fos.login(host, username, password)
-    
-    
+
+
     def filter_system_global_data(json):
         option_list = ['admin-concurrent', 'admin-console-timeout', 'admin-https-pki-required',
                        'admin-https-ssl-versions', 'admin-lockout-duration', 'admin-lockout-threshold',
@@ -1907,14 +1906,14 @@ Module Source Code
                        'wifi-certificate', 'wimax-4g-usb', 'wireless-controller',
                        'wireless-controller-port']
         dictionary = {}
-    
+
         for attribute in option_list:
             if attribute in json and json[attribute] is not None:
                 dictionary[attribute] = json[attribute]
-    
+
         return dictionary
-    
-    
+
+
     def system_global(data, fos):
         vdom = data['vdom']
         system_global_data = data['system_global']
@@ -1923,21 +1922,21 @@ Module Source Code
                        'global',
                        data=filtered_data,
                        vdom=vdom)
-    
-    
+
+
     def fortios_system(data, fos):
         login(data)
-    
+
         methodlist = ['system_global']
         for method in methodlist:
             if data[method]:
                 resp = eval(method)(data, fos)
                 break
-    
+
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
-    
-    
+
+
     def main():
         fields = {
             "host": {"required": True, "type": "str"},
@@ -2250,29 +2249,29 @@ Module Source Code
                     "wireless-controller": {"required": False, "type": "str",
                                             "choices": ["enable", "disable"]},
                     "wireless-controller-port": {"required": False, "type": "int"}
-    
+
                 }
             }
         }
-    
+
         module = AnsibleModule(argument_spec=fields,
                                supports_check_mode=False)
         try:
             from fortiosapi import FortiOSAPI
         except ImportError:
             module.fail_json(msg="fortiosapi module is required")
-    
+
         global fos
         fos = FortiOSAPI()
-    
+
         is_error, has_changed, result = fortios_system(module.params, fos)
-    
+
         if not is_error:
             module.exit_json(changed=has_changed, meta=result)
         else:
             module.fail_json(msg="Error in repo", meta=result)
-    
-    
+
+
     if __name__ == '__main__':
         main()
 

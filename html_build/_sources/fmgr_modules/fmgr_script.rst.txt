@@ -19,9 +19,8 @@ Metadata
 
 **Dev Status:** COMPLETED
 
-**Owning Developer:** 
+**Owning Developer:**
 Andrew Welsh
-
 Parameters
 ----------
 
@@ -30,7 +29,7 @@ adom
 
 - Description: The administrative domain (admon) the configuration belongs to
 
-  
+
 
 - Required: True
 
@@ -39,7 +38,7 @@ host
 
 - Description: The FortiManager's Address.
 
-  
+
 
 - Required: True
 
@@ -48,7 +47,7 @@ password
 
 - Description: The password associated with the username account.
 
-  
+
 
 - Required: False
 
@@ -57,7 +56,7 @@ script_content
 
 - Description: The script content that will be executed.
 
-  
+
 
 - Required: False
 
@@ -66,7 +65,7 @@ script_description
 
 - Description: The description of the script.
 
-  
+
 
 - Required: False
 
@@ -75,7 +74,7 @@ script_name
 
 - Description: The name of the script.
 
-  
+
 
 - Required: True
 
@@ -84,7 +83,7 @@ script_package
 
 - Description: (datasource) Policy package object to run the script against
 
-  
+
 
 - Required: False
 
@@ -93,7 +92,7 @@ script_scope
 
 - Description: (datasource) The devices that the script will run on, can have both device member and device group member.
 
-  
+
 
 - Required: False
 
@@ -102,7 +101,7 @@ script_target
 
 - Description: The target of the script to be run.
 
-  
+
 
 - Required: False
 
@@ -111,7 +110,7 @@ script_type
 
 - Description: The type of script (CLI or TCL).
 
-  
+
 
 - Required: False
 
@@ -126,7 +125,7 @@ state
 
   delete - delete the script.
 
-  
+
 
 - Required: False
 
@@ -139,7 +138,7 @@ username
 
 - Description: The username to log into the FortiManager
 
-  
+
 
 - Required: True
 
@@ -148,7 +147,7 @@ vdom
 
 - Description: The virtual domain (vdom) the configuration belongs to
 
-  
+
 
 
 
@@ -167,7 +166,7 @@ Functions
         """
         This method sets a script.
         """
-    
+
         datagram = {
             'content': script_content,
             'desc': script_desc,
@@ -175,12 +174,12 @@ Functions
             'target': script_target,
             'type': script_type,
         }
-    
+
         url = '/dvmdb/adom/{adom}/script/'.format(adom=adom)
         response = fmg.set(url, datagram)
         return response
-    
-    
+
+
 
 - delete_script
 
@@ -190,16 +189,16 @@ Functions
         """
         This method deletes a script.
         """
-    
+
         datagram = {
             'name': script_name,
         }
-    
+
         url = '/dvmdb/adom/{adom}/script/{script_name}'.format(adom=adom, script_name=script_name)
         response = fmg.delete(url, datagram)
         return response
-    
-    
+
+
 
 - execute_script
 
@@ -209,25 +208,25 @@ Functions
         """
         This method will execute a specific script.
         """
-    
+
         scope_list = list()
         scope = scope.replace(' ', '')
         scope = scope.split(',')
         for dev_name in scope:
             scope_list.append({'name': dev_name, 'vdom': vdom})
-    
+
         datagram = {
             'adom': adom,
             'script': script_name,
             'package': package,
             'scope': scope_list,
         }
-    
+
         url = '/dvmdb/adom/{adom}/script/execute'.format(adom=adom)
         response = fmg.execute(url, datagram)
         return response
-    
-    
+
+
 
 - main
 
@@ -241,7 +240,7 @@ Functions
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"])),
             state=dict(choices=["execute", "delete", "present"], type="str", default="present"),
-    
+
             script_name=dict(required=True, type="str"),
             script_type=dict(required=False, type="str"),
             script_target=dict(required=False, type="str"),
@@ -250,17 +249,17 @@ Functions
             script_scope=dict(required=False, type="str"),
             script_package=dict(required=False, type="str"),
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=True,)
-    
+
         # check if params are set
         if module.params["host"] is None or module.params["username"] is None:
             module.fail_json(msg="Host and username are required for connection")
-    
+
         # check if login failed
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
         response = fmg.login()
-    
+
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
         else:
@@ -273,7 +272,7 @@ Functions
             state = module.params["state"]
             if state is None:
                 state = "present"
-    
+
             script_name = module.params["script_name"]
             script_type = module.params["script_type"]
             script_target = module.params["script_target"]
@@ -281,7 +280,7 @@ Functions
             script_content = module.params["script_content"]
             script_scope = module.params["script_scope"]
             script_package = module.params["script_package"]
-    
+
             # if state is present (default), then add the script
             if state == "present":
                 results = set_script(fmg, script_name, script_type, script_content, script_description, script_target, adom)
@@ -298,13 +297,13 @@ Functions
                 results = delete_script(fmg, script_name, adom)
                 if not results[0] == 0:
                     module.fail_json(msg="Script Deletion Failed", **results)
-    
+
             fmg.logout()
-    
+
             # results is returned as a tuple
             return module.exit_json(**results[1])
-    
-    
+
+
 
 
 
@@ -330,15 +329,15 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-    
+
     from __future__ import absolute_import, division, print_function
-    
+
     __metaclass__ = type
-    
+
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-    
+
     DOCUMENTATION = '''
     ---
     module: fmgr_script
@@ -346,7 +345,7 @@ Module Source Code
     author: Andrew Welsh
     short_description: Add/Edit/Delete and execute scripts
     description: Create/edit/delete scripts and execute the scripts on the FortiManager using jsonrpc API
-    
+
     options:
       adom:
         description:
@@ -405,7 +404,7 @@ Module Source Code
           - (datasource) Policy package object to run the script against
         required: false
     '''
-    
+
     EXAMPLES = '''
     - name: CREATE SCRIPT
       fmgr_script:
@@ -418,7 +417,7 @@ Module Source Code
         script_target: "remote_device"
         script_description: "Create by Ansible"
         script_content: "get system status"
-    
+
     - name: EXECUTE SCRIPT
       fmgr_script:
         host: "{{inventory_hostname}}"
@@ -428,7 +427,7 @@ Module Source Code
         script_name: "TestScript"
         state: "execute"
         script_scope: "FGT1,FGT2"
-    
+
     - name: DELETE SCRIPT
       fmgr_script:
         host: "{{inventory_hostname}}"
@@ -438,30 +437,30 @@ Module Source Code
         script_name: "TestScript"
         state: "delete"
     '''
-    
+
     RETURN = """
     api_result:
       description: full API response, includes status code and message
       returned: always
       type: string
     """
-    
+
     from ansible.module_utils.basic import AnsibleModule, env_fallback
     from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-    
+
     # check for pyFMG lib
     try:
         from pyFMG.fortimgr import FortiManager
         HAS_PYFMGR = True
     except ImportError:
         HAS_PYFMGR = False
-    
-    
+
+
     def set_script(fmg, script_name, script_type, script_content, script_desc, script_target, adom):
         """
         This method sets a script.
         """
-    
+
         datagram = {
             'content': script_content,
             'desc': script_desc,
@@ -469,49 +468,49 @@ Module Source Code
             'target': script_target,
             'type': script_type,
         }
-    
+
         url = '/dvmdb/adom/{adom}/script/'.format(adom=adom)
         response = fmg.set(url, datagram)
         return response
-    
-    
+
+
     def delete_script(fmg, script_name, adom):
         """
         This method deletes a script.
         """
-    
+
         datagram = {
             'name': script_name,
         }
-    
+
         url = '/dvmdb/adom/{adom}/script/{script_name}'.format(adom=adom, script_name=script_name)
         response = fmg.delete(url, datagram)
         return response
-    
-    
+
+
     def execute_script(fmg, script_name, scope, package, adom, vdom):
         """
         This method will execute a specific script.
         """
-    
+
         scope_list = list()
         scope = scope.replace(' ', '')
         scope = scope.split(',')
         for dev_name in scope:
             scope_list.append({'name': dev_name, 'vdom': vdom})
-    
+
         datagram = {
             'adom': adom,
             'script': script_name,
             'package': package,
             'scope': scope_list,
         }
-    
+
         url = '/dvmdb/adom/{adom}/script/execute'.format(adom=adom)
         response = fmg.execute(url, datagram)
         return response
-    
-    
+
+
     def main():
         argument_spec = dict(
             adom=dict(required=False, type="str"),
@@ -520,7 +519,7 @@ Module Source Code
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"])),
             state=dict(choices=["execute", "delete", "present"], type="str", default="present"),
-    
+
             script_name=dict(required=True, type="str"),
             script_type=dict(required=False, type="str"),
             script_target=dict(required=False, type="str"),
@@ -529,17 +528,17 @@ Module Source Code
             script_scope=dict(required=False, type="str"),
             script_package=dict(required=False, type="str"),
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=True,)
-    
+
         # check if params are set
         if module.params["host"] is None or module.params["username"] is None:
             module.fail_json(msg="Host and username are required for connection")
-    
+
         # check if login failed
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
         response = fmg.login()
-    
+
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
         else:
@@ -552,7 +551,7 @@ Module Source Code
             state = module.params["state"]
             if state is None:
                 state = "present"
-    
+
             script_name = module.params["script_name"]
             script_type = module.params["script_type"]
             script_target = module.params["script_target"]
@@ -560,7 +559,7 @@ Module Source Code
             script_content = module.params["script_content"]
             script_scope = module.params["script_scope"]
             script_package = module.params["script_package"]
-    
+
             # if state is present (default), then add the script
             if state == "present":
                 results = set_script(fmg, script_name, script_type, script_content, script_description, script_target, adom)
@@ -577,13 +576,13 @@ Module Source Code
                 results = delete_script(fmg, script_name, adom)
                 if not results[0] == 0:
                     module.fail_json(msg="Script Deletion Failed", **results)
-    
+
             fmg.logout()
-    
+
             # results is returned as a tuple
             return module.exit_json(**results[1])
-    
-    
+
+
     if __name__ == "__main__":
         main()
 

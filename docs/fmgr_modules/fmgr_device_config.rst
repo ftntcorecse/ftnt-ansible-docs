@@ -30,7 +30,9 @@ Metadata
 
 **Owning Developer:** Luke Weighall
 
-**Module Link:** https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_device_config.py
+.. _Link: https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_device_config.py
+
+Link_
 
 Parameters
 ----------

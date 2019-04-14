@@ -13,7 +13,7 @@ Metadata
 
 **Description:** ['Manage WanOpt security profiles in FortiManager via API']
 
-**Author(s):** 
+**Author(s):**
 
 - Luke Weighall (github: @lweighall)
 
@@ -26,7 +26,6 @@ Metadata
 **Ansible Version Added/Required:** 2.8
 
 **Dev Status:** No Data Exists. Contact DevOps Team.
-
 Parameters
 ----------
 
@@ -35,7 +34,7 @@ adom
 
 - Description: The ADOM the configuration should belong to.
 
-  
+
 
 - Required: False
 
@@ -48,7 +47,7 @@ auth_group
 
   ntication group.
 
-  
+
 
 - Required: False
 
@@ -69,7 +68,7 @@ cifs
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -84,7 +83,7 @@ cifs_byte_caching
 
   choice | enable | Enable HTTP byte-caching.
 
-  
+
 
 - Required: False
 
@@ -99,7 +98,7 @@ cifs_log_traffic
 
   choice | enable | Enable logging.
 
-  
+
 
 - Required: False
 
@@ -112,7 +111,7 @@ cifs_port
 
   s port number or range are accepted by this profile.
 
-  
+
 
 - Required: False
 
@@ -125,7 +124,7 @@ cifs_prefer_chunking
 
   choice | fix | Select fixed data chunking.
 
-  
+
 
 - Required: False
 
@@ -142,7 +141,7 @@ cifs_secure_tunnel
 
   choice | enable | Enable SSL-secured tunnelling.
 
-  
+
 
 - Required: False
 
@@ -157,7 +156,7 @@ cifs_status
 
   choice | enable | Enable HTTP WAN Optimization.
 
-  
+
 
 - Required: False
 
@@ -174,7 +173,7 @@ cifs_tunnel_sharing
 
   choice | express-shared | For profiles that accept interactive protocols such as Telnet.
 
-  
+
 
 - Required: False
 
@@ -185,7 +184,7 @@ comments
 
 - Description: Comment.
 
-  
+
 
 - Required: False
 
@@ -206,7 +205,7 @@ ftp
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -221,7 +220,7 @@ ftp_byte_caching
 
   choice | enable | Enable HTTP byte-caching.
 
-  
+
 
 - Required: False
 
@@ -236,7 +235,7 @@ ftp_log_traffic
 
   choice | enable | Enable logging.
 
-  
+
 
 - Required: False
 
@@ -249,7 +248,7 @@ ftp_port
 
   port number or range are accepted by this profile.
 
-  
+
 
 - Required: False
 
@@ -262,7 +261,7 @@ ftp_prefer_chunking
 
   choice | fix | Select fixed data chunking.
 
-  
+
 
 - Required: False
 
@@ -279,7 +278,7 @@ ftp_secure_tunnel
 
   choice | enable | Enable SSL-secured tunnelling.
 
-  
+
 
 - Required: False
 
@@ -294,7 +293,7 @@ ftp_status
 
   choice | enable | Enable HTTP WAN Optimization.
 
-  
+
 
 - Required: False
 
@@ -311,7 +310,7 @@ ftp_tunnel_sharing
 
   choice | express-shared | For profiles that accept interactive protocols such as Telnet.
 
-  
+
 
 - Required: False
 
@@ -322,7 +321,7 @@ host
 
 - Description: The FortiManager's Address.
 
-  
+
 
 - Required: True
 
@@ -343,7 +342,7 @@ http
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -358,7 +357,7 @@ http_byte_caching
 
   choice | enable | Enable HTTP byte-caching.
 
-  
+
 
 - Required: False
 
@@ -373,7 +372,7 @@ http_log_traffic
 
   choice | enable | Enable logging.
 
-  
+
 
 - Required: False
 
@@ -386,7 +385,7 @@ http_port
 
   s port number or range are accepted by this profile.
 
-  
+
 
 - Required: False
 
@@ -399,7 +398,7 @@ http_prefer_chunking
 
   choice | fix | Select fixed data chunking.
 
-  
+
 
 - Required: False
 
@@ -416,7 +415,7 @@ http_secure_tunnel
 
   choice | enable | Enable SSL-secured tunnelling.
 
-  
+
 
 - Required: False
 
@@ -431,7 +430,7 @@ http_ssl
 
   choice | enable | Enable SSL/TLS offloading.
 
-  
+
 
 - Required: False
 
@@ -442,7 +441,7 @@ http_ssl_port
 
 - Description: Port on which to expect HTTPS traffic for SSL/TLS offloading.
 
-  
+
 
 - Required: False
 
@@ -455,7 +454,7 @@ http_status
 
   choice | enable | Enable HTTP WAN Optimization.
 
-  
+
 
 - Required: False
 
@@ -472,7 +471,7 @@ http_tunnel_non_http
 
   choice | enable | Pass non-HTTP sessions through the tunnel without applying protocol optimization, byte-cac
 
-  
+
 
 - Required: False
 
@@ -489,7 +488,7 @@ http_tunnel_sharing
 
   choice | express-shared | For profiles that accept interactive protocols such as Telnet.
 
-  
+
 
 - Required: False
 
@@ -506,7 +505,7 @@ http_unknown_http_version
 
   choice | tunnel | Pass HTTP traffic that does not use HTTP 0.9, 1.0, or 1.1 without applying HTTP protocol o
 
-  
+
 
 - Required: False
 
@@ -529,7 +528,7 @@ mapi
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -544,7 +543,7 @@ mapi_byte_caching
 
   choice | enable | Enable HTTP byte-caching.
 
-  
+
 
 - Required: False
 
@@ -559,7 +558,7 @@ mapi_log_traffic
 
   choice | enable | Enable logging.
 
-  
+
 
 - Required: False
 
@@ -572,7 +571,7 @@ mapi_port
 
   s port number or range are accepted by this profile.
 
-  
+
 
 - Required: False
 
@@ -587,7 +586,7 @@ mapi_secure_tunnel
 
   choice | enable | Enable SSL-secured tunnelling.
 
-  
+
 
 - Required: False
 
@@ -602,7 +601,7 @@ mapi_status
 
   choice | enable | Enable HTTP WAN Optimization.
 
-  
+
 
 - Required: False
 
@@ -619,7 +618,7 @@ mapi_tunnel_sharing
 
   choice | express-shared | For profiles that accept interactive protocols such as Telnet.
 
-  
+
 
 - Required: False
 
@@ -632,7 +631,7 @@ mode
 
   Allows use of soft-adds instead of overwriting existing values
 
-  
+
 
 - Required: False
 
@@ -645,7 +644,7 @@ name
 
 - Description: Profile name.
 
-  
+
 
 - Required: False
 
@@ -654,7 +653,7 @@ password
 
 - Description: The password associated with the username account.
 
-  
+
 
 - Required: True
 
@@ -675,7 +674,7 @@ tcp
 
   WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
 
-  
+
 
 - Required: False
 
@@ -690,7 +689,7 @@ tcp_byte_caching
 
   choice | enable | Enable HTTP byte-caching.
 
-  
+
 
 - Required: False
 
@@ -705,7 +704,7 @@ tcp_byte_caching_opt
 
   choice | mem-disk | Byte caching with memory and disk.
 
-  
+
 
 - Required: False
 
@@ -720,7 +719,7 @@ tcp_log_traffic
 
   choice | enable | Enable logging.
 
-  
+
 
 - Required: False
 
@@ -733,7 +732,7 @@ tcp_port
 
   port number or range are accepted by this profile.
 
-  
+
 
 - Required: False
 
@@ -748,7 +747,7 @@ tcp_secure_tunnel
 
   choice | enable | Enable SSL-secured tunnelling.
 
-  
+
 
 - Required: False
 
@@ -763,7 +762,7 @@ tcp_ssl
 
   choice | enable | Enable SSL/TLS offloading.
 
-  
+
 
 - Required: False
 
@@ -774,7 +773,7 @@ tcp_ssl_port
 
 - Description: Port on which to expect HTTPS traffic for SSL/TLS offloading.
 
-  
+
 
 - Required: False
 
@@ -787,7 +786,7 @@ tcp_status
 
   choice | enable | Enable HTTP WAN Optimization.
 
-  
+
 
 - Required: False
 
@@ -804,7 +803,7 @@ tcp_tunnel_sharing
 
   choice | express-shared | For profiles that accept interactive protocols such as Telnet.
 
-  
+
 
 - Required: False
 
@@ -819,7 +818,7 @@ transparent
 
   choice | enable | Determine if WAN Optimization changes client packet source addresses. Affects the routing
 
-  
+
 
 - Required: False
 
@@ -830,7 +829,7 @@ username
 
 - Description: The username associated with the account.
 
-  
+
 
 - Required: True
 
@@ -851,25 +850,25 @@ Functions
         """
         fmgr_wanopt_profile -- Your Description here, bruh
         """
-    
+
         mode = paramgram["mode"]
         adom = paramgram["adom"]
-    
+
         response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
         url = ""
         datagram = {}
-    
+
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/wanopt/profile'.format(adom=adom)
             datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-    
+
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/wanopt/profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-    
+
         # IF MODE = SET -- USE THE 'SET' API CALL MODE
         if mode == "set":
             response = fmg.set(url, datagram)
@@ -882,10 +881,10 @@ Functions
         # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
         elif mode == "delete":
             response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     # ADDITIONAL COMMON FUNCTIONS
 
 - fmgr_logout
@@ -903,7 +902,7 @@ Functions
             except:
                 pass
             module.fail_json(msg=msg)
-    
+
         # SUBMISSION ERROR
         if len(results) > 0:
             if msg == "NULL":
@@ -911,7 +910,7 @@ Functions
                     msg = results[1]['status']['message']
                 except:
                     msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
+
             if results[0] not in good_codes:
                 if logout_on_fail:
                     fmg.logout()
@@ -922,8 +921,8 @@ Functions
                     module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
                                      **results[1])
         return msg
-    
-    
+
+
     # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
     # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
 
@@ -938,8 +937,8 @@ Functions
                str((0x00ff0000 & mask) >> 16) + '.' +
                str((0x0000ff00 & mask) >> 8) + '.' +
                str((0x000000ff & mask)))
-    
-    
+
+
     # utility function: removing keys wih value of None, nothing in playbook for that key
 
 - fmgr_del_none
@@ -952,8 +951,8 @@ Functions
                              for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
         else:
             return obj
-    
-    
+
+
     # utility function: remove keys that are need for the logic but the FMG API won't accept them
 
 - fmgr_prepare_dict
@@ -965,8 +964,8 @@ Functions
         if isinstance(obj, dict):
             obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
         return obj
-    
-    
+
+
 
 - fmgr_is_empty_dict
 
@@ -994,10 +993,10 @@ Functions
                         return return_val
             elif len(obj) == 0:
                 return_val = True
-    
+
         return return_val
-    
-    
+
+
 
 - fmgr_split_comma_strings_into_lists
 
@@ -1014,15 +1013,15 @@ Functions
                             for item in new_items:
                                 new_list.append(item.strip())
                             obj[k] = new_list
-    
+
         return obj
-    
-    
+
+
     #############
     # END METHODS
     #############
-    
-    
+
+
 
 - main
 
@@ -1035,7 +1034,7 @@ Functions
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-    
+
             transparent=dict(required=False, type="str", choices=["disable", "enable"]),
             name=dict(required=False, type="str"),
             comments=dict(required=False, type="str"),
@@ -1085,11 +1084,11 @@ Functions
             tcp_ssl_port=dict(required=False, type="str"),
             tcp_status=dict(required=False, type="str", choices=["disable", "enable"]),
             tcp_tunnel_sharing=dict(required=False, type="str", choices=["private", "shared", "express-shared"]),
-    
+
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -1149,7 +1148,7 @@ Functions
                 "tunnel-sharing": module.params["tcp_tunnel_sharing"],
             }
         }
-    
+
         list_overrides = ['cifs', 'ftp', 'http', 'mapi', 'tcp']
         for list_variable in list_overrides:
             override_data = list()
@@ -1163,33 +1162,33 @@ Functions
                     paramgram[list_variable] = override_data
             except:
                 pass
-    
+
         # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
         host = module.params["host"]
         password = module.params["password"]
         username = module.params["username"]
         if host is None or username is None or password is None:
             module.fail_json(msg="Host and username and password are required")
-    
+
         # CHECK IF LOGIN FAILED
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-    
+
         response = fmg.login()
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
-    
+
         results = fmgr_wanopt_profile_addsetdelete(fmg, paramgram)
         if results[0] != 0:
             fmgr_logout(fmg, module, results=results, good_codes=[0])
-    
+
         fmg.logout()
-    
+
         if results is not None:
             return module.exit_json(**results[1])
         else:
             return module.exit_json(msg="No results were returned from the API call.")
-    
-    
+
+
 
 
 
@@ -1215,14 +1214,14 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-    
+
     from __future__ import absolute_import, division, print_function
     __metaclass__ = type
-    
+
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-    
+
     DOCUMENTATION = '''
     ---
     module: fmgr_secprof_wanopt
@@ -1234,29 +1233,29 @@ Module Source Code
     short_description: WAN optimization
     description:
       -  Manage WanOpt security profiles in FortiManager via API
-    
+
     options:
       adom:
         description:
           - The ADOM the configuration should belong to.
         required: false
         default: root
-    
+
       host:
         description:
           - The FortiManager's Address.
         required: true
-    
+
       username:
         description:
           - The username associated with the account.
         required: true
-    
+
       password:
         description:
           - The password associated with the username account.
         required: true
-    
+
       mode:
         description:
           - Sets one of three modes for managing the object.
@@ -1264,7 +1263,7 @@ Module Source Code
         choices: ['add', 'set', 'delete', 'update']
         required: false
         default: add
-    
+
       transparent:
         description:
           - Enable/disable transparent mode.
@@ -1272,23 +1271,23 @@ Module Source Code
           - choice | enable | Determine if WAN Optimization changes client packet source addresses. Affects the routing
         required: false
         choices: ["disable", "enable"]
-    
+
       name:
         description:
           - Profile name.
         required: false
-    
+
       comments:
         description:
           - Comment.
         required: false
-    
+
       auth_group:
         description:
           - Optionally add an authentication group to restrict access to the WAN Optimization tunnel to peers in the authe
           - ntication group.
         required: false
-    
+
       cifs:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1299,7 +1298,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       cifs_byte_caching:
         description:
           - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
@@ -1308,7 +1307,7 @@ Module Source Code
           - choice | enable | Enable HTTP byte-caching.
         required: false
         choices: ["disable", "enable"]
-    
+
       cifs_log_traffic:
         description:
           - Enable/disable logging.
@@ -1316,13 +1315,13 @@ Module Source Code
           - choice | enable | Enable logging.
         required: false
         choices: ["disable", "enable"]
-    
+
       cifs_port:
         description:
           - Single port number or port number range for CIFS. Only packets with a destination port number that matches thi
           - s port number or range are accepted by this profile.
         required: false
-    
+
       cifs_prefer_chunking:
         description:
           - Select dynamic or fixed-size data chunking for HTTP WAN Optimization.
@@ -1330,7 +1329,7 @@ Module Source Code
           - choice | fix | Select fixed data chunking.
         required: false
         choices: ["dynamic", "fix"]
-    
+
       cifs_secure_tunnel:
         description:
           - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
@@ -1339,7 +1338,7 @@ Module Source Code
           - choice | enable | Enable SSL-secured tunnelling.
         required: false
         choices: ["disable", "enable"]
-    
+
       cifs_status:
         description:
           - Enable/disable HTTP WAN Optimization.
@@ -1347,7 +1346,7 @@ Module Source Code
           - choice | enable | Enable HTTP WAN Optimization.
         required: false
         choices: ["disable", "enable"]
-    
+
       cifs_tunnel_sharing:
         description:
           - Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
@@ -1356,7 +1355,7 @@ Module Source Code
           - choice | express-shared | For profiles that accept interactive protocols such as Telnet.
         required: false
         choices: ["private", "shared", "express-shared"]
-    
+
       ftp:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1367,7 +1366,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       ftp_byte_caching:
         description:
           - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
@@ -1376,7 +1375,7 @@ Module Source Code
           - choice | enable | Enable HTTP byte-caching.
         required: false
         choices: ["disable", "enable"]
-    
+
       ftp_log_traffic:
         description:
           - Enable/disable logging.
@@ -1384,13 +1383,13 @@ Module Source Code
           - choice | enable | Enable logging.
         required: false
         choices: ["disable", "enable"]
-    
+
       ftp_port:
         description:
           - Single port number or port number range for FTP. Only packets with a destination port number that matches this
           -  port number or range are accepted by this profile.
         required: false
-    
+
       ftp_prefer_chunking:
         description:
           - Select dynamic or fixed-size data chunking for HTTP WAN Optimization.
@@ -1398,7 +1397,7 @@ Module Source Code
           - choice | fix | Select fixed data chunking.
         required: false
         choices: ["dynamic", "fix"]
-    
+
       ftp_secure_tunnel:
         description:
           - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
@@ -1407,7 +1406,7 @@ Module Source Code
           - choice | enable | Enable SSL-secured tunnelling.
         required: false
         choices: ["disable", "enable"]
-    
+
       ftp_status:
         description:
           - Enable/disable HTTP WAN Optimization.
@@ -1415,7 +1414,7 @@ Module Source Code
           - choice | enable | Enable HTTP WAN Optimization.
         required: false
         choices: ["disable", "enable"]
-    
+
       ftp_tunnel_sharing:
         description:
           - Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
@@ -1424,7 +1423,7 @@ Module Source Code
           - choice | express-shared | For profiles that accept interactive protocols such as Telnet.
         required: false
         choices: ["private", "shared", "express-shared"]
-    
+
       http:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1435,7 +1434,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       http_byte_caching:
         description:
           - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
@@ -1444,7 +1443,7 @@ Module Source Code
           - choice | enable | Enable HTTP byte-caching.
         required: false
         choices: ["disable", "enable"]
-    
+
       http_log_traffic:
         description:
           - Enable/disable logging.
@@ -1452,13 +1451,13 @@ Module Source Code
           - choice | enable | Enable logging.
         required: false
         choices: ["disable", "enable"]
-    
+
       http_port:
         description:
           - Single port number or port number range for HTTP. Only packets with a destination port number that matches thi
           - s port number or range are accepted by this profile.
         required: false
-    
+
       http_prefer_chunking:
         description:
           - Select dynamic or fixed-size data chunking for HTTP WAN Optimization.
@@ -1466,7 +1465,7 @@ Module Source Code
           - choice | fix | Select fixed data chunking.
         required: false
         choices: ["dynamic", "fix"]
-    
+
       http_secure_tunnel:
         description:
           - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
@@ -1475,7 +1474,7 @@ Module Source Code
           - choice | enable | Enable SSL-secured tunnelling.
         required: false
         choices: ["disable", "enable"]
-    
+
       http_ssl:
         description:
           - Enable/disable SSL/TLS offloading (hardware acceleration) for HTTPS traffic in this tunnel.
@@ -1483,12 +1482,12 @@ Module Source Code
           - choice | enable | Enable SSL/TLS offloading.
         required: false
         choices: ["disable", "enable"]
-    
+
       http_ssl_port:
         description:
           - Port on which to expect HTTPS traffic for SSL/TLS offloading.
         required: false
-    
+
       http_status:
         description:
           - Enable/disable HTTP WAN Optimization.
@@ -1496,7 +1495,7 @@ Module Source Code
           - choice | enable | Enable HTTP WAN Optimization.
         required: false
         choices: ["disable", "enable"]
-    
+
       http_tunnel_non_http:
         description:
           - Configure how to process non-HTTP traffic when a profile configured for HTTP traffic accepts a non-HTTP sessio
@@ -1505,7 +1504,7 @@ Module Source Code
           - choice | enable | Pass non-HTTP sessions through the tunnel without applying protocol optimization, byte-cac
         required: false
         choices: ["disable", "enable"]
-    
+
       http_tunnel_sharing:
         description:
           - Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
@@ -1514,7 +1513,7 @@ Module Source Code
           - choice | express-shared | For profiles that accept interactive protocols such as Telnet.
         required: false
         choices: ["private", "shared", "express-shared"]
-    
+
       http_unknown_http_version:
         description:
           - How to handle HTTP sessions that do not comply with HTTP 0.9, 1.0, or 1.1.
@@ -1523,7 +1522,7 @@ Module Source Code
           - choice | tunnel | Pass HTTP traffic that does not use HTTP 0.9, 1.0, or 1.1 without applying HTTP protocol o
         required: false
         choices: ["best-effort", "reject", "tunnel"]
-    
+
       mapi:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1534,7 +1533,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       mapi_byte_caching:
         description:
           - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
@@ -1543,7 +1542,7 @@ Module Source Code
           - choice | enable | Enable HTTP byte-caching.
         required: false
         choices: ["disable", "enable"]
-    
+
       mapi_log_traffic:
         description:
           - Enable/disable logging.
@@ -1551,13 +1550,13 @@ Module Source Code
           - choice | enable | Enable logging.
         required: false
         choices: ["disable", "enable"]
-    
+
       mapi_port:
         description:
           - Single port number or port number range for MAPI. Only packets with a destination port number that matches thi
           - s port number or range are accepted by this profile.
         required: false
-    
+
       mapi_secure_tunnel:
         description:
           - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
@@ -1566,7 +1565,7 @@ Module Source Code
           - choice | enable | Enable SSL-secured tunnelling.
         required: false
         choices: ["disable", "enable"]
-    
+
       mapi_status:
         description:
           - Enable/disable HTTP WAN Optimization.
@@ -1574,7 +1573,7 @@ Module Source Code
           - choice | enable | Enable HTTP WAN Optimization.
         required: false
         choices: ["disable", "enable"]
-    
+
       mapi_tunnel_sharing:
         description:
           - Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
@@ -1583,7 +1582,7 @@ Module Source Code
           - choice | express-shared | For profiles that accept interactive protocols such as Telnet.
         required: false
         choices: ["private", "shared", "express-shared"]
-    
+
       tcp:
         description:
           - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!
@@ -1594,7 +1593,7 @@ Module Source Code
           - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.
           - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS
         required: false
-    
+
       tcp_byte_caching:
         description:
           - Enable/disable byte-caching for HTTP. Byte caching reduces the amount of traffic by caching file data sent acr
@@ -1603,7 +1602,7 @@ Module Source Code
           - choice | enable | Enable HTTP byte-caching.
         required: false
         choices: ["disable", "enable"]
-    
+
       tcp_byte_caching_opt:
         description:
           - Select whether TCP byte-caching uses system memory only or both memory and disk space.
@@ -1611,7 +1610,7 @@ Module Source Code
           - choice | mem-disk | Byte caching with memory and disk.
         required: false
         choices: ["mem-only", "mem-disk"]
-    
+
       tcp_log_traffic:
         description:
           - Enable/disable logging.
@@ -1619,13 +1618,13 @@ Module Source Code
           - choice | enable | Enable logging.
         required: false
         choices: ["disable", "enable"]
-    
+
       tcp_port:
         description:
           - Single port number or port number range for TCP. Only packets with a destination port number that matches this
           -  port number or range are accepted by this profile.
         required: false
-    
+
       tcp_secure_tunnel:
         description:
           - Enable/disable securing the WAN Opt tunnel using SSL. Secure and non-secure tunnels use the same TCP port (781
@@ -1634,7 +1633,7 @@ Module Source Code
           - choice | enable | Enable SSL-secured tunnelling.
         required: false
         choices: ["disable", "enable"]
-    
+
       tcp_ssl:
         description:
           - Enable/disable SSL/TLS offloading.
@@ -1642,12 +1641,12 @@ Module Source Code
           - choice | enable | Enable SSL/TLS offloading.
         required: false
         choices: ["disable", "enable"]
-    
+
       tcp_ssl_port:
         description:
           - Port on which to expect HTTPS traffic for SSL/TLS offloading.
         required: false
-    
+
       tcp_status:
         description:
           - Enable/disable HTTP WAN Optimization.
@@ -1655,7 +1654,7 @@ Module Source Code
           - choice | enable | Enable HTTP WAN Optimization.
         required: false
         choices: ["disable", "enable"]
-    
+
       tcp_tunnel_sharing:
         description:
           - Tunnel sharing mode for aggressive/non-aggressive and/or interactive/non-interactive protocols.
@@ -1664,10 +1663,10 @@ Module Source Code
           - choice | express-shared | For profiles that accept interactive protocols such as Telnet.
         required: false
         choices: ["private", "shared", "express-shared"]
-    
-    
+
+
     '''
-    
+
     EXAMPLES = '''
       - name: DELETE Profile
         fmgr_secprof_wanopt:
@@ -1676,7 +1675,7 @@ Module Source Code
           password: "{{ password }}"
           name: "Ansible_WanOpt_Profile"
           mode: "delete"
-    
+
       - name: Create FMGR_WANOPT_PROFILE
         fmgr_secprof_wanopt:
           host: "{{ inventory_hostname }}"
@@ -1701,52 +1700,52 @@ Module Source Code
                   status: "enable",
                   tunnel-sharing: "private"}
     '''
-    
+
     RETURN = """
     api_result:
       description: full API response, includes status code and message
       returned: always
       type: string
     """
-    
+
     from ansible.module_utils.basic import AnsibleModule, env_fallback
     from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-    
+
     # check for pyFMG lib
     try:
         from pyFMG.fortimgr import FortiManager
         HAS_PYFMGR = True
     except ImportError:
         HAS_PYFMGR = False
-    
+
     ###############
     # START METHODS
     ###############
-    
-    
+
+
     def fmgr_wanopt_profile_addsetdelete(fmg, paramgram):
         """
         fmgr_wanopt_profile -- Your Description here, bruh
         """
-    
+
         mode = paramgram["mode"]
         adom = paramgram["adom"]
-    
+
         response = (-100000, {"msg": "Illegal or malformed paramgram discovered. System Exception"})
         url = ""
         datagram = {}
-    
+
         # EVAL THE MODE PARAMETER FOR SET OR ADD
         if mode in ['set', 'add', 'update']:
             url = '/pm/config/adom/{adom}/obj/wanopt/profile'.format(adom=adom)
             datagram = fmgr_del_none(fmgr_prepare_dict(paramgram))
-    
+
         # EVAL THE MODE PARAMETER FOR DELETE
         elif mode == "delete":
             # SET THE CORRECT URL FOR DELETE
             url = '/pm/config/adom/{adom}/obj/wanopt/profile/{name}'.format(adom=adom, name=paramgram["name"])
             datagram = {}
-    
+
         # IF MODE = SET -- USE THE 'SET' API CALL MODE
         if mode == "set":
             response = fmg.set(url, datagram)
@@ -1759,10 +1758,10 @@ Module Source Code
         # IF MODE = DELETE  -- USE THE DELETE URL AND API CALL MODE
         elif mode == "delete":
             response = fmg.delete(url, datagram)
-    
+
         return response
-    
-    
+
+
     # ADDITIONAL COMMON FUNCTIONS
     def fmgr_logout(fmg, module, msg="NULL", results=(), good_codes=(0,), logout_on_fail=True, logout_on_success=False):
         """
@@ -1775,7 +1774,7 @@ Module Source Code
             except:
                 pass
             module.fail_json(msg=msg)
-    
+
         # SUBMISSION ERROR
         if len(results) > 0:
             if msg == "NULL":
@@ -1783,7 +1782,7 @@ Module Source Code
                     msg = results[1]['status']['message']
                 except:
                     msg = "No status message returned from pyFMG. Possible that this was a GET with a tuple result."
-    
+
             if results[0] not in good_codes:
                 if logout_on_fail:
                     fmg.logout()
@@ -1794,8 +1793,8 @@ Module Source Code
                     module.exit_json(msg="API Called worked, but logout handler has been asked to logout on success",
                                      **results[1])
         return msg
-    
-    
+
+
     # FUNCTION/METHOD FOR CONVERTING CIDR TO A NETMASK
     # DID NOT USE IP ADDRESS MODULE TO KEEP INCLUDES TO A MINIMUM
     def fmgr_cidr_to_netmask(cidr):
@@ -1805,8 +1804,8 @@ Module Source Code
                str((0x00ff0000 & mask) >> 16) + '.' +
                str((0x0000ff00 & mask) >> 8) + '.' +
                str((0x000000ff & mask)))
-    
-    
+
+
     # utility function: removing keys wih value of None, nothing in playbook for that key
     def fmgr_del_none(obj):
         if isinstance(obj, dict):
@@ -1814,16 +1813,16 @@ Module Source Code
                              for k, v in obj.items() if k is not None and (v is not None and not fmgr_is_empty_dict(v)))
         else:
             return obj
-    
-    
+
+
     # utility function: remove keys that are need for the logic but the FMG API won't accept them
     def fmgr_prepare_dict(obj):
         list_of_elems = ["mode", "adom", "host", "username", "password"]
         if isinstance(obj, dict):
             obj = dict((key, fmgr_prepare_dict(value)) for (key, value) in obj.items() if key not in list_of_elems)
         return obj
-    
-    
+
+
     def fmgr_is_empty_dict(obj):
         return_val = False
         if isinstance(obj, dict):
@@ -1846,10 +1845,10 @@ Module Source Code
                         return return_val
             elif len(obj) == 0:
                 return_val = True
-    
+
         return return_val
-    
-    
+
+
     def fmgr_split_comma_strings_into_lists(obj):
         if isinstance(obj, dict):
             if len(obj) > 0:
@@ -1861,15 +1860,15 @@ Module Source Code
                             for item in new_items:
                                 new_list.append(item.strip())
                             obj[k] = new_list
-    
+
         return obj
-    
-    
+
+
     #############
     # END METHODS
     #############
-    
-    
+
+
     def main():
         argument_spec = dict(
             adom=dict(type="str", default="root"),
@@ -1877,7 +1876,7 @@ Module Source Code
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True, required=True),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"]), no_log=True, required=True),
             mode=dict(choices=["add", "set", "delete", "update"], type="str", default="add"),
-    
+
             transparent=dict(required=False, type="str", choices=["disable", "enable"]),
             name=dict(required=False, type="str"),
             comments=dict(required=False, type="str"),
@@ -1927,11 +1926,11 @@ Module Source Code
             tcp_ssl_port=dict(required=False, type="str"),
             tcp_status=dict(required=False, type="str", choices=["disable", "enable"]),
             tcp_tunnel_sharing=dict(required=False, type="str", choices=["private", "shared", "express-shared"]),
-    
+
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=False)
-    
+
         # MODULE PARAMGRAM
         paramgram = {
             "mode": module.params["mode"],
@@ -1991,7 +1990,7 @@ Module Source Code
                 "tunnel-sharing": module.params["tcp_tunnel_sharing"],
             }
         }
-    
+
         list_overrides = ['cifs', 'ftp', 'http', 'mapi', 'tcp']
         for list_variable in list_overrides:
             override_data = list()
@@ -2005,33 +2004,33 @@ Module Source Code
                     paramgram[list_variable] = override_data
             except:
                 pass
-    
+
         # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
         host = module.params["host"]
         password = module.params["password"]
         username = module.params["username"]
         if host is None or username is None or password is None:
             module.fail_json(msg="Host and username and password are required")
-    
+
         # CHECK IF LOGIN FAILED
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
-    
+
         response = fmg.login()
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
-    
+
         results = fmgr_wanopt_profile_addsetdelete(fmg, paramgram)
         if results[0] != 0:
             fmgr_logout(fmg, module, results=results, good_codes=[0])
-    
+
         fmg.logout()
-    
+
         if results is not None:
             return module.exit_json(**results[1])
         else:
             return module.exit_json(msg="No results were returned from the API call.")
-    
-    
+
+
     if __name__ == "__main__":
         main()
 

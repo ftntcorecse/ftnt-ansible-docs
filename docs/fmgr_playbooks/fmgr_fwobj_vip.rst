@@ -84,7 +84,7 @@ fmgr_fwobj_vip_add_pnat.yml
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
@@ -92,9 +92,6 @@ fmgr_fwobj_vip_add_pnat.yml
       # BASIC FULL PNAT MAPPING
       - name: EDIT FMGR_FIREWALL_VIP PNAT
         fmgr_fwobj_vip:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Basic PNAT Map Port 10443"
           mode: "set"
           adom: "ansible"
@@ -118,16 +115,13 @@ fmgr_fwobj_vip_add_dnst.yml
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: EDIT FMGR_FIREWALL_DNST
         fmgr_fwobj_vip:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Basic DNS Translation"
           mode: "set"
           adom: "ansible"
@@ -147,16 +141,13 @@ fmgr_fwobj_vip_add_fqdn.yml
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: EDIT FMGR_FIREWALL_FQDN
         fmgr_fwobj_vip:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Basic FQDN Translation"
           mode: "set"
           adom: "ansible"
@@ -174,7 +165,7 @@ fmgr_fwobj_vip_add_snat.yml
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
@@ -182,9 +173,6 @@ fmgr_fwobj_vip_add_snat.yml
       # BASIC FULL STATIC NAT MAPPING
       - name: EDIT FMGR_FIREWALL_VIP SNAT
         fmgr_fwobj_vip:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Basic StaticNAT Map"
           mode: "set"
           adom: "ansible"
@@ -204,7 +192,7 @@ fmgr_fwobj_vip_TEMPLATE.yml
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
@@ -212,9 +200,6 @@ fmgr_fwobj_vip_TEMPLATE.yml
       # BASIC FULL PNAT MAPPING
       - name: EDIT FMGR_FIREWALL_VIP PNAT
         fmgr_fwobj_vip:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Basic PNAT Map Port 10443"
           mode: "set"
           adom: "ansible"
@@ -398,7 +383,7 @@ fmgr_fwobj_vip_del_all.yml
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
@@ -406,42 +391,43 @@ fmgr_fwobj_vip_del_all.yml
       # BASIC FULL PORT NAT MAPPING
       - name: DELETE FMGR_FIREWALL_VIP PNAT
         fmgr_fwobj_vip:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Basic PNAT Map Port 10443"
           mode: "delete"
           adom: "ansible"
     
       - name: DELETE FMGR_FIREWALL_VIP SNAT
         fmgr_fwobj_vip:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Basic StaticNAT Map"
           mode: "delete"
           adom: "ansible"
     
       - name: DELETE FMGR_FIREWALL_VIP DNS
         fmgr_fwobj_vip:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Basic DNS Translation"
           mode: "delete"
           adom: "ansible"
     
       - name: DELETE FMGR_FIREWALL_VIP FQDN
         fmgr_fwobj_vip:
-          host: "{{ inventory_hostname }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Basic FQDN Translation"
           mode: "delete"
           adom: "ansible"
     
     
     
+
+
+fmgr_fwobj_vip_run_all.sh
++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook fmgr_fwobj_vip_add_pnat.yml -vvvv
+    ansible-playbook fmgr_fwobj_vip_add_dnst.yml -vvvv
+    ansible-playbook fmgr_fwobj_vip_add_fqdn.yml -vvvv
+    ansible-playbook fmgr_fwobj_vip_add_snat.yml -vvvv
+    ansible-playbook fmgr_fwobj_vip_TEMPLATE.yml -vvvv
+    ansible-playbook fmgr_fwobj_vip_del_all.yml -vvvv
 
 
 

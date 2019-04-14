@@ -36,6 +36,16 @@ Playbook File Examples
 ----------------------
 
 
+fmgr_secprof_av_run_all.sh
+++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            #!/bin/bash
+    ansible-playbook fmgr_secprof_av_add.yml -vvvv
+    ansible-playbook fmgr_secprof_av_del.yml -vvvv
+    ansible-playbook av.yml -vvvv
+
+
 fmgr_secprof_av_add.yml
 +++++++++++++++++++++++
 
@@ -43,16 +53,13 @@ fmgr_secprof_av_add.yml
 
 
     - name: SET FORTIMANAGER HA MODE TO SLAVE
-      hosts: FortiManagerSlave
-      connection: local
+      hosts: FortiManager
+      connection: httpapi
       gather_facts: False
     
       tasks:
         - name: CREATE Profile
           fmgr_secprof_av:
-            host: "{{inventory_hostname}}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             name: "Ansible_AV_Profile"
             comment: "Created by Ansible Module TEST"
             mode: "set"
@@ -76,16 +83,13 @@ fmgr_secprof_av_del.yml
 
 
     - name: SET FORTIMANAGER HA MODE TO SLAVE
-      hosts: FortiManagerSlave
-      connection: local
+      hosts: FortiManager
+      connection: httpapi
       gather_facts: False
     
       tasks:
         - name: DELETE Profile
           fmgr_secprof_av:
-            host: "{{inventory_hostname}}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             name: "Ansible_AV_Profile"
             mode: "delete"
 
@@ -97,28 +101,24 @@ av.yml
 
     - name: Create and Delete security profile in FMG
       hosts: FortiManager
-      connection: local
+      connection: httpapi
       gather_facts: False
     
       tasks:
     
       - name: DELETE Profile
         fmgr_secprof_av:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_AV_Profile"
           mode: "delete"
+          adom: "ansible"
     
     
       - name: CREATE Profile
         fmgr_secprof_av:
-          host: "{{inventory_hostname}}"
-          username: "{{ username }}"
-          password: "{{ password }}"
           name: "Ansible_AV_Profile"
           comment: "Created by Ansible Module TEST"
           mode: "set"
+          adom: "ansible"
           inspection_mode: "proxy"
           ftgd_analytics: "everything"
           av_block_log: "enable"

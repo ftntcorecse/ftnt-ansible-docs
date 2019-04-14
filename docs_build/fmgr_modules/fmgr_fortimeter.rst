@@ -19,7 +19,6 @@ Metadata
 **Ansible Version Added/Required:** 2.6
 
 **Dev Status:** No Data Exists. Contact DevOps Team.
-
 Parameters
 ----------
 
@@ -28,7 +27,7 @@ adom
 
 - Description: The ADOM the configuration should belong to.
 
-  
+
 
 - Required: True
 
@@ -39,7 +38,7 @@ device_unique_name
 
 - Description: The desired "friendly" name of the device you want to query.
 
-  
+
 
 - Required: True
 
@@ -48,7 +47,7 @@ fortimeter_utm_level
 
 - Description: Determines which UTM profiles should be allowed for Fortimeter. Multiple comma seperated selections allowed.
 
-  
+
 
 - Required: True
 
@@ -61,7 +60,7 @@ foslic_type
 
 - Description: Sets the FortiMeterOS license Type (0 is temporary, 2 is regular, 1 is trial, 3 is expired)
 
-  
+
 
 - Required: False
 
@@ -72,7 +71,7 @@ host
 
 - Description: The FortiManager's Address.
 
-  
+
 
 - Required: True
 
@@ -81,7 +80,7 @@ password
 
 - Description: The password associated with the username account.
 
-  
+
 
 - Required: False
 
@@ -90,7 +89,7 @@ username
 
 - Description: The username used to authenticate with the FortiManager.
 
-  
+
 
 - Required: False
 
@@ -108,7 +107,7 @@ Functions
  .. code-block:: python
 
     def fmgr_set_fortimeter_lic(fmg, paramgram):
-    
+
         # FIRST WE NEED TO PARSE THE DESIRED FOSLIC LEVEL ON THESE RULES
         # FW = 1
         # AV = 2
@@ -123,10 +122,10 @@ Functions
             "ac": 8,
             "wf": 16
         }
-    
+
         foslic = 0
         fos_items = paramgram["fortimeter_utm_level"].strip().split(",")
-    
+
         if "all" in paramgram["fortimeter_utm_level"].lower():
             foslic = 63
         else:
@@ -146,18 +145,18 @@ Functions
                 if item.strip().lower() == "wf":
                     foslic += fos_levels["wf"]
                     continue
-    
+
         datagram = {
             "foslic_utm": foslic,
             "foslic_type": paramgram["foslic_type"]
         }
-    
+
         url = "/dvmdb/adom/{adom}/device/{device}".format(adom=paramgram["adom"], device=paramgram["device_unique_name"])
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
 
 - main
 
@@ -169,24 +168,24 @@ Functions
             host=dict(required=True, type="str"),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"])),
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
-    
+
             device_unique_name=dict(required=True, type="str"),
             fortimeter_utm_level=dict(required=True, type="str"),
             foslic_type=dict(required=False, type="int", default=2)
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=True, )
-    
+
         # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
         host = module.params["host"]
         username = module.params["username"]
         if host is None or username is None:
             module.fail_json(msg="Host and username are required")
-    
+
         # CHECK IF LOGIN FAILED
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
         response = fmg.login()
-    
+
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
         else:
@@ -196,16 +195,16 @@ Functions
                 "fortimeter_utm_level": module.params["fortimeter_utm_level"],
                 "foslic_type": module.params["foslic_type"]
             }
-    
+
             results = fmgr_set_fortimeter_lic(fmg, paramgram)
             if results[0] != 0:
                 return module.fail_json(msg="Setting FortiMeter Failed", **results[1])
-    
+
         # logout
         fmg.logout()
         return module.exit_json(**results[1])
-    
-    
+
+
 
 
 
@@ -231,16 +230,16 @@ Module Source Code
     # You should have received a copy of the GNU General Public License
     # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
     #
-    
+
     from __future__ import absolute_import, division, print_function
     __metaclass__ = type
-    
+
     ANSIBLE_METADATA = {
         "metadata_version": "1.1",
         "status": ["preview"],
         "supported_by": "community"
     }
-    
+
     DOCUMENTATION = '''
     ---
     module: fmgr_fortimeter
@@ -249,7 +248,7 @@ Module Source Code
     short_description: Sets FortiMeter licensing level
     description:
       - Provides MSPs the ability to programatically change FortiMeter license levels on devices.
-    
+
     options:
       adom:
         description:
@@ -284,8 +283,8 @@ Module Source Code
         required: false
         default: 2
     '''
-    
-    
+
+
     EXAMPLES = '''
     - name: SET LICENSING MODE ON FORTIMETER DEVICE to ALL
       fmgr_fortimeter:
@@ -296,7 +295,7 @@ Module Source Code
         adom: "ansible"
         device_unique_name: "FOSVM1FGPRJ411DD"
         fortimeter_utm_level: "all"
-    
+
     - name: SET LICENSING MODE ON FORTIMETER DEVICE to a COMBO
       fmgr_fortimeter:
         host: "{{inventory_hostname}}"
@@ -307,27 +306,27 @@ Module Source Code
         device_unique_name: "FOSVM1FGPRJ411DD"
         fortimeter_utm_level: "fw, ips, av"
     '''
-    
+
     RETURN = """
     api_result:
       description: full API response, includes status code and message
       returned: always
       type: string
     """
-    
+
     from ansible.module_utils.basic import AnsibleModule, env_fallback
     from ansible.module_utils.network.fortimanager.fortimanager import AnsibleFortiManager
-    
+
     # check for pyFMG lib
     try:
         from pyFMG.fortimgr import FortiManager
         HAS_PYFMGR = True
     except ImportError:
         HAS_PYFMGR = False
-    
-    
+
+
     def fmgr_set_fortimeter_lic(fmg, paramgram):
-    
+
         # FIRST WE NEED TO PARSE THE DESIRED FOSLIC LEVEL ON THESE RULES
         # FW = 1
         # AV = 2
@@ -342,10 +341,10 @@ Module Source Code
             "ac": 8,
             "wf": 16
         }
-    
+
         foslic = 0
         fos_items = paramgram["fortimeter_utm_level"].strip().split(",")
-    
+
         if "all" in paramgram["fortimeter_utm_level"].lower():
             foslic = 63
         else:
@@ -365,42 +364,42 @@ Module Source Code
                 if item.strip().lower() == "wf":
                     foslic += fos_levels["wf"]
                     continue
-    
+
         datagram = {
             "foslic_utm": foslic,
             "foslic_type": paramgram["foslic_type"]
         }
-    
+
         url = "/dvmdb/adom/{adom}/device/{device}".format(adom=paramgram["adom"], device=paramgram["device_unique_name"])
         response = fmg.set(url, datagram)
-    
+
         return response
-    
-    
+
+
     def main():
         argument_spec = dict(
             adom=dict(required=False, type="str", default="root"),
             host=dict(required=True, type="str"),
             username=dict(fallback=(env_fallback, ["ANSIBLE_NET_USERNAME"])),
             password=dict(fallback=(env_fallback, ["ANSIBLE_NET_PASSWORD"]), no_log=True),
-    
+
             device_unique_name=dict(required=True, type="str"),
             fortimeter_utm_level=dict(required=True, type="str"),
             foslic_type=dict(required=False, type="int", default=2)
         )
-    
+
         module = AnsibleModule(argument_spec, supports_check_mode=True, )
-    
+
         # CHECK IF THE HOST/USERNAME/PW EXISTS, AND IF IT DOES, LOGIN.
         host = module.params["host"]
         username = module.params["username"]
         if host is None or username is None:
             module.fail_json(msg="Host and username are required")
-    
+
         # CHECK IF LOGIN FAILED
         fmg = AnsibleFortiManager(module, module.params["host"], module.params["username"], module.params["password"])
         response = fmg.login()
-    
+
         if response[1]['status']['code'] != 0:
             module.fail_json(msg="Connection to FortiManager Failed")
         else:
@@ -410,16 +409,16 @@ Module Source Code
                 "fortimeter_utm_level": module.params["fortimeter_utm_level"],
                 "foslic_type": module.params["foslic_type"]
             }
-    
+
             results = fmgr_set_fortimeter_lic(fmg, paramgram)
             if results[0] != 0:
                 return module.fail_json(msg="Setting FortiMeter Failed", **results[1])
-    
+
         # logout
         fmg.logout()
         return module.exit_json(**results[1])
-    
-    
+
+
     if __name__ == "__main__":
         main()
 

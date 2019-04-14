@@ -30,7 +30,9 @@ Metadata
 
 **Owning Developer:** Luke Weighall
 
-**Module Link:** https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_fwobj_address.py
+.. _Link: https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_fwobj_address.py
+
+Link_
 
 Parameters
 ----------
