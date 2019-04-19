@@ -1,0 +1,693 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fmgr_fwobj_ippool6 &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fmgr_fwobj_service" href="fmgr_fwobj_service.html" />
+    <link rel="prev" title="fmgr_fwobj_ippool" href="fmgr_fwobj_ippool.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../fmgr_root.html">FortiManager</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../fmgr_modules.html">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device.html">fmgr_device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_fwobj_ippool6</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_package.html">fmgr_fwpol_package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_ha.html">fmgr_ha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_provisioning.html">fmgr_provisioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_query.html">fmgr_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_script.html">fmgr_script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_appctrl.html">fmgr_secprof_appctrl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_av.html">fmgr_secprof_av</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_dns.html">fmgr_secprof_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ips.html">fmgr_secprof_ips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_profile_group.html">fmgr_secprof_profile_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_proxy.html">fmgr_secprof_proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_spam.html">fmgr_secprof_spam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ssl_ssh.html">fmgr_secprof_ssl_ssh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_voip.html">fmgr_secprof_voip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fmgr_root.html">FortiManager</a> &raquo;</li>
+        
+          <li><a href="../fmgr_modules.html">Modules</a> &raquo;</li>
+        
+      <li>fmgr_fwobj_ippool6</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fmgr_modules/fmgr_fwobj_ippool6.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fmgr-fwobj-ippool6">
+<h1>fmgr_fwobj_ippool6<a class="headerlink" href="#fmgr-fwobj-ippool6" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> fmgr_fwobj_ippool6</p>
+<p><strong>Description:</strong> Allows users to add/edit/delete IPv6 Pool Objects.</p>
+<p><strong>Author(s):</strong></p>
+<ul class="simple">
+<li>Luke Weighall (github: &#64;lweighall)</li>
+<li>Andrew Welsh (github: &#64;Ghilli3)</li>
+<li>Jim Huber (github: &#64;p4r4n0y1ng)</li>
+</ul>
+<p><strong>Ansible Version Added/Required:</strong> 2.8</p>
+<p><strong>Dev Status:</strong> COMPLETED/MERGED</p>
+<p><strong>Owning Developer:</strong> Luke Weighall</p>
+<p>Module Github <a class="reference external" href="https://github.com/ftntcorecse/fndn_ansible/blob/master/fortimanager/modules/network/fortimanager/fmgr_fwobj_ippool6.py">Link</a></p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adom">
+<h3>adom<a class="headerlink" href="#adom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The ADOM the configuration should belong to.</li>
+<li>Required: False</li>
+<li>default: root</li>
+</ul>
+</div>
+<div class="section" id="comments">
+<h3>comments<a class="headerlink" href="#comments" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Comment.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="dynamic-mapping">
+<h3>dynamic_mapping<a class="headerlink" href="#dynamic-mapping" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!</p>
+<p>List of multiple child objects to be added. Expects a list of dictionaries.</p>
+<p>Dictionaries must use FortiManager API parameters, not the ansible ones listed below.</p>
+<p>If submitted, all other prefixed sub-parameters ARE IGNORED.</p>
+<p>This object is MUTUALLY EXCLUSIVE with its options.</p>
+<p>We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.</p>
+<p>WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+</ul>
+</div>
+<div class="section" id="dynamic-mapping-comments">
+<h3>dynamic_mapping_comments<a class="headerlink" href="#dynamic-mapping-comments" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Dynamic Mapping clone of original suffixed parameter.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="dynamic-mapping-endip">
+<h3>dynamic_mapping_endip<a class="headerlink" href="#dynamic-mapping-endip" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Dynamic Mapping clone of original suffixed parameter.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="dynamic-mapping-startip">
+<h3>dynamic_mapping_startip<a class="headerlink" href="#dynamic-mapping-startip" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Dynamic Mapping clone of original suffixed parameter.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="endip">
+<h3>endip<a class="headerlink" href="#endip" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Final IPv6 address (inclusive) in the range for the address pool.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="mode">
+<h3>mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Sets one of three modes for managing the object.</p>
+<p>Allows use of soft-adds instead of overwriting existing values</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">default: add</p>
+</li>
+<li><p class="first">choices: [‘add’, ‘set’, ‘delete’, ‘update’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="name">
+<h3>name<a class="headerlink" href="#name" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: IPv6 IP pool name.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="startip">
+<h3>startip<a class="headerlink" href="#startip" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: First IPv6 address (inclusive) in the range for the address pool.</li>
+<li>Required: False</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>fmgr_fwobj_ippool6_modify</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fmgr_fwobj_ippool6_modify</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mode</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span>
+    <span class="n">adom</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
+    <span class="c1"># INIT A BASIC OBJECTS</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># EVAL THE MODE PARAMETER FOR SET OR ADD</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">]:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/ippool6&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="n">scrub_dict</span><span class="p">(</span><span class="n">prepare_dict</span><span class="p">(</span><span class="n">paramgram</span><span class="p">))</span>
+
+    <span class="c1"># EVAL THE MODE PARAMETER FOR DELETE</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="c1"># SET THE CORRECT URL FOR DELETE</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/ippool6/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;update&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
+        <span class="n">startip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">endip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">comments</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">dynamic_mapping</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;list&quot;</span><span class="p">),</span>
+        <span class="n">dynamic_mapping_comments</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">dynamic_mapping_endip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">dynamic_mapping_startip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="p">)</span>
+    <span class="c1"># MODULE PARAMGRAM</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;startip&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;startip&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;endip&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;endip&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;comments&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;comments&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;dynamic_mapping&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;comments&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dynamic_mapping_comments&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;endip&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dynamic_mapping_endip&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;startip&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dynamic_mapping_startip&quot;</span><span class="p">],</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+    <span class="n">fmgr</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">)</span>
+        <span class="n">fmgr</span> <span class="o">=</span> <span class="n">FortiManagerHandler</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="n">fmgr</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">FMGRCommon</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">FAIL_SOCKET_MSG</span><span class="p">)</span>
+
+    <span class="n">list_overrides</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dynamic_mapping&#39;</span><span class="p">]</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">paramgram_child_list_override</span><span class="p">(</span><span class="n">list_overrides</span><span class="o">=</span><span class="n">list_overrides</span><span class="p">,</span>
+                                                         <span class="n">paramgram</span><span class="o">=</span><span class="n">paramgram</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">)</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwobj_ippool6_modify</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>
+                             <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="module-source-code">
+<h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Ansible</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
+
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;preview&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;supported_by&#39;</span><span class="p">:</span> <span class="s1">&#39;community&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;metadata_version&#39;</span><span class="p">:</span> <span class="s1">&#39;1.1&#39;</span><span class="p">}</span>
+
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">module: fmgr_fwobj_ippool6</span>
+<span class="s1">version_added: &quot;2.8&quot;</span>
+<span class="s1">notes:</span>
+<span class="s1">    - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).</span>
+<span class="s1">author:</span>
+<span class="s1">    - Luke Weighall (@lweighall)</span>
+<span class="s1">    - Andrew Welsh (@Ghilli3)</span>
+<span class="s1">    - Jim Huber (@p4r4n0y1ng)</span>
+<span class="s1">short_description: Allows the editing of IP Pool Objects within FortiManager.</span>
+<span class="s1">description:</span>
+<span class="s1">  -  Allows users to add/edit/delete IPv6 Pool Objects.</span>
+
+<span class="s1">options:</span>
+<span class="s1">  adom:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The ADOM the configuration should belong to.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: root</span>
+
+<span class="s1">  mode:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Sets one of three modes for managing the object.</span>
+<span class="s1">      - Allows use of soft-adds instead of overwriting existing values</span>
+<span class="s1">    choices: [&#39;add&#39;, &#39;set&#39;, &#39;delete&#39;, &#39;update&#39;]</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: add</span>
+
+<span class="s1">  startip:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - First IPv6 address (inclusive) in the range for the address pool.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  name:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - IPv6 IP pool name.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  endip:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Final IPv6 address (inclusive) in the range for the address pool.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  comments:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Comment.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  dynamic_mapping:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - EXPERTS ONLY! KNOWLEDGE OF FMGR JSON API IS REQUIRED!</span>
+<span class="s1">      - List of multiple child objects to be added. Expects a list of dictionaries.</span>
+<span class="s1">      - Dictionaries must use FortiManager API parameters, not the ansible ones listed below.</span>
+<span class="s1">      - If submitted, all other prefixed sub-parameters ARE IGNORED.</span>
+<span class="s1">      - This object is MUTUALLY EXCLUSIVE with its options.</span>
+<span class="s1">      - We expect that you know what you are doing with these list parameters, and are leveraging the JSON API Guide.</span>
+<span class="s1">      - WHEN IN DOUBT, USE THE SUB OPTIONS BELOW INSTEAD TO CREATE OBJECTS WITH MULTIPLE TASKS</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  dynamic_mapping_comments:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Dynamic Mapping clone of original suffixed parameter.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  dynamic_mapping_endip:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Dynamic Mapping clone of original suffixed parameter.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  dynamic_mapping_startip:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Dynamic Mapping clone of original suffixed parameter.</span>
+<span class="s1">    required: false</span>
+
+
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: ADD FMGR_FIREWALL_IPPOOL6</span>
+<span class="s1">  fmgr_firewall_ippool6:</span>
+<span class="s1">    mode: &quot;add&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    startip:</span>
+<span class="s1">    name: &quot;IPv6 IPPool&quot;</span>
+<span class="s1">    endip:</span>
+<span class="s1">    comments: &quot;Created by Ansible&quot;</span>
+
+<span class="s1">- name: DELETE FMGR_FIREWALL_IPPOOL6</span>
+<span class="s1">  fmgr_firewall_ippool6:</span>
+<span class="s1">    mode: &quot;delete&quot;</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    name: &quot;IPv6 IPPool&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">api_result:</span>
+<span class="s2">  description: full API response, includes status code and message</span>
+<span class="s2">  returned: always</span>
+<span class="s2">  type: str</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.connection</span> <span class="kn">import</span> <span class="n">Connection</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">FortiManagerHandler</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGBaseException</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGRCommon</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FAIL_SOCKET_MSG</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">prepare_dict</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">scrub_dict</span>
+
+
+<span class="k">def</span> <span class="nf">fmgr_fwobj_ippool6_modify</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param fmgr: The fmgr object instance from fortimanager.py</span>
+<span class="sd">    :type fmgr: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiManager</span>
+<span class="sd">    :rtype: dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="n">mode</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span>
+    <span class="n">adom</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
+    <span class="c1"># INIT A BASIC OBJECTS</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="c1"># EVAL THE MODE PARAMETER FOR SET OR ADD</span>
+    <span class="k">if</span> <span class="n">mode</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;set&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="s1">&#39;update&#39;</span><span class="p">]:</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/ippool6&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">)</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="n">scrub_dict</span><span class="p">(</span><span class="n">prepare_dict</span><span class="p">(</span><span class="n">paramgram</span><span class="p">))</span>
+
+    <span class="c1"># EVAL THE MODE PARAMETER FOR DELETE</span>
+    <span class="k">elif</span> <span class="n">mode</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
+        <span class="c1"># SET THE CORRECT URL FOR DELETE</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/pm/config/adom/{adom}/obj/firewall/ippool6/{name}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;update&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
+        <span class="n">startip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">endip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">comments</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">dynamic_mapping</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;list&quot;</span><span class="p">),</span>
+        <span class="n">dynamic_mapping_comments</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">dynamic_mapping_endip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">dynamic_mapping_startip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="p">)</span>
+    <span class="c1"># MODULE PARAMGRAM</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;startip&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;startip&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;endip&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;endip&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;comments&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;comments&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;dynamic_mapping&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;comments&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dynamic_mapping_comments&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;endip&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dynamic_mapping_endip&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;startip&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;dynamic_mapping_startip&quot;</span><span class="p">],</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+    <span class="n">fmgr</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">)</span>
+        <span class="n">fmgr</span> <span class="o">=</span> <span class="n">FortiManagerHandler</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="n">fmgr</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">FMGRCommon</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">FAIL_SOCKET_MSG</span><span class="p">)</span>
+
+    <span class="n">list_overrides</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dynamic_mapping&#39;</span><span class="p">]</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">tools</span><span class="o">.</span><span class="n">paramgram_child_list_override</span><span class="p">(</span><span class="n">list_overrides</span><span class="o">=</span><span class="n">list_overrides</span><span class="p">,</span>
+                                                         <span class="n">paramgram</span><span class="o">=</span><span class="n">paramgram</span><span class="p">,</span> <span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">)</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwobj_ippool6_modify</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+        <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>
+                             <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
+
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fmgr_fwobj_service.html" class="btn btn-neutral float-right" title="fmgr_fwobj_service" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fmgr_fwobj_ippool.html" class="btn btn-neutral" title="fmgr_fwobj_ippool" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

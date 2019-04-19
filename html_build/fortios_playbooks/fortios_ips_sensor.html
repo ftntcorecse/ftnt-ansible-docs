@@ -1,0 +1,774 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fortios_ips_sensor &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fortios_ips_settings" href="fortios_ips_settings.html" />
+    <link rel="prev" title="fortios_ips_rule_settings" href="fortios_ips_rule_settings.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../fmgr_root.html">FortiManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../fortios_modules.html">Modules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../fortios_playbooks.html">Playbook Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fortios_address.html">fortios_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_alertemail_setting.html">fortios_alertemail_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_antivirus_heuristic.html">fortios_antivirus_heuristic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_antivirus_profile.html">fortios_antivirus_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_antivirus_quarantine.html">fortios_antivirus_quarantine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_antivirus_settings.html">fortios_antivirus_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_custom.html">fortios_application_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_group.html">fortios_application_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_list.html">fortios_application_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_name.html">fortios_application_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_rule_settings.html">fortios_application_rule_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_authentication_rule.html">fortios_authentication_rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_authentication_scheme.html">fortios_authentication_scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_authentication_setting.html">fortios_authentication_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_certificate_ca.html">fortios_certificate_ca</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_certificate_crl.html">fortios_certificate_crl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_certificate_local.html">fortios_certificate_local</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_config.html">fortios_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_filepattern.html">fortios_dlp_filepattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_fp_doc_source.html">fortios_dlp_fp_doc_source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_fp_sensitivity.html">fortios_dlp_fp_sensitivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_sensor.html">fortios_dlp_sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_settings.html">fortios_dlp_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dnsfilter_domain_filter.html">fortios_dnsfilter_domain_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dnsfilter_profile.html">fortios_dnsfilter_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_client.html">fortios_endpoint_control_client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_forticlient_ems.html">fortios_endpoint_control_forticlient_ems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_forticlient_registration_sync.html">fortios_endpoint_control_forticlient_registration_sync</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_profile.html">fortios_endpoint_control_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_registered_forticlient.html">fortios_endpoint_control_registered_forticlient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_settings.html">fortios_endpoint_control_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_extender_controller_extender.html">fortios_extender_controller_extender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ipmacbinding_setting.html">fortios_firewall.ipmacbinding_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ipmacbinding_table.html">fortios_firewall.ipmacbinding_table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.schedule_group.html">fortios_firewall.schedule_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.schedule_onetime.html">fortios_firewall.schedule_onetime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.schedule_recurring.html">fortios_firewall.schedule_recurring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.service_category.html">fortios_firewall.service_category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.service_custom.html">fortios_firewall.service_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.service_group.html">fortios_firewall.service_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.shaper_per_ip_shaper.html">fortios_firewall.shaper_per_ip_shaper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.shaper_traffic_shaper.html">fortios_firewall.shaper_traffic_shaper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssh_host_key.html">fortios_firewall.ssh_host_key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssh_local_ca.html">fortios_firewall.ssh_local_ca</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssh_local_key.html">fortios_firewall.ssh_local_key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssh_setting.html">fortios_firewall.ssh_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssl_setting.html">fortios_firewall.ssl_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.wildcard_fqdn_custom.html">fortios_firewall.wildcard_fqdn_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.wildcard_fqdn_group.html">fortios_firewall.wildcard_fqdn_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_DoS_policy.html">fortios_firewall_DoS_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_DoS_policy6.html">fortios_firewall_DoS_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_address.html">fortios_firewall_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_address6.html">fortios_firewall_address6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_address6_template.html">fortios_firewall_address6_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_addrgrp.html">fortios_firewall_addrgrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_addrgrp6.html">fortios_firewall_addrgrp6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_auth_portal.html">fortios_firewall_auth_portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_central_snat_map.html">fortios_firewall_central_snat_map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_dnstranslation.html">fortios_firewall_dnstranslation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_identity_based_route.html">fortios_firewall_identity_based_route</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_interface_policy.html">fortios_firewall_interface_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_interface_policy6.html">fortios_firewall_interface_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_internet_service.html">fortios_firewall_internet_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_internet_service_custom.html">fortios_firewall_internet_service_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_internet_service_custom_group.html">fortios_firewall_internet_service_custom_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_internet_service_group.html">fortios_firewall_internet_service_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ip_translation.html">fortios_firewall_ip_translation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ippool.html">fortios_firewall_ippool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ippool6.html">fortios_firewall_ippool6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ipv6_eh_filter.html">fortios_firewall_ipv6_eh_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ldb_monitor.html">fortios_firewall_ldb_monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_local_in_policy.html">fortios_firewall_local_in_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_local_in_policy6.html">fortios_firewall_local_in_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_multicast_address.html">fortios_firewall_multicast_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_multicast_address6.html">fortios_firewall_multicast_address6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_multicast_policy.html">fortios_firewall_multicast_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_multicast_policy6.html">fortios_firewall_multicast_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_policy.html">fortios_firewall_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_policy46.html">fortios_firewall_policy46</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_policy6.html">fortios_firewall_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_policy64.html">fortios_firewall_policy64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_profile_group.html">fortios_firewall_profile_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_profile_protocol_options.html">fortios_firewall_profile_protocol_options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_proxy_address.html">fortios_firewall_proxy_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_proxy_addrgrp.html">fortios_firewall_proxy_addrgrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_proxy_policy.html">fortios_firewall_proxy_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_shaping_policy.html">fortios_firewall_shaping_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_shaping_profile.html">fortios_firewall_shaping_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_sniffer.html">fortios_firewall_sniffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ssl_server.html">fortios_firewall_ssl_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ssl_ssh_profile.html">fortios_firewall_ssl_ssh_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ttl_policy.html">fortios_firewall_ttl_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vip.html">fortios_firewall_vip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vip46.html">fortios_firewall_vip46</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vip6.html">fortios_firewall_vip6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vip64.html">fortios_firewall_vip64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vipgrp.html">fortios_firewall_vipgrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vipgrp46.html">fortios_firewall_vipgrp46</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vipgrp6.html">fortios_firewall_vipgrp6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vipgrp64.html">fortios_firewall_vipgrp64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ftp_proxy_explicit.html">fortios_ftp_proxy_explicit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_icap_profile.html">fortios_icap_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_icap_server.html">fortios_icap_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_custom.html">fortios_ips_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_decoder.html">fortios_ips_decoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_global.html">fortios_ips_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_rule.html">fortios_ips_rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_rule_settings.html">fortios_ips_rule_settings</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fortios_ips_sensor</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#playbook-task-examples">Playbook Task Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#playbook-file-examples">Playbook File Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_settings.html">fortios_ips_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ipv4_policy.html">fortios_ipv4_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.disk_filter.html">fortios_log.disk_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.disk_setting.html">fortios_log.disk_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer2_filter.html">fortios_log.fortianalyzer2_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer2_setting.html">fortios_log.fortianalyzer2_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer3_filter.html">fortios_log.fortianalyzer3_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer3_setting.html">fortios_log.fortianalyzer3_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer_filter.html">fortios_log.fortianalyzer_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer_override_filter.html">fortios_log.fortianalyzer_override_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer_override_setting.html">fortios_log.fortianalyzer_override_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer_setting.html">fortios_log.fortianalyzer_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortiguard_filter.html">fortios_log.fortiguard_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortiguard_override_filter.html">fortios_log.fortiguard_override_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortiguard_override_setting.html">fortios_log.fortiguard_override_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortiguard_setting.html">fortios_log.fortiguard_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.memory_filter.html">fortios_log.memory_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.memory_global_setting.html">fortios_log.memory_global_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.memory_setting.html">fortios_log.memory_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.null_device_filter.html">fortios_log.null_device_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.null_device_setting.html">fortios_log.null_device_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd2_filter.html">fortios_log.syslogd2_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd2_setting.html">fortios_log.syslogd2_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd3_filter.html">fortios_log.syslogd3_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd3_setting.html">fortios_log.syslogd3_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd4_filter.html">fortios_log.syslogd4_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd4_setting.html">fortios_log.syslogd4_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd_filter.html">fortios_log.syslogd_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd_override_filter.html">fortios_log.syslogd_override_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd_override_setting.html">fortios_log.syslogd_override_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd_setting.html">fortios_log.syslogd_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.webtrends_filter.html">fortios_log.webtrends_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.webtrends_setting.html">fortios_log.webtrends_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_custom_field.html">fortios_log_custom_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_eventfilter.html">fortios_log_eventfilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_gui_display.html">fortios_log_gui_display</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_setting.html">fortios_log_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_threat_weight.html">fortios_log_threat_weight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_chart.html">fortios_report_chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_dataset.html">fortios_report_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_layout.html">fortios_report_layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_setting.html">fortios_report_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_style.html">fortios_report_style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_theme.html">fortios_report_theme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_access_list.html">fortios_router_access_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_access_list6.html">fortios_router_access_list6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_aspath_list.html">fortios_router_aspath_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_auth_path.html">fortios_router_auth_path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_bfd.html">fortios_router_bfd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_bfd6.html">fortios_router_bfd6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_bgp.html">fortios_router_bgp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_community_list.html">fortios_router_community_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_isis.html">fortios_router_isis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_key_chain.html">fortios_router_key_chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_multicast.html">fortios_router_multicast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_multicast6.html">fortios_router_multicast6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_multicast_flow.html">fortios_router_multicast_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_ospf.html">fortios_router_ospf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_ospf6.html">fortios_router_ospf6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_policy.html">fortios_router_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_policy6.html">fortios_router_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_prefix_list.html">fortios_router_prefix_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_prefix_list6.html">fortios_router_prefix_list6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_rip.html">fortios_router_rip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_ripng.html">fortios_router_ripng</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_setting.html">fortios_router_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_static.html">fortios_router_static</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_static6.html">fortios_router_static6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_bwl.html">fortios_spamfilter_bwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_bword.html">fortios_spamfilter_bword</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_dnsbl.html">fortios_spamfilter_dnsbl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_fortishield.html">fortios_spamfilter_fortishield</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_iptrust.html">fortios_spamfilter_iptrust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_mheader.html">fortios_spamfilter_mheader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_options.html">fortios_spamfilter_options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_profile.html">fortios_spamfilter_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ssh_filter_profile.html">fortios_ssh_filter_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.qos_dot1p_map.html">fortios_switch_controller.qos_dot1p_map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.qos_ip_dscp_map.html">fortios_switch_controller.qos_ip_dscp_map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.qos_qos_policy.html">fortios_switch_controller.qos_qos_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.qos_queue_policy.html">fortios_switch_controller.qos_queue_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.security_policy_802_1X.html">fortios_switch_controller.security_policy_802_1X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.security_policy_captive_portal.html">fortios_switch_controller.security_policy_captive_portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_802_1X_settings.html">fortios_switch_controller_802_1X_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_custom_command.html">fortios_switch_controller_custom_command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_global.html">fortios_switch_controller_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_igmp_snooping.html">fortios_switch_controller_igmp_snooping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_lldp_profile.html">fortios_switch_controller_lldp_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_lldp_settings.html">fortios_switch_controller_lldp_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_mac_sync_settings.html">fortios_switch_controller_mac_sync_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_managed_switch.html">fortios_switch_controller_managed_switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_network_monitor_settings.html">fortios_switch_controller_network_monitor_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_quarantine.html">fortios_switch_controller_quarantine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_sflow.html">fortios_switch_controller_sflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_storm_control.html">fortios_switch_controller_storm_control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_stp_settings.html">fortios_switch_controller_stp_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_switch_group.html">fortios_switch_controller_switch_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_switch_interface_tag.html">fortios_switch_controller_switch_interface_tag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_switch_log.html">fortios_switch_controller_switch_log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_switch_profile.html">fortios_switch_controller_switch_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_system.html">fortios_switch_controller_system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_virtual_port_pool.html">fortios_switch_controller_virtual_port_pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_vlan.html">fortios_switch_controller_vlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.autoupdate_push_update.html">fortios_system.autoupdate_push_update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.autoupdate_schedule.html">fortios_system.autoupdate_schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.autoupdate_tunneling.html">fortios_system.autoupdate_tunneling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.dhcp6_server.html">fortios_system.dhcp6_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.dhcp_server.html">fortios_system.dhcp_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_admin.html">fortios_system.replacemsg_admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_alertmail.html">fortios_system.replacemsg_alertmail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_auth.html">fortios_system.replacemsg_auth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_device_detection_portal.html">fortios_system.replacemsg_device_detection_portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_ec.html">fortios_system.replacemsg_ec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_fortiguard_wf.html">fortios_system.replacemsg_fortiguard_wf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_ftp.html">fortios_system.replacemsg_ftp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_http.html">fortios_system.replacemsg_http</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_icap.html">fortios_system.replacemsg_icap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_mail.html">fortios_system.replacemsg_mail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_nac_quar.html">fortios_system.replacemsg_nac_quar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_nntp.html">fortios_system.replacemsg_nntp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_spam.html">fortios_system.replacemsg_spam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_sslvpn.html">fortios_system.replacemsg_sslvpn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_traffic_quota.html">fortios_system.replacemsg_traffic_quota</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_utm.html">fortios_system.replacemsg_utm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_webproxy.html">fortios_system.replacemsg_webproxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.snmp_community.html">fortios_system.snmp_community</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.snmp_sysinfo.html">fortios_system.snmp_sysinfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.snmp_user.html">fortios_system.snmp_user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_accprofile.html">fortios_system_accprofile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_admin.html">fortios_system_admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_affinity_interrupt.html">fortios_system_affinity_interrupt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_affinity_packet_redistribution.html">fortios_system_affinity_packet_redistribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_alarm.html">fortios_system_alarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_alias.html">fortios_system_alias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_api_user.html">fortios_system_api_user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_arp_table.html">fortios_system_arp_table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_auto_install.html">fortios_system_auto_install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_auto_script.html">fortios_system_auto_script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_automation_action.html">fortios_system_automation_action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_automation_destination.html">fortios_system_automation_destination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_automation_stitch.html">fortios_system_automation_stitch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_automation_trigger.html">fortios_system_automation_trigger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_central_management.html">fortios_system_central_management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_cluster_sync.html">fortios_system_cluster_sync</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_console.html">fortios_system_console</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_csf.html">fortios_system_csf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_custom_language.html">fortios_system_custom_language</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ddns.html">fortios_system_ddns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_dedicated_mgmt.html">fortios_system_dedicated_mgmt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_dns.html">fortios_system_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_dns_server.html">fortios_system_dns_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_dscp_based_priority.html">fortios_system_dscp_based_priority</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_email_server.html">fortios_system_email_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_external_resource.html">fortios_system_external_resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fips_cc.html">fortios_system_fips_cc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fm.html">fortios_system_fm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fortiguard.html">fortios_system_fortiguard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fortimanager.html">fortios_system_fortimanager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fortisandbox.html">fortios_system_fortisandbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fsso_polling.html">fortios_system_fsso_polling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ftm_push.html">fortios_system_ftm_push</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_geoip_override.html">fortios_system_geoip_override</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_global.html">fortios_system_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_gre_tunnel.html">fortios_system_gre_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ha.html">fortios_system_ha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ha_monitor.html">fortios_system_ha_monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_interface.html">fortios_system_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ipip_tunnel.html">fortios_system_ipip_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ips_urlfilter_dns.html">fortios_system_ips_urlfilter_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ips_urlfilter_dns6.html">fortios_system_ips_urlfilter_dns6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ipv6_neighbor_cache.html">fortios_system_ipv6_neighbor_cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ipv6_tunnel.html">fortios_system_ipv6_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_link_monitor.html">fortios_system_link_monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_mac_address_table.html">fortios_system_mac_address_table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_management_tunnel.html">fortios_system_management_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_mobile_tunnel.html">fortios_system_mobile_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_nat64.html">fortios_system_nat64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_nd_proxy.html">fortios_system_nd_proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_netflow.html">fortios_system_netflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_network_visibility.html">fortios_system_network_visibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ntp.html">fortios_system_ntp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_object_tagging.html">fortios_system_object_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_password_policy.html">fortios_system_password_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_password_policy_guest_admin.html">fortios_system_password_policy_guest_admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_pppoe_interface.html">fortios_system_pppoe_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_probe_response.html">fortios_system_probe_response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_proxy_arp.html">fortios_system_proxy_arp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_replacemsg_group.html">fortios_system_replacemsg_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_replacemsg_image.html">fortios_system_replacemsg_image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_resource_limits.html">fortios_system_resource_limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_sdn_connector.html">fortios_system_sdn_connector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_session_helper.html">fortios_system_session_helper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_session_ttl.html">fortios_system_session_ttl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_settings.html">fortios_system_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_sflow.html">fortios_system_sflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_sit_tunnel.html">fortios_system_sit_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_sms_server.html">fortios_system_sms_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_storage.html">fortios_system_storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_switch_interface.html">fortios_system_switch_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_tos_based_priority.html">fortios_system_tos_based_priority</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom.html">fortios_system_vdom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_dns.html">fortios_system_vdom_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_exception.html">fortios_system_vdom_exception</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_link.html">fortios_system_vdom_link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_netflow.html">fortios_system_vdom_netflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_property.html">fortios_system_vdom_property</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_radius_server.html">fortios_system_vdom_radius_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_sflow.html">fortios_system_vdom_sflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_virtual_wan_link.html">fortios_system_virtual_wan_link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_virtual_wire_pair.html">fortios_system_virtual_wire_pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vxlan.html">fortios_system_vxlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_wccp.html">fortios_system_wccp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_zone.html">fortios_system_zone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_adgrp.html">fortios_user_adgrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_device.html">fortios_user_device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_device_access_list.html">fortios_user_device_access_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_device_category.html">fortios_user_device_category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_device_group.html">fortios_user_device_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_domain_controller.html">fortios_user_domain_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_fortitoken.html">fortios_user_fortitoken</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_fsso.html">fortios_user_fsso</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_fsso_polling.html">fortios_user_fsso_polling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_group.html">fortios_user_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_krb_keytab.html">fortios_user_krb_keytab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_ldap.html">fortios_user_ldap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_local.html">fortios_user_local</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_password_policy.html">fortios_user_password_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_peer.html">fortios_user_peer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_peergrp.html">fortios_user_peergrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_quarantine.html">fortios_user_quarantine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_security_exempt_list.html">fortios_user_security_exempt_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_setting.html">fortios_user_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_tacacs+.html">fortios_user_tacacs+</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_voip_profile.html">fortios_voip_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_ca.html">fortios_vpn.certificate_ca</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_crl.html">fortios_vpn.certificate_crl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_local.html">fortios_vpn.certificate_local</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_ocsp_server.html">fortios_vpn.certificate_ocsp_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_remote.html">fortios_vpn.certificate_remote</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_setting.html">fortios_vpn.certificate_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_concentrator.html">fortios_vpn.ipsec_concentrator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_forticlient.html">fortios_vpn.ipsec_forticlient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_manualkey.html">fortios_vpn.ipsec_manualkey</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_manualkey_interface.html">fortios_vpn.ipsec_manualkey_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_phase1.html">fortios_vpn.ipsec_phase1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_phase1_interface.html">fortios_vpn.ipsec_phase1_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_phase2.html">fortios_vpn.ipsec_phase2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_phase2_interface.html">fortios_vpn.ipsec_phase2_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_host_check_software.html">fortios_vpn.ssl.web_host_check_software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_portal.html">fortios_vpn.ssl.web_portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_realm.html">fortios_vpn.ssl.web_realm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_user_bookmark.html">fortios_vpn.ssl.web_user_bookmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_user_group_bookmark.html">fortios_vpn.ssl.web_user_group_bookmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl_settings.html">fortios_vpn.ssl_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn_l2tp.html">fortios_vpn_l2tp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn_pptp.html">fortios_vpn_pptp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_waf_main_class.html">fortios_waf_main_class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_waf_profile.html">fortios_waf_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_waf_signature.html">fortios_waf_signature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_waf_sub_class.html">fortios_waf_sub_class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_auth_group.html">fortios_wanopt_auth_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_cache_service.html">fortios_wanopt_cache_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_content_delivery_network_rule.html">fortios_wanopt_content_delivery_network_rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_peer.html">fortios_wanopt_peer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_profile.html">fortios_wanopt_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_remote_storage.html">fortios_wanopt_remote_storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_settings.html">fortios_wanopt_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_debug_url.html">fortios_web_proxy_debug_url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_explicit.html">fortios_web_proxy_explicit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_forward_server.html">fortios_web_proxy_forward_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_forward_server_group.html">fortios_web_proxy_forward_server_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_global.html">fortios_web_proxy_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_profile.html">fortios_web_proxy_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_url_match.html">fortios_web_proxy_url_match</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_wisp.html">fortios_web_proxy_wisp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter.html">fortios_webfilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_content.html">fortios_webfilter_content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_content_header.html">fortios_webfilter_content_header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_fortiguard.html">fortios_webfilter_fortiguard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ftgd_local_cat.html">fortios_webfilter_ftgd_local_cat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ftgd_local_rating.html">fortios_webfilter_ftgd_local_rating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ips_urlfilter_cache_setting.html">fortios_webfilter_ips_urlfilter_cache_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ips_urlfilter_setting.html">fortios_webfilter_ips_urlfilter_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ips_urlfilter_setting6.html">fortios_webfilter_ips_urlfilter_setting6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_override.html">fortios_webfilter_override</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_profile.html">fortios_webfilter_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_search_engine.html">fortios_webfilter_search_engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_urlfilter.html">fortios_webfilter_urlfilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_3gpp_cellular.html">fortios_wireless_controller.hotspot20_anqp_3gpp_cellular</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_ip_address_type.html">fortios_wireless_controller.hotspot20_anqp_ip_address_type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_nai_realm.html">fortios_wireless_controller.hotspot20_anqp_nai_realm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_network_auth_type.html">fortios_wireless_controller.hotspot20_anqp_network_auth_type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_roaming_consortium.html">fortios_wireless_controller.hotspot20_anqp_roaming_consortium</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_venue_name.html">fortios_wireless_controller.hotspot20_anqp_venue_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_h2qp_conn_capability.html">fortios_wireless_controller.hotspot20_h2qp_conn_capability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_h2qp_operator_name.html">fortios_wireless_controller.hotspot20_h2qp_operator_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_h2qp_osu_provider.html">fortios_wireless_controller.hotspot20_h2qp_osu_provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_h2qp_wan_metric.html">fortios_wireless_controller.hotspot20_h2qp_wan_metric</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_hs_profile.html">fortios_wireless_controller.hotspot20_hs_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_icon.html">fortios_wireless_controller.hotspot20_icon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_qos_map.html">fortios_wireless_controller.hotspot20_qos_map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_ap_status.html">fortios_wireless_controller_ap_status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_ble_profile.html">fortios_wireless_controller_ble_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_bonjour_profile.html">fortios_wireless_controller_bonjour_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_global.html">fortios_wireless_controller_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_inter_controller.html">fortios_wireless_controller_inter_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_qos_profile.html">fortios_wireless_controller_qos_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_setting.html">fortios_wireless_controller_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_timers.html">fortios_wireless_controller_timers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_utm_profile.html">fortios_wireless_controller_utm_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_vap.html">fortios_wireless_controller_vap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_vap_group.html">fortios_wireless_controller_vap_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_wids_profile.html">fortios_wireless_controller_wids_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_wtp.html">fortios_wireless_controller_wtp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_wtp_group.html">fortios_wireless_controller_wtp_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_wtp_profile.html">fortios_wireless_controller_wtp_profile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fortios_roles.html">Roles</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fortios_root.html">FortiGate (FortiOS)</a> &raquo;</li>
+        
+          <li><a href="../fortios_playbooks.html">Playbook Examples</a> &raquo;</li>
+        
+      <li>fortios_ips_sensor</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fortios_playbooks/fortios_ips_sensor.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fortios-ips-sensor">
+<h1>fortios_ips_sensor<a class="headerlink" href="#fortios-ips-sensor" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="playbook-task-examples">
+<h2>Playbook Task Examples<a class="headerlink" href="#playbook-task-examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">localhost</span>
+  <span class="l l-Scalar l-Scalar-Plain">vars</span><span class="p p-Indicator">:</span>
+   <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;192.168.122.40&quot;</span>
+   <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;admin&quot;</span>
+   <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;&quot;</span>
+   <span class="l l-Scalar l-Scalar-Plain">vdom</span><span class="p p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+  <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Configure IPS sensor.</span>
+    <span class="l l-Scalar l-Scalar-Plain">fortios_ips_sensor</span><span class="p p-Indicator">:</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>host:  “{{ host }}”
+username: “{{ username }}”
+password: “{{ password }}”
+vdom:  “{{ vdom }}”</dd>
+</dl>
+<blockquote>
+<div>password: “{{ password }}”
+vdom:  “{{  vdom }}”</div></blockquote>
+<dl class="docutils">
+<dt>&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes</dt>
+<dd><dl class="first last docutils">
+<dt>ips_sensor:</dt>
+<dd><p class="first">state: “present”
+block-malicious-url: “disable”
+comment: “Comment.”
+entries:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">action: “pass”
+application: “&lt;your_own_value&gt;”
+exempt-ip:</p>
+<blockquote>
+<div><ul class="simple">
+<li>dst-ip: “&lt;your_own_value&gt;”
+id:  “10”
+src-ip: “&lt;your_own_value&gt;”</li>
+</ul>
+</div></blockquote>
+<p>id:  “12”
+location: “&lt;your_own_value&gt;”
+log: “disable”
+log-attack-context: “disable”
+log-packet: “disable”
+os: “&lt;your_own_value&gt;”
+protocol: “&lt;your_own_value&gt;”
+quarantine: “none”
+quarantine-expiry: “&lt;your_own_value&gt;”
+quarantine-log: “disable”
+rate-count: “22”
+rate-duration: “23”
+rate-mode: “periodical”
+rate-track: “none”
+rule:</p>
+<blockquote>
+<div><ul class="simple">
+<li>id:  “27”</li>
+</ul>
+</div></blockquote>
+<p>severity: “&lt;your_own_value&gt;”
+status: “disable”</p>
+</li>
+</ul>
+</div></blockquote>
+<p>extended-log: “enable”
+filter:</p>
+<blockquote>
+<div><ul class="simple">
+<li>action: “pass”
+application: “&lt;your_own_value&gt;”
+location: “&lt;your_own_value&gt;”
+log: “disable”
+log-packet: “disable”
+name: “default_name_37”
+os: “&lt;your_own_value&gt;”
+protocol: “&lt;your_own_value&gt;”
+quarantine: “none”
+quarantine-expiry: “41”
+quarantine-log: “disable”
+severity: “&lt;your_own_value&gt;”
+status: “disable”</li>
+</ul>
+</div></blockquote>
+<p>name: “default_name_45”
+override:</p>
+<blockquote>
+<div><ul>
+<li><p class="first">action: “pass”
+exempt-ip:</p>
+<blockquote>
+<div><ul class="simple">
+<li>dst-ip: “&lt;your_own_value&gt;”
+id:  “50”
+src-ip: “&lt;your_own_value&gt;”</li>
+</ul>
+</div></blockquote>
+<p>log: “disable”
+log-packet: “disable”
+quarantine: “none”
+quarantine-expiry: “55”
+quarantine-log: “disable”
+rule-id: “57”
+status: “disable”</p>
+</li>
+</ul>
+</div></blockquote>
+<p class="last">replacemsg-group: “&lt;your_own_value&gt; (source system.replacemsg-group.name)”</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="playbook-file-examples">
+<h2>Playbook File Examples<a class="headerlink" href="#playbook-file-examples" title="Permalink to this headline">¶</a></h2>
+<p>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</p>
+<div class="section" id="ansible-fgt-modules-v6-0-2-ips-fortios-ips-sensor-example-yml">
+<h3>../ansible_fgt_modules/v6.0.2/ips/fortios_ips_sensor_example.yml<a class="headerlink" href="#ansible-fgt-modules-v6-0-2-ips-fortios-ips-sensor-example-yml" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fortios_ips_settings.html" class="btn btn-neutral float-right" title="fortios_ips_settings" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fortios_ips_rule_settings.html" class="btn btn-neutral" title="fortios_ips_rule_settings" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

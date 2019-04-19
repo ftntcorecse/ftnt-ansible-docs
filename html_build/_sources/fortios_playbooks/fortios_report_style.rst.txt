@@ -1,0 +1,107 @@
+====================
+fortios_report_style
+====================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Report style configuration.
+        fortios_report_style:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          report_style:
+            state: "present"
+            align: "left"
+            bg-color: "<your_own_value>"
+            border-bottom: "<your_own_value>"
+            border-left: "<your_own_value>"
+            border-right: "<your_own_value>"
+            border-top: "<your_own_value>"
+            column-gap: "<your_own_value>"
+            column-span: "none"
+            fg-color: "<your_own_value>"
+            font-family: "Verdana"
+            font-size: "<your_own_value>"
+            font-style: "normal"
+            font-weight: "normal"
+            height: "<your_own_value>"
+            line-height: "<your_own_value>"
+            margin-bottom: "<your_own_value>"
+            margin-left: "<your_own_value>"
+            margin-right: "<your_own_value>"
+            margin-top: "<your_own_value>"
+            name: "default_name_22"
+            options: "font"
+            padding-bottom: "<your_own_value>"
+            padding-left: "<your_own_value>"
+            padding-right: "<your_own_value>"
+            padding-top: "<your_own_value>"
+            width: "<your_own_value>"
+
+
+
+Playbook File Examples
+----------------------
+
+
+../ansible_fgt_modules/v6.0.2/report/fortios_report_style_example.yml
++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+
+.. code-block:: yaml
+            - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Report style configuration.
+        fortios_report_style:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          report_style:
+            state: "present"
+            align: "left"
+            bg-color: "<your_own_value>"
+            border-bottom: "<your_own_value>"
+            border-left: "<your_own_value>"
+            border-right: "<your_own_value>"
+            border-top: "<your_own_value>"
+            column-gap: "<your_own_value>"
+            column-span: "none"
+            fg-color: "<your_own_value>"
+            font-family: "Verdana"
+            font-size: "<your_own_value>"
+            font-style: "normal"
+            font-weight: "normal"
+            height: "<your_own_value>"
+            line-height: "<your_own_value>"
+            margin-bottom: "<your_own_value>"
+            margin-left: "<your_own_value>"
+            margin-right: "<your_own_value>"
+            margin-top: "<your_own_value>"
+            name: "default_name_22"
+            options: "font"
+            padding-bottom: "<your_own_value>"
+            padding-left: "<your_own_value>"
+            padding-right: "<your_own_value>"
+            padding-top: "<your_own_value>"
+            width: "<your_own_value>"
+
+
+
+

@@ -1,0 +1,1126 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fortios_switch_controller.qos_qos_policy &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fortios_switch_controller.qos_queue_policy" href="fortios_switch_controller.qos_queue_policy.html" />
+    <link rel="prev" title="fortios_switch_controller.qos_ip_dscp_map" href="fortios_switch_controller.qos_ip_dscp_map.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../fmgr_root.html">FortiManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../fortios_modules.html">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fortios_address.html">fortios_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_alertemail_setting.html">fortios_alertemail_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_antivirus_heuristic.html">fortios_antivirus_heuristic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_antivirus_profile.html">fortios_antivirus_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_antivirus_quarantine.html">fortios_antivirus_quarantine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_antivirus_settings.html">fortios_antivirus_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_custom.html">fortios_application_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_group.html">fortios_application_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_list.html">fortios_application_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_name.html">fortios_application_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_rule_settings.html">fortios_application_rule_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_authentication_rule.html">fortios_authentication_rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_authentication_scheme.html">fortios_authentication_scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_authentication_setting.html">fortios_authentication_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_certificate_ca.html">fortios_certificate_ca</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_certificate_crl.html">fortios_certificate_crl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_certificate_local.html">fortios_certificate_local</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_config.html">fortios_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_filepattern.html">fortios_dlp_filepattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_fp_doc_source.html">fortios_dlp_fp_doc_source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_fp_sensitivity.html">fortios_dlp_fp_sensitivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_sensor.html">fortios_dlp_sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_settings.html">fortios_dlp_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dnsfilter_domain_filter.html">fortios_dnsfilter_domain_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dnsfilter_profile.html">fortios_dnsfilter_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_client.html">fortios_endpoint_control_client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_forticlient_ems.html">fortios_endpoint_control_forticlient_ems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_forticlient_registration_sync.html">fortios_endpoint_control_forticlient_registration_sync</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_profile.html">fortios_endpoint_control_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_registered_forticlient.html">fortios_endpoint_control_registered_forticlient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_settings.html">fortios_endpoint_control_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_extender_controller_extender.html">fortios_extender_controller_extender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ipmacbinding_setting.html">fortios_firewall.ipmacbinding_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ipmacbinding_table.html">fortios_firewall.ipmacbinding_table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.schedule_group.html">fortios_firewall.schedule_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.schedule_onetime.html">fortios_firewall.schedule_onetime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.schedule_recurring.html">fortios_firewall.schedule_recurring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.service_category.html">fortios_firewall.service_category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.service_custom.html">fortios_firewall.service_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.service_group.html">fortios_firewall.service_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.shaper_per_ip_shaper.html">fortios_firewall.shaper_per_ip_shaper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.shaper_traffic_shaper.html">fortios_firewall.shaper_traffic_shaper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssh_host_key.html">fortios_firewall.ssh_host_key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssh_local_ca.html">fortios_firewall.ssh_local_ca</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssh_local_key.html">fortios_firewall.ssh_local_key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssh_setting.html">fortios_firewall.ssh_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssl_setting.html">fortios_firewall.ssl_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.wildcard_fqdn_custom.html">fortios_firewall.wildcard_fqdn_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.wildcard_fqdn_group.html">fortios_firewall.wildcard_fqdn_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_DoS_policy.html">fortios_firewall_DoS_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_DoS_policy6.html">fortios_firewall_DoS_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_address.html">fortios_firewall_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_address6.html">fortios_firewall_address6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_address6_template.html">fortios_firewall_address6_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_addrgrp.html">fortios_firewall_addrgrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_addrgrp6.html">fortios_firewall_addrgrp6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_auth_portal.html">fortios_firewall_auth_portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_central_snat_map.html">fortios_firewall_central_snat_map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_dnstranslation.html">fortios_firewall_dnstranslation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_identity_based_route.html">fortios_firewall_identity_based_route</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_interface_policy.html">fortios_firewall_interface_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_interface_policy6.html">fortios_firewall_interface_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_internet_service.html">fortios_firewall_internet_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_internet_service_custom.html">fortios_firewall_internet_service_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_internet_service_custom_group.html">fortios_firewall_internet_service_custom_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_internet_service_group.html">fortios_firewall_internet_service_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ip_translation.html">fortios_firewall_ip_translation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ippool.html">fortios_firewall_ippool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ippool6.html">fortios_firewall_ippool6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ipv6_eh_filter.html">fortios_firewall_ipv6_eh_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ldb_monitor.html">fortios_firewall_ldb_monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_local_in_policy.html">fortios_firewall_local_in_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_local_in_policy6.html">fortios_firewall_local_in_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_multicast_address.html">fortios_firewall_multicast_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_multicast_address6.html">fortios_firewall_multicast_address6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_multicast_policy.html">fortios_firewall_multicast_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_multicast_policy6.html">fortios_firewall_multicast_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_policy.html">fortios_firewall_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_policy46.html">fortios_firewall_policy46</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_policy6.html">fortios_firewall_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_policy64.html">fortios_firewall_policy64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_profile_group.html">fortios_firewall_profile_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_profile_protocol_options.html">fortios_firewall_profile_protocol_options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_proxy_address.html">fortios_firewall_proxy_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_proxy_addrgrp.html">fortios_firewall_proxy_addrgrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_proxy_policy.html">fortios_firewall_proxy_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_shaping_policy.html">fortios_firewall_shaping_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_shaping_profile.html">fortios_firewall_shaping_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_sniffer.html">fortios_firewall_sniffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ssl_server.html">fortios_firewall_ssl_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ssl_ssh_profile.html">fortios_firewall_ssl_ssh_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ttl_policy.html">fortios_firewall_ttl_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vip.html">fortios_firewall_vip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vip46.html">fortios_firewall_vip46</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vip6.html">fortios_firewall_vip6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vip64.html">fortios_firewall_vip64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vipgrp.html">fortios_firewall_vipgrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vipgrp46.html">fortios_firewall_vipgrp46</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vipgrp6.html">fortios_firewall_vipgrp6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vipgrp64.html">fortios_firewall_vipgrp64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ftp_proxy_explicit.html">fortios_ftp_proxy_explicit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_icap_profile.html">fortios_icap_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_icap_server.html">fortios_icap_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_custom.html">fortios_ips_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_decoder.html">fortios_ips_decoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_global.html">fortios_ips_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_rule.html">fortios_ips_rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_rule_settings.html">fortios_ips_rule_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_sensor.html">fortios_ips_sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_settings.html">fortios_ips_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ipv4_policy.html">fortios_ipv4_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.disk_filter.html">fortios_log.disk_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.disk_setting.html">fortios_log.disk_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer2_filter.html">fortios_log.fortianalyzer2_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer2_setting.html">fortios_log.fortianalyzer2_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer3_filter.html">fortios_log.fortianalyzer3_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer3_setting.html">fortios_log.fortianalyzer3_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer_filter.html">fortios_log.fortianalyzer_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer_override_filter.html">fortios_log.fortianalyzer_override_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer_override_setting.html">fortios_log.fortianalyzer_override_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer_setting.html">fortios_log.fortianalyzer_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortiguard_filter.html">fortios_log.fortiguard_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortiguard_override_filter.html">fortios_log.fortiguard_override_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortiguard_override_setting.html">fortios_log.fortiguard_override_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortiguard_setting.html">fortios_log.fortiguard_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.memory_filter.html">fortios_log.memory_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.memory_global_setting.html">fortios_log.memory_global_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.memory_setting.html">fortios_log.memory_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.null_device_filter.html">fortios_log.null_device_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.null_device_setting.html">fortios_log.null_device_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd2_filter.html">fortios_log.syslogd2_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd2_setting.html">fortios_log.syslogd2_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd3_filter.html">fortios_log.syslogd3_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd3_setting.html">fortios_log.syslogd3_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd4_filter.html">fortios_log.syslogd4_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd4_setting.html">fortios_log.syslogd4_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd_filter.html">fortios_log.syslogd_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd_override_filter.html">fortios_log.syslogd_override_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd_override_setting.html">fortios_log.syslogd_override_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd_setting.html">fortios_log.syslogd_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.webtrends_filter.html">fortios_log.webtrends_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.webtrends_setting.html">fortios_log.webtrends_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_custom_field.html">fortios_log_custom_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_eventfilter.html">fortios_log_eventfilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_gui_display.html">fortios_log_gui_display</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_setting.html">fortios_log_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_threat_weight.html">fortios_log_threat_weight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_chart.html">fortios_report_chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_dataset.html">fortios_report_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_layout.html">fortios_report_layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_setting.html">fortios_report_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_style.html">fortios_report_style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_theme.html">fortios_report_theme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_access_list.html">fortios_router_access_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_access_list6.html">fortios_router_access_list6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_aspath_list.html">fortios_router_aspath_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_auth_path.html">fortios_router_auth_path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_bfd.html">fortios_router_bfd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_bfd6.html">fortios_router_bfd6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_bgp.html">fortios_router_bgp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_community_list.html">fortios_router_community_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_isis.html">fortios_router_isis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_key_chain.html">fortios_router_key_chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_multicast.html">fortios_router_multicast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_multicast6.html">fortios_router_multicast6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_multicast_flow.html">fortios_router_multicast_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_ospf.html">fortios_router_ospf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_ospf6.html">fortios_router_ospf6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_policy.html">fortios_router_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_policy6.html">fortios_router_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_prefix_list.html">fortios_router_prefix_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_prefix_list6.html">fortios_router_prefix_list6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_rip.html">fortios_router_rip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_ripng.html">fortios_router_ripng</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_setting.html">fortios_router_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_static.html">fortios_router_static</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_static6.html">fortios_router_static6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_bwl.html">fortios_spamfilter_bwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_bword.html">fortios_spamfilter_bword</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_dnsbl.html">fortios_spamfilter_dnsbl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_fortishield.html">fortios_spamfilter_fortishield</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_iptrust.html">fortios_spamfilter_iptrust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_mheader.html">fortios_spamfilter_mheader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_options.html">fortios_spamfilter_options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_profile.html">fortios_spamfilter_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ssh_filter_profile.html">fortios_ssh_filter_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.qos_dot1p_map.html">fortios_switch_controller.qos_dot1p_map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.qos_ip_dscp_map.html">fortios_switch_controller.qos_ip_dscp_map</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fortios_switch_controller.qos_qos_policy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.qos_queue_policy.html">fortios_switch_controller.qos_queue_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.security_policy_802_1X.html">fortios_switch_controller.security_policy_802_1X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.security_policy_captive_portal.html">fortios_switch_controller.security_policy_captive_portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_802_1X_settings.html">fortios_switch_controller_802_1X_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_custom_command.html">fortios_switch_controller_custom_command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_global.html">fortios_switch_controller_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_igmp_snooping.html">fortios_switch_controller_igmp_snooping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_lldp_profile.html">fortios_switch_controller_lldp_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_lldp_settings.html">fortios_switch_controller_lldp_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_mac_sync_settings.html">fortios_switch_controller_mac_sync_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_managed_switch.html">fortios_switch_controller_managed_switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_network_monitor_settings.html">fortios_switch_controller_network_monitor_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_quarantine.html">fortios_switch_controller_quarantine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_sflow.html">fortios_switch_controller_sflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_storm_control.html">fortios_switch_controller_storm_control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_stp_settings.html">fortios_switch_controller_stp_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_switch_group.html">fortios_switch_controller_switch_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_switch_interface_tag.html">fortios_switch_controller_switch_interface_tag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_switch_log.html">fortios_switch_controller_switch_log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_switch_profile.html">fortios_switch_controller_switch_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_system.html">fortios_switch_controller_system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_virtual_port_pool.html">fortios_switch_controller_virtual_port_pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_vlan.html">fortios_switch_controller_vlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.autoupdate_push_update.html">fortios_system.autoupdate_push_update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.autoupdate_schedule.html">fortios_system.autoupdate_schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.autoupdate_tunneling.html">fortios_system.autoupdate_tunneling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.dhcp6_server.html">fortios_system.dhcp6_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.dhcp_server.html">fortios_system.dhcp_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_admin.html">fortios_system.replacemsg_admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_alertmail.html">fortios_system.replacemsg_alertmail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_auth.html">fortios_system.replacemsg_auth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_device_detection_portal.html">fortios_system.replacemsg_device_detection_portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_ec.html">fortios_system.replacemsg_ec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_fortiguard_wf.html">fortios_system.replacemsg_fortiguard_wf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_ftp.html">fortios_system.replacemsg_ftp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_http.html">fortios_system.replacemsg_http</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_icap.html">fortios_system.replacemsg_icap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_mail.html">fortios_system.replacemsg_mail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_nac_quar.html">fortios_system.replacemsg_nac_quar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_nntp.html">fortios_system.replacemsg_nntp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_spam.html">fortios_system.replacemsg_spam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_sslvpn.html">fortios_system.replacemsg_sslvpn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_traffic_quota.html">fortios_system.replacemsg_traffic_quota</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_utm.html">fortios_system.replacemsg_utm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_webproxy.html">fortios_system.replacemsg_webproxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.snmp_community.html">fortios_system.snmp_community</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.snmp_sysinfo.html">fortios_system.snmp_sysinfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.snmp_user.html">fortios_system.snmp_user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_accprofile.html">fortios_system_accprofile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_admin.html">fortios_system_admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_affinity_interrupt.html">fortios_system_affinity_interrupt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_affinity_packet_redistribution.html">fortios_system_affinity_packet_redistribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_alarm.html">fortios_system_alarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_alias.html">fortios_system_alias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_api_user.html">fortios_system_api_user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_arp_table.html">fortios_system_arp_table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_auto_install.html">fortios_system_auto_install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_auto_script.html">fortios_system_auto_script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_automation_action.html">fortios_system_automation_action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_automation_destination.html">fortios_system_automation_destination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_automation_stitch.html">fortios_system_automation_stitch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_automation_trigger.html">fortios_system_automation_trigger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_central_management.html">fortios_system_central_management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_cluster_sync.html">fortios_system_cluster_sync</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_console.html">fortios_system_console</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_csf.html">fortios_system_csf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_custom_language.html">fortios_system_custom_language</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ddns.html">fortios_system_ddns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_dedicated_mgmt.html">fortios_system_dedicated_mgmt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_dns.html">fortios_system_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_dns_server.html">fortios_system_dns_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_dscp_based_priority.html">fortios_system_dscp_based_priority</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_email_server.html">fortios_system_email_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_external_resource.html">fortios_system_external_resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fips_cc.html">fortios_system_fips_cc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fm.html">fortios_system_fm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fortiguard.html">fortios_system_fortiguard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fortimanager.html">fortios_system_fortimanager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fortisandbox.html">fortios_system_fortisandbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fsso_polling.html">fortios_system_fsso_polling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ftm_push.html">fortios_system_ftm_push</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_geoip_override.html">fortios_system_geoip_override</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_global.html">fortios_system_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_gre_tunnel.html">fortios_system_gre_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ha.html">fortios_system_ha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ha_monitor.html">fortios_system_ha_monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_interface.html">fortios_system_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ipip_tunnel.html">fortios_system_ipip_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ips_urlfilter_dns.html">fortios_system_ips_urlfilter_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ips_urlfilter_dns6.html">fortios_system_ips_urlfilter_dns6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ipv6_neighbor_cache.html">fortios_system_ipv6_neighbor_cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ipv6_tunnel.html">fortios_system_ipv6_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_link_monitor.html">fortios_system_link_monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_mac_address_table.html">fortios_system_mac_address_table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_management_tunnel.html">fortios_system_management_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_mobile_tunnel.html">fortios_system_mobile_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_nat64.html">fortios_system_nat64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_nd_proxy.html">fortios_system_nd_proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_netflow.html">fortios_system_netflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_network_visibility.html">fortios_system_network_visibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ntp.html">fortios_system_ntp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_object_tagging.html">fortios_system_object_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_password_policy.html">fortios_system_password_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_password_policy_guest_admin.html">fortios_system_password_policy_guest_admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_pppoe_interface.html">fortios_system_pppoe_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_probe_response.html">fortios_system_probe_response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_proxy_arp.html">fortios_system_proxy_arp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_replacemsg_group.html">fortios_system_replacemsg_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_replacemsg_image.html">fortios_system_replacemsg_image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_resource_limits.html">fortios_system_resource_limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_sdn_connector.html">fortios_system_sdn_connector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_session_helper.html">fortios_system_session_helper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_session_ttl.html">fortios_system_session_ttl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_settings.html">fortios_system_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_sflow.html">fortios_system_sflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_sit_tunnel.html">fortios_system_sit_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_sms_server.html">fortios_system_sms_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_storage.html">fortios_system_storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_switch_interface.html">fortios_system_switch_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_tos_based_priority.html">fortios_system_tos_based_priority</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom.html">fortios_system_vdom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_dns.html">fortios_system_vdom_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_exception.html">fortios_system_vdom_exception</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_link.html">fortios_system_vdom_link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_netflow.html">fortios_system_vdom_netflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_property.html">fortios_system_vdom_property</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_radius_server.html">fortios_system_vdom_radius_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_sflow.html">fortios_system_vdom_sflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_virtual_wan_link.html">fortios_system_virtual_wan_link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_virtual_wire_pair.html">fortios_system_virtual_wire_pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vxlan.html">fortios_system_vxlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_wccp.html">fortios_system_wccp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_zone.html">fortios_system_zone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_adgrp.html">fortios_user_adgrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_device.html">fortios_user_device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_device_access_list.html">fortios_user_device_access_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_device_category.html">fortios_user_device_category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_device_group.html">fortios_user_device_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_domain_controller.html">fortios_user_domain_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_fortitoken.html">fortios_user_fortitoken</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_fsso.html">fortios_user_fsso</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_fsso_polling.html">fortios_user_fsso_polling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_group.html">fortios_user_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_krb_keytab.html">fortios_user_krb_keytab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_ldap.html">fortios_user_ldap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_local.html">fortios_user_local</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_password_policy.html">fortios_user_password_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_peer.html">fortios_user_peer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_peergrp.html">fortios_user_peergrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_quarantine.html">fortios_user_quarantine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_security_exempt_list.html">fortios_user_security_exempt_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_setting.html">fortios_user_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_tacacs+.html">fortios_user_tacacs+</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_voip_profile.html">fortios_voip_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_ca.html">fortios_vpn.certificate_ca</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_crl.html">fortios_vpn.certificate_crl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_local.html">fortios_vpn.certificate_local</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_ocsp_server.html">fortios_vpn.certificate_ocsp_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_remote.html">fortios_vpn.certificate_remote</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_setting.html">fortios_vpn.certificate_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_concentrator.html">fortios_vpn.ipsec_concentrator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_forticlient.html">fortios_vpn.ipsec_forticlient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_manualkey.html">fortios_vpn.ipsec_manualkey</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_manualkey_interface.html">fortios_vpn.ipsec_manualkey_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_phase1.html">fortios_vpn.ipsec_phase1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_phase1_interface.html">fortios_vpn.ipsec_phase1_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_phase2.html">fortios_vpn.ipsec_phase2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_phase2_interface.html">fortios_vpn.ipsec_phase2_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_host_check_software.html">fortios_vpn.ssl.web_host_check_software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_portal.html">fortios_vpn.ssl.web_portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_realm.html">fortios_vpn.ssl.web_realm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_user_bookmark.html">fortios_vpn.ssl.web_user_bookmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_user_group_bookmark.html">fortios_vpn.ssl.web_user_group_bookmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl_settings.html">fortios_vpn.ssl_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn_l2tp.html">fortios_vpn_l2tp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn_pptp.html">fortios_vpn_pptp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_waf_main_class.html">fortios_waf_main_class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_waf_profile.html">fortios_waf_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_waf_signature.html">fortios_waf_signature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_waf_sub_class.html">fortios_waf_sub_class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_auth_group.html">fortios_wanopt_auth_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_cache_service.html">fortios_wanopt_cache_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_content_delivery_network_rule.html">fortios_wanopt_content_delivery_network_rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_peer.html">fortios_wanopt_peer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_profile.html">fortios_wanopt_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_remote_storage.html">fortios_wanopt_remote_storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_settings.html">fortios_wanopt_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_debug_url.html">fortios_web_proxy_debug_url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_explicit.html">fortios_web_proxy_explicit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_forward_server.html">fortios_web_proxy_forward_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_forward_server_group.html">fortios_web_proxy_forward_server_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_global.html">fortios_web_proxy_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_profile.html">fortios_web_proxy_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_url_match.html">fortios_web_proxy_url_match</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_wisp.html">fortios_web_proxy_wisp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter.html">fortios_webfilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_content.html">fortios_webfilter_content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_content_header.html">fortios_webfilter_content_header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_fortiguard.html">fortios_webfilter_fortiguard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ftgd_local_cat.html">fortios_webfilter_ftgd_local_cat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ftgd_local_rating.html">fortios_webfilter_ftgd_local_rating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ips_urlfilter_cache_setting.html">fortios_webfilter_ips_urlfilter_cache_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ips_urlfilter_setting.html">fortios_webfilter_ips_urlfilter_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ips_urlfilter_setting6.html">fortios_webfilter_ips_urlfilter_setting6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_override.html">fortios_webfilter_override</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_profile.html">fortios_webfilter_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_search_engine.html">fortios_webfilter_search_engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_urlfilter.html">fortios_webfilter_urlfilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_3gpp_cellular.html">fortios_wireless_controller.hotspot20_anqp_3gpp_cellular</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_ip_address_type.html">fortios_wireless_controller.hotspot20_anqp_ip_address_type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_nai_realm.html">fortios_wireless_controller.hotspot20_anqp_nai_realm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_network_auth_type.html">fortios_wireless_controller.hotspot20_anqp_network_auth_type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_roaming_consortium.html">fortios_wireless_controller.hotspot20_anqp_roaming_consortium</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_venue_name.html">fortios_wireless_controller.hotspot20_anqp_venue_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_h2qp_conn_capability.html">fortios_wireless_controller.hotspot20_h2qp_conn_capability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_h2qp_operator_name.html">fortios_wireless_controller.hotspot20_h2qp_operator_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_h2qp_osu_provider.html">fortios_wireless_controller.hotspot20_h2qp_osu_provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_h2qp_wan_metric.html">fortios_wireless_controller.hotspot20_h2qp_wan_metric</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_hs_profile.html">fortios_wireless_controller.hotspot20_hs_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_icon.html">fortios_wireless_controller.hotspot20_icon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_qos_map.html">fortios_wireless_controller.hotspot20_qos_map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_ap_status.html">fortios_wireless_controller_ap_status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_ble_profile.html">fortios_wireless_controller_ble_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_bonjour_profile.html">fortios_wireless_controller_bonjour_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_global.html">fortios_wireless_controller_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_inter_controller.html">fortios_wireless_controller_inter_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_qos_profile.html">fortios_wireless_controller_qos_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_setting.html">fortios_wireless_controller_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_timers.html">fortios_wireless_controller_timers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_utm_profile.html">fortios_wireless_controller_utm_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_vap.html">fortios_wireless_controller_vap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_vap_group.html">fortios_wireless_controller_vap_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_wids_profile.html">fortios_wireless_controller_wids_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_wtp.html">fortios_wireless_controller_wtp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_wtp_group.html">fortios_wireless_controller_wtp_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_wtp_profile.html">fortios_wireless_controller_wtp_profile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fortios_playbooks.html">Playbook Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fortios_roles.html">Roles</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fortios_root.html">FortiGate (FortiOS)</a> &raquo;</li>
+        
+          <li><a href="../fortios_modules.html">Modules</a> &raquo;</li>
+        
+      <li>fortios_switch_controller.qos_qos_policy</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fortios_modules/fortios_switch_controller.qos_qos_policy.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fortios-switch-controller-qos-qos-policy">
+<h1>fortios_switch_controller.qos_qos_policy<a class="headerlink" href="#fortios-switch-controller-qos-qos-policy" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> fortios_switch_controller.qos_qos_policy</p>
+<p><strong>Description:</strong> This module is able to configure a FortiGate or FortiOS by allowing the user to configure switch_controller.qos feature and qos_policy category. Examples includes all options and need to be adjusted to datasources before usage. Tested with FOS v6.0.2</p>
+<p><strong>Author(s):</strong></p>
+<ul class="simple">
+<li>Miguel Angel Munoz (github: &#64;mamunozgonzalez)</li>
+<li>Nicolas Thomas (github: &#64;thomnico)</li>
+</ul>
+<p><strong>Ansible Version Added/Required:</strong> 2.8</p>
+<p><strong>Dev Status:</strong> No Data Exists. Contact DevOps Team.</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="host">
+<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: FortiOS or FortiGate ip adress.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="https">
+<h3>https<a class="headerlink" href="#https" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Indicates if the requests towards FortiGate must use HTTPS protocol</li>
+<li>default: False</li>
+</ul>
+</div>
+<div class="section" id="password">
+<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: FortiOS or FortiGate password.</li>
+<li>default:</li>
+</ul>
+</div>
+<div class="section" id="switch-controller-qos-qos-policy">
+<h3>switch_controller.qos_qos_policy<a class="headerlink" href="#switch-controller-qos-qos-policy" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Configure FortiSwitch QoS policy.</li>
+<li>default: None</li>
+</ul>
+</div>
+<div class="section" id="username">
+<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: FortiOS or FortiGate username.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="vdom">
+<h3>vdom<a class="headerlink" href="#vdom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Virtual domain, among those defined previously. A vdom is a virtual instance of the FortiGate that can be configured and used as a different unit.</li>
+<li>default: root</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>login</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span>
+
+    <span class="n">fos</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;https&#39;</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;https&#39;</span><span class="p">]:</span>
+        <span class="n">fos</span><span class="o">.</span><span class="n">https</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fos</span><span class="o">.</span><span class="n">https</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+
+    <span class="n">fos</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>filter_switch_controller.qos_qos_policy_data</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">filter_switch_controller</span><span class="o">.</span><span class="n">qos_qos_policy_data</span><span class="p">(</span><span class="n">json</span><span class="p">):</span>
+    <span class="n">option_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;default-cos&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;queue-policy&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;trust-dot1p-map&#39;</span><span class="p">,</span> <span class="s1">&#39;trust-ip-dscp-map&#39;</span><span class="p">]</span>
+    <span class="n">dictionary</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">option_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">json</span> <span class="ow">and</span> <span class="n">json</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">dictionary</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>switch_controller.qos_qos_policy</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">switch_controller</span><span class="o">.</span><span class="n">qos_qos_policy</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fos</span><span class="p">):</span>
+    <span class="n">vdom</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;vdom&#39;</span><span class="p">]</span>
+    <span class="n">switch_controller</span><span class="o">.</span><span class="n">qos_qos_policy_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;switch_controller.qos_qos_policy&#39;</span><span class="p">]</span>
+    <span class="n">filtered_data</span> <span class="o">=</span> <span class="n">filter_switch_controller</span><span class="o">.</span><span class="n">qos_qos_policy_data</span><span class="p">(</span>
+        <span class="n">switch_controller</span><span class="o">.</span><span class="n">qos_qos_policy_data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">switch_controller</span><span class="o">.</span><span class="n">qos_qos_policy_data</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;present&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fos</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;switch-controller.qos&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;qos-policy&#39;</span><span class="p">,</span>
+                       <span class="n">data</span><span class="o">=</span><span class="n">filtered_data</span><span class="p">,</span>
+                       <span class="n">vdom</span><span class="o">=</span><span class="n">vdom</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">switch_controller</span><span class="o">.</span><span class="n">qos_qos_policy_data</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;absent&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fos</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;switch-controller.qos&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;qos-policy&#39;</span><span class="p">,</span>
+                          <span class="n">mkey</span><span class="o">=</span><span class="n">filtered_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+                          <span class="n">vdom</span><span class="o">=</span><span class="n">vdom</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fortios_switch_controller.qos</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fortios_switch_controller</span><span class="o">.</span><span class="n">qos</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fos</span><span class="p">):</span>
+    <span class="n">login</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">methodlist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;switch_controller.qos_qos_policy&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">methodlist</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">method</span><span class="p">]:</span>
+            <span class="n">resp</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">method</span><span class="p">)(</span><span class="n">data</span><span class="p">,</span> <span class="n">fos</span><span class="p">)</span>
+            <span class="k">break</span>
+
+    <span class="n">fos</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="ow">not</span> <span class="n">resp</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="n">resp</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="n">resp</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="s2">&quot;no_log&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">},</span>
+        <span class="s2">&quot;vdom&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;root&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;https&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;False&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;switch_controller.qos_qos_policy&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;dict&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                          <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;present&quot;</span><span class="p">,</span> <span class="s2">&quot;absent&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;default-cos&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;queue-policy&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;trust-dot1p-map&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;trust-ip-dscp-map&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">}</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">fields</span><span class="p">,</span>
+                           <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">fortiosapi</span> <span class="kn">import</span> <span class="n">FortiOSAPI</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;fortiosapi module is required&quot;</span><span class="p">)</span>
+
+    <span class="k">global</span> <span class="n">fos</span>
+    <span class="n">fos</span> <span class="o">=</span> <span class="n">FortiOSAPI</span><span class="p">()</span>
+
+    <span class="n">is_error</span><span class="p">,</span> <span class="n">has_changed</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="n">fortios_switch_controller</span><span class="o">.</span><span class="n">qos</span><span class="p">(</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">fos</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_error</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">changed</span><span class="o">=</span><span class="n">has_changed</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Error in repo&quot;</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="module-source-code">
+<h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span><span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">)</span>
+<span class="c1"># Copyright 2018 Fortinet, Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1"># the lib use python logging can get it if the following is set in your</span>
+<span class="c1"># Ansible config.</span>
+
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
+
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;preview&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;supported_by&#39;</span><span class="p">:</span> <span class="s1">&#39;community&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;metadata_version&#39;</span><span class="p">:</span> <span class="s1">&#39;1.1&#39;</span><span class="p">}</span>
+
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">module: fortios_switch_controller.qos_qos_policy</span>
+<span class="s1">short_description: Configure FortiSwitch QoS policy.</span>
+<span class="s1">description:</span>
+<span class="s1">    - This module is able to configure a FortiGate or FortiOS by</span>
+<span class="s1">      allowing the user to configure switch_controller.qos feature and qos_policy category.</span>
+<span class="s1">      Examples includes all options and need to be adjusted to datasources before usage.</span>
+<span class="s1">      Tested with FOS v6.0.2</span>
+<span class="s1">version_added: &quot;2.8&quot;</span>
+<span class="s1">author:</span>
+<span class="s1">    - Miguel Angel Munoz (@mamunozgonzalez)</span>
+<span class="s1">    - Nicolas Thomas (@thomnico)</span>
+<span class="s1">notes:</span>
+<span class="s1">    - Requires fortiosapi library developed by Fortinet</span>
+<span class="s1">    - Run as a local_action in your playbook</span>
+<span class="s1">requirements:</span>
+<span class="s1">    - fortiosapi&gt;=0.9.8</span>
+<span class="s1">options:</span>
+<span class="s1">    host:</span>
+<span class="s1">       description:</span>
+<span class="s1">            - FortiOS or FortiGate ip adress.</span>
+<span class="s1">       required: true</span>
+<span class="s1">    username:</span>
+<span class="s1">        description:</span>
+<span class="s1">            - FortiOS or FortiGate username.</span>
+<span class="s1">        required: true</span>
+<span class="s1">    password:</span>
+<span class="s1">        description:</span>
+<span class="s1">            - FortiOS or FortiGate password.</span>
+<span class="s1">        default: &quot;&quot;</span>
+<span class="s1">    vdom:</span>
+<span class="s1">        description:</span>
+<span class="s1">            - Virtual domain, among those defined previously. A vdom is a</span>
+<span class="s1">              virtual instance of the FortiGate that can be configured and</span>
+<span class="s1">              used as a different unit.</span>
+<span class="s1">        default: root</span>
+<span class="s1">    https:</span>
+<span class="s1">        description:</span>
+<span class="s1">            - Indicates if the requests towards FortiGate must use HTTPS</span>
+<span class="s1">              protocol</span>
+<span class="s1">        type: bool</span>
+<span class="s1">        default: false</span>
+<span class="s1">    switch_controller.qos_qos_policy:</span>
+<span class="s1">        description:</span>
+<span class="s1">            - Configure FortiSwitch QoS policy.</span>
+<span class="s1">        default: null</span>
+<span class="s1">        suboptions:</span>
+<span class="s1">            state:</span>
+<span class="s1">                description:</span>
+<span class="s1">                    - Indicates whether to create or remove the object</span>
+<span class="s1">                choices:</span>
+<span class="s1">                    - present</span>
+<span class="s1">                    - absent</span>
+<span class="s1">            default-cos:</span>
+<span class="s1">                description:</span>
+<span class="s1">                    - Default cos queue for untagged packets.</span>
+<span class="s1">            name:</span>
+<span class="s1">                description:</span>
+<span class="s1">                    - QoS policy name.</span>
+<span class="s1">                required: true</span>
+<span class="s1">            queue-policy:</span>
+<span class="s1">                description:</span>
+<span class="s1">                    - QoS egress queue policy. Source switch-controller.qos.queue-policy.name.</span>
+<span class="s1">            trust-dot1p-map:</span>
+<span class="s1">                description:</span>
+<span class="s1">                    - QoS trust 802.1p map. Source switch-controller.qos.dot1p-map.name.</span>
+<span class="s1">            trust-ip-dscp-map:</span>
+<span class="s1">                description:</span>
+<span class="s1">                    - QoS trust ip dscp map. Source switch-controller.qos.ip-dscp-map.name.</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- hosts: localhost</span>
+<span class="s1">  vars:</span>
+<span class="s1">   host: &quot;192.168.122.40&quot;</span>
+<span class="s1">   username: &quot;admin&quot;</span>
+<span class="s1">   password: &quot;&quot;</span>
+<span class="s1">   vdom: &quot;root&quot;</span>
+<span class="s1">  tasks:</span>
+<span class="s1">  - name: Configure FortiSwitch QoS policy.</span>
+<span class="s1">    fortios_switch_controller.qos_qos_policy:</span>
+<span class="s1">      host:  &quot;{{ host }}&quot;</span>
+<span class="s1">      username: &quot;{{ username }}&quot;</span>
+<span class="s1">      password: &quot;{{ password }}&quot;</span>
+<span class="s1">      vdom:  &quot;{{ vdom }}&quot;</span>
+<span class="s1">      switch_controller.qos_qos_policy:</span>
+<span class="s1">        state: &quot;present&quot;</span>
+<span class="s1">        default-cos: &quot;3&quot;</span>
+<span class="s1">        name: &quot;default_name_4&quot;</span>
+<span class="s1">        queue-policy: &quot;&lt;your_own_value&gt; (source switch-controller.qos.queue-policy.name)&quot;</span>
+<span class="s1">        trust-dot1p-map: &quot;&lt;your_own_value&gt; (source switch-controller.qos.dot1p-map.name)&quot;</span>
+<span class="s1">        trust-ip-dscp-map: &quot;&lt;your_own_value&gt; (source switch-controller.qos.ip-dscp-map.name)&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">RETURN</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">build:</span>
+<span class="s1">  description: Build number of the fortigate image</span>
+<span class="s1">  returned: always</span>
+<span class="s1">  type: string</span>
+<span class="s1">  sample: &#39;1547&#39;</span>
+<span class="s1">http_method:</span>
+<span class="s1">  description: Last method used to provision the content into FortiGate</span>
+<span class="s1">  returned: always</span>
+<span class="s1">  type: string</span>
+<span class="s1">  sample: &#39;PUT&#39;</span>
+<span class="s1">http_status:</span>
+<span class="s1">  description: Last result given by FortiGate on last operation applied</span>
+<span class="s1">  returned: always</span>
+<span class="s1">  type: string</span>
+<span class="s1">  sample: &quot;200&quot;</span>
+<span class="s1">mkey:</span>
+<span class="s1">  description: Master key (id) used in the last call to FortiGate</span>
+<span class="s1">  returned: success</span>
+<span class="s1">  type: string</span>
+<span class="s1">  sample: &quot;key1&quot;</span>
+<span class="s1">name:</span>
+<span class="s1">  description: Name of the table used to fulfill the request</span>
+<span class="s1">  returned: always</span>
+<span class="s1">  type: string</span>
+<span class="s1">  sample: &quot;urlfilter&quot;</span>
+<span class="s1">path:</span>
+<span class="s1">  description: Path of the table used to fulfill the request</span>
+<span class="s1">  returned: always</span>
+<span class="s1">  type: string</span>
+<span class="s1">  sample: &quot;webfilter&quot;</span>
+<span class="s1">revision:</span>
+<span class="s1">  description: Internal revision number</span>
+<span class="s1">  returned: always</span>
+<span class="s1">  type: string</span>
+<span class="s1">  sample: &quot;17.0.2.10658&quot;</span>
+<span class="s1">serial:</span>
+<span class="s1">  description: Serial number of the unit</span>
+<span class="s1">  returned: always</span>
+<span class="s1">  type: string</span>
+<span class="s1">  sample: &quot;FGVMEVYYQT3AB5352&quot;</span>
+<span class="s1">status:</span>
+<span class="s1">  description: Indication of the operation&#39;s result</span>
+<span class="s1">  returned: always</span>
+<span class="s1">  type: string</span>
+<span class="s1">  sample: &quot;success&quot;</span>
+<span class="s1">vdom:</span>
+<span class="s1">  description: Virtual domain used</span>
+<span class="s1">  returned: always</span>
+<span class="s1">  type: string</span>
+<span class="s1">  sample: &quot;root&quot;</span>
+<span class="s1">version:</span>
+<span class="s1">  description: Version of the FortiGate</span>
+<span class="s1">  returned: always</span>
+<span class="s1">  type: string</span>
+<span class="s1">  sample: &quot;v5.6.3&quot;</span>
+
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span>
+
+<span class="n">fos</span> <span class="o">=</span> <span class="bp">None</span>
+
+
+<span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span>
+
+    <span class="n">fos</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;https&#39;</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;https&#39;</span><span class="p">]:</span>
+        <span class="n">fos</span><span class="o">.</span><span class="n">https</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fos</span><span class="o">.</span><span class="n">https</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+
+    <span class="n">fos</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">filter_switch_controller</span><span class="o">.</span><span class="n">qos_qos_policy_data</span><span class="p">(</span><span class="n">json</span><span class="p">):</span>
+    <span class="n">option_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;default-cos&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span> <span class="s1">&#39;queue-policy&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;trust-dot1p-map&#39;</span><span class="p">,</span> <span class="s1">&#39;trust-ip-dscp-map&#39;</span><span class="p">]</span>
+    <span class="n">dictionary</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">option_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">json</span> <span class="ow">and</span> <span class="n">json</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">dictionary</span>
+
+
+<span class="k">def</span> <span class="nf">switch_controller</span><span class="o">.</span><span class="n">qos_qos_policy</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fos</span><span class="p">):</span>
+    <span class="n">vdom</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;vdom&#39;</span><span class="p">]</span>
+    <span class="n">switch_controller</span><span class="o">.</span><span class="n">qos_qos_policy_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;switch_controller.qos_qos_policy&#39;</span><span class="p">]</span>
+    <span class="n">filtered_data</span> <span class="o">=</span> <span class="n">filter_switch_controller</span><span class="o">.</span><span class="n">qos_qos_policy_data</span><span class="p">(</span>
+        <span class="n">switch_controller</span><span class="o">.</span><span class="n">qos_qos_policy_data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">switch_controller</span><span class="o">.</span><span class="n">qos_qos_policy_data</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;present&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fos</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;switch-controller.qos&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;qos-policy&#39;</span><span class="p">,</span>
+                       <span class="n">data</span><span class="o">=</span><span class="n">filtered_data</span><span class="p">,</span>
+                       <span class="n">vdom</span><span class="o">=</span><span class="n">vdom</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">switch_controller</span><span class="o">.</span><span class="n">qos_qos_policy_data</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;absent&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fos</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;switch-controller.qos&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;qos-policy&#39;</span><span class="p">,</span>
+                          <span class="n">mkey</span><span class="o">=</span><span class="n">filtered_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+                          <span class="n">vdom</span><span class="o">=</span><span class="n">vdom</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">fortios_switch_controller</span><span class="o">.</span><span class="n">qos</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fos</span><span class="p">):</span>
+    <span class="n">login</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">methodlist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;switch_controller.qos_qos_policy&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">methodlist</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">method</span><span class="p">]:</span>
+            <span class="n">resp</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">method</span><span class="p">)(</span><span class="n">data</span><span class="p">,</span> <span class="n">fos</span><span class="p">)</span>
+            <span class="k">break</span>
+
+    <span class="n">fos</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="ow">not</span> <span class="n">resp</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="n">resp</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="n">resp</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="s2">&quot;no_log&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">},</span>
+        <span class="s2">&quot;vdom&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;root&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;https&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;False&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;switch_controller.qos_qos_policy&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;dict&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                          <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;present&quot;</span><span class="p">,</span> <span class="s2">&quot;absent&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;default-cos&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;queue-policy&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;trust-dot1p-map&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;trust-ip-dscp-map&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">}</span>
+
+            <span class="p">}</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">fields</span><span class="p">,</span>
+                           <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="kn">from</span> <span class="nn">fortiosapi</span> <span class="kn">import</span> <span class="n">FortiOSAPI</span>
+    <span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;fortiosapi module is required&quot;</span><span class="p">)</span>
+
+    <span class="k">global</span> <span class="n">fos</span>
+    <span class="n">fos</span> <span class="o">=</span> <span class="n">FortiOSAPI</span><span class="p">()</span>
+
+    <span class="n">is_error</span><span class="p">,</span> <span class="n">has_changed</span><span class="p">,</span> <span class="n">result</span> <span class="o">=</span> <span class="n">fortios_switch_controller</span><span class="o">.</span><span class="n">qos</span><span class="p">(</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">fos</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">is_error</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">changed</span><span class="o">=</span><span class="n">has_changed</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Error in repo&quot;</span><span class="p">,</span> <span class="n">meta</span><span class="o">=</span><span class="n">result</span><span class="p">)</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fortios_switch_controller.qos_queue_policy.html" class="btn btn-neutral float-right" title="fortios_switch_controller.qos_queue_policy" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fortios_switch_controller.qos_ip_dscp_map.html" class="btn btn-neutral" title="fortios_switch_controller.qos_ip_dscp_map" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

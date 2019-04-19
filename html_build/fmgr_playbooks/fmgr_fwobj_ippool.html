@@ -1,0 +1,459 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fmgr_fwobj_ippool &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fmgr_fwobj_ippool6" href="fmgr_fwobj_ippool6.html" />
+    <link rel="prev" title="fmgr_fwobj_address" href="fmgr_fwobj_address.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../fmgr_root.html">FortiManager</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_modules.html">Modules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device.html">fmgr_device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_fwobj_ippool</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#playbook-task-examples">Playbook Task Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#playbook-file-examples">Playbook File Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_service.html">fmgr_fwobj_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_vip.html">fmgr_fwobj_vip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_ipv4.html">fmgr_fwpol_ipv4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fwpol_package.html">fmgr_fwpol_package</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_ha.html">fmgr_ha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_provisioning.html">fmgr_provisioning</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_query.html">fmgr_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_script.html">fmgr_script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_appctrl.html">fmgr_secprof_appctrl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_av.html">fmgr_secprof_av</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_dns.html">fmgr_secprof_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ips.html">fmgr_secprof_ips</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_profile_group.html">fmgr_secprof_profile_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_proxy.html">fmgr_secprof_proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_spam.html">fmgr_secprof_spam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_ssl_ssh.html">fmgr_secprof_ssl_ssh</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_voip.html">fmgr_secprof_voip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fmgr_root.html">FortiManager</a> &raquo;</li>
+        
+          <li><a href="../fmgr_playbooks.html">Playbook Examples</a> &raquo;</li>
+        
+      <li>fmgr_fwobj_ippool</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fmgr_playbooks/fmgr_fwobj_ippool.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fmgr-fwobj-ippool">
+<h1>fmgr_fwobj_ippool<a class="headerlink" href="#fmgr-fwobj-ippool" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="playbook-task-examples">
+<h2>Playbook Task Examples<a class="headerlink" href="#playbook-task-examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD FMGR_FIREWALL_IPPOOL Overload</span>
+  <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_ippool</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_pool4_overload&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">comments</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;overload&quot;</span>
+
+    <span class="c1"># OPTIONS FOR ALL MODES</span>
+    <span class="l l-Scalar l-Scalar-Plain">startip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.10.10&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">endip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.10.100&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">arp_reply</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD FMGR_FIREWALL_IPPOOL one-to-one</span>
+  <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_ippool</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_pool4_121&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">comments</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;one-to-one&quot;</span>
+
+    <span class="c1"># OPTIONS FOR ALL MODES</span>
+    <span class="l l-Scalar l-Scalar-Plain">startip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.20.10&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">endip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.20.100&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">arp_reply</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD FMGR_FIREWALL_IPPOOL FIXED PORT RANGE</span>
+  <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_ippool</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_pool4_fixed_port&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">comments</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;fixed-port-range&quot;</span>
+
+    <span class="c1"># OPTIONS FOR ALL MODES</span>
+    <span class="l l-Scalar l-Scalar-Plain">startip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.40.10&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">endip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.40.100&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">arp_reply</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+    <span class="c1"># FIXED PORT RANGE OPTIONS</span>
+    <span class="l l-Scalar l-Scalar-Plain">source_startip</span><span class="p p-Indicator">:</span> <span class="s">&quot;192.168.20.1&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">source_endip</span><span class="p p-Indicator">:</span> <span class="s">&quot;192.168.20.20&quot;</span>
+
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD FMGR_FIREWALL_IPPOOL PORT BLOCK ALLOCATION</span>
+  <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_ippool</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_pool4_port_block_allocation&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">comments</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;port-block-allocation&quot;</span>
+
+    <span class="c1"># OPTIONS FOR ALL MODES</span>
+    <span class="l l-Scalar l-Scalar-Plain">startip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.30.10&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">endip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.30.100&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">arp_reply</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+    <span class="c1"># PORT BLOCK ALLOCATION OPTIONS</span>
+    <span class="l l-Scalar l-Scalar-Plain">block_size</span><span class="p p-Indicator">:</span> <span class="s">&quot;128&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">num_blocks_per_user</span><span class="p p-Indicator">:</span> <span class="s">&quot;1&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="playbook-file-examples">
+<h2>Playbook File Examples<a class="headerlink" href="#playbook-file-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fmgr-fwobj-ippool-del-yml">
+<h3>fmgr_fwobj_ippool_del.yml<a class="headerlink" href="#fmgr-fwobj-ippool-del-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE FMGR_FIREWALL_IPPOOL Overload</span>
+      <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_ippool</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_pool4_overload&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">comments</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE FMGR_FIREWALL_IPPOOL Overload</span>
+      <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_ippool</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_pool4_121&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">comments</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE FMGR_FIREWALL_IPPOOL Overload</span>
+      <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_ippool</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_pool4_fixed_port&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">comments</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
+
+
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DELETE FMGR_FIREWALL_IPPOOL Overload</span>
+      <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_ippool</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;delete&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_pool4_port_block_allocation&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">comments</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-fwobj-ippool-add-yml">
+<h3>fmgr_fwobj_ippool_add.yml<a class="headerlink" href="#fmgr-fwobj-ippool-add-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FMGR FIREWALL OBJECTS</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD FMGR_FIREWALL_IPPOOL Overload</span>
+      <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_ippool</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_pool4_overload&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">comments</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;overload&quot;</span>
+
+        <span class="c1"># OPTIONS FOR ALL MODES</span>
+        <span class="l l-Scalar l-Scalar-Plain">startip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.10.10&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">endip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.10.100&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">arp_reply</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+
+      <span class="c1"># FIXED PORT RANGE OPTIONS</span>
+<span class="c1">#       source_startip:</span>
+<span class="c1">#       source_endip:</span>
+
+      <span class="c1"># PORT BLOCK ALLOCATION OPTIONS</span>
+<span class="c1">#       block_size:</span>
+<span class="c1">#       num_blocks_per_user:</span>
+
+      <span class="c1"># ADVANCED OPTIONS</span>
+<span class="c1">#       pba_timeout:</span>
+<span class="c1">#       associated_interface:</span>
+<span class="c1">#       permit_any_host:</span>
+<span class="c1">#       arp_intf:</span>
+
+      <span class="c1"># DYNAMIC &quot;PER-DEVICE&quot; MAPPING OPTIONS</span>
+<span class="c1">#       dynamic_mapping_arp_intf:</span>
+<span class="c1">#       dynamic_mapping_arp_reply:</span>
+<span class="c1">#       dynamic_mapping_associated_interface:</span>
+<span class="c1">#       dynamic_mapping_block_size:</span>
+<span class="c1">#       dynamic_mapping_comments:</span>
+<span class="c1">#       dynamic_mapping_endip:</span>
+<span class="c1">#       dynamic_mapping_num_blocks_per_user:</span>
+<span class="c1">#       dynamic_mapping_pba_timeout:</span>
+<span class="c1">#       dynamic_mapping_permit_any_host:</span>
+<span class="c1">#       dynamic_mapping_source_endip:</span>
+<span class="c1">#       dynamic_mapping_source_startip:</span>
+<span class="c1">#       dynamic_mapping_startip:</span>
+<span class="c1">#       dynamic_mapping_type:</span>
+
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD FMGR_FIREWALL_IPPOOL one-to-one</span>
+      <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_ippool</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_pool4_121&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">comments</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;one-to-one&quot;</span>
+
+        <span class="c1"># OPTIONS FOR ALL MODES</span>
+        <span class="l l-Scalar l-Scalar-Plain">startip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.20.10&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">endip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.20.100&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">arp_reply</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD FMGR_FIREWALL_IPPOOL FIXED PORT RANGE</span>
+      <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_ippool</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_pool4_fixed_port&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">comments</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;fixed-port-range&quot;</span>
+
+        <span class="c1"># OPTIONS FOR ALL MODES</span>
+        <span class="l l-Scalar l-Scalar-Plain">startip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.40.10&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">endip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.40.100&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">arp_reply</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="c1"># FIXED PORT RANGE OPTIONS</span>
+        <span class="l l-Scalar l-Scalar-Plain">source_startip</span><span class="p p-Indicator">:</span> <span class="s">&quot;192.168.20.1&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">source_endip</span><span class="p p-Indicator">:</span> <span class="s">&quot;192.168.20.20&quot;</span>
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ADD FMGR_FIREWALL_IPPOOL PORT BLOCK ALLOCATION</span>
+      <span class="l l-Scalar l-Scalar-Plain">fmgr_fwobj_ippool</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;add&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="s">&quot;Ansible_pool4_port_block_allocation&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">comments</span><span class="p p-Indicator">:</span> <span class="s">&quot;Created</span><span class="nv"> </span><span class="s">by</span><span class="nv"> </span><span class="s">ansible&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="s">&quot;port-block-allocation&quot;</span>
+
+        <span class="c1"># OPTIONS FOR ALL MODES</span>
+        <span class="l l-Scalar l-Scalar-Plain">startip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.30.10&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">endip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.10.30.100&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">arp_reply</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="c1"># PORT BLOCK ALLOCATION OPTIONS</span>
+        <span class="l l-Scalar l-Scalar-Plain">block_size</span><span class="p p-Indicator">:</span> <span class="s">&quot;128&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">num_blocks_per_user</span><span class="p p-Indicator">:</span> <span class="s">&quot;1&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fmgr-fwobj-ippool-run-all-sh">
+<h3>fmgr_fwobj_ippool_run_all.sh<a class="headerlink" href="#fmgr-fwobj-ippool-run-all-sh" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fmgr_fwobj_ippool6.html" class="btn btn-neutral float-right" title="fmgr_fwobj_ippool6" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fmgr_fwobj_address.html" class="btn btn-neutral" title="fmgr_fwobj_address" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

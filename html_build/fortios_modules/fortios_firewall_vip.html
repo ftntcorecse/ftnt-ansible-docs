@@ -1,0 +1,3282 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fortios_firewall_vip &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fortios_firewall_vip46" href="fortios_firewall_vip46.html" />
+    <link rel="prev" title="fortios_firewall_ttl_policy" href="fortios_firewall_ttl_policy.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../fmgr_root.html">FortiManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../fortios_modules.html">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fortios_address.html">fortios_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_alertemail_setting.html">fortios_alertemail_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_antivirus_heuristic.html">fortios_antivirus_heuristic</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_antivirus_profile.html">fortios_antivirus_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_antivirus_quarantine.html">fortios_antivirus_quarantine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_antivirus_settings.html">fortios_antivirus_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_custom.html">fortios_application_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_group.html">fortios_application_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_list.html">fortios_application_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_name.html">fortios_application_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_application_rule_settings.html">fortios_application_rule_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_authentication_rule.html">fortios_authentication_rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_authentication_scheme.html">fortios_authentication_scheme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_authentication_setting.html">fortios_authentication_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_certificate_ca.html">fortios_certificate_ca</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_certificate_crl.html">fortios_certificate_crl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_certificate_local.html">fortios_certificate_local</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_config.html">fortios_config</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_filepattern.html">fortios_dlp_filepattern</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_fp_doc_source.html">fortios_dlp_fp_doc_source</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_fp_sensitivity.html">fortios_dlp_fp_sensitivity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_sensor.html">fortios_dlp_sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dlp_settings.html">fortios_dlp_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dnsfilter_domain_filter.html">fortios_dnsfilter_domain_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_dnsfilter_profile.html">fortios_dnsfilter_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_client.html">fortios_endpoint_control_client</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_forticlient_ems.html">fortios_endpoint_control_forticlient_ems</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_forticlient_registration_sync.html">fortios_endpoint_control_forticlient_registration_sync</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_profile.html">fortios_endpoint_control_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_registered_forticlient.html">fortios_endpoint_control_registered_forticlient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_endpoint_control_settings.html">fortios_endpoint_control_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_extender_controller_extender.html">fortios_extender_controller_extender</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ipmacbinding_setting.html">fortios_firewall.ipmacbinding_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ipmacbinding_table.html">fortios_firewall.ipmacbinding_table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.schedule_group.html">fortios_firewall.schedule_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.schedule_onetime.html">fortios_firewall.schedule_onetime</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.schedule_recurring.html">fortios_firewall.schedule_recurring</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.service_category.html">fortios_firewall.service_category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.service_custom.html">fortios_firewall.service_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.service_group.html">fortios_firewall.service_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.shaper_per_ip_shaper.html">fortios_firewall.shaper_per_ip_shaper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.shaper_traffic_shaper.html">fortios_firewall.shaper_traffic_shaper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssh_host_key.html">fortios_firewall.ssh_host_key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssh_local_ca.html">fortios_firewall.ssh_local_ca</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssh_local_key.html">fortios_firewall.ssh_local_key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssh_setting.html">fortios_firewall.ssh_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.ssl_setting.html">fortios_firewall.ssl_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.wildcard_fqdn_custom.html">fortios_firewall.wildcard_fqdn_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall.wildcard_fqdn_group.html">fortios_firewall.wildcard_fqdn_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_DoS_policy.html">fortios_firewall_DoS_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_DoS_policy6.html">fortios_firewall_DoS_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_address.html">fortios_firewall_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_address6.html">fortios_firewall_address6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_address6_template.html">fortios_firewall_address6_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_addrgrp.html">fortios_firewall_addrgrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_addrgrp6.html">fortios_firewall_addrgrp6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_auth_portal.html">fortios_firewall_auth_portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_central_snat_map.html">fortios_firewall_central_snat_map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_dnstranslation.html">fortios_firewall_dnstranslation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_identity_based_route.html">fortios_firewall_identity_based_route</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_interface_policy.html">fortios_firewall_interface_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_interface_policy6.html">fortios_firewall_interface_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_internet_service.html">fortios_firewall_internet_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_internet_service_custom.html">fortios_firewall_internet_service_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_internet_service_custom_group.html">fortios_firewall_internet_service_custom_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_internet_service_group.html">fortios_firewall_internet_service_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ip_translation.html">fortios_firewall_ip_translation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ippool.html">fortios_firewall_ippool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ippool6.html">fortios_firewall_ippool6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ipv6_eh_filter.html">fortios_firewall_ipv6_eh_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ldb_monitor.html">fortios_firewall_ldb_monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_local_in_policy.html">fortios_firewall_local_in_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_local_in_policy6.html">fortios_firewall_local_in_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_multicast_address.html">fortios_firewall_multicast_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_multicast_address6.html">fortios_firewall_multicast_address6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_multicast_policy.html">fortios_firewall_multicast_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_multicast_policy6.html">fortios_firewall_multicast_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_policy.html">fortios_firewall_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_policy46.html">fortios_firewall_policy46</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_policy6.html">fortios_firewall_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_policy64.html">fortios_firewall_policy64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_profile_group.html">fortios_firewall_profile_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_profile_protocol_options.html">fortios_firewall_profile_protocol_options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_proxy_address.html">fortios_firewall_proxy_address</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_proxy_addrgrp.html">fortios_firewall_proxy_addrgrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_proxy_policy.html">fortios_firewall_proxy_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_shaping_policy.html">fortios_firewall_shaping_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_shaping_profile.html">fortios_firewall_shaping_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_sniffer.html">fortios_firewall_sniffer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ssl_server.html">fortios_firewall_ssl_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ssl_ssh_profile.html">fortios_firewall_ssl_ssh_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_ttl_policy.html">fortios_firewall_ttl_policy</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fortios_firewall_vip</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vip46.html">fortios_firewall_vip46</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vip6.html">fortios_firewall_vip6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vip64.html">fortios_firewall_vip64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vipgrp.html">fortios_firewall_vipgrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vipgrp46.html">fortios_firewall_vipgrp46</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vipgrp6.html">fortios_firewall_vipgrp6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_firewall_vipgrp64.html">fortios_firewall_vipgrp64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ftp_proxy_explicit.html">fortios_ftp_proxy_explicit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_icap_profile.html">fortios_icap_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_icap_server.html">fortios_icap_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_custom.html">fortios_ips_custom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_decoder.html">fortios_ips_decoder</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_global.html">fortios_ips_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_rule.html">fortios_ips_rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_rule_settings.html">fortios_ips_rule_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_sensor.html">fortios_ips_sensor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ips_settings.html">fortios_ips_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ipv4_policy.html">fortios_ipv4_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.disk_filter.html">fortios_log.disk_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.disk_setting.html">fortios_log.disk_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer2_filter.html">fortios_log.fortianalyzer2_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer2_setting.html">fortios_log.fortianalyzer2_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer3_filter.html">fortios_log.fortianalyzer3_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer3_setting.html">fortios_log.fortianalyzer3_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer_filter.html">fortios_log.fortianalyzer_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer_override_filter.html">fortios_log.fortianalyzer_override_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer_override_setting.html">fortios_log.fortianalyzer_override_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortianalyzer_setting.html">fortios_log.fortianalyzer_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortiguard_filter.html">fortios_log.fortiguard_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortiguard_override_filter.html">fortios_log.fortiguard_override_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortiguard_override_setting.html">fortios_log.fortiguard_override_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.fortiguard_setting.html">fortios_log.fortiguard_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.memory_filter.html">fortios_log.memory_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.memory_global_setting.html">fortios_log.memory_global_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.memory_setting.html">fortios_log.memory_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.null_device_filter.html">fortios_log.null_device_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.null_device_setting.html">fortios_log.null_device_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd2_filter.html">fortios_log.syslogd2_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd2_setting.html">fortios_log.syslogd2_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd3_filter.html">fortios_log.syslogd3_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd3_setting.html">fortios_log.syslogd3_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd4_filter.html">fortios_log.syslogd4_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd4_setting.html">fortios_log.syslogd4_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd_filter.html">fortios_log.syslogd_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd_override_filter.html">fortios_log.syslogd_override_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd_override_setting.html">fortios_log.syslogd_override_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.syslogd_setting.html">fortios_log.syslogd_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.webtrends_filter.html">fortios_log.webtrends_filter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log.webtrends_setting.html">fortios_log.webtrends_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_custom_field.html">fortios_log_custom_field</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_eventfilter.html">fortios_log_eventfilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_gui_display.html">fortios_log_gui_display</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_setting.html">fortios_log_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_log_threat_weight.html">fortios_log_threat_weight</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_chart.html">fortios_report_chart</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_dataset.html">fortios_report_dataset</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_layout.html">fortios_report_layout</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_setting.html">fortios_report_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_style.html">fortios_report_style</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_report_theme.html">fortios_report_theme</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_access_list.html">fortios_router_access_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_access_list6.html">fortios_router_access_list6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_aspath_list.html">fortios_router_aspath_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_auth_path.html">fortios_router_auth_path</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_bfd.html">fortios_router_bfd</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_bfd6.html">fortios_router_bfd6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_bgp.html">fortios_router_bgp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_community_list.html">fortios_router_community_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_isis.html">fortios_router_isis</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_key_chain.html">fortios_router_key_chain</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_multicast.html">fortios_router_multicast</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_multicast6.html">fortios_router_multicast6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_multicast_flow.html">fortios_router_multicast_flow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_ospf.html">fortios_router_ospf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_ospf6.html">fortios_router_ospf6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_policy.html">fortios_router_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_policy6.html">fortios_router_policy6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_prefix_list.html">fortios_router_prefix_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_prefix_list6.html">fortios_router_prefix_list6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_rip.html">fortios_router_rip</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_ripng.html">fortios_router_ripng</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_setting.html">fortios_router_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_static.html">fortios_router_static</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_router_static6.html">fortios_router_static6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_bwl.html">fortios_spamfilter_bwl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_bword.html">fortios_spamfilter_bword</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_dnsbl.html">fortios_spamfilter_dnsbl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_fortishield.html">fortios_spamfilter_fortishield</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_iptrust.html">fortios_spamfilter_iptrust</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_mheader.html">fortios_spamfilter_mheader</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_options.html">fortios_spamfilter_options</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_spamfilter_profile.html">fortios_spamfilter_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_ssh_filter_profile.html">fortios_ssh_filter_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.qos_dot1p_map.html">fortios_switch_controller.qos_dot1p_map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.qos_ip_dscp_map.html">fortios_switch_controller.qos_ip_dscp_map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.qos_qos_policy.html">fortios_switch_controller.qos_qos_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.qos_queue_policy.html">fortios_switch_controller.qos_queue_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.security_policy_802_1X.html">fortios_switch_controller.security_policy_802_1X</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller.security_policy_captive_portal.html">fortios_switch_controller.security_policy_captive_portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_802_1X_settings.html">fortios_switch_controller_802_1X_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_custom_command.html">fortios_switch_controller_custom_command</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_global.html">fortios_switch_controller_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_igmp_snooping.html">fortios_switch_controller_igmp_snooping</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_lldp_profile.html">fortios_switch_controller_lldp_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_lldp_settings.html">fortios_switch_controller_lldp_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_mac_sync_settings.html">fortios_switch_controller_mac_sync_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_managed_switch.html">fortios_switch_controller_managed_switch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_network_monitor_settings.html">fortios_switch_controller_network_monitor_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_quarantine.html">fortios_switch_controller_quarantine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_sflow.html">fortios_switch_controller_sflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_storm_control.html">fortios_switch_controller_storm_control</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_stp_settings.html">fortios_switch_controller_stp_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_switch_group.html">fortios_switch_controller_switch_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_switch_interface_tag.html">fortios_switch_controller_switch_interface_tag</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_switch_log.html">fortios_switch_controller_switch_log</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_switch_profile.html">fortios_switch_controller_switch_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_system.html">fortios_switch_controller_system</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_virtual_port_pool.html">fortios_switch_controller_virtual_port_pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_switch_controller_vlan.html">fortios_switch_controller_vlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.autoupdate_push_update.html">fortios_system.autoupdate_push_update</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.autoupdate_schedule.html">fortios_system.autoupdate_schedule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.autoupdate_tunneling.html">fortios_system.autoupdate_tunneling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.dhcp6_server.html">fortios_system.dhcp6_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.dhcp_server.html">fortios_system.dhcp_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_admin.html">fortios_system.replacemsg_admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_alertmail.html">fortios_system.replacemsg_alertmail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_auth.html">fortios_system.replacemsg_auth</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_device_detection_portal.html">fortios_system.replacemsg_device_detection_portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_ec.html">fortios_system.replacemsg_ec</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_fortiguard_wf.html">fortios_system.replacemsg_fortiguard_wf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_ftp.html">fortios_system.replacemsg_ftp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_http.html">fortios_system.replacemsg_http</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_icap.html">fortios_system.replacemsg_icap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_mail.html">fortios_system.replacemsg_mail</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_nac_quar.html">fortios_system.replacemsg_nac_quar</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_nntp.html">fortios_system.replacemsg_nntp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_spam.html">fortios_system.replacemsg_spam</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_sslvpn.html">fortios_system.replacemsg_sslvpn</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_traffic_quota.html">fortios_system.replacemsg_traffic_quota</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_utm.html">fortios_system.replacemsg_utm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.replacemsg_webproxy.html">fortios_system.replacemsg_webproxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.snmp_community.html">fortios_system.snmp_community</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.snmp_sysinfo.html">fortios_system.snmp_sysinfo</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system.snmp_user.html">fortios_system.snmp_user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_accprofile.html">fortios_system_accprofile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_admin.html">fortios_system_admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_affinity_interrupt.html">fortios_system_affinity_interrupt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_affinity_packet_redistribution.html">fortios_system_affinity_packet_redistribution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_alarm.html">fortios_system_alarm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_alias.html">fortios_system_alias</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_api_user.html">fortios_system_api_user</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_arp_table.html">fortios_system_arp_table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_auto_install.html">fortios_system_auto_install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_auto_script.html">fortios_system_auto_script</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_automation_action.html">fortios_system_automation_action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_automation_destination.html">fortios_system_automation_destination</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_automation_stitch.html">fortios_system_automation_stitch</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_automation_trigger.html">fortios_system_automation_trigger</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_central_management.html">fortios_system_central_management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_cluster_sync.html">fortios_system_cluster_sync</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_console.html">fortios_system_console</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_csf.html">fortios_system_csf</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_custom_language.html">fortios_system_custom_language</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ddns.html">fortios_system_ddns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_dedicated_mgmt.html">fortios_system_dedicated_mgmt</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_dns.html">fortios_system_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_dns_server.html">fortios_system_dns_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_dscp_based_priority.html">fortios_system_dscp_based_priority</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_email_server.html">fortios_system_email_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_external_resource.html">fortios_system_external_resource</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fips_cc.html">fortios_system_fips_cc</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fm.html">fortios_system_fm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fortiguard.html">fortios_system_fortiguard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fortimanager.html">fortios_system_fortimanager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fortisandbox.html">fortios_system_fortisandbox</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_fsso_polling.html">fortios_system_fsso_polling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ftm_push.html">fortios_system_ftm_push</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_geoip_override.html">fortios_system_geoip_override</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_global.html">fortios_system_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_gre_tunnel.html">fortios_system_gre_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ha.html">fortios_system_ha</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ha_monitor.html">fortios_system_ha_monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_interface.html">fortios_system_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ipip_tunnel.html">fortios_system_ipip_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ips_urlfilter_dns.html">fortios_system_ips_urlfilter_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ips_urlfilter_dns6.html">fortios_system_ips_urlfilter_dns6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ipv6_neighbor_cache.html">fortios_system_ipv6_neighbor_cache</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ipv6_tunnel.html">fortios_system_ipv6_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_link_monitor.html">fortios_system_link_monitor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_mac_address_table.html">fortios_system_mac_address_table</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_management_tunnel.html">fortios_system_management_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_mobile_tunnel.html">fortios_system_mobile_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_nat64.html">fortios_system_nat64</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_nd_proxy.html">fortios_system_nd_proxy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_netflow.html">fortios_system_netflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_network_visibility.html">fortios_system_network_visibility</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_ntp.html">fortios_system_ntp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_object_tagging.html">fortios_system_object_tagging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_password_policy.html">fortios_system_password_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_password_policy_guest_admin.html">fortios_system_password_policy_guest_admin</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_pppoe_interface.html">fortios_system_pppoe_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_probe_response.html">fortios_system_probe_response</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_proxy_arp.html">fortios_system_proxy_arp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_replacemsg_group.html">fortios_system_replacemsg_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_replacemsg_image.html">fortios_system_replacemsg_image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_resource_limits.html">fortios_system_resource_limits</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_sdn_connector.html">fortios_system_sdn_connector</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_session_helper.html">fortios_system_session_helper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_session_ttl.html">fortios_system_session_ttl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_settings.html">fortios_system_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_sflow.html">fortios_system_sflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_sit_tunnel.html">fortios_system_sit_tunnel</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_sms_server.html">fortios_system_sms_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_storage.html">fortios_system_storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_switch_interface.html">fortios_system_switch_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_tos_based_priority.html">fortios_system_tos_based_priority</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom.html">fortios_system_vdom</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_dns.html">fortios_system_vdom_dns</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_exception.html">fortios_system_vdom_exception</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_link.html">fortios_system_vdom_link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_netflow.html">fortios_system_vdom_netflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_property.html">fortios_system_vdom_property</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_radius_server.html">fortios_system_vdom_radius_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vdom_sflow.html">fortios_system_vdom_sflow</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_virtual_wan_link.html">fortios_system_virtual_wan_link</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_virtual_wire_pair.html">fortios_system_virtual_wire_pair</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_vxlan.html">fortios_system_vxlan</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_wccp.html">fortios_system_wccp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_system_zone.html">fortios_system_zone</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_adgrp.html">fortios_user_adgrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_device.html">fortios_user_device</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_device_access_list.html">fortios_user_device_access_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_device_category.html">fortios_user_device_category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_device_group.html">fortios_user_device_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_domain_controller.html">fortios_user_domain_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_fortitoken.html">fortios_user_fortitoken</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_fsso.html">fortios_user_fsso</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_fsso_polling.html">fortios_user_fsso_polling</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_group.html">fortios_user_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_krb_keytab.html">fortios_user_krb_keytab</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_ldap.html">fortios_user_ldap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_local.html">fortios_user_local</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_password_policy.html">fortios_user_password_policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_peer.html">fortios_user_peer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_peergrp.html">fortios_user_peergrp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_quarantine.html">fortios_user_quarantine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_security_exempt_list.html">fortios_user_security_exempt_list</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_setting.html">fortios_user_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_user_tacacs+.html">fortios_user_tacacs+</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_voip_profile.html">fortios_voip_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_ca.html">fortios_vpn.certificate_ca</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_crl.html">fortios_vpn.certificate_crl</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_local.html">fortios_vpn.certificate_local</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_ocsp_server.html">fortios_vpn.certificate_ocsp_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_remote.html">fortios_vpn.certificate_remote</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.certificate_setting.html">fortios_vpn.certificate_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_concentrator.html">fortios_vpn.ipsec_concentrator</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_forticlient.html">fortios_vpn.ipsec_forticlient</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_manualkey.html">fortios_vpn.ipsec_manualkey</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_manualkey_interface.html">fortios_vpn.ipsec_manualkey_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_phase1.html">fortios_vpn.ipsec_phase1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_phase1_interface.html">fortios_vpn.ipsec_phase1_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_phase2.html">fortios_vpn.ipsec_phase2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ipsec_phase2_interface.html">fortios_vpn.ipsec_phase2_interface</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_host_check_software.html">fortios_vpn.ssl.web_host_check_software</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_portal.html">fortios_vpn.ssl.web_portal</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_realm.html">fortios_vpn.ssl.web_realm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_user_bookmark.html">fortios_vpn.ssl.web_user_bookmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl.web_user_group_bookmark.html">fortios_vpn.ssl.web_user_group_bookmark</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn.ssl_settings.html">fortios_vpn.ssl_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn_l2tp.html">fortios_vpn_l2tp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_vpn_pptp.html">fortios_vpn_pptp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_waf_main_class.html">fortios_waf_main_class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_waf_profile.html">fortios_waf_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_waf_signature.html">fortios_waf_signature</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_waf_sub_class.html">fortios_waf_sub_class</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_auth_group.html">fortios_wanopt_auth_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_cache_service.html">fortios_wanopt_cache_service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_content_delivery_network_rule.html">fortios_wanopt_content_delivery_network_rule</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_peer.html">fortios_wanopt_peer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_profile.html">fortios_wanopt_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_remote_storage.html">fortios_wanopt_remote_storage</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wanopt_settings.html">fortios_wanopt_settings</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_debug_url.html">fortios_web_proxy_debug_url</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_explicit.html">fortios_web_proxy_explicit</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_forward_server.html">fortios_web_proxy_forward_server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_forward_server_group.html">fortios_web_proxy_forward_server_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_global.html">fortios_web_proxy_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_profile.html">fortios_web_proxy_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_url_match.html">fortios_web_proxy_url_match</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_web_proxy_wisp.html">fortios_web_proxy_wisp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter.html">fortios_webfilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_content.html">fortios_webfilter_content</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_content_header.html">fortios_webfilter_content_header</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_fortiguard.html">fortios_webfilter_fortiguard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ftgd_local_cat.html">fortios_webfilter_ftgd_local_cat</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ftgd_local_rating.html">fortios_webfilter_ftgd_local_rating</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ips_urlfilter_cache_setting.html">fortios_webfilter_ips_urlfilter_cache_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ips_urlfilter_setting.html">fortios_webfilter_ips_urlfilter_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_ips_urlfilter_setting6.html">fortios_webfilter_ips_urlfilter_setting6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_override.html">fortios_webfilter_override</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_profile.html">fortios_webfilter_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_search_engine.html">fortios_webfilter_search_engine</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_webfilter_urlfilter.html">fortios_webfilter_urlfilter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_3gpp_cellular.html">fortios_wireless_controller.hotspot20_anqp_3gpp_cellular</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_ip_address_type.html">fortios_wireless_controller.hotspot20_anqp_ip_address_type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_nai_realm.html">fortios_wireless_controller.hotspot20_anqp_nai_realm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_network_auth_type.html">fortios_wireless_controller.hotspot20_anqp_network_auth_type</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_roaming_consortium.html">fortios_wireless_controller.hotspot20_anqp_roaming_consortium</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_anqp_venue_name.html">fortios_wireless_controller.hotspot20_anqp_venue_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_h2qp_conn_capability.html">fortios_wireless_controller.hotspot20_h2qp_conn_capability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_h2qp_operator_name.html">fortios_wireless_controller.hotspot20_h2qp_operator_name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_h2qp_osu_provider.html">fortios_wireless_controller.hotspot20_h2qp_osu_provider</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_h2qp_wan_metric.html">fortios_wireless_controller.hotspot20_h2qp_wan_metric</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_hs_profile.html">fortios_wireless_controller.hotspot20_hs_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_icon.html">fortios_wireless_controller.hotspot20_icon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller.hotspot20_qos_map.html">fortios_wireless_controller.hotspot20_qos_map</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_ap_status.html">fortios_wireless_controller_ap_status</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_ble_profile.html">fortios_wireless_controller_ble_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_bonjour_profile.html">fortios_wireless_controller_bonjour_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_global.html">fortios_wireless_controller_global</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_inter_controller.html">fortios_wireless_controller_inter_controller</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_qos_profile.html">fortios_wireless_controller_qos_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_setting.html">fortios_wireless_controller_setting</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_timers.html">fortios_wireless_controller_timers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_utm_profile.html">fortios_wireless_controller_utm_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_vap.html">fortios_wireless_controller_vap</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_vap_group.html">fortios_wireless_controller_vap_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_wids_profile.html">fortios_wireless_controller_wids_profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_wtp.html">fortios_wireless_controller_wtp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_wtp_group.html">fortios_wireless_controller_wtp_group</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fortios_wireless_controller_wtp_profile.html">fortios_wireless_controller_wtp_profile</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fortios_playbooks.html">Playbook Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fortios_roles.html">Roles</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fortios_root.html">FortiGate (FortiOS)</a> &raquo;</li>
+        
+          <li><a href="../fortios_modules.html">Modules</a> &raquo;</li>
+        
+      <li>fortios_firewall_vip</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fortios_modules/fortios_firewall_vip.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fortios-firewall-vip">
+<h1>fortios_firewall_vip<a class="headerlink" href="#fortios-firewall-vip" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> fortios_firewall_vip</p>
+<p><strong>Description:</strong> This module is able to configure a FortiGate or FortiOS by allowing the user to configure firewall feature and vip category. Examples includes all options and need to be adjusted to datasources before usage. Tested with FOS v6.0.2</p>
+<p><strong>Author(s):</strong></p>
+<ul class="simple">
+<li>Miguel Angel Munoz (github: &#64;mamunozgonzalez)</li>
+<li>Nicolas Thomas (github: &#64;thomnico)</li>
+</ul>
+<p><strong>Ansible Version Added/Required:</strong> 2.8</p>
+<p><strong>Dev Status:</strong> No Data Exists. Contact DevOps Team.</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="firewall-vip">
+<h3>firewall_vip<a class="headerlink" href="#firewall-vip" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Configure virtual IP for IPv4.</li>
+<li>default: None</li>
+</ul>
+</div>
+<div class="section" id="host">
+<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: FortiOS or FortiGate ip adress.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="https">
+<h3>https<a class="headerlink" href="#https" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Indicates if the requests towards FortiGate must use HTTPS protocol</li>
+<li>default: False</li>
+</ul>
+</div>
+<div class="section" id="password">
+<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: FortiOS or FortiGate password.</li>
+<li>default:</li>
+</ul>
+</div>
+<div class="section" id="username">
+<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: FortiOS or FortiGate username.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="vdom">
+<h3>vdom<a class="headerlink" href="#vdom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Virtual domain, among those defined previously. A vdom is a virtual instance of the FortiGate that can be configured and used as a different unit.</li>
+<li>default: root</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>login</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">login</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">host</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;host&#39;</span><span class="p">]</span>
+    <span class="n">username</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;username&#39;</span><span class="p">]</span>
+    <span class="n">password</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;password&#39;</span><span class="p">]</span>
+
+    <span class="n">fos</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="s1">&#39;https&#39;</span> <span class="ow">in</span> <span class="n">data</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;https&#39;</span><span class="p">]:</span>
+        <span class="n">fos</span><span class="o">.</span><span class="n">https</span><span class="p">(</span><span class="s1">&#39;off&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fos</span><span class="o">.</span><span class="n">https</span><span class="p">(</span><span class="s1">&#39;on&#39;</span><span class="p">)</span>
+
+    <span class="n">fos</span><span class="o">.</span><span class="n">login</span><span class="p">(</span><span class="n">host</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>filter_firewall_vip_data</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">filter_firewall_vip_data</span><span class="p">(</span><span class="n">json</span><span class="p">):</span>
+    <span class="n">option_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;arp-reply&#39;</span><span class="p">,</span> <span class="s1">&#39;color&#39;</span><span class="p">,</span> <span class="s1">&#39;comment&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;dns-mapping-ttl&#39;</span><span class="p">,</span> <span class="s1">&#39;extaddr&#39;</span><span class="p">,</span> <span class="s1">&#39;extintf&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;extip&#39;</span><span class="p">,</span> <span class="s1">&#39;extport&#39;</span><span class="p">,</span> <span class="s1">&#39;gratuitous-arp-interval&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;http-cookie-age&#39;</span><span class="p">,</span> <span class="s1">&#39;http-cookie-domain&#39;</span><span class="p">,</span> <span class="s1">&#39;http-cookie-domain-from-host&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;http-cookie-generation&#39;</span><span class="p">,</span> <span class="s1">&#39;http-cookie-path&#39;</span><span class="p">,</span> <span class="s1">&#39;http-cookie-share&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;http-ip-header&#39;</span><span class="p">,</span> <span class="s1">&#39;http-ip-header-name&#39;</span><span class="p">,</span> <span class="s1">&#39;http-multiplex&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;https-cookie-secure&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;ldb-method&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;mapped-addr&#39;</span><span class="p">,</span> <span class="s1">&#39;mappedip&#39;</span><span class="p">,</span> <span class="s1">&#39;mappedport&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;max-embryonic-connections&#39;</span><span class="p">,</span> <span class="s1">&#39;monitor&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;nat-source-vip&#39;</span><span class="p">,</span> <span class="s1">&#39;outlook-web-access&#39;</span><span class="p">,</span> <span class="s1">&#39;persistence&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;portforward&#39;</span><span class="p">,</span> <span class="s1">&#39;portmapping-type&#39;</span><span class="p">,</span> <span class="s1">&#39;protocol&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;realservers&#39;</span><span class="p">,</span> <span class="s1">&#39;server-type&#39;</span><span class="p">,</span> <span class="s1">&#39;service&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;src-filter&#39;</span><span class="p">,</span> <span class="s1">&#39;srcintf-filter&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-algorithm&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ssl-certificate&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-cipher-suites&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-client-fallback&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ssl-client-renegotiation&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-client-session-state-max&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-client-session-state-timeout&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ssl-client-session-state-type&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-dh-bits&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-hpkp&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ssl-hpkp-age&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-hpkp-backup&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-hpkp-include-subdomains&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ssl-hpkp-primary&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-hpkp-report-uri&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-hsts&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ssl-hsts-age&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-hsts-include-subdomains&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-http-location-conversion&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ssl-http-match-host&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-max-version&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-min-version&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ssl-mode&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-pfs&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-send-empty-frags&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ssl-server-algorithm&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-server-cipher-suites&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-server-max-version&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ssl-server-min-version&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-server-session-state-max&#39;</span><span class="p">,</span> <span class="s1">&#39;ssl-server-session-state-timeout&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;ssl-server-session-state-type&#39;</span><span class="p">,</span> <span class="s1">&#39;type&#39;</span><span class="p">,</span> <span class="s1">&#39;uuid&#39;</span><span class="p">,</span>
+                   <span class="s1">&#39;weblogic-server&#39;</span><span class="p">,</span> <span class="s1">&#39;websphere-server&#39;</span><span class="p">]</span>
+    <span class="n">dictionary</span> <span class="o">=</span> <span class="p">{}</span>
+
+    <span class="k">for</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">option_list</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">attribute</span> <span class="ow">in</span> <span class="n">json</span> <span class="ow">and</span> <span class="n">json</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+            <span class="n">dictionary</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span> <span class="o">=</span> <span class="n">json</span><span class="p">[</span><span class="n">attribute</span><span class="p">]</span>
+
+    <span class="k">return</span> <span class="n">dictionary</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>firewall_vip</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">firewall_vip</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fos</span><span class="p">):</span>
+    <span class="n">vdom</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;vdom&#39;</span><span class="p">]</span>
+    <span class="n">firewall_vip_data</span> <span class="o">=</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;firewall_vip&#39;</span><span class="p">]</span>
+    <span class="n">filtered_data</span> <span class="o">=</span> <span class="n">filter_firewall_vip_data</span><span class="p">(</span><span class="n">firewall_vip_data</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">firewall_vip_data</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;present&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fos</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="s1">&#39;firewall&#39;</span><span class="p">,</span>
+                       <span class="s1">&#39;vip&#39;</span><span class="p">,</span>
+                       <span class="n">data</span><span class="o">=</span><span class="n">filtered_data</span><span class="p">,</span>
+                       <span class="n">vdom</span><span class="o">=</span><span class="n">vdom</span><span class="p">)</span>
+
+    <span class="k">elif</span> <span class="n">firewall_vip_data</span><span class="p">[</span><span class="s1">&#39;state&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;absent&quot;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">fos</span><span class="o">.</span><span class="n">delete</span><span class="p">(</span><span class="s1">&#39;firewall&#39;</span><span class="p">,</span>
+                          <span class="s1">&#39;vip&#39;</span><span class="p">,</span>
+                          <span class="n">mkey</span><span class="o">=</span><span class="n">filtered_data</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">],</span>
+                          <span class="n">vdom</span><span class="o">=</span><span class="n">vdom</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>fortios_firewall</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">fortios_firewall</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">fos</span><span class="p">):</span>
+    <span class="n">login</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+
+    <span class="n">methodlist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;firewall_vip&#39;</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">method</span> <span class="ow">in</span> <span class="n">methodlist</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="n">method</span><span class="p">]:</span>
+            <span class="n">resp</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">method</span><span class="p">)(</span><span class="n">data</span><span class="p">,</span> <span class="n">fos</span><span class="p">)</span>
+            <span class="k">break</span>
+
+    <span class="n">fos</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
+    <span class="k">return</span> <span class="ow">not</span> <span class="n">resp</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="n">resp</span><span class="p">[</span><span class="s1">&#39;status&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;success&quot;</span><span class="p">,</span> <span class="n">resp</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">fields</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;host&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;password&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="s2">&quot;no_log&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">},</span>
+        <span class="s2">&quot;vdom&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;root&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;https&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;bool&quot;</span><span class="p">,</span> <span class="s2">&quot;default&quot;</span><span class="p">:</span> <span class="s2">&quot;False&quot;</span><span class="p">},</span>
+        <span class="s2">&quot;firewall_vip&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;dict&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                <span class="s2">&quot;state&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                          <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;present&quot;</span><span class="p">,</span> <span class="s2">&quot;absent&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;arp-reply&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                              <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;color&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;comment&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;dns-mapping-ttl&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;extaddr&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">}</span>
+                            <span class="p">}},</span>
+                <span class="s2">&quot;extintf&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;extip&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;extport&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;gratuitous-arp-interval&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;http-cookie-age&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;http-cookie-domain&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;http-cookie-domain-from-host&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                                 <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;http-cookie-generation&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;http-cookie-path&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;http-cookie-share&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;same-ip&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;http-ip-header&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="s2">&quot;disable&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;http-ip-header-name&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;http-multiplex&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="s2">&quot;disable&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;https-cookie-secure&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                        <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;ldb-method&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                               <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;static&quot;</span><span class="p">,</span> <span class="s2">&quot;round-robin&quot;</span><span class="p">,</span> <span class="s2">&quot;weighted&quot;</span><span class="p">,</span>
+                                           <span class="s2">&quot;least-session&quot;</span><span class="p">,</span> <span class="s2">&quot;least-rtt&quot;</span><span class="p">,</span> <span class="s2">&quot;first-alive&quot;</span><span class="p">,</span>
+                                           <span class="s2">&quot;http-host&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;mapped-addr&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;mappedip&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span>
+                             <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                 <span class="s2">&quot;range&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">}</span>
+                             <span class="p">}},</span>
+                <span class="s2">&quot;mappedport&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;max-embryonic-connections&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;monitor&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">}</span>
+                            <span class="p">}},</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;nat-source-vip&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;outlook-web-access&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                       <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;persistence&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;none&quot;</span><span class="p">,</span> <span class="s2">&quot;http-cookie&quot;</span><span class="p">,</span> <span class="s2">&quot;ssl-session-id&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;portforward&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;portmapping-type&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                     <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;1-to-1&quot;</span><span class="p">,</span> <span class="s2">&quot;m-to-n&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;protocol&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                             <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;tcp&quot;</span><span class="p">,</span> <span class="s2">&quot;udp&quot;</span><span class="p">,</span> <span class="s2">&quot;sctp&quot;</span><span class="p">,</span>
+                                         <span class="s2">&quot;icmp&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;realservers&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                    <span class="s2">&quot;client-ip&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                                    <span class="s2">&quot;healthcheck&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                                    <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="s2">&quot;vip&quot;</span><span class="p">]},</span>
+                                    <span class="s2">&quot;holddown-interval&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                                    <span class="s2">&quot;http-host&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                                    <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                                    <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                                    <span class="s2">&quot;max-connections&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                                    <span class="s2">&quot;monitor&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                                    <span class="s2">&quot;port&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">},</span>
+                                    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                               <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;active&quot;</span><span class="p">,</span> <span class="s2">&quot;standby&quot;</span><span class="p">,</span> <span class="s2">&quot;disable&quot;</span><span class="p">]},</span>
+                                    <span class="s2">&quot;weight&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;int&quot;</span><span class="p">}</span>
+                                <span class="p">}},</span>
+                <span class="s2">&quot;server-type&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;http&quot;</span><span class="p">,</span> <span class="s2">&quot;https&quot;</span><span class="p">,</span> <span class="s2">&quot;imaps&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;pop3s&quot;</span><span class="p">,</span> <span class="s2">&quot;smtps&quot;</span><span class="p">,</span> <span class="s2">&quot;ssl&quot;</span><span class="p">,</span>
+                                            <span class="s2">&quot;tcp&quot;</span><span class="p">,</span> <span class="s2">&quot;udp&quot;</span><span class="p">,</span> <span class="s2">&quot;ip&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;service&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span>
+                            <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">}</span>
+                            <span class="p">}},</span>
+                <span class="s2">&quot;src-filter&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span>
+                               <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                   <span class="s2">&quot;range&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">}</span>
+                               <span class="p">}},</span>
+                <span class="s2">&quot;srcintf-filter&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span>
+                                   <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                       <span class="s2">&quot;interface-name&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">True</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">}</span>
+                                   <span class="p">}},</span>
+                <span class="s2">&quot;ssl-algorithm&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+                                  <span class="s2">&quot;choices&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;high&quot;</span><span class="p">,</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span> <span class="s2">&quot;low&quot;</span><span class="p">,</span>
+                                              <span class="s2">&quot;custom&quot;</span><span class="p">]},</span>
+                <span class="s2">&quot;ssl-certificate&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">},</span>
+                <span class="s2">&quot;ssl-cipher-suites&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;list&quot;</span><span class="p">,</span>
+                                      <span class="s2">&quot;options&quot;</span><span class="p">:</span> <span class="p">{</span>
+                                          <span class="s2">&quot;cipher&quot;</span><span class="p">:</span> <span class="p">{</span><span class="s2">&quot;required&quot;</span><span class="p">:</span> <span class="bp">False</span><span class="p">,</span> <span class="s2">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;str&quot;</span><span class="p">,</span>
+</pre></div>
+</div>
+</div></blockquote>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>“choices”: [“TLS-RSA-WITH-3DES-EDE-CBC-SHA”, “TLS-DHE-RSA-WITH-DES-CBC-SHA”, “TLS-DHE-DSS-WITH-DES-CBC-SHA”]},</dd>
+</dl>
+<blockquote>
+<div>“TLS-DHE-DSS-WITH-DES-CBC-SHA”]},</div></blockquote>
+<dl class="docutils">
+<dt>&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes</dt>
+<dd><blockquote class="first">
+<div><blockquote>
+<div><p>“priority”: {“required”: True, “type”: “int”},
+“versions”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“choices”: [“ssl-3.0”, “tls-1.0”, “tls-1.1”,</dt>
+<dd>“tls-1.2”]}</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<p>}},</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>“ssl-client-fallback”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“disable”, “enable”]},</dd>
+<dt>“ssl-client-renegotiation”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“allow”, “deny”, “secure”]},</dd>
+</dl>
+<p>“ssl-client-session-state-max”: {“required”: False, “type”: “int”},
+“ssl-client-session-state-timeout”: {“required”: False, “type”: “int”},
+“ssl-client-session-state-type”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“choices”: [“disable”, “time”, “count”,</dt>
+<dd>“both”]},</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>“ssl-dh-bits”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“768”, “1024”, “1536”,</dt>
+<dd>“2048”, “3072”, “4096”]},</dd>
+</dl>
+</dd>
+<dt>“ssl-hpkp”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“disable”, “enable”, “report-only”]},</dd>
+</dl>
+<p>“ssl-hpkp-age”: {“required”: False, “type”: “int”},
+“ssl-hpkp-backup”: {“required”: False, “type”: “str”},
+“ssl-hpkp-include-subdomains”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div>“choices”: [“disable”, “enable”]},</div></blockquote>
+<p>“ssl-hpkp-primary”: {“required”: False, “type”: “str”},
+“ssl-hpkp-report-uri”: {“required”: False, “type”: “str”},
+“ssl-hsts”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div>“choices”: [“disable”, “enable”]},</div></blockquote>
+<p>“ssl-hsts-age”: {“required”: False, “type”: “int”},
+“ssl-hsts-include-subdomains”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div>“choices”: [“disable”, “enable”]},</div></blockquote>
+<dl class="last docutils">
+<dt>“ssl-http-location-conversion”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“enable”, “disable”]},</dd>
+<dt>“ssl-http-match-host”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“enable”, “disable”]},</dd>
+<dt>“ssl-max-version”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“ssl-3.0”, “tls-1.0”, “tls-1.1”,</dt>
+<dd>“tls-1.2”]},</dd>
+</dl>
+</dd>
+<dt>“ssl-min-version”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“ssl-3.0”, “tls-1.0”, “tls-1.1”,</dt>
+<dd>“tls-1.2”]},</dd>
+</dl>
+</dd>
+<dt>“ssl-mode”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“half”, “full”]},</dd>
+<dt>“ssl-pfs”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“require”, “deny”, “allow”]},</dd>
+<dt>“ssl-send-empty-frags”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“enable”, “disable”]},</dd>
+<dt>“ssl-server-algorithm”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“high”, “medium”, “low”,</dt>
+<dd>“custom”, “client”]},</dd>
+</dl>
+</dd>
+<dt>“ssl-server-cipher-suites”: {“required”: False, “type”: “list”,</dt>
+<dd><dl class="first last docutils">
+<dt>“options”: {</dt>
+<dd>“cipher”: {“required”: False, “type”: “str”,</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>“choices”: [“TLS-RSA-WITH-3DES-EDE-CBC-SHA”, “TLS-DHE-RSA-WITH-DES-CBC-SHA”, “TLS-DHE-DSS-WITH-DES-CBC-SHA”]},</dd>
+</dl>
+<blockquote>
+<div>“TLS-DHE-DSS-WITH-DES-CBC-SHA”]},</div></blockquote>
+<dl class="docutils">
+<dt>&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes</dt>
+<dd><blockquote class="first">
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>“priority”: {“required”: True, “type”: “int”},
+“versions”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“choices”: [“ssl-3.0”, “tls-1.0”, “tls-1.1”,</dt>
+<dd>“tls-1.2”]}</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<p>}},</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>“ssl-server-max-version”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“ssl-3.0”, “tls-1.0”, “tls-1.1”,</dt>
+<dd>“tls-1.2”, “client”]},</dd>
+</dl>
+</dd>
+<dt>“ssl-server-min-version”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“ssl-3.0”, “tls-1.0”, “tls-1.1”,</dt>
+<dd>“tls-1.2”, “client”]},</dd>
+</dl>
+</dd>
+</dl>
+<p>“ssl-server-session-state-max”: {“required”: False, “type”: “int”},
+“ssl-server-session-state-timeout”: {“required”: False, “type”: “int”},
+“ssl-server-session-state-type”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“choices”: [“disable”, “time”, “count”,</dt>
+<dd>“both”]},</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>“type”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“static-nat”, “load-balance”, “server-load-balance”,</dt>
+<dd>“dns-translation”, “fqdn”]},</dd>
+</dl>
+</dd>
+</dl>
+<p>“uuid”: {“required”: False, “type”: “str”},
+“weblogic-server”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div>“choices”: [“disable”, “enable”]},</div></blockquote>
+<dl class="docutils">
+<dt>“websphere-server”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“disable”, “enable”]}</dd>
+</dl>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<dl class="docutils">
+<dt>module = AnsibleModule(argument_spec=fields,</dt>
+<dd>supports_check_mode=False)</dd>
+<dt>try:</dt>
+<dd>from fortiosapi import FortiOSAPI</dd>
+<dt>except ImportError:</dt>
+<dd>module.fail_json(msg=”fortiosapi module is required”)</dd>
+</dl>
+<p>global fos
+fos = FortiOSAPI()</p>
+<p>is_error, has_changed, result = fortios_firewall(module.params, fos)</p>
+<dl class="last docutils">
+<dt>if not is_error:</dt>
+<dd>module.exit_json(changed=has_changed, meta=result)</dd>
+<dt>else:</dt>
+<dd>module.fail_json(msg=”Error in repo”, meta=result)</dd>
+</dl>
+</dd>
+</dl>
+</div>
+<div class="section" id="module-source-code">
+<h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="p">(</span><span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span><span class="p">)</span>
+<span class="c1"># Copyright 2018 Fortinet, Inc.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># This program is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with this program.  If not, see &lt;https://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+<span class="c1"># the lib use python logging can get it if the following is set in your</span>
+<span class="c1"># Ansible config.</span>
+
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
+
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;status&#39;</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;preview&#39;</span><span class="p">],</span>
+                    <span class="s1">&#39;supported_by&#39;</span><span class="p">:</span> <span class="s1">&#39;community&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;metadata_version&#39;</span><span class="p">:</span> <span class="s1">&#39;1.1&#39;</span><span class="p">}</span>
+
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">module: fortios_firewall_vip</span>
+</pre></div>
+</div>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>short_description: Configure virtual IP for IPv4.</dd>
+</dl>
+<blockquote>
+<div><dl class="docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>This module is able to configure a FortiGate or FortiOS by
+allowing the user to configure firewall feature and vip category.
+Examples includes all options and need to be adjusted to datasources before usage.
+Tested with FOS v6.0.2</li>
+</ul>
+</dd>
+</dl>
+<p>version_added: “2.8”
+author:</p>
+<blockquote>
+<div><ul class="simple">
+<li>Miguel Angel Munoz (&#64;mamunozgonzalez)</li>
+<li>Nicolas Thomas (&#64;thomnico)</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>notes:</dt>
+<dd><ul class="first last simple">
+<li>Requires fortiosapi library developed by Fortinet</li>
+<li>Run as a local_action in your playbook</li>
+</ul>
+</dd>
+<dt>requirements:</dt>
+<dd><ul class="first last simple">
+<li>fortiosapi&gt;=0.9.8</li>
+</ul>
+</dd>
+<dt>options:</dt>
+<dd><dl class="first last docutils">
+<dt>host:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>FortiOS or FortiGate ip adress.</li>
+</ul>
+</dd>
+</dl>
+<p class="last">required: true</p>
+</dd>
+<dt>username:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>FortiOS or FortiGate username.</li>
+</ul>
+</dd>
+</dl>
+<p class="last">required: true</p>
+</dd>
+<dt>password:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>FortiOS or FortiGate password.</li>
+</ul>
+</dd>
+</dl>
+<p class="last">default: “”</p>
+</dd>
+<dt>vdom:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Virtual domain, among those defined previously. A vdom is a
+virtual instance of the FortiGate that can be configured and
+used as a different unit.</li>
+</ul>
+</dd>
+</dl>
+<p class="last">default: root</p>
+</dd>
+<dt>https:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Indicates if the requests towards FortiGate must use HTTPS
+protocol</li>
+</ul>
+</dd>
+</dl>
+<p class="last">type: bool
+default: false</p>
+</dd>
+<dt>firewall_vip:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Configure virtual IP for IPv4.</li>
+</ul>
+</dd>
+</dl>
+<p>default: null
+suboptions:</p>
+<blockquote class="last">
+<div><dl class="docutils">
+<dt>state:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Indicates whether to create or remove the object</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>present</li>
+<li>absent</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>arp-reply:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable to respond to ARP requests for this virtual IP address. Enabled by default.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>enable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>color:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Color of icon on the GUI.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>comment:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Comment.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>dns-mapping-ttl:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>DNS mapping TTL (Set to zero to use TTL in DNS response, default = 0).</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>extaddr:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>External FQDN address name.</li>
+</ul>
+</dd>
+<dt>suboptions:</dt>
+<dd><dl class="first last docutils">
+<dt>name:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Address name. Source firewall.address.name firewall.addrgrp.name.</li>
+</ul>
+</dd>
+</dl>
+<p class="last">required: true</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>extintf:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Interface connected to the source network that receives the packets that will be forwarded to the destination network. Source system
+.interface.name.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>extip:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>IP address or address range on the external interface that you want to map to an address or address range on the destination network.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>extport:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Incoming port number range that you want to map to a port number range on the destination network.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>gratuitous-arp-interval:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable to have the VIP send gratuitous ARPs. 0=disabled. Set from 5 up to 8640000 seconds to enable.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>http-cookie-age:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Time in minutes that client web browsers should keep a cookie. Default is 60 seconds. 0 = no time limit.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>http-cookie-domain:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Domain that HTTP cookie persistence should apply to.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>http-cookie-domain-from-host:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable/disable use of HTTP cookie domain from host field in HTTP.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>enable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>http-cookie-generation:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Generation of HTTP cookie to be accepted. Changing invalidates all existing cookies.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>http-cookie-path:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Limit HTTP cookie persistence to the specified path.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>http-cookie-share:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>Control sharing of cookies across virtual servers. same-ip means a cookie from one virtual server can be used by another. Disable stops</dt>
+<dd>cookie sharing.</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>same-ip</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>http-ip-header:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>For HTTP multiplexing, enable to add the original client IP address in the XForwarded-For HTTP header.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>enable</li>
+<li>disable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>http-ip-header-name:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>For HTTP multiplexing, enter a custom HTTPS header name. The original client IP address is added to this header. If empty,</dt>
+<dd>X-Forwarded-For is used.</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>http-multiplex:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable/disable HTTP multiplexing.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>enable</li>
+<li>disable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>https-cookie-secure:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable/disable verification that inserted HTTPS cookies are secure.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>enable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>id:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Custom defined ID.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ldb-method:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Method used to distribute sessions to real servers.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>static</li>
+<li>round-robin</li>
+<li>weighted</li>
+<li>least-session</li>
+<li>least-rtt</li>
+<li>first-alive</li>
+<li>http-host</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>mapped-addr:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Mapped FQDN address name. Source firewall.address.name.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>mappedip:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>IP address or address range on the destination network to which the external IP address is mapped.</li>
+</ul>
+</dd>
+<dt>suboptions:</dt>
+<dd><dl class="first last docutils">
+<dt>range:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Mapped IP range.</li>
+</ul>
+</dd>
+</dl>
+<p class="last">required: true</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>mappedport:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Port number range on the destination network to which the external port number range is mapped.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>max-embryonic-connections:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Maximum number of incomplete connections.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>monitor:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Name of the health check monitor to use when polling to determine a virtual server’s connectivity status.</li>
+</ul>
+</dd>
+<dt>suboptions:</dt>
+<dd><dl class="first last docutils">
+<dt>name:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Health monitor name. Source firewall.ldb-monitor.name.</li>
+</ul>
+</dd>
+</dl>
+<p class="last">required: true</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>name:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Virtual IP name.</li>
+</ul>
+</dd>
+</dl>
+<p class="last">required: true</p>
+</dd>
+<dt>nat-source-vip:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable to prevent unintended servers from using a virtual IP. Disable to use the actual IP address of the server as the source address.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>enable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>outlook-web-access:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable to add the Front-End-Https header for Microsoft Outlook Web Access.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>enable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>persistence:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Configure how to make sure that clients connect to the same server every time they make a request that is part of the same session.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>none</li>
+<li>http-cookie</li>
+<li>ssl-session-id</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>portforward:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable/disable port forwarding.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>enable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>portmapping-type:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Port mapping type.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>1-to-1</li>
+<li>m-to-n</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>protocol:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Protocol to use when forwarding packets.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>tcp</li>
+<li>udp</li>
+<li>sctp</li>
+<li>icmp</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>realservers:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Select the real servers that this server load balancing VIP will distribute traffic to.</li>
+</ul>
+</dd>
+<dt>suboptions:</dt>
+<dd><dl class="first last docutils">
+<dt>client-ip:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Only clients in this IP range can connect to this real server.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>healthcheck:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable to check the responsiveness of the real server before forwarding traffic.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>enable</li>
+<li>vip</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>holddown-interval:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Time in seconds that the health check monitor continues to monitor and unresponsive server that should be active.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>http-host:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>HTTP server domain name in HTTP header.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>id:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Real server ID.</li>
+</ul>
+</dd>
+</dl>
+<p class="last">required: true</p>
+</dd>
+<dt>ip:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>IP address of the real server.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>max-connections:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Max number of active connections that can be directed to the real server. When reached, sessions are sent to other real servers.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>monitor:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Name of the health check monitor to use when polling to determine a virtual server’s connectivity status. Source firewall
+.ldb-monitor.name.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>port:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Port for communicating with the real server. Required if port forwarding is enabled.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>status:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Set the status of the real server to active so that it can accept traffic, or on standby or disabled so no traffic is sent.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>active</li>
+<li>standby</li>
+<li>disable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>weight:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Weight of the real server. If weighted load balancing is enabled, the server with the highest weight gets more connections.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>server-type:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Protocol to be load balanced by the virtual server (also called the server load balance virtual IP).</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>http</li>
+<li>https</li>
+<li>imaps</li>
+<li>pop3s</li>
+<li>smtps</li>
+<li>ssl</li>
+<li>tcp</li>
+<li>udp</li>
+<li>ip</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>service:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Service name.</li>
+</ul>
+</dd>
+<dt>suboptions:</dt>
+<dd><dl class="first last docutils">
+<dt>name:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Service name. Source firewall.service.custom.name firewall.service.group.name.</li>
+</ul>
+</dd>
+</dl>
+<p class="last">required: true</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>src-filter:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Source address filter. Each address must be either an IP/subnet (x.x.x.x/n) or a range (x.x.x.x-y.y.y.y). Separate addresses with spaces.</li>
+</ul>
+</dd>
+<dt>suboptions:</dt>
+<dd><dl class="first last docutils">
+<dt>range:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Source-filter range.</li>
+</ul>
+</dd>
+</dl>
+<p class="last">required: true</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>srcintf-filter:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Interfaces to which the VIP applies. Separate the names with spaces.</li>
+</ul>
+</dd>
+<dt>suboptions:</dt>
+<dd><dl class="first last docutils">
+<dt>interface-name:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Interface name. Source system.interface.name.</li>
+</ul>
+</dd>
+</dl>
+<p class="last">required: true</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>ssl-algorithm:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Permitted encryption algorithms for SSL sessions according to encryption strength.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>high</li>
+<li>medium</li>
+<li>low</li>
+<li>custom</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-certificate:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>The name of the SSL certificate to use for SSL acceleration. Source vpn.certificate.local.name.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-cipher-suites:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>SSL/TLS cipher suites acceptable from a client, ordered by priority.</li>
+</ul>
+</dd>
+<dt>suboptions:</dt>
+<dd><dl class="first last docutils">
+<dt>cipher:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Cipher suite name.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>TLS-RSA-WITH-3DES-EDE-CBC-SHA</li>
+<li>TLS-DHE-RSA-WITH-DES-CBC-SHA</li>
+<li>TLS-DHE-DSS-WITH-DES-CBC-SHA</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>priority:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>SSL/TLS cipher suites priority.</li>
+</ul>
+</dd>
+</dl>
+<p class="last">required: true</p>
+</dd>
+<dt>versions:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>SSL/TLS versions that the cipher suite can be used with.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>ssl-3.0</li>
+<li>tls-1.0</li>
+<li>tls-1.1</li>
+<li>tls-1.2</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>ssl-client-fallback:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable/disable support for preventing Downgrade Attacks on client connections (RFC 7507).</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>enable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-client-renegotiation:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Allow, deny, or require secure renegotiation of client sessions to comply with RFC 5746.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>allow</li>
+<li>deny</li>
+<li>secure</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-client-session-state-max:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Maximum number of client to FortiGate SSL session states to keep.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-client-session-state-timeout:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Number of minutes to keep client to FortiGate SSL session state.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-client-session-state-type:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>How to expire SSL sessions for the segment of the SSL connection between the client and the FortiGate.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>time</li>
+<li>count</li>
+<li>both</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-dh-bits:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Number of bits to use in the Diffie-Hellman exchange for RSA encryption of SSL sessions.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>768</li>
+<li>1024</li>
+<li>1536</li>
+<li>2048</li>
+<li>3072</li>
+<li>4096</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-hpkp:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable/disable including HPKP header in response.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>enable</li>
+<li>report-only</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-hpkp-age:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Number of seconds the client should honour the HPKP setting.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-hpkp-backup:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Certificate to generate backup HPKP pin from. Source vpn.certificate.local.name vpn.certificate.ca.name.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-hpkp-include-subdomains:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Indicate that HPKP header applies to all subdomains.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>enable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-hpkp-primary:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Certificate to generate primary HPKP pin from. Source vpn.certificate.local.name vpn.certificate.ca.name.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-hpkp-report-uri:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>URL to report HPKP violations to.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-hsts:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable/disable including HSTS header in response.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>enable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-hsts-age:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Number of seconds the client should honour the HSTS setting.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-hsts-include-subdomains:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Indicate that HSTS header applies to all subdomains.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>enable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-http-location-conversion:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable to replace HTTP with HTTPS in the reply’s Location HTTP header field.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>enable</li>
+<li>disable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-http-match-host:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable/disable HTTP host matching for location conversion.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>enable</li>
+<li>disable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-max-version:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Highest SSL/TLS version acceptable from a client.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>ssl-3.0</li>
+<li>tls-1.0</li>
+<li>tls-1.1</li>
+<li>tls-1.2</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-min-version:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Lowest SSL/TLS version acceptable from a client.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>ssl-3.0</li>
+<li>tls-1.0</li>
+<li>tls-1.1</li>
+<li>tls-1.2</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-mode:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>Apply SSL offloading between the client and the FortiGate (half) or from the client to the FortiGate and from the FortiGate to the</dt>
+<dd>server (full).</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>half</li>
+<li>full</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-pfs:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Select the cipher suites that can be used for SSL perfect forward secrecy (PFS). Applies to both client and server sessions.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>require</li>
+<li>deny</li>
+<li>allow</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-send-empty-frags:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li><dl class="first docutils">
+<dt>Enable/disable sending empty fragments to avoid CBC IV attacks (SSL 3.0 &amp; TLS 1.0 only). May need to be disabled for compatibility with</dt>
+<dd>older systems.</dd>
+</dl>
+</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>enable</li>
+<li>disable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-server-algorithm:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Permitted encryption algorithms for the server side of SSL full mode sessions according to encryption strength.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>high</li>
+<li>medium</li>
+<li>low</li>
+<li>custom</li>
+<li>client</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-server-cipher-suites:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>SSL/TLS cipher suites to offer to a server, ordered by priority.</li>
+</ul>
+</dd>
+<dt>suboptions:</dt>
+<dd><dl class="first last docutils">
+<dt>cipher:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Cipher suite name.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>TLS-RSA-WITH-3DES-EDE-CBC-SHA</li>
+<li>TLS-DHE-RSA-WITH-DES-CBC-SHA</li>
+<li>TLS-DHE-DSS-WITH-DES-CBC-SHA</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>priority:</dt>
+<dd><dl class="first docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>SSL/TLS cipher suites priority.</li>
+</ul>
+</dd>
+</dl>
+<p class="last">required: true</p>
+</dd>
+<dt>versions:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>SSL/TLS versions that the cipher suite can be used with.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>ssl-3.0</li>
+<li>tls-1.0</li>
+<li>tls-1.1</li>
+<li>tls-1.2</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>ssl-server-max-version:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Highest SSL/TLS version acceptable from a server. Use the client setting by default.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>ssl-3.0</li>
+<li>tls-1.0</li>
+<li>tls-1.1</li>
+<li>tls-1.2</li>
+<li>client</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-server-min-version:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Lowest SSL/TLS version acceptable from a server. Use the client setting by default.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>ssl-3.0</li>
+<li>tls-1.0</li>
+<li>tls-1.1</li>
+<li>tls-1.2</li>
+<li>client</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-server-session-state-max:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Maximum number of FortiGate to Server SSL session states to keep.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-server-session-state-timeout:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Number of minutes to keep FortiGate to Server SSL session state.</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>ssl-server-session-state-type:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>How to expire SSL sessions for the segment of the SSL connection between the server and the FortiGate.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>time</li>
+<li>count</li>
+<li>both</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>type:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Configure a static NAT, load balance, server load balance, DNS translation, or FQDN VIP.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>static-nat</li>
+<li>load-balance</li>
+<li>server-load-balance</li>
+<li>dns-translation</li>
+<li>fqdn</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>uuid:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Universally Unique Identifier (UUID; automatically assigned but can be manually reset).</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>weblogic-server:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable to add an HTTP header to indicate SSL offloading for a WebLogic server.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>enable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+<dt>websphere-server:</dt>
+<dd><dl class="first last docutils">
+<dt>description:</dt>
+<dd><ul class="first last simple">
+<li>Enable to add an HTTP header to indicate SSL offloading for a WebSphere server.</li>
+</ul>
+</dd>
+<dt>choices:</dt>
+<dd><ul class="first last simple">
+<li>disable</li>
+<li>enable</li>
+</ul>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+<p>‘’‘</p>
+<p>EXAMPLES = ‘’’
+- hosts: localhost</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>vars:</dt>
+<dd>host: “192.168.122.40”
+username: “admin”
+password: “”
+vdom: “root”</dd>
+</dl>
+<p>tasks:
+- name: Configure virtual IP for IPv4.</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>fortios_firewall_vip:</dt>
+<dd><p class="first">host:  “{{ host }}”
+username: “{{ username }}”
+password: “{{ password }}”
+vdom:  “{{ vdom }}”
+firewall_vip:</p>
+<blockquote class="last">
+<div><p>state: “present”
+arp-reply: “disable”
+color: “4”
+comment: “Comment.”
+dns-mapping-ttl: “6”
+extaddr:</p>
+<blockquote>
+<div><ul class="simple">
+<li>name: “default_name_8 (source firewall.address.name firewall.addrgrp.name)”</li>
+</ul>
+</div></blockquote>
+<p>extintf: “&lt;your_own_value&gt; (source system.interface.name)”
+extip: “&lt;your_own_value&gt;”
+extport: “&lt;your_own_value&gt;”
+gratuitous-arp-interval: “12”
+http-cookie-age: “13”
+http-cookie-domain: “&lt;your_own_value&gt;”
+http-cookie-domain-from-host: “disable”
+http-cookie-generation: “16”
+http-cookie-path: “&lt;your_own_value&gt;”
+http-cookie-share: “disable”
+http-ip-header: “enable”
+http-ip-header-name: “&lt;your_own_value&gt;”
+http-multiplex: “enable”
+https-cookie-secure: “disable”
+id:  “23”
+ldb-method: “static”
+mapped-addr: “&lt;your_own_value&gt; (source firewall.address.name)”
+mappedip:</p>
+<blockquote>
+<div><ul class="simple">
+<li>range: “&lt;your_own_value&gt;”</li>
+</ul>
+</div></blockquote>
+<p>mappedport: “&lt;your_own_value&gt;”
+max-embryonic-connections: “29”
+monitor:</p>
+<blockquote>
+<div><ul class="simple">
+<li>name: “default_name_31 (source firewall.ldb-monitor.name)”</li>
+</ul>
+</div></blockquote>
+<p>name: “default_name_32”
+nat-source-vip: “disable”
+outlook-web-access: “disable”
+persistence: “none”
+portforward: “disable”
+portmapping-type: “1-to-1”
+protocol: “tcp”
+realservers:</p>
+<blockquote>
+<div><ul class="simple">
+<li>client-ip: “&lt;your_own_value&gt;”
+healthcheck: “disable”
+holddown-interval: “42”
+http-host: “myhostname”
+id:  “44”
+ip: “&lt;your_own_value&gt;”
+max-connections: “46”
+monitor: “&lt;your_own_value&gt; (source firewall.ldb-monitor.name)”
+port: “48”
+status: “active”
+weight: “50”</li>
+</ul>
+</div></blockquote>
+<p>server-type: “http”
+service:</p>
+<blockquote>
+<div><ul class="simple">
+<li>name: “default_name_53 (source firewall.service.custom.name firewall.service.group.name)”</li>
+</ul>
+</div></blockquote>
+<dl class="docutils">
+<dt>src-filter:</dt>
+<dd><ul class="first last simple">
+<li>range: “&lt;your_own_value&gt;”</li>
+</ul>
+</dd>
+<dt>srcintf-filter:</dt>
+<dd><ul class="first last simple">
+<li>interface-name: “&lt;your_own_value&gt; (source system.interface.name)”</li>
+</ul>
+</dd>
+</dl>
+<p>ssl-algorithm: “high”
+ssl-certificate: “&lt;your_own_value&gt; (source vpn.certificate.local.name)”
+ssl-cipher-suites:</p>
+<blockquote>
+<div><ul class="simple">
+<li>cipher: “TLS-RSA-WITH-3DES-EDE-CBC-SHA”
+priority: “62”
+versions: “ssl-3.0”</li>
+</ul>
+</div></blockquote>
+<p>ssl-client-fallback: “disable”
+ssl-client-renegotiation: “allow”
+ssl-client-session-state-max: “66”
+ssl-client-session-state-timeout: “67”
+ssl-client-session-state-type: “disable”
+ssl-dh-bits: “768”
+ssl-hpkp: “disable”
+ssl-hpkp-age: “71”
+ssl-hpkp-backup: “&lt;your_own_value&gt; (source vpn.certificate.local.name vpn.certificate.ca.name)”
+ssl-hpkp-include-subdomains: “disable”
+ssl-hpkp-primary: “&lt;your_own_value&gt; (source vpn.certificate.local.name vpn.certificate.ca.name)”
+ssl-hpkp-report-uri: “&lt;your_own_value&gt;”
+ssl-hsts: “disable”
+ssl-hsts-age: “77”
+ssl-hsts-include-subdomains: “disable”
+ssl-http-location-conversion: “enable”
+ssl-http-match-host: “enable”
+ssl-max-version: “ssl-3.0”
+ssl-min-version: “ssl-3.0”
+ssl-mode: “half”
+ssl-pfs: “require”
+ssl-send-empty-frags: “enable”
+ssl-server-algorithm: “high”
+ssl-server-cipher-suites:</p>
+<blockquote>
+<div><ul class="simple">
+<li>cipher: “TLS-RSA-WITH-3DES-EDE-CBC-SHA”
+priority: “89”
+versions: “ssl-3.0”</li>
+</ul>
+</div></blockquote>
+<p>ssl-server-max-version: “ssl-3.0”
+ssl-server-min-version: “ssl-3.0”
+ssl-server-session-state-max: “93”
+ssl-server-session-state-timeout: “94”
+ssl-server-session-state-type: “disable”
+type: “static-nat”
+uuid: “&lt;your_own_value&gt;”
+weblogic-server: “disable”
+websphere-server: “disable”</p>
+</div></blockquote>
+</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<p>‘’‘</p>
+<p>RETURN = ‘’’
+build:</p>
+<blockquote>
+<div>description: Build number of the fortigate image
+returned: always</div></blockquote>
+</div></blockquote>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>type: string</dd>
+</dl>
+<blockquote>
+<div><blockquote>
+<div>sample: ‘1547’</div></blockquote>
+<dl class="docutils">
+<dt>http_method:</dt>
+<dd>description: Last method used to provision the content into FortiGate
+returned: always</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>type: string</dd>
+</dl>
+<blockquote>
+<div><blockquote>
+<div>sample: ‘PUT’</div></blockquote>
+<dl class="docutils">
+<dt>http_status:</dt>
+<dd>description: Last result given by FortiGate on last operation applied
+returned: always</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>type: string</dd>
+</dl>
+<blockquote>
+<div><blockquote>
+<div>sample: “200”</div></blockquote>
+<dl class="docutils">
+<dt>mkey:</dt>
+<dd>description: Master key (id) used in the last call to FortiGate
+returned: success</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>type: string</dd>
+</dl>
+<blockquote>
+<div><blockquote>
+<div>sample: “key1”</div></blockquote>
+<dl class="docutils">
+<dt>name:</dt>
+<dd>description: Name of the table used to fulfill the request
+returned: always</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>type: string</dd>
+</dl>
+<blockquote>
+<div><blockquote>
+<div>sample: “urlfilter”</div></blockquote>
+<dl class="docutils">
+<dt>path:</dt>
+<dd>description: Path of the table used to fulfill the request
+returned: always</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>type: string</dd>
+</dl>
+<blockquote>
+<div><blockquote>
+<div>sample: “webfilter”</div></blockquote>
+<dl class="docutils">
+<dt>revision:</dt>
+<dd>description: Internal revision number
+returned: always</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>type: string</dd>
+</dl>
+<blockquote>
+<div><blockquote>
+<div>sample: “17.0.2.10658”</div></blockquote>
+<dl class="docutils">
+<dt>serial:</dt>
+<dd>description: Serial number of the unit
+returned: always</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>type: string</dd>
+</dl>
+<blockquote>
+<div><blockquote>
+<div>sample: “FGVMEVYYQT3AB5352”</div></blockquote>
+<dl class="docutils">
+<dt>status:</dt>
+<dd>description: Indication of the operation’s result
+returned: always</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>type: string</dd>
+</dl>
+<blockquote>
+<div><blockquote>
+<div>sample: “success”</div></blockquote>
+<dl class="docutils">
+<dt>vdom:</dt>
+<dd>description: Virtual domain used
+returned: always</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>type: string</dd>
+</dl>
+<blockquote>
+<div><blockquote>
+<div>sample: “root”</div></blockquote>
+<dl class="docutils">
+<dt>version:</dt>
+<dd>description: Version of the FortiGate
+returned: always</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>type: string</dd>
+</dl>
+<blockquote>
+<div><blockquote>
+<div>sample: “v5.6.3”</div></blockquote>
+<p>‘’‘</p>
+<p>from ansible.module_utils.basic import AnsibleModule</p>
+<p>fos = None</p>
+<dl class="docutils">
+<dt>def login(data):</dt>
+<dd><p class="first">host = data[‘host’]
+username = data[‘username’]
+password = data[‘password’]</p>
+<p>fos.debug(‘on’)
+if ‘https’ in data and not data[‘https’]:</p>
+<blockquote>
+<div>fos.https(‘off’)</div></blockquote>
+<dl class="docutils">
+<dt>else:</dt>
+<dd>fos.https(‘on’)</dd>
+</dl>
+<p class="last">fos.login(host, username, password)</p>
+</dd>
+<dt>def filter_firewall_vip_data(json):</dt>
+<dd><dl class="first docutils">
+<dt>option_list = [‘arp-reply’, ‘color’, ‘comment’,</dt>
+<dd>‘dns-mapping-ttl’, ‘extaddr’, ‘extintf’,
+‘extip’, ‘extport’, ‘gratuitous-arp-interval’,
+‘http-cookie-age’, ‘http-cookie-domain’, ‘http-cookie-domain-from-host’,
+‘http-cookie-generation’, ‘http-cookie-path’, ‘http-cookie-share’,
+‘http-ip-header’, ‘http-ip-header-name’, ‘http-multiplex’,
+‘https-cookie-secure’, ‘id’, ‘ldb-method’,
+‘mapped-addr’, ‘mappedip’, ‘mappedport’,
+‘max-embryonic-connections’, ‘monitor’, ‘name’,
+‘nat-source-vip’, ‘outlook-web-access’, ‘persistence’,
+‘portforward’, ‘portmapping-type’, ‘protocol’,
+‘realservers’, ‘server-type’, ‘service’,
+‘src-filter’, ‘srcintf-filter’, ‘ssl-algorithm’,
+‘ssl-certificate’, ‘ssl-cipher-suites’, ‘ssl-client-fallback’,
+‘ssl-client-renegotiation’, ‘ssl-client-session-state-max’, ‘ssl-client-session-state-timeout’,
+‘ssl-client-session-state-type’, ‘ssl-dh-bits’, ‘ssl-hpkp’,
+‘ssl-hpkp-age’, ‘ssl-hpkp-backup’, ‘ssl-hpkp-include-subdomains’,
+‘ssl-hpkp-primary’, ‘ssl-hpkp-report-uri’, ‘ssl-hsts’,
+‘ssl-hsts-age’, ‘ssl-hsts-include-subdomains’, ‘ssl-http-location-conversion’,
+‘ssl-http-match-host’, ‘ssl-max-version’, ‘ssl-min-version’,
+‘ssl-mode’, ‘ssl-pfs’, ‘ssl-send-empty-frags’,
+‘ssl-server-algorithm’, ‘ssl-server-cipher-suites’, ‘ssl-server-max-version’,
+‘ssl-server-min-version’, ‘ssl-server-session-state-max’, ‘ssl-server-session-state-timeout’,
+‘ssl-server-session-state-type’, ‘type’, ‘uuid’,
+‘weblogic-server’, ‘websphere-server’]</dd>
+</dl>
+<p>dictionary = {}</p>
+<dl class="docutils">
+<dt>for attribute in option_list:</dt>
+<dd><dl class="first last docutils">
+<dt>if attribute in json and json[attribute] is not None:</dt>
+<dd>dictionary[attribute] = json[attribute]</dd>
+</dl>
+</dd>
+</dl>
+<p class="last">return dictionary</p>
+</dd>
+<dt>def firewall_vip(data, fos):</dt>
+<dd><p class="first">vdom = data[‘vdom’]
+firewall_vip_data = data[‘firewall_vip’]
+filtered_data = filter_firewall_vip_data(firewall_vip_data)
+if firewall_vip_data[‘state’] == “present”:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>return fos.set(‘firewall’,</dt>
+<dd>‘vip’,
+data=filtered_data,
+vdom=vdom)</dd>
+</dl>
+</div></blockquote>
+<dl class="last docutils">
+<dt>elif firewall_vip_data[‘state’] == “absent”:</dt>
+<dd><dl class="first last docutils">
+<dt>return fos.delete(‘firewall’,</dt>
+<dd>‘vip’,
+mkey=filtered_data[‘name’],
+vdom=vdom)</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>def fortios_firewall(data, fos):</dt>
+<dd><p class="first">login(data)</p>
+<p>methodlist = [‘firewall_vip’]
+for method in methodlist:</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>if data[method]:</dt>
+<dd>resp = eval(method)(data, fos)
+break</dd>
+</dl>
+</div></blockquote>
+<p class="last">fos.logout()
+return not resp[‘status’] == “success”, resp[‘status’] == “success”, resp</p>
+</dd>
+<dt>def main():</dt>
+<dd><dl class="first last docutils">
+<dt>fields = {</dt>
+<dd><p class="first">“host”: {“required”: True, “type”: “str”},
+“username”: {“required”: True, “type”: “str”},
+“password”: {“required”: False, “type”: “str”, “no_log”: True},
+“vdom”: {“required”: False, “type”: “str”, “default”: “root”},
+“https”: {“required”: False, “type”: “bool”, “default”: “False”},
+“firewall_vip”: {</p>
+<blockquote class="last">
+<div><p>“required”: False, “type”: “dict”,
+“options”: {</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“state”: {“required”: True, “type”: “str”,</dt>
+<dd>“choices”: [“present”, “absent”]},</dd>
+<dt>“arp-reply”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“disable”, “enable”]},</dd>
+</dl>
+<p>“color”: {“required”: False, “type”: “int”},
+“comment”: {“required”: False, “type”: “str”},
+“dns-mapping-ttl”: {“required”: False, “type”: “int”},
+“extaddr”: {“required”: False, “type”: “list”,</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“options”: {</dt>
+<dd>“name”: {“required”: True, “type”: “str”}</dd>
+</dl>
+<p>}},</p>
+</div></blockquote>
+<p>“extintf”: {“required”: False, “type”: “str”},
+“extip”: {“required”: False, “type”: “str”},
+“extport”: {“required”: False, “type”: “str”},
+“gratuitous-arp-interval”: {“required”: False, “type”: “int”},
+“http-cookie-age”: {“required”: False, “type”: “int”},
+“http-cookie-domain”: {“required”: False, “type”: “str”},
+“http-cookie-domain-from-host”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div>“choices”: [“disable”, “enable”]},</div></blockquote>
+<p>“http-cookie-generation”: {“required”: False, “type”: “int”},
+“http-cookie-path”: {“required”: False, “type”: “str”},
+“http-cookie-share”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div>“choices”: [“disable”, “same-ip”]},</div></blockquote>
+<dl class="docutils">
+<dt>“http-ip-header”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“enable”, “disable”]},</dd>
+</dl>
+<p>“http-ip-header-name”: {“required”: False, “type”: “str”},
+“http-multiplex”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div>“choices”: [“enable”, “disable”]},</div></blockquote>
+<dl class="docutils">
+<dt>“https-cookie-secure”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“disable”, “enable”]},</dd>
+</dl>
+<p>“id”: {“required”: False, “type”: “int”},
+“ldb-method”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“choices”: [“static”, “round-robin”, “weighted”,</dt>
+<dd>“least-session”, “least-rtt”, “first-alive”,
+“http-host”]},</dd>
+</dl>
+</div></blockquote>
+<p>“mapped-addr”: {“required”: False, “type”: “str”},
+“mappedip”: {“required”: False, “type”: “list”,</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“options”: {</dt>
+<dd>“range”: {“required”: True, “type”: “str”}</dd>
+</dl>
+<p>}},</p>
+</div></blockquote>
+<p>“mappedport”: {“required”: False, “type”: “str”},
+“max-embryonic-connections”: {“required”: False, “type”: “int”},
+“monitor”: {“required”: False, “type”: “list”,</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“options”: {</dt>
+<dd>“name”: {“required”: True, “type”: “str”}</dd>
+</dl>
+<p>}},</p>
+</div></blockquote>
+<p>“name”: {“required”: True, “type”: “str”},
+“nat-source-vip”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div>“choices”: [“disable”, “enable”]},</div></blockquote>
+<dl class="docutils">
+<dt>“outlook-web-access”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“disable”, “enable”]},</dd>
+<dt>“persistence”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“none”, “http-cookie”, “ssl-session-id”]},</dd>
+<dt>“portforward”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“disable”, “enable”]},</dd>
+<dt>“portmapping-type”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“1-to-1”, “m-to-n”]},</dd>
+<dt>“protocol”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“tcp”, “udp”, “sctp”,</dt>
+<dd>“icmp”]},</dd>
+</dl>
+</dd>
+<dt>“realservers”: {“required”: False, “type”: “list”,</dt>
+<dd><dl class="first docutils">
+<dt>“options”: {</dt>
+<dd><p class="first">“client-ip”: {“required”: False, “type”: “str”},
+“healthcheck”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div>“choices”: [“disable”, “enable”, “vip”]},</div></blockquote>
+<p>“holddown-interval”: {“required”: False, “type”: “int”},
+“http-host”: {“required”: False, “type”: “str”},
+“id”: {“required”: True, “type”: “int”},
+“ip”: {“required”: False, “type”: “str”},
+“max-connections”: {“required”: False, “type”: “int”},
+“monitor”: {“required”: False, “type”: “str”},
+“port”: {“required”: False, “type”: “int”},
+“status”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div>“choices”: [“active”, “standby”, “disable”]},</div></blockquote>
+<p class="last">“weight”: {“required”: False, “type”: “int”}</p>
+</dd>
+</dl>
+<p class="last">}},</p>
+</dd>
+<dt>“server-type”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“http”, “https”, “imaps”,</dt>
+<dd>“pop3s”, “smtps”, “ssl”,
+“tcp”, “udp”, “ip”]},</dd>
+</dl>
+</dd>
+<dt>“service”: {“required”: False, “type”: “list”,</dt>
+<dd><dl class="first docutils">
+<dt>“options”: {</dt>
+<dd>“name”: {“required”: True, “type”: “str”}</dd>
+</dl>
+<p class="last">}},</p>
+</dd>
+<dt>“src-filter”: {“required”: False, “type”: “list”,</dt>
+<dd><dl class="first docutils">
+<dt>“options”: {</dt>
+<dd>“range”: {“required”: True, “type”: “str”}</dd>
+</dl>
+<p class="last">}},</p>
+</dd>
+<dt>“srcintf-filter”: {“required”: False, “type”: “list”,</dt>
+<dd><dl class="first docutils">
+<dt>“options”: {</dt>
+<dd>“interface-name”: {“required”: True, “type”: “str”}</dd>
+</dl>
+<p class="last">}},</p>
+</dd>
+<dt>“ssl-algorithm”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“high”, “medium”, “low”,</dt>
+<dd>“custom”]},</dd>
+</dl>
+</dd>
+</dl>
+<p>“ssl-certificate”: {“required”: False, “type”: “str”},
+“ssl-cipher-suites”: {“required”: False, “type”: “list”,</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“options”: {</dt>
+<dd>“cipher”: {“required”: False, “type”: “str”,</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+</div></blockquote>
+</dd>
+</dl>
+</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>“choices”: [“TLS-RSA-WITH-3DES-EDE-CBC-SHA”, “TLS-DHE-RSA-WITH-DES-CBC-SHA”, “TLS-DHE-DSS-WITH-DES-CBC-SHA”]},</dd>
+</dl>
+<blockquote>
+<div>“TLS-DHE-DSS-WITH-DES-CBC-SHA”]},</div></blockquote>
+<dl class="docutils">
+<dt>&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes</dt>
+<dd><blockquote class="first">
+<div><blockquote>
+<div><p>“priority”: {“required”: True, “type”: “int”},
+“versions”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“choices”: [“ssl-3.0”, “tls-1.0”, “tls-1.1”,</dt>
+<dd>“tls-1.2”]}</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<p>}},</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>“ssl-client-fallback”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“disable”, “enable”]},</dd>
+<dt>“ssl-client-renegotiation”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“allow”, “deny”, “secure”]},</dd>
+</dl>
+<p>“ssl-client-session-state-max”: {“required”: False, “type”: “int”},
+“ssl-client-session-state-timeout”: {“required”: False, “type”: “int”},
+“ssl-client-session-state-type”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“choices”: [“disable”, “time”, “count”,</dt>
+<dd>“both”]},</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>“ssl-dh-bits”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“768”, “1024”, “1536”,</dt>
+<dd>“2048”, “3072”, “4096”]},</dd>
+</dl>
+</dd>
+<dt>“ssl-hpkp”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“disable”, “enable”, “report-only”]},</dd>
+</dl>
+<p>“ssl-hpkp-age”: {“required”: False, “type”: “int”},
+“ssl-hpkp-backup”: {“required”: False, “type”: “str”},
+“ssl-hpkp-include-subdomains”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div>“choices”: [“disable”, “enable”]},</div></blockquote>
+<p>“ssl-hpkp-primary”: {“required”: False, “type”: “str”},
+“ssl-hpkp-report-uri”: {“required”: False, “type”: “str”},
+“ssl-hsts”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div>“choices”: [“disable”, “enable”]},</div></blockquote>
+<p>“ssl-hsts-age”: {“required”: False, “type”: “int”},
+“ssl-hsts-include-subdomains”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div>“choices”: [“disable”, “enable”]},</div></blockquote>
+<dl class="last docutils">
+<dt>“ssl-http-location-conversion”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“enable”, “disable”]},</dd>
+<dt>“ssl-http-match-host”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“enable”, “disable”]},</dd>
+<dt>“ssl-max-version”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“ssl-3.0”, “tls-1.0”, “tls-1.1”,</dt>
+<dd>“tls-1.2”]},</dd>
+</dl>
+</dd>
+<dt>“ssl-min-version”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“ssl-3.0”, “tls-1.0”, “tls-1.1”,</dt>
+<dd>“tls-1.2”]},</dd>
+</dl>
+</dd>
+<dt>“ssl-mode”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“half”, “full”]},</dd>
+<dt>“ssl-pfs”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“require”, “deny”, “allow”]},</dd>
+<dt>“ssl-send-empty-frags”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“enable”, “disable”]},</dd>
+<dt>“ssl-server-algorithm”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“high”, “medium”, “low”,</dt>
+<dd>“custom”, “client”]},</dd>
+</dl>
+</dd>
+<dt>“ssl-server-cipher-suites”: {“required”: False, “type”: “list”,</dt>
+<dd><dl class="first last docutils">
+<dt>“options”: {</dt>
+<dd>“cipher”: {“required”: False, “type”: “str”,</dd>
+</dl>
+</dd>
+</dl>
+</dd>
+<dt>&lt;&lt;&lt;&lt;&lt;&lt;&lt; Updated upstream</dt>
+<dd>“choices”: [“TLS-RSA-WITH-3DES-EDE-CBC-SHA”, “TLS-DHE-RSA-WITH-DES-CBC-SHA”, “TLS-DHE-DSS-WITH-DES-CBC-SHA”]},</dd>
+</dl>
+<blockquote>
+<div>“TLS-DHE-DSS-WITH-DES-CBC-SHA”]},</div></blockquote>
+<dl class="docutils">
+<dt>&gt;&gt;&gt;&gt;&gt;&gt;&gt; Stashed changes</dt>
+<dd><blockquote class="first">
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><blockquote>
+<div><p>“priority”: {“required”: True, “type”: “int”},
+“versions”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“choices”: [“ssl-3.0”, “tls-1.0”, “tls-1.1”,</dt>
+<dd>“tls-1.2”]}</dd>
+</dl>
+</div></blockquote>
+</div></blockquote>
+<p>}},</p>
+</div></blockquote>
+<dl class="docutils">
+<dt>“ssl-server-max-version”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“ssl-3.0”, “tls-1.0”, “tls-1.1”,</dt>
+<dd>“tls-1.2”, “client”]},</dd>
+</dl>
+</dd>
+<dt>“ssl-server-min-version”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“ssl-3.0”, “tls-1.0”, “tls-1.1”,</dt>
+<dd>“tls-1.2”, “client”]},</dd>
+</dl>
+</dd>
+</dl>
+<p>“ssl-server-session-state-max”: {“required”: False, “type”: “int”},
+“ssl-server-session-state-timeout”: {“required”: False, “type”: “int”},
+“ssl-server-session-state-type”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div><dl class="docutils">
+<dt>“choices”: [“disable”, “time”, “count”,</dt>
+<dd>“both”]},</dd>
+</dl>
+</div></blockquote>
+<dl class="docutils">
+<dt>“type”: {“required”: False, “type”: “str”,</dt>
+<dd><dl class="first last docutils">
+<dt>“choices”: [“static-nat”, “load-balance”, “server-load-balance”,</dt>
+<dd>“dns-translation”, “fqdn”]},</dd>
+</dl>
+</dd>
+</dl>
+<p>“uuid”: {“required”: False, “type”: “str”},
+“weblogic-server”: {“required”: False, “type”: “str”,</p>
+<blockquote>
+<div>“choices”: [“disable”, “enable”]},</div></blockquote>
+<dl class="docutils">
+<dt>“websphere-server”: {“required”: False, “type”: “str”,</dt>
+<dd>“choices”: [“disable”, “enable”]}</dd>
+</dl>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+</div></blockquote>
+<p>}</p>
+<dl class="docutils">
+<dt>module = AnsibleModule(argument_spec=fields,</dt>
+<dd>supports_check_mode=False)</dd>
+<dt>try:</dt>
+<dd>from fortiosapi import FortiOSAPI</dd>
+<dt>except ImportError:</dt>
+<dd>module.fail_json(msg=”fortiosapi module is required”)</dd>
+</dl>
+<p>global fos
+fos = FortiOSAPI()</p>
+<p>is_error, has_changed, result = fortios_firewall(module.params, fos)</p>
+<dl class="docutils">
+<dt>if not is_error:</dt>
+<dd>module.exit_json(changed=has_changed, meta=result)</dd>
+<dt>else:</dt>
+<dd>module.fail_json(msg=”Error in repo”, meta=result)</dd>
+</dl>
+</div></blockquote>
+<dl class="last docutils">
+<dt>if __name__ == ‘__main__’:</dt>
+<dd>main()</dd>
+</dl>
+</dd>
+</dl>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fortios_firewall_vip46.html" class="btn btn-neutral float-right" title="fortios_firewall_vip46" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fortios_firewall_ttl_policy.html" class="btn btn-neutral" title="fortios_firewall_ttl_policy" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
