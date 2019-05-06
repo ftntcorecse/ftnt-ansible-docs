@@ -1,0 +1,183 @@
+##################################################
+Getting Started with FortiManager Modules & Plugin
+##################################################
+
+This getting started guide will assist in the initial configuration of Ansible
+to work with FortiManager modules, and more specifically the plugin.
+
+
+Connection Plugin
+-----------------
+
+Beginning in Q1 of 2019 all up-to-date FortiManager modules now utilize a connection-plugin.
+
+- This requires modification to existing playbooks and inventory files that used the previous "connection: local" versions of FortiManager Plugins.
+
+- All updated modules, module_utils, and plugin will be included in Ansible 2.8 when it is released.
+
+  - Ansible 2.8 is expected 05-16-2019: https://docs.ansible.com/ansible/devel/roadmap/ROADMAP_2_8.html
+  - Until then, modules/module_utils/plugins must be manually installed. Instructions are below.
+
+
+Pre-Requisites
+==============
+
+- Minimum Ansible Version: 2.7+
+- Minimum Python Version: 2.7+
+
+  - Works with Python 3.x
+
+- Minimum FortiManager Version: 6.0+
+- FortiManager account with rpc read/write enabled via CLI
+- A licensed FortiManager appliance or VM.
+
+
+Upgrade path for existing Ansible installations to FortiManager/HttpApi Connection Plugin
+==========================================================================================
+Because all new modules are converted to use the connection plugin,
+the old method of using pyFMG and connection:local in playbooks is deprecated.
+
+All playbooks must be converted to use the new plugin, and a few additions to the inventory file are required.
+
+
+Step 1 - Inventory File
+^^^^^^^^^^^^^^^^^^^^^^^
+The following variables must be added to the hosts file entries that correspond to the FortiManager hosts:
+
+- ansible_host=<ip/host>
+
+  - Which FortiManager to connect to.
+- ansible_network_os=fortimanager
+
+  - Tells Ansible which httpapi plugin to search for
+
+- ansible_user=<fmgr_username>
+- ansible_password=<fmgr_password>
+- ansible_become=no
+- ansible_become_method=disable
+- ansible_httpapi_use_ssl=true
+- ansible_httpapi_validate_certs=false
+
+  - Switch to True if using in production!
+- ansible_httpapi_timeout=300
+
+  - Sometimes it takes a while for FortiManager to process large requests or scripts. A large timeout is preferred.
+  - In seconds.
+
+These parameters can be added on the same line, or nested as shown in the code block below:
+
+
+.. code-block:: bash
+
+    [FortiManager]
+    10.7.220.35 ansible_host=10.7.220.35
+
+    [FortiManagerHA]
+    10.7.220.36 ansible_host=10.7.220.36
+
+    [fmgr_api:children]
+    FortiManager
+    FortiManagerHA
+
+    [fmgr_api:vars]
+    ansible_network_os=fortimanager
+    ansible_user=ansible
+    ansible_password=fortinet
+    ansible_become=no
+    ansible_become_method=disable
+    ansible_httpapi_use_ssl=true
+    ansible_httpapi_validate_certs=false
+    ansible_httpapi_timeout=300
+
+Because the host, username, and password have all been added to
+the connection/host level they must be removed from playbooks.
+
+Step 2 - Playbook Conversion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+Previous playbooks might look like this:
+
+.. code-block:: yaml
+
+    - name: CONFIG FGT HOSTNAME AND INTERFACE
+      hosts: FortiManager
+      connection: local
+      gather_facts: False
+
+      tasks:
+
+      - name: CHANGE HOSTNAME
+        fmgr_device_config:
+          host: "{{ inventory_hostname }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          device_hostname: "ansible-fgt01"
+          device_unique_name: "FGT1"
+          adom: "ansible"
+
+- The host, username, and password lines from each task need to be deleted.
+- The heading attribute "connection: local" must be changed to "connection: httpapi"
+
+Converted version of the above playbook:
+
+.. code-block:: yaml
+
+    - name: CONFIG FGT HOSTNAME AND INTERFACE
+      hosts: FortiManager
+      connection: httpapi
+      gather_facts: False
+
+      tasks:
+
+      - name: CHANGE HOSTNAME
+        fmgr_device_config:
+          device_hostname: "ansible-fgt01"
+          device_unique_name: "FGT1"
+          adom: "ansible"
+
+Step 3a - Auto Installation Method after Ansible 2.8 is Released
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+After about 05-16-2019, the most recent versions of FortiManager modules/module_utils/plugins
+will be available from a simple software package manager update or install of Ansible.
+
+- Ansible Installation Guide: https://docs.ansible.com/ansible/latest/installation_guide/intro_installation.html
+
+
+Step 3b - Manual Installation Method of Most Recent Versions, or until Ansible 2.8 is Released
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Until about 05-16-2019, the most recent versions of FortiManager modules/module_utils/plugins
+must be manually installed to an existing Ansible 2.7+ installation.
+
+Fortinet may make updates to Ansible components in-between Ansible release dates, and they can be installed
+in-between Ansible release schedules, manually.
+
+These most-recent versions are located on the official FNDN github repo here:
+https://github.com/ftntcorecse/fndn_ansible
+
+The plugin and module_utils need to be copied to their correct locations. On Ubuntu running Python 2.7, the paths are:
+
+- /usr/lib/python2.7/dist-packages/ansible/plugins/httpapi/
+- /usr/lib/python2.7/dist-packages/ansible/module_utils/network/fortimanager/
+
+If you're unsure where to find this path on your own system, run this command:
+
+- find /usr -name "ansible"
+
+... and the path under a python dist-packages should present itself.
+
+The modules can be copied to any directory such as /usr/ansible_modules,
+as long as the library = <folder_path> line in /etc/ansible/ansible.cfg is edited to include that path.
+
+- For other custom module path methods, see this guide:
+  https://docs.ansible.com/ansible/latest/dev_guide/developing_locally.html#adding-a-module-locally
+
+Step 4 - Playbook Test
+^^^^^^^^^^^^^^^^^^^^^^
+After modifying the hosts inventory file, and either manually or automatically installing the latest FortiManager Ansible components,
+the converted playbooks from Step 2 should now run.
+
+
+
+
+
+
