@@ -162,7 +162,7 @@ Ansible should be ready to test now. Copy the following code block into a file n
       tasks:
       - name: TEST FMGR CONNECTION GET SYS STATUS
         fmgr_query:
-          adom: "ansible"
+          adom: "root"
           object: "custom"
           custom_endpoint: "/sys/status"
 
@@ -246,6 +246,7 @@ Previous playbooks might look like this:
 
 .. code-block:: yaml
 
+    ---
     - name: CONFIG FGT HOSTNAME AND INTERFACE
       hosts: FortiManager
       connection: local
@@ -269,6 +270,7 @@ Converted version of the above playbook:
 
 .. code-block:: yaml
 
+    ---
     - name: CONFIG FGT HOSTNAME AND INTERFACE
       hosts: FortiManager
       connection: httpapi
@@ -349,7 +351,7 @@ For a sample status check, copy the following code block into a file named "test
       tasks:
       - name: TEST FMGR CONNECTION GET SYS STATUS
         fmgr_query:
-          adom: "ansible"
+          adom: "root"
           object: "custom"
           custom_endpoint: "/sys/status"
 
