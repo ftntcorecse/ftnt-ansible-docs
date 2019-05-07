@@ -372,6 +372,7 @@ Appendix
 Enabling FortiManager user for RPC Read/Write via FMGR CLI
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 .. code-block:: shell
+
     config system admin user
       edit <username>
       set rpc read-write
