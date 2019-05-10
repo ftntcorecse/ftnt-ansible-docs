@@ -26,8 +26,8 @@ The results from their efforts are the following ten modules:
 - fsm_send_syslog
 - fsm_verify_device_ip
 
-Modules
-=======
+Module Use Cases
+=================
 
 fsm_cmdb_devices
 ^^^^^^^^^^^^^^^^^
