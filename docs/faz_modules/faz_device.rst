@@ -29,7 +29,6 @@ adom
 - Description: The ADOM the configuration should belong to.
 
 
-
 - Required: True
 
 - default: root
@@ -38,7 +37,6 @@ device_action
 +++++++++++++
 
 - Description: Specify add device operations, or leave blank to add a real device from scratch
-
 
 
 - Required: False
@@ -53,14 +51,12 @@ device_ip
 - Description: The IP of the device being added to FortiManager.
 
 
-
 - Required: False
 
 device_password
 +++++++++++++++
 
 - Description: The password of the device being added to FortiManager.
-
 
 
 - Required: False
@@ -71,14 +67,12 @@ device_serial
 - Description: The serial number of the device being added to FortiManager.
 
 
-
 - Required: False
 
 device_unique_name
 ++++++++++++++++++
 
 - Description: The desired "friendly" name of the device being added to FortiManager.
-
 
 
 - Required: False
@@ -89,14 +83,12 @@ device_username
 - Description: The username of the device being added to FortiManager.
 
 
-
 - Required: False
 
 faz_quota
 +++++++++
 
 - Description: Specifies the quota for the device in FAZ
-
 
 
 - Required: False
@@ -107,14 +99,12 @@ host
 - Description: The FortiManager's Address.
 
 
-
 - Required: True
 
 mgmt_mode
 +++++++++
 
 - Description: Management Mode of the device you are adding.
-
 
 
 - Required: True
@@ -127,15 +117,12 @@ os_minor_vers
 - Description: Minor OS rev of the device
 
 
-
 - Required: True
 
 os_type
 +++++++
 
 - Description: The os type of the device being added (default 0).
-
-
 
 - Required: True
 
@@ -146,8 +133,6 @@ os_ver
 
 - Description: Major OS rev of the device
 
-
-
 - Required: True
 
 - choices: ['unknown', '0.0', '1.0', '2.0', '3.0', '4.0', '5.0', '6.0']
@@ -157,16 +142,12 @@ password
 
 - Description: The password associated with the username account.
 
-
-
 - Required: False
 
 platform_str
 ++++++++++++
 
 - Description: Required for determine the platform for VM platforms. ie FortiGate-VM64
-
-
 
 - Required: False
 
@@ -179,8 +160,6 @@ state
 
   present will create the configuration if needed.
 
-
-
 - Required: False
 
 - default: present
@@ -192,18 +171,10 @@ username
 
 - Description: The username used to authenticate with the FortiManager.
 
-
-
 - Required: False
-
-
-
 
 Functions
 ---------
-
-
-
 
 - faz_add_device
 
@@ -631,7 +602,7 @@ Module Source Code
     except ImportError:
         HAS_PYFMGR = False
 
-
+    #import pydevd
 
     def faz_add_device(faz, paramgram):
         """

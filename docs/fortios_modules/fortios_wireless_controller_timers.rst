@@ -14,7 +14,7 @@ Metadata
 **Description:** This module is able to configure a FortiGate or FortiOS by allowing the user to configure wireless_controller feature and timers category. Examples includes all options and need to be adjusted to datasources before usage. Tested with FOS v6.0.2
 
 
-**Author(s):**
+**Author(s):** 
 
 - Miguel Angel Munoz (github: @mamunozgonzalez)
 
@@ -25,6 +25,7 @@ Metadata
 **Ansible Version Added/Required:** 2.8
 
 **Dev Status:** No Data Exists. Contact DevOps Team.
+
 Parameters
 ----------
 
@@ -33,7 +34,7 @@ host
 
 - Description: FortiOS or FortiGate ip adress.
 
-
+  
 
 - Required: True
 
@@ -42,7 +43,7 @@ https
 
 - Description: Indicates if the requests towards FortiGate must use HTTPS protocol
 
-
+  
 
 - default: False
 
@@ -51,16 +52,16 @@ password
 
 - Description: FortiOS or FortiGate password.
 
+  
 
-
-- default:
+- default: 
 
 username
 ++++++++
 
 - Description: FortiOS or FortiGate username.
 
-
+  
 
 - Required: True
 
@@ -69,7 +70,7 @@ vdom
 
 - Description: Virtual domain, among those defined previously. A vdom is a virtual instance of the FortiGate that can be configured and used as a different unit.
 
-
+  
 
 - default: root
 
@@ -78,7 +79,7 @@ wireless_controller_timers
 
 - Description: Configure CAPWAP timers.
 
-
+  
 
 - default: None
 
@@ -99,16 +100,16 @@ Functions
         host = data['host']
         username = data['username']
         password = data['password']
-
+    
         fos.debug('on')
         if 'https' in data and not data['https']:
             fos.https('off')
         else:
             fos.https('on')
-
+    
         fos.login(host, username, password)
-
-
+    
+    
 
 - filter_wireless_controller_timers_data
 
@@ -121,14 +122,14 @@ Functions
                        'radio-stats-interval', 'rogue-ap-log', 'sta-capability-interval',
                        'sta-locate-timer', 'sta-stats-interval', 'vap-stats-interval']
         dictionary = {}
-
+    
         for attribute in option_list:
             if attribute in json and json[attribute] is not None:
                 dictionary[attribute] = json[attribute]
-
+    
         return dictionary
-
-
+    
+    
 
 - wireless_controller_timers
 
@@ -143,8 +144,8 @@ Functions
                        'timers',
                        data=filtered_data,
                        vdom=vdom)
-
-
+    
+    
 
 - fortios_wireless_controller
 
@@ -152,17 +153,17 @@ Functions
 
     def fortios_wireless_controller(data, fos):
         login(data)
-
+    
         methodlist = ['wireless_controller_timers']
         for method in methodlist:
             if data[method]:
                 resp = eval(method)(data, fos)
                 break
-
+    
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
-
-
+    
+    
 
 - main
 
@@ -199,30 +200,30 @@ Functions
                     "sta-locate-timer": {"required": False, "type": "int"},
                     "sta-stats-interval": {"required": False, "type": "int"},
                     "vap-stats-interval": {"required": False, "type": "int"}
-
+    
                 }
             }
         }
-
+    
         module = AnsibleModule(argument_spec=fields,
                                supports_check_mode=False)
         try:
             from fortiosapi import FortiOSAPI
         except ImportError:
             module.fail_json(msg="fortiosapi module is required")
-
+    
         global fos
         fos = FortiOSAPI()
-
+    
         is_error, has_changed, result = fortios_wireless_controller(
             module.params, fos)
-
+    
         if not is_error:
             module.exit_json(changed=has_changed, meta=result)
         else:
             module.fail_json(msg="Error in repo", meta=result)
-
-
+    
+    
 
 
 
@@ -250,13 +251,13 @@ Module Source Code
     #
     # the lib use python logging can get it if the following is set in your
     # Ansible config.
-
+    
     __metaclass__ = type
-
+    
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-
+    
     DOCUMENTATION = '''
     ---
     module: fortios_wireless_controller_timers
@@ -364,7 +365,7 @@ Module Source Code
                     description:
                         - Time between running Virtual Access Point (VAP) reports (1 - 255 sec, default = 15).
     '''
-
+    
     EXAMPLES = '''
     - hosts: localhost
       vars:
@@ -398,7 +399,7 @@ Module Source Code
             sta-stats-interval: "17"
             vap-stats-interval: "18"
     '''
-
+    
     RETURN = '''
     build:
       description: Build number of the fortigate image
@@ -455,28 +456,28 @@ Module Source Code
       returned: always
       type: string
       sample: "v5.6.3"
-
+    
     '''
-
+    
     from ansible.module_utils.basic import AnsibleModule
-
+    
     fos = None
-
-
+    
+    
     def login(data):
         host = data['host']
         username = data['username']
         password = data['password']
-
+    
         fos.debug('on')
         if 'https' in data and not data['https']:
             fos.https('off')
         else:
             fos.https('on')
-
+    
         fos.login(host, username, password)
-
-
+    
+    
     def filter_wireless_controller_timers_data(json):
         option_list = ['ble-scan-report-intv', 'client-idle-timeout', 'darrp-day',
                        'darrp-optimize', 'darrp-time', 'discovery-interval',
@@ -484,14 +485,14 @@ Module Source Code
                        'radio-stats-interval', 'rogue-ap-log', 'sta-capability-interval',
                        'sta-locate-timer', 'sta-stats-interval', 'vap-stats-interval']
         dictionary = {}
-
+    
         for attribute in option_list:
             if attribute in json and json[attribute] is not None:
                 dictionary[attribute] = json[attribute]
-
+    
         return dictionary
-
-
+    
+    
     def wireless_controller_timers(data, fos):
         vdom = data['vdom']
         wireless_controller_timers_data = data['wireless_controller_timers']
@@ -501,21 +502,21 @@ Module Source Code
                        'timers',
                        data=filtered_data,
                        vdom=vdom)
-
-
+    
+    
     def fortios_wireless_controller(data, fos):
         login(data)
-
+    
         methodlist = ['wireless_controller_timers']
         for method in methodlist:
             if data[method]:
                 resp = eval(method)(data, fos)
                 break
-
+    
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
-
-
+    
+    
     def main():
         fields = {
             "host": {"required": True, "type": "str"},
@@ -547,30 +548,30 @@ Module Source Code
                     "sta-locate-timer": {"required": False, "type": "int"},
                     "sta-stats-interval": {"required": False, "type": "int"},
                     "vap-stats-interval": {"required": False, "type": "int"}
-
+    
                 }
             }
         }
-
+    
         module = AnsibleModule(argument_spec=fields,
                                supports_check_mode=False)
         try:
             from fortiosapi import FortiOSAPI
         except ImportError:
             module.fail_json(msg="fortiosapi module is required")
-
+    
         global fos
         fos = FortiOSAPI()
-
+    
         is_error, has_changed, result = fortios_wireless_controller(
             module.params, fos)
-
+    
         if not is_error:
             module.exit_json(changed=has_changed, meta=result)
         else:
             module.fail_json(msg="Error in repo", meta=result)
-
-
+    
+    
     if __name__ == '__main__':
         main()
 

@@ -19,6 +19,7 @@ Metadata
 **Ansible Version Added/Required:** 2.3
 
 **Dev Status:** No Data Exists. Contact DevOps Team.
+
 Parameters
 ----------
 
@@ -27,35 +28,35 @@ application_list
 
 - Description: Specifies Application Control name.
 
-
+  
 
 av_profile
 ++++++++++
 
 - Description: Specifies Antivirus profile name.
 
-
+  
 
 comment
 +++++++
 
 - Description: free text to describe policy.
 
-
+  
 
 dst_addr
 ++++++++
 
 - Description: Specifies destination address (or group) object name(s). Required when I(state=present).
 
-
+  
 
 dst_addr_negate
 +++++++++++++++
 
 - Description: Negate destination address param.
 
-
+  
 
 - default: False
 
@@ -64,7 +65,7 @@ dst_intf
 
 - Description: Specifies destination interface name(s).
 
-
+  
 
 - default: any
 
@@ -73,7 +74,7 @@ fixedport
 
 - Description: Use fixed port for nat.
 
-
+  
 
 - default: False
 
@@ -82,7 +83,7 @@ id
 
 - Description: Policy ID. Warning: policy ID number is different than Policy sequence number. The policy ID is the number assigned at policy creation. The sequence number represents the order in which the Fortigate will evaluate the rule for policy enforcement, and also the order in which rules are listed in the GUI and CLI. These two numbers do not necessarily correlate: this module is based off policy ID. TIP: policy ID can be viewed in the GUI by adding 'ID' to the display columns
 
-
+  
 
 - Required: True
 
@@ -91,14 +92,14 @@ ips_sensor
 
 - Description: Specifies IPS Sensor profile name.
 
-
+  
 
 logtraffic
 ++++++++++
 
 - Description: Logs sessions that matched policy.
 
-
+  
 
 - default: utm
 
@@ -109,7 +110,7 @@ logtraffic_start
 
 - Description: Logs beginning of session as well.
 
-
+  
 
 - default: False
 
@@ -118,7 +119,7 @@ nat
 
 - Description: Enable or disable Nat.
 
-
+  
 
 - default: False
 
@@ -127,7 +128,7 @@ policy_action
 
 - Description: Specifies accept or deny action policy. Required when I(state=present).
 
-
+  
 
 - choices: ['accept', 'deny']
 
@@ -136,14 +137,14 @@ poolname
 
 - Description: Specifies NAT pool name.
 
-
+  
 
 schedule
 ++++++++
 
 - Description: defines policy schedule.
 
-
+  
 
 - default: always
 
@@ -152,14 +153,14 @@ service
 
 - Description: Specifies policy service(s), could be a list (ex: ['MAIL','DNS']). Required when I(state=present).
 
-
+  
 
 service_negate
 ++++++++++++++
 
 - Description: Negate policy service(s) defined in service value.
 
-
+  
 
 - default: False
 
@@ -168,14 +169,14 @@ src_addr
 
 - Description: Specifies source address (or group) object name(s). Required when I(state=present).
 
-
+  
 
 src_addr_negate
 +++++++++++++++
 
 - Description: Negate source address param.
 
-
+  
 
 - default: False
 
@@ -184,7 +185,7 @@ src_intf
 
 - Description: Specifies source interface name(s).
 
-
+  
 
 - default: any
 
@@ -193,7 +194,7 @@ state
 
 - Description: Specifies if policy I(id) need to be added or deleted.
 
-
+  
 
 - default: present
 
@@ -204,7 +205,7 @@ webfilter_profile
 
 - Description: Specifies Webfilter profile name.
 
-
+  
 
 
 
@@ -244,26 +245,26 @@ Functions
             logtraffic=dict(choices=['disable', 'all', 'utm'], default='utm'),
             logtraffic_start=dict(type='bool', default=False),
         )
-
+    
         # merge global required_if & argument_spec from module_utils/fortios.py
         argument_spec.update(fortios_argument_spec)
-
+    
         ipv4_policy_required_if = [
             ['state', 'present', ['src_addr', 'dst_addr', 'policy_action', 'service']],
         ]
-
+    
         module = AnsibleModule(
             argument_spec=argument_spec,
             supports_check_mode=True,
             required_if=fortios_required_if + ipv4_policy_required_if,
         )
-
+    
         # init forti object
         fortigate = AnsibleFortios(module)
-
+    
         # Security policies root path
         config_path = 'firewall policy'
-
+    
         # test params
         # NAT related
         if not module.params['nat']:
@@ -271,34 +272,34 @@ Functions
                 module.fail_json(msg='Poolname param requires NAT to be true.')
             if module.params['fixedport']:
                 module.fail_json(msg='Fixedport param requires NAT to be true.')
-
+    
         # log options
         if module.params['logtraffic_start']:
             if not module.params['logtraffic'] == 'all':
                 module.fail_json(msg='Logtraffic_start param requires logtraffic to be set to "all".')
-
+    
         # id must be str(int) for pyFG to work
         policy_id = str(module.params['id'])
-
+    
         # load config
         fortigate.load_config(config_path)
-
+    
         # Absent State
         if module.params['state'] == 'absent':
             fortigate.candidate_config[config_path].del_block(policy_id)
-
+    
         # Present state
         elif module.params['state'] == 'present':
             new_policy = fortigate.get_empty_configuration_block(policy_id, 'edit')
-
+    
             # src / dest / service / interfaces
             new_policy.set_param('srcintf', " ".join('"' + item + '"' for item in module.params['src_intf']))
             new_policy.set_param('dstintf', " ".join('"' + item + '"' for item in module.params['dst_intf']))
-
+    
             new_policy.set_param('srcaddr', " ".join('"' + item + '"' for item in module.params['src_addr']))
             new_policy.set_param('dstaddr', " ".join('"' + item + '"' for item in module.params['dst_addr']))
             new_policy.set_param('service', " ".join('"' + item + '"' for item in module.params['service']))
-
+    
             # negate src / dest / service
             if module.params['src_addr_negate']:
                 new_policy.set_param('srcaddr-negate', 'enable')
@@ -306,10 +307,10 @@ Functions
                 new_policy.set_param('dstaddr-negate', 'enable')
             if module.params['service_negate']:
                 new_policy.set_param('service-negate', 'enable')
-
+    
             # action
             new_policy.set_param('action', '%s' % (module.params['policy_action']))
-
+    
             # logging
             new_policy.set_param('logtraffic', '%s' % (module.params['logtraffic']))
             if module.params['logtraffic'] == 'all':
@@ -317,10 +318,10 @@ Functions
                     new_policy.set_param('logtraffic-start', 'enable')
                 else:
                     new_policy.set_param('logtraffic-start', 'disable')
-
+    
             # Schedule
             new_policy.set_param('schedule', '%s' % (module.params['schedule']))
-
+    
             # NAT
             if module.params['nat']:
                 new_policy.set_param('nat', 'enable')
@@ -329,7 +330,7 @@ Functions
                 if module.params['poolname'] is not None:
                     new_policy.set_param('ippool', 'enable')
                     new_policy.set_param('poolname', '"%s"' % (module.params['poolname']))
-
+    
             # security profiles:
             if module.params['av_profile'] is not None:
                 new_policy.set_param('av-profile', '"%s"' % (module.params['av_profile']))
@@ -339,18 +340,18 @@ Functions
                 new_policy.set_param('ips-sensor', '"%s"' % (module.params['ips_sensor']))
             if module.params['application_list'] is not None:
                 new_policy.set_param('application-list', '"%s"' % (module.params['application_list']))
-
+    
             # comment
             if module.params['comment'] is not None:
                 new_policy.set_param('comment', '"%s"' % (module.params['comment']))
-
+    
             # add the new policy to the device
             fortigate.add_block(policy_id, new_policy)
-
+    
         # Apply changes
         fortigate.apply_changes()
-
-
+    
+    
 
 
 
@@ -364,16 +365,16 @@ Module Source Code
     # Ansible module to manage IPv4 policy objects in fortigate devices
     # (c) 2017, Benjamin Jolivot <bjolivot@gmail.com>
     # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
-
+    
     from __future__ import absolute_import, division, print_function
     __metaclass__ = type
-
-
+    
+    
     ANSIBLE_METADATA = {'metadata_version': '1.1',
                         'status': ['preview'],
                         'supported_by': 'community'}
-
-
+    
+    
     DOCUMENTATION = """
     ---
     module: fortios_ipv4_policy
@@ -485,7 +486,7 @@ Module Source Code
     notes:
       - This module requires pyFG library.
     """
-
+    
     EXAMPLES = """
     - name: Allow external DNS call
       fortios_ipv4_policy:
@@ -500,7 +501,7 @@ Module Source Code
         state: present
         policy_action: accept
         logtraffic: disable
-
+    
     - name: Public Web
       fortios_ipv4_policy:
         host: 192.168.0.254
@@ -514,7 +515,7 @@ Module Source Code
           - https
         state: present
         policy_action: accept
-
+    
     - name: Some Policy
       fortios_ipv4_policy:
         host: 192.168.0.254
@@ -540,7 +541,7 @@ Module Source Code
       tags:
         - policy
     """
-
+    
     RETURN = """
     firewall_address_config:
       description: full firewall addresses config string
@@ -555,12 +556,12 @@ Module Source Code
       returned: only when error
       type: str
     """
-
+    
     from ansible.module_utils.basic import AnsibleModule
     from ansible.module_utils.network.fortios.fortios import fortios_argument_spec, fortios_required_if
     from ansible.module_utils.network.fortios.fortios import backup, AnsibleFortios
-
-
+    
+    
     def main():
         argument_spec = dict(
             comment=dict(type='str'),
@@ -586,26 +587,26 @@ Module Source Code
             logtraffic=dict(choices=['disable', 'all', 'utm'], default='utm'),
             logtraffic_start=dict(type='bool', default=False),
         )
-
+    
         # merge global required_if & argument_spec from module_utils/fortios.py
         argument_spec.update(fortios_argument_spec)
-
+    
         ipv4_policy_required_if = [
             ['state', 'present', ['src_addr', 'dst_addr', 'policy_action', 'service']],
         ]
-
+    
         module = AnsibleModule(
             argument_spec=argument_spec,
             supports_check_mode=True,
             required_if=fortios_required_if + ipv4_policy_required_if,
         )
-
+    
         # init forti object
         fortigate = AnsibleFortios(module)
-
+    
         # Security policies root path
         config_path = 'firewall policy'
-
+    
         # test params
         # NAT related
         if not module.params['nat']:
@@ -613,34 +614,34 @@ Module Source Code
                 module.fail_json(msg='Poolname param requires NAT to be true.')
             if module.params['fixedport']:
                 module.fail_json(msg='Fixedport param requires NAT to be true.')
-
+    
         # log options
         if module.params['logtraffic_start']:
             if not module.params['logtraffic'] == 'all':
                 module.fail_json(msg='Logtraffic_start param requires logtraffic to be set to "all".')
-
+    
         # id must be str(int) for pyFG to work
         policy_id = str(module.params['id'])
-
+    
         # load config
         fortigate.load_config(config_path)
-
+    
         # Absent State
         if module.params['state'] == 'absent':
             fortigate.candidate_config[config_path].del_block(policy_id)
-
+    
         # Present state
         elif module.params['state'] == 'present':
             new_policy = fortigate.get_empty_configuration_block(policy_id, 'edit')
-
+    
             # src / dest / service / interfaces
             new_policy.set_param('srcintf', " ".join('"' + item + '"' for item in module.params['src_intf']))
             new_policy.set_param('dstintf', " ".join('"' + item + '"' for item in module.params['dst_intf']))
-
+    
             new_policy.set_param('srcaddr', " ".join('"' + item + '"' for item in module.params['src_addr']))
             new_policy.set_param('dstaddr', " ".join('"' + item + '"' for item in module.params['dst_addr']))
             new_policy.set_param('service', " ".join('"' + item + '"' for item in module.params['service']))
-
+    
             # negate src / dest / service
             if module.params['src_addr_negate']:
                 new_policy.set_param('srcaddr-negate', 'enable')
@@ -648,10 +649,10 @@ Module Source Code
                 new_policy.set_param('dstaddr-negate', 'enable')
             if module.params['service_negate']:
                 new_policy.set_param('service-negate', 'enable')
-
+    
             # action
             new_policy.set_param('action', '%s' % (module.params['policy_action']))
-
+    
             # logging
             new_policy.set_param('logtraffic', '%s' % (module.params['logtraffic']))
             if module.params['logtraffic'] == 'all':
@@ -659,10 +660,10 @@ Module Source Code
                     new_policy.set_param('logtraffic-start', 'enable')
                 else:
                     new_policy.set_param('logtraffic-start', 'disable')
-
+    
             # Schedule
             new_policy.set_param('schedule', '%s' % (module.params['schedule']))
-
+    
             # NAT
             if module.params['nat']:
                 new_policy.set_param('nat', 'enable')
@@ -671,7 +672,7 @@ Module Source Code
                 if module.params['poolname'] is not None:
                     new_policy.set_param('ippool', 'enable')
                     new_policy.set_param('poolname', '"%s"' % (module.params['poolname']))
-
+    
             # security profiles:
             if module.params['av_profile'] is not None:
                 new_policy.set_param('av-profile', '"%s"' % (module.params['av_profile']))
@@ -681,18 +682,18 @@ Module Source Code
                 new_policy.set_param('ips-sensor', '"%s"' % (module.params['ips_sensor']))
             if module.params['application_list'] is not None:
                 new_policy.set_param('application-list', '"%s"' % (module.params['application_list']))
-
+    
             # comment
             if module.params['comment'] is not None:
                 new_policy.set_param('comment', '"%s"' % (module.params['comment']))
-
+    
             # add the new policy to the device
             fortigate.add_block(policy_id, new_policy)
-
+    
         # Apply changes
         fortigate.apply_changes()
-
-
+    
+    
     if __name__ == '__main__':
         main()
 

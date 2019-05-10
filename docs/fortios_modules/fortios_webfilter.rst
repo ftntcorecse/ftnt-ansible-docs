@@ -14,7 +14,7 @@ Metadata
 **Description:** This module is able to configure a FortiGate or FortiOS by allowing the user to configure webfilter feature. For now it is able to handle url and content filtering capabilities. The module uses FortiGate REST API internally to configure the device.
 
 
-**Author(s):**
+**Author(s):** 
 
 - Miguel Angel Munoz (github: @mamunozgonzalez)
 
@@ -25,6 +25,7 @@ Metadata
 **Ansible Version Added/Required:** 2.6
 
 **Dev Status:** No Data Exists. Contact DevOps Team.
+
 Parameters
 ----------
 
@@ -33,7 +34,7 @@ host
 
 - Description: FortiOS or FortiGate ip adress.
 
-
+  
 
 - Required: True
 
@@ -42,16 +43,16 @@ password
 
 - Description: FortiOS or FortiGate password.
 
+  
 
-
-- default:
+- default: 
 
 username
 ++++++++
 
 - Description: FortiOS or FortiGate username.
 
-
+  
 
 - Required: True
 
@@ -60,7 +61,7 @@ vdom
 
 - Description: Virtual domain, among those defined previously. A vdom is a virtual instance of the FortiGate that can be configured and used as a different unit.
 
-
+  
 
 - default: root
 
@@ -69,14 +70,14 @@ webfilter_content
 
 - Description: Container for a group of content-filtering entries that the FortiGate must act upon
 
-
+  
 
 webfilter_url
 +++++++++++++
 
 - Description: Container for a group of url entries that the FortiGate must act upon
 
-
+  
 
 
 
@@ -95,13 +96,13 @@ Functions
         host = data['host']
         username = data['username']
         password = data['password']
-
+    
         fos.debug('on')
         fos.https('off')
-
+    
         fos.login(host, username, password)
-
-
+    
+    
 
 - filter_wf_url_data
 
@@ -112,14 +113,14 @@ Functions
                        'one-arm-ips-urlfilter',
                        'ip-addr-block', 'entries']
         dictionary = {}
-
+    
         for attribute in option_list:
             if attribute in json:
                 dictionary[attribute] = json[attribute]
-
+    
         return dictionary
-
-
+    
+    
 
 - filter_wf_content_data
 
@@ -129,14 +130,14 @@ Functions
         option_list = ['id', 'name', 'comment',
                        'entries']
         dictionary = {}
-
+    
         for attribute in option_list:
             if attribute in json:
                 dictionary[attribute] = json[attribute]
-
+    
         return dictionary
-
-
+    
+    
 
 - webfilter_url
 
@@ -146,20 +147,20 @@ Functions
         vdom = data['vdom']
         wf_url_data = data['webfilter_url']
         url_data = filter_wf_url_data(wf_url_data)
-
+    
         if wf_url_data['state'] == "present":
             return fos.set('webfilter',
                            'urlfilter',
                            data=url_data,
                            vdom=vdom)
-
+    
         elif wf_url_data['state'] == "absent":
             return fos.delete('webfilter',
                               'urlfilter',
                               mkey=url_data['id'],
                               vdom=vdom)
-
-
+    
+    
 
 - webfilter_content
 
@@ -169,20 +170,20 @@ Functions
         vdom = data['vdom']
         wf_content_data = data['webfilter_content']
         content_data = filter_wf_content_data(wf_content_data)
-
+    
         if wf_content_data['state'] == "present":
             return fos.set('webfilter',
                            'content',
                            data=content_data,
                            vdom=vdom)
-
+    
         elif wf_content_data['state'] == "absent":
             return fos.delete('webfilter',
                               'content',
                               mkey=content_data['id'],
                               vdom=vdom)
-
-
+    
+    
 
 - fortios_webfilter
 
@@ -194,17 +195,17 @@ Functions
         password = data['password']
         fos.https('off')
         fos.login(host, username, password)
-
+    
         methodlist = ['webfilter_url', 'webfilter_content', 'webfilter_profile']
         for method in methodlist:
             if data[method]:
                 resp = eval(method)(data, fos)
                 break
-
+    
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
-
-
+    
+    
 
 - main
 
@@ -268,24 +269,24 @@ Functions
                 }
             }
         }
-
+    
         module = AnsibleModule(argument_spec=fields,
                                supports_check_mode=False)
         try:
             from fortiosapi import FortiOSAPI
         except ImportError:
             module.fail_json(msg="fortiosapi module is required")
-
+    
         fos = FortiOSAPI()
-
+    
         is_error, has_changed, result = fortios_webfilter(module.params, fos)
-
+    
         if not is_error:
             module.exit_json(changed=has_changed, meta=result)
         else:
             module.fail_json(msg="Error in repo", meta=result)
-
-
+    
+    
 
 
 
@@ -295,18 +296,18 @@ Module Source Code
 .. code-block:: python
 
     #!/usr/bin/python
-
+    
     # Copyright: (c) 2018, Fortinet, Inc.
     # GNU General Public License v3.0+ (see COPYING or https://www.gnu.org/licenses/gpl-3.0.txt)
-
+    
     from __future__ import (absolute_import, division, print_function)
-
+    
     __metaclass__ = type
-
+    
     ANSIBLE_METADATA = {'status': ['preview'],
                         'supported_by': 'community',
                         'metadata_version': '1.1'}
-
+    
     DOCUMENTATION = '''
     ---
     module: fortios_webfilter
@@ -316,7 +317,7 @@ Module Source Code
           allowing the user to configure webfilter feature. For now it
           is able to handle url and content filtering capabilities. The
           module uses FortiGate REST API internally to configure the device.
-
+    
     version_added: "2.6"
     author:
         - Miguel Angel Munoz (@mamunozgonzalez)
@@ -519,7 +520,7 @@ Module Source Code
                         - absent
                         - present
     '''
-
+    
     EXAMPLES = '''
     - hosts: localhost
       vars:
@@ -558,8 +559,8 @@ Module Source Code
                 exempt: "pass"
                 web-proxy-profile: ""
                 referrrer-host: ""
-
-
+    
+    
     - hosts: localhost
       vars:
        host: "192.168.122.40"
@@ -592,7 +593,7 @@ Module Source Code
                 action: "block"
             state: "present"
     '''
-
+    
     RETURN = '''
     build:
       description: Build number of the fortigate image
@@ -649,103 +650,103 @@ Module Source Code
       returned: always
       type: str
       sample: "v5.6.3"
-
+    
     '''
-
+    
     from ansible.module_utils.basic import AnsibleModule
-
+    
     fos = None
-
-
+    
+    
     def login(data):
         host = data['host']
         username = data['username']
         password = data['password']
-
+    
         fos.debug('on')
         fos.https('off')
-
+    
         fos.login(host, username, password)
-
-
+    
+    
     def filter_wf_url_data(json):
         option_list = ['id', 'name', 'comment',
                        'one-arm-ips-urlfilter',
                        'ip-addr-block', 'entries']
         dictionary = {}
-
+    
         for attribute in option_list:
             if attribute in json:
                 dictionary[attribute] = json[attribute]
-
+    
         return dictionary
-
-
+    
+    
     def filter_wf_content_data(json):
         option_list = ['id', 'name', 'comment',
                        'entries']
         dictionary = {}
-
+    
         for attribute in option_list:
             if attribute in json:
                 dictionary[attribute] = json[attribute]
-
+    
         return dictionary
-
-
+    
+    
     def webfilter_url(data, fos):
         vdom = data['vdom']
         wf_url_data = data['webfilter_url']
         url_data = filter_wf_url_data(wf_url_data)
-
+    
         if wf_url_data['state'] == "present":
             return fos.set('webfilter',
                            'urlfilter',
                            data=url_data,
                            vdom=vdom)
-
+    
         elif wf_url_data['state'] == "absent":
             return fos.delete('webfilter',
                               'urlfilter',
                               mkey=url_data['id'],
                               vdom=vdom)
-
-
+    
+    
     def webfilter_content(data, fos):
         vdom = data['vdom']
         wf_content_data = data['webfilter_content']
         content_data = filter_wf_content_data(wf_content_data)
-
+    
         if wf_content_data['state'] == "present":
             return fos.set('webfilter',
                            'content',
                            data=content_data,
                            vdom=vdom)
-
+    
         elif wf_content_data['state'] == "absent":
             return fos.delete('webfilter',
                               'content',
                               mkey=content_data['id'],
                               vdom=vdom)
-
-
+    
+    
     def fortios_webfilter(data, fos):
         host = data['host']
         username = data['username']
         password = data['password']
         fos.https('off')
         fos.login(host, username, password)
-
+    
         methodlist = ['webfilter_url', 'webfilter_content', 'webfilter_profile']
         for method in methodlist:
             if data[method]:
                 resp = eval(method)(data, fos)
                 break
-
+    
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
-
-
+    
+    
     def main():
         fields = {
             "host": {"required": True, "type": "str"},
@@ -804,24 +805,24 @@ Module Source Code
                 }
             }
         }
-
+    
         module = AnsibleModule(argument_spec=fields,
                                supports_check_mode=False)
         try:
             from fortiosapi import FortiOSAPI
         except ImportError:
             module.fail_json(msg="fortiosapi module is required")
-
+    
         fos = FortiOSAPI()
-
+    
         is_error, has_changed, result = fortios_webfilter(module.params, fos)
-
+    
         if not is_error:
             module.exit_json(changed=has_changed, meta=result)
         else:
             module.fail_json(msg="Error in repo", meta=result)
-
-
+    
+    
     if __name__ == '__main__':
         main()
 

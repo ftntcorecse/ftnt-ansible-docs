@@ -16,4 +16,5 @@ It is maintained by the Core CSE DevOps group.
    fmgr_root.rst
    faz_root.rst
    fortios_root.rst
+   fsm_root.rst
 
