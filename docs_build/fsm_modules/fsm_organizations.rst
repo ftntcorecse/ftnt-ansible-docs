@@ -194,6 +194,17 @@ org_include_ip_range
 
 - Required: False
 
+org_max_devices
++++++++++++++++
+
+- Description: Max number of devices allowed for org.
+
+  
+
+- Required: False
+
+- default: 0
+
 org_name
 ++++++++
 
@@ -256,6 +267,7 @@ Functions
             org_admin_password=dict(required=False, type="str", no_log=True),
             org_admin_email=dict(required=False, type="str"),
             org_eps=dict(required=False, type="str"),
+            org_max_devices=dict(required=False, type="int", default=0),
             org_include_ip_range=dict(required=False, type="str"),
             org_exclude_ip_range=dict(required=False, type="str"),
             org_collectors=dict(required=False, type="list"),
@@ -293,6 +305,7 @@ Functions
             "org_admin_password": module.params["org_admin_password"],
             "org_admin_email": module.params["org_admin_email"],
             "org_eps": module.params["org_eps"],
+            "org_max_devices": module.params["org_max_devices"],
             "org_include_ip_range": module.params["org_include_ip_range"],
             "org_exclude_ip_range": module.params["org_exclude_ip_range"],
             "org_collectors": module.params["org_collectors"],
@@ -330,6 +343,7 @@ Functions
         elif paramgram["mode"] in ['update', 'add']:
             try:
                 # CREATE PAYLOAD
+                #pydevd.settrace('10.0.0.151', port=54654, stdoutToServer=True, stderrToServer=True)
                 paramgram["input_xml"] = fsm._xml.create_org_payload()
                 results = fsm.handle_simple_payload_request(payload=paramgram["input_xml"])
             except BaseException as err:
@@ -473,6 +487,12 @@ Module Source Code
         description:
           - Events per second limit for organization.
         required: false
+    
+      org_max_devices:
+        description:
+          - Max number of devices allowed for org.
+        required: false
+        default: 0
       
       org_include_ip_range:
         description:
@@ -531,6 +551,7 @@ Module Source Code
         org_exclude_ip_range: "192.168.10.51-192.168.10.255"
         org_collector_name: "ansibleOrg1Col1"
         org_collector_eps: "200"
+        org_max_devices: 5
     
     - name: ADD AN ORG WITH COLLECTOR VIA JSON
       fsm_organizations:
@@ -600,6 +621,7 @@ Module Source Code
     from ansible.module_utils.network.fortisiem.common import DEFAULT_EXIT_MSG
     from ansible.module_utils.network.fortisiem.fortisiem import FortiSIEMHandler
     
+    import pydevd
     
     def main():
         argument_spec = dict(
@@ -621,6 +643,7 @@ Module Source Code
             org_admin_password=dict(required=False, type="str", no_log=True),
             org_admin_email=dict(required=False, type="str"),
             org_eps=dict(required=False, type="str"),
+            org_max_devices=dict(required=False, type="int", default=0),
             org_include_ip_range=dict(required=False, type="str"),
             org_exclude_ip_range=dict(required=False, type="str"),
             org_collectors=dict(required=False, type="list"),
@@ -658,6 +681,7 @@ Module Source Code
             "org_admin_password": module.params["org_admin_password"],
             "org_admin_email": module.params["org_admin_email"],
             "org_eps": module.params["org_eps"],
+            "org_max_devices": module.params["org_max_devices"],
             "org_include_ip_range": module.params["org_include_ip_range"],
             "org_exclude_ip_range": module.params["org_exclude_ip_range"],
             "org_collectors": module.params["org_collectors"],
@@ -695,6 +719,7 @@ Module Source Code
         elif paramgram["mode"] in ['update', 'add']:
             try:
                 # CREATE PAYLOAD
+                #pydevd.settrace('10.0.0.151', port=54654, stdoutToServer=True, stderrToServer=True)
                 paramgram["input_xml"] = fsm._xml.create_org_payload()
                 results = fsm.handle_simple_payload_request(payload=paramgram["input_xml"])
             except BaseException as err:

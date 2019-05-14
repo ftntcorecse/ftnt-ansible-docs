@@ -33,6 +33,7 @@ Playbook Task Examples
         org_exclude_ip_range: "192.168.10.51-192.168.10.255"
         org_collector_name: "ansibleOrg1Col1"
         org_collector_eps: "200"
+        org_max_devices: 5
     
     - name: ADD AN ORG WITH COLLECTOR VIA JSON
       fsm_organizations:

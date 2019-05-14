@@ -367,6 +367,55 @@ If not successful, double check the hosts file, username/password combo, and tha
 The -vvvv verbose mode should indicate where the issue lies.
 
 
+Using Ansible Vault to Hide Logins
+==================================
+There are many ways to implement Ansible Vault. Feel free to use any method you like.
+If no previous experience with Ansible Vault exists, we recommend starting with this method:
+
+- https://medium.com/@schogini/ansible-vault-variables-a-tiny-demonstration-to-handle-secrets-a36132971015
+
+The procedure is simple:
+
+- Use 'ansible-vault encrypt string' on ansible host to create a vault string.
+- Replace vault string in HOSTS or Variables file, for the username/password or both.
+
+.. code-block:: yaml
+
+  fortimanager:
+    ansible_user: "ansible"
+    ansible_host: "10.7.220.35"
+    ansible_password: !vault |
+      $ANSIBLE_VAULT;1.1;AES256
+      61366437333436393062623438393663366138633265363930313763383964313130643134383839
+      3630663661626365366334646661303338313866373032330a636165373833366166616465373830
+      34356466653464313134313664613435356238666139623165623132306538336565376265356633
+      6362396137306466630a666562393637353863626436376132643464366661323734363830383164
+      6366
+
+- Add a reference to the variable file/vault file from the playbook itself:
+
+.. code-block:: yaml
+
+    ---
+    - name: Create and Delete security profile in FMG
+      hosts: FortiManager
+      connection: httpapi
+      gather_facts: False
+      vars_files:
+        - group_vars/vault.yml
+
+- And then run playbooks with --ask-vault-pass, or setup a password file to provide it.
+
+It is recommended to keep vault secret variables in their own files, so the un-encrypted variables could be read by peers.
+
+Additional Ansible Vault tutorials, references, and alternative implementation methods:
+
+- https://docs.ansible.com/ansible/latest/user_guide/playbooks_vault.html
+
+- https://www.expressvpn.com/blog/ansible-variables-vaults/
+
+- https://www.digitalocean.com/community/tutorials/how-to-use-vault-to-protect-sensitive-ansible-data-on-ubuntu-16-04
+
 
 Appendix
 ========

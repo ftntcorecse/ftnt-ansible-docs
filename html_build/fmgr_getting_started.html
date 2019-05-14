@@ -98,6 +98,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#id4">Step 4 - Playbook Test</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="#using-ansible-vault-to-hide-logins">Using Ansible Vault to Hide Logins</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#appendix">Appendix</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#enabling-fortimanager-user-for-rpc-read-write-via-fmgr-cli">Enabling FortiManager user for RPC Read/Write via FMGR CLI</a></li>
 </ul>
@@ -111,6 +112,7 @@
 </li>
 <li class="toctree-l1"><a class="reference internal" href="faz_root.html">FortiAnalyzer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="fortios_root.html">FortiGate (FortiOS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fsm_root.html">FortiSIEM</a></li>
 </ul>
 
             
@@ -326,7 +328,7 @@ FortiManagerHA
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">TEST FMGR CONNECTION GET SYS STATUS</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_query</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">object</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">custom_endpoint</span><span class="p p-Indicator">:</span> <span class="s">&quot;/sys/status&quot;</span>
 </pre></div>
@@ -400,7 +402,8 @@ the connection/host level they must be removed from playbooks.</p>
 <div class="section" id="step-2-playbook-conversion">
 <h3>Step 2 - Playbook Conversion<a class="headerlink" href="#step-2-playbook-conversion" title="Permalink to this headline">¶</a></h3>
 <p>Previous playbooks might look like this:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FGT HOSTNAME AND INTERFACE</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FGT HOSTNAME AND INTERFACE</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
   <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
@@ -422,7 +425,8 @@ the connection/host level they must be removed from playbooks.</p>
 <li>The heading attribute “connection: local” must be changed to “connection: httpapi”</li>
 </ul>
 <p>Converted version of the above playbook:</p>
-<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FGT HOSTNAME AND INTERFACE</span>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CONFIG FGT HOSTNAME AND INTERFACE</span>
   <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
   <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
   <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
@@ -498,7 +502,7 @@ the converted playbooks from Step 2 should now run.</p>
   <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
   <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">TEST FMGR CONNECTION GET SYS STATUS</span>
     <span class="l l-Scalar l-Scalar-Plain">fmgr_query</span><span class="p p-Indicator">:</span>
-      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+      <span class="l l-Scalar l-Scalar-Plain">adom</span><span class="p p-Indicator">:</span> <span class="s">&quot;root&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">object</span><span class="p p-Indicator">:</span> <span class="s">&quot;custom&quot;</span>
       <span class="l l-Scalar l-Scalar-Plain">custom_endpoint</span><span class="p p-Indicator">:</span> <span class="s">&quot;/sys/status&quot;</span>
 </pre></div>
@@ -512,13 +516,60 @@ the converted playbooks from Step 2 should now run.</p>
 The -vvvv verbose mode should indicate where the issue lies.</p>
 </div>
 </div>
+<div class="section" id="using-ansible-vault-to-hide-logins">
+<h2>Using Ansible Vault to Hide Logins<a class="headerlink" href="#using-ansible-vault-to-hide-logins" title="Permalink to this headline">¶</a></h2>
+<p>There are many ways to implement Ansible Vault. Feel free to use any method you like.
+If no previous experience with Ansible Vault exists, we recommend starting with this method:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://medium.com/&#64;schogini/ansible-vault-variables-a-tiny-demonstration-to-handle-secrets-a36132971015">https://medium.com/&#64;schogini/ansible-vault-variables-a-tiny-demonstration-to-handle-secrets-a36132971015</a></li>
+</ul>
+<p>The procedure is simple:</p>
+<ul class="simple">
+<li>Use ‘ansible-vault encrypt string’ on ansible host to create a vault string.</li>
+<li>Replace vault string in HOSTS or Variables file, for the username/password or both.</li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">fortimanager</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">ansible_user</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">ansible_host</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.35&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">ansible_password</span><span class="p p-Indicator">:</span> <span class="kt">!vault</span> <span class="p p-Indicator">|</span>
+    <span class="no">$ANSIBLE_VAULT;1.1;AES256</span>
+    <span class="no">61366437333436393062623438393663366138633265363930313763383964313130643134383839</span>
+    <span class="no">3630663661626365366334646661303338313866373032330a636165373833366166616465373830</span>
+    <span class="no">34356466653464313134313664613435356238666139623165623132306538336565376265356633</span>
+    <span class="no">6362396137306466630a666562393637353863626436376132643464366661323734363830383164</span>
+    <span class="no">6366</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Add a reference to the variable file/vault file from the playbook itself:</li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Create and Delete security profile in FMG</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiManager</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">httpapi</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+  <span class="l l-Scalar l-Scalar-Plain">vars_files</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group_vars/vault.yml</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>And then run playbooks with –ask-vault-pass, or setup a password file to provide it.</li>
+</ul>
+<p>It is recommended to keep vault secret variables in their own files, so the un-encrypted variables could be read by peers.</p>
+<p>Additional Ansible Vault tutorials, references, and alternative implementation methods:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_vault.html">https://docs.ansible.com/ansible/latest/user_guide/playbooks_vault.html</a></li>
+<li><a class="reference external" href="https://www.expressvpn.com/blog/ansible-variables-vaults/">https://www.expressvpn.com/blog/ansible-variables-vaults/</a></li>
+<li><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-vault-to-protect-sensitive-ansible-data-on-ubuntu-16-04">https://www.digitalocean.com/community/tutorials/how-to-use-vault-to-protect-sensitive-ansible-data-on-ubuntu-16-04</a></li>
+</ul>
+</div>
 <div class="section" id="appendix">
 <h2>Appendix<a class="headerlink" href="#appendix" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="enabling-fortimanager-user-for-rpc-read-write-via-fmgr-cli">
 <h3>Enabling FortiManager user for RPC Read/Write via FMGR CLI<a class="headerlink" href="#enabling-fortimanager-user-for-rpc-read-write-via-fmgr-cli" title="Permalink to this headline">¶</a></h3>
 <div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>config system admin user
   edit &lt;username&gt;
-    <span class="nb">set</span> rpc read-write
+  <span class="nb">set</span> rpc read-write
   next
 end
 </pre></div>
