@@ -28,7 +28,7 @@ Playbook Task Examples
         export_json_to_file_path: "/root/deviceNoExist.json"
         append_results_to_file: "/root/verification.csv"
         export_json_to_screen: "enable"
-        
+    
     - name: VERIFY A DEVICE FROM A LIST
       fsm_verify_device_ip:
         host: "{{ inventory_hostname }}"
@@ -38,7 +38,7 @@ Playbook Task Examples
         ip_list_to_verify: ["10.0.0.5", "10.0.0.10", "10.0.0.254"]
         export_json_to_file_path: "/root/deviceExistsList.json"
         append_results_to_file: "/root/verificationList.csv"
-        
+    
     - name: VERIFY A DEVICE LIST FROM FILE
       fsm_verify_device_ip:
         host: "{{ inventory_hostname }}"

@@ -70,6 +70,8 @@ export_json_to_screen
 
 - default: enable
 
+- choices: ['enable', 'disable']
+
 export_xml_to_file_path
 +++++++++++++++++++++++
 
@@ -102,6 +104,8 @@ ignore_ssl_errors
 - Required: False
 
 - default: enable
+
+- choices: ['enable', 'disable']
 
 ip_list_file_path
 +++++++++++++++++
@@ -391,14 +395,14 @@ Module Source Code
           - When Enabled this will instruct the HTTP Libraries to ignore any ssl validation errors.
         required: false
         default: "enable"
-        options: ["enable", "disable"]
+        choices: ["enable", "disable"]
     
       export_json_to_screen:
         description:
           - When enabled this will print the JSON results to screen.
         required: false
         default: "enable"
-        options: ["enable", "disable"]
+        choices: ["enable", "disable"]
     
       export_json_to_file_path:
         description:
@@ -438,7 +442,7 @@ Module Source Code
           - A line break-separated list of IP addresses or host names to check, stored in a file.
           - Defines file path
         required: false
-        
+    
       append_results_to_file:
         description:
           - File path you want to keep appending test results to, specifically the IP, score, and verified status
@@ -466,7 +470,7 @@ Module Source Code
         export_json_to_file_path: "/root/deviceNoExist.json"
         append_results_to_file: "/root/verification.csv"
         export_json_to_screen: "enable"
-        
+    
     - name: VERIFY A DEVICE FROM A LIST
       fsm_verify_device_ip:
         host: "{{ inventory_hostname }}"
@@ -476,7 +480,7 @@ Module Source Code
         ip_list_to_verify: ["10.0.0.5", "10.0.0.10", "10.0.0.254"]
         export_json_to_file_path: "/root/deviceExistsList.json"
         append_results_to_file: "/root/verificationList.csv"
-        
+    
     - name: VERIFY A DEVICE LIST FROM FILE
       fsm_verify_device_ip:
         host: "{{ inventory_hostname }}"
@@ -493,7 +497,7 @@ Module Source Code
     api_result:
       description: full API response, includes status code and message
       returned: always
-      type: string
+      type: str
     """
     
     from ansible.module_utils.basic import AnsibleModule, env_fallback

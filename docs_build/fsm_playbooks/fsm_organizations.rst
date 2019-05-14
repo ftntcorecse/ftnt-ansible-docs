@@ -14,7 +14,7 @@ Playbook Task Examples
         username: "super/api_user"
         password: "Fortinet!1"
         ignore_ssl_errors: "enable"
-        
+    
     - name: ADD AN ORG WITH COLLECTOR VIA PARAMETERS
       fsm_organizations:
         host: "10.7.220.61"
@@ -52,7 +52,7 @@ Playbook Task Examples
         org_include_ip_range: "192.168.20.1-192.168.20.50"
         org_exclude_ip_range: "192.168.20.51-192.168.20.255"
         org_collectors: [{'name': 'ansibleOrg2Col1', 'eps': '200'},{'name': 'ansibleOrg2Col2', 'eps': '200'}]
-        
+    
     - name: UPDATE AN ORG WITH COLLECTOR VIA PARAMETERS
       fsm_organizations:
         host: "10.7.220.61"

@@ -18,7 +18,7 @@ Playbook Task Examples
         export_json_to_file_path: "/root/report.json"
         export_xml_to_file_path: "/root/report.xml"
         export_csv_to_file_path: "/root/report.csv"
-        
+    
     - name: GET REPORT WITH RELATIVE TIME DEFINED
       fsm_report_query:
         host: "{{ inventory_hostname }}"

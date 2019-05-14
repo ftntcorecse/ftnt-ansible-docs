@@ -19,7 +19,7 @@ Playbook Task Examples
         access_protocol: "ssh"
         friendly_name: "AnsibleTestSSHCred"
         mode: "add"
-        
+    
     - name: ADD AN SSH CREDENTIAL FOR ELEVATED DEVICE
       fsm_credentials:
         host: "10.0.0.15"
@@ -34,7 +34,7 @@ Playbook Task Examples
         friendly_name: "AnsibleTestCiscoCred"
         mode: "add"
         ip_range: "10.0.254.1-10.0.254.255"
-        
+    
     - name: ADD AN VM_SDK CREDENTIAL
       fsm_credentials:
         host: "10.0.0.15"
