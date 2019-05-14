@@ -159,7 +159,7 @@ The procedure is simple:
 
 .. code-block:: yaml
 
-  fortimanager:
+  fortisiem:
     ansible_user: "ansible"
     ansible_host: "10.7.220.35"
     ansible_password: !vault |
@@ -175,9 +175,9 @@ The procedure is simple:
 .. code-block:: yaml
 
     ---
-    - name: Create and Delete security profile in FMG
-      hosts: FortiManager
-      connection: httpapi
+    - name: Query FSM
+      hosts: FortiSIEM
+      connection: local
       gather_facts: False
       vars_files:
         - group_vars/vault.yml
