@@ -48,6 +48,8 @@ export_json_to_screen
 
 - default: enable
 
+- choices: ['enable', 'disable']
+
 export_xml_to_file_path
 +++++++++++++++++++++++
 
@@ -80,6 +82,8 @@ ignore_ssl_errors
 - Required: False
 
 - default: enable
+
+- choices: ['enable', 'disable']
 
 ip
 ++
@@ -115,6 +119,8 @@ mode
 - Required: False
 
 - default: short_all
+
+- choices: ['short_all', 'ip_range', 'detailed_single', 'update']
 
 password
 ++++++++
@@ -329,6 +335,7 @@ Module Source Code
     #
     
     from __future__ import absolute_import, division, print_function
+    
     __metaclass__ = type
     
     ANSIBLE_METADATA = {
@@ -352,31 +359,31 @@ Module Source Code
         description:
           - The FortiSIEM's FQDN or IP Address.
         required: true
-        
+    
       username:
         description:
           - The username used to authenticate with the FortiManager.
           - organization/username format. The Organization is important, and will only return data from specified Org.
         required: false
-        
+    
       password:
         description:
           - The password associated with the username account.
         required: false
-        
+    
       ignore_ssl_errors:
         description:
           - When Enabled this will instruct the HTTP Libraries to ignore any ssl validation errors.
         required: false
         default: "enable"
-        options: ["enable", "disable"]
+        choices: ["enable", "disable"]
     
       export_json_to_screen:
         description:
           - When enabled this will print the JSON results to screen.
         required: false
         default: "enable"
-        options: ["enable", "disable"]
+        choices: ["enable", "disable"]
     
       export_json_to_file_path:
         description:
@@ -384,41 +391,40 @@ Module Source Code
           - An error will be thrown if this fails.
         required: false
         default: None
-        
+    
       export_xml_to_file_path:
         description:
           - When populated, an attempt to write XML to file is made.
           - An error will be thrown if this fails.
         required: false
         default: None
-        
+    
       mode:
         description:
           - Handles how the query is formatted upon return.
           - When in update mode, update_xml_file is required.
         required: false
         default: "short_all"
-        options: ["short_all", "ip_range", "detailed_single", "update"]
-        
+        choices: ["short_all", "ip_range", "detailed_single", "update"]
+    
       ip_range:
         description:
           - Specifies the IP Range of devices to search for and return.
           - Ignored unless "ip_range" is set for mode
         required: false
-        
+    
       ip:
         description:
           - Specifies the single IP address of a device to get detailed information from.
           - Ignored unless "detailed_single" is set for mode
         required: false
-        
+    
       update_xml_file:
         description:
-          - Specifies the XML file path that contains the pre-formatted XML to update the monitor with. 
+          - Specifies the XML file path that contains the pre-formatted XML to update the monitor with.
         required: false
-        
-    '''
     
+    '''
     
     EXAMPLES = '''
     - name: GET SIMPLE MONITOR LIST FROM CMDB
@@ -461,7 +467,7 @@ Module Source Code
     api_result:
       description: full API response, includes status code and message
       returned: always
-      type: string
+      type: str
     """
     
     from ansible.module_utils.basic import AnsibleModule, env_fallback

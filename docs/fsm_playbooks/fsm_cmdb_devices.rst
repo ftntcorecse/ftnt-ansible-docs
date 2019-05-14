@@ -33,7 +33,7 @@ Playbook Task Examples
         ignore_ssl_errors: "enable"
         mode: "detailed_single"
         ip: "10.0.0.5"
-      
+    
     
 
 

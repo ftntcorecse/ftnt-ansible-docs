@@ -7,6 +7,7 @@ ensure FortiAnalyzer also complies to the httpapi plugin as FortiManager does.
 .. toctree::
    :maxdepth: 1
 
+   faz_getting_started.rst
    faz_modules.rst
    faz_playbooks.rst
-   faz_roles.rst
+..   faz_roles.rst

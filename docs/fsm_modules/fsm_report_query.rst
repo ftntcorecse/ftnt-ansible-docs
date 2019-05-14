@@ -60,6 +60,8 @@ export_json_to_screen
 
 - default: enable
 
+- choices: ['enable', 'disable']
+
 export_xml_to_file_path
 +++++++++++++++++++++++
 
@@ -92,6 +94,8 @@ ignore_ssl_errors
 - Required: False
 
 - default: enable
+
+- choices: ['enable', 'disable']
 
 password
 ++++++++
@@ -276,7 +280,6 @@ Functions
         except BaseException as err:
             raise FSMBaseException("Couldn't load FortiSIEM Handler from mod_utils. Error: " + str(err))
     
-    
         if paramgram["report_string"]:
             paramgram["input_xml"] = paramgram["report_string"]
         if paramgram["report_file_path"]:
@@ -379,14 +382,14 @@ Module Source Code
           - When Enabled this will instruct the HTTP Libraries to ignore any ssl validation errors.
         required: false
         default: "enable"
-        options: ["enable", "disable"]
+        choices: ["enable", "disable"]
     
       export_json_to_screen:
         description:
           - When enabled this will print the JSON results to screen.
         required: false
         default: "enable"
-        options: ["enable", "disable"]
+        choices: ["enable", "disable"]
     
       export_json_to_file_path:
         description:
@@ -411,7 +414,7 @@ Module Source Code
     
       report_name:
         description:
-          - Exact name match of a report in the CMDB that has been saved. 
+          - Exact name match of a report in the CMDB that has been saved.
           - Ansible will fetch XML from FortiSIEM before running.
         required: false
     
@@ -424,7 +427,7 @@ Module Source Code
         description:
           - Specifies PATH to File containing report XML.
         required: false
-        
+    
       report_relative_mins:
         description:
           - Number of minutes of history to include in current report. Overrides any time filters in XML file path.
@@ -436,19 +439,19 @@ Module Source Code
           - Changes report time to begin date in MM/DD/YYYY format Overrides any time filters in XML file path.
           - Mutually exclusive with report_relative_mins
         required: false
-      
+    
       report_absolute_begin_time:
         description:
           - Changes report time to begin time in 24h military format Overrides any time filters in XML file path.
           - Includes seconds, so there are six digits. First two are hours, second two are mins, third two are seconds.
           - Also accepts seconds in six-digit military. i.e. 103030
         required: false
-      
+    
       report_absolute_end_date:
         description:
           - Changes report time to end date in MM/DD/YYYY format Overrides any time filters in XML file path.
         required: false
-      
+    
       report_absolute_end_time:
         description:
           - Changes report time to end time in 24h military format Overrides any time filters in XML file path.
@@ -469,7 +472,7 @@ Module Source Code
         export_json_to_file_path: "/root/report.json"
         export_xml_to_file_path: "/root/report.xml"
         export_csv_to_file_path: "/root/report.csv"
-        
+    
     - name: GET REPORT WITH RELATIVE TIME DEFINED
       fsm_report_query:
         host: "{{ inventory_hostname }}"
@@ -496,7 +499,7 @@ Module Source Code
     api_result:
       description: full API response, includes status code and message
       returned: always
-      type: string
+      type: str
     """
     
     from ansible.module_utils.basic import AnsibleModule, env_fallback
@@ -569,7 +572,6 @@ Module Source Code
             fsm = FortiSIEMHandler(module)
         except BaseException as err:
             raise FSMBaseException("Couldn't load FortiSIEM Handler from mod_utils. Error: " + str(err))
-    
     
         if paramgram["report_string"]:
             paramgram["input_xml"] = paramgram["report_string"]

@@ -369,7 +369,7 @@ The -vvvv verbose mode should indicate where the issue lies.
 
 Using Ansible Vault to Hide Logins
 ==================================
-There are many ways to implement Ansible Vault. Feel free to use any method you like.
+There are many ways to implement Ansible Vault. Feel free to use any method desired.
 If no previous experience with Ansible Vault exists, we recommend starting with this method:
 
 - https://medium.com/@schogini/ansible-vault-variables-a-tiny-demonstration-to-handle-secrets-a36132971015

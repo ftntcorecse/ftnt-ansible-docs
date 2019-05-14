@@ -8,8 +8,8 @@ Playbook Task Examples
 
 .. code-block:: yaml
 
-     - name: SET BASIC MAINT SCHEDULE
-      fsm_maintenance:
+    - name: SET BASIC MAINT SCHEDULE
+       fsm_maintenance:
         host: "{{ inventory_hostname }}"
         username: "{{ username }}"
         password: "{{ password }}"
@@ -164,8 +164,6 @@ Playbook Task Examples
         time_zone: "-8"
         start_date: "2019-05-02"
         end_date_open: True
-    
-    
 
 
 

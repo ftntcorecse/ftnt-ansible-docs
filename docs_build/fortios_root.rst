@@ -7,4 +7,4 @@ FortiGate (FortiOS)
    fortios_getting_started.rst
    fortios_modules.rst
    fortios_playbooks.rst
-   fortios_roles.rst
+.. fortios_roles.rst

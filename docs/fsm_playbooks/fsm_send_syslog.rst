@@ -15,11 +15,11 @@ Playbook Task Examples
         syslog_message: "This is a test syslog from Ansible!"
     
     - name: SEND UDP/514 SYSLOG WITH AUTO HEADER
-        fsm_send_syslog:
-          syslog_host: "10.7.220.61"
-          ignore_ssl_errors: "enable"
-          syslog_message: "This is a test syslog from Ansible!"
-          
+      fsm_send_syslog:
+        syslog_host: "10.7.220.61"
+        ignore_ssl_errors: "enable"
+        syslog_message: "This is a test syslog from Ansible!"
+    
     - name: SEND UDP/514 SYSLOG CUSTOM HEADER
       fsm_send_syslog:
         syslog_host: "10.7.220.61"
@@ -44,7 +44,7 @@ Playbook Task Examples
         network_protocol: "tcp-tls1.2"
         syslog_message: "This is a test syslog from Ansible!"
         syslog_header: "This is a TEST HEADER TCP TLS PORT 6514 :"
-        
+    
     - name: SEND UDP/514 SYSLOG WITH AUTO HEADER AND DIFF FACILITY AND LEVEL
       fsm_send_syslog:
         syslog_host: "10.7.220.61"

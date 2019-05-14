@@ -8,4 +8,4 @@ FortiSIEM
    fsm_use_cases.rst
    fsm_modules.rst
    fsm_playbooks.rst
-   fsm_roles.rst
+..   fsm_roles.rst
