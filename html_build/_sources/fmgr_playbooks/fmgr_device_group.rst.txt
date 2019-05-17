@@ -56,6 +56,7 @@ fmgr_group_delete.yml
 .. code-block:: yaml
 
 
+
     
     - name: REMOVE FGT GRP
       hosts: FortiManager
@@ -88,6 +89,7 @@ fmgr_group_edit_remove.yml
 ++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -123,6 +125,7 @@ fmgr_device_groups.yml
 ++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     - name: CREATE DEVICE GROUP AND ADD MEMBERS
@@ -164,6 +167,7 @@ fmgr_group_edit_add.yml
 .. code-block:: yaml
 
 
+
     
     - name: CREATE FGT GRP
       hosts: FortiManager
@@ -202,6 +206,7 @@ fmgr_group_add.yml
 .. code-block:: yaml
 
 
+
     
     - name: CREATE FGT GRP
       hosts: FortiManager
@@ -234,7 +239,8 @@ fmgr_group_add.yml
 fmgr_device_group_run_all.sh
 ++++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook fmgr_group_delete.yml -vvvv
     ansible-playbook fmgr_group_edit_remove.yml -vvvv

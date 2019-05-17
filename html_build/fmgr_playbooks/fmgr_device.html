@@ -80,6 +80,7 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../fmgr_root.html">FortiManager</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_getting_started.html">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_modules.html">Modules</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_device</a><ul>
@@ -90,6 +91,7 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
@@ -113,13 +115,14 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fsm_root.html">FortiSIEM</a></li>
 </ul>
 
             
@@ -257,6 +260,17 @@
 </div>
 <div class="section" id="fmgr-device-run-all-sh">
 <h3>fmgr_device_run_all.sh<a class="headerlink" href="#fmgr-device-run-all-sh" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>        <span class="c1">#!/bin/bash</span>
+ansible-playbook fmgr_devices_ansibleAdom.yml -vvvv
+ansible-playbook fmgr_devices_plugin_edition_add.yml -vvvv
+ansible-playbook fmgr_devices_ansibleAdom_all.yml -vvvv
+ansible-playbook fmgr_devices_delete_ansibleAdom.yml -vvvv
+ansible-playbook fmgr_devices_plugin_edition_del.yml -vvvv
+ansible-playbook fmgr_devices.yml -vvvv
+ansible-playbook fmgr_devices_ipv6_add.yml -vvvv
+ansible-playbook fmgr_devices_ansibleAdom2.yml -vvvv
+</pre></div>
+</div>
 </div>
 <div class="section" id="fmgr-devices-plugin-edition-add-yml">
 <h3>fmgr_devices_plugin_edition_add.yml<a class="headerlink" href="#fmgr-devices-plugin-edition-add-yml" title="Permalink to this headline">¶</a></h3>

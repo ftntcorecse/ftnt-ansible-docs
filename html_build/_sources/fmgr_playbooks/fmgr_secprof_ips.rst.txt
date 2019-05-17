@@ -34,6 +34,7 @@ ips.yml
 .. code-block:: yaml
 
 
+
     - name: Create and Delete security profile in FMG
       hosts: FortiManager
       connection: httpapi
@@ -75,6 +76,7 @@ ips2.yml
 .. code-block:: yaml
 
 
+
     - name: Create and Delete security profile in FMG
       hosts: FortiManager
       connection: httpapi
@@ -105,7 +107,8 @@ ips2.yml
 fmgr_secprof_ips_run_all.sh
 +++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook ips.yml -vvvv
 

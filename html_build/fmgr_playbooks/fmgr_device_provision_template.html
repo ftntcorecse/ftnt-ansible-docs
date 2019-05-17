@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fmgr_fwobj_address" href="fmgr_fwobj_address.html" />
+    <link rel="next" title="fmgr_fortimeter" href="fmgr_fortimeter.html" />
     <link rel="prev" title="fmgr_device_group" href="fmgr_device_group.html" /> 
 
   
@@ -80,6 +80,7 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../fmgr_root.html">FortiManager</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_getting_started.html">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_modules.html">Modules</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device.html">fmgr_device</a></li>
@@ -90,6 +91,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#playbook-file-examples">Playbook File Examples</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
@@ -113,13 +115,14 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fsm_root.html">FortiSIEM</a></li>
 </ul>
 
             
@@ -534,6 +537,15 @@
 </div>
 <div class="section" id="fmgr-device-provision-template-run-all-sh">
 <h3>fmgr_device_provision_template_run_all.sh<a class="headerlink" href="#fmgr-device-provision-template-run-all-sh" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>        <span class="c1">#!/bin/bash</span>
+ansible-playbook fmgr_device_provision_template_remove_scope.yml -vvvv
+ansible-playbook fmgr_device_proftemplate_faz_assign.yml -vvvv
+ansible-playbook fmgr_device_provision_template_delete.yml -vvvv
+ansible-playbook fmgr_device_provision_template.yml -vvvv
+ansible-playbook fmgr_device_provision_template_run_all.sh -vvvv
+ansible-playbook fmgr_device_provision_template_absent.yml -vvvv
+</pre></div>
+</div>
 </div>
 <div class="section" id="fmgr-device-provision-template-absent-yml">
 <h3>fmgr_device_provision_template_absent.yml<a class="headerlink" href="#fmgr-device-provision-template-absent-yml" title="Permalink to this headline">¶</a></h3>
@@ -685,7 +697,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="fmgr_fwobj_address.html" class="btn btn-neutral float-right" title="fmgr_fwobj_address" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="fmgr_fortimeter.html" class="btn btn-neutral float-right" title="fmgr_fortimeter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="fmgr_device_group.html" class="btn btn-neutral" title="fmgr_device_group" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

@@ -24,7 +24,7 @@ Metadata
 
 **Ansible Version Added/Required:** 2.6
 
-**Dev Status:** No Data Exists. Contact DevOps Team.
+**Dev Status:** No status updates, yet. Contact Authors.
 
 Parameters
 ----------
@@ -32,7 +32,7 @@ Parameters
 host
 ++++
 
-- Description: FortiOS or FortiGate ip adress.
+- Description: FortiOS or FortiGate ip address.
 
   
 
@@ -330,7 +330,7 @@ Module Source Code
     options:
         host:
            description:
-                - FortiOS or FortiGate ip adress.
+                - FortiOS or FortiGate ip address.
            required: true
         username:
             description:

@@ -17,18 +17,12 @@ Playbook Task Examples
     
         - name: Get upgrade path for FGT1
           fmgr_provision:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             adom: "root"
             action: "get"
             resource: "/api/v2/monitor/system/firmware/upgrade-paths?vdom=root"
             target: ["/adom/root/device/FGT1"]
         - name: Upgrade firmware of FGT1
           fmgr_provision:
-            host: "{{ inventory_hostname }}"
-            username: "{{ username }}"
-            password: "{{ password }}"
             adom: "root"
             action: "post"
             payload: {source: upload, file_content: b64_encoded_string, file_name: file_name}

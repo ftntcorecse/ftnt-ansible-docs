@@ -21,6 +21,7 @@ Playbook Task Examples
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           firewall_proxy_address:
             state: "present"
             case-sensitivity: "disable"
@@ -61,59 +62,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/firewall/fortios_firewall_proxy_address_example.yml
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Web proxy address configuration.
-        fortios_firewall_proxy_address:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          firewall_proxy_address:
-            state: "present"
-            case-sensitivity: "disable"
-            category:
-             -
-                id:  "5"
-            color: "6"
-            comment: "Optional comments."
-            header: "<your_own_value>"
-            header-group:
-             -
-                case-sensitivity: "disable"
-                header: "<your_own_value>"
-                header-name: "<your_own_value>"
-                id:  "13"
-            header-name: "<your_own_value>"
-            host: "myhostname (source firewall.address.name firewall.addrgrp.name firewall.proxy-address.name)"
-            host-regex: "myhostname"
-            method: "get"
-            name: "default_name_18"
-            path: "<your_own_value>"
-            query: "<your_own_value>"
-            referrer: "enable"
-            tagging:
-             -
-                category: "<your_own_value> (source system.object-tagging.category)"
-                name: "default_name_24"
-                tags:
-                 -
-                    name: "default_name_26 (source system.object-tagging.tags.name)"
-            type: "host-regex"
-            ua: "chrome"
-            uuid: "<your_own_value>"
-            visibility: "enable"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

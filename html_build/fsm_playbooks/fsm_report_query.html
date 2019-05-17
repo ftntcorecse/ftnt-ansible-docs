@@ -1,0 +1,468 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fsm_report_query &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fsm_send_syslog" href="fsm_send_syslog.html" />
+    <link rel="prev" title="fsm_organizations" href="fsm_organizations.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../fmgr_root.html">FortiManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../fsm_root.html">FortiSIEM</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../fsm_getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fsm_use_cases.html">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fsm_modules.html">Modules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../fsm_playbooks.html">Playbook Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fsm_cmdb_devices.html">fsm_cmdb_devices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_credentials.html">fsm_credentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_custom_query.html">fsm_custom_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_device_monitors.html">fsm_device_monitors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_discovery.html">fsm_discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_maintenance.html">fsm_maintenance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_organizations.html">fsm_organizations</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fsm_report_query</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#playbook-task-examples">Playbook Task Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#playbook-file-examples">Playbook File Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_send_syslog.html">fsm_send_syslog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_verify_device_ip.html">fsm_verify_device_ip</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fsm_root.html">FortiSIEM</a> &raquo;</li>
+        
+          <li><a href="../fsm_playbooks.html">Playbook Examples</a> &raquo;</li>
+        
+      <li>fsm_report_query</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fsm_playbooks/fsm_report_query.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fsm-report-query">
+<h1>fsm_report_query<a class="headerlink" href="#fsm-report-query" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="playbook-task-examples">
+<h2>Playbook Task Examples<a class="headerlink" href="#playbook-task-examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SUBMIT REPORT</span>
+  <span class="l l-Scalar l-Scalar-Plain">fsm_report_query</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">report_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/top_fortisiem_events_by_count.xml&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">export_json_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/report.json&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">export_xml_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/report.xml&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">export_csv_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/report.csv&quot;</span>
+
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET REPORT WITH RELATIVE TIME DEFINED</span>
+  <span class="l l-Scalar l-Scalar-Plain">fsm_report_query</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">report_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/top_fortisiem_events_by_count.xml&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">report_relative_mins</span><span class="p p-Indicator">:</span> <span class="s">&quot;60&quot;</span>
+
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET REPORT WITH ABSOLUTE TIME DEFINED</span>
+  <span class="l l-Scalar l-Scalar-Plain">fsm_report_query</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">report_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/top_fortisiem_events_by_count.xml&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">report_absolute_begin_date</span><span class="p p-Indicator">:</span> <span class="s">&quot;04/17/2019&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">report_absolute_begin_time</span><span class="p p-Indicator">:</span> <span class="s">&quot;060000&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">report_absolute_end_date</span><span class="p p-Indicator">:</span> <span class="s">&quot;04/17/2019&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">report_absolute_end_time</span><span class="p p-Indicator">:</span> <span class="s">&quot;070000&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="playbook-file-examples">
+<h2>Playbook File Examples<a class="headerlink" href="#playbook-file-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fsm-submit-large-report-yml">
+<h3>fsm_submit_large_report.yml<a class="headerlink" href="#fsm-submit-large-report-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET RESULTS FROM REPORT</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiSIEM</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SUBMIT LARGE REPORT</span>
+      <span class="l l-Scalar l-Scalar-Plain">fsm_report_query</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/all_fw_events.xml&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_screen</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/large_report.json&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_xml_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/Large_report.xml&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_csv_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/large_report.csv&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="top-fortisiem-events-by-count-xml">
+<h3>top_fortisiem_events_by_count.xml<a class="headerlink" href="#top-fortisiem-events-by-count-xml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>       <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span>
+<span class="nt">&lt;Reports&gt;</span>
+    <span class="nt">&lt;Report</span> <span class="na">baseline=</span><span class="s">&quot;&quot;</span> <span class="na">rsSync=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;Name&gt;</span>Top FortiSIEM Events By Count<span class="nt">&lt;/Name&gt;</span>
+        <span class="nt">&lt;Description&gt;</span>Ranks the events by the number of times they have occurred in a given time period.<span class="nt">&lt;/Description&gt;</span>
+        <span class="nt">&lt;CustomerScope</span> <span class="na">groupByEachCustomer=</span><span class="s">&quot;false&quot;</span><span class="nt">&gt;</span>
+        <span class="nt">&lt;/CustomerScope&gt;</span>
+        <span class="nt">&lt;SelectClause&gt;</span>
+            <span class="nt">&lt;AttrList&gt;</span>eventType,COUNT(*)<span class="nt">&lt;/AttrList&gt;</span>
+        <span class="nt">&lt;/SelectClause&gt;</span>
+        <span class="nt">&lt;OrderByClause&gt;</span>
+            <span class="nt">&lt;AttrList&gt;</span>COUNT(*) DESC<span class="nt">&lt;/AttrList&gt;</span>
+        <span class="nt">&lt;/OrderByClause&gt;</span>
+        <span class="nt">&lt;PatternClause</span> <span class="na">window=</span><span class="s">&quot;3600&quot;</span><span class="nt">&gt;</span>
+            <span class="nt">&lt;SubPattern</span> <span class="na">id=</span><span class="s">&quot;1164394&quot;</span> <span class="na">name=</span><span class="s">&quot;Filter_OVERALL_STATUS&quot;</span><span class="nt">&gt;</span>
+                <span class="nt">&lt;GroupByAttr&gt;</span>eventType<span class="nt">&lt;/GroupByAttr&gt;</span>
+            <span class="nt">&lt;/SubPattern&gt;</span>
+        <span class="nt">&lt;/PatternClause&gt;</span>
+        <span class="nt">&lt;userRoles&gt;</span>
+            <span class="nt">&lt;roles</span> <span class="na">custId=</span><span class="s">&quot;0&quot;</span><span class="nt">&gt;</span>1169250<span class="nt">&lt;/roles&gt;</span>
+        <span class="nt">&lt;/userRoles&gt;</span>
+        <span class="nt">&lt;SyncOrgs/&gt;</span>
+    <span class="nt">&lt;/Report&gt;</span>
+<span class="nt">&lt;/Reports&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fsm-incident-report-yml">
+<h3>fsm_incident_report.yml<a class="headerlink" href="#fsm-incident-report-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET RESULTS FROM REPORT</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiSIEM</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET AN INCIDENT REPORT DIFFERENT MORE DETAIL</span>
+      <span class="l l-Scalar l-Scalar-Plain">fsm_report_query</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;top-devices-and-incidents.xml&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_absolute_begin_date</span><span class="p p-Indicator">:</span> <span class="s">&quot;04/13/2019&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_absolute_begin_time</span><span class="p p-Indicator">:</span> <span class="s">&quot;060000&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_absolute_end_date</span><span class="p p-Indicator">:</span> <span class="s">&quot;04/18/2019&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_absolute_end_time</span><span class="p p-Indicator">:</span> <span class="s">&quot;150000&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_screen</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/incident_report.json&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_xml_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/incident_report.xml&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fsm-submit-timed-report-yml">
+<h3>fsm_submit_timed_report.yml<a class="headerlink" href="#fsm-submit-timed-report-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET RESULTS FROM REPORT</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiSIEM</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET REPORT WITH RELATIVE TIME DEFINED</span>
+      <span class="l l-Scalar l-Scalar-Plain">fsm_report_query</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/top_fortisiem_events_by_count.xml&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_relative_mins</span><span class="p p-Indicator">:</span> <span class="s">&quot;60&quot;</span>
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET REPORT WITH ABSOLUTE TIME DEFINED</span>
+      <span class="l l-Scalar l-Scalar-Plain">fsm_report_query</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/top_fortisiem_events_by_count.xml&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_absolute_begin_date</span><span class="p p-Indicator">:</span> <span class="s">&quot;04/17/2019&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_absolute_begin_time</span><span class="p p-Indicator">:</span> <span class="s">&quot;060000&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_absolute_end_date</span><span class="p p-Indicator">:</span> <span class="s">&quot;04/17/2019&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_absolute_end_time</span><span class="p p-Indicator">:</span> <span class="s">&quot;070000&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fsm-msp-submit-large-report-yml">
+<h3>fsm_msp_submit_large_report.yml<a class="headerlink" href="#fsm-msp-submit-large-report-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET RESULTS FROM REPORT</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiSIEM_MSP</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">MSP SUBMIT LARGE REPORT</span>
+      <span class="l l-Scalar l-Scalar-Plain">fsm_report_query</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/all_fw_events.xml&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_screen</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/msp_large_report.json&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_xml_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/msp_large_report.xml&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_csv_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/msp_large_report.csv&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fsm-msp-submit-report-yml">
+<h3>fsm_msp_submit_report.yml<a class="headerlink" href="#fsm-msp-submit-report-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET RESULTS FROM REPORT</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiSIEM_MSP</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">MSP SUBMIT REPORT</span>
+      <span class="l l-Scalar l-Scalar-Plain">fsm_report_query</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;testOrg/api_user&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/msp-report.xml&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_screen</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/msp_report.json&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_xml_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/msp__report.xml&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="all-fw-events-xml">
+<h3>all_fw_events.xml<a class="headerlink" href="#all-fw-events-xml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>       <span class="cp">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span><span class="nt">&lt;Reports&gt;&lt;Report</span> <span class="na">baseline=</span><span class="s">&quot;&quot;</span> <span class="na">rsSync=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;&lt;Name&gt;</span>Get_All_firewall_events_last_15m<span class="nt">&lt;/Name&gt;&lt;Description&gt;</span>Get_All_firewall_events_last_15m - 03:13:07 PM Apr 09 2019<span class="nt">&lt;/Description&gt;&lt;CustomerScope</span> <span class="na">groupByEachCustomer=</span><span class="s">&quot;true&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;Include&gt;</span>1<span class="nt">&lt;/Include&gt;</span>
+<span class="nt">&lt;Exclude/&gt;</span>
+<span class="nt">&lt;/CustomerScope&gt;&lt;SelectClause&gt;</span>
+<span class="nt">&lt;AttrList&gt;</span>phRecvTime,reptDevIpAddr,eventType,eventName,rawEventMsg<span class="nt">&lt;/AttrList&gt;</span>
+<span class="nt">&lt;/SelectClause&gt;&lt;PatternClause&gt;</span>
+<span class="nt">&lt;SubPattern</span> <span class="na">id=</span><span class="s">&quot;2414751&quot;</span> <span class="na">name=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>
+<span class="nt">&lt;SingleEvtConstr&gt;</span>(reptDevIpAddr = 10.0.0.254) AND (phCustId IN (1))<span class="nt">&lt;/SingleEvtConstr&gt;</span>
+<span class="nt">&lt;/SubPattern&gt;</span>
+<span class="nt">&lt;/PatternClause&gt;&lt;userRoles&gt;</span>
+<span class="nt">&lt;roles</span> <span class="na">custId=</span><span class="s">&quot;1&quot;</span><span class="nt">&gt;</span>1698800<span class="nt">&lt;/roles&gt;</span>
+<span class="nt">&lt;/userRoles&gt;&lt;SyncOrgs/&gt;&lt;ReportInterval&gt;</span>
+<span class="nt">&lt;Low&gt;</span>1554839835<span class="nt">&lt;/Low&gt;</span>
+<span class="nt">&lt;High&gt;</span>1554840734<span class="nt">&lt;/High&gt;</span>
+<span class="nt">&lt;/ReportInterval&gt;&lt;/Report&gt;&lt;/Reports&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fsm-submit-report-yml">
+<h3>fsm_submit_report.yml<a class="headerlink" href="#fsm-submit-report-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET RESULTS FROM REPORT</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiSIEM</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SUBMIT REPORT</span>
+      <span class="l l-Scalar l-Scalar-Plain">fsm_report_query</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">report_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/top_fortisiem_events_by_count.xml&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/report.json&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_xml_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/report.xml&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_csv_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/report.csv&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fsm_send_syslog.html" class="btn btn-neutral float-right" title="fsm_send_syslog" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fsm_organizations.html" class="btn btn-neutral" title="fsm_organizations" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

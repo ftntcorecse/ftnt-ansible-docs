@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Playbook Examples" href="../faz_playbooks.html" />
+    <link rel="next" title="faz_query" href="faz_query.html" />
     <link rel="prev" title="Modules" href="../faz_modules.html" /> 
 
   
@@ -81,6 +81,7 @@
               <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../fmgr_root.html">FortiManager</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../faz_getting_started.html">Getting Started</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../faz_modules.html">Modules</a><ul class="current">
 <li class="toctree-l3 current"><a class="current reference internal" href="#">faz_device</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
@@ -89,13 +90,14 @@
 <li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="faz_query.html">faz_query</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../faz_playbooks.html">Playbook Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../faz_roles.html">Roles</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fsm_root.html">FortiSIEM</a></li>
 </ul>
 
             
@@ -169,10 +171,10 @@
 <div class="section" id="metadata">
 <h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
 <p><strong>Name:</strong> faz_device</p>
-<p><strong>Description:</strong> Add or remove a device or list of devices to FortiAnalyzer Device Manager</p>
+<p><strong>Description:</strong> Add or remove a device or list of devices to FortiAnalyzer Device Manager. ADOM Capable.</p>
 <p><strong>Author(s):</strong> Luke Weighall (&#64;lweighall)</p>
-<p><strong>Ansible Version Added/Required:</strong> 2.6</p>
-<p><strong>Dev Status:</strong> No Data Exists. Contact DevOps Team.</p>
+<p><strong>Ansible Version Added/Required:</strong> 2.9</p>
+<p><strong>Dev Status:</strong> No status updates, yet. Contact Authors.</p>
 </div>
 <div class="section" id="parameters">
 <h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
@@ -184,47 +186,38 @@
 <li>default: root</li>
 </ul>
 </div>
-<div class="section" id="device-action">
-<h3>device_action<a class="headerlink" href="#device-action" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: Specify add device operations, or leave blank to add a real device from scratch</li>
-<li>Required: False</li>
-<li>default: add_model</li>
-<li>choices: [‘add_model’, ‘promote_unreg’]</li>
-</ul>
-</div>
 <div class="section" id="device-ip">
 <h3>device_ip<a class="headerlink" href="#device-ip" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: The IP of the device being added to FortiManager.</li>
+<li>Description: The IP of the device being added to FortiAnalyzer.</li>
 <li>Required: False</li>
 </ul>
 </div>
 <div class="section" id="device-password">
 <h3>device_password<a class="headerlink" href="#device-password" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: The password of the device being added to FortiManager.</li>
+<li>Description: The password of the device being added to FortiAnalyzer.</li>
 <li>Required: False</li>
 </ul>
 </div>
 <div class="section" id="device-serial">
 <h3>device_serial<a class="headerlink" href="#device-serial" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: The serial number of the device being added to FortiManager.</li>
+<li>Description: The serial number of the device being added to FortiAnalyzer.</li>
 <li>Required: False</li>
 </ul>
 </div>
 <div class="section" id="device-unique-name">
 <h3>device_unique_name<a class="headerlink" href="#device-unique-name" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: The desired “friendly” name of the device being added to FortiManager.</li>
+<li>Description: The desired “friendly” name of the device being added to FortiAnalyzer.</li>
 <li>Required: False</li>
 </ul>
 </div>
 <div class="section" id="device-username">
 <h3>device_username<a class="headerlink" href="#device-username" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
-<li>Description: The username of the device being added to FortiManager.</li>
+<li>Description: The username of the device being added to FortiAnalyzer.</li>
 <li>Required: False</li>
 </ul>
 </div>
@@ -235,19 +228,21 @@
 <li>Required: False</li>
 </ul>
 </div>
-<div class="section" id="host">
-<h3>host<a class="headerlink" href="#host" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The FortiManager’s Address.</li>
-<li>Required: True</li>
-</ul>
-</div>
 <div class="section" id="mgmt-mode">
 <h3>mgmt_mode<a class="headerlink" href="#mgmt-mode" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Description: Management Mode of the device you are adding.</li>
 <li>Required: True</li>
 <li>choices: [‘unreg’, ‘fmg’, ‘faz’, ‘fmgfaz’]</li>
+</ul>
+</div>
+<div class="section" id="mode">
+<h3>mode<a class="headerlink" href="#mode" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Add or delete devices. Or promote unregistered devices that are in the FortiAnalyzer “waiting pool”</li>
+<li>Required: False</li>
+<li>default: add</li>
+<li>choices: [‘add’, ‘delete’, ‘promote’]</li>
 </ul>
 </div>
 <div class="section" id="os-minor-vers">
@@ -273,39 +268,10 @@
 <li>choices: [‘unknown’, ‘0.0’, ‘1.0’, ‘2.0’, ‘3.0’, ‘4.0’, ‘5.0’, ‘6.0’]</li>
 </ul>
 </div>
-<div class="section" id="password">
-<h3>password<a class="headerlink" href="#password" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The password associated with the username account.</li>
-<li>Required: False</li>
-</ul>
-</div>
 <div class="section" id="platform-str">
 <h3>platform_str<a class="headerlink" href="#platform-str" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li>Description: Required for determine the platform for VM platforms. ie FortiGate-VM64</li>
-<li>Required: False</li>
-</ul>
-</div>
-<div class="section" id="state">
-<h3>state<a class="headerlink" href="#state" title="Permalink to this headline">¶</a></h3>
-<ul>
-<li><p class="first">Description: The desired state of the specified object.</p>
-<p>absent will delete the object if it exists.</p>
-<p>present will create the configuration if needed.</p>
-</li>
-<li><p class="first">Required: False</p>
-</li>
-<li><p class="first">default: present</p>
-</li>
-<li><p class="first">choices: [‘absent’, ‘present’]</p>
-</li>
-</ul>
-</div>
-<div class="section" id="username">
-<h3>username<a class="headerlink" href="#username" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The username used to authenticate with the FortiManager.</li>
 <li>Required: False</li>
 </ul>
 </div>
@@ -341,9 +307,8 @@
     <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;faz.quota&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
         <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;device&quot;</span><span class="p">][</span><span class="s2">&quot;faz.quota&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;faz.quota&quot;</span><span class="p">]</span>
 
-
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvm/cmd/add/device/&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FAZMethods</span><span class="o">.</span><span class="n">EXEC</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -354,7 +319,7 @@
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">faz_delete_device</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This method deletes a device from the FMGR</span>
+<span class="sd">    This method deletes a device from the FAZ</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
@@ -362,7 +327,7 @@
     <span class="p">}</span>
 
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvm/cmd/del/device/&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FAZMethods</span><span class="o">.</span><span class="n">EXEC</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -372,18 +337,18 @@
 </ul>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">faz_get_unknown_devices</span><span class="p">(</span><span class="n">faz</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This method gets devices with an unknown management type field</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="nb">filter</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mgmt_mode&quot;</span><span class="p">,</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">]</span>
+    <span class="n">faz_filter</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mgmt_mode&quot;</span><span class="p">,</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">]</span>
 
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="nb">filter</span>
+        <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="n">faz_filter</span>
     <span class="p">}</span>
 
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/dvmdb/device&quot;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FAZMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
@@ -394,7 +359,9 @@
 </ul>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">faz_approve_unregistered_device_by_ip</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method approves unregistered devices by ip.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># TRY TO FIND DETAILS ON THIS UNREGISTERED DEVICE</span>
     <span class="n">unknown_devices</span> <span class="o">=</span> <span class="n">faz_get_unknown_devices</span><span class="p">(</span><span class="n">faz</span><span class="p">)</span>
     <span class="n">target_device</span> <span class="o">=</span> <span class="bp">None</span>
@@ -426,7 +393,6 @@
         <span class="n">add_device</span> <span class="o">=</span> <span class="n">faz_add_device</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">target_device_paramgram</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">add_device</span>
 
-
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;Couldn&#39;t find the desired device with ip: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_ip&quot;</span><span class="p">]))</span>
 </pre></div>
 </div>
@@ -436,7 +402,6 @@
 </ul>
 <blockquote>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">faz_approve_unregistered_device_by_name</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-
     <span class="c1"># TRY TO FIND DETAILS ON THIS UNREGISTERED DEVICE</span>
     <span class="n">unknown_devices</span> <span class="o">=</span> <span class="n">faz_get_unknown_devices</span><span class="p">(</span><span class="n">faz</span><span class="p">)</span>
     <span class="n">target_device</span> <span class="o">=</span> <span class="bp">None</span>
@@ -468,7 +433,6 @@
         <span class="n">add_device</span> <span class="o">=</span> <span class="n">faz_add_device</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">target_device_paramgram</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">add_device</span>
 
-
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;Couldn&#39;t find the desired device with name: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">]))</span>
 </pre></div>
 </div>
@@ -480,15 +444,12 @@
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
         <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
-        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">])),</span>
-        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-        <span class="n">state</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;absent&quot;</span><span class="p">,</span> <span class="s2">&quot;present&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;present&quot;</span><span class="p">),</span>
+        <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;promote&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
 
         <span class="n">device_ip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">device_username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">device_password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-        <span class="n">device_unique_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">device_unique_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">device_serial</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
 
         <span class="n">os_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
@@ -496,60 +457,85 @@
         <span class="n">os_minor_vers</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">os_ver</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">platform_str</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">device_action</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add_model&quot;</span><span class="p">),</span>
         <span class="n">faz_quota</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">)</span>
     <span class="p">)</span>
 
-    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,)</span>
+    <span class="n">required_if</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;mode&#39;</span><span class="p">,</span> <span class="s1">&#39;delete&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;device_unique_name&#39;</span><span class="p">]],</span>
+        <span class="p">[</span><span class="s1">&#39;mode&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;device_serial&#39;</span><span class="p">,</span> <span class="s1">&#39;device_username&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;device_password&#39;</span><span class="p">,</span> <span class="s1">&#39;device_unique_name&#39;</span><span class="p">,</span> <span class="s1">&#39;device_ip&#39;</span><span class="p">,</span> <span class="s1">&#39;mgmt_mode&#39;</span><span class="p">,</span> <span class="s1">&#39;platform_str&#39;</span><span class="p">]]</span>
 
-    <span class="c1"># validate required arguments are passed; not used in argument_spec to allow params to be called from provider</span>
-    <span class="c1"># check if params are set</span>
-    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+    <span class="p">]</span>
 
-    <span class="c1"># CHECK IF LOGIN FAILED</span>
-    <span class="n">faz</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">required_if</span><span class="o">=</span><span class="n">required_if</span><span class="p">,</span> <span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiAnalyzer Failed&quot;</span><span class="p">)</span>
+    <span class="c1"># START SESSION LOGIC</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_ip&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;device_username&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_username&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;device_password&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_password&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;device_unique_name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;sn&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_serial&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;os_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;mgmt_mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mgmt_mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;os_minor_vers&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_minor_vers&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;os_ver&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_ver&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;platform_str&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform_str&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;faz.quota&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;faz_quota&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;device_action&quot;</span><span class="p">:</span> <span class="bp">None</span>
+    <span class="p">}</span>
+    <span class="c1"># INSERT THE PARAMGRAM INTO THE MODULE SO WHEN WE PASS IT TO MOD_UTILS.FortiManagerHandler IT HAS THAT INFO</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_action&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;add_model&quot;</span>
+    <span class="k">elif</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;promote&quot;</span><span class="p">:</span>
+        <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_action&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;promote_unreg&quot;</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+
+    <span class="c1"># TRY TO INIT THE CONNECTION SOCKET PATH AND FortiManagerHandler OBJECT AND TOOLS</span>
+    <span class="n">faz</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">)</span>
+        <span class="n">faz</span> <span class="o">=</span> <span class="n">FortiAnalyzerHandler</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="n">faz</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">FAZCommon</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># START SESSION LOGIC</span>
-        <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_ip&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;device_username&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_username&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;device_password&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_password&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;device_unique_name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;sn&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_serial&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;os_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;mgmt_mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mgmt_mode&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;os_minor_vers&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_minor_vers&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;os_ver&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_ver&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;platform_str&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform_str&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;faz.quota&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;faz_quota&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;device_action&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_action&quot;</span><span class="p">]</span>
-        <span class="p">}</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">FAIL_SOCKET_MSG</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;present&quot;</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_action&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;promote_unreg&quot;</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ip&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-                    <span class="n">results</span> <span class="o">=</span> <span class="n">faz_approve_unregistered_device_by_ip</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-                <span class="k">elif</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-                    <span class="n">results</span> <span class="o">=</span> <span class="n">faz_approve_unregistered_device_by_name</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">results</span> <span class="o">=</span> <span class="n">faz_add_device</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">20010</span><span class="p">]:</span>
-                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;ADDING Device Failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c1"># BEGIN MODULE-SPECIFIC LOGIC -- THINGS NEED TO HAPPEN DEPENDING ON THE ENDPOINT AND OPERATION</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
 
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">faz_add_device</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FAZBaseException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;An error occurred trying to add the device. Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
 
-        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;absent&quot;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;promote&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ip&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="n">faz_approve_unregistered_device_by_ip</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="n">faz_approve_unregistered_device_by_name</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FAZBaseException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;An error occurred trying to promote the device. Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
             <span class="n">results</span> <span class="o">=</span> <span class="n">faz_delete_device</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;DELETING Device Failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="c1"># logout</span>
-    <span class="n">faz</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-    <span class="c1"># results is returned as a tuple</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FAZBaseException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;An error occurred trying to delete the device. Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+    <span class="c1"># PROCESS RESULTS</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">faz</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>
+                            <span class="n">ansible_facts</span><span class="o">=</span><span class="n">faz</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FAZBaseException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;An error occurred with govern_response(). Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+    <span class="c1"># This should only be hit if faz.govern_response is missed or failed somehow. In fact. It should never be hit.</span>
+    <span class="c1"># But it&#39;s here JIC.</span>
     <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -576,6 +562,7 @@
 <span class="c1">#</span>
 
 <span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
 <span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
 
 <span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span>
@@ -587,11 +574,11 @@
 <span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">---</span>
 <span class="s1">module: faz_device</span>
-<span class="s1">version_added: &quot;2.6&quot;</span>
+<span class="s1">version_added: &quot;2.9&quot;</span>
 <span class="s1">author: Luke Weighall (@lweighall)</span>
 <span class="s1">short_description: Add or remove device</span>
 <span class="s1">description:</span>
-<span class="s1">  - Add or remove a device or list of devices to FortiAnalyzer Device Manager</span>
+<span class="s1">  - Add or remove a device or list of devices to FortiAnalyzer Device Manager. ADOM Capable.</span>
 
 <span class="s1">options:</span>
 <span class="s1">  adom:</span>
@@ -599,46 +586,37 @@
 <span class="s1">      - The ADOM the configuration should belong to.</span>
 <span class="s1">    required: true</span>
 <span class="s1">    default: root</span>
-<span class="s1">  host:</span>
+
+<span class="s1">  mode:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - The FortiManager&#39;s Address.</span>
-<span class="s1">    required: true</span>
-<span class="s1">  username:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The username used to authenticate with the FortiManager.</span>
+<span class="s1">      - Add or delete devices. Or promote unregistered devices that are in the FortiAnalyzer &quot;waiting pool&quot;</span>
 <span class="s1">    required: false</span>
-<span class="s1">  password:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The password associated with the username account.</span>
-<span class="s1">    required: false</span>
-<span class="s1">  state:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - The desired state of the specified object.</span>
-<span class="s1">      - absent will delete the object if it exists.</span>
-<span class="s1">      - present will create the configuration if needed.</span>
-<span class="s1">    required: false</span>
-<span class="s1">    default: present</span>
-<span class="s1">    choices: [&quot;absent&quot;, &quot;present&quot;]</span>
+<span class="s1">    default: add</span>
+<span class="s1">    choices: [&quot;add&quot;, &quot;delete&quot;, &quot;promote&quot;]</span>
 
 <span class="s1">  device_username:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - The username of the device being added to FortiManager.</span>
+<span class="s1">      - The username of the device being added to FortiAnalyzer.</span>
 <span class="s1">    required: false</span>
+
 <span class="s1">  device_password:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - The password of the device being added to FortiManager.</span>
+<span class="s1">      - The password of the device being added to FortiAnalyzer.</span>
 <span class="s1">    required: false</span>
+
 <span class="s1">  device_ip:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - The IP of the device being added to FortiManager.</span>
+<span class="s1">      - The IP of the device being added to FortiAnalyzer.</span>
 <span class="s1">    required: false</span>
+
 <span class="s1">  device_unique_name:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - The desired &quot;friendly&quot; name of the device being added to FortiManager.</span>
+<span class="s1">      - The desired &quot;friendly&quot; name of the device being added to FortiAnalyzer.</span>
 <span class="s1">    required: false</span>
+
 <span class="s1">  device_serial:</span>
 <span class="s1">    description:</span>
-<span class="s1">      - The serial number of the device being added to FortiManager.</span>
+<span class="s1">      - The serial number of the device being added to FortiAnalyzer.</span>
 <span class="s1">    required: false</span>
 
 <span class="s1">  os_type:</span>
@@ -646,30 +624,29 @@
 <span class="s1">      - The os type of the device being added (default 0).</span>
 <span class="s1">    required: true</span>
 <span class="s1">    choices: [&quot;unknown&quot;, &quot;fos&quot;, &quot;fsw&quot;, &quot;foc&quot;, &quot;fml&quot;, &quot;faz&quot;, &quot;fwb&quot;, &quot;fch&quot;, &quot;fct&quot;, &quot;log&quot;, &quot;fmg&quot;, &quot;fsa&quot;, &quot;fdd&quot;, &quot;fac&quot;]</span>
+
 <span class="s1">  mgmt_mode:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - Management Mode of the device you are adding.</span>
 <span class="s1">    choices: [&quot;unreg&quot;, &quot;fmg&quot;, &quot;faz&quot;, &quot;fmgfaz&quot;]</span>
 <span class="s1">    required: true</span>
+
 <span class="s1">  os_minor_vers:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - Minor OS rev of the device</span>
 <span class="s1">    required: true</span>
+
 <span class="s1">  os_ver:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - Major OS rev of the device</span>
 <span class="s1">    required: true</span>
 <span class="s1">    choices: [&quot;unknown&quot;, &quot;0.0&quot;, &quot;1.0&quot;, &quot;2.0&quot;, &quot;3.0&quot;, &quot;4.0&quot;, &quot;5.0&quot;, &quot;6.0&quot;]</span>
+
 <span class="s1">  platform_str:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - Required for determine the platform for VM platforms. ie FortiGate-VM64</span>
 <span class="s1">    required: false</span>
-<span class="s1">  device_action:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - Specify add device operations, or leave blank to add a real device from scratch</span>
-<span class="s1">    required: false</span>
-<span class="s1">    choices: [&quot;add_model&quot;, &quot;promote_unreg&quot;]</span>
-<span class="s1">    default: &quot;add_model&quot;</span>
+
 <span class="s1">  faz_quota:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - Specifies the quota for the device in FAZ</span>
@@ -677,13 +654,9 @@
 
 <span class="s1">&#39;&#39;&#39;</span>
 
-
 <span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
 <span class="s1">- name: DISCOVER AND ADD DEVICE A PHYSICAL FORTIGATE</span>
 <span class="s1">  faz_device:</span>
-<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    adom: &quot;root&quot;</span>
 <span class="s1">    device_username: &quot;admin&quot;</span>
 <span class="s1">    device_password: &quot;admin&quot;</span>
@@ -699,9 +672,6 @@
 
 <span class="s1">- name: DISCOVER AND ADD DEVICE A VIRTUAL FORTIGATE</span>
 <span class="s1">  faz_device:</span>
-<span class="s1">    host: &quot;{{inventory_hostname}}&quot;</span>
-<span class="s1">    username: &quot;{{ username }}&quot;</span>
-<span class="s1">    password: &quot;{{ password }}&quot;</span>
 <span class="s1">    adom: &quot;root&quot;</span>
 <span class="s1">    device_username: &quot;admin&quot;</span>
 <span class="s1">    device_password: &quot;admin&quot;</span>
@@ -713,6 +683,38 @@
 <span class="s1">    minor_rev: 6</span>
 <span class="s1">    state: &quot;present&quot;</span>
 <span class="s1">    platform_str: &quot;FortiGate-VM64&quot;</span>
+
+<span class="s1">- name: DELETE DEVICE FGT01</span>
+<span class="s1">  faz_device:</span>
+<span class="s1">    adom: &quot;root&quot;</span>
+<span class="s1">    device_unique_name: &quot;ansible-fgt01&quot;</span>
+<span class="s1">    mode: &quot;delete&quot;</span>
+
+<span class="s1">- name: DELETE DEVICE FGT02</span>
+<span class="s1">  faz_device:</span>
+<span class="s1">    adom: &quot;root&quot;</span>
+<span class="s1">    device_unique_name: &quot;ansible-fgt02&quot;</span>
+<span class="s1">    mode: &quot;delete&quot;</span>
+
+<span class="s1">- name: PROMOTE FGT01 IN FAZ BY IP</span>
+<span class="s1">  faz_device:</span>
+<span class="s1">    adom: &quot;root&quot;</span>
+<span class="s1">    device_password: &quot;fortinet&quot;</span>
+<span class="s1">    device_ip: &quot;10.7.220.151&quot;</span>
+<span class="s1">    device_username: &quot;ansible&quot;</span>
+<span class="s1">    mgmt_mode: &quot;faz&quot;</span>
+<span class="s1">    mode: &quot;promote&quot;</span>
+
+
+<span class="s1">- name: PROMOTE FGT02 IN FAZ</span>
+<span class="s1">  faz_device:</span>
+<span class="s1">    adom: &quot;root&quot;</span>
+<span class="s1">    device_password: &quot;fortinet&quot;</span>
+<span class="s1">    device_unique_name: &quot;ansible-fgt02&quot;</span>
+<span class="s1">    device_username: &quot;ansible&quot;</span>
+<span class="s1">    mgmt_mode: &quot;faz&quot;</span>
+<span class="s1">    mode: &quot;promote&quot;</span>
+
 <span class="s1">&#39;&#39;&#39;</span>
 
 <span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
@@ -722,19 +724,15 @@
 <span class="s2">  type: string</span>
 <span class="s2">&quot;&quot;&quot;</span>
 
-<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span><span class="p">,</span> <span class="n">env_fallback</span>
-<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.fortimanager</span> <span class="kn">import</span> <span class="n">AnsibleFortiManager</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.connection</span> <span class="kn">import</span> <span class="n">Connection</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortianalyzer.fortianalyzer</span> <span class="kn">import</span> <span class="n">FortiAnalyzerHandler</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortianalyzer.common</span> <span class="kn">import</span> <span class="n">FAZBaseException</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortianalyzer.common</span> <span class="kn">import</span> <span class="n">FAZCommon</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortianalyzer.common</span> <span class="kn">import</span> <span class="n">FAZMethods</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortianalyzer.common</span> <span class="kn">import</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortianalyzer.common</span> <span class="kn">import</span> <span class="n">FAIL_SOCKET_MSG</span>
 
-
-
-<span class="c1"># check for pyFMG lib</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="kn">from</span> <span class="nn">pyFMG.fortimgr</span> <span class="kn">import</span> <span class="n">FortiManager</span>
-    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">True</span>
-<span class="k">except</span> <span class="ne">ImportError</span><span class="p">:</span>
-    <span class="n">HAS_PYFMGR</span> <span class="o">=</span> <span class="bp">False</span>
-
-<span class="c1">#import pydevd</span>
 
 <span class="k">def</span> <span class="nf">faz_add_device</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -761,15 +759,14 @@
     <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;faz.quota&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
         <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;device&quot;</span><span class="p">][</span><span class="s2">&quot;faz.quota&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;faz.quota&quot;</span><span class="p">]</span>
 
-
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvm/cmd/add/device/&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FAZMethods</span><span class="o">.</span><span class="n">EXEC</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 
 
 <span class="k">def</span> <span class="nf">faz_delete_device</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
-<span class="sd">    This method deletes a device from the FMGR</span>
+<span class="sd">    This method deletes a device from the FAZ</span>
 <span class="sd">    &quot;&quot;&quot;</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
@@ -777,29 +774,31 @@
     <span class="p">}</span>
 
     <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/dvm/cmd/del/device/&#39;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FAZMethods</span><span class="o">.</span><span class="n">EXEC</span><span class="p">)</span>
     <span class="k">return</span> <span class="n">response</span>
 
 
 <span class="k">def</span> <span class="nf">faz_get_unknown_devices</span><span class="p">(</span><span class="n">faz</span><span class="p">):</span>
-    <span class="sd">&#39;&#39;&#39;</span>
+    <span class="sd">&quot;&quot;&quot;</span>
 <span class="sd">    This method gets devices with an unknown management type field</span>
-<span class="sd">    &#39;&#39;&#39;</span>
+<span class="sd">    &quot;&quot;&quot;</span>
 
-    <span class="nb">filter</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mgmt_mode&quot;</span><span class="p">,</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">]</span>
+    <span class="n">faz_filter</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;mgmt_mode&quot;</span><span class="p">,</span> <span class="s2">&quot;==&quot;</span><span class="p">,</span> <span class="s2">&quot;0&quot;</span><span class="p">]</span>
 
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
-        <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="nb">filter</span>
+        <span class="s2">&quot;filter&quot;</span><span class="p">:</span> <span class="n">faz_filter</span>
     <span class="p">}</span>
 
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/dvmdb/device&quot;</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FAZMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
 
     <span class="k">return</span> <span class="n">response</span>
 
 
 <span class="k">def</span> <span class="nf">faz_approve_unregistered_device_by_ip</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    This method approves unregistered devices by ip.</span>
+<span class="sd">    &quot;&quot;&quot;</span>
     <span class="c1"># TRY TO FIND DETAILS ON THIS UNREGISTERED DEVICE</span>
     <span class="n">unknown_devices</span> <span class="o">=</span> <span class="n">faz_get_unknown_devices</span><span class="p">(</span><span class="n">faz</span><span class="p">)</span>
     <span class="n">target_device</span> <span class="o">=</span> <span class="bp">None</span>
@@ -831,12 +830,10 @@
         <span class="n">add_device</span> <span class="o">=</span> <span class="n">faz_add_device</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">target_device_paramgram</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">add_device</span>
 
-
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;Couldn&#39;t find the desired device with ip: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_ip&quot;</span><span class="p">]))</span>
 
 
 <span class="k">def</span> <span class="nf">faz_approve_unregistered_device_by_name</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
-
     <span class="c1"># TRY TO FIND DETAILS ON THIS UNREGISTERED DEVICE</span>
     <span class="n">unknown_devices</span> <span class="o">=</span> <span class="n">faz_get_unknown_devices</span><span class="p">(</span><span class="n">faz</span><span class="p">)</span>
     <span class="n">target_device</span> <span class="o">=</span> <span class="bp">None</span>
@@ -868,22 +865,18 @@
         <span class="n">add_device</span> <span class="o">=</span> <span class="n">faz_add_device</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">target_device_paramgram</span><span class="p">)</span>
         <span class="k">return</span> <span class="n">add_device</span>
 
-
     <span class="k">return</span> <span class="nb">str</span><span class="p">(</span><span class="s2">&quot;Couldn&#39;t find the desired device with name: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">]))</span>
 
 
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
         <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
-        <span class="n">host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_USERNAME&quot;</span><span class="p">])),</span>
-        <span class="n">password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">fallback</span><span class="o">=</span><span class="p">(</span><span class="n">env_fallback</span><span class="p">,</span> <span class="p">[</span><span class="s2">&quot;ANSIBLE_NET_PASSWORD&quot;</span><span class="p">]),</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-        <span class="n">state</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;absent&quot;</span><span class="p">,</span> <span class="s2">&quot;present&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;present&quot;</span><span class="p">),</span>
+        <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;promote&quot;</span><span class="p">],</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
 
         <span class="n">device_ip</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">device_username</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">device_password</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">no_log</span><span class="o">=</span><span class="bp">True</span><span class="p">),</span>
-        <span class="n">device_unique_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">device_unique_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">device_serial</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
 
         <span class="n">os_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
@@ -891,60 +884,85 @@
         <span class="n">os_minor_vers</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">os_ver</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">platform_str</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
-        <span class="n">device_action</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add_model&quot;</span><span class="p">),</span>
         <span class="n">faz_quota</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">)</span>
     <span class="p">)</span>
 
-    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,)</span>
+    <span class="n">required_if</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">[</span><span class="s1">&#39;mode&#39;</span><span class="p">,</span> <span class="s1">&#39;delete&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;device_unique_name&#39;</span><span class="p">]],</span>
+        <span class="p">[</span><span class="s1">&#39;mode&#39;</span><span class="p">,</span> <span class="s1">&#39;add&#39;</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;device_serial&#39;</span><span class="p">,</span> <span class="s1">&#39;device_username&#39;</span><span class="p">,</span>
+                         <span class="s1">&#39;device_password&#39;</span><span class="p">,</span> <span class="s1">&#39;device_unique_name&#39;</span><span class="p">,</span> <span class="s1">&#39;device_ip&#39;</span><span class="p">,</span> <span class="s1">&#39;mgmt_mode&#39;</span><span class="p">,</span> <span class="s1">&#39;platform_str&#39;</span><span class="p">]]</span>
 
-    <span class="c1"># validate required arguments are passed; not used in argument_spec to allow params to be called from provider</span>
-    <span class="c1"># check if params are set</span>
-    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span> <span class="ow">or</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Host and username are required for connection&quot;</span><span class="p">)</span>
+    <span class="p">]</span>
 
-    <span class="c1"># CHECK IF LOGIN FAILED</span>
-    <span class="n">faz</span> <span class="o">=</span> <span class="n">AnsibleFortiManager</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;host&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;username&quot;</span><span class="p">],</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;password&quot;</span><span class="p">])</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">login</span><span class="p">()</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">required_if</span><span class="o">=</span><span class="n">required_if</span><span class="p">,</span> <span class="p">)</span>
 
-    <span class="k">if</span> <span class="n">response</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Connection to FortiAnalyzer Failed&quot;</span><span class="p">)</span>
+    <span class="c1"># START SESSION LOGIC</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_ip&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;device_username&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_username&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;device_password&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_password&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;device_unique_name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;sn&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_serial&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;os_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;mgmt_mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mgmt_mode&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;os_minor_vers&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_minor_vers&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;os_ver&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_ver&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;platform_str&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform_str&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;faz.quota&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;faz_quota&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;device_action&quot;</span><span class="p">:</span> <span class="bp">None</span>
+    <span class="p">}</span>
+    <span class="c1"># INSERT THE PARAMGRAM INTO THE MODULE SO WHEN WE PASS IT TO MOD_UTILS.FortiManagerHandler IT HAS THAT INFO</span>
+
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+        <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_action&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;add_model&quot;</span>
+    <span class="k">elif</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;promote&quot;</span><span class="p">:</span>
+        <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_action&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;promote_unreg&quot;</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+
+    <span class="c1"># TRY TO INIT THE CONNECTION SOCKET PATH AND FortiManagerHandler OBJECT AND TOOLS</span>
+    <span class="n">faz</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">)</span>
+        <span class="n">faz</span> <span class="o">=</span> <span class="n">FortiAnalyzerHandler</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="n">faz</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">FAZCommon</span><span class="p">()</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="c1"># START SESSION LOGIC</span>
-        <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
-            <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;ip&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_ip&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;device_username&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_username&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;device_password&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_password&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;device_unique_name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;sn&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_serial&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;os_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_type&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;mgmt_mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mgmt_mode&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;os_minor_vers&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_minor_vers&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;os_ver&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;os_ver&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;platform_str&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;platform_str&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;faz.quota&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;faz_quota&quot;</span><span class="p">],</span>
-            <span class="s2">&quot;device_action&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;device_action&quot;</span><span class="p">]</span>
-        <span class="p">}</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">FAIL_SOCKET_MSG</span><span class="p">)</span>
 
-        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;present&quot;</span><span class="p">:</span>
-            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_action&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;promote_unreg&quot;</span><span class="p">:</span>
-                <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ip&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-                    <span class="n">results</span> <span class="o">=</span> <span class="n">faz_approve_unregistered_device_by_ip</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-                <span class="k">elif</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
-                    <span class="n">results</span> <span class="o">=</span> <span class="n">faz_approve_unregistered_device_by_name</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-            <span class="k">else</span><span class="p">:</span>
-                <span class="n">results</span> <span class="o">=</span> <span class="n">faz_add_device</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="o">-</span><span class="mi">20010</span><span class="p">]:</span>
-                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;ADDING Device Failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="c1"># BEGIN MODULE-SPECIFIC LOGIC -- THINGS NEED TO HAPPEN DEPENDING ON THE ENDPOINT AND OPERATION</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
 
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;add&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">faz_add_device</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FAZBaseException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;An error occurred trying to add the device. Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
 
-        <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;state&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;absent&quot;</span><span class="p">:</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;promote&quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;ip&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="n">faz_approve_unregistered_device_by_ip</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">elif</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;device_unique_name&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+                <span class="n">results</span> <span class="o">=</span> <span class="n">faz_approve_unregistered_device_by_name</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FAZBaseException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;An error occurred trying to promote the device. Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
             <span class="n">results</span> <span class="o">=</span> <span class="n">faz_delete_device</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;DELETING Device Failed&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
-    <span class="c1"># logout</span>
-    <span class="n">faz</span><span class="o">.</span><span class="n">logout</span><span class="p">()</span>
-    <span class="c1"># results is returned as a tuple</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FAZBaseException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;An error occurred trying to delete the device. Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+    <span class="c1"># PROCESS RESULTS</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">faz</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>
+                            <span class="n">ansible_facts</span><span class="o">=</span><span class="n">faz</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FAZBaseException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;An error occurred with govern_response(). Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+    <span class="c1"># This should only be hit if faz.govern_response is missed or failed somehow. In fact. It should never be hit.</span>
+    <span class="c1"># But it&#39;s here JIC.</span>
     <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 
 
@@ -963,7 +981,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../faz_playbooks.html" class="btn btn-neutral float-right" title="Playbook Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="faz_query.html" class="btn btn-neutral float-right" title="faz_query" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../faz_modules.html" class="btn btn-neutral" title="Modules" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

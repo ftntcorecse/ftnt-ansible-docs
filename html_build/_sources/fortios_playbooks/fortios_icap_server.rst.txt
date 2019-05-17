@@ -21,6 +21,7 @@ Playbook Task Examples
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           icap_server:
             state: "present"
             ip-address: "<your_own_value>"
@@ -35,33 +36,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/icap/fortios_icap_server_example.yml
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure ICAP servers.
-        fortios_icap_server:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          icap_server:
-            state: "present"
-            ip-address: "<your_own_value>"
-            ip-version: "4"
-            ip6-address: "<your_own_value>"
-            max-connections: "6"
-            name: "default_name_7"
-            port: "8"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

@@ -1,0 +1,389 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fsm_device_monitors &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fsm_discovery" href="fsm_discovery.html" />
+    <link rel="prev" title="fsm_custom_query" href="fsm_custom_query.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../fmgr_root.html">FortiManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../fsm_root.html">FortiSIEM</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../fsm_getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fsm_use_cases.html">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fsm_modules.html">Modules</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../fsm_playbooks.html">Playbook Examples</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fsm_cmdb_devices.html">fsm_cmdb_devices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_credentials.html">fsm_credentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_custom_query.html">fsm_custom_query</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fsm_device_monitors</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#playbook-task-examples">Playbook Task Examples</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#playbook-file-examples">Playbook File Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_discovery.html">fsm_discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_maintenance.html">fsm_maintenance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_organizations.html">fsm_organizations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_report_query.html">fsm_report_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_send_syslog.html">fsm_send_syslog</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_verify_device_ip.html">fsm_verify_device_ip</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fsm_root.html">FortiSIEM</a> &raquo;</li>
+        
+          <li><a href="../fsm_playbooks.html">Playbook Examples</a> &raquo;</li>
+        
+      <li>fsm_device_monitors</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fsm_playbooks/fsm_device_monitors.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fsm-device-monitors">
+<h1>fsm_device_monitors<a class="headerlink" href="#fsm-device-monitors" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="playbook-task-examples">
+<h2>Playbook Task Examples<a class="headerlink" href="#playbook-task-examples" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET SIMPLE MONITOR LIST FROM CMDB</span>
+  <span class="l l-Scalar l-Scalar-Plain">fsm_device_monitors</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;short_all&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">export_json_to_screen</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">export_json_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/monitors_out1.json&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">export_xml_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/monitors_out1.xml&quot;</span>
+
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET SIMPLE MONITOR LIST FROM CMDB IP RANGE</span>
+  <span class="l l-Scalar l-Scalar-Plain">fsm_device_monitors</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;ip_range&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ip_range</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.0.0.5-10.0.0.15&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">export_json_to_screen</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">export_json_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/monitors_out2.json&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">export_xml_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/monitors_out2.xml&quot;</span>
+
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET DETAILED MONITOR INFO ON ONE DEVICE</span>
+  <span class="l l-Scalar l-Scalar-Plain">fsm_device_monitors</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;detailed_single&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.0.0.5&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">export_json_to_screen</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">export_json_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/monitors_out3.json&quot;</span>
+    <span class="l l-Scalar l-Scalar-Plain">export_xml_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/monitors_out3.xml&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="playbook-file-examples">
+<h2>Playbook File Examples<a class="headerlink" href="#playbook-file-examples" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="enable-monitors-xml">
+<h3>enable_monitors.xml<a class="headerlink" href="#enable-monitors-xml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>       <span class="nt">&lt;configureMonitoring&gt;</span>
+    <span class="nt">&lt;systemMonitors&gt;</span>
+        <span class="nt">&lt;systemMonitor</span> <span class="na">ip =</span> <span class="s">&quot;10.0.0.5&quot;</span> <span class="na">method =</span> <span class="s">&quot;SNMP&quot;</span> <span class="na">type =</span> <span class="s">&quot;CPU Util&quot;</span> <span class="na">enable =</span> <span class="s">&quot;true&quot;</span> <span class="na">interval =</span> <span class="s">&quot;120&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;systemMonitor</span> <span class="na">ip =</span> <span class="s">&quot;10.0.0.5&quot;</span> <span class="na">method =</span> <span class="s">&quot;VMSDK&quot;</span> <span class="na">type =</span> <span class="s">&quot;VMware Hardware Status&quot;</span> <span class="na">enable =</span> <span class="s">&quot;true&quot;</span> <span class="na">interval =</span> <span class="s">&quot;120&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/systemMonitors&gt;</span>
+    <span class="nt">&lt;eventPullingObjs&gt;</span>
+        <span class="nt">&lt;eventPullingObj</span> <span class="na">ip=</span><span class="s">&quot;10.0.0.10&quot;</span> <span class="na">method=</span><span class="s">&quot;VM_SDK&quot;</span> <span class="na">enable=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;eventPullingObj</span> <span class="na">ip=</span><span class="s">&quot;10.0.0.138&quot;</span> <span class="na">method=</span><span class="s">&quot;MS_WMI&quot;</span> <span class="na">enable=</span><span class="s">&quot;true&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/eventPullingObjs&gt;</span>
+<span class="nt">&lt;/configureMonitoring&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="disable-monitors-xml">
+<h3>disable_monitors.xml<a class="headerlink" href="#disable-monitors-xml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-xml notranslate"><div class="highlight"><pre><span></span>       <span class="nt">&lt;configureMonitoring&gt;</span>
+    <span class="nt">&lt;systemMonitors&gt;</span>
+        <span class="nt">&lt;systemMonitor</span> <span class="na">ip =</span> <span class="s">&quot;10.0.0.5&quot;</span> <span class="na">method =</span> <span class="s">&quot;SNMP&quot;</span> <span class="na">type =</span> <span class="s">&quot;CPU Util&quot;</span> <span class="na">enable =</span> <span class="s">&quot;false&quot;</span> <span class="na">interval =</span> <span class="s">&quot;120&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;systemMonitor</span> <span class="na">ip =</span> <span class="s">&quot;10.0.0.5&quot;</span> <span class="na">method =</span> <span class="s">&quot;VMSDK&quot;</span> <span class="na">type =</span> <span class="s">&quot;VMware Hardware Status&quot;</span> <span class="na">enable =</span> <span class="s">&quot;false&quot;</span> <span class="na">interval =</span> <span class="s">&quot;120&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/systemMonitors&gt;</span>
+    <span class="nt">&lt;eventPullingObjs&gt;</span>
+        <span class="nt">&lt;eventPullingObj</span> <span class="na">ip=</span><span class="s">&quot;10.0.0.10&quot;</span> <span class="na">method=</span><span class="s">&quot;VM_SDK&quot;</span> <span class="na">enable=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+        <span class="nt">&lt;eventPullingObj</span> <span class="na">ip=</span><span class="s">&quot;10.0.0.138&quot;</span> <span class="na">method=</span><span class="s">&quot;MS_WMI&quot;</span> <span class="na">enable=</span><span class="s">&quot;false&quot;</span><span class="nt">/&gt;</span>
+    <span class="nt">&lt;/eventPullingObjs&gt;</span>
+<span class="nt">&lt;/configureMonitoring&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fsm-get-monitors-yml">
+<h3>fsm_get_monitors.yml<a class="headerlink" href="#fsm-get-monitors-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET DEVICE MONITORS</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiSIEM</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET SIMPLE MONITOR LIST FROM CMDB</span>
+      <span class="l l-Scalar l-Scalar-Plain">fsm_device_monitors</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;short_all&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_screen</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/monitors_out1.json&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_xml_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/monitors_out1.xml&quot;</span>
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET SIMPLE MONITOR LIST FROM CMDB IP RANGE</span>
+      <span class="l l-Scalar l-Scalar-Plain">fsm_device_monitors</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;ip_range&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">ip_range</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.0.0.5-10.0.0.15&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_screen</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/monitors_out2.json&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_xml_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/monitors_out2.xml&quot;</span>
+
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET DETAILED MONITOR INFO ON ONE DEVICE</span>
+      <span class="l l-Scalar l-Scalar-Plain">fsm_device_monitors</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;detailed_single&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">ip</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.0.0.5&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_screen</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/monitors_out3.json&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_xml_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/monitors_out3.xml&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="fsm-update-monitors-yml">
+<h3>fsm_update_monitors.yml<a class="headerlink" href="#fsm-update-monitors-yml" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">GET DEVICE MONITORS</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiSIEM</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">DISABLE MONITORS</span>
+      <span class="l l-Scalar l-Scalar-Plain">fsm_device_monitors</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;update&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_screen</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/disable_monitors.json&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_xml_to_file_path</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/disable_monitors.xml&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">update_xml_file</span><span class="p p-Indicator">:</span> <span class="s">&quot;/root/git/dev_queue/examples/fsm_device_monitors/disable_monitors.xml&quot;</span>
+
+<span class="c1">#    - name: ENABLE MONITORS</span>
+<span class="c1">#      fsm_device_monitors:</span>
+<span class="c1">#        host: &quot;{{ inventory_hostname }}&quot;</span>
+<span class="c1">#        username: &quot;{{ username }}&quot;</span>
+<span class="c1">#        password: &quot;{{ password }}&quot;</span>
+<span class="c1">#        ignore_ssl_errors: &quot;enable&quot;</span>
+<span class="c1">#        mode: &quot;update&quot;</span>
+<span class="c1">#        export_json_to_screen: &quot;enable&quot;</span>
+<span class="c1">#        export_json_to_file_path: &quot;/root/enable_monitors.json&quot;</span>
+<span class="c1">#        export_xml_to_file_path: &quot;/root/enable_monitors.xml&quot;</span>
+<span class="c1">#        update_xml_file: &quot;/root/git/dev_queue/examples/fsm_device_monitors/enable_monitors.xml&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fsm_discovery.html" class="btn btn-neutral float-right" title="fsm_discovery" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fsm_custom_query.html" class="btn btn-neutral" title="fsm_custom_query" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

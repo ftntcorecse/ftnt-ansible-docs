@@ -32,6 +32,7 @@ security_profile.yml
 .. code-block:: yaml
 
 
+
     - name: Create and Delete security profile in FMG
       hosts: FortiManager
       connection: httpapi
@@ -55,7 +56,8 @@ security_profile.yml
 fmgr_secprof_profile_group_run_all.sh
 +++++++++++++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook security_profile.yml -vvvv
 

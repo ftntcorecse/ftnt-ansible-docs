@@ -1,0 +1,365 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Use Cases &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Modules" href="fsm_modules.html" />
+    <link rel="prev" title="Getting Started" href="fsm_getting_started.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fmgr_root.html">FortiManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fortios_root.html">FortiGate (FortiOS)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="fsm_root.html">FortiSIEM</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="fsm_getting_started.html">Getting Started</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Use Cases</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#module-use-cases">Module Use Cases</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#fsm-cmdb-devices">fsm_cmdb_devices</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fsm-credentials">fsm_credentials</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fsm-custom-query">fsm_custom_query</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fsm-device-monitors">fsm_device_monitors</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fsm-discovery">fsm_discovery</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fsm-maintenance">fsm_maintenance</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fsm-organizations">fsm_organizations</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fsm-report-query">fsm_report_query</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fsm-send-syslog">fsm_send_syslog</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#fsm-verify-device-ip">fsm_verify_device_ip</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fsm_modules.html">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fsm_playbooks.html">Playbook Examples</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fsm_roles.html">Roles</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="fsm_root.html">FortiSIEM</a> &raquo;</li>
+        
+      <li>Use Cases</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/fsm_use_cases.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="use-cases">
+<h1>Use Cases<a class="headerlink" href="#use-cases" title="Permalink to this headline">¶</a></h1>
+<p>In this guide will be a list of use cases for the Ansible modules provided for FortiSIEM.
+These are just some examples of what is possible. You are limited only by your imagination, with the power
+of ansible. If you develop a unique use case, we want to hear about it!</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The FortiSIEM Engineering Team has maintained an API guide for quite some time now.</p>
+<p>The Core CSE DevOps Team have provided Ansible modules for all published API’s in above referenced guide.</p>
+<p>The results from their efforts are the following ten modules:</p>
+<ul class="simple">
+<li>fsm_cmdb_devices</li>
+<li>fsm_credentials</li>
+<li>fsm_custom_query</li>
+<li>fsm_device_monitors</li>
+<li>fsm_discovery</li>
+<li>fsm_maintenance</li>
+<li>fsm_organizations</li>
+<li>fsm_report_query</li>
+<li>fsm_send_syslog</li>
+<li>fsm_verify_device_ip</li>
+</ul>
+</div>
+<div class="section" id="module-use-cases">
+<h2>Module Use Cases<a class="headerlink" href="#module-use-cases" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="fsm-cmdb-devices">
+<h3>fsm_cmdb_devices<a class="headerlink" href="#fsm-cmdb-devices" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>This module can be used to verify the presence of a device in FortiSIEM CMDB.</li>
+<li>It can called to get detailed information on a single device, or simple information on many devices.</li>
+<li>Able to return discovered methods, enabling the audit of credentials on devices.</li>
+<li>Can be used in Ansible to cross-reference inventory with third-party systems.</li>
+<li>Allows FortiSIEM inventory to be used in Ansible pipelines.</li>
+</ul>
+</div>
+<div class="section" id="fsm-credentials">
+<h3>fsm_credentials<a class="headerlink" href="#fsm-credentials" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>This module can be used to add or update credentials.</li>
+<li>Allows update/add of IP Mappings for credentials.</li>
+<li>Ad-hoc credential mappings, for commmon credentials, would assist in automatic discovery</li>
+<li>Pull list of Windows systems from another list accessible to ansible, create mappings for each</li>
+<li>Do the same ^ for any other type of system</li>
+<li>When new server detected, if IP isn’t under an existing credential mapping, map it.</li>
+</ul>
+</div>
+<div class="section" id="fsm-custom-query">
+<h3>fsm_custom_query<a class="headerlink" href="#fsm-custom-query" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>This module allows the query of any URI endpoint on a FortiSIEM system:<ul>
+<li>XML payloads are supported</li>
+<li>Allows use of any endpoint</li>
+</ul>
+</li>
+<li>Limited by your imagination. All of FortiSIEM is ran on APIs. 90% of them aren’t documented.</li>
+<li>Allows the integration of almost any FortiSIEM API endpoint, with any supported Ansible device.</li>
+</ul>
+</div>
+<div class="section" id="fsm-device-monitors">
+<h3>fsm_device_monitors<a class="headerlink" href="#fsm-device-monitors" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Quickly discover which monitors are in place for a FortiSIEM system.<ul>
+<li>Use this information to audit devices, or cross-reference with a list from another system.</li>
+</ul>
+</li>
+<li>Used to discover if monitors are in place for a device, or not.</li>
+</ul>
+</div>
+<div class="section" id="fsm-discovery">
+<h3>fsm_discovery<a class="headerlink" href="#fsm-discovery" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Allows the ad-hoc discovery of devices.</li>
+<li>If fsm_cmdb_devices or fsm_custom_query or fsm_report_query or
+fsm_verify_device doesn’t provide enough proof that a device is discovered, it can be remediated here.</li>
+<li>Keep FortiSIEM devices in-sync with another system or list accessible to Ansible.</li>
+</ul>
+</div>
+<div class="section" id="fsm-maintenance">
+<h3>fsm_maintenance<a class="headerlink" href="#fsm-maintenance" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Add or Delete FortiSIEM Maintenance Calendar Objects.</li>
+<li>Allows the synchronization of Maintenance Periods with other systems.</li>
+</ul>
+</div>
+<div class="section" id="fsm-organizations">
+<h3>fsm_organizations<a class="headerlink" href="#fsm-organizations" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Allows the addition or updating of any Organization, for a FortiSIEM instance in MSP mode.</li>
+<li>Create a web-hook into another system via Ansible to automatically create new
+organizations in FortiSIEM as they are created in other systems.</li>
+<li>Allows the definition of Collectors</li>
+<li>Get a list of organizations on a MSP instance of FortiSIEM.</li>
+</ul>
+</div>
+<div class="section" id="fsm-report-query">
+<h3>fsm_report_query<a class="headerlink" href="#fsm-report-query" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Allows the query of almost all data contained with FortiSIEM.</li>
+<li>How to Setup New Report:<ul>
+<li>Step 1 | Create the desired report in FSM GUI</li>
+<li>Step 2 | Export to XML</li>
+<li>Step 3 | Copy XML to Ansible Host</li>
+<li>Step 4 | Run XML report in Ansible to provide any information contained within FortiSIEM.</li>
+</ul>
+</li>
+<li>Do not under-estimate the power of this module. A report can be created for almost ANYTHING.</li>
+</ul>
+</div>
+<div class="section" id="fsm-send-syslog">
+<h3>fsm_send_syslog<a class="headerlink" href="#fsm-send-syslog" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Allows the logging of virtually any source to FortiSIEM via Syslog.</li>
+<li>Network protocols include UDP, TCP, and TCP over TLS.</li>
+<li>Usually requires a parser to understand what is being sent.</li>
+<li>An “ansible-generic” parser could be created to take in all events that happen to Ansible.</li>
+<li>Used to send events to FortiSIEM that are discovered by Ansible, or to track Ansible data pipelines.</li>
+</ul>
+</div>
+<div class="section" id="fsm-verify-device-ip">
+<h3>fsm_verify_device_ip<a class="headerlink" href="#fsm-verify-device-ip" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Checks by IP address only</li>
+<li>Returns if an IP address is present in the CMDB, if it has any events within the last 15m, and if
+any monitors are currently active.</li>
+<li>Scores devices based on the amount of data in the system for each device.</li>
+<li>Possible to send device scores to a text file for comparison.</li>
+<li>Makes identification of devices, “lacking in data”, much more easy.</li>
+</ul>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fsm_modules.html" class="btn btn-neutral float-right" title="Modules" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fsm_getting_started.html" class="btn btn-neutral" title="Getting Started" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

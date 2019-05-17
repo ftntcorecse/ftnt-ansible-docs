@@ -10,4 +10,4 @@ ensure FortiAnalyzer also complies to the httpapi plugin as FortiManager does.
    faz_getting_started.rst
    faz_modules.rst
    faz_playbooks.rst
-   faz_roles.rst
+..   faz_roles.rst

@@ -28,7 +28,7 @@
   <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="fmgr_fwobj_address" href="fmgr_fwobj_address.html" />
+    <link rel="next" title="fmgr_fortimeter" href="fmgr_fortimeter.html" />
     <link rel="prev" title="fmgr_device_group" href="fmgr_device_group.html" /> 
 
   
@@ -80,6 +80,7 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../fmgr_root.html">FortiManager</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_getting_started.html">Getting Started</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../fmgr_modules.html">Modules</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device.html">fmgr_device</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
@@ -91,6 +92,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
@@ -114,14 +116,15 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fsm_root.html">FortiSIEM</a></li>
 </ul>
 
             
@@ -865,9 +868,9 @@
         <span class="p">}</span>
 
         <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provision_targets&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provision_targets&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
             <span class="c1"># split the host on the space to get the mask out</span>
-            <span class="n">new_target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">}</span>
+            <span class="n">new_target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">target</span><span class="o">.</span><span class="n">strip</span><span class="p">()}</span>
             <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_target</span><span class="p">)</span>
 
         <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">targets</span>
@@ -1423,14 +1426,14 @@
     <span class="n">response</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;target-ip&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_fortianalyzer_target&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;others&quot;</span><span class="p">,</span>
     <span class="p">}</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
           <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
           <span class="s2">&quot;/device/profile/fortianalyzer&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span>
                                                  <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
     <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;hastarget&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;True&quot;</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;hastarget&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;False&quot;</span>
 
     <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">response</span>
@@ -1701,7 +1704,6 @@
                                  <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># PROCESS THE ADMIN OPTIONS</span>
         <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span>
@@ -1711,7 +1713,7 @@
                 <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_gui_theme&quot;</span><span class="p">])):</span>
 
             <span class="n">results</span> <span class="o">=</span> <span class="n">set_devprof_admin</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                                  <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
@@ -1738,7 +1740,7 @@
                 <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_source_ipv4&quot;</span><span class="p">],</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_validate_cert&quot;</span><span class="p">])):</span>
 
             <span class="n">results</span> <span class="o">=</span> <span class="n">set_devprof_smtp</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                                  <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
@@ -1748,7 +1750,7 @@
         <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span>
                <span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_suffix&quot;</span><span class="p">],</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_primary_ipv4&quot;</span><span class="p">],</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_secondary_ipv4&quot;</span><span class="p">])):</span>
             <span class="n">results</span> <span class="o">=</span> <span class="n">set_devprof_dns</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                                  <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
@@ -1758,7 +1760,7 @@
         <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_fortianalyzer_target&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
 
             <span class="n">results</span> <span class="o">=</span> <span class="n">set_devprof_faz</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                                  <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
@@ -1768,7 +1770,7 @@
         <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provision_targets&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
                 <span class="n">results</span> <span class="o">=</span> <span class="n">set_devprof_scope</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-                <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                                      <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
 
             <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
@@ -2486,9 +2488,9 @@
         <span class="p">}</span>
 
         <span class="n">targets</span> <span class="o">=</span> <span class="p">[]</span>
-        <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provision_targets&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">target</span> <span class="ow">in</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provision_targets&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">):</span>
             <span class="c1"># split the host on the space to get the mask out</span>
-            <span class="n">new_target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">target</span><span class="p">}</span>
+            <span class="n">new_target</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">target</span><span class="o">.</span><span class="n">strip</span><span class="p">()}</span>
             <span class="n">targets</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">new_target</span><span class="p">)</span>
 
         <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">targets</span>
@@ -2984,14 +2986,14 @@
     <span class="n">response</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
     <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
         <span class="s2">&quot;target-ip&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_fortianalyzer_target&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span>
+        <span class="s2">&quot;target&quot;</span><span class="p">:</span> <span class="s2">&quot;others&quot;</span><span class="p">,</span>
     <span class="p">}</span>
     <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;/pm/config/adom/{adom}&quot;</span> \
           <span class="s2">&quot;/devprof/{provisioning_template}&quot;</span> \
           <span class="s2">&quot;/device/profile/fortianalyzer&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">adom</span><span class="o">=</span><span class="n">adom</span><span class="p">,</span>
                                                  <span class="n">provisioning_template</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provisioning_template&quot;</span><span class="p">])</span>
     <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
-        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;hastarget&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;True&quot;</span>
+        <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;hastarget&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;False&quot;</span>
 
     <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">response</span>
@@ -3257,7 +3259,6 @@
                                  <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
-
     <span class="k">try</span><span class="p">:</span>
         <span class="c1"># PROCESS THE ADMIN OPTIONS</span>
         <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="p">(</span>
@@ -3267,7 +3268,7 @@
                 <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_gui_theme&quot;</span><span class="p">])):</span>
 
             <span class="n">results</span> <span class="o">=</span> <span class="n">set_devprof_admin</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                                  <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
@@ -3294,7 +3295,7 @@
                 <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_source_ipv4&quot;</span><span class="p">],</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;smtp_validate_cert&quot;</span><span class="p">])):</span>
 
             <span class="n">results</span> <span class="o">=</span> <span class="n">set_devprof_smtp</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                                  <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
@@ -3304,7 +3305,7 @@
         <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">v</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span>
                <span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_suffix&quot;</span><span class="p">],</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_primary_ipv4&quot;</span><span class="p">],</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;dns_secondary_ipv4&quot;</span><span class="p">])):</span>
             <span class="n">results</span> <span class="o">=</span> <span class="n">set_devprof_dns</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                                  <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
@@ -3314,7 +3315,7 @@
         <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;admin_fortianalyzer_target&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
 
             <span class="n">results</span> <span class="o">=</span> <span class="n">set_devprof_faz</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+            <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                                  <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
     <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
         <span class="k">raise</span> <span class="n">FMGBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
@@ -3324,7 +3325,7 @@
         <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;provision_targets&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
                 <span class="n">results</span> <span class="o">=</span> <span class="n">set_devprof_scope</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
-                <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+                <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span> <span class="n">good_codes</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">stop_on_success</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span>
                                      <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
 
             <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span><span class="p">:</span>
@@ -3365,7 +3366,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="fmgr_fwobj_address.html" class="btn btn-neutral float-right" title="fmgr_fwobj_address" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="fmgr_fortimeter.html" class="btn btn-neutral float-right" title="fmgr_fortimeter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="fmgr_device_group.html" class="btn btn-neutral" title="fmgr_device_group" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>

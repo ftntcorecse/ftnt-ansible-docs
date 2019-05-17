@@ -1,0 +1,36 @@
+=================================
+fortios_firewall_service_category
+=================================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: Configure service categories.
+        fortios_firewall_service_category:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          https: "False"
+          firewall_service_category:
+            state: "present"
+            comment: "Comment."
+            name: "default_name_4"
+
+
+
+Playbook File Examples
+----------------------
+
+%%PB_FILE_EXAMPLE_TOKEN%%
+

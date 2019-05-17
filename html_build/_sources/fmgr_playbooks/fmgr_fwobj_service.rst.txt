@@ -73,7 +73,8 @@ Playbook File Examples
 fmgr_fwobj_service_run_all.sh
 +++++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook fmgr_fwobj_service_delete_group.yml -vvvv
     ansible-playbook fmgr_fwobj_service_add_group.yml -vvvv
@@ -87,6 +88,7 @@ fmgr_fwobj_service_delete_group.yml
 +++++++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -110,6 +112,7 @@ fmgr_fwobj_service_add_group.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
@@ -131,6 +134,7 @@ fmgr_fwobj_service_delete_custom.yml
 ++++++++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -191,6 +195,7 @@ fmgr_fwobj_service_delete_category.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
@@ -224,6 +229,7 @@ fmgr_fwobj_service_add_custom.yml
 +++++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -295,6 +301,7 @@ fmgr_fwobj_service_add_category.yml
 +++++++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     

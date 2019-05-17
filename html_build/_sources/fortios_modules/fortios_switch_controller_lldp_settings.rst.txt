@@ -11,7 +11,7 @@ Metadata
 
 **Name:** fortios_switch_controller_lldp_settings
 
-**Description:** This module is able to configure a FortiGate or FortiOS by allowing the user to configure switch_controller feature and lldp_settings category. Examples includes all options and need to be adjusted to datasources before usage. Tested with FOS v6.0.2
+**Description:** This module is able to configure a FortiGate or FortiOS by allowing the user to set and modify switch_controller feature and lldp_settings category. Examples include all parameters and values need to be adjusted to datasources before usage. Tested with FOS v6.0.2
 
 
 **Author(s):** 
@@ -24,7 +24,7 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** No Data Exists. Contact DevOps Team.
+**Dev Status:** No status updates, yet. Contact Authors.
 
 Parameters
 ----------
@@ -32,7 +32,7 @@ Parameters
 host
 ++++
 
-- Description: FortiOS or FortiGate ip adress.
+- Description: FortiOS or FortiGate ip address.
 
   
 
@@ -45,7 +45,7 @@ https
 
   
 
-- default: False
+- default: True
 
 password
 ++++++++
@@ -128,6 +128,26 @@ Functions
     
     
 
+- flatten_multilists_attributes
+
+ .. code-block:: python
+
+    def flatten_multilists_attributes(data):
+        multilist_attrs = []
+    
+        for attr in multilist_attrs:
+            try:
+                path = "data['" + "']['".join(elem for elem in attr) + "']"
+                current_val = eval(path)
+                flattened_val = ' '.join(elem for elem in current_val)
+                exec(path + '= flattened_val')
+            except BaseException:
+                pass
+    
+        return data
+    
+    
+
 - switch_controller_lldp_settings
 
  .. code-block:: python
@@ -135,8 +155,8 @@ Functions
     def switch_controller_lldp_settings(data, fos):
         vdom = data['vdom']
         switch_controller_lldp_settings_data = data['switch_controller_lldp_settings']
-        filtered_data = filter_switch_controller_lldp_settings_data(
-            switch_controller_lldp_settings_data)
+        flattened_data = flatten_multilists_attributes(switch_controller_lldp_settings_data)
+        filtered_data = filter_switch_controller_lldp_settings_data(flattened_data)
         return fos.set('switch-controller',
                        'lldp-settings',
                        data=filtered_data,
@@ -151,11 +171,8 @@ Functions
     def fortios_switch_controller(data, fos):
         login(data)
     
-        methodlist = ['switch_controller_lldp_settings']
-        for method in methodlist:
-            if data[method]:
-                resp = eval(method)(data, fos)
-                break
+        if data['switch_controller_lldp_settings']:
+            resp = switch_controller_lldp_settings(data, fos)
     
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
@@ -172,7 +189,7 @@ Functions
             "username": {"required": True, "type": "str"},
             "password": {"required": False, "type": "str", "no_log": True},
             "vdom": {"required": False, "type": "str", "default": "root"},
-            "https": {"required": False, "type": "bool", "default": "False"},
+            "https": {"required": False, "type": "bool", "default": True},
             "switch_controller_lldp_settings": {
                 "required": False, "type": "dict",
                 "options": {
@@ -198,8 +215,7 @@ Functions
         global fos
         fos = FortiOSAPI()
     
-        is_error, has_changed, result = fortios_switch_controller(
-            module.params, fos)
+        is_error, has_changed, result = fortios_switch_controller(module.params, fos)
     
         if not is_error:
             module.exit_json(changed=has_changed, meta=result)
@@ -217,7 +233,7 @@ Module Source Code
 
     #!/usr/bin/python
     from __future__ import (absolute_import, division, print_function)
-    # Copyright 2018 Fortinet, Inc.
+    # Copyright 2019 Fortinet, Inc.
     #
     # This program is free software: you can redistribute it and/or modify
     # it under the terms of the GNU General Public License as published by
@@ -244,11 +260,11 @@ Module Source Code
     DOCUMENTATION = '''
     ---
     module: fortios_switch_controller_lldp_settings
-    short_description: Configure FortiSwitch LLDP settings.
+    short_description: Configure FortiSwitch LLDP settings in Fortinet's FortiOS and FortiGate.
     description:
-        - This module is able to configure a FortiGate or FortiOS by
-          allowing the user to configure switch_controller feature and lldp_settings category.
-          Examples includes all options and need to be adjusted to datasources before usage.
+        - This module is able to configure a FortiGate or FortiOS by allowing the
+          user to set and modify switch_controller feature and lldp_settings category.
+          Examples include all parameters and values need to be adjusted to datasources before usage.
           Tested with FOS v6.0.2
     version_added: "2.8"
     author:
@@ -262,7 +278,7 @@ Module Source Code
     options:
         host:
            description:
-                - FortiOS or FortiGate ip adress.
+                - FortiOS or FortiGate ip address.
            required: true
         username:
             description:
@@ -283,7 +299,7 @@ Module Source Code
                 - Indicates if the requests towards FortiGate must use HTTPS
                   protocol
             type: bool
-            default: false
+            default: true
         switch_controller_lldp_settings:
             description:
                 - Configure FortiSwitch LLDP settings.
@@ -327,6 +343,7 @@ Module Source Code
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           switch_controller_lldp_settings:
             fast-start-interval: "3"
             management-interface: "internal"
@@ -339,57 +356,57 @@ Module Source Code
     build:
       description: Build number of the fortigate image
       returned: always
-      type: string
+      type: str
       sample: '1547'
     http_method:
       description: Last method used to provision the content into FortiGate
       returned: always
-      type: string
+      type: str
       sample: 'PUT'
     http_status:
       description: Last result given by FortiGate on last operation applied
       returned: always
-      type: string
+      type: str
       sample: "200"
     mkey:
       description: Master key (id) used in the last call to FortiGate
       returned: success
-      type: string
-      sample: "key1"
+      type: str
+      sample: "id"
     name:
       description: Name of the table used to fulfill the request
       returned: always
-      type: string
+      type: str
       sample: "urlfilter"
     path:
       description: Path of the table used to fulfill the request
       returned: always
-      type: string
+      type: str
       sample: "webfilter"
     revision:
       description: Internal revision number
       returned: always
-      type: string
+      type: str
       sample: "17.0.2.10658"
     serial:
       description: Serial number of the unit
       returned: always
-      type: string
+      type: str
       sample: "FGVMEVYYQT3AB5352"
     status:
       description: Indication of the operation's result
       returned: always
-      type: string
+      type: str
       sample: "success"
     vdom:
       description: Virtual domain used
       returned: always
-      type: string
+      type: str
       sample: "root"
     version:
       description: Version of the FortiGate
       returned: always
-      type: string
+      type: str
       sample: "v5.6.3"
     
     '''
@@ -425,11 +442,26 @@ Module Source Code
         return dictionary
     
     
+    def flatten_multilists_attributes(data):
+        multilist_attrs = []
+    
+        for attr in multilist_attrs:
+            try:
+                path = "data['" + "']['".join(elem for elem in attr) + "']"
+                current_val = eval(path)
+                flattened_val = ' '.join(elem for elem in current_val)
+                exec(path + '= flattened_val')
+            except BaseException:
+                pass
+    
+        return data
+    
+    
     def switch_controller_lldp_settings(data, fos):
         vdom = data['vdom']
         switch_controller_lldp_settings_data = data['switch_controller_lldp_settings']
-        filtered_data = filter_switch_controller_lldp_settings_data(
-            switch_controller_lldp_settings_data)
+        flattened_data = flatten_multilists_attributes(switch_controller_lldp_settings_data)
+        filtered_data = filter_switch_controller_lldp_settings_data(flattened_data)
         return fos.set('switch-controller',
                        'lldp-settings',
                        data=filtered_data,
@@ -439,11 +471,8 @@ Module Source Code
     def fortios_switch_controller(data, fos):
         login(data)
     
-        methodlist = ['switch_controller_lldp_settings']
-        for method in methodlist:
-            if data[method]:
-                resp = eval(method)(data, fos)
-                break
+        if data['switch_controller_lldp_settings']:
+            resp = switch_controller_lldp_settings(data, fos)
     
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
@@ -455,7 +484,7 @@ Module Source Code
             "username": {"required": True, "type": "str"},
             "password": {"required": False, "type": "str", "no_log": True},
             "vdom": {"required": False, "type": "str", "default": "root"},
-            "https": {"required": False, "type": "bool", "default": "False"},
+            "https": {"required": False, "type": "bool", "default": True},
             "switch_controller_lldp_settings": {
                 "required": False, "type": "dict",
                 "options": {
@@ -481,8 +510,7 @@ Module Source Code
         global fos
         fos = FortiOSAPI()
     
-        is_error, has_changed, result = fortios_switch_controller(
-            module.params, fos)
+        is_error, has_changed, result = fortios_switch_controller(module.params, fos)
     
         if not is_error:
             module.exit_json(changed=has_changed, meta=result)

@@ -24,7 +24,7 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** No Data Exists. Contact DevOps Team.
+**Dev Status:** No status updates, yet. Contact Authors.
 
 Parameters
 ----------
@@ -41,7 +41,7 @@ authentication_setting
 host
 ++++
 
-- Description: FortiOS or FortiGate ip adress.
+- Description: FortiOS or FortiGate ip address.
 
   
 
@@ -136,8 +136,7 @@ Functions
     def authentication_setting(data, fos):
         vdom = data['vdom']
         authentication_setting_data = data['authentication_setting']
-        filtered_data = filter_authentication_setting_data(
-            authentication_setting_data)
+        filtered_data = filter_authentication_setting_data(authentication_setting_data)
         return fos.set('authentication',
                        'setting',
                        data=filtered_data,
@@ -246,7 +245,7 @@ Module Source Code
     DOCUMENTATION = '''
     ---
     module: fortios_authentication_setting
-    short_description: Configure authentication setting.
+    short_description: Configure authentication setting in Fortinet's FortiOS and FortiGate.
     description:
         - This module is able to configure a FortiGate or FortiOS by
           allowing the user to configure authentication feature and setting category.
@@ -264,7 +263,7 @@ Module Source Code
     options:
         host:
            description:
-                - FortiOS or FortiGate ip adress.
+                - FortiOS or FortiGate ip address.
            required: true
         username:
             description:
@@ -349,57 +348,57 @@ Module Source Code
     build:
       description: Build number of the fortigate image
       returned: always
-      type: string
+      type: str
       sample: '1547'
     http_method:
       description: Last method used to provision the content into FortiGate
       returned: always
-      type: string
+      type: str
       sample: 'PUT'
     http_status:
       description: Last result given by FortiGate on last operation applied
       returned: always
-      type: string
+      type: str
       sample: "200"
     mkey:
       description: Master key (id) used in the last call to FortiGate
       returned: success
-      type: string
-      sample: "key1"
+      type: str
+      sample: "id"
     name:
       description: Name of the table used to fulfill the request
       returned: always
-      type: string
+      type: str
       sample: "urlfilter"
     path:
       description: Path of the table used to fulfill the request
       returned: always
-      type: string
+      type: str
       sample: "webfilter"
     revision:
       description: Internal revision number
       returned: always
-      type: string
+      type: str
       sample: "17.0.2.10658"
     serial:
       description: Serial number of the unit
       returned: always
-      type: string
+      type: str
       sample: "FGVMEVYYQT3AB5352"
     status:
       description: Indication of the operation's result
       returned: always
-      type: string
+      type: str
       sample: "success"
     vdom:
       description: Virtual domain used
       returned: always
-      type: string
+      type: str
       sample: "root"
     version:
       description: Version of the FortiGate
       returned: always
-      type: string
+      type: str
       sample: "v5.6.3"
     
     '''
@@ -439,8 +438,7 @@ Module Source Code
     def authentication_setting(data, fos):
         vdom = data['vdom']
         authentication_setting_data = data['authentication_setting']
-        filtered_data = filter_authentication_setting_data(
-            authentication_setting_data)
+        filtered_data = filter_authentication_setting_data(authentication_setting_data)
         return fos.set('authentication',
                        'setting',
                        data=filtered_data,

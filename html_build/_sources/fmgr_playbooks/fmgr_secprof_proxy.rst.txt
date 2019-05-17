@@ -42,6 +42,7 @@ proxy.yml
 .. code-block:: yaml
 
 
+
     - name: Create and Delete security profile in FMG
       hosts: FortiManager
       connection: httpapi
@@ -74,7 +75,8 @@ proxy.yml
 fmgr_secprof_proxy_run_all.sh
 +++++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook proxy.yml -vvvv
 

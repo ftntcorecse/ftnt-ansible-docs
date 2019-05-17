@@ -21,6 +21,7 @@ Playbook Task Examples
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           web_proxy_profile:
             state: "present"
             header-client-ip: "pass"
@@ -45,43 +46,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/web_proxy/fortios_web_proxy_profile_example.yml
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure web proxy profiles.
-        fortios_web_proxy_profile:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          web_proxy_profile:
-            state: "present"
-            header-client-ip: "pass"
-            header-front-end-https: "pass"
-            header-via-request: "pass"
-            header-via-response: "pass"
-            header-x-authenticated-groups: "pass"
-            header-x-authenticated-user: "pass"
-            header-x-forwarded-for: "pass"
-            headers:
-             -
-                action: "add-to-request"
-                content: "<your_own_value>"
-                id:  "13"
-                name: "default_name_14"
-            log-header-change: "enable"
-            name: "default_name_16"
-            strip-encoding: "enable"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

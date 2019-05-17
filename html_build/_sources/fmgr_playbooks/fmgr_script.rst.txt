@@ -42,6 +42,7 @@ fmgr_faz_scripts.yml
 .. code-block:: yaml
 
 
+
     - name: CREATE AND EXECUTE SCRIPTS
       hosts: FortiManager
       connection: httpapi
@@ -73,7 +74,8 @@ fmgr_faz_scripts.yml
 fmgr_script_run_all.sh
 ++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook fmgr_faz_scripts.yml -vvvv
     ansible-playbook fmgr_script_run_all.sh -vvvv
@@ -84,6 +86,7 @@ fmgr_scripts.yml
 ++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     - name: CREATE AND EXECUTE SCRIPTS

@@ -1,0 +1,39 @@
+==============================
+fortios_firewall_ssh_local_key
+==============================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: SSH proxy local keys.
+        fortios_firewall_ssh_local_key:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          https: "False"
+          firewall_ssh_local_key:
+            state: "present"
+            name: "default_name_3"
+            password: "<your_own_value>"
+            private-key: "<your_own_value>"
+            public-key: "<your_own_value>"
+            source: "built-in"
+
+
+
+Playbook File Examples
+----------------------
+
+%%PB_FILE_EXAMPLE_TOKEN%%
+

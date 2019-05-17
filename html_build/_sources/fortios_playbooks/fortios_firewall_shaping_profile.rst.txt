@@ -21,6 +21,7 @@ Playbook Task Examples
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           firewall_shaping_profile:
             state: "present"
             comment: "Comment."
@@ -39,37 +40,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/firewall/fortios_firewall_shaping_profile_example.yml
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure shaping profiles.
-        fortios_firewall_shaping_profile:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          firewall_shaping_profile:
-            state: "present"
-            comment: "Comment."
-            default-class-id: "4"
-            profile-name: "<your_own_value>"
-            shaping-entries:
-             -
-                class-id: "7"
-                guaranteed-bandwidth-percentage: "8"
-                id:  "9"
-                maximum-bandwidth-percentage: "10"
-                priority: "high"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

@@ -29,7 +29,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="fmgr_fwobj_ippool" href="fmgr_fwobj_ippool.html" />
-    <link rel="prev" title="fmgr_device_provision_template" href="fmgr_device_provision_template.html" /> 
+    <link rel="prev" title="fmgr_fortimeter" href="fmgr_fortimeter.html" /> 
 
   
   <script src="../_static/js/modernizr.min.js"></script>
@@ -80,12 +80,14 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../fmgr_root.html">FortiManager</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_getting_started.html">Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_modules.html">Modules</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device.html">fmgr_device</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">fmgr_fwobj_address</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#playbook-task-examples">Playbook Task Examples</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#playbook-file-examples">Playbook File Examples</a></li>
@@ -113,13 +115,14 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fsm_root.html">FortiSIEM</a></li>
 </ul>
 
             
@@ -545,6 +548,23 @@
 </div>
 <div class="section" id="fmgr-fwobj-address-run-all-sh">
 <h3>fmgr_fwobj_address_run_all.sh<a class="headerlink" href="#fmgr-fwobj-address-run-all-sh" title="Permalink to this headline">¶</a></h3>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>        <span class="c1">#!/bin/bash</span>
+ansible-playbook fmgr_fwobj_ipv6_add_iprange.yml -vvvv
+ansible-playbook fmgr_fwobj_ipv4_add_fqdn.yml -vvvv
+ansible-playbook fmgr_fwobj_ipv4_del_all.yml -vvvv
+ansible-playbook fmgr_fwobj_ipv4_broadcast_subnet.yml -vvvv
+ansible-playbook fmgr_fwobj_ipv6_add_ip.yml -vvvv
+ansible-playbook fmgr_fwobj_ipv6_add_z_group.yml -vvvv
+ansible-playbook fmgr_fwobj_ipv4_add_geo.yml -vvvv
+ansible-playbook fmgr_fwobj_ipv4_add_ipmask.yml -vvvv
+ansible-playbook fmgr_fwobj_ipv4_add_z_group.yml -vvvv
+ansible-playbook fmgr_fwobj_ipv4_add_ipsubnet.yml -vvvv
+ansible-playbook fmgr_fwobj_ipv4_multicast_range.yml -vvvv
+ansible-playbook fmgr_fwobj_ipv4_add_iprange.yml -vvvv
+ansible-playbook fmgr_fwobj_ipv4_add_wildcard_fqdn.yml -vvvv
+ansible-playbook fmgr_fwobj_ipv4_add_wildcard.yml -vvvv
+</pre></div>
+</div>
 </div>
 <div class="section" id="fmgr-fwobj-ipv4-add-geo-yml">
 <h3>fmgr_fwobj_ipv4_add_geo.yml<a class="headerlink" href="#fmgr-fwobj-ipv4-add-geo-yml" title="Permalink to this headline">¶</a></h3>
@@ -773,7 +793,7 @@
         <a href="fmgr_fwobj_ippool.html" class="btn btn-neutral float-right" title="fmgr_fwobj_ippool" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="fmgr_device_provision_template.html" class="btn btn-neutral" title="fmgr_device_provision_template" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="fmgr_fortimeter.html" class="btn btn-neutral" title="fmgr_fortimeter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

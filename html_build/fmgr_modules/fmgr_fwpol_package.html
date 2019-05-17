@@ -80,11 +80,13 @@
             
               <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../fmgr_root.html">FortiManager</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../fmgr_getting_started.html">Getting Started</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../fmgr_modules.html">Modules</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device.html">fmgr_device</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_config.html">fmgr_device_config</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_group.html">fmgr_device_group</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_device_provision_template.html">fmgr_device_provision_template</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_fortimeter.html">fmgr_fortimeter</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_address.html">fmgr_fwobj_address</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool.html">fmgr_fwobj_ippool</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_fwobj_ippool6.html">fmgr_fwobj_ippool6</a></li>
@@ -114,14 +116,15 @@
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_waf.html">fmgr_secprof_waf</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_wanopt.html">fmgr_secprof_wanopt</a></li>
 <li class="toctree-l3"><a class="reference internal" href="fmgr_secprof_web.html">fmgr_secprof_web</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fmgr_sys_proxy.html">fmgr_sys_proxy</a></li>
 </ul>
 </li>
 <li class="toctree-l2"><a class="reference internal" href="../fmgr_playbooks.html">Playbook Examples</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../fmgr_roles.html">Roles</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fsm_root.html">FortiSIEM</a></li>
 </ul>
 
             
@@ -295,22 +298,15 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 <li>choices: [‘pkg’, ‘folder’]</li>
 </ul>
 </div>
-<div class="section" id="package-folder">
-<h3>package_folder<a class="headerlink" href="#package-folder" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="parent-folder">
+<h3>parent_folder<a class="headerlink" href="#parent-folder" title="Permalink to this headline">¶</a></h3>
 <ul>
-<li><p class="first">Description: Name of the folder you want to put the package into.</p>
+<li><p class="first">Description: The parent folder name you want to add this object under.</p>
 <p>Nested folders are supported with forwardslashes. i.e. ansibleTestFolder1/ansibleTestFolder2/etc…</p>
 <p>Do not include leading or trailing forwardslashes. We take care of that for you.</p>
 </li>
 <li><p class="first">Required: False</p>
 </li>
-</ul>
-</div>
-<div class="section" id="parent-folder">
-<h3>parent_folder<a class="headerlink" href="#parent-folder" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li>Description: The parent folder name you want to add this object under.</li>
-<li>Required: False</li>
 </ul>
 </div>
 <div class="section" id="scope-groups">
@@ -679,7 +675,6 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 
         <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">object_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pkg&#39;</span><span class="p">,</span> <span class="s1">&#39;folder&#39;</span><span class="p">]),</span>
-        <span class="n">package_folder</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">central_nat</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">,</span> <span class="s1">&#39;disable&#39;</span><span class="p">]),</span>
         <span class="n">fwpolicy_implicit_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">,</span> <span class="s1">&#39;disable&#39;</span><span class="p">]),</span>
         <span class="n">fwpolicy6_implicit_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">,</span> <span class="s1">&#39;disable&#39;</span><span class="p">]),</span>
@@ -699,7 +694,6 @@ This module controls the creation/edit/delete/assign of these packages.</p>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
         <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
         <span class="s2">&quot;object_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;package-folder&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;package_folder&quot;</span><span class="p">],</span>
         <span class="s2">&quot;central-nat&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;central_nat&quot;</span><span class="p">],</span>
         <span class="s2">&quot;fwpolicy-implicit-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fwpolicy_implicit_log&quot;</span><span class="p">],</span>
         <span class="s2">&quot;fwpolicy6-implicit-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fwpolicy6_implicit_log&quot;</span><span class="p">],</span>
@@ -855,13 +849,6 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 <span class="s1">    required: True</span>
 <span class="s1">    choices: [&#39;pkg&#39;,&#39;folder&#39;]</span>
 
-<span class="s1">  package_folder:</span>
-<span class="s1">    description:</span>
-<span class="s1">      - Name of the folder you want to put the package into.</span>
-<span class="s1">      - Nested folders are supported with forwardslashes. i.e. ansibleTestFolder1/ansibleTestFolder2/etc...</span>
-<span class="s1">      - Do not include leading or trailing forwardslashes. We take care of that for you.</span>
-<span class="s1">    required: false</span>
-
 <span class="s1">  central_nat:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - Central NAT setting.</span>
@@ -921,6 +908,8 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 <span class="s1">  parent_folder:</span>
 <span class="s1">    description:</span>
 <span class="s1">      - The parent folder name you want to add this object under.</span>
+<span class="s1">      - Nested folders are supported with forwardslashes. i.e. ansibleTestFolder1/ansibleTestFolder2/etc...</span>
+<span class="s1">      - Do not include leading or trailing forwardslashes. We take care of that for you.</span>
 <span class="s1">    required: false</span>
 <span class="s1">&#39;&#39;&#39;</span>
 
@@ -1017,7 +1006,6 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 <span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">DEFAULT_RESULT_OBJ</span>
 <span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FAIL_SOCKET_MSG</span>
 <span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGRMethods</span>
-
 
 
 <span class="k">def</span> <span class="nf">fmgr_fwpol_package</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
@@ -1320,7 +1308,6 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 
         <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">object_type</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;pkg&#39;</span><span class="p">,</span> <span class="s1">&#39;folder&#39;</span><span class="p">]),</span>
-        <span class="n">package_folder</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">central_nat</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">,</span> <span class="s1">&#39;disable&#39;</span><span class="p">]),</span>
         <span class="n">fwpolicy_implicit_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">,</span> <span class="s1">&#39;disable&#39;</span><span class="p">]),</span>
         <span class="n">fwpolicy6_implicit_log</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;disable&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;enable&#39;</span><span class="p">,</span> <span class="s1">&#39;disable&#39;</span><span class="p">]),</span>
@@ -1340,7 +1327,6 @@ This module controls the creation/edit/delete/assign of these packages.</p>
         <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
         <span class="s2">&quot;mode&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">],</span>
         <span class="s2">&quot;object_type&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">],</span>
-        <span class="s2">&quot;package-folder&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;package_folder&quot;</span><span class="p">],</span>
         <span class="s2">&quot;central-nat&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;central_nat&quot;</span><span class="p">],</span>
         <span class="s2">&quot;fwpolicy-implicit-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fwpolicy_implicit_log&quot;</span><span class="p">],</span>
         <span class="s2">&quot;fwpolicy6-implicit-log&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;fwpolicy6_implicit_log&quot;</span><span class="p">],</span>

@@ -1,0 +1,657 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>fsm_send_syslog &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="fsm_verify_device_ip" href="fsm_verify_device_ip.html" />
+    <link rel="prev" title="fsm_report_query" href="fsm_report_query.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../fmgr_root.html">FortiManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../fsm_root.html">FortiSIEM</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../fsm_getting_started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../fsm_use_cases.html">Use Cases</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../fsm_modules.html">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="fsm_cmdb_devices.html">fsm_cmdb_devices</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_credentials.html">fsm_credentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_custom_query.html">fsm_custom_query</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_device_monitors.html">fsm_device_monitors</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_discovery.html">fsm_discovery</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_maintenance.html">fsm_maintenance</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_organizations.html">fsm_organizations</a></li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_report_query.html">fsm_report_query</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">fsm_send_syslog</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="fsm_verify_device_ip.html">fsm_verify_device_ip</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../fsm_playbooks.html">Playbook Examples</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../fsm_root.html">FortiSIEM</a> &raquo;</li>
+        
+          <li><a href="../fsm_modules.html">Modules</a> &raquo;</li>
+        
+      <li>fsm_send_syslog</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/fsm_modules/fsm_send_syslog.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="fsm-send-syslog">
+<h1>fsm_send_syslog<a class="headerlink" href="#fsm-send-syslog" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> fsm_send_syslog</p>
+<p><strong>Description:</strong> Used to send events/logs/errors to FortiSIEM for any purpose.
+Can be used to send alerts from non-connected systems, or from any ansible playbook.</p>
+<p><strong>Author(s):</strong> Luke Weighall (&#64;lweighall)</p>
+<p><strong>Ansible Version Added/Required:</strong> 2.8</p>
+<p><strong>Dev Status:</strong> No status updates, yet. Contact Authors.</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ignore-ssl-errors">
+<h3>ignore_ssl_errors<a class="headerlink" href="#ignore-ssl-errors" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: When Enabled this will instruct the HTTP Libraries to ignore any ssl validation errors.</p>
+<p>Also will ignore any errors when network_protocol = TCP</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+<li><p class="first">default: enable</p>
+</li>
+<li><p class="first">choices: [‘enable’, ‘disable’]</p>
+</li>
+</ul>
+</div>
+<div class="section" id="network-port">
+<h3>network_port<a class="headerlink" href="#network-port" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Handles which port to send the log on, TCP or UDP. Default 514</li>
+<li>Required: False</li>
+<li>default: 514</li>
+</ul>
+</div>
+<div class="section" id="network-protocol">
+<h3>network_protocol<a class="headerlink" href="#network-protocol" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: Handles how the syslog is transmitted. TCP or UDP, with or without TLS 1.2.</li>
+<li>Required: False</li>
+<li>default: udp</li>
+<li>choices: [‘udp’, ‘tcp’, ‘tcp-tls1.2’]</li>
+</ul>
+</div>
+<div class="section" id="syslog-facility">
+<h3>syslog_facility<a class="headerlink" href="#syslog-facility" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The facility of the syslog.</li>
+<li>Required: False</li>
+<li>default: USER</li>
+<li>choices: [‘KERN’, ‘USER’, ‘MAIL’, ‘DAEMON’, ‘AUTH’, ‘SYSLOG’, ‘LPR’, ‘NEWS’, ‘UUCP’, ‘CRON’, ‘AUTHPRIV’, ‘FTP’, ‘LOCAL0’, ‘LOCAL1’, ‘LOCAL2’, ‘LOCAL3’, ‘LOCAL4’, ‘LOCAL5’, ‘LOCAL6’, ‘LOCAL7’]</li>
+</ul>
+</div>
+<div class="section" id="syslog-header">
+<h3>syslog_header<a class="headerlink" href="#syslog-header" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: If defined, will be used as the syslog header after the priority &lt;##&gt; (we specify that for you)</p>
+<p>If left empty, we generate a header for you.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+</ul>
+</div>
+<div class="section" id="syslog-host">
+<h3>syslog_host<a class="headerlink" href="#syslog-host" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The FortiSIEM’s FQDN or IP Address.</li>
+<li>Required: True</li>
+</ul>
+</div>
+<div class="section" id="syslog-level">
+<h3>syslog_level<a class="headerlink" href="#syslog-level" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The level of the syslog.</li>
+<li>Required: False</li>
+<li>default: INFO</li>
+<li>choices: [‘EMERG’, ‘ALERT’, ‘CRIT’, ‘ERR’, ‘WARNING’, ‘NOTICE’, ‘INFO’, ‘DEBUG’]</li>
+</ul>
+</div>
+<div class="section" id="syslog-message">
+<h3>syslog_message<a class="headerlink" href="#syslog-message" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The actual message to send.</li>
+<li>Required: True</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">syslog_host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">ignore_ssl_errors</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="s2">&quot;disable&quot;</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;enable&quot;</span><span class="p">),</span>
+
+        <span class="n">network_protocol</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;udp&quot;</span><span class="p">,</span>
+                              <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;udp&quot;</span><span class="p">,</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span> <span class="s2">&quot;tcp-tls1.2&quot;</span><span class="p">]),</span>
+        <span class="n">network_port</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">syslog_message</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">syslog_header</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">),</span>
+        <span class="n">syslog_facility</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;USER&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;KERN&#39;</span><span class="p">,</span> <span class="s1">&#39;USER&#39;</span><span class="p">,</span> <span class="s1">&#39;MAIL&#39;</span><span class="p">,</span>
+                                                                                  <span class="s1">&#39;DAEMON&#39;</span><span class="p">,</span> <span class="s1">&#39;AUTH&#39;</span><span class="p">,</span> <span class="s1">&#39;SYSLOG&#39;</span><span class="p">,</span> <span class="s1">&#39;LPR&#39;</span><span class="p">,</span>
+                                                                                  <span class="s1">&#39;NEWS&#39;</span><span class="p">,</span> <span class="s1">&#39;UUCP&#39;</span><span class="p">,</span> <span class="s1">&#39;CRON&#39;</span><span class="p">,</span> <span class="s1">&#39;AUTHPRIV&#39;</span><span class="p">,</span>
+                                                                                  <span class="s1">&#39;FTP&#39;</span><span class="p">,</span> <span class="s1">&#39;LOCAL0&#39;</span><span class="p">,</span> <span class="s1">&#39;LOCAL1&#39;</span><span class="p">,</span> <span class="s1">&#39;LOCAL2&#39;</span><span class="p">,</span>
+                                                                                  <span class="s1">&#39;LOCAL3&#39;</span><span class="p">,</span> <span class="s1">&#39;LOCAL4&#39;</span><span class="p">,</span> <span class="s1">&#39;LOCAL5&#39;</span><span class="p">,</span>
+                                                                                  <span class="s1">&#39;LOCAL6&#39;</span><span class="p">,</span> <span class="s1">&#39;LOCAL7&#39;</span><span class="p">]),</span>
+        <span class="n">syslog_level</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;EMERG&#39;</span><span class="p">,</span> <span class="s1">&#39;ALERT&#39;</span><span class="p">,</span> <span class="s1">&#39;CRIT&#39;</span><span class="p">,</span> <span class="s1">&#39;ERR&#39;</span><span class="p">,</span>
+                                                                               <span class="s1">&#39;WARNING&#39;</span><span class="p">,</span> <span class="s1">&#39;NOTICE&#39;</span><span class="p">,</span>
+                                                                               <span class="s1">&#39;INFO&#39;</span><span class="p">,</span> <span class="s1">&#39;DEBUG&#39;</span><span class="p">]),</span>
+
+    <span class="p">)</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;syslog_host&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;syslog_host&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;ignore_ssl_errors&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;ignore_ssl_errors&quot;</span><span class="p">],</span>
+
+        <span class="s2">&quot;network_protocol&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;network_protocol&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;network_port&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;network_port&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;syslog_message&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;syslog_message&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;syslog_header&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;syslog_header&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;syslog_facility&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;syslog_facility&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;syslog_level&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;syslog_level&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+    <span class="c1"># SET THE APPROPRIATE PORT IF NOT SUPPLIED</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;network_port&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;network_protocol&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;udp&quot;</span><span class="p">:</span>
+            <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;network_port&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">514</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;network_protocol&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;tcp&quot;</span><span class="p">:</span>
+            <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;network_port&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1470</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;network_protocol&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;tcp-tls1.2&quot;</span><span class="p">:</span>
+            <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;network_port&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6514</span>
+
+    <span class="c1"># GET THE PROPER VALUES FROM FACILITY AND LEVELS</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">facility_search</span> <span class="o">=</span> <span class="s2">&quot;SyslogFacility.&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_facility&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+        <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_facility&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">facility_search</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FSMBaseException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;An error occured converted Syslog Facility to an integer. Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">level_search</span> <span class="o">=</span> <span class="s2">&quot;SyslogLevel.&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_level&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+        <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_level&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">level_search</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FSMBaseException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;An error occured converted Syslog Facility to an integer. Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+
+    <span class="c1"># TRY TO INIT THE CONNECTION SOCKET PATH AND FortiManagerHandler OBJECT AND TOOLS</span>
+    <span class="n">fsm</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">fsm</span> <span class="o">=</span> <span class="n">FortiSIEMHandler</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FSMBaseException</span><span class="p">(</span><span class="s2">&quot;Couldn&#39;t load FortiSIEM Handler from mod_utils. Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_header&quot;</span><span class="p">]:</span>
+        <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_header&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">fsm</span><span class="o">.</span><span class="n">_tools</span><span class="o">.</span><span class="n">get_current_datetime</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; ansible_module:fsm_send_syslog&quot;</span><span class="p">)</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+
+    <span class="c1"># EXECUTE THE MODULE OPERATION</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_EXIT_MSG</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">fsm</span><span class="o">.</span><span class="n">handle_syslog_request</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FSMBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">]),</span> <span class="n">results</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="module-source-code">
+<h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Ansible</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
+
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;metadata_version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;preview&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;supported_by&quot;</span><span class="p">:</span> <span class="s2">&quot;community&quot;</span>
+<span class="p">}</span>
+
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">module: fsm_send_syslog</span>
+<span class="s1">version_added: &quot;2.8&quot;</span>
+<span class="s1">author: Luke Weighall (@lweighall)</span>
+<span class="s1">short_description: Sends a text string to FortiSIEM as a Syslog</span>
+<span class="s1">description:</span>
+<span class="s1">  - Used to send events/logs/errors to FortiSIEM for any purpose.</span>
+<span class="s1">  - Can be used to send alerts from non-connected systems, or from any ansible playbook.</span>
+
+<span class="s1">options:</span>
+<span class="s1">  syslog_host:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The FortiSIEM&#39;s FQDN or IP Address.</span>
+<span class="s1">    required: true</span>
+
+<span class="s1">  ignore_ssl_errors:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - When Enabled this will instruct the HTTP Libraries to ignore any ssl validation errors.</span>
+<span class="s1">      - Also will ignore any errors when network_protocol = TCP</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: &quot;enable&quot;</span>
+<span class="s1">    choices: [&quot;enable&quot;, &quot;disable&quot;]</span>
+
+<span class="s1">  network_protocol:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Handles how the syslog is transmitted. TCP or UDP, with or without TLS 1.2.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: &quot;udp&quot;</span>
+<span class="s1">    choices: [&quot;udp&quot;, &quot;tcp&quot;, &quot;tcp-tls1.2&quot;]</span>
+
+<span class="s1">  network_port:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Handles which port to send the log on, TCP or UDP. Default 514</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: 514</span>
+
+<span class="s1">  syslog_message:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The actual message to send.</span>
+<span class="s1">    required: true</span>
+
+<span class="s1">  syslog_header:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - If defined, will be used as the syslog header after the priority &lt;##&gt; (we specify that for you)</span>
+<span class="s1">      - If left empty, we generate a header for you.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  syslog_facility:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The facility of the syslog.</span>
+<span class="s1">    default: &quot;USER&quot;</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [&#39;KERN&#39;, &#39;USER&#39;, &#39;MAIL&#39;, &#39;DAEMON&#39;, &#39;AUTH&#39;, &#39;SYSLOG&#39;,</span>
+<span class="s1">              &#39;LPR&#39;, &#39;NEWS&#39;, &#39;UUCP&#39;, &#39;CRON&#39;, &#39;AUTHPRIV&#39;, &#39;FTP&#39;,</span>
+<span class="s1">              &#39;LOCAL0&#39;, &#39;LOCAL1&#39;, &#39;LOCAL2&#39;, &#39;LOCAL3&#39;,</span>
+<span class="s1">              &#39;LOCAL4&#39;, &#39;LOCAL5&#39;, &#39;LOCAL6&#39;, &#39;LOCAL7&#39;]</span>
+
+<span class="s1">  syslog_level:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The level of the syslog.</span>
+<span class="s1">    default: &quot;INFO&quot;</span>
+<span class="s1">    required: false</span>
+<span class="s1">    choices: [ &#39;EMERG&#39;, &#39;ALERT&#39;, &#39;CRIT&#39;, &#39;ERR&#39;, &#39;WARNING&#39;, &#39;NOTICE&#39;, &#39;INFO&#39;, &#39;DEBUG&#39; ]</span>
+
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: SEND UDP/514 SYSLOG WITH AUTO HEADER</span>
+<span class="s1">  fsm_send_syslog:</span>
+<span class="s1">    host: &quot;10.0.0.15&quot;</span>
+<span class="s1">    ignore_ssl_errors: &quot;enable&quot;</span>
+<span class="s1">    syslog_message: &quot;This is a test syslog from Ansible!&quot;</span>
+
+<span class="s1">- name: SEND UDP/514 SYSLOG WITH AUTO HEADER</span>
+<span class="s1">  fsm_send_syslog:</span>
+<span class="s1">    syslog_host: &quot;10.7.220.61&quot;</span>
+<span class="s1">    ignore_ssl_errors: &quot;enable&quot;</span>
+<span class="s1">    syslog_message: &quot;This is a test syslog from Ansible!&quot;</span>
+
+<span class="s1">- name: SEND UDP/514 SYSLOG CUSTOM HEADER</span>
+<span class="s1">  fsm_send_syslog:</span>
+<span class="s1">    syslog_host: &quot;10.7.220.61&quot;</span>
+<span class="s1">    ignore_ssl_errors: &quot;enable&quot;</span>
+<span class="s1">    syslog_message: &quot;This is a test syslog from Ansible!&quot;</span>
+<span class="s1">    syslog_header: &quot;This is a TEST HEADER :&quot;</span>
+
+<span class="s1">- name: SEND TCP/1470 SYSLOG WITH CUSTOM HEADER</span>
+<span class="s1">  fsm_send_syslog:</span>
+<span class="s1">    syslog_host: &quot;10.7.220.61&quot;</span>
+<span class="s1">    ignore_ssl_errors: &quot;enable&quot;</span>
+<span class="s1">    network_port: 1470</span>
+<span class="s1">    network_protocol: &quot;tcp&quot;</span>
+<span class="s1">    syslog_message: &quot;This is a test syslog from Ansible!&quot;</span>
+<span class="s1">    syslog_header: &quot;This is a TEST HEADER TCP PORT 1470 :&quot;</span>
+
+<span class="s1">- name: SEND TCP/6514 TLS SYSLOG WITH CUSTOM HEADER</span>
+<span class="s1">  fsm_send_syslog:</span>
+<span class="s1">    syslog_host: &quot;10.7.220.61&quot;</span>
+<span class="s1">    ignore_ssl_errors: &quot;enable&quot;</span>
+<span class="s1">    network_port: 6514</span>
+<span class="s1">    network_protocol: &quot;tcp-tls1.2&quot;</span>
+<span class="s1">    syslog_message: &quot;This is a test syslog from Ansible!&quot;</span>
+<span class="s1">    syslog_header: &quot;This is a TEST HEADER TCP TLS PORT 6514 :&quot;</span>
+
+<span class="s1">- name: SEND UDP/514 SYSLOG WITH AUTO HEADER AND DIFF FACILITY AND LEVEL</span>
+<span class="s1">  fsm_send_syslog:</span>
+<span class="s1">    syslog_host: &quot;10.7.220.61&quot;</span>
+<span class="s1">    ignore_ssl_errors: &quot;enable&quot;</span>
+<span class="s1">    syslog_facility: &quot;AUTH&quot;</span>
+<span class="s1">    syslog_level: &quot;CRIT&quot;</span>
+<span class="s1">    syslog_message: &quot;This is a test syslog from Ansible! WITH CRIT AND AUTH AS LEVELS AND FACILITY.&quot;</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">api_result:</span>
+<span class="s2">  description: full API response, includes status code and message</span>
+<span class="s2">  returned: always</span>
+<span class="s2">  type: str</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortisiem.common</span> <span class="kn">import</span> <span class="n">FSMBaseException</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortisiem.common</span> <span class="kn">import</span> <span class="n">DEFAULT_EXIT_MSG</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortisiem.common</span> <span class="kn">import</span> <span class="n">SyslogFacility</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortisiem.common</span> <span class="kn">import</span> <span class="n">SyslogLevel</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortisiem.fortisiem</span> <span class="kn">import</span> <span class="n">FortiSIEMHandler</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">syslog_host</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">ignore_ssl_errors</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;enable&quot;</span><span class="p">,</span> <span class="s2">&quot;disable&quot;</span><span class="p">],</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;enable&quot;</span><span class="p">),</span>
+
+        <span class="n">network_protocol</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;udp&quot;</span><span class="p">,</span>
+                              <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;udp&quot;</span><span class="p">,</span> <span class="s2">&quot;tcp&quot;</span><span class="p">,</span> <span class="s2">&quot;tcp-tls1.2&quot;</span><span class="p">]),</span>
+        <span class="n">network_port</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;int&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="mi">0</span><span class="p">),</span>
+        <span class="n">syslog_message</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">syslog_header</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="bp">None</span><span class="p">),</span>
+        <span class="n">syslog_facility</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;USER&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;KERN&#39;</span><span class="p">,</span> <span class="s1">&#39;USER&#39;</span><span class="p">,</span> <span class="s1">&#39;MAIL&#39;</span><span class="p">,</span>
+                                                                                  <span class="s1">&#39;DAEMON&#39;</span><span class="p">,</span> <span class="s1">&#39;AUTH&#39;</span><span class="p">,</span> <span class="s1">&#39;SYSLOG&#39;</span><span class="p">,</span> <span class="s1">&#39;LPR&#39;</span><span class="p">,</span>
+                                                                                  <span class="s1">&#39;NEWS&#39;</span><span class="p">,</span> <span class="s1">&#39;UUCP&#39;</span><span class="p">,</span> <span class="s1">&#39;CRON&#39;</span><span class="p">,</span> <span class="s1">&#39;AUTHPRIV&#39;</span><span class="p">,</span>
+                                                                                  <span class="s1">&#39;FTP&#39;</span><span class="p">,</span> <span class="s1">&#39;LOCAL0&#39;</span><span class="p">,</span> <span class="s1">&#39;LOCAL1&#39;</span><span class="p">,</span> <span class="s1">&#39;LOCAL2&#39;</span><span class="p">,</span>
+                                                                                  <span class="s1">&#39;LOCAL3&#39;</span><span class="p">,</span> <span class="s1">&#39;LOCAL4&#39;</span><span class="p">,</span> <span class="s1">&#39;LOCAL5&#39;</span><span class="p">,</span>
+                                                                                  <span class="s1">&#39;LOCAL6&#39;</span><span class="p">,</span> <span class="s1">&#39;LOCAL7&#39;</span><span class="p">]),</span>
+        <span class="n">syslog_level</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;INFO&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;EMERG&#39;</span><span class="p">,</span> <span class="s1">&#39;ALERT&#39;</span><span class="p">,</span> <span class="s1">&#39;CRIT&#39;</span><span class="p">,</span> <span class="s1">&#39;ERR&#39;</span><span class="p">,</span>
+                                                                               <span class="s1">&#39;WARNING&#39;</span><span class="p">,</span> <span class="s1">&#39;NOTICE&#39;</span><span class="p">,</span>
+                                                                               <span class="s1">&#39;INFO&#39;</span><span class="p">,</span> <span class="s1">&#39;DEBUG&#39;</span><span class="p">]),</span>
+
+    <span class="p">)</span>
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span>
+
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;syslog_host&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;syslog_host&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;ignore_ssl_errors&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;ignore_ssl_errors&quot;</span><span class="p">],</span>
+
+        <span class="s2">&quot;network_protocol&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;network_protocol&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;network_port&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;network_port&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;syslog_message&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;syslog_message&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;syslog_header&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;syslog_header&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;syslog_facility&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;syslog_facility&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;syslog_level&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;syslog_level&quot;</span><span class="p">],</span>
+    <span class="p">}</span>
+
+    <span class="c1"># SET THE APPROPRIATE PORT IF NOT SUPPLIED</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;network_port&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;network_protocol&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;udp&quot;</span><span class="p">:</span>
+            <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;network_port&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">514</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;network_protocol&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;tcp&quot;</span><span class="p">:</span>
+            <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;network_port&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1470</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;network_protocol&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;tcp-tls1.2&quot;</span><span class="p">:</span>
+            <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;network_port&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6514</span>
+
+    <span class="c1"># GET THE PROPER VALUES FROM FACILITY AND LEVELS</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">facility_search</span> <span class="o">=</span> <span class="s2">&quot;SyslogFacility.&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_facility&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+        <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_facility&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">facility_search</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FSMBaseException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;An error occured converted Syslog Facility to an integer. Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">level_search</span> <span class="o">=</span> <span class="s2">&quot;SyslogLevel.&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_level&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">upper</span><span class="p">())</span>
+        <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_level&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">eval</span><span class="p">(</span><span class="n">level_search</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FSMBaseException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;An error occured converted Syslog Facility to an integer. Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+
+    <span class="c1"># TRY TO INIT THE CONNECTION SOCKET PATH AND FortiManagerHandler OBJECT AND TOOLS</span>
+    <span class="n">fsm</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">fsm</span> <span class="o">=</span> <span class="n">FortiSIEMHandler</span><span class="p">(</span><span class="n">module</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FSMBaseException</span><span class="p">(</span><span class="s2">&quot;Couldn&#39;t load FortiSIEM Handler from mod_utils. Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_header&quot;</span><span class="p">]:</span>
+        <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;syslog_header&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">fsm</span><span class="o">.</span><span class="n">_tools</span><span class="o">.</span><span class="n">get_current_datetime</span><span class="p">()</span> <span class="o">+</span> <span class="s2">&quot; ansible_module:fsm_send_syslog&quot;</span><span class="p">)</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+
+    <span class="c1"># EXECUTE THE MODULE OPERATION</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_EXIT_MSG</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">results</span> <span class="o">=</span> <span class="n">fsm</span><span class="o">.</span><span class="n">handle_syslog_request</span><span class="p">()</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FSMBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;message&quot;</span><span class="p">]),</span> <span class="n">results</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="s2">&quot;status&quot;</span><span class="p">]))</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fsm_verify_device_ip.html" class="btn btn-neutral float-right" title="fsm_verify_device_ip" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fsm_report_query.html" class="btn btn-neutral" title="fsm_report_query" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

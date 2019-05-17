@@ -24,7 +24,7 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** No Data Exists. Contact DevOps Team.
+**Dev Status:** No status updates, yet. Contact Authors.
 
 Parameters
 ----------
@@ -41,7 +41,7 @@ firewall_vip64
 host
 ++++
 
-- Description: FortiOS or FortiGate ip adress.
+- Description: FortiOS or FortiGate ip address.
 
   
 
@@ -294,11 +294,7 @@ Module Source Code
     DOCUMENTATION = '''
     ---
     module: fortios_firewall_vip64
-<<<<<<< Updated upstream
-    short_description: Configure IPv6 to IPv4 virtual IPs.
-=======
     short_description: Configure IPv6 to IPv4 virtual IPs in Fortinet's FortiOS and FortiGate.
->>>>>>> Stashed changes
     description:
         - This module is able to configure a FortiGate or FortiOS by
           allowing the user to configure firewall feature and vip64 category.
@@ -316,7 +312,7 @@ Module Source Code
     options:
         host:
            description:
-                - FortiOS or FortiGate ip adress.
+                - FortiOS or FortiGate ip address.
            required: true
         username:
             description:
@@ -535,101 +531,57 @@ Module Source Code
     build:
       description: Build number of the fortigate image
       returned: always
-<<<<<<< Updated upstream
-      type: string
-=======
       type: str
->>>>>>> Stashed changes
       sample: '1547'
     http_method:
       description: Last method used to provision the content into FortiGate
       returned: always
-<<<<<<< Updated upstream
-      type: string
-=======
       type: str
->>>>>>> Stashed changes
       sample: 'PUT'
     http_status:
       description: Last result given by FortiGate on last operation applied
       returned: always
-<<<<<<< Updated upstream
-      type: string
-=======
       type: str
->>>>>>> Stashed changes
       sample: "200"
     mkey:
       description: Master key (id) used in the last call to FortiGate
       returned: success
-<<<<<<< Updated upstream
-      type: string
-=======
       type: str
->>>>>>> Stashed changes
       sample: "key1"
     name:
       description: Name of the table used to fulfill the request
       returned: always
-<<<<<<< Updated upstream
-      type: string
-=======
       type: str
->>>>>>> Stashed changes
       sample: "urlfilter"
     path:
       description: Path of the table used to fulfill the request
       returned: always
-<<<<<<< Updated upstream
-      type: string
-=======
       type: str
->>>>>>> Stashed changes
       sample: "webfilter"
     revision:
       description: Internal revision number
       returned: always
-<<<<<<< Updated upstream
-      type: string
-=======
       type: str
->>>>>>> Stashed changes
       sample: "17.0.2.10658"
     serial:
       description: Serial number of the unit
       returned: always
-<<<<<<< Updated upstream
-      type: string
-=======
       type: str
->>>>>>> Stashed changes
       sample: "FGVMEVYYQT3AB5352"
     status:
       description: Indication of the operation's result
       returned: always
-<<<<<<< Updated upstream
-      type: string
-=======
       type: str
->>>>>>> Stashed changes
       sample: "success"
     vdom:
       description: Virtual domain used
       returned: always
-<<<<<<< Updated upstream
-      type: string
-=======
       type: str
->>>>>>> Stashed changes
       sample: "root"
     version:
       description: Version of the FortiGate
       returned: always
-<<<<<<< Updated upstream
-      type: string
-=======
       type: str
->>>>>>> Stashed changes
       sample: "v5.6.3"
     
     '''

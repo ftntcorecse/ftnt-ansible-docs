@@ -21,6 +21,7 @@ Playbook Task Examples
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           firewall_ttl_policy:
             state: "present"
             action: "accept"
@@ -41,39 +42,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/firewall/fortios_firewall_ttl_policy_example.yml
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure TTL policies.
-        fortios_firewall_ttl_policy:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          firewall_ttl_policy:
-            state: "present"
-            action: "accept"
-            id:  "4"
-            schedule: "<your_own_value> (source firewall.schedule.onetime.name firewall.schedule.recurring.name firewall.schedule.group.name)"
-            service:
-             -
-                name: "default_name_7 (source firewall.service.custom.name firewall.service.group.name)"
-            srcaddr:
-             -
-                name: "default_name_9 (source firewall.address.name firewall.addrgrp.name)"
-            srcintf: "<your_own_value> (source system.zone.name system.interface.name)"
-            status: "enable"
-            ttl: "<your_own_value>"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

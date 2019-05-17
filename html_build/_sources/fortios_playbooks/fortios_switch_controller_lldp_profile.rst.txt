@@ -21,6 +21,7 @@ Playbook Task Examples
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           switch_controller_lldp_profile:
             state: "present"
             802.1-tlvs: "port-vlan-id"
@@ -50,48 +51,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/switch_controller/fortios_switch_controller_lldp_profile_example.yml
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure FortiSwitch LLDP profiles.
-        fortios_switch_controller_lldp_profile:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          switch_controller_lldp_profile:
-            state: "present"
-            802.1-tlvs: "port-vlan-id"
-            802.3-tlvs: "max-frame-size"
-            auto-isl: "disable"
-            auto-isl-hello-timer: "6"
-            auto-isl-port-group: "7"
-            auto-isl-receive-timeout: "8"
-            custom-tlvs:
-             -
-                information-string: "<your_own_value>"
-                name: "default_name_11"
-                oui: "<your_own_value>"
-                subtype: "13"
-            med-network-policy:
-             -
-                dscp: "15"
-                name: "default_name_16"
-                priority: "17"
-                status: "disable"
-                vlan: "19"
-            med-tlvs: "inventory-management"
-            name: "default_name_21"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

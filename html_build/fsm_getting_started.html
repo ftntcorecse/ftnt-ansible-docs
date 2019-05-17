@@ -1,0 +1,407 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Getting Started &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Use Cases" href="fsm_use_cases.html" />
+    <link rel="prev" title="FortiSIEM" href="fsm_root.html" /> 
+
+  
+  <script src="_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="fmgr_root.html">FortiManager</a></li>
+<li class="toctree-l1"><a class="reference internal" href="faz_root.html">FortiAnalyzer</a></li>
+<li class="toctree-l1"><a class="reference internal" href="fortios_root.html">FortiGate (FortiOS)</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="fsm_root.html">FortiSIEM</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Getting Started</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#introduction">Introduction</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#pre-requisites">Pre-Requisites</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#installation">Installation</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#step-1-auto-installation-method-currently-unavailable">Step 1 - Auto Installation Method (Currently Unavailable)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-2-optional-manual-installation-method">Step 2 (Optional) - Manual Installation Method</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-3-inventory-file">Step 3 - Inventory File</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#step-4-playbook-test">Step 4 - Playbook Test</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#using-ansible-vault-to-hide-logins">Using Ansible Vault to Hide Logins</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="fsm_use_cases.html">Use Cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fsm_modules.html">Modules</a></li>
+<li class="toctree-l2"><a class="reference internal" href="fsm_playbooks.html">Playbook Examples</a></li>
+</ul>
+</li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="fsm_root.html">FortiSIEM</a> &raquo;</li>
+        
+      <li>Getting Started</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/fsm_getting_started.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="getting-started">
+<h1>Getting Started<a class="headerlink" href="#getting-started" title="Permalink to this headline">¶</a></h1>
+<p>This guide will assist in the initial configuration of Ansible
+to work with FortiSIEM modules.</p>
+<div class="section" id="introduction">
+<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+<p>The FortiSIEM Modules are connection: local modules. In other words, they do not use a plugin.</p>
+<p>The FortiSIEM API is stateless, so a username and password authentication header must be sent with every request.
+Thus, a connection plug-in (which expects an API token or Session ID) will never likely be developed for FortiSIEM modules.</p>
+<p>As of this writing, Ansible Vault is a valid option for encoding and storing the username/password.</p>
+</div>
+<div class="section" id="pre-requisites">
+<h2>Pre-Requisites<a class="headerlink" href="#pre-requisites" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>Minimum Ansible Version: 2.7+</li>
+<li>Minimum Python Version: 2.7+<ul>
+<li>Works with Python 3.x</li>
+</ul>
+</li>
+<li>Minimum FortiSIEM Version: 5.0+</li>
+</ul>
+</div>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="step-1-auto-installation-method-currently-unavailable">
+<h3>Step 1 - Auto Installation Method (Currently Unavailable)<a class="headerlink" href="#step-1-auto-installation-method-currently-unavailable" title="Permalink to this headline">¶</a></h3>
+<p>Until we PR these modules and module_utils, this method is unavailable. Please see the manual installation below.</p>
+<p>Expect this installation method to be un-available when Ansible 2.9+ is released, or perhaps a maintenance release to 2.8+.</p>
+</div>
+<div class="section" id="step-2-optional-manual-installation-method">
+<h3>Step 2 (Optional) - Manual Installation Method<a class="headerlink" href="#step-2-optional-manual-installation-method" title="Permalink to this headline">¶</a></h3>
+<p>Until we get this code past the Pull-Request process with Redhat, it should be released in Ansible 2.9+. Until then…</p>
+<div class="section" id="step-2a-base-ansible-install">
+<h4>Step 2a - Base Ansible Install<a class="headerlink" href="#step-2a-base-ansible-install" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>First, make sure Ansible is already installed, and shows version 2.7+.</li>
+<li>If version isn’t 2.7+, upgrade.</li>
+</ul>
+</div>
+<div class="section" id="step-2b-clone-fndn-git-repo">
+<h4>Step 2b - Clone FNDN Git Repo<a class="headerlink" href="#step-2b-clone-fndn-git-repo" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>Second, use GIT to clone the FNDN repo: <a class="reference external" href="https://github.com/ftntcorecse/fndn_ansible">https://github.com/ftntcorecse/fndn_ansible</a></li>
+</ul>
+</div>
+<div class="section" id="step-2c-install-module-utils">
+<h4>Step 2c - Install Module Utils<a class="headerlink" href="#step-2c-install-module-utils" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>The module_utils need to be copied to their correct locations.</li>
+<li>Find the module utils under fndn_ansible/fortisiem/module_utils/network/fortisiem/, copy them all to: .</li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>/usr/lib/python2.7/dist-packages/ansible/module_utils/network/fortisiem/
+</pre></div>
+</div>
+<ul class="simple">
+<li>If you’re unsure where to find this path on your own system, run this command:</li>
+</ul>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>find /usr -name <span class="s2">&quot;ansible&quot;</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>… and the path under a python dist-packages should present itself. It will be similar to the path above. Create the directory if required.</li>
+</ul>
+</div>
+<div class="section" id="step-2d-install-modules">
+<h4>Step 2d - Install Modules<a class="headerlink" href="#step-2d-install-modules" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li>The modules can be copied to any directory such as /usr/ansible_modules,
+as long as the library = &lt;folder_path&gt; line in /etc/ansible/ansible.cfg is edited to include that path.</li>
+<li>Edit /usr/ansible/ansible.cfg to ensure the library = &lt;module_folder_path&gt; is true.
+No recursion, ensure all modules flat in that folder.</li>
+<li>For other custom module path methods, see this guide:
+<a class="reference external" href="https://docs.ansible.com/ansible/latest/dev_guide/developing_locally.html#adding-a-module-locally">https://docs.ansible.com/ansible/latest/dev_guide/developing_locally.html#adding-a-module-locally</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="step-3-inventory-file">
+<h3>Step 3 - Inventory File<a class="headerlink" href="#step-3-inventory-file" title="Permalink to this headline">¶</a></h3>
+<p>The FortiSIEM Super should be added to the hosts file under the header [FortiSIEM]. It should also
+have declarations for username and password. The username must be in org/user format, and the password must be valid,
+and the account must have admin privileges of some kind in FortiSIEM. We recommend creating a user named “ansible”
+with the permissions required, and using that account in the hosts fie.</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>FortiSIEM<span class="o">]</span>
+<span class="m">10</span>.0.0.15
+
+<span class="o">[</span>FortiSIEM_MSP<span class="o">]</span>
+<span class="m">10</span>.7.220.61
+
+<span class="o">[</span>fsm_api:children<span class="o">]</span>
+FortiSIEM
+FortiSIEM_MSP
+
+<span class="o">[</span>fsm_api:vars<span class="o">]</span>
+<span class="nv">username</span><span class="o">=</span>super/api_user
+<span class="nv">password</span><span class="o">=</span>Fortinet!1
+</pre></div>
+</div>
+</div>
+<div class="section" id="step-4-playbook-test">
+<h3>Step 4 - Playbook Test<a class="headerlink" href="#step-4-playbook-test" title="Permalink to this headline">¶</a></h3>
+<p>Ansible should be ready to test now. Copy the following code block into a file named “test_fsm.yml”:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">CUSTOM QUERIES</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiSIEM</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+
+  <span class="l l-Scalar l-Scalar-Plain">tasks</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">SIMPLE CUSTOM QUERY TO CMDB</span>
+      <span class="l l-Scalar l-Scalar-Plain">fsm_custom_query</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">host</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">inventory_hostname</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">username</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">username</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">password</span><span class="p p-Indicator">:</span> <span class="s">&quot;{{</span><span class="nv"> </span><span class="s">password</span><span class="nv"> </span><span class="s">}}&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">ignore_ssl_errors</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="s">&quot;get&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">export_json_to_screen</span><span class="p p-Indicator">:</span> <span class="s">&quot;enable&quot;</span>
+        <span class="l l-Scalar l-Scalar-Plain">uri</span><span class="p p-Indicator">:</span> <span class="s">&quot;/phoenix/rest/config/Domain&quot;</span>
+</pre></div>
+</div>
+<p>… and then run it with the following command:</p>
+<div class="highlight-shell notranslate"><div class="highlight"><pre><span></span>ansible-playbook test_fsm.yml -vvvv
+</pre></div>
+</div>
+<p>If successful, it should report OK with Green Text and show various information
+about the target FortiSIEM Organizations.</p>
+<p>If not successful, double check the hosts file, username/password combo,
+and that the credentials have appropriate RBAC access in FortiSIEM.
+The -vvvv verbose mode should indicate where the issue lies.</p>
+</div>
+</div>
+<div class="section" id="using-ansible-vault-to-hide-logins">
+<h2>Using Ansible Vault to Hide Logins<a class="headerlink" href="#using-ansible-vault-to-hide-logins" title="Permalink to this headline">¶</a></h2>
+<p>There are many ways to implement Ansible Vault. Feel free to use any method desired.
+If no previous experience with Ansible Vault exists, we recommend starting with this method:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://medium.com/&#64;schogini/ansible-vault-variables-a-tiny-demonstration-to-handle-secrets-a36132971015">https://medium.com/&#64;schogini/ansible-vault-variables-a-tiny-demonstration-to-handle-secrets-a36132971015</a></li>
+</ul>
+<p>The procedure is simple:</p>
+<ul class="simple">
+<li>Use ‘ansible-vault encrypt string’ on ansible host to create a vault string.</li>
+<li>Replace vault string in HOSTS or Variables file, for the username/password or both.</li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">fortisiem</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">ansible_user</span><span class="p p-Indicator">:</span> <span class="s">&quot;ansible&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">ansible_host</span><span class="p p-Indicator">:</span> <span class="s">&quot;10.7.220.35&quot;</span>
+  <span class="l l-Scalar l-Scalar-Plain">ansible_password</span><span class="p p-Indicator">:</span> <span class="kt">!vault</span> <span class="p p-Indicator">|</span>
+    <span class="no">$ANSIBLE_VAULT;1.1;AES256</span>
+    <span class="no">61366437333436393062623438393663366138633265363930313763383964313130643134383839</span>
+    <span class="no">3630663661626365366334646661303338313866373032330a636165373833366166616465373830</span>
+    <span class="no">34356466653464313134313664613435356238666139623165623132306538336565376265356633</span>
+    <span class="no">6362396137306466630a666562393637353863626436376132643464366661323734363830383164</span>
+    <span class="no">6366</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>Add a reference to the variable file/vault file from the playbook itself:</li>
+</ul>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nn">---</span>
+<span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">Query FSM</span>
+  <span class="l l-Scalar l-Scalar-Plain">hosts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">FortiSIEM</span>
+  <span class="l l-Scalar l-Scalar-Plain">connection</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local</span>
+  <span class="l l-Scalar l-Scalar-Plain">gather_facts</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+  <span class="l l-Scalar l-Scalar-Plain">vars_files</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group_vars/vault.yml</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li>And then run playbooks with –ask-vault-pass, or setup a password file to provide it.</li>
+</ul>
+<p>It is recommended to keep vault secret variables in their own files, so the un-encrypted variables could be read by peers.</p>
+<p>Additional Ansible Vault tutorials, references, and alternative implementation methods:</p>
+<ul class="simple">
+<li><a class="reference external" href="https://docs.ansible.com/ansible/latest/user_guide/playbooks_vault.html">https://docs.ansible.com/ansible/latest/user_guide/playbooks_vault.html</a></li>
+<li><a class="reference external" href="https://www.expressvpn.com/blog/ansible-variables-vaults/">https://www.expressvpn.com/blog/ansible-variables-vaults/</a></li>
+<li><a class="reference external" href="https://www.digitalocean.com/community/tutorials/how-to-use-vault-to-protect-sensitive-ansible-data-on-ubuntu-16-04">https://www.digitalocean.com/community/tutorials/how-to-use-vault-to-protect-sensitive-ansible-data-on-ubuntu-16-04</a></li>
+</ul>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="fsm_use_cases.html" class="btn btn-neutral float-right" title="Use Cases" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="fsm_root.html" class="btn btn-neutral" title="FortiSIEM" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

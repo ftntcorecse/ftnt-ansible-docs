@@ -1,0 +1,700 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>faz_query &mdash; Fortinet Ansible Modules 1.0 documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+
+  
+  
+    
+
+  
+
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Playbook Examples" href="../faz_playbooks.html" />
+    <link rel="prev" title="faz_device" href="faz_device.html" /> 
+
+  
+  <script src="../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> Fortinet Ansible Modules
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../fmgr_root.html">FortiManager</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../faz_root.html">FortiAnalyzer</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../faz_getting_started.html">Getting Started</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../faz_modules.html">Modules</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="faz_device.html">faz_device</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">faz_query</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#metadata">Metadata</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#parameters">Parameters</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#functions">Functions</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#module-source-code">Module Source Code</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../faz_playbooks.html">Playbook Examples</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../fortios_root.html">FortiGate (FortiOS)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../fsm_root.html">FortiSIEM</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">Fortinet Ansible Modules</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../faz_root.html">FortiAnalyzer</a> &raquo;</li>
+        
+          <li><a href="../faz_modules.html">Modules</a> &raquo;</li>
+        
+      <li>faz_query</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/faz_modules/faz_query.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="faz-query">
+<h1>faz_query<a class="headerlink" href="#faz-query" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="metadata">
+<h2>Metadata<a class="headerlink" href="#metadata" title="Permalink to this headline">¶</a></h2>
+<p><strong>Name:</strong> faz_query</p>
+<p><strong>Description:</strong> Provides information on data objects within FortiAnalyzer so that playbooks can perform conditionals.</p>
+<p><strong>Author(s):</strong> Luke Weighall (&#64;lweighall)</p>
+<p><strong>Ansible Version Added/Required:</strong> 2.8</p>
+<p><strong>Dev Status:</strong> No status updates, yet. Contact Authors.</p>
+</div>
+<div class="section" id="parameters">
+<h2>Parameters<a class="headerlink" href="#parameters" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="adom">
+<h3>adom<a class="headerlink" href="#adom" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The ADOM the configuration should belong to.</li>
+<li>Required: False</li>
+<li>default: root</li>
+</ul>
+</div>
+<div class="section" id="custom-dict">
+<h3>custom_dict<a class="headerlink" href="#custom-dict" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: ADVANCED USERS ONLY! REQUIRES KNOWLEDGE OF FAZ JSON API!</p>
+<p>DICTIONARY JSON FORMAT ONLY – Custom dictionary/datagram to send to the endpoint.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+</ul>
+</div>
+<div class="section" id="custom-endpoint">
+<h3>custom_endpoint<a class="headerlink" href="#custom-endpoint" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: ADVANCED USERS ONLY! REQUIRES KNOWLEDGE OF FAZ JSON API!</p>
+<p>The HTTP Endpoint on FortiAnalyzer you wish to GET from.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+</ul>
+</div>
+<div class="section" id="device-ip">
+<h3>device_ip<a class="headerlink" href="#device-ip" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The IP of the device you want to query.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="device-serial">
+<h3>device_serial<a class="headerlink" href="#device-serial" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The serial number of the device you want to query.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="device-unique-name">
+<h3>device_unique_name<a class="headerlink" href="#device-unique-name" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The desired “friendly” name of the device you want to query.</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="nodes">
+<h3>nodes<a class="headerlink" href="#nodes" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: A LIST of firewalls in the cluster you want to verify i.e. [“firewall_A”,”firewall_B”].</li>
+<li>Required: False</li>
+</ul>
+</div>
+<div class="section" id="object">
+<h3>object<a class="headerlink" href="#object" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The data object we wish to query (device, package, rule, etc). Will expand choices as improves.</li>
+<li>Required: True</li>
+<li>choices: [‘device’, ‘cluster_nodes’, ‘task’, ‘custom’]</li>
+</ul>
+</div>
+<div class="section" id="task-id">
+<h3>task_id<a class="headerlink" href="#task-id" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Description: The ID of the task you wish to query status on. If left blank and object = ‘task’ a list of tasks are returned.</li>
+<li>Required: False</li>
+</ul>
+</div>
+</div>
+<div class="section" id="functions">
+<h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>faz_get_custom</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">faz_get_custom</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param faz: The faz object instance from fortianalyzer.py</span>
+<span class="sd">    :type faz: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiAnalyzer</span>
+<span class="sd">    :rtype: dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># IF THE CUSTOM DICTIONARY (OFTEN CONTAINING FILTERS) IS DEFINED CREATED THAT</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_dict&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_dict&quot;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+    <span class="c1"># SET THE CUSTOM ENDPOINT PROVIDED</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_endpoint&quot;</span><span class="p">]</span>
+    <span class="c1"># MAKE THE CALL AND RETURN RESULTS</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FAZMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>faz_get_task_status</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">faz_get_task_status</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param faz: The faz object instance from fortianalyzer.py</span>
+<span class="sd">    :type faz: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiAnalyzer</span>
+<span class="sd">    :rtype: dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># IF THE TASK_ID IS DEFINED, THEN GET THAT SPECIFIC TASK</span>
+    <span class="c1"># OTHERWISE, GET ALL RECENT TASKS IN A LIST</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;task_id&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/task/task/{task_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;task_id&quot;</span><span class="p">])</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FAZMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/task/task&#39;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FAZMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+</pre></div>
+</div>
+</div></blockquote>
+<ul class="simple">
+<li>main</li>
+</ul>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="nb">object</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;task&quot;</span><span class="p">,</span> <span class="s2">&quot;custom&quot;</span><span class="p">]),</span>
+        <span class="n">custom_endpoint</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">custom_dict</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;dict&quot;</span><span class="p">),</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="p">)</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;object&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;task_id&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;task_id&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;custom_endpoint&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;custom_endpoint&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;custom_dict&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;custom_dict&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+    <span class="n">faz</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">)</span>
+        <span class="n">faz</span> <span class="o">=</span> <span class="n">FortiAnalyzerHandler</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="n">faz</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">FAZCommon</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">FAIL_SOCKET_MSG</span><span class="p">)</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># IF OBJECT IS TASK</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;task&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">faz_get_task_status</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FAZBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># IF OBJECT IS CUSTOM</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;custom&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">faz_get_custom</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;QUERY FAILED -- Please check syntax check JSON guide if needed.&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">results_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">results_len</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">results_combine</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                        <span class="n">results_combine</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                        <span class="n">results_combine</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">results_len</span><span class="p">]</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Custom Query Success&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results_combine</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NO RESULTS&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FAZBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="c1"># PROCESS RESULTS</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">faz</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>
+                            <span class="n">ansible_facts</span><span class="o">=</span><span class="n">faz</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FAZBaseException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;An error occurred with govern_response(). Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="module-source-code">
+<h2>Module Source Code<a class="headerlink" href="#module-source-code" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/python</span>
+<span class="c1">#</span>
+<span class="c1"># This file is part of Ansible</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is free software: you can redistribute it and/or modify</span>
+<span class="c1"># it under the terms of the GNU General Public License as published by</span>
+<span class="c1"># the Free Software Foundation, either version 3 of the License, or</span>
+<span class="c1"># (at your option) any later version.</span>
+<span class="c1">#</span>
+<span class="c1"># Ansible is distributed in the hope that it will be useful,</span>
+<span class="c1"># but WITHOUT ANY WARRANTY; without even the implied warranty of</span>
+<span class="c1"># MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the</span>
+<span class="c1"># GNU General Public License for more details.</span>
+<span class="c1">#</span>
+<span class="c1"># You should have received a copy of the GNU General Public License</span>
+<span class="c1"># along with Ansible.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</span>
+<span class="c1">#</span>
+
+<span class="kn">from</span> <span class="nn">__future__</span> <span class="kn">import</span> <span class="n">absolute_import</span><span class="p">,</span> <span class="n">division</span><span class="p">,</span> <span class="n">print_function</span>
+<span class="vm">__metaclass__</span> <span class="o">=</span> <span class="nb">type</span>
+
+<span class="n">ANSIBLE_METADATA</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s2">&quot;metadata_version&quot;</span><span class="p">:</span> <span class="s2">&quot;1.1&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;status&quot;</span><span class="p">:</span> <span class="p">[</span><span class="s2">&quot;preview&quot;</span><span class="p">],</span>
+    <span class="s2">&quot;supported_by&quot;</span><span class="p">:</span> <span class="s2">&quot;community&quot;</span>
+<span class="p">}</span>
+
+<span class="n">DOCUMENTATION</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">---</span>
+<span class="s1">module: faz_query</span>
+<span class="s1">version_added: &quot;2.8&quot;</span>
+<span class="s1">notes:</span>
+<span class="s1">    - Full Documentation at U(https://ftnt-ansible-docs.readthedocs.io/en/latest/).</span>
+<span class="s1">author: Luke Weighall (@lweighall)</span>
+<span class="s1">short_description: Query FortiAnalyzer data objects for use in Ansible workflows.</span>
+<span class="s1">description:</span>
+<span class="s1">  - Provides information on data objects within FortiAnalyzer so that playbooks can perform conditionals.</span>
+
+<span class="s1">options:</span>
+<span class="s1">  adom:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The ADOM the configuration should belong to.</span>
+<span class="s1">    required: false</span>
+<span class="s1">    default: root</span>
+
+<span class="s1">  object:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The data object we wish to query (device, package, rule, etc). Will expand choices as improves.</span>
+<span class="s1">    required: true</span>
+<span class="s1">    choices:</span>
+<span class="s1">    - device</span>
+<span class="s1">    - cluster_nodes</span>
+<span class="s1">    - task</span>
+<span class="s1">    - custom</span>
+
+<span class="s1">  custom_endpoint:</span>
+<span class="s1">    description:</span>
+<span class="s1">        - ADVANCED USERS ONLY! REQUIRES KNOWLEDGE OF FAZ JSON API!</span>
+<span class="s1">        - The HTTP Endpoint on FortiAnalyzer you wish to GET from.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  custom_dict:</span>
+<span class="s1">    description:</span>
+<span class="s1">        - ADVANCED USERS ONLY! REQUIRES KNOWLEDGE OF FAZ JSON API!</span>
+<span class="s1">        - DICTIONARY JSON FORMAT ONLY -- Custom dictionary/datagram to send to the endpoint.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  device_ip:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The IP of the device you want to query.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  device_unique_name:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The desired &quot;friendly&quot; name of the device you want to query.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  device_serial:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The serial number of the device you want to query.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  task_id:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - The ID of the task you wish to query status on. If left blank and object = &#39;task&#39; a list of tasks are returned.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  nodes:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - A LIST of firewalls in the cluster you want to verify i.e. [&quot;firewall_A&quot;,&quot;firewall_B&quot;].</span>
+<span class="s1">    required: false</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+
+<span class="n">EXAMPLES</span> <span class="o">=</span> <span class="s1">&#39;&#39;&#39;</span>
+<span class="s1">- name: GET STATUS OF TASK ID</span>
+<span class="s1">  faz_query:</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    object: &quot;task&quot;</span>
+<span class="s1">    task_id: &quot;3&quot;</span>
+
+<span class="s1">- name: USE CUSTOM TYPE TO QUERY AVAILABLE SCRIPTS</span>
+<span class="s1">  faz_query:</span>
+<span class="s1">    adom: &quot;ansible&quot;</span>
+<span class="s1">    object: &quot;custom&quot;</span>
+<span class="s1">    custom_endpoint: &quot;/dvmdb/adom/ansible/script&quot;</span>
+<span class="s1">    custom_dict: { &quot;type&quot;: &quot;cli&quot; }</span>
+<span class="s1">&#39;&#39;&#39;</span>
+
+<span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">api_result:</span>
+<span class="s2">  description: full API response, includes status code and message</span>
+<span class="s2">  returned: always</span>
+<span class="s2">  type: str</span>
+<span class="s2">&quot;&quot;&quot;</span>
+
+<span class="kn">from</span> <span class="nn">ansible.module_utils.basic</span> <span class="kn">import</span> <span class="n">AnsibleModule</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.connection</span> <span class="kn">import</span> <span class="n">Connection</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortianalyzer.fortianalyzer</span> <span class="kn">import</span> <span class="n">FortiAnalyzerHandler</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortianalyzer.common</span> <span class="kn">import</span> <span class="n">FAZBaseException</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortianalyzer.common</span> <span class="kn">import</span> <span class="n">FAZCommon</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortianalyzer.common</span> <span class="kn">import</span> <span class="n">FAZMethods</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortianalyzer.common</span> <span class="kn">import</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+<span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortianalyzer.common</span> <span class="kn">import</span> <span class="n">FAIL_SOCKET_MSG</span>
+
+
+<span class="k">def</span> <span class="nf">faz_get_custom</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param faz: The faz object instance from fortianalyzer.py</span>
+<span class="sd">    :type faz: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiAnalyzer</span>
+<span class="sd">    :rtype: dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># IF THE CUSTOM DICTIONARY (OFTEN CONTAINING FILTERS) IS DEFINED CREATED THAT</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_dict&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_dict&quot;</span><span class="p">]</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+
+    <span class="c1"># SET THE CUSTOM ENDPOINT PROVIDED</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;custom_endpoint&quot;</span><span class="p">]</span>
+    <span class="c1"># MAKE THE CALL AND RETURN RESULTS</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FAZMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">faz_get_task_status</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    :param faz: The faz object instance from fortianalyzer.py</span>
+<span class="sd">    :type faz: class object</span>
+<span class="sd">    :param paramgram: The formatted dictionary of options to process</span>
+<span class="sd">    :type paramgram: dict</span>
+<span class="sd">    :return: The response from the FortiAnalyzer</span>
+<span class="sd">    :rtype: dict</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="c1"># IF THE TASK_ID IS DEFINED, THEN GET THAT SPECIFIC TASK</span>
+    <span class="c1"># OTHERWISE, GET ALL RECENT TASKS IN A LIST</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;task_id&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
+
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/task/task/{task_id}&#39;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">task_id</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;task_id&quot;</span><span class="p">])</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FAZMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/task/task&#39;</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">faz</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FAZMethods</span><span class="o">.</span><span class="n">GET</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
+        <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
+        <span class="nb">object</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;task&quot;</span><span class="p">,</span> <span class="s2">&quot;custom&quot;</span><span class="p">]),</span>
+        <span class="n">custom_endpoint</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">custom_dict</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;dict&quot;</span><span class="p">),</span>
+        <span class="n">task_id</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">)</span>
+    <span class="p">)</span>
+
+    <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="p">)</span>
+    <span class="n">paramgram</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;object&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;task_id&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;task_id&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;custom_endpoint&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;custom_endpoint&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;custom_dict&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;custom_dict&quot;</span><span class="p">]</span>
+    <span class="p">}</span>
+    <span class="n">module</span><span class="o">.</span><span class="n">paramgram</span> <span class="o">=</span> <span class="n">paramgram</span>
+    <span class="n">faz</span> <span class="o">=</span> <span class="bp">None</span>
+    <span class="k">if</span> <span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">:</span>
+        <span class="n">connection</span> <span class="o">=</span> <span class="n">Connection</span><span class="p">(</span><span class="n">module</span><span class="o">.</span><span class="n">_socket_path</span><span class="p">)</span>
+        <span class="n">faz</span> <span class="o">=</span> <span class="n">FortiAnalyzerHandler</span><span class="p">(</span><span class="n">connection</span><span class="p">,</span> <span class="n">module</span><span class="p">)</span>
+        <span class="n">faz</span><span class="o">.</span><span class="n">tools</span> <span class="o">=</span> <span class="n">FAZCommon</span><span class="p">()</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">FAIL_SOCKET_MSG</span><span class="p">)</span>
+
+    <span class="n">results</span> <span class="o">=</span> <span class="n">DEFAULT_RESULT_OBJ</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># IF OBJECT IS TASK</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;task&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">faz_get_task_status</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FAZBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="k">try</span><span class="p">:</span>
+        <span class="c1"># IF OBJECT IS CUSTOM</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;custom&quot;</span><span class="p">:</span>
+            <span class="n">results</span> <span class="o">=</span> <span class="n">faz_get_custom</span><span class="p">(</span><span class="n">faz</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">module</span><span class="o">.</span><span class="n">fail_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;QUERY FAILED -- Please check syntax check JSON guide if needed.&quot;</span><span class="p">)</span>
+            <span class="k">if</span> <span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">results_len</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+                <span class="k">if</span> <span class="n">results_len</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                    <span class="n">results_combine</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">dict</span><span class="p">):</span>
+                        <span class="n">results_combine</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+                    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="nb">list</span><span class="p">):</span>
+                        <span class="n">results_combine</span><span class="p">[</span><span class="s2">&quot;results&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="mi">0</span><span class="p">:</span><span class="n">results_len</span><span class="p">]</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;Custom Query Success&quot;</span><span class="p">,</span> <span class="o">**</span><span class="n">results_combine</span><span class="p">)</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;NO RESULTS&quot;</span><span class="p">)</span>
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FAZBaseException</span><span class="p">(</span><span class="n">err</span><span class="p">)</span>
+
+    <span class="c1"># PROCESS RESULTS</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">faz</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>
+                            <span class="n">ansible_facts</span><span class="o">=</span><span class="n">faz</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
+    <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="n">FAZBaseException</span><span class="p">(</span><span class="n">msg</span><span class="o">=</span><span class="s2">&quot;An error occurred with govern_response(). Error: &quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">err</span><span class="p">))</span>
+
+    <span class="k">return</span> <span class="n">module</span><span class="o">.</span><span class="n">exit_json</span><span class="p">(</span><span class="o">**</span><span class="n">results</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../faz_playbooks.html" class="btn btn-neutral float-right" title="Playbook Examples" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="faz_device.html" class="btn btn-neutral" title="faz_device" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2018, Fortinet, CSE - DevOps
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+    
+
+  
+
+  <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
