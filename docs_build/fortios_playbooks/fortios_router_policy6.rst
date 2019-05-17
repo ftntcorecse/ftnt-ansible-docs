@@ -21,6 +21,7 @@ Playbook Task Examples
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           router_policy6:
             state: "present"
             comments: "<your_own_value>"
@@ -42,40 +43,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/router/fortios_router_policy6_example.yml
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure IPv6 routing policies.
-        fortios_router_policy6:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          router_policy6:
-            state: "present"
-            comments: "<your_own_value>"
-            dst: "<your_own_value>"
-            end-port: "5"
-            gateway: "<your_own_value>"
-            input-device: "<your_own_value> (source system.interface.name)"
-            output-device: "<your_own_value> (source system.interface.name)"
-            protocol: "9"
-            seq-num: "10"
-            src: "<your_own_value>"
-            start-port: "12"
-            status: "enable"
-            tos: "<your_own_value>"
-            tos-mask: "<your_own_value>"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

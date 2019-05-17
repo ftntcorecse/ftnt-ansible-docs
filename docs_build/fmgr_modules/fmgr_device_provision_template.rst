@@ -875,9 +875,9 @@ Functions
             }
     
             targets = []
-            for target in paramgram["provision_targets"].strip().split(","):
+            for target in paramgram["provision_targets"].split(","):
                 # split the host on the space to get the mask out
-                new_target = {"name": target}
+                new_target = {"name": target.strip()}
                 targets.append(new_target)
     
             datagram["scope member"] = targets
@@ -1433,14 +1433,14 @@ Functions
         response = DEFAULT_RESULT_OBJ
         datagram = {
             "target-ip": paramgram["admin_fortianalyzer_target"],
-            "target": 4,
+            "target": "others",
         }
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/device/profile/fortianalyzer".format(adom=adom,
                                                      provisioning_template=paramgram["provisioning_template"])
         if paramgram["mode"] == "delete":
-            datagram["hastarget"] = "True"
+            datagram["hastarget"] = "False"
     
         response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
@@ -1711,7 +1711,6 @@ Functions
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
-    
         try:
             # PROCESS THE ADMIN OPTIONS
             if any(v is not None for v in (
@@ -1721,7 +1720,7 @@ Functions
                     paramgram["admin_gui_theme"])):
     
                 results = set_devprof_admin(fmgr, paramgram)
-                fmgr.govern_response(module=module, results=results, good_codes=[0],
+                fmgr.govern_response(module=module, results=results, good_codes=[0], stop_on_success=False,
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
@@ -1748,7 +1747,7 @@ Functions
                     paramgram["smtp_source_ipv4"], paramgram["smtp_validate_cert"])):
     
                 results = set_devprof_smtp(fmgr, paramgram)
-                fmgr.govern_response(module=module, results=results, good_codes=[0],
+                fmgr.govern_response(module=module, results=results, good_codes=[0], stop_on_success=False,
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
@@ -1758,7 +1757,7 @@ Functions
             if any(v is not None for v in
                    (paramgram["dns_suffix"], paramgram["dns_primary_ipv4"], paramgram["dns_secondary_ipv4"])):
                 results = set_devprof_dns(fmgr, paramgram)
-                fmgr.govern_response(module=module, results=results, good_codes=[0],
+                fmgr.govern_response(module=module, results=results, good_codes=[0], stop_on_success=False,
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
@@ -1768,7 +1767,7 @@ Functions
             if paramgram["admin_fortianalyzer_target"] is not None:
     
                 results = set_devprof_faz(fmgr, paramgram)
-                fmgr.govern_response(module=module, results=results, good_codes=[0],
+                fmgr.govern_response(module=module, results=results, good_codes=[0], stop_on_success=False,
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
@@ -1778,7 +1777,7 @@ Functions
             if paramgram["provision_targets"] is not None:
                 if paramgram["mode"] != "delete":
                     results = set_devprof_scope(fmgr, paramgram)
-                    fmgr.govern_response(module=module, results=results, good_codes=[0],
+                    fmgr.govern_response(module=module, results=results, good_codes=[0], stop_on_success=False,
                                          ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
     
                 if paramgram["mode"] == "delete":
@@ -2500,9 +2499,9 @@ Module Source Code
             }
     
             targets = []
-            for target in paramgram["provision_targets"].strip().split(","):
+            for target in paramgram["provision_targets"].split(","):
                 # split the host on the space to get the mask out
-                new_target = {"name": target}
+                new_target = {"name": target.strip()}
                 targets.append(new_target)
     
             datagram["scope member"] = targets
@@ -2998,14 +2997,14 @@ Module Source Code
         response = DEFAULT_RESULT_OBJ
         datagram = {
             "target-ip": paramgram["admin_fortianalyzer_target"],
-            "target": 4,
+            "target": "others",
         }
         url = "/pm/config/adom/{adom}" \
               "/devprof/{provisioning_template}" \
               "/device/profile/fortianalyzer".format(adom=adom,
                                                      provisioning_template=paramgram["provisioning_template"])
         if paramgram["mode"] == "delete":
-            datagram["hastarget"] = "True"
+            datagram["hastarget"] = "False"
     
         response = fmgr.process_request(url, datagram, paramgram["mode"])
         return response
@@ -3271,7 +3270,6 @@ Module Source Code
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
-    
         try:
             # PROCESS THE ADMIN OPTIONS
             if any(v is not None for v in (
@@ -3281,7 +3279,7 @@ Module Source Code
                     paramgram["admin_gui_theme"])):
     
                 results = set_devprof_admin(fmgr, paramgram)
-                fmgr.govern_response(module=module, results=results, good_codes=[0],
+                fmgr.govern_response(module=module, results=results, good_codes=[0], stop_on_success=False,
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
@@ -3308,7 +3306,7 @@ Module Source Code
                     paramgram["smtp_source_ipv4"], paramgram["smtp_validate_cert"])):
     
                 results = set_devprof_smtp(fmgr, paramgram)
-                fmgr.govern_response(module=module, results=results, good_codes=[0],
+                fmgr.govern_response(module=module, results=results, good_codes=[0], stop_on_success=False,
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
@@ -3318,7 +3316,7 @@ Module Source Code
             if any(v is not None for v in
                    (paramgram["dns_suffix"], paramgram["dns_primary_ipv4"], paramgram["dns_secondary_ipv4"])):
                 results = set_devprof_dns(fmgr, paramgram)
-                fmgr.govern_response(module=module, results=results, good_codes=[0],
+                fmgr.govern_response(module=module, results=results, good_codes=[0], stop_on_success=False,
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
@@ -3328,7 +3326,7 @@ Module Source Code
             if paramgram["admin_fortianalyzer_target"] is not None:
     
                 results = set_devprof_faz(fmgr, paramgram)
-                fmgr.govern_response(module=module, results=results, good_codes=[0],
+                fmgr.govern_response(module=module, results=results, good_codes=[0], stop_on_success=False,
                                      ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
         except Exception as err:
             raise FMGBaseException(err)
@@ -3338,7 +3336,7 @@ Module Source Code
             if paramgram["provision_targets"] is not None:
                 if paramgram["mode"] != "delete":
                     results = set_devprof_scope(fmgr, paramgram)
-                    fmgr.govern_response(module=module, results=results, good_codes=[0],
+                    fmgr.govern_response(module=module, results=results, good_codes=[0], stop_on_success=False,
                                          ansible_facts=fmgr.construct_ansible_facts(results, module.params, paramgram))
     
                 if paramgram["mode"] == "delete":

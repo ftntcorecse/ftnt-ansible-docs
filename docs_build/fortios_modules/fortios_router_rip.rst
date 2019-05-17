@@ -11,7 +11,7 @@ Metadata
 
 **Name:** fortios_router_rip
 
-**Description:** This module is able to configure a FortiGate or FortiOS by allowing the user to configure router feature and rip category. Examples includes all options and need to be adjusted to datasources before usage. Tested with FOS v6.0.2
+**Description:** This module is able to configure a FortiGate or FortiOS by allowing the user to set and modify router feature and rip category. Examples include all parameters and values need to be adjusted to datasources before usage. Tested with FOS v6.0.2
 
 
 **Author(s):** 
@@ -24,7 +24,7 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** No Data Exists. Contact DevOps Team.
+**Dev Status:** No status updates, yet. Contact Authors.
 
 Parameters
 ----------
@@ -32,7 +32,7 @@ Parameters
 host
 ++++
 
-- Description: FortiOS or FortiGate ip adress.
+- Description: FortiOS or FortiGate ip address.
 
   
 
@@ -45,7 +45,7 @@ https
 
   
 
-- default: False
+- default: True
 
 password
 ++++++++
@@ -132,6 +132,26 @@ Functions
     
     
 
+- flatten_multilists_attributes
+
+ .. code-block:: python
+
+    def flatten_multilists_attributes(data):
+        multilist_attrs = []
+    
+        for attr in multilist_attrs:
+            try:
+                path = "data['" + "']['".join(elem for elem in attr) + "']"
+                current_val = eval(path)
+                flattened_val = ' '.join(elem for elem in current_val)
+                exec(path + '= flattened_val')
+            except BaseException:
+                pass
+    
+        return data
+    
+    
+
 - router_rip
 
  .. code-block:: python
@@ -139,7 +159,8 @@ Functions
     def router_rip(data, fos):
         vdom = data['vdom']
         router_rip_data = data['router_rip']
-        filtered_data = filter_router_rip_data(router_rip_data)
+        flattened_data = flatten_multilists_attributes(router_rip_data)
+        filtered_data = filter_router_rip_data(flattened_data)
         return fos.set('router',
                        'rip',
                        data=filtered_data,
@@ -154,11 +175,8 @@ Functions
     def fortios_router(data, fos):
         login(data)
     
-        methodlist = ['router_rip']
-        for method in methodlist:
-            if data[method]:
-                resp = eval(method)(data, fos)
-                break
+        if data['router_rip']:
+            resp = router_rip(data, fos)
     
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
@@ -175,7 +193,7 @@ Functions
             "username": {"required": True, "type": "str"},
             "password": {"required": False, "type": "str", "no_log": True},
             "vdom": {"required": False, "type": "str", "default": "root"},
-            "https": {"required": False, "type": "bool", "default": "False"},
+            "https": {"required": False, "type": "bool", "default": True},
             "router_rip": {
                 "required": False, "type": "dict",
                 "options": {
@@ -291,7 +309,7 @@ Module Source Code
 
     #!/usr/bin/python
     from __future__ import (absolute_import, division, print_function)
-    # Copyright 2018 Fortinet, Inc.
+    # Copyright 2019 Fortinet, Inc.
     #
     # This program is free software: you can redistribute it and/or modify
     # it under the terms of the GNU General Public License as published by
@@ -318,11 +336,11 @@ Module Source Code
     DOCUMENTATION = '''
     ---
     module: fortios_router_rip
-    short_description: Configure RIP.
+    short_description: Configure RIP in Fortinet's FortiOS and FortiGate.
     description:
-        - This module is able to configure a FortiGate or FortiOS by
-          allowing the user to configure router feature and rip category.
-          Examples includes all options and need to be adjusted to datasources before usage.
+        - This module is able to configure a FortiGate or FortiOS by allowing the
+          user to set and modify router feature and rip category.
+          Examples include all parameters and values need to be adjusted to datasources before usage.
           Tested with FOS v6.0.2
     version_added: "2.8"
     author:
@@ -336,7 +354,7 @@ Module Source Code
     options:
         host:
            description:
-                - FortiOS or FortiGate ip adress.
+                - FortiOS or FortiGate ip address.
            required: true
         username:
             description:
@@ -357,7 +375,7 @@ Module Source Code
                 - Indicates if the requests towards FortiGate must use HTTPS
                   protocol
             type: bool
-            default: false
+            default: true
         router_rip:
             description:
                 - Configure RIP.
@@ -585,6 +603,7 @@ Module Source Code
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           router_rip:
             default-information-originate: "enable"
             default-metric: "4"
@@ -650,57 +669,57 @@ Module Source Code
     build:
       description: Build number of the fortigate image
       returned: always
-      type: string
+      type: str
       sample: '1547'
     http_method:
       description: Last method used to provision the content into FortiGate
       returned: always
-      type: string
+      type: str
       sample: 'PUT'
     http_status:
       description: Last result given by FortiGate on last operation applied
       returned: always
-      type: string
+      type: str
       sample: "200"
     mkey:
       description: Master key (id) used in the last call to FortiGate
       returned: success
-      type: string
-      sample: "key1"
+      type: str
+      sample: "id"
     name:
       description: Name of the table used to fulfill the request
       returned: always
-      type: string
+      type: str
       sample: "urlfilter"
     path:
       description: Path of the table used to fulfill the request
       returned: always
-      type: string
+      type: str
       sample: "webfilter"
     revision:
       description: Internal revision number
       returned: always
-      type: string
+      type: str
       sample: "17.0.2.10658"
     serial:
       description: Serial number of the unit
       returned: always
-      type: string
+      type: str
       sample: "FGVMEVYYQT3AB5352"
     status:
       description: Indication of the operation's result
       returned: always
-      type: string
+      type: str
       sample: "success"
     vdom:
       description: Virtual domain used
       returned: always
-      type: string
+      type: str
       sample: "root"
     version:
       description: Version of the FortiGate
       returned: always
-      type: string
+      type: str
       sample: "v5.6.3"
     
     '''
@@ -740,10 +759,26 @@ Module Source Code
         return dictionary
     
     
+    def flatten_multilists_attributes(data):
+        multilist_attrs = []
+    
+        for attr in multilist_attrs:
+            try:
+                path = "data['" + "']['".join(elem for elem in attr) + "']"
+                current_val = eval(path)
+                flattened_val = ' '.join(elem for elem in current_val)
+                exec(path + '= flattened_val')
+            except BaseException:
+                pass
+    
+        return data
+    
+    
     def router_rip(data, fos):
         vdom = data['vdom']
         router_rip_data = data['router_rip']
-        filtered_data = filter_router_rip_data(router_rip_data)
+        flattened_data = flatten_multilists_attributes(router_rip_data)
+        filtered_data = filter_router_rip_data(flattened_data)
         return fos.set('router',
                        'rip',
                        data=filtered_data,
@@ -753,11 +788,8 @@ Module Source Code
     def fortios_router(data, fos):
         login(data)
     
-        methodlist = ['router_rip']
-        for method in methodlist:
-            if data[method]:
-                resp = eval(method)(data, fos)
-                break
+        if data['router_rip']:
+            resp = router_rip(data, fos)
     
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
@@ -769,7 +801,7 @@ Module Source Code
             "username": {"required": True, "type": "str"},
             "password": {"required": False, "type": "str", "no_log": True},
             "vdom": {"required": False, "type": "str", "default": "root"},
-            "https": {"required": False, "type": "bool", "default": "False"},
+            "https": {"required": False, "type": "bool", "default": True},
             "router_rip": {
                 "required": False, "type": "dict",
                 "options": {

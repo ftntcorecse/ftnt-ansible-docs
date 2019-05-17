@@ -126,6 +126,7 @@ fmgr_fwobj_ipv6_add_iprange.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
@@ -152,6 +153,7 @@ fmgr_fwobj_ipv4_add_fqdn.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
@@ -176,6 +178,7 @@ fmgr_fwobj_ipv4_del_all.yml
 +++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -311,6 +314,7 @@ fmgr_fwobj_ipv4_broadcast_subnet.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG IPv4 IP ADDRESS OBJECT
       hosts: FortiManager
@@ -335,6 +339,7 @@ fmgr_fwobj_ipv6_add_ip.yml
 ++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -363,6 +368,7 @@ fmgr_fwobj_ipv6_add_z_group.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
@@ -386,7 +392,8 @@ fmgr_fwobj_ipv6_add_z_group.yml
 fmgr_fwobj_address_run_all.sh
 +++++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook fmgr_fwobj_ipv6_add_iprange.yml -vvvv
     ansible-playbook fmgr_fwobj_ipv4_add_fqdn.yml -vvvv
@@ -408,6 +415,7 @@ fmgr_fwobj_ipv4_add_geo.yml
 +++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -433,6 +441,7 @@ fmgr_fwobj_ipv4_add_ipmask.yml
 ++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -475,6 +484,7 @@ fmgr_fwobj_ipv4_add_z_group.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
@@ -497,6 +507,7 @@ fmgr_fwobj_ipv4_add_ipsubnet.yml
 ++++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -536,6 +547,7 @@ fmgr_fwobj_ipv4_multicast_range.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG IPv4 IP ADDRESS OBJECT
       hosts: FortiManager
@@ -561,6 +573,7 @@ fmgr_fwobj_ipv4_add_iprange.yml
 +++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -601,6 +614,7 @@ fmgr_fwobj_ipv4_add_wildcard_fqdn.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
@@ -625,6 +639,7 @@ fmgr_fwobj_ipv4_add_wildcard.yml
 ++++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     

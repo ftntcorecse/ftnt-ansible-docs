@@ -32,7 +32,8 @@ Playbook File Examples
 fmgr_secprof_dns_run_all.sh
 +++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook dns.yml -vvvv
 
@@ -41,6 +42,7 @@ dns.yml
 +++++++
 
 .. code-block:: yaml
+
 
 
     - name: Create and Delete security profile in FMG

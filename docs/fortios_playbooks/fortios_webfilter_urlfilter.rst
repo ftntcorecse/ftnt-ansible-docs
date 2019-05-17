@@ -45,43 +45,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/webfilter/fortios_webfilter_urlfilter_example.yml
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure URL filter lists.
-        fortios_webfilter_urlfilter:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          webfilter_urlfilter:
-            state: "present"
-            comment: "Optional comments."
-            entries:
-             -
-                action: "exempt"
-                dns-address-family: "ipv4"
-                exempt: "av"
-                id:  "8"
-                referrer-host: "myhostname"
-                status: "enable"
-                type: "simple"
-                url: "myurl.com"
-                web-proxy-profile: "<your_own_value> (source web-proxy.profile.name)"
-            id:  "14"
-            ip-addr-block: "enable"
-            name: "default_name_16"
-            one-arm-ips-urlfilter: "enable"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

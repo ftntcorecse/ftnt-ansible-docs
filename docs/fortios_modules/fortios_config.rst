@@ -18,7 +18,7 @@ Metadata
 
 **Ansible Version Added/Required:** 2.3
 
-**Dev Status:** No Data Exists. Contact DevOps Team.
+**Dev Status:** No status updates, yet. Contact Authors.
 
 Parameters
 ----------
@@ -179,8 +179,8 @@ Module Source Code
         description:
           - Only for partial backup, you can restrict by giving expected configuration path (ex. firewall address).
         default: ""
-    notes:
-      - This module requires pyFG python library
+    requirements:
+      - pyFG
     """
     
     EXAMPLES = """

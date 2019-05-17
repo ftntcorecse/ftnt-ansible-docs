@@ -58,6 +58,7 @@ fmgr_query_test.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG FW POLICY PACKAGES AND FOLDERS
       hosts: FortiManager
@@ -109,7 +110,8 @@ fmgr_query_test.yml
 fmgr_query_run_all.sh
 +++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook fmgr_query_test.yml -vvvv
     ansible-playbook fmgr_query_run_all.sh -vvvv

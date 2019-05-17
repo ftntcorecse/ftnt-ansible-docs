@@ -21,6 +21,7 @@ Playbook Task Examples
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           wireless_controller_global:
             ap-log-server: "enable"
             ap-log-server-ip: "<your_own_value>"
@@ -45,43 +46,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/wireless_controller/fortios_wireless_controller_global_example.yml
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure wireless controller global settings.
-        fortios_wireless_controller_global:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          wireless_controller_global:
-            ap-log-server: "enable"
-            ap-log-server-ip: "<your_own_value>"
-            ap-log-server-port: "5"
-            control-message-offload: "ebp-frame"
-            data-ethernet-II: "enable"
-            discovery-mc-addr: "<your_own_value>"
-            fiapp-eth-type: "9"
-            image-download: "enable"
-            ipsec-base-ip: "<your_own_value>"
-            link-aggregation: "enable"
-            location: "<your_own_value>"
-            max-clients: "14"
-            max-retransmit: "15"
-            mesh-eth-type: "16"
-            name: "default_name_17"
-            rogue-scan-mac-adjacency: "18"
-            wtp-share: "enable"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

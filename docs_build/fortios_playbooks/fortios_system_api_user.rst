@@ -21,6 +21,7 @@ Playbook Task Examples
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           system_api_user:
             state: "present"
             accprofile: "<your_own_value> (source system.accprofile.name)"
@@ -46,44 +47,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/system/fortios_system_api_user_example.yml
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure API users.
-        fortios_system_api_user:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          system_api_user:
-            state: "present"
-            accprofile: "<your_own_value> (source system.accprofile.name)"
-            api-key: "<your_own_value>"
-            comments: "<your_own_value>"
-            cors-allow-origin: "<your_own_value>"
-            name: "default_name_7"
-            peer-auth: "enable"
-            peer-group: "<your_own_value>"
-            schedule: "<your_own_value>"
-            trusthost:
-             -
-                id:  "12"
-                ipv4-trusthost: "<your_own_value>"
-                ipv6-trusthost: "<your_own_value>"
-                type: "ipv4-trusthost"
-            vdom:
-             -
-                name: "default_name_17 (source system.vdom.name)"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

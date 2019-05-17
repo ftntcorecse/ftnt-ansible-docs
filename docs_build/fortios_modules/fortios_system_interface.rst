@@ -11,7 +11,7 @@ Metadata
 
 **Name:** fortios_system_interface
 
-**Description:** This module is able to configure a FortiGate or FortiOS by allowing the user to configure system feature and interface category. Examples includes all options and need to be adjusted to datasources before usage. Tested with FOS v6.0.2
+**Description:** This module is able to configure a FortiGate or FortiOS by allowing the user to set and modify system feature and interface category. Examples include all parameters and values need to be adjusted to datasources before usage. Tested with FOS v6.0.2
 
 
 **Author(s):** 
@@ -24,7 +24,7 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** No Data Exists. Contact DevOps Team.
+**Dev Status:** No status updates, yet. Contact Authors.
 
 Parameters
 ----------
@@ -32,7 +32,7 @@ Parameters
 host
 ++++
 
-- Description: FortiOS or FortiGate ip adress.
+- Description: FortiOS or FortiGate ip address.
 
   
 
@@ -45,7 +45,7 @@ https
 
   
 
-- default: False
+- default: True
 
 password
 ++++++++
@@ -182,6 +182,26 @@ Functions
     
     
 
+- flatten_multilists_attributes
+
+ .. code-block:: python
+
+    def flatten_multilists_attributes(data):
+        multilist_attrs = [[u'allowaccess'], [u'ipv6', u'ip6-allowaccess']]
+    
+        for attr in multilist_attrs:
+            try:
+                path = "data['" + "']['".join(elem for elem in attr) + "']"
+                current_val = eval(path)
+                flattened_val = ' '.join(elem for elem in current_val)
+                exec(path + '= flattened_val')
+            except BaseException:
+                pass
+    
+        return data
+    
+    
+
 - system_interface
 
  .. code-block:: python
@@ -189,7 +209,8 @@ Functions
     def system_interface(data, fos):
         vdom = data['vdom']
         system_interface_data = data['system_interface']
-        filtered_data = filter_system_interface_data(system_interface_data)
+        flattened_data = flatten_multilists_attributes(system_interface_data)
+        filtered_data = filter_system_interface_data(flattened_data)
         if system_interface_data['state'] == "present":
             return fos.set('system',
                            'interface',
@@ -211,11 +232,8 @@ Functions
     def fortios_system(data, fos):
         login(data)
     
-        methodlist = ['system_interface']
-        for method in methodlist:
-            if data[method]:
-                resp = eval(method)(data, fos)
-                break
+        if data['system_interface']:
+            resp = system_interface(data, fos)
     
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
@@ -232,7 +250,7 @@ Functions
             "username": {"required": True, "type": "str"},
             "password": {"required": False, "type": "str", "no_log": True},
             "vdom": {"required": False, "type": "str", "default": "root"},
-            "https": {"required": False, "type": "bool", "default": "False"},
+            "https": {"required": False, "type": "bool", "default": True},
             "system_interface": {
                 "required": False, "type": "dict",
                 "options": {
@@ -243,7 +261,7 @@ Functions
                     "algorithm": {"required": False, "type": "str",
                                   "choices": ["L2", "L3", "L4"]},
                     "alias": {"required": False, "type": "str"},
-                    "allowaccess": {"required": False, "type": "str",
+                    "allowaccess": {"required": False, "type": "list",
                                     "choices": ["ping", "https", "ssh",
                                                 "snmp", "http", "telnet",
                                                 "fgfm", "radius-acct", "probe-response",
@@ -353,7 +371,7 @@ Functions
                     "ingress-spillover-threshold": {"required": False, "type": "int"},
                     "interface": {"required": False, "type": "str"},
                     "internal": {"required": False, "type": "int"},
-                    "ip": {"required": False, "type": "ipv4-classnet-host"},
+                    "ip": {"required": False, "type": "str"},
                     "ipmac": {"required": False, "type": "str",
                               "choices": ["enable", "disable"]},
                     "ips-sniffer-mode": {"required": False, "type": "str",
@@ -378,7 +396,7 @@ Functions
                                  "dhcp6-relay-type": {"required": False, "type": "str",
                                                       "choices": ["regular"]},
                                  "ip6-address": {"required": False, "type": "str"},
-                                 "ip6-allowaccess": {"required": False, "type": "str",
+                                 "ip6-allowaccess": {"required": False, "type": "list",
                                                      "choices": ["ping", "https", "ssh",
                                                                  "snmp", "http", "telnet",
                                                                  "fgfm", "capwap"]},
@@ -479,7 +497,7 @@ Functions
                                        "options": {
                                            "name": {"required": True, "type": "str"}
                                        }},
-                    "management-ip": {"required": False, "type": "ipv4-classnet-host"},
+                    "management-ip": {"required": False, "type": "str"},
                     "member": {"required": False, "type": "list",
                                "options": {
                                    "interface-name": {"required": True, "type": "str"}
@@ -524,7 +542,7 @@ Functions
                     "proxy-captive-portal": {"required": False, "type": "str",
                                              "choices": ["enable", "disable"]},
                     "redundant-interface": {"required": False, "type": "str"},
-                    "remote-ip": {"required": False, "type": "ipv4-classnet-host"},
+                    "remote-ip": {"required": False, "type": "str"},
                     "replacemsg-override-group": {"required": False, "type": "str"},
                     "role": {"required": False, "type": "str",
                              "choices": ["lan", "wan", "dmz",
@@ -550,7 +568,7 @@ Functions
                                                      "choices": ["enable", "disable"]},
                                         "ha-priority": {"required": False, "type": "int"},
                                         "id": {"required": True, "type": "int"},
-                                        "ip": {"required": False, "type": "ipv4-classnet-host"},
+                                        "ip": {"required": False, "type": "str"},
                                         "ping-serv-status": {"required": False, "type": "int"}
                                     }},
                     "security-exempt-list": {"required": False, "type": "str"},
@@ -691,7 +709,7 @@ Module Source Code
 
     #!/usr/bin/python
     from __future__ import (absolute_import, division, print_function)
-    # Copyright 2018 Fortinet, Inc.
+    # Copyright 2019 Fortinet, Inc.
     #
     # This program is free software: you can redistribute it and/or modify
     # it under the terms of the GNU General Public License as published by
@@ -718,11 +736,11 @@ Module Source Code
     DOCUMENTATION = '''
     ---
     module: fortios_system_interface
-    short_description: Configure interfaces.
+    short_description: Configure interfaces in Fortinet's FortiOS and FortiGate.
     description:
-        - This module is able to configure a FortiGate or FortiOS by
-          allowing the user to configure system feature and interface category.
-          Examples includes all options and need to be adjusted to datasources before usage.
+        - This module is able to configure a FortiGate or FortiOS by allowing the
+          user to set and modify system feature and interface category.
+          Examples include all parameters and values need to be adjusted to datasources before usage.
           Tested with FOS v6.0.2
     version_added: "2.8"
     author:
@@ -736,7 +754,7 @@ Module Source Code
     options:
         host:
            description:
-                - FortiOS or FortiGate ip adress.
+                - FortiOS or FortiGate ip address.
            required: true
         username:
             description:
@@ -757,7 +775,7 @@ Module Source Code
                 - Indicates if the requests towards FortiGate must use HTTPS
                   protocol
             type: bool
-            default: false
+            default: true
         system_interface:
             description:
                 - Configure interfaces.
@@ -1997,6 +2015,7 @@ Module Source Code
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           system_interface:
             state: "present"
             ac-name: "<your_own_value>"
@@ -2281,57 +2300,57 @@ Module Source Code
     build:
       description: Build number of the fortigate image
       returned: always
-      type: string
+      type: str
       sample: '1547'
     http_method:
       description: Last method used to provision the content into FortiGate
       returned: always
-      type: string
+      type: str
       sample: 'PUT'
     http_status:
       description: Last result given by FortiGate on last operation applied
       returned: always
-      type: string
+      type: str
       sample: "200"
     mkey:
       description: Master key (id) used in the last call to FortiGate
       returned: success
-      type: string
-      sample: "key1"
+      type: str
+      sample: "id"
     name:
       description: Name of the table used to fulfill the request
       returned: always
-      type: string
+      type: str
       sample: "urlfilter"
     path:
       description: Path of the table used to fulfill the request
       returned: always
-      type: string
+      type: str
       sample: "webfilter"
     revision:
       description: Internal revision number
       returned: always
-      type: string
+      type: str
       sample: "17.0.2.10658"
     serial:
       description: Serial number of the unit
       returned: always
-      type: string
+      type: str
       sample: "FGVMEVYYQT3AB5352"
     status:
       description: Indication of the operation's result
       returned: always
-      type: string
+      type: str
       sample: "success"
     vdom:
       description: Virtual domain used
       returned: always
-      type: string
+      type: str
       sample: "root"
     version:
       description: Version of the FortiGate
       returned: always
-      type: string
+      type: str
       sample: "v5.6.3"
     
     '''
@@ -2421,10 +2440,26 @@ Module Source Code
         return dictionary
     
     
+    def flatten_multilists_attributes(data):
+        multilist_attrs = [[u'allowaccess'], [u'ipv6', u'ip6-allowaccess']]
+    
+        for attr in multilist_attrs:
+            try:
+                path = "data['" + "']['".join(elem for elem in attr) + "']"
+                current_val = eval(path)
+                flattened_val = ' '.join(elem for elem in current_val)
+                exec(path + '= flattened_val')
+            except BaseException:
+                pass
+    
+        return data
+    
+    
     def system_interface(data, fos):
         vdom = data['vdom']
         system_interface_data = data['system_interface']
-        filtered_data = filter_system_interface_data(system_interface_data)
+        flattened_data = flatten_multilists_attributes(system_interface_data)
+        filtered_data = filter_system_interface_data(flattened_data)
         if system_interface_data['state'] == "present":
             return fos.set('system',
                            'interface',
@@ -2441,11 +2476,8 @@ Module Source Code
     def fortios_system(data, fos):
         login(data)
     
-        methodlist = ['system_interface']
-        for method in methodlist:
-            if data[method]:
-                resp = eval(method)(data, fos)
-                break
+        if data['system_interface']:
+            resp = system_interface(data, fos)
     
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
@@ -2457,7 +2489,7 @@ Module Source Code
             "username": {"required": True, "type": "str"},
             "password": {"required": False, "type": "str", "no_log": True},
             "vdom": {"required": False, "type": "str", "default": "root"},
-            "https": {"required": False, "type": "bool", "default": "False"},
+            "https": {"required": False, "type": "bool", "default": True},
             "system_interface": {
                 "required": False, "type": "dict",
                 "options": {
@@ -2468,7 +2500,7 @@ Module Source Code
                     "algorithm": {"required": False, "type": "str",
                                   "choices": ["L2", "L3", "L4"]},
                     "alias": {"required": False, "type": "str"},
-                    "allowaccess": {"required": False, "type": "str",
+                    "allowaccess": {"required": False, "type": "list",
                                     "choices": ["ping", "https", "ssh",
                                                 "snmp", "http", "telnet",
                                                 "fgfm", "radius-acct", "probe-response",
@@ -2578,7 +2610,7 @@ Module Source Code
                     "ingress-spillover-threshold": {"required": False, "type": "int"},
                     "interface": {"required": False, "type": "str"},
                     "internal": {"required": False, "type": "int"},
-                    "ip": {"required": False, "type": "ipv4-classnet-host"},
+                    "ip": {"required": False, "type": "str"},
                     "ipmac": {"required": False, "type": "str",
                               "choices": ["enable", "disable"]},
                     "ips-sniffer-mode": {"required": False, "type": "str",
@@ -2603,7 +2635,7 @@ Module Source Code
                                  "dhcp6-relay-type": {"required": False, "type": "str",
                                                       "choices": ["regular"]},
                                  "ip6-address": {"required": False, "type": "str"},
-                                 "ip6-allowaccess": {"required": False, "type": "str",
+                                 "ip6-allowaccess": {"required": False, "type": "list",
                                                      "choices": ["ping", "https", "ssh",
                                                                  "snmp", "http", "telnet",
                                                                  "fgfm", "capwap"]},
@@ -2704,7 +2736,7 @@ Module Source Code
                                        "options": {
                                            "name": {"required": True, "type": "str"}
                                        }},
-                    "management-ip": {"required": False, "type": "ipv4-classnet-host"},
+                    "management-ip": {"required": False, "type": "str"},
                     "member": {"required": False, "type": "list",
                                "options": {
                                    "interface-name": {"required": True, "type": "str"}
@@ -2749,7 +2781,7 @@ Module Source Code
                     "proxy-captive-portal": {"required": False, "type": "str",
                                              "choices": ["enable", "disable"]},
                     "redundant-interface": {"required": False, "type": "str"},
-                    "remote-ip": {"required": False, "type": "ipv4-classnet-host"},
+                    "remote-ip": {"required": False, "type": "str"},
                     "replacemsg-override-group": {"required": False, "type": "str"},
                     "role": {"required": False, "type": "str",
                              "choices": ["lan", "wan", "dmz",
@@ -2775,7 +2807,7 @@ Module Source Code
                                                      "choices": ["enable", "disable"]},
                                         "ha-priority": {"required": False, "type": "int"},
                                         "id": {"required": True, "type": "int"},
-                                        "ip": {"required": False, "type": "ipv4-classnet-host"},
+                                        "ip": {"required": False, "type": "str"},
                                         "ping-serv-status": {"required": False, "type": "int"}
                                     }},
                     "security-exempt-list": {"required": False, "type": "str"},

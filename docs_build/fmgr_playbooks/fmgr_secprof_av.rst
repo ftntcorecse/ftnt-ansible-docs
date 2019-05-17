@@ -39,7 +39,8 @@ Playbook File Examples
 fmgr_secprof_av_run_all.sh
 ++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook fmgr_secprof_av_add.yml -vvvv
     ansible-playbook fmgr_secprof_av_del.yml -vvvv
@@ -50,6 +51,7 @@ fmgr_secprof_av_add.yml
 +++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     - name: SET FORTIMANAGER HA MODE TO SLAVE
@@ -82,6 +84,7 @@ fmgr_secprof_av_del.yml
 .. code-block:: yaml
 
 
+
     - name: SET FORTIMANAGER HA MODE TO SLAVE
       hosts: FortiManager
       connection: httpapi
@@ -97,6 +100,7 @@ av.yml
 ++++++
 
 .. code-block:: yaml
+
 
 
     - name: Create and Delete security profile in FMG

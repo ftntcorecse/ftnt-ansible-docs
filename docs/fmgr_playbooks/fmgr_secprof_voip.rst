@@ -33,6 +33,7 @@ voip.yml
 .. code-block:: yaml
 
 
+
     - name: Create and Delete security profile in FMG
       hosts: FortiManager
       connection: httpapi
@@ -56,7 +57,8 @@ voip.yml
 fmgr_secprof_voip_run_all.sh
 ++++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook voip.yml -vvvv
 

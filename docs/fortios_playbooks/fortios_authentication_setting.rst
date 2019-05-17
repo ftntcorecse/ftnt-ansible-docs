@@ -36,34 +36,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/authentication/fortios_authentication_setting_example.yml
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure authentication setting.
-        fortios_authentication_setting:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          authentication_setting:
-            active-auth-scheme: "<your_own_value> (source authentication.scheme.name)"
-            captive-portal: "<your_own_value> (source firewall.address.name)"
-            captive-portal-ip: "<your_own_value>"
-            captive-portal-ip6: "<your_own_value>"
-            captive-portal-port: "7"
-            captive-portal-type: "fqdn"
-            captive-portal6: "<your_own_value> (source firewall.address6.name)"
-            sso-auth-scheme: "<your_own_value> (source authentication.scheme.name)"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

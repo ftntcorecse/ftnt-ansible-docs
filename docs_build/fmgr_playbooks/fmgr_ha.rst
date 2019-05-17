@@ -48,7 +48,8 @@ Playbook File Examples
 fmgr_ha_run_all.sh
 ++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook fmgr_ha_run_all.sh -vvvv
     ansible-playbook fmgr_ha_standalone.yml -vvvv
@@ -67,6 +68,7 @@ fmgr_ha_standalone.yml
 .. code-block:: yaml
 
 
+
     
     - name: SET FORTIMANAGER HA MODE TO STANDALONE
       hosts: FortiManager, FortiManagerSlave
@@ -83,6 +85,7 @@ fmgr_ha_enable_peer2.yml
 ++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     - name: ADD FMG HA PEER
@@ -104,6 +107,7 @@ fmgr_ha_slave.yml
 .. code-block:: yaml
 
 
+
     - name: SET FORTIMANAGER HA MODE TO SLAVE
       hosts: FortiManagerSlave
       connection: httpapi
@@ -120,6 +124,7 @@ fmgr_ha_enable_peer.yml
 +++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     - name: ADD FMG HA PEER
@@ -139,6 +144,7 @@ fmgr_ha_enable_peer_slave.yml
 +++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     - name: ADD FMG HA PEER
@@ -163,6 +169,7 @@ fmgr_ha_master.yml
 .. code-block:: yaml
 
 
+
     - name: SET FORTIMANAGER HA MODE TO MASTER
       hosts: FortiManager
       connection: httpapi
@@ -185,6 +192,7 @@ fmgr_ha_disable_peer2.yml
 .. code-block:: yaml
 
 
+
     - name: ADD FMG HA PEER
       hosts: FortiManager
       connection: httpapi
@@ -202,6 +210,7 @@ fmgr_ha_disable_peer.yml
 ++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     - name: ADD FMG HA PEER

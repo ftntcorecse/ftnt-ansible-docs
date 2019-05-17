@@ -75,6 +75,7 @@ fmgr_fwpol_ipv4_add_basic.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG FW POLICIES
       hosts: FortiManager
@@ -146,7 +147,8 @@ fmgr_fwpol_ipv4_add_basic.yml
 fmgr_fwpol_ipv4_run_all.sh
 ++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook fmgr_fwpol_ipv4_add_basic.yml -vvvv
     ansible-playbook fmgr_fwpol_ipv4_delete_basic.yml -vvvv
@@ -156,6 +158,7 @@ fmgr_fwpol_ipv4_add_fsso.yml
 ++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -189,6 +192,7 @@ fmgr_fwpol_ipv4_delete_basic.yml
 ++++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     

@@ -18,7 +18,7 @@ Metadata
 
 **Ansible Version Added/Required:** 2.3
 
-**Dev Status:** No Data Exists. Contact DevOps Team.
+**Dev Status:** No status updates, yet. Contact Authors.
 
 Parameters
 ----------
@@ -483,8 +483,8 @@ Module Source Code
       comment:
         description:
           - free text to describe policy.
-    notes:
-      - This module requires pyFG library.
+    requirements:
+      - pyFG
     """
     
     EXAMPLES = """

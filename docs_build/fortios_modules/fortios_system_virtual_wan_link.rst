@@ -11,7 +11,7 @@ Metadata
 
 **Name:** fortios_system_virtual_wan_link
 
-**Description:** This module is able to configure a FortiGate or FortiOS by allowing the user to configure system feature and virtual_wan_link category. Examples includes all options and need to be adjusted to datasources before usage. Tested with FOS v6.0.2
+**Description:** This module is able to configure a FortiGate or FortiOS by allowing the user to set and modify system feature and virtual_wan_link category. Examples include all parameters and values need to be adjusted to datasources before usage. Tested with FOS v6.0.2
 
 
 **Author(s):** 
@@ -24,7 +24,7 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** No Data Exists. Contact DevOps Team.
+**Dev Status:** No status updates, yet. Contact Authors.
 
 Parameters
 ----------
@@ -32,7 +32,7 @@ Parameters
 host
 ++++
 
-- Description: FortiOS or FortiGate ip adress.
+- Description: FortiOS or FortiGate ip address.
 
   
 
@@ -45,7 +45,7 @@ https
 
   
 
-- default: False
+- default: True
 
 password
 ++++++++
@@ -96,7 +96,7 @@ Functions
 
  .. code-block:: python
 
-    def login(data):
+    def login(data, fos):
         host = data['host']
         username = data['username']
         password = data['password']
@@ -136,8 +136,8 @@ Functions
     def system_virtual_wan_link(data, fos):
         vdom = data['vdom']
         system_virtual_wan_link_data = data['system_virtual_wan_link']
-        filtered_data = filter_system_virtual_wan_link_data(
-            system_virtual_wan_link_data)
+        filtered_data = filter_system_virtual_wan_link_data(system_virtual_wan_link_data)
+    
         return fos.set('system',
                        'virtual-wan-link',
                        data=filtered_data,
@@ -150,13 +150,10 @@ Functions
  .. code-block:: python
 
     def fortios_system(data, fos):
-        login(data)
+        login(data, fos)
     
-        methodlist = ['system_virtual_wan_link']
-        for method in methodlist:
-            if data[method]:
-                resp = eval(method)(data, fos)
-                break
+        if data['system_virtual_wan_link']:
+            resp = system_virtual_wan_link(data, fos)
     
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
@@ -173,7 +170,7 @@ Functions
             "username": {"required": True, "type": "str"},
             "password": {"required": False, "type": "str", "no_log": True},
             "vdom": {"required": False, "type": "str", "default": "root"},
-            "https": {"required": False, "type": "bool", "default": "False"},
+            "https": {"required": False, "type": "bool", "default": True},
             "system_virtual_wan_link": {
                 "required": False, "type": "dict",
                 "options": {
@@ -366,7 +363,6 @@ Functions
         except ImportError:
             module.fail_json(msg="fortiosapi module is required")
     
-        global fos
         fos = FortiOSAPI()
     
         is_error, has_changed, result = fortios_system(module.params, fos)
@@ -387,7 +383,7 @@ Module Source Code
 
     #!/usr/bin/python
     from __future__ import (absolute_import, division, print_function)
-    # Copyright 2018 Fortinet, Inc.
+    # Copyright 2019 Fortinet, Inc.
     #
     # This program is free software: you can redistribute it and/or modify
     # it under the terms of the GNU General Public License as published by
@@ -401,9 +397,6 @@ Module Source Code
     #
     # You should have received a copy of the GNU General Public License
     # along with this program.  If not, see <https://www.gnu.org/licenses/>.
-    #
-    # the lib use python logging can get it if the following is set in your
-    # Ansible config.
     
     __metaclass__ = type
     
@@ -414,11 +407,11 @@ Module Source Code
     DOCUMENTATION = '''
     ---
     module: fortios_system_virtual_wan_link
-    short_description: Configure redundant internet connections using SD-WAN (formerly virtual WAN link).
+    short_description: Configure redundant internet connections using SD-WAN (formerly virtual WAN link) in Fortinet's FortiOS and FortiGate.
     description:
-        - This module is able to configure a FortiGate or FortiOS by
-          allowing the user to configure system feature and virtual_wan_link category.
-          Examples includes all options and need to be adjusted to datasources before usage.
+        - This module is able to configure a FortiGate or FortiOS by allowing the
+          user to set and modify system feature and virtual_wan_link category.
+          Examples include all parameters and values need to be adjusted to datasources before usage.
           Tested with FOS v6.0.2
     version_added: "2.8"
     author:
@@ -432,7 +425,7 @@ Module Source Code
     options:
         host:
            description:
-                - FortiOS or FortiGate ip adress.
+                - FortiOS or FortiGate ip address.
            required: true
         username:
             description:
@@ -453,7 +446,7 @@ Module Source Code
                 - Indicates if the requests towards FortiGate must use HTTPS
                   protocol
             type: bool
-            default: false
+            default: true
         system_virtual_wan_link:
             description:
                 - Configure redundant internet connections using SD-WAN (formerly virtual WAN link).
@@ -927,6 +920,7 @@ Module Source Code
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           system_virtual_wan_link:
             fail-alert-interfaces:
              -
@@ -1065,67 +1059,65 @@ Module Source Code
     build:
       description: Build number of the fortigate image
       returned: always
-      type: string
+      type: str
       sample: '1547'
     http_method:
       description: Last method used to provision the content into FortiGate
       returned: always
-      type: string
+      type: str
       sample: 'PUT'
     http_status:
       description: Last result given by FortiGate on last operation applied
       returned: always
-      type: string
+      type: str
       sample: "200"
     mkey:
       description: Master key (id) used in the last call to FortiGate
       returned: success
-      type: string
-      sample: "key1"
+      type: str
+      sample: "id"
     name:
       description: Name of the table used to fulfill the request
       returned: always
-      type: string
+      type: str
       sample: "urlfilter"
     path:
       description: Path of the table used to fulfill the request
       returned: always
-      type: string
+      type: str
       sample: "webfilter"
     revision:
       description: Internal revision number
       returned: always
-      type: string
+      type: str
       sample: "17.0.2.10658"
     serial:
       description: Serial number of the unit
       returned: always
-      type: string
+      type: str
       sample: "FGVMEVYYQT3AB5352"
     status:
       description: Indication of the operation's result
       returned: always
-      type: string
+      type: str
       sample: "success"
     vdom:
       description: Virtual domain used
       returned: always
-      type: string
+      type: str
       sample: "root"
     version:
       description: Version of the FortiGate
       returned: always
-      type: string
+      type: str
       sample: "v5.6.3"
     
     '''
     
     from ansible.module_utils.basic import AnsibleModule
     
-    fos = None
     
-    
-    def login(data):
+    def login(data, fos):
         host = data['host']
         username = data['username']
         password = data['password']
@@ -1155,8 +1147,8 @@ Module Source Code
     def system_virtual_wan_link(data, fos):
         vdom = data['vdom']
         system_virtual_wan_link_data = data['system_virtual_wan_link']
-        filtered_data = filter_system_virtual_wan_link_data(
-            system_virtual_wan_link_data)
+        filtered_data = filter_system_virtual_wan_link_data(system_virtual_wan_link_data)
+    
         return fos.set('system',
                        'virtual-wan-link',
                        data=filtered_data,
@@ -1164,13 +1156,10 @@ Module Source Code
     
     
     def fortios_system(data, fos):
-        login(data)
+        login(data, fos)
     
-        methodlist = ['system_virtual_wan_link']
-        for method in methodlist:
-            if data[method]:
-                resp = eval(method)(data, fos)
-                break
+        if data['system_virtual_wan_link']:
+            resp = system_virtual_wan_link(data, fos)
     
         fos.logout()
         return not resp['status'] == "success", resp['status'] == "success", resp
@@ -1182,7 +1171,7 @@ Module Source Code
             "username": {"required": True, "type": "str"},
             "password": {"required": False, "type": "str", "no_log": True},
             "vdom": {"required": False, "type": "str", "default": "root"},
-            "https": {"required": False, "type": "bool", "default": "False"},
+            "https": {"required": False, "type": "bool", "default": True},
             "system_virtual_wan_link": {
                 "required": False, "type": "dict",
                 "options": {
@@ -1375,7 +1364,6 @@ Module Source Code
         except ImportError:
             module.fail_json(msg="fortiosapi module is required")
     
-        global fos
         fos = FortiOSAPI()
     
         is_error, has_changed, result = fortios_system(module.params, fos)

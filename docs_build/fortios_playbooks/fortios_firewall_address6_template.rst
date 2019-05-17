@@ -42,44 +42,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-<<<<<<< Updated upstream
-
-../ansible_fgt_modules/v6.0.2/firewall/fortios_firewall_address6_template_example.yml
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure IPv6 address templates.
-        fortios_firewall_address6_template:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          firewall_address6_template:
-            state: "present"
-            ip6: "<your_own_value>"
-            name: "default_name_4"
-            subnet-segment:
-             -
-                bits: "6"
-                exclusive: "enable"
-                id:  "8"
-                name: "default_name_9"
-                values:
-                 -
-                    name: "default_name_11"
-                    value: "<your_own_value>"
-            subnet-segment-count: "13"
-
-
-
-=======
 %%PB_FILE_EXAMPLE_TOKEN%%
->>>>>>> Stashed changes
 

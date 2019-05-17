@@ -18,7 +18,7 @@ Metadata
 
 **Ansible Version Added/Required:** 2.4
 
-**Dev Status:** No Data Exists. Contact DevOps Team.
+**Dev Status:** No status updates, yet. Contact Authors.
 
 Parameters
 ----------
@@ -363,7 +363,7 @@ Module Source Code
     
     RETURN = """
     firewall_address_config:
-      description: full firewall adresses config string.
+      description: full firewall addresses config string.
       returned: always
       type: str
     change_string:

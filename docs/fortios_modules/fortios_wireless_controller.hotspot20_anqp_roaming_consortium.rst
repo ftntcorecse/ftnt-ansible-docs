@@ -24,7 +24,7 @@ Metadata
 
 **Ansible Version Added/Required:** 2.8
 
-**Dev Status:** No Data Exists. Contact DevOps Team.
+**Dev Status:** No status updates, yet. Contact Authors.
 
 Parameters
 ----------

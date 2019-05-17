@@ -34,32 +34,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/firewall/fortios_firewall_auth_portal_example.yml
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure firewall authentication portals.
-        fortios_firewall_auth_portal:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          firewall_auth_portal:
-            groups:
-             -
-                name: "default_name_4 (source user.group.name)"
-            identity-based-route: "<your_own_value> (source firewall.identity-based-route.name)"
-            portal-addr: "<your_own_value>"
-            portal-addr6: "<your_own_value>"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

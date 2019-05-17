@@ -78,6 +78,7 @@ fmgr_fwobj_ippool_del.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG FMGR FIREWALL OBJECTS
       hosts: FortiManager
@@ -120,6 +121,7 @@ fmgr_fwobj_ippool_add.yml
 +++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -220,7 +222,8 @@ fmgr_fwobj_ippool_add.yml
 fmgr_fwobj_ippool_run_all.sh
 ++++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook fmgr_fwobj_ippool_del.yml -vvvv
     ansible-playbook fmgr_fwobj_ippool_add.yml -vvvv

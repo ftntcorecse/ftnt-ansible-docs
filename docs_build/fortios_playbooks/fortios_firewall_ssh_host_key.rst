@@ -1,0 +1,42 @@
+=============================
+fortios_firewall_ssh_host_key
+=============================
+
+
+Playbook Task Examples
+----------------------
+
+.. code-block:: yaml
+
+    - hosts: localhost
+      vars:
+       host: "192.168.122.40"
+       username: "admin"
+       password: ""
+       vdom: "root"
+      tasks:
+      - name: SSH proxy host public keys.
+        fortios_firewall_ssh_host_key:
+          host:  "{{ host }}"
+          username: "{{ username }}"
+          password: "{{ password }}"
+          vdom:  "{{ vdom }}"
+          https: "False"
+          firewall_ssh_host_key:
+            state: "present"
+            hostname: "myhostname"
+            ip: "<your_own_value>"
+            name: "default_name_5"
+            nid: "256"
+            port: "7"
+            public-key: "<your_own_value>"
+            status: "trusted"
+            type: "RSA"
+
+
+
+Playbook File Examples
+----------------------
+
+%%PB_FILE_EXAMPLE_TOKEN%%
+

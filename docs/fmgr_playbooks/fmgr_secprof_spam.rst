@@ -41,7 +41,8 @@ Playbook File Examples
 fmgr_secprof_spam_run_all.sh
 ++++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook spam.yml -vvvv
 
@@ -50,6 +51,7 @@ spam.yml
 ++++++++
 
 .. code-block:: yaml
+
 
 
     - name: Create and Delete security profile in FMG

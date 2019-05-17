@@ -21,6 +21,7 @@ Playbook Task Examples
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           log_custom_field:
             state: "present"
             id:  "3"
@@ -32,30 +33,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/log/fortios_log_custom_field_example.yml
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure custom log fields.
-        fortios_log_custom_field:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          log_custom_field:
-            state: "present"
-            id:  "3"
-            name: "default_name_4"
-            value: "<your_own_value>"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

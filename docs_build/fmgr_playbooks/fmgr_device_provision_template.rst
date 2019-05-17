@@ -156,6 +156,7 @@ fmgr_device_provision_template_remove_scope.yml
 .. code-block:: yaml
 
 
+
     - name: DELETE DEVICE PROVISION TEMPLATES
       hosts: FortiManager
       connection: httpapi
@@ -173,6 +174,7 @@ fmgr_device_proftemplate_faz_assign.yml
 +++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     - name: CREATE DEVICE PROVISION TEMPLATES
@@ -216,6 +218,7 @@ fmgr_device_provision_template_delete.yml
 .. code-block:: yaml
 
 
+
     - name: CREATE DEVICE PROVISION TEMPLATES
       hosts: FortiManager
       connection: httpapi
@@ -232,6 +235,7 @@ fmgr_device_provision_template.yml
 ++++++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     - name: CREATE DEVICE PROVISION TEMPLATES
@@ -368,7 +372,8 @@ fmgr_device_provision_template.yml
 fmgr_device_provision_template_run_all.sh
 +++++++++++++++++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook fmgr_device_provision_template_remove_scope.yml -vvvv
     ansible-playbook fmgr_device_proftemplate_faz_assign.yml -vvvv
@@ -382,6 +387,7 @@ fmgr_device_provision_template_absent.yml
 +++++++++++++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     - name: DELETE DEVICE PROVISION TEMPLATES

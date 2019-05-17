@@ -40,38 +40,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/webfilter/fortios_webfilter_content_example.yml
-+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure Web filter banned word table.
-        fortios_webfilter_content:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          webfilter_content:
-            state: "present"
-            comment: "Optional comments."
-            entries:
-             -
-                action: "block"
-                lang: "western"
-                name: "default_name_7"
-                pattern-type: "wildcard"
-                score: "9"
-                status: "enable"
-            id:  "11"
-            name: "default_name_12"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

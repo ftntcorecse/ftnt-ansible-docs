@@ -29,7 +29,8 @@ Playbook File Examples
 fmgr_secprof_waf_run_all.sh
 +++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook waf.yml -vvvv
 
@@ -38,6 +39,7 @@ waf.yml
 +++++++
 
 .. code-block:: yaml
+
 
 
     - name: Create and Delete security profile in FMG

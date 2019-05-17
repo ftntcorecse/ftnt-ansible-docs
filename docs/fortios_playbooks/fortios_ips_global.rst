@@ -21,6 +21,7 @@ Playbook Task Examples
           username: "{{ username }}"
           password: "{{ password }}"
           vdom:  "{{ vdom }}"
+          https: "False"
           ips_global:
             anomaly-mode: "periodical"
             database: "regular"
@@ -41,39 +42,5 @@ Playbook Task Examples
 Playbook File Examples
 ----------------------
 
-
-../ansible_fgt_modules/v6.0.2/ips/fortios_ips_global_example.yml
-++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-.. code-block:: yaml
-            - hosts: localhost
-      vars:
-       host: "192.168.122.40"
-       username: "admin"
-       password: ""
-       vdom: "root"
-      tasks:
-      - name: Configure IPS global parameter.
-        fortios_ips_global:
-          host:  "{{ host }}"
-          username: "{{ username }}"
-          password: "{{ password }}"
-          vdom:  "{{ vdom }}"
-          ips_global:
-            anomaly-mode: "periodical"
-            database: "regular"
-            deep-app-insp-db-limit: "5"
-            deep-app-insp-timeout: "6"
-            engine-count: "7"
-            exclude-signatures: "none"
-            fail-open: "enable"
-            intelligent-mode: "enable"
-            session-limit-mode: "accurate"
-            skype-client-public-ipaddr: "<your_own_value>"
-            socket-size: "13"
-            sync-session-ttl: "enable"
-            traffic-submit: "enable"
-
-
-
+%%PB_FILE_EXAMPLE_TOKEN%%
 

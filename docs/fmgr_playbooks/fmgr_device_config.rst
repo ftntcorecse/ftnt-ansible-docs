@@ -39,6 +39,7 @@ fmgr_device_exec_config.yml
 .. code-block:: yaml
 
 
+
     - name: DISCOVER AND ADD DEVICES
       hosts: FortiManager
       connection: httpapi
@@ -61,7 +62,8 @@ fmgr_device_exec_config.yml
 fmgr_device_config_run_all.sh
 +++++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook fmgr_device_exec_config.yml -vvvv
     ansible-playbook fgt01_config.yml -vvvv
@@ -74,6 +76,7 @@ fgt01_config.yml
 ++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -104,6 +107,7 @@ fgt03_config.yml
 ++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -142,6 +146,7 @@ fmgr_device_config.yml
 .. code-block:: yaml
 
 
+
     - name: DISCOVER AND ADD DEVICES
       hosts: FortiManager
       connection: httpapi
@@ -166,6 +171,7 @@ fgt02_config.yml
 ++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     

@@ -41,6 +41,7 @@ fmgr_devices_ansibleAdom.yml
 .. code-block:: yaml
 
 
+
     - name: DISCOVER AND ADD DEVICES
       hosts: FortiManager
       connection: httpapi
@@ -79,7 +80,8 @@ fmgr_devices_ansibleAdom.yml
 fmgr_device_run_all.sh
 ++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook fmgr_devices_ansibleAdom.yml -vvvv
     ansible-playbook fmgr_devices_plugin_edition_add.yml -vvvv
@@ -95,6 +97,7 @@ fmgr_devices_plugin_edition_add.yml
 +++++++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     - name: DISCOVER AND ADD DEVICES via PLUGIN
@@ -140,6 +143,7 @@ fmgr_devices_ansibleAdom_all.yml
 ++++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     - name: DISCOVER AND ADD DEVICES
@@ -203,6 +207,7 @@ fmgr_devices_delete_ansibleAdom.yml
 .. code-block:: yaml
 
 
+
     - name: DISCOVER AND ADD DEVICES
       hosts: FortiManager
       connection: httpapi
@@ -248,6 +253,7 @@ fmgr_devices_plugin_edition_del.yml
 .. code-block:: yaml
 
 
+
     - name: DISCOVER AND ADD DEVICES via PLUGIN
       hosts: FortiManager
       connection: httpapi
@@ -290,6 +296,7 @@ fmgr_devices.yml
 .. code-block:: yaml
 
 
+
     - name: DISCOVER AND ADD DEVICES
       hosts: FortiManager
       connection: httpapi
@@ -320,6 +327,7 @@ fmgr_devices_ipv6_add.yml
 .. code-block:: yaml
 
 
+
     - name: DISCOVER AND ADD DEVICES
       hosts: FortiManager
       connection: httpapi
@@ -339,6 +347,7 @@ fmgr_devices_ansibleAdom2.yml
 +++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     - name: DISCOVER AND ADD DEVICES
@@ -380,6 +389,7 @@ fmgr_devices_pyfmg.yml
 ++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     - name: DISCOVER AND ADD DEVICES

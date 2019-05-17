@@ -81,6 +81,7 @@ fmgr_fwobj_vip_add_pnat.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
@@ -112,6 +113,7 @@ fmgr_fwobj_vip_add_dnst.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
@@ -138,6 +140,7 @@ fmgr_fwobj_vip_add_fqdn.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
@@ -160,6 +163,7 @@ fmgr_fwobj_vip_add_snat.yml
 +++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -187,6 +191,7 @@ fmgr_fwobj_vip_TEMPLATE.yml
 +++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -380,6 +385,7 @@ fmgr_fwobj_vip_del_all.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG CUSTOM SERVICES
       hosts: FortiManager
@@ -420,7 +426,8 @@ fmgr_fwobj_vip_del_all.yml
 fmgr_fwobj_vip_run_all.sh
 +++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook fmgr_fwobj_vip_add_pnat.yml -vvvv
     ansible-playbook fmgr_fwobj_vip_add_dnst.yml -vvvv

@@ -96,6 +96,7 @@ fmgr_fwpol_plugin_install.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG FW POLICY PACKAGES AND FOLDERS
       hosts: FortiManager
@@ -129,7 +130,8 @@ fmgr_fwpol_plugin_install.yml
 fmgr_fwpol_package_run_all.sh
 +++++++++++++++++++++++++++++
 
-.. code-block:: yaml
+.. code-block:: shell
+
             #!/bin/bash
     ansible-playbook fmgr_fwpol_plugin_install.yml -vvvv
     ansible-playbook fmgr_fwpol_package_add.yml -vvvv
@@ -146,6 +148,7 @@ fmgr_fwpol_package_add.yml
 ++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -198,6 +201,7 @@ fmgr_fwpol_package_delete.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG FW POLICY PACKAGES AND FOLDERS
       hosts: FortiManager
@@ -245,6 +249,7 @@ fmgr_fwpol_package_add_with_rules_install.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG FW POLICY PACKAGES AND FOLDERS
       hosts: FortiManager
@@ -289,6 +294,7 @@ fmgr_fwpol_plugin_del.yml
 +++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -383,6 +389,7 @@ fmgr_fwpol_package_install2vdom.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG FW POLICY PACKAGES AND FOLDERS
       hosts: FortiManager
@@ -408,6 +415,7 @@ fmgr_fwpol_package_install.yml
 .. code-block:: yaml
 
 
+
     
     - name: CONFIG FW POLICY PACKAGES AND FOLDERS
       hosts: FortiManager
@@ -430,6 +438,7 @@ fmgr_fwpol_package_assign2vdom.yml
 ++++++++++++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
@@ -458,6 +467,7 @@ fmgr_fwpol_plugin_add.yml
 +++++++++++++++++++++++++
 
 .. code-block:: yaml
+
 
 
     
