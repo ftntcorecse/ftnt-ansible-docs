@@ -270,7 +270,7 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 </li>
 <li><p class="first">default: add</p>
 </li>
-<li><p class="first">choices: [‘add’, ‘set’, ‘delete’, ‘add_targets’, ‘delete_targets’, ‘install’]</p>
+<li><p class="first">choices: [‘add’, ‘set’, ‘delete’, ‘move’, ‘copy’, ‘add_targets’, ‘delete_targets’, ‘install’]</p>
 </li>
 </ul>
 </div>
@@ -338,6 +338,28 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 <li>Required: False</li>
 </ul>
 </div>
+<div class="section" id="target-folder">
+<h3>target_folder<a class="headerlink" href="#target-folder" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Only used when mode equals move.</p>
+<p>Nested folders are supported with forwardslashes. i.e. ansibleTestFolder1/ansibleTestFolder2/etc…</p>
+<p>Do not include leading or trailing forwardslashes. We take care of that for you.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+</ul>
+</div>
+<div class="section" id="target-name">
+<h3>target_name<a class="headerlink" href="#target-name" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p class="first">Description: Only used when mode equals move.</p>
+<p>Only used when you want to rename the package in its new location.</p>
+<p>If None, then NAME will be used.</p>
+</li>
+<li><p class="first">Required: False</p>
+</li>
+</ul>
+</div>
 </div>
 <div class="section" id="functions">
 <h2>Functions<a class="headerlink" href="#functions" title="Permalink to this headline">¶</a></h2>
@@ -379,11 +401,40 @@ This module controls the creation/edit/delete/assign of these packages.</p>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;append_members_list&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;append_members_list&quot;</span><span class="p">]</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;append_members_list&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="c1"># IF PARENT FOLDER IS DEFINED</span>
         <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr_fwpol_package_create_parent_folder_objects</span><span class="p">(</span><span class="n">paramgram</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="c1"># IF MODE IS MOVE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s1">&#39;mode&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;move&quot;</span><span class="p">,</span> <span class="s2">&quot;copy&quot;</span><span class="p">]:</span>
+       <span class="c1"># pydevd.settrace(&#39;10.0.0.151&#39;, port=54654, stdoutToServer=True, stderrToServer=True)</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;move&quot;</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/securityconsole/package/move&#39;</span>
+        <span class="k">elif</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;copy&quot;</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/securityconsole/package/clone&#39;</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;target_name&quot;</span><span class="p">]:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;target_name&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;dst_name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+            <span class="s2">&quot;dst_parent&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;target_folder&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;pkg&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]:</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;pkg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;pkg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;copy&quot;</span><span class="p">:</span>
+            <span class="c1"># SET THE SCOPE MEMBERS ACCORDING TO MODE AND WHAT WAS SUPPLIED</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;append_members_list&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;append_members_list&quot;</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;append_members_list&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="c1"># NORMAL DELETE NO PARENT</span>
     <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -403,7 +454,10 @@ This module controls the creation/edit/delete/assign of these packages.</p>
                                                                   <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
                                                                   <span class="n">parent_folder</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">])</span>
 
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s1">&#39;mode&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;move&quot;</span><span class="p">,</span> <span class="s2">&quot;copy&quot;</span><span class="p">]:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">EXEC</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">response</span>
 </pre></div>
 </div>
@@ -670,7 +724,7 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 <div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
         <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
-        <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;add_targets&quot;</span><span class="p">,</span> <span class="s2">&quot;delete_targets&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">],</span>
+        <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;move&quot;</span><span class="p">,</span> <span class="s2">&quot;copy&quot;</span><span class="p">,</span> <span class="s2">&quot;add_targets&quot;</span><span class="p">,</span> <span class="s2">&quot;delete_targets&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">],</span>
                   <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
 
         <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
@@ -685,6 +739,8 @@ This module controls the creation/edit/delete/assign of these packages.</p>
         <span class="n">scope_members</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">scope_members_vdom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
         <span class="n">parent_folder</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">target_folder</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">target_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
 
     <span class="p">)</span>
     <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">,)</span>
@@ -704,6 +760,8 @@ This module controls the creation/edit/delete/assign of these packages.</p>
         <span class="s2">&quot;scope_members&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;scope_members&quot;</span><span class="p">],</span>
         <span class="s2">&quot;scope_members_vdom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;scope_members_vdom&quot;</span><span class="p">],</span>
         <span class="s2">&quot;parent_folder&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;target_folder&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;target_folder&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;target_name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;target_name&quot;</span><span class="p">],</span>
         <span class="s2">&quot;append_members_list&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
         <span class="s2">&quot;existing_members_list&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
         <span class="s2">&quot;package_exists&quot;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
@@ -724,7 +782,7 @@ This module controls the creation/edit/delete/assign of these packages.</p>
     <span class="n">paramgram</span> <span class="o">=</span> <span class="n">fmgr_fwpol_package_get_details</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;pkg&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;pkg&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;move&quot;</span><span class="p">,</span> <span class="s2">&quot;copy&quot;</span><span class="p">]:</span>
             <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwpol_package</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
             <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>
                                  <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
@@ -809,6 +867,8 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 <span class="s1">          what was supplied under scope_members and scope_groups. Use the add_targets or delete_targets mode first.</span>
 <span class="s1">        - When using &quot;add_targets&quot; or &quot;delete_targets&quot; for changing installation targets, only scope_members or</span>
 <span class="s1">          scope_groups is considered for changes to the package. To edit the package settings themselves, use &quot;set&quot;.</span>
+<span class="s1">    - Revision Comments May 21st 2019</span>
+<span class="s1">        - Added support to move packages.</span>
 <span class="s1">author:</span>
 <span class="s1">    - Luke Weighall (@lweighall)</span>
 <span class="s1">    - Andrew Welsh (@Ghilli3)</span>
@@ -835,7 +895,7 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 <span class="s1">      - Delete Targets will only delete the specified scope members from installation targets.</span>
 <span class="s1">      - Install will install the package to the assigned installation targets listed on existing package.</span>
 <span class="s1">      - Update your installation targets BEFORE running install task.</span>
-<span class="s1">    choices: [&#39;add&#39;, &#39;set&#39;, &#39;delete&#39;, &#39;add_targets&#39;, &#39;delete_targets&#39;, &#39;install&#39;]</span>
+<span class="s1">    choices: [&#39;add&#39;, &#39;set&#39;, &#39;delete&#39;, &#39;move&#39;, &#39;copy&#39;, &#39;add_targets&#39;, &#39;delete_targets&#39;, &#39;install&#39;]</span>
 <span class="s1">    default: add</span>
 
 <span class="s1">  name:</span>
@@ -910,6 +970,20 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 <span class="s1">      - The parent folder name you want to add this object under.</span>
 <span class="s1">      - Nested folders are supported with forwardslashes. i.e. ansibleTestFolder1/ansibleTestFolder2/etc...</span>
 <span class="s1">      - Do not include leading or trailing forwardslashes. We take care of that for you.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  target_folder:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Only used when mode equals move.</span>
+<span class="s1">      - Nested folders are supported with forwardslashes. i.e. ansibleTestFolder1/ansibleTestFolder2/etc...</span>
+<span class="s1">      - Do not include leading or trailing forwardslashes. We take care of that for you.</span>
+<span class="s1">    required: false</span>
+
+<span class="s1">  target_name:</span>
+<span class="s1">    description:</span>
+<span class="s1">      - Only used when mode equals move.</span>
+<span class="s1">      - Only used when you want to rename the package in its new location.</span>
+<span class="s1">      - If None, then NAME will be used.</span>
 <span class="s1">    required: false</span>
 <span class="s1">&#39;&#39;&#39;</span>
 
@@ -991,6 +1065,7 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 <span class="s1">    name: &quot;ansibleTestFolder1&quot;</span>
 <span class="s1">    object_type: &quot;folder&quot;</span>
 <span class="s1">&#39;&#39;&#39;</span>
+
 <span class="n">RETURN</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
 <span class="s2">api_result:</span>
 <span class="s2">  description: full API response, includes status code and message</span>
@@ -1007,6 +1082,7 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 <span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FAIL_SOCKET_MSG</span>
 <span class="kn">from</span> <span class="nn">ansible.module_utils.network.fortimanager.common</span> <span class="kn">import</span> <span class="n">FMGRMethods</span>
 
+<span class="kn">import</span> <span class="nn">pydevd</span>
 
 <span class="k">def</span> <span class="nf">fmgr_fwpol_package</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">):</span>
     <span class="sd">&quot;&quot;&quot;</span>
@@ -1042,11 +1118,40 @@ This module controls the creation/edit/delete/assign of these packages.</p>
         <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;append_members_list&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
             <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;append_members_list&quot;</span><span class="p">]</span>
         <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;append_members_list&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
-            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="bp">None</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
         <span class="c1"># IF PARENT FOLDER IS DEFINED</span>
         <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="ow">not</span> <span class="bp">None</span><span class="p">:</span>
             <span class="n">datagram</span> <span class="o">=</span> <span class="n">fmgr_fwpol_package_create_parent_folder_objects</span><span class="p">(</span><span class="n">paramgram</span><span class="p">,</span> <span class="n">datagram</span><span class="p">)</span>
+
+    <span class="c1"># IF MODE IS MOVE</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s1">&#39;mode&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;move&quot;</span><span class="p">,</span> <span class="s2">&quot;copy&quot;</span><span class="p">]:</span>
+       <span class="c1"># pydevd.settrace(&#39;10.0.0.151&#39;, port=54654, stdoutToServer=True, stderrToServer=True)</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;move&quot;</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/securityconsole/package/move&#39;</span>
+        <span class="k">elif</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;copy&quot;</span><span class="p">:</span>
+            <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;/securityconsole/package/clone&#39;</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;target_name&quot;</span><span class="p">]:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;target_name&quot;</span><span class="p">]</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">name</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="n">datagram</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s2">&quot;adom&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;adom&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;dst_name&quot;</span><span class="p">:</span> <span class="n">name</span><span class="p">,</span>
+            <span class="s2">&quot;dst_parent&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;target_folder&quot;</span><span class="p">],</span>
+            <span class="s2">&quot;pkg&quot;</span><span class="p">:</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">]</span>
+        <span class="p">}</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]:</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;pkg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">])</span> <span class="o">+</span> <span class="s2">&quot;/&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;pkg&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">])</span>
+
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;copy&quot;</span><span class="p">:</span>
+            <span class="c1"># SET THE SCOPE MEMBERS ACCORDING TO MODE AND WHAT WAS SUPPLIED</span>
+            <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;append_members_list&quot;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;append_members_list&quot;</span><span class="p">]</span>
+            <span class="k">elif</span> <span class="nb">len</span><span class="p">(</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;append_members_list&quot;</span><span class="p">])</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+                <span class="n">datagram</span><span class="p">[</span><span class="s2">&quot;scope member&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="p">{}</span>
 
     <span class="c1"># NORMAL DELETE NO PARENT</span>
     <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;delete&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">]</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
@@ -1066,7 +1171,10 @@ This module controls the creation/edit/delete/assign of these packages.</p>
                                                                   <span class="n">name</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">],</span>
                                                                   <span class="n">parent_folder</span><span class="o">=</span><span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">])</span>
 
-    <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s1">&#39;mode&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;move&quot;</span><span class="p">,</span> <span class="s2">&quot;copy&quot;</span><span class="p">]:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">FMGRMethods</span><span class="o">.</span><span class="n">EXEC</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">fmgr</span><span class="o">.</span><span class="n">process_request</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">datagram</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">])</span>
     <span class="k">return</span> <span class="n">response</span>
 
 
@@ -1303,7 +1411,7 @@ This module controls the creation/edit/delete/assign of these packages.</p>
 <span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
     <span class="n">argument_spec</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span>
         <span class="n">adom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
-        <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;add_targets&quot;</span><span class="p">,</span> <span class="s2">&quot;delete_targets&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">],</span>
+        <span class="n">mode</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">choices</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;move&quot;</span><span class="p">,</span> <span class="s2">&quot;copy&quot;</span><span class="p">,</span> <span class="s2">&quot;add_targets&quot;</span><span class="p">,</span> <span class="s2">&quot;delete_targets&quot;</span><span class="p">,</span> <span class="s2">&quot;install&quot;</span><span class="p">],</span>
                   <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;add&quot;</span><span class="p">),</span>
 
         <span class="n">name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
@@ -1318,6 +1426,8 @@ This module controls the creation/edit/delete/assign of these packages.</p>
         <span class="n">scope_members</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
         <span class="n">scope_members_vdom</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">,</span> <span class="n">default</span><span class="o">=</span><span class="s2">&quot;root&quot;</span><span class="p">),</span>
         <span class="n">parent_folder</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">target_folder</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
+        <span class="n">target_name</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="n">required</span><span class="o">=</span><span class="bp">False</span><span class="p">,</span> <span class="nb">type</span><span class="o">=</span><span class="s2">&quot;str&quot;</span><span class="p">),</span>
 
     <span class="p">)</span>
     <span class="n">module</span> <span class="o">=</span> <span class="n">AnsibleModule</span><span class="p">(</span><span class="n">argument_spec</span><span class="o">=</span><span class="n">argument_spec</span><span class="p">,</span> <span class="n">supports_check_mode</span><span class="o">=</span><span class="bp">False</span><span class="p">,)</span>
@@ -1337,6 +1447,8 @@ This module controls the creation/edit/delete/assign of these packages.</p>
         <span class="s2">&quot;scope_members&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;scope_members&quot;</span><span class="p">],</span>
         <span class="s2">&quot;scope_members_vdom&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;scope_members_vdom&quot;</span><span class="p">],</span>
         <span class="s2">&quot;parent_folder&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;parent_folder&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;target_folder&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;target_folder&quot;</span><span class="p">],</span>
+        <span class="s2">&quot;target_name&quot;</span><span class="p">:</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">[</span><span class="s2">&quot;target_name&quot;</span><span class="p">],</span>
         <span class="s2">&quot;append_members_list&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
         <span class="s2">&quot;existing_members_list&quot;</span><span class="p">:</span> <span class="nb">list</span><span class="p">(),</span>
         <span class="s2">&quot;package_exists&quot;</span><span class="p">:</span> <span class="bp">None</span><span class="p">,</span>
@@ -1357,7 +1469,7 @@ This module controls the creation/edit/delete/assign of these packages.</p>
     <span class="n">paramgram</span> <span class="o">=</span> <span class="n">fmgr_fwpol_package_get_details</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
 
     <span class="k">try</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;pkg&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;object_type&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;pkg&quot;</span> <span class="ow">and</span> <span class="n">paramgram</span><span class="p">[</span><span class="s2">&quot;mode&quot;</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s2">&quot;add&quot;</span><span class="p">,</span> <span class="s2">&quot;set&quot;</span><span class="p">,</span> <span class="s2">&quot;delete&quot;</span><span class="p">,</span> <span class="s2">&quot;move&quot;</span><span class="p">,</span> <span class="s2">&quot;copy&quot;</span><span class="p">]:</span>
             <span class="n">results</span> <span class="o">=</span> <span class="n">fmgr_fwpol_package</span><span class="p">(</span><span class="n">fmgr</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">)</span>
             <span class="n">fmgr</span><span class="o">.</span><span class="n">govern_response</span><span class="p">(</span><span class="n">module</span><span class="o">=</span><span class="n">module</span><span class="p">,</span> <span class="n">results</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>
                                  <span class="n">ansible_facts</span><span class="o">=</span><span class="n">fmgr</span><span class="o">.</span><span class="n">construct_ansible_facts</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">module</span><span class="o">.</span><span class="n">params</span><span class="p">,</span> <span class="n">paramgram</span><span class="p">))</span>
