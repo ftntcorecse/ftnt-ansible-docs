@@ -19,7 +19,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = u'Fortinet Ansible Modules'
+project = u'Fortinet Ansible Modules DEPRECATED'
 copyright = u'2018, Fortinet, CSE - DevOps'
 author = u'Luke Weighall, Andrew Welsh, Jim Huber'
 
